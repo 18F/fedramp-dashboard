@@ -1,0 +1,27 @@
+{
+  "name": "fedramp-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truetandem/fedramp-dashboard.git"
+  },
+  "author": "TrueTandem, LLC",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/truetandem/fedramp-dashboard/issues"
+  },
+  "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2"
+  }
+}

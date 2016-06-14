@@ -1,0 +1,4 @@
+{
+    "config-file": "karma.conf.js",
+    "karma-command": "node_modules/karma/bin/karma"
+}
