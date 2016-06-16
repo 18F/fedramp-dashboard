@@ -34,50 +34,44 @@
     blanket.setupCoverage();
   };
 
-  /* 
-  from http://stackoverflow.com/questions/21420291/blanketjs-jasmine-2-0-not-working
-  */
-  BlanketReporter.finished_at = null; // will be updated after all files have
-  // been written
+BlanketReporter.prototype = {
+        specStarted: function(spec) {
+            blanket.onTestStart();
+        },
 
-  BlanketReporter.prototype = {
-    specStarted : function(spec) {
-      blanket.onTestStart();
-    },
+        specDone: function(result) {
+            var passed = result.status === "passed" ? 1 : 0;
+            blanket.onTestDone(1,passed);
+        },
 
-    specDone : function(result) {
-      var passed = result.status === "passed" ? 1 : 0;
-      blanket.onTestDone(1, passed);
-    },
+        jasmineDone: function() {
+            blanket.onTestsDone();
+        },
 
-    jasmineDone : function() {
-      blanket.onTestsDone();
-    },
+        log: function(str) {
+            var console = jasmine.getGlobal().console;
 
-    log : function(str) {
-      var console = jasmine.getGlobal().console;
+            if (console && console.log) {
+                console.log(str);
+            }
+        }
+    };
 
-      if (console && console.log) {
-      console.log(str);
-      }
-    }
-  };
+    // export public
+    jasmine.BlanketReporter = BlanketReporter;
 
-  // export public
-  jasmine.BlanketReporter = BlanketReporter;
+    //override existing jasmine execute
+    var originalJasmineExecute = jasmine.getEnv().execute;
+    jasmine.getEnv().execute = function(){ console.log("waiting for blanket..."); };
 
-  // override existing jasmine execute
-  var originalJasmineExecute = jasmine.getEnv().execute;
-//  jasmine.getEnv().execute = function() {
-//    console.log("waiting for blanket...");
-//  };
 
-  blanket.beforeStartTestRunner({
-    checkRequirejs : true,
-    callback : function() {
-      jasmine.getEnv().addReporter(new jasmine.BlanketReporter());
-      jasmine.getEnv().execute = originalJasmineExecute;
-      jasmine.getEnv().execute();
-    }
-  });
+    blanket.beforeStartTestRunner({
+        checkRequirejs:true,
+        callback:function(){
+            jasmine.getEnv().addReporter(new jasmine.BlanketReporter());
+            jasmine.getEnv().execute = originalJasmineExecute;
+            jasmine.getEnv().execute();
+        }
+    });
+
 })();
