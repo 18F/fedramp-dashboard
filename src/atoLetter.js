@@ -6,18 +6,20 @@ var AtoLetter = function () {
 
     var mapping = {
         'Letter_Date': 'letterDate',
-        'Letter_Link_URL': 'letterLinkUrl',
         'Letter_Expiration_Date': 'letterExpirationDate',
+        'Authorizing_Letter_Last_Sign_Date': 'authorizingLetterSignedDate',
         'Authorizing_Agency': 'authorizingAgency',
-        'Authorizing_Subagency': 'authorizingSubagency'
+        'Authorizing_Subagency': 'authorizingSubagency',
+        'Active': 'active',
     };
 
     // Properties
     self.letterDate = null;
-    self.letterLinkUrl = '';
     self.letterExpirationDate = null;
+    self.authorizingLetterSignedDate = null;
     self.authorizingAgency = '';
     self.authorizingSubagency = '';
+    self.active = '';
 
     /**
      * Initialize the ATO letter object.
