@@ -15,6 +15,12 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'lib/**/*.js',
+            'src/atoLetter.js',
+            'src/provider.js',
+            'src/storage.js',
+            'src/datasource.js',
+            'src/githubDatasource.js',
             'src/**/*.js',
             'test/**/*.js'
         ],
@@ -22,10 +28,10 @@ module.exports = function(config) {
 
         // list of files to exclude
         exclude: [
-            'test/lib/jasmine-2.4.1/**/*.js',
-	    'test/blanket.min.js',
-	    'test/jasmin-blanket.js',
-	    'test/mock-ajax.js'
+            'lib/jasmine-2.4.1/**/*.js',
+            'test/blanket.min.js',
+            'test/jasmin-blanket.js',
+            'test/mock-ajax.js'
         ],
 
 

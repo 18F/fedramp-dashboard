@@ -59,7 +59,7 @@ var Provider = function () {
             if (key) {
                 if (key === 'atoLetters') {
                     for (letter in options[x]) {
-                        self[key].push(new AtoLetter().init(options[x]));
+                        self[key].push(new AtoLetter().init(options[x][letter]));
                     }
                 } else {
                     self[key] = options[x];
@@ -68,7 +68,7 @@ var Provider = function () {
                 if (self.hasOwnProperty(x)) {
                     if (x === 'atoLetters') {
                         for (letter in options[x]) {
-                            self[x].push(new AtoLetter().init(options[x]));
+                            self[x].push(new AtoLetter().init(options[x][letter]));
                         }
                     } else {
                         self[x] = options[x];

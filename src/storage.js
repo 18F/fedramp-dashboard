@@ -64,8 +64,27 @@ var StorageManager = function () {
         purge();
     };
 
+    /**
+     * Queries all items in the storage container.
+     *
+     * @returns
+     *  An array of items
+     */
     self.all = function () {
         return all();
+    };
+
+    /**
+     * Transforms the raw object to a specifec model
+     *
+     * @param {Object} raw
+     *  The JSON object
+     *
+     * @returns
+     *  The item
+     */
+    self.transform = function (raw) {
+        return new Provider().init(raw);
     };
 
     /**
@@ -98,7 +117,7 @@ var StorageManager = function () {
         var storage = JSON.parse(localStorage.getItem(self.storageContainer));
         if (storage) {
             for (var key in storage) {
-                items.push(new Provider().init(storage[key]));
+                items.push(self.transform(storage[key]));
             }
         }
 
@@ -121,20 +140,10 @@ var StorageManager = function () {
         }
 
         if (storage[id]) {
-            return new Provider().init(storage[id]);
+            return self.transform(storage[id]);
         }
 
         return null;
-    }
-
-    /**
-     * Loads an item in to the manager.
-     *
-     * @param {string} id
-     *  The identifier of the item
-     */
-    function load(id) {
-        store(id, new Provider().init({name: id}));
     }
 
     /**
