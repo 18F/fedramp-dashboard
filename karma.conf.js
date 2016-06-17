@@ -22,8 +22,10 @@ module.exports = function(config) {
 
         // list of files to exclude
         exclude: [
-	    'test/**/!(jquery-git.min)',
-            'test/lib/**/*.js'
+            'test/lib/jasmine-2.4.1/**/*.js',
+	    'test/blanket.min.js',
+	    'test/jasmin-blanket.js',
+	    'test/mock-ajax.js'
         ],
 
 

@@ -1,7 +1,15 @@
 describe('Datasource', function () {
 	"use strict";
 
-	var url = 'pull-test.json';
+	var url = 'sampledata.json';
+
+	beforeEach(function() {
+		jasmine.Ajax.install();
+	});
+
+	afterEach(function() {
+		jasmine.Ajax.uninstall();
+	});	
 
 	it('initialize a new instance', function () {
 		var datasource = new Datasource().init({url: url});
@@ -11,7 +19,11 @@ describe('Datasource', function () {
 	it('pull data from url', function (done) {
 		var datasource = new Datasource().init({url: url});
 		expect(datasource).not.toBe(undefined);
-		
+
+		jasmine.Ajax.stubRequest(url).andReturn({
+			"responseText": JSON.stringify(TestData.Letters)
+		});
+
 		datasource.pull().then(function(data){
 			expect(data).not.toBe(null);
 			expect(data.length).toBeGreaterThan(0);
