@@ -3,7 +3,7 @@ describe('Provider can map', function () {
     
     beforeAll(function () {
         providerMapping = {
-            'Clould_Service_Provider_Name': 'name',
+            'Cloud_Service_Provider_Name': 'name',
             'Cloud_Service_Provider_Package': 'pkg',
             'Path': 'path',
             'Designation': 'designation',
@@ -80,7 +80,7 @@ describe('Provider can map', function () {
 describe('Provider hash', function () {
     it('is described according to the properties', function () {
         var p = new Provider().init({
-            "Clould_Service_Provider_Name": "test",
+            "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"

@@ -2,7 +2,7 @@ var TestData = {
 
 	Letters: [
 		{
-			"Clould_Service_Provider_Name": "Akamai",
+			"Cloud_Service_Provider_Name": "Akamai",
 			"Cloud_Service_Provider_Package": "Content Delivery Services",
 			"Path": "JAB",
 			"Designation": "Compliant",

@@ -19,7 +19,7 @@ describe('Storage manager', function () {
 
     it('can store item', function() {
         var provider = new Provider().init({
-            "Clould_Service_Provider_Name": "test",
+            "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -49,7 +49,7 @@ describe('Storage manager', function () {
 
     it('can get item by ID', function() {
         var provider = new Provider().init({
-            "Clould_Service_Provider_Name": "test",
+            "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -79,7 +79,7 @@ describe('Storage manager', function () {
 
     it('can update item', function() {
         var provider = new Provider().init({
-            "Clould_Service_Provider_Name": "test",
+            "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -115,7 +115,7 @@ describe('Storage manager', function () {
 
     it('can clear', function() {
         var provider = new Provider().init({
-            "Clould_Service_Provider_Name": "test",
+            "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"

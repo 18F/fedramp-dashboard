@@ -5,7 +5,7 @@ var Provider = function () {
     var self = this;
 
     var mapping = {
-        'Clould_Service_Provider_Name': 'name',
+        'Cloud_Service_Provider_Name': 'name',
         'Cloud_Service_Provider_Package': 'pkg',
         'Path': 'path',
         'Designation': 'designation',
