@@ -13,11 +13,11 @@ var Provider = function () {
         'Service_Model': 'serviceModel',
         'Deployment_Model': 'deploymentModel',
         'Impact_Level': 'impactLevel',
-        'SAP_Date': 'sapDate',
-        'SAR_Date': 'sarDate',
+        'Original_Authorization_Date': 'authorizationDate',
+        'Original_Expiration_Date': 'expirationDate',
         'Sponsoring_Agency': 'sponsoringAgency',
         'Sponsoring_Subagency': 'sponsoringSubagency',
-        'ATO_Letters': 'atoLetters',
+        'Leveraged_ATO_Letters': 'atoLetters',
     };
 
     // Properties
@@ -29,8 +29,8 @@ var Provider = function () {
     self.serviceModel = [];
     self.deploymentModel = '';
     self.impactLevel = '';
-    self.sapDate = null;
-    self.sarDate = null;
+    self.authorizationDate = null;
+    self.expirationDate = null;
     self.sponsoringAgency = '';
     self.sponsoringSubagency = '';
     self.atoLetters = [];

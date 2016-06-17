@@ -19,6 +19,7 @@ describe('Storage manager', function () {
 
     it('can store item', function() {
         var provider = new Provider().init({
+            "Clould_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -26,12 +27,14 @@ describe('Storage manager', function () {
             "Deployment_Model": "Community Cloud",
             "Impact_Level": "Moderate",
             "Sponsoring_Agency": "Department of Health and Human Services",
-            "ATO_Letters": [
+            "Leveraged_ATO_Letters": [
                 {
                     "Letter_Date": "2014-02-24T05:00:00.000Z",
                     "Letter_Expiration_Date": "2017-02-24T05:00:00.000Z",
+                    "Authorizing_Letter_Last_Sign_Date": "2017-02-24T05:00:00.000Z",
                     "Authorizing_Agency": "Department of Health and Human Services",
-                    "Authorizing_Subagency": "Department of Health and Human Services"
+                    "Authorizing_Subagency": "Department of Health and Human Services",
+                    "Active": "Active"
                 }
             ]
         });
@@ -46,6 +49,7 @@ describe('Storage manager', function () {
 
     it('can get item by ID', function() {
         var provider = new Provider().init({
+            "Clould_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -53,12 +57,14 @@ describe('Storage manager', function () {
             "Deployment_Model": "Community Cloud",
             "Impact_Level": "Moderate",
             "Sponsoring_Agency": "Department of Health and Human Services",
-            "ATO_Letters": [
+            "Leveraged_ATO_Letters": [
                 {
                     "Letter_Date": "2014-02-24T05:00:00.000Z",
                     "Letter_Expiration_Date": "2017-02-24T05:00:00.000Z",
+                    "Authorizing_Letter_Last_Sign_Date": "2017-02-24T05:00:00.000Z",
                     "Authorizing_Agency": "Department of Health and Human Services",
-                    "Authorizing_Subagency": "Department of Health and Human Services"
+                    "Authorizing_Subagency": "Department of Health and Human Services",
+                    "Active": "Active"
                 }
             ]
         });
@@ -73,6 +79,7 @@ describe('Storage manager', function () {
 
     it('can update item', function() {
         var provider = new Provider().init({
+            "Clould_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -80,12 +87,14 @@ describe('Storage manager', function () {
             "Deployment_Model": "Community Cloud",
             "Impact_Level": "Moderate",
             "Sponsoring_Agency": "Department of Health and Human Services",
-            "ATO_Letters": [
+            "Leveraged_ATO_Letters": [
                 {
                     "Letter_Date": "2014-02-24T05:00:00.000Z",
                     "Letter_Expiration_Date": "2017-02-24T05:00:00.000Z",
+                    "Authorizing_Letter_Last_Sign_Date": "2017-02-24T05:00:00.000Z",
                     "Authorizing_Agency": "Department of Health and Human Services",
-                    "Authorizing_Subagency": "Department of Health and Human Services"
+                    "Authorizing_Subagency": "Department of Health and Human Services",
+                    "Active": "Active"
                 }
             ]
         });
@@ -106,6 +115,7 @@ describe('Storage manager', function () {
 
     it('can clear', function() {
         var provider = new Provider().init({
+            "Clould_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [
                 "IaaS"
@@ -113,12 +123,14 @@ describe('Storage manager', function () {
             "Deployment_Model": "Community Cloud",
             "Impact_Level": "Moderate",
             "Sponsoring_Agency": "Department of Health and Human Services",
-            "ATO_Letters": [
+            "Leveraged_ATO_Letters": [
                 {
                     "Letter_Date": "2014-02-24T05:00:00.000Z",
                     "Letter_Expiration_Date": "2017-02-24T05:00:00.000Z",
+                    "Authorizing_Letter_Last_Sign_Date": "2017-02-24T05:00:00.000Z",
                     "Authorizing_Agency": "Department of Health and Human Services",
-                    "Authorizing_Subagency": "Department of Health and Human Services"
+                    "Authorizing_Subagency": "Department of Health and Human Services",
+                    "Active": "Active"
                 }
             ]
         });
@@ -131,9 +143,4 @@ describe('Storage manager', function () {
         storage.clear();
         expect(storage.all().length).toBe(0);
     });
-
-    // it('fires events', function() {
-    //     var storage = new StorageManager().init();
-    //     storage.clear();
-    // });
 });
