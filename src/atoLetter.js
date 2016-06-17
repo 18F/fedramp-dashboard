@@ -43,6 +43,10 @@ var AtoLetter = function () {
             var key = mapping[x];
             if (key) {
                 self[key] = options[x];
+            } else {
+                if (self.hasOwnProperty(x)) {
+                    self[x] = options[x];
+                }
             }
         }
 
