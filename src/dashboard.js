@@ -51,6 +51,7 @@
 
         console.log('Storing the data...');
         for (var i = 0; i < datum.length; i++) {
+            console.log(i + 1);
             var p = new Provider().init(datum[i]);
             storage.update(p.hash(), p);
         }
@@ -61,13 +62,14 @@
      */
     function beanCounter () {
         console.log('Performing data analysis...');
+
         var providers = storage.all();
         for (var i = 0; i < providers.length; i++) {
             totalAuthorized++;
             leveragedAtos += providers[i].atoLetters.length;
         }
 
-        costSavings = 200000 * leveragedAtos;
+        costSavings = 250000 * leveragedAtos;
     }
 
     /**
@@ -75,9 +77,9 @@
      */
     function display () {
         console.log('Displaying the findings...');
-        $('div#beans').append('<div class="bean"><b>Total Authorized:</b> ' + totalAuthorized + '</div>');
-        $('div#beans').append('<div class="bean"><b>Leveraged ATOs:</b> ' + leveragedAtos + '</div>');
-        $('div#beans').append('<div class="bean"><b>Cost Savings:</b> ' + costSavings + '</div>');
+        $('div#beans').append('<div class="bean"><b>Total Authorized:</b> ' + totalAuthorized + ' <i>(Sum of authorized CSPs)</i></div>');
+        $('div#beans').append('<div class="bean"><b>Leveraged ATOs:</b> ' + leveragedAtos + ' <i>(Sum of leveraged ATOs)</i></div>');
+        $('div#beans').append('<div class="bean"><b>Cost Savings:</b> $' + Number(costSavings).toLocaleString('en') + ' <i>(Total reuse * $250,000)</i></div>');
     }
 
     /**
