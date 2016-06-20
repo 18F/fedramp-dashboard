@@ -34,7 +34,9 @@
 
             var providers = storage.all();
             for (var i = 0; i < providers.length; i++) {
-                totalAuthorized++;
+                if (providers[i].active === 'Active') {
+                    totalAuthorized++;
+                }
             }
         }
 

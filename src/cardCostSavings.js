@@ -37,7 +37,12 @@
 
             var providers = storage.all();
             for (var i = 0; i < providers.length; i++) {
-                leveragedAtos += providers[i].atoLetters.length;
+                var p = providers[i];
+                for (var j = 0; j < p.atoLetters.length; j++) {
+                    if (p.atoLetters[j].active === 'Active') {
+                        leveragedAtos++;
+                    }
+                }
             }
 
             costSavings = estimatedSavings * leveragedAtos;

@@ -17,6 +17,7 @@ var Provider = function () {
         'Original_Expiration_Date': 'expirationDate',
         'Sponsoring_Agency': 'sponsoringAgency',
         'Sponsoring_Subagency': 'sponsoringSubagency',
+        'Active': 'active',
         'Leveraged_ATO_Letters': 'atoLetters',
     };
 
@@ -33,6 +34,7 @@ var Provider = function () {
     self.expirationDate = null;
     self.sponsoringAgency = '';
     self.sponsoringSubagency = '';
+    self.active = '';
     self.atoLetters = [];
 
     /**
