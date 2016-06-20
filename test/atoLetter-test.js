@@ -36,4 +36,29 @@ describe('ATO letter can map', function () {
             expect(a[key]).toBe(expectedValue);
         }
     });
+
+    it('check for invalid initiation', function () {
+        var expectedValue = null;
+        var options = null;
+
+        var a = new AtoLetter().init(options);
+
+        expect(a).not.toBeDefined();
+    });
+
+    it('skip property not found in options property', function () {
+        var Options = function(){
+            this.test = 1;
+        };
+        var OtherOption = function(){
+        };
+
+        OtherOption.prototype = Object.create(Options.prototype);
+        OtherOption.prototype.constructor = OtherOption;
+
+        var options = new OtherOption();
+
+        var a = new AtoLetter().init(options);
+        expect(a).toBeDefined();
+    });
 });
