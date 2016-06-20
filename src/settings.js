@@ -48,6 +48,16 @@ var Settings  = function () {
     };
 
     /**
+     * Determine if the data requires a refresh.
+     *
+     * @returns
+     *  A boolean value
+     */
+    self.needsRefresh = function () {
+        return self.lastRefresh !== today();
+    };
+
+    /**
      * Creates a formatted date string using format mm/dd/yyyy
      */
     function today () {

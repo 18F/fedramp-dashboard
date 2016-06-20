@@ -17,9 +17,11 @@ module.exports = function(config) {
         files: [
             'lib/**/*.js',
             'src/atoLetter.js',
+            'src/settings.js',
             'src/provider.js',
             'src/storage.js',
             'src/storageProvider.js',
+            'src/storageSettings.js',
             'src/datasource.js',
             'src/githubDatasource.js',
             'src/**/*.js',

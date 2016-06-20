@@ -161,10 +161,14 @@ var StorageManager = function () {
             storage = {};
         }
 
+        var item = null;
         if (id) {
             storage[id] = properties;
+            item = self.transform(storage[id]);
             localStorage.setItem(self.storageContainer, JSON.stringify(storage));
         }
+
+        fireEvent('store', item);
     }
 
     /**
@@ -179,8 +183,10 @@ var StorageManager = function () {
             return;
         }
 
+        var item = self.transform(storage[id]);
         delete storage[id];
         localStorage.setItem(self.storageContainer, JSON.stringify(storage));
+        fireEvent('remove', item);
     }
 
     /**
@@ -190,6 +196,8 @@ var StorageManager = function () {
         if (localStorage.getItem(self.storageContainer)) {
             localStorage.removeItem(self.storageContainer);
         }
+
+        fireEvent('purge');
     }
 
     /**
@@ -206,7 +214,8 @@ var StorageManager = function () {
         message.cancelable = true;
         message.detail = details;
 
-        var event = new CustomEvent(name, message);
+        var eventName = self.storageContainer + '-' + name;
+        var event = new CustomEvent(eventName, message);
         document.dispatchEvent(event);
     }
 };

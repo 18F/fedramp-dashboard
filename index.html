@@ -15,18 +15,44 @@
     </head>
     <body>
         <h1>FedRAMP Dashboard</h1>
-        <div id="beans"></div>
+        <div id="beans">
+            <div id="card-providers" class="bean"></div>
+            <div id="card-leveraged" class="bean"></div>
+            <div id="card-cost-savings" class="bean"></div>
+        </div>
         <div id="error"></div>
+
+
+        <!-- Templates -->
+        <script id="template-providers" type="x-template">
+            <b>Total Authorized:</b>
+            <span class="value"></span>
+            <i>(Sum of authorized CSPs)</i>
+        </script>
+        <script id="template-leveraged" type="x-template">
+            <b>Leveraged ATOs:</b>
+            <span class="value"></span>
+            <i>(Sum of leveraged ATOs)</i>
+        </script>
+        <script id="template-cost-savings" type="x-template">
+            <b>Cost Savings:</b>
+            <span class="value"></span>
+            <i>(Total reuse * $250,000)</i>
+        </script>
 
         <!-- Include scripts at the bottom for performance gains in some browsers -->
         <script src="lib/jquery-3.0.0.min.js"></script>
         <script src="src/atoLetter.js"></script>	
         <script src="src/provider.js"></script>	
+        <script src="src/settings.js"></script>	
         <script src="src/storage.js"></script>	
         <script src="src/datasource.js"></script>	
         <script src="src/storageProvider.js"></script>	
         <script src="src/storageSettings.js"></script>	
         <script src="src/githubDatasource.js"></script>	
+        <script src="src/cardProviders.js"></script>	
+        <script src="src/cardLeveraged.js"></script>	
+        <script src="src/cardCostSavings.js"></script>	
         <script src="src/dashboard.js"></script>	
     </body>
 </html>
