@@ -8,7 +8,7 @@ var StorageManager = function () {
     var self = this;
 
     // Properties
-    self.storageContainer = 'providers';
+    self.storageContainer = 'default';
 
     /**
      * Initialize the storage manager.
@@ -75,7 +75,8 @@ var StorageManager = function () {
     };
 
     /**
-     * Transforms the raw object to a specifec model
+     * Transforms the raw object to a specifec model. Subclasses should override
+     * this method.
      *
      * @param {Object} raw
      *  The JSON object
@@ -84,7 +85,7 @@ var StorageManager = function () {
      *  The item
      */
     self.transform = function (raw) {
-        return new Provider().init(raw);
+        return raw;
     };
 
     /**
