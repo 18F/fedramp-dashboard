@@ -1,4 +1,3 @@
 #!/bin/sh
 
-./bin/doc-gen
 git push -f origin master:gh-pages
