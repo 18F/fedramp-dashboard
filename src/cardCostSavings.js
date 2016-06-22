@@ -3,6 +3,7 @@
 
     /**
      * Dashboard card for cost savings.
+     * @constructor
      *
      * @param {string} target
      *  The CSS selector where data will be displayed
@@ -14,7 +15,7 @@
      */
     window.CardCostSavings = function (target, template) {
         var self = this;
-        var storage = new storageProvider().init();
+        var storage = new storageProvider();
         var leveragedAtos = 0;
         var costSavings = 0;
         var estimatedSavings = 250000;

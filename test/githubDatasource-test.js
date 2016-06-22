@@ -14,12 +14,12 @@ describe('GithubDatasource', function () {
 	});	
 
 	it('initialize a new instance', function () {
-		var datasource = new GithubDatasource().init({url: githubContentUrl});
+		var datasource = new GithubDatasource({url: githubContentUrl});
 		expect(datasource).not.toBe(undefined);
 	});
 
 	it('pull data from url', function (done) {
-		var datasource = new GithubDatasource().init({url: githubContentUrl});
+		var datasource = new GithubDatasource({url: githubContentUrl});
 		jasmine.Ajax.stubRequest(githubContentUrl).andReturn({
 			"responseText": JSON.stringify(TestData.GithubContent)
 		});
@@ -28,17 +28,17 @@ describe('GithubDatasource', function () {
 			"responseText": JSON.stringify(TestData.Letters)
 		});
 
-		datasource.pull().then(function(data){
+		datasource.pull().then(function (data) {
 			expect(data).not.toBe(null);
 			expect(data.length).toBeGreaterThan(0);
 			done();
-		}, function(){
+		}, function () {
 			fail('Unable to pull data from github');
 		});
 	});
 
 	it('when datasource response contains empty results', function () {
-		var datasource = new GithubDatasource().init({url: githubContentUrl});
+		var datasource = new GithubDatasource({url: githubContentUrl});
 		var data = datasource.parseResponse([]);
 		expect(data).toEqual([]);
 	});

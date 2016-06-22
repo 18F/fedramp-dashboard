@@ -1,4 +1,8 @@
-var AtoLetter = function () {
+/**
+ * Leveraged ATO letter.
+ * @constructor
+ */
+var AtoLetter = function (options) {
     'use strict';
 
     // Scope `this` to self
@@ -13,12 +17,46 @@ var AtoLetter = function () {
         'Active': 'active',
     };
 
-    // Properties
+    /**
+     * Letter date
+     * @member {date}
+     * @memberof AtoLetter
+     */
     self.letterDate = null;
+
+    /**
+     * Letter expiration date
+     * @member {date}
+     * @memberof AtoLetter
+     */
     self.letterExpirationDate = null;
+
+    /**
+     * Authorizing letter signed date
+     * @member {date}
+     * @memberof AtoLetter
+     */
     self.authorizingLetterSignedDate = null;
+
+    /**
+     * Authorizing agency
+     * @member {string}
+     * @memberof AtoLetter
+     */
     self.authorizingAgency = '';
+
+    /**
+     * Authorizing subagency
+     * @member {string}
+     * @memberof AtoLetter
+     */
     self.authorizingSubagency = '';
+
+    /**
+     * Active status
+     * @member {string}
+     * @memberof AtoLetter
+     */
     self.active = '';
 
     /**
@@ -32,7 +70,7 @@ var AtoLetter = function () {
      */
     self.init = function (options) {
         if (!options) {
-            return;
+            return self;
         }
 
         for (var x in options) {
@@ -52,4 +90,6 @@ var AtoLetter = function () {
 
         return self;
     };
+
+    return self.init(options);
 };

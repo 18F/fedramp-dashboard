@@ -1,9 +1,10 @@
-
 /**
  * Provides storage specific functionality that extends the StorageManager
+ * @constructor
+ * @extends StorageManager
  */
-var StorageSettings = function(){
-    "use strict";
+var StorageSettings = function (options) {
+    'use strict';
 
     StorageManager.call(this);
 
@@ -13,6 +14,8 @@ var StorageSettings = function(){
 
     /**
      * Transforms the raw object to a specifec model
+     * @public
+     * @memberof StorageSettings
      *
      * @param {Object} raw
      *  The JSON object
@@ -21,11 +24,11 @@ var StorageSettings = function(){
      *  The item
      */
     self.transform = function (raw) {
-        return new Settings().init(raw);
+        return new Settings(raw);
     };
 
+    return self.init(options);
 };
-
 
 StorageSettings.prototype = Object.create(StorageManager.prototype);
 StorageSettings.prototype.constructor = StorageSettings;

@@ -1,4 +1,8 @@
-var Provider = function () {
+/**
+ * The cloud service provider.
+ * @constructor
+ */
+var Provider = function (options) {
     'use strict';
 
     // Scope `this` to self
@@ -21,20 +25,102 @@ var Provider = function () {
         'Leveraged_ATO_Letters': 'atoLetters',
     };
 
-    // Properties
+    /**
+     * Cloud service provider name
+     * @member {string}
+     * @memberof Provider
+     */
     self.name = '';
+
+    /**
+     * Package name
+     * @member {string}
+     * @memberof Provider
+     */
     self.pkg = '';
+
+    /**
+     * Package identifier
+     * @member {string}
+     * @memberof Provider
+     */
     self.pkgId = '';
+
+    /**
+     * Path
+     * @member {string}
+     * @memberof Provider
+     */
     self.path = '';
+
+    /**
+     * Designation
+     * @member {string}
+     * @memberof Provider
+     */
     self.designation = '';
+
+    /**
+     * Service model
+     * @member {array}
+     * @memberof Provider
+     */
     self.serviceModel = [];
+
+    /**
+     * Deployment model
+     * @member {string}
+     * @memberof Provider
+     */
     self.deploymentModel = '';
+
+    /**
+     * Impact level
+     * @member {string}
+     * @memberof Provider
+     */
     self.impactLevel = '';
+
+    /**
+     * Authorization date
+     * @member {date}
+     * @memberof Provider
+     */
     self.authorizationDate = null;
+
+    /**
+     * Expiration date
+     * @member {date}
+     * @memberof Provider
+     */
     self.expirationDate = null;
+
+    /**
+     * Sponsoring agency
+     * @member {string}
+     * @memberof Provider
+     */
     self.sponsoringAgency = '';
+
+    /**
+     * Sponsoring subagency
+     * @member {string}
+     * @memberof Provider
+     */
     self.sponsoringSubagency = '';
+
+    /**
+     * Active status
+     * @member {string}
+     * @memberof Provider
+     */
     self.active = '';
+
+    /**
+     * Leveraged ATO letters
+     * @member {array}
+     * @memberof Provider
+     */
     self.atoLetters = [];
 
     /**
@@ -61,7 +147,7 @@ var Provider = function () {
             if (key) {
                 if (key === 'atoLetters') {
                     for (letter in options[x]) {
-                        self[key].push(new AtoLetter().init(options[x][letter]));
+                        self[key].push(new AtoLetter(options[x][letter]));
                     }
                 } else {
                     self[key] = options[x];
@@ -70,7 +156,7 @@ var Provider = function () {
                 if (self.hasOwnProperty(x)) {
                     if (x === 'atoLetters') {
                         for (letter in options[x]) {
-                            self[x].push(new AtoLetter().init(options[x][letter]));
+                            self[x].push(new AtoLetter(options[x][letter]));
                         }
                     } else {
                         self[x] = options[x];
@@ -84,6 +170,8 @@ var Provider = function () {
 
     /**
      * Get a unique hash or identifier for the provider.
+     * @public
+     * @memberof Provider
      *
      * @returns
      *  The hash
@@ -95,4 +183,6 @@ var Provider = function () {
         }
         return id;
     };
+
+    return self.init(options);
 };

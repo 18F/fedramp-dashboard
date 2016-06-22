@@ -12,19 +12,19 @@ describe('Datasource', function () {
 	});	
 
 	it('initialize a new instance', function () {
-		var datasource = new Datasource().init({url: url});
+		var datasource = new Datasource({url: url});
 		expect(datasource).not.toBe(undefined);
 	});
 
 	it('pull data from url', function (done) {
-		var datasource = new Datasource().init({url: url});
+		var datasource = new Datasource({url: url});
 		expect(datasource).not.toBe(undefined);
 
 		jasmine.Ajax.stubRequest(url).andReturn({
 			"responseText": JSON.stringify(TestData.Letters)
 		});
 
-		datasource.pull().then(function(data){
+		datasource.pull().then(function (data) {
 			expect(data).not.toBe(null);
 			expect(data.length).toBeGreaterThan(0);
 			done();
@@ -33,7 +33,7 @@ describe('Datasource', function () {
 
 
 	it('checks that filename is valid', function () {
-		var datasource = new Datasource().init({url: url});
+		var datasource = new Datasource({url: url});
 		expect(datasource).not.toBe(undefined);
 
 		var valid = datasource.isValidFilename('data-2016-06-16.json');

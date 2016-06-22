@@ -1,8 +1,10 @@
 /**
  * Provides storage specific functionality that extends the StorageManager
+ * @constructor
+ * @extends StorageManager
  */
-var StorageProvider = function(){
-    "use strict";
+var StorageProvider = function (options) {
+    'use strict';
 
     StorageManager.call(this);
 
@@ -12,6 +14,8 @@ var StorageProvider = function(){
 
     /**
      * Transforms the raw object to a specifec model
+     * @public
+     * @memberof StorageProvider
      *
      * @param {Object} raw
      *  The JSON object
@@ -20,11 +24,11 @@ var StorageProvider = function(){
      *  The item
      */
     self.transform = function (raw) {
-        return new Provider().init(raw);
+        return new Provider(raw);
     };
 
+    return self.init(options);
 };
-
 
 StorageProvider.prototype = Object.create(StorageManager.prototype);
 StorageProvider.prototype.constructor = StorageProvider;

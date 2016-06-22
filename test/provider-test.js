@@ -38,7 +38,7 @@ describe('Provider can map', function () {
                 options[x] = expectedValue;
             }
 
-            var p = new Provider().init(options);
+            var p = new Provider(options);
             if (x === 'Leveraged_ATO_Letters') {
                 expect(p[providerMapping[x]].length).toBe(1);
             } else {
@@ -67,7 +67,7 @@ describe('Provider can map', function () {
                 options[key] = expectedValue;
             }
 
-            var p = new Provider().init(options);
+            var p = new Provider(options);
             if (key === 'atoLetters') {
                 expect(p[key].length).toBe(1);
             } else {
@@ -79,7 +79,7 @@ describe('Provider can map', function () {
 
 describe('Provider hash', function () {
     it('is described according to the properties', function () {
-        var p = new Provider().init({
+        var p = new Provider({
             "Cloud_Service_Provider_Name": "test",
             "Designation": "Compliant",
             "Service_Model": [

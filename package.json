@@ -19,6 +19,7 @@
   "devDependencies": {
     "coveralls": "^2.11.9",
     "jasmine": "^2.4.1",
+    "jsdoc": "^3.4.0",
     "jshint": "^2.9.2",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",

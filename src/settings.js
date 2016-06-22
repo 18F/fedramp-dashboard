@@ -1,11 +1,19 @@
-var Settings  = function () {
+/**
+ * Application settings for the FedRAMP dashboard.
+ * @constructor
+ */
+var Settings  = function (options) {
     'use strict';
 
     // Scope `this` to self
     var self = this;
 
 
-    // Properties
+    /**
+     * The last refresh date
+     * @member {string}
+     * @memberof Settings
+     */
     self.lastRefresh = null;
 
     /**
@@ -18,7 +26,7 @@ var Settings  = function () {
      *  The Settings object
      */
     self.init = function (options) {
-        if(options){
+        if (options) {
             for (var x in options) {
                 if (!options.hasOwnProperty(x)) {
                     continue;
@@ -34,21 +42,30 @@ var Settings  = function () {
 
     /**
      * Refreshes the date to current date
+     * @public
+     * @memberof Settings
+     *
+     * @returns
+     *  The last refresh date
      */
-    self.refresh = function(){
+    self.refresh = function () {
         self.lastRefresh = today();
         return self.lastRefresh;
     };
 
     /**
      * Clears last refresh
+     * @public
+     * @memberof Settings
      */
-    self.clearRefresh = function(){
+    self.clearRefresh = function () {
         self.lastRefresh = null;
     };
 
     /**
      * Determine if the data requires a refresh.
+     * @public
+     * @memberof Settings
      *
      * @returns
      *  A boolean value
@@ -58,7 +75,12 @@ var Settings  = function () {
     };
 
     /**
-     * Creates a formatted date string using format mm/dd/yyyy
+     * Creates a formatted date string
+     * @private
+     * @memberof Settings
+     *
+     * @returns
+     *  Today's date formatting as mm/dd/YYYY
      */
     function today () {
         var d = new Date();
@@ -76,4 +98,6 @@ var Settings  = function () {
 
         return mm + '/' + dd + '/' + yyyy;
     }
+
+    return self.init(options);
 };

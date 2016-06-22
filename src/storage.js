@@ -1,7 +1,8 @@
 /**
  * Storage manager handles the storage and retrieval of items.
+ * @constructor
  */
-var StorageManager = function () {
+var StorageManager = function (options) {
     'use strict';
 
     // Scope `this` to self.
@@ -34,6 +35,8 @@ var StorageManager = function () {
 
     /**
      * Update the status of an item.
+     * @public
+     * @memberof StorageManager
      *
      * @param {string} id
      *  The identifier of the item
@@ -46,6 +49,8 @@ var StorageManager = function () {
 
     /**
      * Queries for an item by identifier.
+     * @public
+     * @memberof StorageManager
      *
      * @param {string} id
      *  The identifier of the item
@@ -59,6 +64,8 @@ var StorageManager = function () {
 
     /**
      * Clear the item queue.
+     * @public
+     * @memberof StorageManager
      */
     self.clear = function () {
         purge();
@@ -66,6 +73,8 @@ var StorageManager = function () {
 
     /**
      * Queries all items in the storage container.
+     * @public
+     * @memberof StorageManager
      *
      * @returns
      *  An array of items
@@ -77,6 +86,8 @@ var StorageManager = function () {
     /**
      * Transforms the raw object to a specifec model. Subclasses should override
      * this method.
+     * @public
+     * @memberof StorageManager
      *
      * @param {Object} raw
      *  The JSON object
@@ -90,6 +101,7 @@ var StorageManager = function () {
 
     /**
      * Perform all prechecks necessary to ensure dependencies are met
+     * @private
      *
      * @returns
      *  An error message if a dependency is not met
@@ -108,6 +120,7 @@ var StorageManager = function () {
 
     /**
      * Retrieve all items in local storage.
+     * @private
      *
      * @returns
      *  An array of items
@@ -127,6 +140,7 @@ var StorageManager = function () {
 
     /**
      * Fetchs an item from local storage.
+     * @private
      *
      * @param {string} id
      *  The identifier of the item
@@ -149,6 +163,7 @@ var StorageManager = function () {
 
     /**
      * Stores an item to local storage.
+     * @private
      *
      * @param {string} id
      *  The identifier of the item
@@ -173,6 +188,7 @@ var StorageManager = function () {
 
     /**
      * Removes an item from local storage.
+     * @private
      *
      * @param {string} id
      *  The identifier of the item
@@ -191,6 +207,7 @@ var StorageManager = function () {
 
     /**
      * Purges all items from local storage.
+     * @private
      */
     function purge() {
         if (localStorage.getItem(self.storageContainer)) {
@@ -202,6 +219,7 @@ var StorageManager = function () {
 
     /**
      * Dispatches an event to subscribers.
+     * @private
      *
      * @param {string} name
      *  String identification for the event
@@ -218,4 +236,6 @@ var StorageManager = function () {
         var event = new CustomEvent(eventName, message);
         document.dispatchEvent(event);
     }
+
+    return self.init(options);
 };

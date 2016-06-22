@@ -19,7 +19,7 @@ describe('ATO letter can map', function () {
             var options = {};
             options[x] = expectedValue;
 
-            var a = new AtoLetter().init(options);
+            var a = new AtoLetter(options);
             expect(a[atoLetterMapping[x]]).toBe(expectedValue);
         }
     });
@@ -32,7 +32,7 @@ describe('ATO letter can map', function () {
             var options = {};
             options[key] = expectedValue;
 
-            var a = new AtoLetter().init(options);
+            var a = new AtoLetter(options);
             expect(a[key]).toBe(expectedValue);
         }
     });
@@ -41,24 +41,22 @@ describe('ATO letter can map', function () {
         var expectedValue = null;
         var options = null;
 
-        var a = new AtoLetter().init(options);
-
-        expect(a).not.toBeDefined();
+        var a = new AtoLetter(options);
+        expect(a).toBeDefined();
     });
 
     it('skip property not found in options property', function () {
-        var Options = function(){
+        var Options = function () {
             this.test = 1;
         };
-        var OtherOption = function(){
-        };
+        var OtherOption = function () {};
 
         OtherOption.prototype = Object.create(Options.prototype);
         OtherOption.prototype.constructor = OtherOption;
 
         var options = new OtherOption();
 
-        var a = new AtoLetter().init(options);
+        var a = new AtoLetter(options);
         expect(a).toBeDefined();
     });
 });

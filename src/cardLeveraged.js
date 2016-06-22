@@ -3,6 +3,7 @@
 
     /**
      * Dashboard card for leveraged ATOs.
+     * @constructor
      *
      * @param {string} target
      *  The CSS selector where data will be displayed
@@ -14,7 +15,7 @@
      */
     window.CardLeveraged = function (target, template) {
         var self = this;
-        var storage = new storageProvider().init();
+        var storage = new storageProvider();
         var leveragedAtos = 0;
         template = template ? template : '#template-leveraged';
 

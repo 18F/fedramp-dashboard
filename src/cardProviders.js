@@ -3,6 +3,7 @@
 
     /**
      * Dashboard card for providers
+     * @constructor
      *
      * @param {string} target
      *  The CSS selector where data will be displayed
@@ -14,7 +15,7 @@
      */
     window.CardProviders = function (target, template) {
         var self = this;
-        var storage = new storageProvider().init();
+        var storage = new storageProvider();
         var totalAuthorized = 0;
         template = template ? template : '#template-providers';
         

@@ -1,20 +1,20 @@
 describe('StorageSettings manager', function () {
-    "use strict";
-    var hash = "settings";
+    'use strict';
+    var hash = 'settings';
 
     it('initialize a new instance', function () {
-        var storage = new StorageSettings().init();
+        var storage = new StorageSettings();
         expect(storage).not.toBe(undefined);
     });
 
     it('initialize with the providers container', function () {
-        var storage = new StorageSettings().init();
+        var storage = new StorageSettings();
         expect(storage.storageContainer).toBe('fedramp');
     });
 
-    it('can store item', function() {
-        var settings  = new Settings().init({ });
-        var storage = new StorageSettings().init();
+    it('can store item', function () {
+        var settings  = new Settings();
+        var storage = new StorageSettings();
         storage.clear();
         storage.update(hash, settings );
 
@@ -22,10 +22,10 @@ describe('StorageSettings manager', function () {
         expect(expected).not.toBeNull();
     });
 
-    it('can get item by ID', function() {
-        var settings  = new Settings().init();
+    it('can get item by ID', function () {
+        var settings  = new Settings();
 
-        var storage = new StorageSettings().init();
+        var storage = new StorageSettings();
         storage.clear();
         storage.update(hash, settings);
 
@@ -33,11 +33,11 @@ describe('StorageSettings manager', function () {
         expect(expected).not.toBeNull();
     });
 
-    it('can update item', function() {
-        var settings = new Settings().init();
+    it('can update item', function () {
+        var settings = new Settings();
         var date = settings.refresh();
 
-        var storage = new StorageSettings().init();
+        var storage = new StorageSettings();
         storage.clear();
         storage.update(hash, settings);
 
@@ -51,10 +51,10 @@ describe('StorageSettings manager', function () {
         expect(s.lastRefresh).toBe(date);
     });
 
-    it('can clear', function() {
-        var settings = new Settings().init();
+    it('can clear', function () {
+        var settings = new Settings();
 
-        var storage = new StorageSettings().init();
+        var storage = new StorageSettings();
         storage.clear();
         storage.update(hash, settings);
         expect(storage.all().length).toBe(1);

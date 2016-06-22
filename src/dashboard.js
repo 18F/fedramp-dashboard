@@ -10,9 +10,9 @@
     var uri = 'https://api.github.com/repos/18F/fedramp-micropurchase/contents/data';
 
     // The application settings
-    var storage = new storageSettings().init();
+    var storage = new storageSettings();
     var appSettings = storage.all()[0];
-    appSettings = (appSettings ? appSettings : new Settings().init());
+    appSettings = (appSettings ? appSettings : new Settings());
 
     // If data is stale flag it for an update
     if (appSettings.needsRefresh()) {
@@ -35,9 +35,9 @@
         storage.update('settings', appSettings);
 
         // Store the providers to local storage
-        var sp = new storageProvider().init();
+        var sp = new storageProvider();
         for (var i = 0; i < data.length; i++) {
-            var p = new Provider().init(data[i]);
+            var p = new Provider(data[i]);
             sp.update(p.hash(), p);
         }
     }
@@ -64,8 +64,7 @@
 
     // If we need to then pull the stream from the data source
     if (!appSettings || !appSettings.lastRefresh) {
-        new GithubDatasource()
-            .init({ url: uri })
+        new GithubDatasource({ url: uri })
             .pull()
             .then(store, handleError);
     }
