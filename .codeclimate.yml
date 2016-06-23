@@ -4,6 +4,10 @@ engines:
   csslint:
     enabled: true
     
+ratings:
+  paths:
+    - "src/**"
+    
 exclude_paths:
   - "bin/"
   - "coverage/"
