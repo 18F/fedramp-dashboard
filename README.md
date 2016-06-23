@@ -3,6 +3,7 @@
 [![Gitter](https://badges.gitter.im/truetandem/fedramp-dashboard.svg)](https://gitter.im/truetandem/fedramp-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/truetandem/fedramp-dashboard.svg?branch=master)](https://travis-ci.org/truetandem/fedramp-dashboard)
 [![Coverage Status](https://coveralls.io/repos/github/truetandem/fedramp-dashboard/badge.svg?branch=master)](https://coveralls.io/github/truetandem/fedramp-dashboard?branch=master)
+[![Code Climate](https://codeclimate.com/github/truetandem/fedramp-dashboard/badges/gpa.svg)](https://codeclimate.com/github/truetandem/fedramp-dashboard)
 
 ## Project Management
 
