@@ -1,0 +1,7 @@
+exclude_paths:
+  - "bin/"
+  - "coverage/"
+  - "doc/"
+  - "hooks/"
+  - "lib/"
+  - "**/vendor/"
