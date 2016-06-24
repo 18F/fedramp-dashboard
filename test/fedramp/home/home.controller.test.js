@@ -30,7 +30,9 @@ describe('HomeController', function () {
 
     describe('displays total cost savings', function () {
         it('returns $500,000', function () {
-            expect(homeController.totalCostSavings()).toBe('500000');
+            // We remove the comma b/c PhantomJS does not insert one during locale
+            // conversion. However, in most common browsers it does.
+            expect(homeController.totalCostSavings().replace(',', '')).toBe('500000');
         });
     });
 
