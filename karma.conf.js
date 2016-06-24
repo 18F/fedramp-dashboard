@@ -2,6 +2,8 @@
 // Generated on Sun Jun 12 2016 12:12:53 GMT-0400 (EDT)
 
 module.exports = function(config) {
+    "use strict";
+
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,17 +17,12 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'lib/angular.min.js',
+            'lib/angular-ui-router.min.js',
             'lib/**/*.js',
-            'src/atoLetter.js',
-            'src/settings.js',
-            'src/provider.js',
-            'src/storage.js',
-            'src/storageProvider.js',
-            'src/storageSettings.js',
-            'src/datasource.js',
-            'src/githubDatasource.js',
+            'src/**/*.module.js',
             'src/**/*.js',
-            'test/**/*.js'
+            'test/**/*.js',
         ],
 
 

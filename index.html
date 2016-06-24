@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>The Federal Risk And Management Program Dashboard</title>
+        <title>The Federal Risk And Management Program Dashboard</title> 
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -13,46 +13,36 @@
             <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
-        <h1>FedRAMP Dashboard</h1>
-        <div id="beans">
-            <div id="card-providers" class="bean"></div>
-            <div id="card-leveraged" class="bean"></div>
-            <div id="card-cost-savings" class="bean"></div>
-        </div>
-        <div id="error"></div>
-
-
-        <!-- Templates -->
-        <script id="template-providers" type="x-template">
-            <strong>Total Authorized:</strong>
-            <span class="value"></span>
-            <em>(Sum of authorized CSPs)</em>
-        </script>
-        <script id="template-leveraged" type="x-template">
-            <strong>Leveraged ATOs:</strong>
-            <span class="value"></span>
-            <em>(Sum of leveraged ATOs)</em>
-        </script>
-        <script id="template-cost-savings" type="x-template">
-            <strong>Cost Savings:</strong>
-            <span class="value"></span>
-            <em>(Total reuse * $250,000)</em>
-        </script>
+    <body ng-app="fedramp">
+        <div ui-view></div>
 
         <!-- Include scripts at the bottom for performance gains in some browsers -->
+        <!-- AppFiles -->
+
+        <!-- Libs -->
         <script src="lib/jquery-3.0.0.min.js"></script>
-        <script src="src/atoLetter.js"></script>	
-        <script src="src/provider.js"></script>	
-        <script src="src/settings.js"></script>	
-        <script src="src/storage.js"></script>	
-        <script src="src/datasource.js"></script>	
-        <script src="src/storageProvider.js"></script>	
-        <script src="src/storageSettings.js"></script>	
-        <script src="src/githubDatasource.js"></script>	
-        <script src="src/cardProviders.js"></script>	
-        <script src="src/cardLeveraged.js"></script>	
-        <script src="src/cardCostSavings.js"></script>	
-        <script src="src/dashboard.js"></script>	
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="lib/angular-ui-router.min.js"></script>
+
+        <!-- Angular -->
+
+        <!-- Model module -->
+        <script src="src/fedramp.models/fedramp-models.module.js"></script>
+        <script src="src/fedramp.models/atoLetter.factory.js"></script>
+        <script src="src/fedramp.models/provider.factory.js"></script>
+
+        <!-- Services Module -->
+        <script src="src/fedramp.services/fedramp-services.module.js"></script>
+        <script src="src/fedramp.services/datasource.service.js"></script>
+        <script src="src/fedramp.services/storage-manager.factory.js"></script>
+        <script src="src/fedramp.services/storage-provider.factory.js"></script>
+        <script src="src/fedramp.services/provider.service.js"></script>
+
+        <!-- Main Module -->
+        <script src="src/fedramp/fedramp.module.js"></script>
+        <script src="src/fedramp/fedramp.routes.js"></script>
+        <script src="src/fedramp/home/home.controller.js"></script>	
+
+        <!-- AppFilesEnd -->
     </body>
 </html>
