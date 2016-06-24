@@ -1,0 +1,16 @@
+<h1>{{homeController.title}}</h1>
+<div>
+    <strong>Total Authorized:</strong>
+    <span>{{homeController.totalAuthorized()}}</span>
+    <em>(Sum of authorized CSPs)</em> 
+</div>
+<div>
+    <strong>Leveraged ATOs:</strong>
+    <span>{{homeController.leveragedAtos()}}</span>
+    <em>(Sum of leveraged ATOs)</em>         
+</div>
+<div>
+    <strong>Cost Savings:</strong>
+    <span>${{homeController.totalCostSavings()}}</span>
+    <em>(Total reuse * $250,000)</em>            
+</div>

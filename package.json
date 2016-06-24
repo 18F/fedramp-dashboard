@@ -18,6 +18,13 @@
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
   "devDependencies": {
     "coveralls": "^2.11.9",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^1.5.3",
+    "gulp-zip": "^3.2.0",
     "jasmine": "^2.4.1",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.2",
