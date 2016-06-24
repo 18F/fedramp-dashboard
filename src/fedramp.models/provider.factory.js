@@ -31,6 +31,8 @@
                 'Sponsoring_Agency': 'sponsoringAgency',
                 'Sponsoring_Subagency': 'sponsoringSubagency',
                 'Active': 'active',
+                'CSP_URL': 'cspUrl',
+                'Stage': 'stage',
                 'Leveraged_ATO_Letters': 'atoLetters',
             };
 
@@ -124,6 +126,20 @@
              * @memberof Models.Provider
              */
             self.active = '';
+
+            /**
+             * The CSP URL
+             * @member {string}
+             * @memberof Models.Provider
+             */
+            self.cspUrl = '';
+
+            /**
+             * Stage in validation process
+             * @member {string}
+             * @memberof Models.Provider
+             */
+            self.stage = '';
 
             /**
              * Leveraged ATO letters

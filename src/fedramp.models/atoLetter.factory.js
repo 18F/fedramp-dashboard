@@ -21,10 +21,12 @@
         var mapping = {
             'Letter_Date': 'letterDate',
             'Letter_Expiration_Date': 'letterExpirationDate',
+            'Authorization_Date': 'authorizationDate',
             'Authorizing_Letter_Last_Sign_Date': 'authorizingLetterSignedDate',
             'Authorizing_Agency': 'authorizingAgency',
             'Authorizing_Subagency': 'authorizingSubagency',
             'Active': 'active',
+            'Include_In_Marketplace': 'includeInMarketplace'
         };
 
         /**
@@ -40,6 +42,13 @@
          * @memberof Models.AtoLetter
          */
         self.letterExpirationDate = null;
+
+        /**
+         * The authorization date
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */
+        self.authorizationDate = null;
 
         /**
          * Authorizing letter signed date
@@ -68,6 +77,14 @@
          * @memberof Models.AtoLetter
          */
         self.active = '';
+
+        /**
+         * A value indicating if it should be included in the market place
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */
+        self.includeInMarketplace = '';
+
 
         /**
          * Initialize the ATO letter object.
