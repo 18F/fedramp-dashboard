@@ -1,4 +1,3 @@
 #!/bin/sh
 
-./bin/doc-gen
-git add doc
+npm run-script docgen && git add doc

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
+    "start": "./node_modules/.bin/http-server",
+    "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./doc"
   },
   "repository": {
     "type": "git",
