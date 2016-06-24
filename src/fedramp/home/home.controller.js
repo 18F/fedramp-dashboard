@@ -56,6 +56,10 @@
 
             for (var i = 0; i < providers.length; i++) {
                 var p = providers[i];
+                if (p.active !== 'Active') {
+                    continue;
+                }
+                
                 for (var j = 0; j < p.atoLetters.length; j++) {
                     if (p.atoLetters[j].active === 'Active') {
                         leveragedAtos++;
