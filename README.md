@@ -60,3 +60,27 @@ npm test
 The individual test results will be seen in the output, and the coverage
 results may be viewed after running ```npm start``` at
 [http://localhost:8080/coverage](http://localhost:8080/coverage)
+
+### Packaging Application
+
+To package up the application, use the command:
+
+```
+npm run package
+```
+
+This will generate the following file structure:
+```
+build/
+   dest/
+   dist/
+   lib/
+   src/
+   src.min/
+```
+where
+ - `dest/` contains the production ready application code
+ - `dist/` consists of a `zip` and `tar.gz` file containing the contents of the `dest` directory
+ - `lib/`  contains third-party libraries
+ - `src/`  contains the original source files
+ - `src.min/` contains the minified/uglified version of all the javascript files

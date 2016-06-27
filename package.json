@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "start": "./node_modules/.bin/http-server",
-    "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./doc --readme README.md"
+    "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./doc --readme README.md",
+    "package": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
