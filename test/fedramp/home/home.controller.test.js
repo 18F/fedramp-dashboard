@@ -1,5 +1,5 @@
 // Test Home Controller methods
-describe('HomeController', function () {
+describe('Home controller with data', function () {
     'use strict';
 
     var Provider;
@@ -15,35 +15,35 @@ describe('HomeController', function () {
         });
     });
 
-    // Test title property
-    describe('title', function () {
-        it('Displays a title', function () {
-            expect(homeController.title).toEqual('FedRAMP');
-        });
+    it('displays the title', function () {
+        expect(homeController.title).toEqual('FedRAMP');
     });
 
-    describe('displays total authorized CSPs', function () {
-        it('returns 1', function () {
-            expect(homeController.totalAuthorized()).toBe(1);
-        });
+    it('has a total authorized CSPs of 1', function () {
+        expect(homeController.totalAuthorized()).toBe(1);
     });
 
-    describe('displays total cost savings', function () {
-        it('returns $500,000', function () {
-            // We remove the comma b/c PhantomJS does not insert one during locale
-            // conversion. However, in most common browsers it does.
-            expect(homeController.totalCostSavings().replace(',', '')).toBe('500000');
-        });
+    it('has a total cost savings of $500,000', function () {
+        // We remove the comma b/c PhantomJS does not insert one during locale
+        // conversion. However, in most common browsers it does.
+        expect(homeController.totalCostSavings().replace(',', '')).toBe('500000');
     });
 
-    describe('ATO re-uses', function () {
-        it('returns 2', function () {
-            expect(homeController.leveragedAtos()).toBe(2);
-        });
+    it('has a total re-uses of 2', function () {
+        expect(homeController.leveragedAtos()).toBe(2);
     });
 
     it('shows the download link', function () {
         expect(homeController.hasData()).toBe(true);
+    });
+
+    it('download generates file name in YYYY-mm-dd format', function () {
+        var d = new Date(2016, 5, 27, 0, 0, 0, 0);
+        expect(homeController.filename(d)).toBe('fedramp-2016-06-27.csv');
+    });
+
+    it('download generates file name if no date given', function () {
+        expect(homeController.filename()).toBeDefined();
     });
 });
 

@@ -36,6 +36,34 @@
         self.download = function () {
             $log.info('Download clicked');
         };
+
+        /**
+         * Generates the file name to be used when downloading the data
+         * @public
+         * @memberof Controllers.HomeController
+         *
+         * @returns
+         *  A file name in the format "fedramp-YYYY-mm-dd.csv"
+         */
+        self.filename = function (date) {
+            if (!date) {
+                date = new Date();
+            }
+            
+            var dd = date.getDate();
+            var mm = date.getMonth() + 1;
+            var yyyy = date.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            } 
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            } 
+
+            return 'fedramp-' + yyyy + '-' + mm + '-' + dd + '.csv';
+        };
         
         /**
          * Total authorized cloud service providers
