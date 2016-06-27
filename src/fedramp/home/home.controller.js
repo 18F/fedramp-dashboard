@@ -5,15 +5,16 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'providers'];
+    HomeController.$inject = ['$log', 'providers', 'CsvService'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, providers) {
+    function HomeController ($log, providers, CsvService) {
         var self = this;
         var lastFilterType = '';
+        var downloadBlob = null;
 
         /**
          * The title displayed on the home page
@@ -21,6 +22,13 @@
          * @memberof Controllers.HomeController
          */
         self.title = 'FedRAMP';
+
+        /**
+         * The download URL
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
+        self.downloadUrl = '#';
 
         /**
          * The data after filters have been applied
@@ -66,6 +74,11 @@
          * Applies the filter(s) to the raw data set
          * @public
          * @memberof Controllers.HomeController
+         *
+         * @param {string} type
+         *  (optional) The filter type
+         * @param {string} filter
+         *  (optional) The filter value
          */
         self.applyFilter = function (type, filter) {
             type = type ? type : self.filterType;
@@ -129,12 +142,24 @@
             }
 
             self.filteredData = prefiltered;
+            self.downloadUrl = '#';
+            downloadBlob = null;
+
+            // Parse the data here
+            var csv = CsvService.toCsv(CsvService.flattenProviders(prefiltered));
+            if (csv) {
+                downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
+                self.downloadUrl = window.URL.createObjectURL(downloadBlob);
+            }
         };
 
         /**
          * Toggles the checked state for the major filters
          * @public
          * @memberof Controllers.HomeController
+         *
+         * @param {string} type
+         *  (optional) The filter type
          */
         self.toggleFilter = function (type) {
             type = type ? type : self.filterType;
@@ -210,6 +235,11 @@
          */
         self.download = function () {
             $log.info('Download clicked');
+
+            if (navigator.msSaveBlob && downloadBlob) {
+                // IE 11 and Edge
+                navigator.msSaveBlob(downloadBlob, self.filename());
+            }
         };
 
         /**
@@ -314,6 +344,19 @@
             return leveragedAtos;
         };
 
+        /**
+         * Iterate through an array checking if the value already exists
+         * @private
+         * @memberof Controllers.HomeController
+         *
+         * @param {array} array
+         *  The array to iterate through
+         * @param {object} value
+         *  The value to search
+         *
+         * @returns
+         *  A value indicating if the value is contained in the array
+         */
         function contains(array, value) {
             for (var i = 0; i < array.length; i++) {
                 if (array[i] === value) {

@@ -61,5 +61,9 @@
             </select>
         </div>
     </div>
-    <a ng-click="homeController.download()" href="#" download="{{homeController.filename()}}">Download</a>
+    <a href="{{homeController.downloadUrl}}"
+       download="{{homeController.filename()}}"
+       ng-click="homeController.download()">
+        Download
+    </a>
 </div>
