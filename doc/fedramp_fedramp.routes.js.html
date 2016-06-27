@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/storage-provider.factory.js</title>
+    <title>JSDoc: Source: fedramp/fedramp.routes.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/storage-provider.factory.js</h1>
+    <h1 class="page-title">Source: fedramp/fedramp.routes.js</h1>
 
     
 
@@ -30,46 +30,45 @@
     'use strict';
 
     angular
-        .module('fedramp.services')
-        .factory('StorageProvider', StorageProviderFactory);
+        .module('fedramp')
+        .config(routeConfig);
 
-    StorageProviderFactory.$inject = ['StorageManager', 'Provider'];
+    // Add items to inject for safe minification
+    routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function StorageProviderFactory (StorageManager, Provider) {
+    /**
+     * Configures the routes and views for the FedRAMP application
+     */
+    function routeConfig ($stateProvider, $urlRouterProvider) {
+        // Go to root if something goes wrong
+        $urlRouterProvider.otherwise('/');
+
+
+        // Routes
+        $stateProvider
+            .state('fedramp', {
+                abstract: true,
+                template: '&lt;ui-view>&lt;/ui-view>',
+                resolve: {
+                    providers: FedRampProviders
+                    
+                }
+            })
+            .state('fedramp.home', {
+                url: '/',
+                templateUrl: 'src/fedramp/home/home.html',
+                controller: 'HomeController as homeController'
+            });
+
         /**
-         * Provides storage specific functionality that extends the StorageManager
-         * @constructor
-         * @memberof Services
-         * @extends StorageManager
+         * Retrieves the providers for a particular day
          */
-        function StorageProvider (options) {
-            StorageManager.call(this);
-
-            var self = this;
-            self.storageContainer = 'providers';
-
-            /**
-             * Transforms the raw object to a specifec model
-             * @public
-             * @memberof Services.StorageProvider
-             *
-             * @param {Object} raw
-             *  The JSON object
-             *
-             * @returns
-             *  The item
-             */
-            self.transform = function (raw) {
-                return new Provider(raw);
-            };
-
-            return self.init(options);
+        FedRampProviders.$inject = ['ProviderService'];
+        function FedRampProviders(ProviderService){
+            return ProviderService.pull().then(function (providers) {
+                return providers;
+            });
         }
-
-        StorageProvider.prototype = Object.create(StorageManager.prototype);
-        StorageProvider.prototype.constructor = StorageProvider;
-
-        return StorageProvider;
     }
 })();
 </code></pre>
