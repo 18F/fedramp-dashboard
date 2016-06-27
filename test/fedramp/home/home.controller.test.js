@@ -45,6 +45,50 @@ describe('Home controller with data', function () {
     it('download generates file name if no date given', function () {
         expect(homeController.filename()).toBeDefined();
     });
+
+    describe('while applying data filters', function () {
+        it('returns everything with no filter type', function () {
+            homeController.applyFilter('', 'Akamai');
+            expect(homeController.filteredData.length).toBe(1);
+        });
+
+        it('returns everything with no filter', function () {
+            homeController.applyFilter('csp', '');
+            expect(homeController.filteredData.length).toBe(1);
+        });
+
+        it('for CSP', function () {
+            homeController.applyFilter('csp', 'Akamai');
+            expect(homeController.filteredData.length).toBe(1);
+            homeController.applyFilter('csp', 'Dingo');
+            expect(homeController.filteredData.length).toBe(0);
+        });
+
+        it('for CSO', function () {
+            homeController.applyFilter('cso', 'Content Delivery Services');
+            expect(homeController.filteredData.length).toBe(1);
+            homeController.applyFilter('cso', 'Dingo');
+            expect(homeController.filteredData.length).toBe(0);
+        });
+
+        it('for an Agency', function () {
+            // This checks the agencies referenced for the provider
+            homeController.applyFilter('agency', 'JAB Authorization');
+            expect(homeController.filteredData.length).toBe(1);
+
+            // This checks the agencies applied to the leveraged ATOs
+            homeController.applyFilter('agency', 'Department');
+            expect(homeController.filteredData.length).toBe(1);
+
+            homeController.applyFilter('agency', 'Dingo');
+            expect(homeController.filteredData.length).toBe(0);
+        });
+
+        it('for a 3PAO', function () {
+            homeController.applyFilter('3pao', 'Knowledge Consulting Group');
+            expect(homeController.filteredData.length).toBe(0);
+        });
+    });
 });
 
 describe('Home controller with no data', function () {

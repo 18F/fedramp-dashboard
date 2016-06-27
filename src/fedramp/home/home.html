@@ -16,5 +16,27 @@
 </div>
 
 <div ng-show="homeController.hasData()">
-    <a ng-click="homeController.download()" href="#" download>Download</a>
+    <div>
+        <input type="radio"
+               ng-model="homeController.filterType"
+               value="cso">
+            CSO
+        </input>
+        <input type="radio"
+               ng-model="homeController.filterType"
+               value="csp">
+            CSP
+        </input>
+        <input type="radio"
+               ng-model="homeController.filterType"
+               value="agency">
+            Agency
+        </input>
+        <input type="radio"
+               ng-model="homeController.filterType"
+               value="3pao">
+            3PAO
+        </input>
+    </div>
+    <a ng-click="homeController.download()" href="#" download="{{homeController.filename()}}">Download</a>
 </div>

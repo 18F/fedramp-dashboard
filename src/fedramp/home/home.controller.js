@@ -13,8 +13,34 @@
      */
     function HomeController ($log, providers) {
         var self = this;
+
+        /**
+         * The title displayed on the home page
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
         self.title = 'FedRAMP';
-        self.filters = {};
+
+        /**
+         * The data after filters have been applied
+         * @member {array}
+         * @memberof Controllers.HomeController
+         */
+        self.filteredData = [];
+
+        /**
+         * The type of filter applied to the data
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
+        self.filterType = '';
+
+        /**
+         * The filter applied to the data
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
+        self.filter = '';
 
         /**
          * Determines if data is present
@@ -26,6 +52,75 @@
          */
         self.hasData = function () {
             return providers && providers.length > 0;
+        };
+
+        /**
+         * Applies the filter(s) to the raw data set
+         * @public
+         * @memberof Controllers.HomeController
+         */
+        self.applyFilter = function (type, filter) {
+            type = type ? type : self.filterType;
+            filter = filter ? filter : self.filter;
+
+            // If there is no filter applied then we show everything
+            if (!type || !filter) {
+                self.filteredData = providers;
+                return;
+            }
+
+            // Place any items matching the filter in an array so we
+            // can replace the filtered data in bulk and reduce UI
+            // flickering.
+            var prefiltered = [];
+            var i, p, j, l;
+
+            switch (type) {
+            case 'csp':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if (p.name.indexOf(filter) !== -1) {
+                        prefiltered.push(p);
+                    }
+                }
+                break;
+
+            case 'cso':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if (p.pkg.indexOf(filter) !== -1) {
+                        prefiltered.push(p);
+                    }
+                }
+                break;
+
+            case 'agency':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if ((p.sponsoringAgency + p.sponsoringSubagency).indexOf(filter) !== -1) {
+                        prefiltered.push(p);
+                    } else {
+                        // NOTE: Determine if it is necessary to check the leveraged ATO letters
+                        for (j = 0; j < p.atoLetters.length; j++) {
+                            l = p.atoLetters[j];
+                            if ((l.authorizingAgency + l.authorizingSubagency).indexOf(filter) !== -1) {
+                                prefiltered.push(p);
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+
+            case '3pao':
+                // TODO: I believe the 3pao references apply to the
+                // "Independent Assessor" column in the originating source.
+                // If that is the case this is currently not mapped in the
+                // JSON data source.
+                break;
+            }
+
+            self.filteredData = prefiltered;
         };
 
         /**
