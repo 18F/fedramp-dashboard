@@ -9,9 +9,10 @@
         ])
         .run(run);
 
-    run.$inject = ['$log','DatasourceService', 'StorageManager', 'StorageProvider', 'ProviderService'];
+    run.$inject = ['$log','$rootScope'];
 
-    function run ($log, DatasourceService, StorageManager, StorageProvider, ProviderService) {
+    function run ($log, $rootScope) {
         $log.debug('FedRAMP Module Initializing');
+        $rootScope.$on("$stateChangeError", $log.debug.bind($log));
     }
 })();

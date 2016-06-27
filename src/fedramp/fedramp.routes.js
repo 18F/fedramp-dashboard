@@ -15,17 +15,15 @@
         // Go to root if something goes wrong
         $urlRouterProvider.otherwise('/');
 
+
         // Routes
         $stateProvider
             .state('fedramp', {
                 abstract: true,
                 template: '<ui-view></ui-view>',
                 resolve: {
-                    providers: function (ProviderService) {
-                        return ProviderService.pull().then(function (providers) {
-                            return providers;
-                        });
-                    }
+                    providers: FedRampProviders
+                    
                 }
             })
             .state('fedramp.home', {
@@ -33,5 +31,15 @@
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
             });
+
+        /**
+         * Retrieves the providers for a particular day
+         */
+        FedRampProviders.$inject = ['ProviderService'];
+        function FedRampProviders(ProviderService){
+            return ProviderService.pull().then(function (providers) {
+                return providers;
+            });
+        }
     }
 })();
