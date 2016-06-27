@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp/fedramp.routes.js</title>
+    <title>JSDoc: Source: fedramp/fedramp.module.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp/fedramp.routes.js</h1>
+    <h1 class="page-title">Source: fedramp/fedramp.module.js</h1>
 
     
 
@@ -26,49 +26,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>(function () {
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace Controllers
+ */
+(function () {
     'use strict';
 
     angular
-        .module('fedramp')
-        .config(routeConfig);
+        .module('fedramp', [
+            'ui.router',
+            'fedramp.models',
+            'fedramp.services'
+        ])
+        .run(run);
 
-    // Add items to inject for safe minification
-    routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+    run.$inject = ['$log','$rootScope'];
 
-    /**
-     * Configures the routes and views for the FedRAMP application
-     */
-    function routeConfig ($stateProvider, $urlRouterProvider) {
-        // Go to root if something goes wrong
-        $urlRouterProvider.otherwise('/');
-
-
-        // Routes
-        $stateProvider
-            .state('fedramp', {
-                abstract: true,
-                template: '&lt;ui-view>&lt;/ui-view>',
-                resolve: {
-                    providers: FedRampProviders
-                    
-                }
-            })
-            .state('fedramp.home', {
-                url: '/',
-                templateUrl: 'src/fedramp/home/home.html',
-                controller: 'HomeController as homeController'
-            });
-
-        /**
-         * Retrieves the providers for a particular day
-         */
-        FedRampProviders.$inject = ['ProviderService'];
-        function FedRampProviders(ProviderService){
-            return ProviderService.pull().then(function (providers) {
-                return providers;
-            });
-        }
+    function run ($log, $rootScope) {
+        $log.debug('FedRAMP Module Initializing');
+        $rootScope.$on("$stateChangeError", $log.debug.bind($log));
     }
 })();
 </code></pre>

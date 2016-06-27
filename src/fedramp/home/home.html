@@ -14,3 +14,52 @@
     <span>${{homeController.totalCostSavings()}}</span>
     <em>(Total reuse * $250,000)</em>            
 </div>
+
+<div ng-show="homeController.hasData()">
+    <div>
+        <div>
+            <label for="filterByCSP">
+                <input id="filterByCSP"
+                       type="radio"
+                       ng-model="homeController.filterType"
+                       value="csp"
+                       ng-click="homeController.toggleFilter()" />
+                CSP
+            </label>
+            <label for="filterByCSO">
+                <input id="filterByCSO"
+                       type="radio"
+                       ng-model="homeController.filterType"
+                       value="cso"
+                       ng-click="homeController.toggleFilter()" />
+                CSO
+            </label>
+            <label for="filterByAgency">
+                <input id="filterByAgency"
+                       type="radio"
+                       ng-model="homeController.filterType"
+                       value="agency"
+                       ng-click="homeController.toggleFilter()" />
+                Agency
+            </label>
+            <label for="filterBy3PAO">
+                <input id="filterBy3PAO"
+                       type="radio"
+                       ng-model="homeController.filterType"
+                       value="3pao"
+                       ng-click="homeController.toggleFilter()" />
+                3PAO
+            </label>
+        </div>
+        <div ng-show="!!homeController.filterType">
+            <label for="filter">Filter using:</label>
+            <select id="filter"
+                    ng-model="homeController.filter"
+                    ng-options="option for option in homeController.filterOptions"
+                    ng-change="homeController.applyFilter()">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <a ng-click="homeController.download()" href="#" download="{{homeController.filename()}}">Download</a>
+</div>
