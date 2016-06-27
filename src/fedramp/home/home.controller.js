@@ -12,7 +12,20 @@
         self.title = 'FedRAMP';
 
         /**
-         * Total authorized cloud service providers.
+         * Determines if data is present
+         *
+         * @returns
+         *  A value indicating if any data is stored
+         */
+        self.hasData = function () {
+            return providers && providers.length > 0;
+        };
+        
+        /**
+         * Total authorized cloud service providers
+         *
+         * @returns
+         *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
             var totalAuthorized = 0;
@@ -27,7 +40,10 @@
         };
 
         /**
-         * Dashboard card for cost savings.
+         * The cost savings at a fixed rate per re-use
+         *
+         * @returns
+         *  The total cost savings
          */
         self.totalCostSavings = function () {
             var leveragedAtos = 0;
@@ -48,7 +64,10 @@
         };
 
         /**
-         * Total authorized cloud service providers.
+         * The total leveraged ATO letters from authorized cloud service providers
+         *
+         * @returns
+         *  The total leveraged ATO letters
          */
         self.leveragedAtos = function () {
             var leveragedAtos = 0;

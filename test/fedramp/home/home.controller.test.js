@@ -41,4 +41,41 @@ describe('HomeController', function () {
             expect(homeController.leveragedAtos()).toBe(2);
         });
     });
+
+    it('shows the download link', function () {
+        expect(homeController.hasData()).toBe(true);
+    });
+});
+
+describe('Home controller with no data', function () {
+    'use strict';
+
+    var Provider;
+    var homeController;
+
+    beforeEach(function () {
+        module('fedramp', 'fedramp.services');
+        inject(function ($controller, $injector) {
+            Provider = $injector.get('Provider');
+            homeController = $controller('HomeController', { 
+                providers: []
+            });
+        });
+    });
+
+    it('total authorized cloud service providers is zero', function () {
+        expect(homeController.totalAuthorized()).toBe(0);
+    });
+
+    it('total cost savings is zero', function () {
+        expect(homeController.totalCostSavings()).toBe('0');
+    });
+
+    it('ATO re-uses is zero', function () {
+        expect(homeController.leveragedAtos()).toBe(0);
+    });
+
+    it('hides the download link', function () {
+        expect(homeController.hasData()).toBe(false);
+    });
 });
