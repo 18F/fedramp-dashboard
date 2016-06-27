@@ -89,6 +89,33 @@ describe('Home controller with data', function () {
             expect(homeController.filteredData.length).toBe(0);
         });
     });
+
+    describe('while populating filter options', function () {
+        it('returns nothing if empty filter type', function () {
+            homeController.toggleFilter('');
+            expect(homeController.filterOptions.length).toBe(0);
+        });
+
+        it('for CSP', function () {
+            homeController.toggleFilter('csp');
+            expect(homeController.filterOptions.length).toBe(1);
+        });
+
+        it('for CSO', function () {
+            homeController.toggleFilter('cso');
+            expect(homeController.filterOptions.length).toBe(1);
+        });
+
+        it('for an Agency', function () {
+            homeController.toggleFilter('agency');
+            expect(homeController.filterOptions.length).toBe(3);
+        });
+
+        it('for a 3PAO', function () {
+            homeController.toggleFilter('3pao');
+            expect(homeController.filterOptions.length).toBe(0);
+        });
+    });
 });
 
 describe('Home controller with no data', function () {

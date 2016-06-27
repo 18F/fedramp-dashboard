@@ -13,6 +13,7 @@
      */
     function HomeController ($log, providers) {
         var self = this;
+        var lastFilterType = '';
 
         /**
          * The title displayed on the home page
@@ -34,6 +35,13 @@
          * @memberof Controllers.HomeController
          */
         self.filterType = '';
+
+        /**
+         * The filter specific options
+         * @member {array}
+         * @memberof Controllers.HomeController
+         */
+        self.filterOptions = [];
 
         /**
          * The filter applied to the data
@@ -121,6 +129,78 @@
             }
 
             self.filteredData = prefiltered;
+        };
+
+        /**
+         * Toggles the checked state for the major filters
+         * @public
+         * @memberof Controllers.HomeController
+         */
+        self.toggleFilter = function (type) {
+            type = type ? type : self.filterType;
+
+            if (lastFilterType === type) {
+                self.filterType = '';
+                return;
+            }
+
+            lastFilterType = type;
+            var options = [];
+            var i, p, j, l;
+
+            switch (type) {
+            case 'csp':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if (p.name && !contains(options, p.name)) {
+                        options.push(p.name);
+                    }
+                }
+                break;
+
+            case 'cso':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if (p.pkg && !contains(options, p.pkg)) {
+                        options.push(p.pkg);
+                    }
+                }
+                break;
+
+            case 'agency':
+                for (i = 0; i < providers.length; i++) {
+                    p = providers[i];
+                    if (p.sponsoringAgency && !contains(options, p.sponsoringAgency)) {
+                        options.push(p.sponsoringAgency);
+                    }
+
+                    if (p.sponsoringSubagency && !contains(options, p.sponsoringSubagency)) {
+                        options.push(p.sponsoringSubagency);
+                    }
+
+                    // NOTE: Determine if it is necessary to check the leveraged ATO letters
+                    for (j = 0; j < p.atoLetters.length; j++) {
+                        l = p.atoLetters[j];
+                        if (l.authorizingAgency && !contains(options, l.authorizingAgency)) {
+                            options.push(l.authorizingAgency);
+                        }
+
+                        if (l.authorizingSubagency && !contains(options, l.authorizingSubagency)) {
+                            options.push(l.authorizingSubagency);
+                        }
+                    }
+                }
+                break;
+
+            case '3pao':
+                // TODO: I believe the 3pao references apply to the
+                // "Independent Assessor" column in the originating source.
+                // If that is the case this is currently not mapped in the
+                // JSON data source.
+                break;
+            }
+
+            self.filterOptions = options;
         };
 
         /**
@@ -233,5 +313,14 @@
 
             return leveragedAtos;
         };
+
+        function contains(array, value) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] === value) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 })();
