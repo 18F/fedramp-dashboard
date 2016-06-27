@@ -7,12 +7,19 @@
 
     HomeController.$inject = ['$log', 'providers'];
 
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
     function HomeController ($log, providers) {
         var self = this;
         self.title = 'FedRAMP';
+        self.filters = {};
 
         /**
          * Determines if data is present
+         * @public
+         * @memberof Controllers.HomeController
          *
          * @returns
          *  A value indicating if any data is stored
@@ -20,9 +27,20 @@
         self.hasData = function () {
             return providers && providers.length > 0;
         };
+
+        /**
+         * Filters and transforms data for download
+         * @public
+         * @memberof Controllers.HomeController
+         */
+        self.download = function () {
+            $log.info('Download clicked');
+        };
         
         /**
          * Total authorized cloud service providers
+         * @public
+         * @memberof Controllers.HomeController
          *
          * @returns
          *  The total authorized cloud service providers
@@ -41,6 +59,8 @@
 
         /**
          * The cost savings at a fixed rate per re-use
+         * @public
+         * @memberof Controllers.HomeController
          *
          * @returns
          *  The total cost savings
@@ -65,6 +85,8 @@
 
         /**
          * The total leveraged ATO letters from authorized cloud service providers
+         * @public
+         * @memberof Controllers.HomeController
          *
          * @returns
          *  The total leveraged ATO letters

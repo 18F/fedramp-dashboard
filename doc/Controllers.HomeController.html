@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Settings</title>
+    <title>JSDoc: Class: HomeController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Settings</h1>
+    <h1 class="page-title">Class: HomeController</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Models.html">Models</a>.</span>Settings</h2>
+            <span class="ancestors"><a href="Controllers.html">Controllers</a>.</span>HomeController</h2>
         
     
 </header>
@@ -41,15 +41,11 @@
 
     
 
-    <h4 class="name" id="Settings"><span class="type-signature"></span>new Settings<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="HomeController"><span class="type-signature"></span>new HomeController<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    Application settings for the FedRAMP dashboard.
-</div>
 
 
 
@@ -92,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_settings.factory.js.html">fedramp.models/settings.factory.js</a>, <a href="fedramp.models_settings.factory.js.html#line17">line 17</a>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -132,82 +128,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".self.lastRefresh"><span class="type-signature">(static) </span>self.lastRefresh<span class="type-signature"> :string</span></h4>
-
-
-
-
-<div class="description">
-    The last refresh date
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_settings.factory.js.html">fedramp.models/settings.factory.js</a>, <a href="fedramp.models_settings.factory.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -217,14 +137,14 @@
 
     
 
-    <h4 class="name" id=".self.clearRefresh"><span class="type-signature">(static) </span>self.clearRefresh<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.download"><span class="type-signature">(static) </span>self.download<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Clears last refresh
+    Filters and transforms data for download
 </div>
 
 
@@ -268,7 +188,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_settings.factory.js.html">fedramp.models/settings.factory.js</a>, <a href="fedramp.models_settings.factory.js.html#line70">line 70</a>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -299,14 +219,14 @@
 
     
 
-    <h4 class="name" id=".self.needsRefresh"><span class="type-signature">(static) </span>self.needsRefresh<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.hasData"><span class="type-signature">(static) </span>self.hasData<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Determine if the data requires a refresh.
+    Determines if data is present
 </div>
 
 
@@ -350,7 +270,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_settings.factory.js.html">fedramp.models/settings.factory.js</a>, <a href="fedramp.models_settings.factory.js.html#line82">line 82</a>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -377,7 +297,7 @@
 
         
 <div class="param-desc">
-    A boolean value
+    A value indicating if any data is stored
 </div>
 
 
@@ -391,14 +311,14 @@
 
     
 
-    <h4 class="name" id=".self.refresh"><span class="type-signature">(static) </span>self.refresh<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.leveragedAtos"><span class="type-signature">(static) </span>self.leveragedAtos<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Refreshes the date to current date
+    The total leveraged ATO letters from authorized cloud service providers
 </div>
 
 
@@ -442,7 +362,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_settings.factory.js.html">fedramp.models/settings.factory.js</a>, <a href="fedramp.models_settings.factory.js.html#line60">line 60</a>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -469,7 +389,191 @@
 
         
 <div class="param-desc">
-    The last refresh date
+    The total leveraged ATO letters
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.totalAuthorized"><span class="type-signature">(static) </span>self.totalAuthorized<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Total authorized cloud service providers
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The total authorized cloud service providers
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.totalCostSavings"><span class="type-signature">(static) </span>self.totalCostSavings<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    The cost savings at a fixed rate per re-use
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp_home_home.controller.js.html">fedramp/home/home.controller.js</a>, <a href="fedramp_home_home.controller.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The total cost savings
 </div>
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/provider.service.js</title>
+    <title>JSDoc: Namespace: Controllers</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,59 +17,102 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/provider.service.js</h1>
+    <h1 class="page-title">Namespace: Controllers</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function () {
-    'use strict';
+        <h2>Controllers</h2>
+        
+    
+</header>
 
-    angular
-        .module('fedramp.services')
-        .service('ProviderService', ProviderService);
+<article>
+    <div class="container-overview">
+    
+        
 
-    ProviderService.$inject = ['$log', 'StorageManager', 'StorageProvider', 'Provider', 'DatasourceService'];
+        
 
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function ProviderService ($log, StorageManager, StorageProvider, Provider, DatasourceService) {
-        var self = this;
-        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
 
-        /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.ProviderService
-         *
-         * @returns
-         *  The response as a promise
-         */
-        self.pull = function () {
-            return DatasourceService.pull(dataUrl).then(function (providerData) {
-                var meta = providerData.meta;
-                var data = providerData.data;
-                var sp = new StorageProvider();
+<dl class="details">
 
-                for (var i = 0; i &lt; data.length; i++) {
-                    var p = new Provider(data[i]);
-                    sp.update(p.hash(), p);
-                }
+    
 
-                return sp.all();
-            });
-        };
-    }
-})();
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp_fedramp.module.js.html">fedramp/fedramp.module.js</a>, <a href="fedramp_fedramp.module.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Controllers.HomeController.html">HomeController</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

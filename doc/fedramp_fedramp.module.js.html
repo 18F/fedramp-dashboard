@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/provider.service.js</title>
+    <title>JSDoc: Source: fedramp/fedramp.module.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/provider.service.js</h1>
+    <h1 class="page-title">Source: fedramp/fedramp.module.js</h1>
 
     
 
@@ -26,45 +26,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>(function () {
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace Controllers
+ */
+(function () {
     'use strict';
 
     angular
-        .module('fedramp.services')
-        .service('ProviderService', ProviderService);
+        .module('fedramp', [
+            'ui.router',
+            'fedramp.models',
+            'fedramp.services'
+        ])
+        .run(run);
 
-    ProviderService.$inject = ['$log', 'StorageManager', 'StorageProvider', 'Provider', 'DatasourceService'];
+    run.$inject = ['$log','$rootScope'];
 
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function ProviderService ($log, StorageManager, StorageProvider, Provider, DatasourceService) {
-        var self = this;
-        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
-
-        /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.ProviderService
-         *
-         * @returns
-         *  The response as a promise
-         */
-        self.pull = function () {
-            return DatasourceService.pull(dataUrl).then(function (providerData) {
-                var meta = providerData.meta;
-                var data = providerData.data;
-                var sp = new StorageProvider();
-
-                for (var i = 0; i &lt; data.length; i++) {
-                    var p = new Provider(data[i]);
-                    sp.update(p.hash(), p);
-                }
-
-                return sp.all();
-            });
-        };
+    function run ($log, $rootScope) {
+        $log.debug('FedRAMP Module Initializing');
+        $rootScope.$on("$stateChangeError", $log.debug.bind($log));
     }
 })();
 </code></pre>
