@@ -23,6 +23,7 @@ var prodJsPath = [
     '<script src="lib/jquery-3.0.0.min.js"></script>',
     '<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>',
     '<script src="lib/angular-ui-router.min.js"></script>',
+    '<script src="lib/papaparse.min.js"></script>',
     '<script src="fedramp.min.js"></script>'
 ];
     
@@ -54,7 +55,8 @@ gulp.task('copy:lib', ['clean'], function(){
     console.log('Copying over all of the files');
     return gulp.src([
         'lib/angular-ui-router.min.js',
-        'lib/jquery-3.0.0.min.js'
+        'lib/jquery-3.0.0.min.js',
+        'lib/papaparse.min.js'
     ])
         .pipe(gulp.dest('build/lib'))
         .pipe(gulp.dest('build/dest/lib'));
@@ -85,7 +87,6 @@ gulp.task('mangle:uglify', ['templates'], function(){
     "use strict";
     console.log('Uglifying js files');
     return gulp.src(['build/src/**/*.js'])
-        //.pipe(gulp.dest('build/src'))
         .pipe(uglify())
         .pipe(rename({extname: '.min.js'}))
         .pipe(gulp.dest('build/src.min'));
