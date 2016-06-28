@@ -299,21 +299,7 @@
          *  The total cost savings
          */
         self.totalCostSavings = function () {
-            var leveragedAtos = 0;
-            var costSavings = 0;
-            var estimatedSavings = 250000;
-
-            for (var i = 0; i < providers.length; i++) {
-                var p = providers[i];
-                for (var j = 0; j < p.atoLetters.length; j++) {
-                    if (p.atoLetters[j].active === 'Active') {
-                        leveragedAtos++;
-                    }
-                }
-            }
-
-            costSavings = estimatedSavings * leveragedAtos;
-            return Number(costSavings).toLocaleString('en');
+            return Number(250000 * self.leveragedAtos()).toLocaleString('en');
         };
 
         /**
@@ -325,23 +311,35 @@
          *  The total leveraged ATO letters
          */
         self.leveragedAtos = function () {
-            var leveragedAtos = 0;
-            var costSavings = 0;
+            var reused = 0;
 
+            // This variable stores the current package identifier to be
+            // used in our filter query
+            var pkgId = '';
+            function filterUnderlying (csp) {
+                // Try using ES6 [Array.prototype.includes](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/includes)
+                // Right now this is will fail using PhantomJS
+                if (Array.prototype.includes) {
+                    return csp && csp.underlyingCspPackages && csp.underlyingCspPackages.includes(pkgId);
+                }
+                return csp && csp.underlyingCspPackages && contains(csp.underlyingCspPackages, pkgId);
+            }
+
+            // Loop through each provider
             for (var i = 0; i < providers.length; i++) {
                 var p = providers[i];
-                if (p.active !== 'Active') {
-                    continue;
-                }
-                
-                for (var j = 0; j < p.atoLetters.length; j++) {
-                    if (p.atoLetters[j].active === 'Active') {
-                        leveragedAtos++;
-                    }
+                pkgId = p.pkgId;
+                reused += p.atoLetters.length;
+
+                var underlyingAtos = providers.filter(filterUnderlying);
+                if (underlyingAtos.length > 0) {
+                    reused += underlyingAtos
+                        .map(function (csp) { return csp.atoLetters.length; })
+                        .reduce(function (prev, curr) { return prev + curr; });
                 }
             }
 
-            return leveragedAtos;
+            return reused;
         };
 
         /**
