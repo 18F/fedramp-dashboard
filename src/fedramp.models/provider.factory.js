@@ -122,6 +122,7 @@
 
             /**
              * Active status
+             * @deprecated
              * @member {string}
              * @memberof Models.Provider
              */
