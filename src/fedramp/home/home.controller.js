@@ -281,8 +281,11 @@
         self.totalAuthorized = function () {
             var totalAuthorized = 0;
 
+            var counted = [];
             for (var i = 0; i < providers.length; i++) {
-                if (providers[i].active === 'Active') {
+                var p = providers[i];
+                if (p.name && !contains(counted, p.name)) {
+                    counted.push(p.name);
                     totalAuthorized++;
                 }
             }
