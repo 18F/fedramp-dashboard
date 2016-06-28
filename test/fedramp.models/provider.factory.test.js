@@ -19,6 +19,7 @@ describe('Provider can map', function () {
             'Sponsoring_Agency': 'sponsoringAgency',
             'Sponsoring_Subagency': 'sponsoringSubagency',
             'Leveraged_ATO_Letters': 'atoLetters',
+            'Underlying_CSP_Package_ID': 'underlyingCspPackages'
         };
     });
 
@@ -29,7 +30,7 @@ describe('Provider can map', function () {
         });
     });
 
-    it('the all known external values', function () {
+    it('all known external values', function () {
         var expectedValue = 'test-value';
         var expectedArray = [{
             'Letter_Date': '2014-02-24T05:00:00.000Z',
@@ -57,7 +58,7 @@ describe('Provider can map', function () {
         }
     });
 
-    it('the all known internal values', function () {
+    it('all known internal values', function () {
         var expectedValue = 'test-value';
         var expectedArray = [{
             'Letter_Date': '2014-02-24T05:00:00.000Z',

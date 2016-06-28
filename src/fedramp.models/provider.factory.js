@@ -32,8 +32,9 @@
                 'Sponsoring_Subagency': 'sponsoringSubagency',
                 'Active': 'active',
                 'CSP_URL': 'cspUrl',
+                'Underlying_CSP_Package_ID': 'underlyingCspPackages',
                 'Stage': 'stage',
-                'Leveraged_ATO_Letters': 'atoLetters',
+                'Leveraged_ATO_Letters': 'atoLetters'
             };
 
             /**
@@ -134,6 +135,13 @@
              * @memberof Models.Provider
              */
             self.cspUrl = '';
+
+            /**
+             * Underlying CSP packages
+             * @member {array}
+             * @memberof Models.Provider
+             */
+            self.underlyingCspPackages = [];
 
             /**
              * Stage in validation process
