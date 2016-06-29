@@ -1,18 +1,18 @@
 language: node_js
 node_js:
-- '6'
-- node
+  - '6'
+  - node
 after_script:
-- npm install -g pa11y-crawl
-- pa11y-crawl --run "./node_modules/.bin/http-server" --ci http://localhost:8080
-deploy:
-  provider: s3
-  script: npm install && npm run package
-  access_key_id:
-    secure: HQ4lPqWG0uDg4UrcL43zR7GMQxukC0E+SrmnZr2fyUtIxk62ufQubFSNihms64F5lVYN/52G/zIhZKpThaaXk4j0nX5xymnVMZh74mNnttp+VmrwnIjNoGg2VDlNEG/ec1YXBGAOyfuNEBl9St07pIFT9PTvh3dh0h7EAstAIltKUhrFViSmTpSfprGnmAWD4IuxbQ4bZdbq5xcH19eLIBwj4c4in/Br5cc1w/cP/b/I1KbiLJA/T0rJCQrS9KnKyqPNItiTfjGZfldQgi4btbKOdKlibdYDwdHBurkem+HQAgD6N3456qnG7XVOUw0wTcDcERqCFmAiFTy4eO3ULQwY1sSR+LIhvYrwUEGCzD/HjpXlQK7LALRHhaxCUPYNxAZvfPwWpFShBbeqRvww3x6KLxLqoGOg8EqDSEyABb4IffpbBf0nlgkO+gaBtuoboK7cQymcivmyQTMVgawuqpHEN+wKXxZRDyhsfElDROV06265UXdk5M204iFW9PyXKLgperDWtg+3l7Fk9WlWxjV/7pUU7Q3zuv8rEiTPCxlJbuvcmOj1cW1KdoeXv9w075+pdoDkO4CywQ+8wNJB9CLwQSaDyTVfrho07a0Tn9vFm2ORIefGlZw0MqmIwBU0mRh06Q9IMSs7OO2FRDsJWPnpMLoeUbtRJezz9Cgk2/I=
-  secret_access_key:
-    secure: YBm3m18clflAFdKiiLPGT3OGko6iQimWiB/tjoqkylCPSogq4rweJx4MMPr8xsKnCtnVY82RhVt/reyjc7+E6juehcyqahTuGGmZSTkBZggWzGN46gl3hlc8mD/OQtw2HE/Im9ciPd6pIRt2295vELV2RnvPrEZxoeULHv1xwVXpyuKCP8x7XVATaw6GHcfZgyWzQ4ZW2LoRl+/k897O0qwAgTFhWQbGf3Qyz48vSaePZ9QeGM99cUnrdWM/VlDjCMDEMjbXiX3SZPrTwHsKWyS/bggxzUUrKQthzsrf//m6uRXSBC6WPua9KuQbezMdCaQxL6xOHN7AP7+uCfspbrDAsi9Xy4ci56YBqzN08laMkhifDcj7KJgLHj5yIZsWzm0WQT5iVolClQh9UEjwYQrlsqho2fckSCObbhw4ngdefIjjukrP1sQ975f4vFBHKw0mhY5/8+NtKCuBGPHKG4vUIKujN53suWrmrEh27UJ6QD3nwTCgfBAgIzTRKvGkVZ1wrsxM369klgNGM3DS2lLwpS3SmuCdgO8vt4nBxh5L1NeqsIY42pGuyk/PD6vE7eq23tnlmCrmOrPnxHXtoHlcA3OqfcGsDi4jdOo6LJJt+szVq/NzRawtRNUTr07jAqShernGCVn1VmwmihsMuixiFJivHAHGL9sxmGkVX0I=
-  bucket: fedramp-dashboard-demo
-  skip_cleanup: true
-  local_dir: build
-  acl: public_read
+  - npm install -g pa11y-crawl
+  - pa11y-crawl --run "./node_modules/.bin/http-server" --ci http://localhost:8080
+#deploy:
+#  provider: s3
+#  script: npm install && npm run package
+#  access_key_id:
+#    secure: HQ4lPqWG0uDg4UrcL43zR7GMQxukC0E+SrmnZr2fyUtIxk62ufQubFSNihms64F5lVYN/52G/zIhZKpThaaXk4j0nX5xymnVMZh74mNnttp+VmrwnIjNoGg2VDlNEG/ec1YXBGAOyfuNEBl9St07pIFT9PTvh3dh0h7EAstAIltKUhrFViSmTpSfprGnmAWD4IuxbQ4bZdbq5xcH19eLIBwj4c4in/Br5cc1w/cP/b/I1KbiLJA/T0rJCQrS9KnKyqPNItiTfjGZfldQgi4btbKOdKlibdYDwdHBurkem+HQAgD6N3456qnG7XVOUw0wTcDcERqCFmAiFTy4eO3ULQwY1sSR+LIhvYrwUEGCzD/HjpXlQK7LALRHhaxCUPYNxAZvfPwWpFShBbeqRvww3x6KLxLqoGOg8EqDSEyABb4IffpbBf0nlgkO+gaBtuoboK7cQymcivmyQTMVgawuqpHEN+wKXxZRDyhsfElDROV06265UXdk5M204iFW9PyXKLgperDWtg+3l7Fk9WlWxjV/7pUU7Q3zuv8rEiTPCxlJbuvcmOj1cW1KdoeXv9w075+pdoDkO4CywQ+8wNJB9CLwQSaDyTVfrho07a0Tn9vFm2ORIefGlZw0MqmIwBU0mRh06Q9IMSs7OO2FRDsJWPnpMLoeUbtRJezz9Cgk2/I=
+#  secret_access_key:
+#    secure: YBm3m18clflAFdKiiLPGT3OGko6iQimWiB/tjoqkylCPSogq4rweJx4MMPr8xsKnCtnVY82RhVt/reyjc7+E6juehcyqahTuGGmZSTkBZggWzGN46gl3hlc8mD/OQtw2HE/Im9ciPd6pIRt2295vELV2RnvPrEZxoeULHv1xwVXpyuKCP8x7XVATaw6GHcfZgyWzQ4ZW2LoRl+/k897O0qwAgTFhWQbGf3Qyz48vSaePZ9QeGM99cUnrdWM/VlDjCMDEMjbXiX3SZPrTwHsKWyS/bggxzUUrKQthzsrf//m6uRXSBC6WPua9KuQbezMdCaQxL6xOHN7AP7+uCfspbrDAsi9Xy4ci56YBqzN08laMkhifDcj7KJgLHj5yIZsWzm0WQT5iVolClQh9UEjwYQrlsqho2fckSCObbhw4ngdefIjjukrP1sQ975f4vFBHKw0mhY5/8+NtKCuBGPHKG4vUIKujN53suWrmrEh27UJ6QD3nwTCgfBAgIzTRKvGkVZ1wrsxM369klgNGM3DS2lLwpS3SmuCdgO8vt4nBxh5L1NeqsIY42pGuyk/PD6vE7eq23tnlmCrmOrPnxHXtoHlcA3OqfcGsDi4jdOo6LJJt+szVq/NzRawtRNUTr07jAqShernGCVn1VmwmihsMuixiFJivHAHGL9sxmGkVX0I=
+#  bucket: fedramp-dashboard-demo
+#  skip_cleanup: true
+#  local_dir: build
+#  acl: public_read
