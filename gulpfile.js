@@ -8,6 +8,7 @@ var zip = require('gulp-zip');
 var tar = require('gulp-tar');
 var gzip = require('gulp-gzip');
 var templateCache = require('gulp-angular-templatecache');
+var jshint = require('gulp-jshint');
 
 // App specific constants
 
@@ -41,7 +42,7 @@ gulp.task('clean', function(){
  */
 gulp.task('copy:src', ['clean'], function(){
     "use strict";
-    console.log('Copying over all of the files');
+    console.log('Copying over all of the source files');
     return gulp.src(['src/**/*'])
         .pipe(gulp.dest('build/src'));
 });
@@ -52,7 +53,7 @@ gulp.task('copy:src', ['clean'], function(){
  */
 gulp.task('copy:lib', ['clean'], function(){
     "use strict";
-    console.log('Copying over all of the files');
+    console.log('Copying over all of the lib files');
     return gulp.src([
         'lib/angular-ui-router.min.js',
         'lib/jquery-3.0.0.min.js',
@@ -62,6 +63,25 @@ gulp.task('copy:lib', ['clean'], function(){
         .pipe(gulp.dest('build/dest/lib'));
 });
 
+/**
+ * Runs the linter (jshint) on all the source files
+ *
+ * Waits for `copy:src` task to complete
+ */
+gulp.task('copy:lint', ['copy:src'], function(){
+    "use strict";
+    console.log('Linting dev JS files');
+    return gulp.src([
+        'build/src/**/*.js',
+    ])
+        .pipe(jshint('.jshintrc'))
+
+        // Add pretty colors to error output
+        .pipe(jshint.reporter('jshint-stylish'));
+
+        // Ensure build fails and linter complains
+        //.pipe(jshint.reporter('fail'));
+});
 
 /**
  * Finds all templates and creates a file containing the contents of each template in
@@ -82,6 +102,8 @@ gulp.task('templates:cache', ['copy'], function(){
 /**
  * Minifies all individual javascript files and then dumps them into
  * `build/src.min` directory.
+ *
+ * Waits for the `templates` task to complete
  */
 gulp.task('mangle:uglify', ['templates'], function(){
     "use strict";
@@ -111,9 +133,13 @@ gulp.task('mangle:concat', ['mangle:uglify'], function(){
 });
 
 
+
+
 /**
  * Replaces the dev js references with production references to point to minified file and then copies it to
  * the build/dest directory.
+ *
+ * Depends on the mangle task to finish
  */
 gulp.task('homepage', ['mangle'], function(){
     "use strict";
@@ -137,6 +163,12 @@ gulp.task('archive:zip', ['homepage'], function(){
         .pipe(gulp.dest('build/dist'));
 });
 
+
+/**
+ * Tars up the site
+ *
+ * Depends on the homepage task to finish
+ */
 gulp.task('archive:gzip', ['homepage'], function(){
     "use strict";
     console.log('Gzipping FedRAMP');
@@ -151,7 +183,7 @@ gulp.task('archive:gzip', ['homepage'], function(){
 gulp.task('archive', ['archive:zip', 'archive:gzip']);
 gulp.task('mangle', ['mangle:uglify', 'mangle:concat']);
 gulp.task('templates', ['templates:cache']);
-gulp.task('copy', ['copy:src', 'copy:lib']);
+gulp.task('copy', ['copy:src', 'copy:lib', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
 gulp.task('default', ['clean', 'copy', 'templates', 'mangle', 'homepage', 'archive']);
