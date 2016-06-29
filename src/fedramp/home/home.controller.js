@@ -162,7 +162,8 @@
          *  (optional) The filter type
          */
         self.toggleFilter = function (type) {
-            type = type ? type : self.filterType;
+
+            self.filterType = type;
 
             if (lastFilterType === type) {
                 self.filterType = '';

@@ -1,0 +1,22 @@
+/** This is strictly for wireframe styles. This will all be removed **/
+header {
+    margin-bottom:1em;
+}
+.header {
+    height: 36px;
+}
+.circle {
+    border-radius: 50%;
+    background-color: #ddd;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    padding-top:15px;
+    margin: 0 auto;
+}
+
+.filters button {
+    width: 100%;
+    background-color: #aaa;
+    
+}

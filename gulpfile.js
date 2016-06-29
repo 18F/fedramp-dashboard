@@ -25,6 +25,7 @@ var prodJsPath = [
     '<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>',
     '<script src="lib/angular-ui-router.min.js"></script>',
     '<script src="lib/papaparse.min.js"></script>',
+    '<script src="lib/uswds.min.js"></script>',
     '<script src="fedramp.min.js"></script>'
 ];
     
@@ -57,10 +58,50 @@ gulp.task('copy:lib', ['clean'], function(){
     return gulp.src([
         'lib/angular-ui-router.min.js',
         'lib/jquery-3.0.0.min.js',
-        'lib/papaparse.min.js'
+        'lib/papaparse.min.js',
+        'lib/uswds.min.js'
     ])
         .pipe(gulp.dest('build/lib'))
         .pipe(gulp.dest('build/dest/lib'));
+});
+
+/**
+ * Copies over all css resources
+ */
+gulp.task('copy:css', ['clean'], function(){
+    "use strict";
+    console.log('Copying over all of the css files');
+    return gulp.src([
+        'css/**/*'
+    ])
+        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest('build/dest/css'));
+});
+
+/**
+ * Copies over all css resources
+ */
+gulp.task('copy:img', ['clean'], function(){
+    "use strict";
+    console.log('Copying over all of the image files');
+    return gulp.src([
+        'img/**/*'
+    ])
+        .pipe(gulp.dest('build/img'))
+        .pipe(gulp.dest('build/dest/img'));
+});
+
+/**
+ * Copies over all font resources
+ */
+gulp.task('copy:fonts', ['clean'], function(){
+    "use strict";
+    console.log('Copying over all of the font files');
+    return gulp.src([
+        'fonts/**/*'
+    ])
+        .pipe(gulp.dest('build/fonts'))
+        .pipe(gulp.dest('build/dest/fonts'));
 });
 
 /**
@@ -183,7 +224,7 @@ gulp.task('archive:gzip', ['homepage'], function(){
 gulp.task('archive', ['archive:zip', 'archive:gzip']);
 gulp.task('mangle', ['mangle:uglify', 'mangle:concat']);
 gulp.task('templates', ['templates:cache']);
-gulp.task('copy', ['copy:src', 'copy:lib', 'copy:lint']);
+gulp.task('copy', ['copy:src', 'copy:lib', 'copy:img', 'copy:css', 'copy:fonts', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
 gulp.task('default', ['clean', 'copy', 'templates', 'mangle', 'homepage', 'archive']);

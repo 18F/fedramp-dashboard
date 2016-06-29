@@ -1,69 +1,68 @@
-<h1>{{homeController.title}}</h1>
-<div>
-    <strong>Total Authorized:</strong>
-    <span>{{homeController.totalAuthorized()}}</span>
-    <em>(Sum of authorized CSPs)</em> 
-</div>
-<div>
-    <strong>Leveraged ATOs:</strong>
-    <span>{{homeController.leveragedAtos()}}</span>
-    <em>(Sum of leveraged ATOs)</em>         
-</div>
-<div>
-    <strong>Cost Savings:</strong>
-    <span>${{homeController.totalCostSavings()}}</span>
-    <em>(Total reuse * $250,000)</em>            
-</div>
-
-<div ng-show="homeController.hasData()">
-    <div>
-        <div>
-            <label for="filterByCSP">
-                <input id="filterByCSP"
-                       type="radio"
-                       ng-model="homeController.filterType"
-                       value="csp"
-                       ng-click="homeController.toggleFilter()" />
-                CSP
-            </label>
-            <label for="filterByCSO">
-                <input id="filterByCSO"
-                       type="radio"
-                       ng-model="homeController.filterType"
-                       value="cso"
-                       ng-click="homeController.toggleFilter()" />
-                CSO
-            </label>
-            <label for="filterByAgency">
-                <input id="filterByAgency"
-                       type="radio"
-                       ng-model="homeController.filterType"
-                       value="agency"
-                       ng-click="homeController.toggleFilter()" />
-                Agency
-            </label>
-            <label for="filterBy3PAO">
-                <input id="filterBy3PAO"
-                       type="radio"
-                       ng-model="homeController.filterType"
-                       value="3pao"
-                       ng-click="homeController.toggleFilter()" />
-                3PAO
-            </label>
+<div class="usa-content">
+    <div class="usa-grid">
+        <div class="usa-width-one-third">
+            <div class="circle">
+                <h4>${{homeController.totalCostSavings()}}</h4>
+                <div>Cost Savings:</div>
+            </div>
         </div>
-        <div ng-show="!!homeController.filterType">
-            <label for="filter">Filter using:</label>
-            <select id="filter"
-                    ng-model="homeController.filter"
-                    ng-options="option for option in homeController.filterOptions"
-                    ng-change="homeController.applyFilter()">
-                <option value=""></option>
-            </select>
+        <div class="usa-width-one-third">
+            <div class="circle">
+                <div>
+                    <h4>{{homeController.totalAuthorized()}}</h4>
+                    Total Authorized:
+                </div>
+            </div>
+        </div>
+        <div class="usa-width-one-third">
+            <div class="circle">
+                <h4>{{homeController.leveragedAtos()}}</h4>
+                <div>Leveraged ATOs:</div>
+            </div>
         </div>
     </div>
-    <a href="{{homeController.downloadUrl}}"
-       download="{{homeController.filename()}}"
-       ng-click="homeController.download()">
-        Download
-    </a>
+    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>
+    <div ng-show="homeController.hasData()">
+        <div class="filters usa-grid">
+            <div class="usa-width-one-fourth">
+                <button id="filterByCSP"
+                        ng-click="homeController.toggleFilter('csp')">CSP
+                </button>
+            </div>
+            <div class="usa-width-one-fourth">
+                <button id="filterByCSO"
+                        type="radio"
+                        ng-click="homeController.toggleFilter('cso')">CSO
+                </button>
+            </div>
+            <div class="usa-width-one-fourth">
+                <button id="filterByAgency"
+                        ng-click="homeController.toggleFilter('agency')">Agency
+                </button>
+            </div>
+            <div class="usa-width-one-fourth">
+                <button id="filterBy3PAO"
+                        ng-click="homeController.toggleFilter('3pao')">3PAO
+                </button>
+            </div>
+        </div>
+        <div class="usa-grid" ng-show="!!homeController.filterType">
+            <div style="text-align:center;" class="usa-width-one-whole">
+                <div style="margin:0 auto;display:table;">
+                    <label for="filter">Filter using:</label>
+                    <select id="filter"
+                            ng-model="homeController.filter"
+                            ng-options="option for option in homeController.filterOptions"
+                            ng-change="homeController.applyFilter()">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <a href="{{homeController.downloadUrl}}"
+                   download="{{homeController.filename()}}"
+                   ng-click="homeController.download()">
+                    Download
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

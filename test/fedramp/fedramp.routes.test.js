@@ -26,6 +26,7 @@ describe('Fedramp Routes', function(){
             var expected = 'fedramp.home';
 
             // Account for template GET request
+            $httpBackend.whenGET('src/fedramp/fedramp.html').respond('');
             $httpBackend.whenGET('src/fedramp/home/home.html').respond('');
             $httpBackend.whenGET(githubUrl).respond({
                 meta: '',

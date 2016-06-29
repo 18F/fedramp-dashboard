@@ -20,7 +20,7 @@
         $stateProvider
             .state('fedramp', {
                 abstract: true,
-                template: '<ui-view></ui-view>',
+                templateUrl: 'src/fedramp/fedramp.html',
                 resolve: {
                     providers: FedRampProviders
                     
