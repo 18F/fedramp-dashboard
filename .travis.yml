@@ -1,18 +1,21 @@
 language: node_js
 node_js:
-  - '6'
-  - node
+- '6'
+- node
 after_script:
-  - npm install -g pa11y-crawl
-  - pa11y-crawl --run "./node_modules/.bin/http-server" --ci http://localhost:8080
-#deploy:
-#  provider: s3
-#  script: npm install && npm run package
-#  access_key_id:
-#    secure: HQ4lPqWG0uDg4UrcL43zR7GMQxukC0E+SrmnZr2fyUtIxk62ufQubFSNihms64F5lVYN/52G/zIhZKpThaaXk4j0nX5xymnVMZh74mNnttp+VmrwnIjNoGg2VDlNEG/ec1YXBGAOyfuNEBl9St07pIFT9PTvh3dh0h7EAstAIltKUhrFViSmTpSfprGnmAWD4IuxbQ4bZdbq5xcH19eLIBwj4c4in/Br5cc1w/cP/b/I1KbiLJA/T0rJCQrS9KnKyqPNItiTfjGZfldQgi4btbKOdKlibdYDwdHBurkem+HQAgD6N3456qnG7XVOUw0wTcDcERqCFmAiFTy4eO3ULQwY1sSR+LIhvYrwUEGCzD/HjpXlQK7LALRHhaxCUPYNxAZvfPwWpFShBbeqRvww3x6KLxLqoGOg8EqDSEyABb4IffpbBf0nlgkO+gaBtuoboK7cQymcivmyQTMVgawuqpHEN+wKXxZRDyhsfElDROV06265UXdk5M204iFW9PyXKLgperDWtg+3l7Fk9WlWxjV/7pUU7Q3zuv8rEiTPCxlJbuvcmOj1cW1KdoeXv9w075+pdoDkO4CywQ+8wNJB9CLwQSaDyTVfrho07a0Tn9vFm2ORIefGlZw0MqmIwBU0mRh06Q9IMSs7OO2FRDsJWPnpMLoeUbtRJezz9Cgk2/I=
-#  secret_access_key:
-#    secure: YBm3m18clflAFdKiiLPGT3OGko6iQimWiB/tjoqkylCPSogq4rweJx4MMPr8xsKnCtnVY82RhVt/reyjc7+E6juehcyqahTuGGmZSTkBZggWzGN46gl3hlc8mD/OQtw2HE/Im9ciPd6pIRt2295vELV2RnvPrEZxoeULHv1xwVXpyuKCP8x7XVATaw6GHcfZgyWzQ4ZW2LoRl+/k897O0qwAgTFhWQbGf3Qyz48vSaePZ9QeGM99cUnrdWM/VlDjCMDEMjbXiX3SZPrTwHsKWyS/bggxzUUrKQthzsrf//m6uRXSBC6WPua9KuQbezMdCaQxL6xOHN7AP7+uCfspbrDAsi9Xy4ci56YBqzN08laMkhifDcj7KJgLHj5yIZsWzm0WQT5iVolClQh9UEjwYQrlsqho2fckSCObbhw4ngdefIjjukrP1sQ975f4vFBHKw0mhY5/8+NtKCuBGPHKG4vUIKujN53suWrmrEh27UJ6QD3nwTCgfBAgIzTRKvGkVZ1wrsxM369klgNGM3DS2lLwpS3SmuCdgO8vt4nBxh5L1NeqsIY42pGuyk/PD6vE7eq23tnlmCrmOrPnxHXtoHlcA3OqfcGsDi4jdOo6LJJt+szVq/NzRawtRNUTr07jAqShernGCVn1VmwmihsMuixiFJivHAHGL9sxmGkVX0I=
-#  bucket: fedramp-dashboard-demo
-#  skip_cleanup: true
-#  local_dir: build
-#  acl: public_read
+- npm install -g pa11y-crawl
+- pa11y-crawl --run "./node_modules/.bin/http-server" --ci http://localhost:8080
+before_deploy: "npm run package"
+deploy:
+  provider: s3
+  bucket: fedramp-dashboard-demo
+  region: us-east-1
+  skip_cleanup: true
+  local_dir: "build/dest"
+  access_key_id:
+    secure: "v3VOOTCyASwhseMEe9f4XaayEfjdhp917TBK+Xz6keAtJTe+zVirk+SPPQLOa3t7IZqhFDsZJM1rcCVwvKE7NMu5cijSoXgfjtTmgspP9rG+vxAzQZLUjY/OJxtWLYfkpmwLf6ZCAIPEaCGIN7d5JVzPxI0mf4K6OdNbuebeJZwK/jh69LEPVF9uTk3Oh9y8IaXJapphJh3GYaQsFhxUTU4cd/jU6batuytTSvHwiQ9AQPOH/DI/PIFdDim4G00E7P6AQO/rj5xfyohw/AFupGsnE+IoLWoBB8ynbmj7/u+HFYYGmWpDLyTqHoc2a3lOhII7qePtAZRRem6GeHZO1adN0mFds21SI4eEtd3SAnTwdp648XsL3hA3rWgRn/tUk6Km546uW7Rw/TdSG3VBK8qwCvCuKZQslG7kHNveSys5M3ecbapQnNmhs1w5hkuwi4MVNjNOpcKSvKDTXCIpZtVZ/a3RdUkO+MN6F8R1SPycMw8UhQt2b4/otiFL4JVG7WneMsXbZXg0q9kFrhIg75KS6pKkMfsqJ9B5yHnlLVLUKRirSpFGKWQFXtgc1ZRO4pi6lnqAY+636zSA87A4BtNRMFDJomIOIdVlc5ggnam5iYX9RUWxA2wwrj7v3Q4LMbvVxmdmSkP5V2IHduRJDAuR12tlGTSstfR4RrqGpUw="
+  secret_access_key:
+    secure: "CgjJOS1ix/w6zHJDHnRzLsKKM03iR29iq77z4CSiZJUTCkWoMldyo8bK+hXvB5p2xd6AE2oG3Ob+gXiZEknuZVXsr8MbGcoAHtDQIzAmGHktfk33SdYhN9NQol7BfiKP/2RWrVq9c5PJAJP7IW8iF5ZlJq3PG+3CKDY2ofu9Tr8O817okPoDcCwS8b0j+1PiRJljNa+kwn6UGSK0TTbWEV+ieJfBWW/aqrl8Zql32KRN7J9hqDS4cX3Cg2gyZGrtrz5tZpfmxV97cJ9zf+thdw9yUo7GBVdfWYejeWSElX3zD3gAUEUyDZK3Agj04fclo4oUKzdf/ZqzYIpXIqyWvpvymxQpa1ybpTrDuiD6i2jJxA4Wgl2/1j/ODa5ML/kXo4e+UswfPYgoVCC4WIjhn6FbvG2kNXhS1tAzMM8tx+zVWeglWx4EKsq+GKek3SDUzvDhll7jQsNzFWHEBuLZgdrXblxhb/IEFlxADoyqAmv5xU7khS0QTFxnEJHXYHJFZaoeiZwdb2WZjea8X6JMvLI+PYt7SqwsiO3zarTsUrnap9rL0PshJHuVBo8eACa3bD2lxoX0KgGNozn6cByUpdTisc1nwh1rXr5/tiLSFrBHQuP4aq+ZR5L2OrBxSz2wXlm+MiZlLCIPmSnxQzVuSpCq/JSJAy2HL8l9ZtWpK+c="
+  on:
+    branch: master
+    repo: 18F/fedramp-dashboard
