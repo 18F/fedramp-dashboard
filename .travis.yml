@@ -7,7 +7,7 @@ after_script:
 - pa11y-crawl --run "./node_modules/.bin/http-server" --ci http://localhost:8080
 deploy:
   provider: s3
-  script: npm run package
+  script: npm install && npm run package
   access_key_id:
     secure: HQ4lPqWG0uDg4UrcL43zR7GMQxukC0E+SrmnZr2fyUtIxk62ufQubFSNihms64F5lVYN/52G/zIhZKpThaaXk4j0nX5xymnVMZh74mNnttp+VmrwnIjNoGg2VDlNEG/ec1YXBGAOyfuNEBl9St07pIFT9PTvh3dh0h7EAstAIltKUhrFViSmTpSfprGnmAWD4IuxbQ4bZdbq5xcH19eLIBwj4c4in/Br5cc1w/cP/b/I1KbiLJA/T0rJCQrS9KnKyqPNItiTfjGZfldQgi4btbKOdKlibdYDwdHBurkem+HQAgD6N3456qnG7XVOUw0wTcDcERqCFmAiFTy4eO3ULQwY1sSR+LIhvYrwUEGCzD/HjpXlQK7LALRHhaxCUPYNxAZvfPwWpFShBbeqRvww3x6KLxLqoGOg8EqDSEyABb4IffpbBf0nlgkO+gaBtuoboK7cQymcivmyQTMVgawuqpHEN+wKXxZRDyhsfElDROV06265UXdk5M204iFW9PyXKLgperDWtg+3l7Fk9WlWxjV/7pUU7Q3zuv8rEiTPCxlJbuvcmOj1cW1KdoeXv9w075+pdoDkO4CywQ+8wNJB9CLwQSaDyTVfrho07a0Tn9vFm2ORIefGlZw0MqmIwBU0mRh06Q9IMSs7OO2FRDsJWPnpMLoeUbtRJezz9Cgk2/I=
   secret_access_key:
