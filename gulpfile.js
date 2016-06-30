@@ -242,6 +242,8 @@ gulp.task('watch:dog', [], function () {
     'use strict';
     console.log('Watch dog, ARF ARF!!!');
     gulp.watch('src/**/*.js', ['default']);
+    gulp.watch('src/**/*.html', ['default']);
+    gulp.watch('test/**/*.js', ['default']);
 });
 
 

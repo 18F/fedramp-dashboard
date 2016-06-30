@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/storage-settings.factory.js</title>
+    <title>JSDoc: Namespace: Components</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,63 +17,95 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/storage-settings.factory.js</h1>
+    <h1 class="page-title">Namespace: Components</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function () {
-    'use strict';
+        <h2>Components</h2>
+        
+    
+</header>
 
-    angular
-        .module('fedramp.services')
-        .factory('StorageSettings', StorageSettingsFactory);
+<article>
+    <div class="container-overview">
+    
+        
 
-    StorageSettingsFactory.$inject = ['StorageManager', 'Settings'];
+        
 
-    function StorageSettingsFactory (StorageManager, Settings) {
-        /**
-         * Provides storage specific functionality that extends the StorageManager
-         * @constructor
-         * @memberof Services
-         * @extends StorageManager
-         */
-        function StorageSettings (options) {
-            StorageManager.call(this);
 
-            var self = this;
-            self.storageContainer = 'fedramp';
+<dl class="details">
 
-            /**
-             * Transforms the raw object to a specifec model
-             * @public
-             * @memberof Services.StorageSettings
-             *
-             * @param {Object} raw
-             *  The JSON object
-             *
-             * @returns
-             *  The item
-             */
-            self.transform = function (raw) {
-                return new Settings(raw);
-            };
+    
 
-            return self.init(options);
-        }
-        StorageSettings.prototype = Object.create(StorageManager.prototype);
-        StorageSettings.prototype.constructor = StorageSettings;
+    
 
-        return StorageSettings;
-    }
-})();
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_fedramp-components.module.js.html">fedramp.components/fedramp-components.module.js</a>, <a href="fedramp.components_fedramp-components.module.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

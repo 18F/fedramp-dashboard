@@ -34,6 +34,21 @@
 })();
 
 /**
+ * @namespace Components
+ */
+(function () {
+    'use strict';
+
+    angular.module('fedramp.components', ['fedramp.models', 'fedramp.services']).run(run);
+
+    run.$inject = ['$log'];
+
+    function run($log) {
+        $log.debug('fedramp.components module initializing');
+    }
+})();
+
+/**
  * @namespace Services
  */
 (function () {
@@ -50,7 +65,8 @@
 
 angular.module('fedramp').run(['$templateCache', function ($templateCache) {
     $templateCache.put('src/fedramp/fedramp.html', '<header>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <!--<img class="header" src="img/fedramp.png"/>-->\n            <h1>FedRAMP</h1>\n        </div>\n    </div>\n\n</header>\n<ui-view></ui-view>\n');
-    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>${{homeController.totalCostSavings()}}</h4>\n                <div>Cost Savings:</div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <div>\n                    <h4>{{homeController.totalAuthorized()}}</h4>\n                    Total Authorized:\n                </div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>{{homeController.leveragedAtos()}}</h4>\n                <div>Leveraged ATOs:</div>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n');
+    $templateCache.put('src/fedramp.components/tile.html', '<div ng-if="controller.expand" class="usa-width-one-whole">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <strong>{{ controller.model.name }} - {{ controller.model.pkg }}</strong>\n        </div>\n        <div class="usa-width-one-sixth">\n            <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.deploymentModel }}</span>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.impactLevel }}</span>\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="usa-width-one-half">\n    <div class="usa-grid">\n        <div class="usa-width-two-thirds">\n            <!-- Logo -->\n            Logo\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <div>\n                <strong>Service Model:</strong>\n                {{ controller.model.serviceModel.join(\', \') }}\n            </div>\n            <div>\n                <strong>Deployment Model:</strong>\n                {{ controller.model.deploymentModel }}\n            </div>\n            <div>\n                <strong>Impact Level:</strong>\n                {{ controller.model.impactLevel }}\n            </div>\n        </div>\n    </div>\n</div>\n');
+    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>${{homeController.totalCostSavings()}}</h4>\n                <div>Cost Savings:</div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <div>\n                    <h4>{{homeController.totalAuthorized()}}</h4>\n                    Total Authorized:\n                </div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>{{homeController.leveragedAtos()}}</h4>\n                <div>Leveraged ATOs:</div>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <tile ng-repeat="item in homeController.filteredData" expand="false" model="item" />\n        </div>\n    </div>\n</div>\n');
 }]);
 (function () {
     'use strict';
@@ -565,6 +581,35 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
         }
 
         return self.init(options);
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').component('tile', {
+        templateUrl: 'src/fedramp.components/tile.html',
+        controller: Tile,
+        controllerAs: 'controller',
+        bindings: {
+            expand: '<',
+            model: '<'
+        }
+    });
+
+    Tile.$inject = ['$log'];
+
+    function Tile($log) {
+        var self = this;
+
+        self.$onInit = function () {
+            $log.info(self.expand);
+            $log.info(self.model);
+        };
+
+        self.$onChanges = function (changes) {};
+        self.$onDestroy = function () {};
+        self.$postLink = function () {};
     }
 })();
 
@@ -1105,7 +1150,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
          * @member {array}
          * @memberof Controllers.HomeController
          */
-        self.filteredData = [];
+        self.filteredData = providers;
 
         /**
          * The type of filter applied to the data
@@ -1495,6 +1540,6 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 }
                 return a[self.sortBy] > b[self.sortBy] ? -1 : 1;
             });
-        };
+        }
     }
 })();

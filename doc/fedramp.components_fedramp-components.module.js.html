@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/storage-settings.factory.js</title>
+    <title>JSDoc: Source: fedramp.components/fedramp-components.module.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/storage-settings.factory.js</h1>
+    <h1 class="page-title">Source: fedramp.components/fedramp-components.module.js</h1>
 
     
 
@@ -26,49 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>(function () {
+            <pre class="prettyprint source linenums"><code>/**
+ * @namespace Components
+ */
+(function () {
     'use strict';
 
     angular
-        .module('fedramp.services')
-        .factory('StorageSettings', StorageSettingsFactory);
+        .module('fedramp.components', ['fedramp.models', 'fedramp.services'])
+        .run(run);
 
-    StorageSettingsFactory.$inject = ['StorageManager', 'Settings'];
+    run.$inject = ['$log'];
 
-    function StorageSettingsFactory (StorageManager, Settings) {
-        /**
-         * Provides storage specific functionality that extends the StorageManager
-         * @constructor
-         * @memberof Services
-         * @extends StorageManager
-         */
-        function StorageSettings (options) {
-            StorageManager.call(this);
-
-            var self = this;
-            self.storageContainer = 'fedramp';
-
-            /**
-             * Transforms the raw object to a specifec model
-             * @public
-             * @memberof Services.StorageSettings
-             *
-             * @param {Object} raw
-             *  The JSON object
-             *
-             * @returns
-             *  The item
-             */
-            self.transform = function (raw) {
-                return new Settings(raw);
-            };
-
-            return self.init(options);
-        }
-        StorageSettings.prototype = Object.create(StorageManager.prototype);
-        StorageSettings.prototype.constructor = StorageSettings;
-
-        return StorageSettings;
+    function run ($log) {
+        $log.debug('fedramp.components module initializing');
     }
 })();
 </code></pre>

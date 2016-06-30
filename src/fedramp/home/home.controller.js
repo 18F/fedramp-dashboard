@@ -50,7 +50,7 @@
          * @member {array}
          * @memberof Controllers.HomeController
          */
-        self.filteredData = [];
+        self.filteredData = providers;
 
         /**
          * The type of filter applied to the data
@@ -438,6 +438,6 @@
                 }
                 return a[self.sortBy] > b[self.sortBy] ? -1 : 1;
             });
-        };
+        }
     }
 })();

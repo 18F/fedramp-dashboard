@@ -93,7 +93,7 @@ describe('Home controller with data', function () {
     describe('while populating filter options', function () {
         it('returns nothing if empty filter type', function () {
             homeController.toggleFilter('');
-            expect(homeController.filterOptions.length).toBe(0);
+            expect(homeController.filterOptions.length).toBe(1);
         });
 
         it('for CSP', function () {
