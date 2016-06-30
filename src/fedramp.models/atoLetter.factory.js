@@ -26,7 +26,8 @@
             'Authorizing_Agency': 'authorizingAgency',
             'Authorizing_Subagency': 'authorizingSubagency',
             'Active': 'active',
-            'Include_In_Marketplace': 'includeInMarketplace'
+            'Include_In_Marketplace': 'includeInMarketplace',
+            'Independent_Assessor': 'independentAssessor'
         };
 
         /**
@@ -86,6 +87,12 @@
          */
         self.includeInMarketplace = '';
 
+        /**
+         * The independent assessor
+         * @member {string}
+         * @memberof Models.Provider
+         */
+        self.independentAssessor = '';
 
         /**
          * Initialize the ATO letter object.

@@ -119,7 +119,8 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
             'Authorizing_Agency': 'authorizingAgency',
             'Authorizing_Subagency': 'authorizingSubagency',
             'Active': 'active',
-            'Include_In_Marketplace': 'includeInMarketplace'
+            'Include_In_Marketplace': 'includeInMarketplace',
+            'Independent_Assessor': 'independentAssessor'
         };
 
         /**
@@ -178,6 +179,13 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
          * @memberof Models.AtoLetter
          */
         self.includeInMarketplace = '';
+
+        /**
+         * The independent assessor
+         * @member {string}
+         * @memberof Models.Provider
+         */
+        self.independentAssessor = '';
 
         /**
          * Initialize the ATO letter object.
@@ -249,6 +257,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 'CSP_URL': 'cspUrl',
                 'Underlying_CSP_Package_ID': 'underlyingCspPackages',
                 'Stage': 'stage',
+                'Independent_Assessor': 'independentAssessor',
                 'Leveraged_ATO_Letters': 'atoLetters'
             };
 
@@ -364,6 +373,13 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
              * @memberof Models.Provider
              */
             self.stage = '';
+
+            /**
+             * The independent assessor
+             * @member {string}
+             * @memberof Models.Provider
+             */
+            self.independentAssessor = '';
 
             /**
              * Leveraged ATO letters
@@ -1071,6 +1087,20 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
         self.downloadUrl = '#';
 
         /**
+         * Sort by property.
+         * @member {string}
+         * @memberof Controllers.HomeController
+         **/
+        self.sortBy = 'name';
+
+        /**
+         * Sort direction is ascending
+         * @member {boolean}
+         * @memberof Controllers.HomeController
+         **/
+        self.sortAscending = true;
+
+        /**
          * The data after filters have been applied
          * @member {array}
          * @memberof Controllers.HomeController
@@ -1127,6 +1157,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
             // If there is no filter applied then we show everything
             if (!type || !filter) {
                 self.filteredData = providers;
+                sortData();
                 return;
             }
 
@@ -1134,12 +1165,11 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
             // can replace the filtered data in bulk and reduce UI
             // flickering.
             var prefiltered = [];
-            var i, p, j, l;
 
             switch (type) {
                 case 'csp':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
+                    for (var i = 0; i < providers.length; i++) {
+                        var p = providers[i];
                         if (p.name.indexOf(filter) !== -1) {
                             prefiltered.push(p);
                         }
@@ -1147,25 +1177,25 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     break;
 
                 case 'cso':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
-                        if (p.pkg.indexOf(filter) !== -1) {
-                            prefiltered.push(p);
+                    for (var _i2 = 0; _i2 < providers.length; _i2++) {
+                        var _p = providers[_i2];
+                        if (_p.pkg.indexOf(filter) !== -1) {
+                            prefiltered.push(_p);
                         }
                     }
                     break;
 
                 case 'agency':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
-                        if ((p.sponsoringAgency + p.sponsoringSubagency).indexOf(filter) !== -1) {
-                            prefiltered.push(p);
+                    for (var _i3 = 0; _i3 < providers.length; _i3++) {
+                        var _p2 = providers[_i3];
+                        if ((_p2.sponsoringAgency + _p2.sponsoringSubagency).indexOf(filter) !== -1) {
+                            prefiltered.push(_p2);
                         } else {
                             // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                            for (j = 0; j < p.atoLetters.length; j++) {
-                                l = p.atoLetters[j];
+                            for (var j = 0; j < _p2.atoLetters.length; j++) {
+                                var l = _p2.atoLetters[j];
                                 if ((l.authorizingAgency + l.authorizingSubagency).indexOf(filter) !== -1) {
-                                    prefiltered.push(p);
+                                    prefiltered.push(_p2);
                                     break;
                                 }
                             }
@@ -1174,14 +1204,25 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     break;
 
                 case '3pao':
-                    // TODO: I believe the 3pao references apply to the
-                    // "Independent Assessor" column in the originating source.
-                    // If that is the case this is currently not mapped in the
-                    // JSON data source.
+                    for (var _i4 = 0; _i4 < providers.length; _i4++) {
+                        var _p3 = providers[_i4];
+                        if (_p3.independentAssessor.indexOf(filter) !== -1) {
+                            prefiltered.push(_p3);
+                        }
+
+                        for (var _j = 0; _j < _p3.atoLetters.length; _j++) {
+                            var _l = _p3.atoLetters[_j];
+                            if (_l.independentAssessor.indexOf(filter) !== -1) {
+                                prefiltered.push(_p3);
+                                break;
+                            }
+                        }
+                    }
                     break;
             }
 
             self.filteredData = prefiltered;
+            sortData();
             self.downloadUrl = '#';
             downloadBlob = null;
 
@@ -1212,12 +1253,11 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
 
             lastFilterType = type;
             var options = [];
-            var i, p, j, l;
 
             switch (type) {
                 case 'csp':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
+                    for (var i = 0; i < providers.length; i++) {
+                        var p = providers[i];
                         if (p.name && !options.includes(p.name)) {
                             options.push(p.name);
                         }
@@ -1225,28 +1265,28 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     break;
 
                 case 'cso':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
-                        if (p.pkg && !options.includes(p.pkg)) {
-                            options.push(p.pkg);
+                    for (var _i5 = 0; _i5 < providers.length; _i5++) {
+                        var _p4 = providers[_i5];
+                        if (_p4.pkg && !options.includes(_p4.pkg)) {
+                            options.push(_p4.pkg);
                         }
                     }
                     break;
 
                 case 'agency':
-                    for (i = 0; i < providers.length; i++) {
-                        p = providers[i];
-                        if (p.sponsoringAgency && !options.includes(p.sponsoringAgency)) {
-                            options.push(p.sponsoringAgency);
+                    for (var _i6 = 0; _i6 < providers.length; _i6++) {
+                        var _p5 = providers[_i6];
+                        if (_p5.sponsoringAgency && !options.includes(_p5.sponsoringAgency)) {
+                            options.push(_p5.sponsoringAgency);
                         }
 
-                        if (p.sponsoringSubagency && !options.includes(p.sponsoringSubagency)) {
-                            options.push(p.sponsoringSubagency);
+                        if (_p5.sponsoringSubagency && !options.includes(_p5.sponsoringSubagency)) {
+                            options.push(_p5.sponsoringSubagency);
                         }
 
                         // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                        for (j = 0; j < p.atoLetters.length; j++) {
-                            l = p.atoLetters[j];
+                        for (var j = 0; j < _p5.atoLetters.length; j++) {
+                            var l = _p5.atoLetters[j];
                             if (l.authorizingAgency && !options.includes(l.authorizingAgency)) {
                                 options.push(l.authorizingAgency);
                             }
@@ -1259,10 +1299,19 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     break;
 
                 case '3pao':
-                    // TODO: I believe the 3pao references apply to the
-                    // "Independent Assessor" column in the originating source.
-                    // If that is the case this is currently not mapped in the
-                    // JSON data source.
+                    for (var _i7 = 0; _i7 < providers.length; _i7++) {
+                        var _p6 = providers[_i7];
+                        if (_p6.independentAssessor && !options.includes(_p6.independentAssessor)) {
+                            options.push(_p6.independentAssessor);
+                        }
+
+                        for (var _j2 = 0; _j2 < _p6.atoLetters.length; _j2++) {
+                            var _l2 = _p6.atoLetters[_j2];
+                            if (_l2.independentAssessor && !options.includes(_l2.independentAssessor)) {
+                                options.push(_l2.independentAssessor);
+                            }
+                        }
+                    }
                     break;
             }
 
@@ -1426,6 +1475,26 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
             }
 
             return directlyLeveraged + summedReuses;
+        };
+
+        /**
+         * Sorts the filtered data
+         */
+        function sortData() {
+            if (!self.sortBy || self.sortBy.length === 0) {
+                return;
+            }
+
+            self.filteredData = self.filteredData.sort(function (a, b) {
+                if (a[self.sortBy] === b[self.sortBy]) {
+                    return 0;
+                }
+
+                if (self.sortAscending) {
+                    return a[self.sortBy] < b[self.sortBy] ? -1 : 1;
+                }
+                return a[self.sortBy] > b[self.sortBy] ? -1 : 1;
+            });
         };
     }
 })();

@@ -34,6 +34,7 @@
                 'CSP_URL': 'cspUrl',
                 'Underlying_CSP_Package_ID': 'underlyingCspPackages',
                 'Stage': 'stage',
+                'Independent_Assessor': 'independentAssessor',
                 'Leveraged_ATO_Letters': 'atoLetters'
             };
 
@@ -149,6 +150,13 @@
              * @memberof Models.Provider
              */
             self.stage = '';
+
+            /**
+             * The independent assessor
+             * @member {string}
+             * @memberof Models.Provider
+             */
+            self.independentAssessor = '';
 
             /**
              * Leveraged ATO letters

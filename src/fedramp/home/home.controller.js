@@ -30,6 +30,21 @@
          */
         self.downloadUrl = '#';
 
+
+        /**
+         * Sort by property.
+         * @member {string}
+         * @memberof Controllers.HomeController
+         **/
+        self.sortBy = 'name';
+
+        /**
+         * Sort direction is ascending
+         * @member {boolean}
+         * @memberof Controllers.HomeController
+         **/
+        self.sortAscending = true;
+        
         /**
          * The data after filters have been applied
          * @member {array}
@@ -87,6 +102,7 @@
             // If there is no filter applied then we show everything
             if (!type || !filter) {
                 self.filteredData = providers;
+                sortData();
                 return;
             }
 
@@ -94,12 +110,11 @@
             // can replace the filtered data in bulk and reduce UI
             // flickering.
             var prefiltered = [];
-            var i, p, j, l;
 
             switch (type) {
             case 'csp':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if (p.name.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -107,8 +122,8 @@
                 break;
 
             case 'cso':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if (p.pkg.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -116,14 +131,14 @@
                 break;
 
             case 'agency':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if ((p.sponsoringAgency + p.sponsoringSubagency).indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     } else {
                         // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                        for (j = 0; j < p.atoLetters.length; j++) {
-                            l = p.atoLetters[j];
+                        for (let j = 0; j < p.atoLetters.length; j++) {
+                            let l = p.atoLetters[j];
                             if ((l.authorizingAgency + l.authorizingSubagency).indexOf(filter) !== -1) {
                                 prefiltered.push(p);
                                 break;
@@ -134,14 +149,25 @@
                 break;
 
             case '3pao':
-                // TODO: I believe the 3pao references apply to the
-                // "Independent Assessor" column in the originating source.
-                // If that is the case this is currently not mapped in the
-                // JSON data source.
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
+                    if (p.independentAssessor.indexOf(filter) !== -1) {
+                        prefiltered.push(p);
+                    }
+
+                    for (let j = 0; j < p.atoLetters.length; j++) {
+                        let l = p.atoLetters[j];
+                        if (l.independentAssessor.indexOf(filter) !== -1) {
+                            prefiltered.push(p);
+                            break;
+                        }
+                    }
+                }
                 break;
             }
 
             self.filteredData = prefiltered;
+            sortData();
             self.downloadUrl = '#';
             downloadBlob = null;
 
@@ -172,12 +198,11 @@
 
             lastFilterType = type;
             var options = [];
-            var i, p, j, l;
 
             switch (type) {
             case 'csp':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if (p.name && !options.includes(p.name)) {
                         options.push(p.name);
                     }
@@ -185,8 +210,8 @@
                 break;
 
             case 'cso':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if (p.pkg && !options.includes(p.pkg)) {
                         options.push(p.pkg);
                     }
@@ -194,8 +219,8 @@
                 break;
 
             case 'agency':
-                for (i = 0; i < providers.length; i++) {
-                    p = providers[i];
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
                     if (p.sponsoringAgency && !options.includes(p.sponsoringAgency)) {
                         options.push(p.sponsoringAgency);
                     }
@@ -205,8 +230,8 @@
                     }
 
                     // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                    for (j = 0; j < p.atoLetters.length; j++) {
-                        l = p.atoLetters[j];
+                    for (let j = 0; j < p.atoLetters.length; j++) {
+                        let l = p.atoLetters[j];
                         if (l.authorizingAgency && !options.includes(l.authorizingAgency)) {
                             options.push(l.authorizingAgency);
                         }
@@ -219,10 +244,19 @@
                 break;
 
             case '3pao':
-                // TODO: I believe the 3pao references apply to the
-                // "Independent Assessor" column in the originating source.
-                // If that is the case this is currently not mapped in the
-                // JSON data source.
+                for (let i = 0; i < providers.length; i++) {
+                    let p = providers[i];
+                    if (p.independentAssessor && !options.includes(p.independentAssessor)) {
+                        options.push(p.independentAssessor);
+                    }
+
+                    for (let j = 0; j < p.atoLetters.length; j++) {
+                        let l = p.atoLetters[j];
+                        if (l.independentAssessor && !options.includes(l.independentAssessor)) {
+                            options.push(l.independentAssessor);
+                        }
+                    }
+                }
                 break;
             }
 
@@ -384,6 +418,26 @@
             }
 
             return directlyLeveraged + summedReuses;
+        };
+
+        /**
+         * Sorts the filtered data
+         */
+        function sortData () {
+            if (!self.sortBy || self.sortBy.length === 0) {
+                return;
+            }
+            
+            self.filteredData = self.filteredData.sort(function (a, b) {
+                if (a[self.sortBy] === b[self.sortBy]) {
+                    return 0;
+                }
+
+                if (self.sortAscending) {
+                    return a[self.sortBy] < b[self.sortBy] ? -1 : 1;
+                }
+                return a[self.sortBy] > b[self.sortBy] ? -1 : 1;
+            });
         };
     }
 })();
