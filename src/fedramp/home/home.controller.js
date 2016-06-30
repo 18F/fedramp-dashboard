@@ -178,7 +178,7 @@
             case 'csp':
                 for (i = 0; i < providers.length; i++) {
                     p = providers[i];
-                    if (p.name && !contains(options, p.name)) {
+                    if (p.name && !options.includes(p.name)) {
                         options.push(p.name);
                     }
                 }
@@ -187,7 +187,7 @@
             case 'cso':
                 for (i = 0; i < providers.length; i++) {
                     p = providers[i];
-                    if (p.pkg && !contains(options, p.pkg)) {
+                    if (p.pkg && !options.includes(p.pkg)) {
                         options.push(p.pkg);
                     }
                 }
@@ -196,22 +196,22 @@
             case 'agency':
                 for (i = 0; i < providers.length; i++) {
                     p = providers[i];
-                    if (p.sponsoringAgency && !contains(options, p.sponsoringAgency)) {
+                    if (p.sponsoringAgency && !options.includes(p.sponsoringAgency)) {
                         options.push(p.sponsoringAgency);
                     }
 
-                    if (p.sponsoringSubagency && !contains(options, p.sponsoringSubagency)) {
+                    if (p.sponsoringSubagency && !options.includes(p.sponsoringSubagency)) {
                         options.push(p.sponsoringSubagency);
                     }
 
                     // NOTE: Determine if it is necessary to check the leveraged ATO letters
                     for (j = 0; j < p.atoLetters.length; j++) {
                         l = p.atoLetters[j];
-                        if (l.authorizingAgency && !contains(options, l.authorizingAgency)) {
+                        if (l.authorizingAgency && !options.includes(l.authorizingAgency)) {
                             options.push(l.authorizingAgency);
                         }
 
-                        if (l.authorizingSubagency && !contains(options, l.authorizingSubagency)) {
+                        if (l.authorizingSubagency && !options.includes(l.authorizingSubagency)) {
                             options.push(l.authorizingSubagency);
                         }
                     }
@@ -285,7 +285,7 @@
             var counted = [];
             for (var i = 0; i < providers.length; i++) {
                 var p = providers[i];
-                if (p.name && !contains(counted, p.name)) {
+                if (p.name && !counted.includes(p.name)) {
                     counted.push(p.name);
                     totalAuthorized++;
                 }
@@ -315,93 +315,75 @@
          *  The total leveraged ATO letters
          */
 
-        self.leveragedAtos = function(){
-          let totalReuses = 0;
-          data.forEach(csp =>{
-            totalReuses += self.calcCSPRuse(csp, providers, false);
-          });
-          return totalReuses;
+        self.leveragedAtos = function () {
+            let totalReuses = 0;
+            providers.forEach(csp => {
+                totalReuses += self.calcCSPReuse(csp, providers, false);
+            });
+            return totalReuses;
         };
+
+        // /**
+        //  * The total leveraged ATO letters from authorized cloud service providers
+        //  * @public
+        //  * @memberof Controllers.HomeController
+        //  *
+        //  * @returns
+        //  *  Appends a list of the number of times leveraged by dependent package id to the provided array of CSPs
+        //  *
+        //  * @param {array} data
+        //  * The an array of all of the CSP data
+        //  */
+
+        // self.displayReuse = function (data) {
+        //     data.forEach(csp =>{
+        //         csp['Dependent_CSP'] = self.calcCSPRuse(csp, data, true);
+        //     });
+        //     return data;
+        // };
 
         /**
          * The total leveraged ATO letters from authorized cloud service providers
          * @public
          * @memberof Controllers.HomeController
          *
-         * @returns
-         *  Appends a list of the number of times leveraged by dependent package id to the provided array of CSPs
-         *
-         * @param {array} data
-         * The an array of all of the CSP data
-         */
-
-        self.displayReuse = function (data) {
-          data.forEach(csp =>{
-            csp['Dependent_CSP'] = self.calcCSPRuse(csp, data, true);
-          });
-          return data;
-        };
-
-        /**
-         * The total leveraged ATO letters from authorized cloud service providers
-         * @public
-         * @memberof Controllers.HomeController
+         * @param {object} csp
+         *  The information for an individual CSP
+         * @param {array} fullData
+         *  The information for all of the CSPs
+         * @param {boolean} asObject
+         *  True/False to determine where to return an array of object reuses or the total sum of reuses
          *
          * @returns
          *  An object of the number of times a CSP was reused by package id if asObject = true. If asObject = false, it will return the sum of the reuses for an individual CSP if
-         * @param {ojbect} csp
-         * The information for an individual CSP
-         * @param {array} fullData
-         * The information for all of the CSPs
-         * @param {boolean} asObject
-         * True/False to determine where to return an array of object reuses or the total sum of reueses
          */
-
-        self.calcCSPRuse = function(csp, fullData, asObject){
-          const directlyLeveraged = csp.Leveraged_ATO_Letters.length;
-          const leveragedATOs = fullData.filter(otherCSP => {
-            if(otherCSP.Underlying_CSP_Package_ID){
-              return otherCSP.Underlying_CSP_Package_ID.includes(csp.Package_ID);
-             }
-          });
-          if(asObject){ // Allows this function to be used to return an object of
-            return leveragedATOs.map(otherCSP => {
-              var rObj = {};
-              rObj[otherCSP.Package_ID] = otherCSP.Leveraged_ATO_Letters.length + 1; //Add the plus one for the unleveraged CSP
-              return rObj;} );
-          }
-          else{ // Return just the total sum
-            // Calculate Number
-            let summedReuses = leveragedATOs.length; // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
-            if(leveragedATOs.length > 0){
-              summedReuses += leveragedATOs.map(otherCSP => otherCSP.Leveraged_ATO_Letters.length).reduce( (prev, curr) => prev + curr ); // Add leveraged ATO of CSP dependencies
-            }
-            let reuses = directlyLeveraged + summedReuses;
-            return reuses;
-          }
-
-        };
-
-        /**
-         * Iterate through an array checking if the value already exists
-         * @private
-         * @memberof Controllers.HomeController
-         *
-         * @param {array} array
-         *  The array to iterate through
-         * @param {object} value
-         *  The value to search
-         *
-         * @returns
-         *  A value indicating if the value is contained in the array
-         */
-        function contains(array, value) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] === value) {
-                    return true;
+        self.calcCSPReuse = function (csp, fullData, asObject) {
+            const directlyLeveraged = csp.atoLetters.length;
+            const leveragedATOs = fullData.filter(otherCSP => {
+                if (otherCSP.underlyingCspPackages) {
+                    return otherCSP.underlyingCspPackages.includes(csp.pkgId);
                 }
+            });
+
+            // // Allows this function to be used to return an object of
+            // if (asObject) {
+            //     return leveragedATOs.map(otherCSP => {
+            //         var rObj = {};
+            //         rObj[otherCSP.pkgId] = otherCSP.atoLetters.length + 1; //Add the plus one for the unleveraged CSP
+            //         return rObj;
+            //     });
+            // }
+
+            // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
+            let summedReuses = leveragedATOs.length;
+            if(leveragedATOs.length > 0){
+                // Add leveraged ATO of CSP dependencies
+                summedReuses += leveragedATOs
+                    .map(otherCSP => otherCSP.atoLetters.length)
+                    .reduce((prev, curr) => prev + curr);
             }
-            return false;
-        }
+
+            return directlyLeveraged + summedReuses;
+        };
     }
 })();

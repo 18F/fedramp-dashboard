@@ -20,6 +20,7 @@ module.exports = function(config) {
             'lib/angular.min.js',
             'lib/angular-ui-router.min.js',
             'lib/**/*.js',
+            'test/phantomjs-shim.js',
             'dist/fedramp.js',
             'test/**/*.js',
         ],

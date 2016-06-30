@@ -180,8 +180,8 @@
                     var letter = null;
                     if (key) {
                         if (key === 'atoLetters') {
-                            for (letter in options[x]) {
-                                self[key].push(new AtoLetter(options[x][letter]));
+                            for (let i = 0; i < options[x].length; i++) {
+                                self[key].push(new AtoLetter(options[x][i]));
                             }
                         } else {
                             self[key] = options[x];
@@ -189,8 +189,8 @@
                     } else {
                         if (self.hasOwnProperty(x)) {
                             if (x === 'atoLetters') {
-                                for (letter in options[x]) {
-                                    self[x].push(new AtoLetter(options[x][letter]));
+                                for (let i = 0; i < options[x].length; i++) {
+                                    self[x].push(new AtoLetter(options[x][i]));
                                 }
                             } else {
                                 self[x] = options[x];

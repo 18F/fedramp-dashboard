@@ -395,8 +395,8 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     var letter = null;
                     if (key) {
                         if (key === 'atoLetters') {
-                            for (letter in options[x]) {
-                                self[key].push(new AtoLetter(options[x][letter]));
+                            for (var i = 0; i < options[x].length; i++) {
+                                self[key].push(new AtoLetter(options[x][i]));
                             }
                         } else {
                             self[key] = options[x];
@@ -404,8 +404,8 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     } else {
                         if (self.hasOwnProperty(x)) {
                             if (x === 'atoLetters') {
-                                for (letter in options[x]) {
-                                    self[x].push(new AtoLetter(options[x][letter]));
+                                for (var _i = 0; _i < options[x].length; _i++) {
+                                    self[x].push(new AtoLetter(options[x][_i]));
                                 }
                             } else {
                                 self[x] = options[x];
@@ -1218,7 +1218,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 case 'csp':
                     for (i = 0; i < providers.length; i++) {
                         p = providers[i];
-                        if (p.name && !contains(options, p.name)) {
+                        if (p.name && !options.includes(p.name)) {
                             options.push(p.name);
                         }
                     }
@@ -1227,7 +1227,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 case 'cso':
                     for (i = 0; i < providers.length; i++) {
                         p = providers[i];
-                        if (p.pkg && !contains(options, p.pkg)) {
+                        if (p.pkg && !options.includes(p.pkg)) {
                             options.push(p.pkg);
                         }
                     }
@@ -1236,22 +1236,22 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 case 'agency':
                     for (i = 0; i < providers.length; i++) {
                         p = providers[i];
-                        if (p.sponsoringAgency && !contains(options, p.sponsoringAgency)) {
+                        if (p.sponsoringAgency && !options.includes(p.sponsoringAgency)) {
                             options.push(p.sponsoringAgency);
                         }
 
-                        if (p.sponsoringSubagency && !contains(options, p.sponsoringSubagency)) {
+                        if (p.sponsoringSubagency && !options.includes(p.sponsoringSubagency)) {
                             options.push(p.sponsoringSubagency);
                         }
 
                         // NOTE: Determine if it is necessary to check the leveraged ATO letters
                         for (j = 0; j < p.atoLetters.length; j++) {
                             l = p.atoLetters[j];
-                            if (l.authorizingAgency && !contains(options, l.authorizingAgency)) {
+                            if (l.authorizingAgency && !options.includes(l.authorizingAgency)) {
                                 options.push(l.authorizingAgency);
                             }
 
-                            if (l.authorizingSubagency && !contains(options, l.authorizingSubagency)) {
+                            if (l.authorizingSubagency && !options.includes(l.authorizingSubagency)) {
                                 options.push(l.authorizingSubagency);
                             }
                         }
@@ -1325,7 +1325,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
             var counted = [];
             for (var i = 0; i < providers.length; i++) {
                 var p = providers[i];
-                if (p.name && !contains(counted, p.name)) {
+                if (p.name && !counted.includes(p.name)) {
                     counted.push(p.name);
                     totalAuthorized++;
                 }
@@ -1354,60 +1354,78 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
          * @returns
          *  The total leveraged ATO letters
          */
+
         self.leveragedAtos = function () {
-            var reused = 0;
-
-            // This variable stores the current package identifier to be
-            // used in our filter query
-            var pkgId = '';
-            function filterUnderlying(csp) {
-                // Try using ES6 [Array.prototype.includes](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/includes)
-                // Right now this is will fail using PhantomJS
-                if (Array.prototype.includes) {
-                    return csp && csp.underlyingCspPackages && csp.underlyingCspPackages.includes(pkgId);
-                }
-                return csp && csp.underlyingCspPackages && contains(csp.underlyingCspPackages, pkgId);
-            }
-
-            // Loop through each provider
-            for (var i = 0; i < providers.length; i++) {
-                var p = providers[i];
-                pkgId = p.pkgId;
-                reused += p.atoLetters.length;
-
-                var underlyingAtos = providers.filter(filterUnderlying);
-                if (underlyingAtos.length > 0) {
-                    reused += underlyingAtos.map(function (csp) {
-                        return csp.atoLetters.length;
-                    }).reduce(function (prev, curr) {
-                        return prev + curr;
-                    });
-                }
-            }
-
-            return reused;
+            var totalReuses = 0;
+            providers.forEach(function (csp) {
+                totalReuses += self.calcCSPReuse(csp, providers, false);
+            });
+            return totalReuses;
         };
 
+        // /**
+        //  * The total leveraged ATO letters from authorized cloud service providers
+        //  * @public
+        //  * @memberof Controllers.HomeController
+        //  *
+        //  * @returns
+        //  *  Appends a list of the number of times leveraged by dependent package id to the provided array of CSPs
+        //  *
+        //  * @param {array} data
+        //  * The an array of all of the CSP data
+        //  */
+
+        // self.displayReuse = function (data) {
+        //     data.forEach(csp =>{
+        //         csp['Dependent_CSP'] = self.calcCSPRuse(csp, data, true);
+        //     });
+        //     return data;
+        // };
+
         /**
-         * Iterate through an array checking if the value already exists
-         * @private
+         * The total leveraged ATO letters from authorized cloud service providers
+         * @public
          * @memberof Controllers.HomeController
          *
-         * @param {array} array
-         *  The array to iterate through
-         * @param {object} value
-         *  The value to search
+         * @param {object} csp
+         *  The information for an individual CSP
+         * @param {array} fullData
+         *  The information for all of the CSPs
+         * @param {boolean} asObject
+         *  True/False to determine where to return an array of object reuses or the total sum of reuses
          *
          * @returns
-         *  A value indicating if the value is contained in the array
+         *  An object of the number of times a CSP was reused by package id if asObject = true. If asObject = false, it will return the sum of the reuses for an individual CSP if
          */
-        function contains(array, value) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] === value) {
-                    return true;
+        self.calcCSPReuse = function (csp, fullData, asObject) {
+            var directlyLeveraged = csp.atoLetters.length;
+            var leveragedATOs = fullData.filter(function (otherCSP) {
+                if (otherCSP.underlyingCspPackages) {
+                    return otherCSP.underlyingCspPackages.includes(csp.pkgId);
                 }
+            });
+
+            // // Allows this function to be used to return an object of
+            // if (asObject) {
+            //     return leveragedATOs.map(otherCSP => {
+            //         var rObj = {};
+            //         rObj[otherCSP.pkgId] = otherCSP.atoLetters.length + 1; //Add the plus one for the unleveraged CSP
+            //         return rObj;
+            //     });
+            // }
+
+            // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
+            var summedReuses = leveragedATOs.length;
+            if (leveragedATOs.length > 0) {
+                // Add leveraged ATO of CSP dependencies
+                summedReuses += leveragedATOs.map(function (otherCSP) {
+                    return otherCSP.atoLetters.length;
+                }).reduce(function (prev, curr) {
+                    return prev + curr;
+                });
             }
-            return false;
-        }
+
+            return directlyLeveraged + summedReuses;
+        };
     }
 })();
