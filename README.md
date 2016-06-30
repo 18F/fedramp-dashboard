@@ -27,7 +27,7 @@ Taiga: [https://tree.taiga.io/project/truetandem-fedramp-dashboard](https://tree
 First you are going to want to clone the repository
 
 ```
-git clone git@github.com:truetandem/fedramp-dashboard.git
+git clone https://github.com/truetandem/fedramp-dashboard.git
 ```
 
 ### Checking dependencies
