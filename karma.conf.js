@@ -20,8 +20,7 @@ module.exports = function(config) {
             'lib/angular.min.js',
             'lib/angular-ui-router.min.js',
             'lib/**/*.js',
-            'src/**/*.module.js',
-            'src/**/*.js',
+            'dist/fedramp.js',
             'test/**/*.js',
         ],
 
@@ -38,7 +37,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'src/**/*.js': ['coverage']
+            'dist/fedramp.js': ['coverage']
         },
 
 

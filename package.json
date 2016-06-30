@@ -7,7 +7,8 @@
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "start": "./node_modules/.bin/http-server",
     "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./doc --readme README.md",
-    "package": "./node_modules/.bin/gulp"
+    "package": "./node_modules/.bin/gulp package",
+    "watch": "./node_modules/.bin/gulp watch"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,12 @@
   },
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
     "coveralls": "^2.11.9",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-gzip": "^1.4.0",
     "gulp-jshint": "^2.0.1",

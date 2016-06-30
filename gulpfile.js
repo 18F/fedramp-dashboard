@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
@@ -13,22 +14,22 @@ var jshint = require('gulp-jshint');
 // App specific constants
 
 // Filename for final minified javascript file
-var minifiedOutputFilename = 'fedramp.min.js';
+var concatOutputFilename = 'fedramp.js';
 
 // Regex to use to find dev paths to extract
 var jsPathRegex = /(\s.*)<!-- AppFiles -->(\n{1,})(\s.*){1,}<!-- AppFilesEnd -->/g;
 
 // References to use when replacing dev paths
 var prodJsPath = [ 
-    '\n<!-- Added on ' + new Date() + ' -->',
-    '<script src="lib/jquery-3.0.0.min.js"></script>',
-    '<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>',
-    '<script src="lib/angular-ui-router.min.js"></script>',
-    '<script src="lib/papaparse.min.js"></script>',
-    '<script src="lib/uswds.min.js"></script>',
-    '<script src="fedramp.min.js"></script>'
+    '\n        <!-- Added on ' + new Date() + ' -->',
+    '        <script src="lib/jquery-3.0.0.min.js"></script>',
+    '        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>',
+    '        <script src="lib/angular-ui-router.min.js"></script>',
+    '        <script src="lib/papaparse.min.js"></script>',
+    '        <script src="lib/uswds.min.js"></script>',
+    '        <script src="fedramp.min.js"></script>'
 ];
-    
+
 /**
  * Deletes the build/ directory to ensure a clean start
  */
@@ -55,12 +56,13 @@ gulp.task('copy:src', ['clean'], function(){
 gulp.task('copy:lib', ['clean'], function(){
     "use strict";
     console.log('Copying over all of the lib files');
-    return gulp.src([
-        'lib/angular-ui-router.min.js',
-        'lib/jquery-3.0.0.min.js',
-        'lib/papaparse.min.js',
-        'lib/uswds.min.js'
-    ])
+    return gulp
+        .src([
+            'lib/angular-ui-router.min.js',
+            'lib/jquery-3.0.0.min.js',
+            'lib/papaparse.min.js',
+            'lib/uswds.min.js'
+        ])
         .pipe(gulp.dest('build/lib'))
         .pipe(gulp.dest('build/dest/lib'));
 });
@@ -71,9 +73,10 @@ gulp.task('copy:lib', ['clean'], function(){
 gulp.task('copy:css', ['clean'], function(){
     "use strict";
     console.log('Copying over all of the css files');
-    return gulp.src([
-        'css/**/*'
-    ])
+    return gulp
+        .src([
+            'css/**/*'
+        ])
         .pipe(gulp.dest('build/css'))
         .pipe(gulp.dest('build/dest/css'));
 });
@@ -84,9 +87,10 @@ gulp.task('copy:css', ['clean'], function(){
 gulp.task('copy:img', ['clean'], function(){
     "use strict";
     console.log('Copying over all of the image files');
-    return gulp.src([
-        'img/**/*'
-    ])
+    return gulp
+        .src([
+            'img/**/*'
+        ])
         .pipe(gulp.dest('build/img'))
         .pipe(gulp.dest('build/dest/img'));
 });
@@ -97,9 +101,10 @@ gulp.task('copy:img', ['clean'], function(){
 gulp.task('copy:fonts', ['clean'], function(){
     "use strict";
     console.log('Copying over all of the font files');
-    return gulp.src([
-        'fonts/**/*'
-    ])
+    return gulp
+        .src([
+            'fonts/**/*'
+        ])
         .pipe(gulp.dest('build/fonts'))
         .pipe(gulp.dest('build/dest/fonts'));
 });
@@ -112,16 +117,15 @@ gulp.task('copy:fonts', ['clean'], function(){
 gulp.task('copy:lint', ['copy:src'], function(){
     "use strict";
     console.log('Linting dev JS files');
-    return gulp.src([
-        'build/src/**/*.js',
-    ])
+    return gulp
+        .src([
+            'build/src/**/*.js',
+        ])
         .pipe(jshint('.jshintrc'))
-
-        // Add pretty colors to error output
         .pipe(jshint.reporter('jshint-stylish'));
 
-        // Ensure build fails and linter complains
-        //.pipe(jshint.reporter('fail'));
+    // Ensure build fails and linter complains
+    //.pipe(jshint.reporter('fail'));
 });
 
 /**
@@ -132,7 +136,8 @@ gulp.task('copy:lint', ['copy:src'], function(){
 gulp.task('templates:cache', ['copy'], function(){
     "use strict";
     console.log('Caching angular templates');
-    return gulp.src(['build/**/*.html'])
+    return gulp
+        .src(['build/**/*.html'])
         .pipe(templateCache({
             module: 'fedramp',
             filename: 'fedramp.templates.js'
@@ -141,39 +146,51 @@ gulp.task('templates:cache', ['copy'], function(){
 });
 
 /**
+ * Concatenates all the minified application javascript files from /build/src.min
+ * into one file.
+ **/
+gulp.task('mangle:concat', ['templates'], function(){
+    "use strict";
+    console.log('Concatenating JS files');
+    return gulp
+        .src([
+            'build/src/**/*.module.js',
+            'build/src/**/*.js'
+        ])
+        .pipe(concat(concatOutputFilename))
+        .pipe(gulp.dest('./build/dest/'));
+});
+
+gulp.task('mangle:babel', ['mangle:concat'], function () {
+    'use strict';
+    return gulp
+        .src('build/dest/' + concatOutputFilename)
+        .pipe(babel({ presets: ['es2015'] }))
+        .pipe(gulp.dest('./build/dest/'));
+});
+
+/**
  * Minifies all individual javascript files and then dumps them into
  * `build/src.min` directory.
  *
  * Waits for the `templates` task to complete
  */
-gulp.task('mangle:uglify', ['templates'], function(){
+gulp.task('mangle:uglify', ['mangle:babel'], function(){
     "use strict";
     console.log('Uglifying js files');
-    return gulp.src(['build/src/**/*.js'])
+    return gulp
+        .src(['build/dest/' + concatOutputFilename])
         .pipe(uglify())
         .pipe(rename({extname: '.min.js'}))
-        .pipe(gulp.dest('build/src.min'));
+        .pipe(gulp.dest('build/dest/'));
 });
 
-
-/**
- * Concatenates all the minified application javascript files from /build/src.min
- * into one file.
- *
- * Waits for the `mangle:uglify` build task to complete before executing.
- **/
-gulp.task('mangle:concat', ['mangle:uglify'], function(){
+gulp.task('mangle:copy', ['mangle:uglify'], function(){
     "use strict";
-    console.log('Concatenating JS files');
-    return gulp.src([
-            'build/src.min/**/*.module.min.js',
-            'build/src.min/**/*.js'
-    ])
-        .pipe(concat(minifiedOutputFilename))
-        .pipe(gulp.dest('./build/dest/'));
+    return gulp
+        .src('build/dest/fedramp*.js')
+        .pipe(gulp.dest('dist'));
 });
-
-
 
 
 /**
@@ -185,8 +202,8 @@ gulp.task('mangle:concat', ['mangle:uglify'], function(){
 gulp.task('homepage', ['mangle'], function(){
     "use strict";
     console.log('Replacing dev js src paths with production paths');
-    return gulp.src(['index.html'])
-        // Replace dev js references to production paths
+    return gulp
+        .src(['index.html'])
         .pipe(replace(jsPathRegex, prodJsPath.join('\n')))
         .pipe(gulp.dest('build/dest'));
 });
@@ -199,7 +216,8 @@ gulp.task('homepage', ['mangle'], function(){
 gulp.task('archive:zip', ['homepage'], function(){
     "use strict";
     console.log('Zipping up FedRAMP');
-    return gulp.src('build/dest/**/*')
+    return gulp
+        .src('build/dest/**/*')
         .pipe(zip('fedramp.zip'))
         .pipe(gulp.dest('build/dist'));
 });
@@ -213,20 +231,29 @@ gulp.task('archive:zip', ['homepage'], function(){
 gulp.task('archive:gzip', ['homepage'], function(){
     "use strict";
     console.log('Gzipping FedRAMP');
-    return gulp.src('build/dest/**/*')
+    return gulp
+        .src('build/dest/**/*')
         .pipe(tar('fedramp.tar'))
         .pipe(gzip())
         .pipe(gulp.dest('build/dist'));
 });
 
+gulp.task('watch:dog', [], function () {
+    'use strict';
+    console.log('Watch dog, ARF ARF!!!');
+    gulp.watch('src/**/*.js', ['default']);
+});
+
 
 // Creates sub-tasks
 gulp.task('archive', ['archive:zip', 'archive:gzip']);
-gulp.task('mangle', ['mangle:uglify', 'mangle:concat']);
+gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:uglify', 'mangle:copy']);
 gulp.task('templates', ['templates:cache']);
 gulp.task('copy', ['copy:src', 'copy:lib', 'copy:img', 'copy:css', 'copy:fonts', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
-gulp.task('default', ['clean', 'copy', 'templates', 'mangle', 'homepage', 'archive']);
+gulp.task('default', ['clean', 'copy', 'templates', 'mangle']);
+gulp.task('package', ['clean', 'copy', 'templates', 'mangle', 'homepage', 'archive']);
+gulp.task('watch', ['watch:dog']);
 
 
