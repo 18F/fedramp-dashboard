@@ -14,20 +14,23 @@ var TestData = {
             'Original_Authorization_Date': '2013-08-23T04:00:00.000Z',
             'Sponsoring_Agency': 'JAB Authorization',
             'Active': 'Active',
+            'Independent_Assessor': 'ABC',
             'Leveraged_ATO_Letters': [
                 {
                     'Letter_Date': '2013-09-24T04:00:00.000Z',
                     'Letter_Expiration_Date': '2016-09-24T04:00:00.000Z',
                     'Authorizing_Agency': 'Department of Homeland Security',
                     'Authorizing_Subagency': 'Department of Homeland Security',
-                    'Active': 'Active'
+                    'Active': 'Active',
+                    'Independent_Assessor': 'ABC'
                 },
                 {
                     'Letter_Expiration_Date': '2015-11-19T05:00:00.000Z',
                     'Authorizing_Letter_Last_Sign_Date': '2014-03-06T05:00:00.000Z',
                     'Authorizing_Agency': 'Department of the Treasury',
                     'Authorizing_Subagency': 'Department of the Treasury',
-                    'Active': 'Active'
+                    'Active': 'Active',
+                    'Independent_Assessor': 'ACME'
                 }
             ]
         }], 

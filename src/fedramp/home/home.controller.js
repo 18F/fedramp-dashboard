@@ -5,16 +5,17 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'providers', 'CsvService'];
+    HomeController.$inject = ['$log', 'fedrampData', 'CsvService'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, providers, CsvService) {
+    function HomeController ($log, fedrampData, CsvService) {
         var self = this;
         var lastFilterType = '';
         var downloadBlob = null;
+        var rawData = fedrampData.all();
 
         /**
          * The title displayed on the home page
@@ -24,12 +25,18 @@
         self.title = 'FedRAMP';
 
         /**
+         * Display the tiles in an expanded format
+         * @member {boolean}
+         * @memberof Controllers.HomeController
+         **/
+        self.expandTiles = true;
+        
+        /**
          * The download URL
          * @member {string}
          * @memberof Controllers.HomeController
          */
         self.downloadUrl = '#';
-
 
         /**
          * Sort by property.
@@ -50,7 +57,7 @@
          * @member {array}
          * @memberof Controllers.HomeController
          */
-        self.filteredData = providers;
+        self.filteredData = rawData;
 
         /**
          * The type of filter applied to the data
@@ -82,7 +89,7 @@
          *  A value indicating if any data is stored
          */
         self.hasData = function () {
-            return providers && providers.length > 0;
+            return rawData && rawData.length > 0;
         };
 
         /**
@@ -101,7 +108,7 @@
 
             // If there is no filter applied then we show everything
             if (!type || !filter) {
-                self.filteredData = providers;
+                self.filteredData = rawData;
                 sortData();
                 return;
             }
@@ -113,8 +120,8 @@
 
             switch (type) {
             case 'csp':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i < rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.name.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -122,8 +129,8 @@
                 break;
 
             case 'cso':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i < rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.pkg.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -131,8 +138,8 @@
                 break;
 
             case 'agency':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i < rawData.length; i++) {
+                    let p = rawData[i];
                     if ((p.sponsoringAgency + p.sponsoringSubagency).indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     } else {
@@ -149,8 +156,8 @@
                 break;
 
             case '3pao':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i < rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.independentAssessor.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -172,7 +179,7 @@
             downloadBlob = null;
 
             // Parse the data here
-            var csv = CsvService.toCsv(CsvService.flattenProviders(prefiltered));
+            var csv = CsvService.toCsv(CsvService.flatten(prefiltered));
             if (csv) {
                 downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
                 self.downloadUrl = window.URL.createObjectURL(downloadBlob);
@@ -201,62 +208,19 @@
 
             switch (type) {
             case 'csp':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
-                    if (p.name && !options.includes(p.name)) {
-                        options.push(p.name);
-                    }
-                }
+                fedrampData.providers().forEach(x => options.push(x.name));
                 break;
 
             case 'cso':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
-                    if (p.pkg && !options.includes(p.pkg)) {
-                        options.push(p.pkg);
-                    }
-                }
+                fedrampData.products().forEach(x => options.push(x.name));
                 break;
 
             case 'agency':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
-                    if (p.sponsoringAgency && !options.includes(p.sponsoringAgency)) {
-                        options.push(p.sponsoringAgency);
-                    }
-
-                    if (p.sponsoringSubagency && !options.includes(p.sponsoringSubagency)) {
-                        options.push(p.sponsoringSubagency);
-                    }
-
-                    // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                    for (let j = 0; j < p.atoLetters.length; j++) {
-                        let l = p.atoLetters[j];
-                        if (l.authorizingAgency && !options.includes(l.authorizingAgency)) {
-                            options.push(l.authorizingAgency);
-                        }
-
-                        if (l.authorizingSubagency && !options.includes(l.authorizingSubagency)) {
-                            options.push(l.authorizingSubagency);
-                        }
-                    }
-                }
+                fedrampData.agencies().forEach(x => options.push(x.name));
                 break;
 
             case '3pao':
-                for (let i = 0; i < providers.length; i++) {
-                    let p = providers[i];
-                    if (p.independentAssessor && !options.includes(p.independentAssessor)) {
-                        options.push(p.independentAssessor);
-                    }
-
-                    for (let j = 0; j < p.atoLetters.length; j++) {
-                        let l = p.atoLetters[j];
-                        if (l.independentAssessor && !options.includes(l.independentAssessor)) {
-                            options.push(l.independentAssessor);
-                        }
-                    }
-                }
+                fedrampData.assessors().forEach(x => options.push(x.name));
                 break;
             }
 
@@ -314,18 +278,7 @@
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
-            var totalAuthorized = 0;
-
-            var counted = [];
-            for (var i = 0; i < providers.length; i++) {
-                var p = providers[i];
-                if (p.name && !counted.includes(p.name)) {
-                    counted.push(p.name);
-                    totalAuthorized++;
-                }
-            }
-
-            return totalAuthorized;
+            return fedrampData.providers().length;
         };
 
         /**
@@ -351,6 +304,7 @@
 
         self.leveragedAtos = function () {
             let totalReuses = 0;
+            let providers = fedrampData.all();
             providers.forEach(csp => {
                 totalReuses += self.calcCSPReuse(csp, providers, false);
             });

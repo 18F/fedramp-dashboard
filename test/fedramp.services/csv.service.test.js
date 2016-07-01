@@ -1,9 +1,9 @@
-describe('CsvService', function(){
+describe('The CSV service', function(){
 	'use strict';
 
     var CsvService;
-    var providerData;
-    var providerDataWithoutAtoLetters;
+    var fedrampData;
+    var fedrampDataWithoutAtoLetters;
 
     // Do that good/bad data factory
     var dataJson = {
@@ -20,7 +20,7 @@ describe('CsvService', function(){
             var Provider = $injector.get('Provider');
             CsvService = $injector.get('CsvService');
 
-            providerData = new Provider({
+            fedrampData = new Provider({
                 'Cloud_Service_Provider_Name': 'test',
                 'Designation': 'Compliant',
                 'Service_Model': [
@@ -40,7 +40,6 @@ describe('CsvService', function(){
                         'Active': 'Active',
                         'Include_In_Marketplace': 'Yes'
                     },
-
                     {
                         'Letter_Date': '2016-02-24T05:00:00.000Z',
                         'Authorizing_Date': '2017-02-24T05:00:00.000Z',
@@ -54,7 +53,7 @@ describe('CsvService', function(){
                 ]
             });
 
-            providerDataWithoutAtoLetters = new Provider({
+            fedrampDataWithoutAtoLetters = new Provider({
                 'Cloud_Service_Provider_Name': 'test',
                 'Designation': 'Compliant',
                 'Service_Model': [
@@ -68,30 +67,28 @@ describe('CsvService', function(){
         });
     });
 
-	describe('flattenProviders() with providers', function(){
-		it('Converts an array of Providers to a flatten csv friendly structure', function(){
-            var flattenProviders = CsvService.flattenProviders([providerData, providerDataWithoutAtoLetters]);
-            expect(flattenProviders).not.toBeNull();
-            expect(flattenProviders.length).toEqual(3);
-		});
-	});
+    it('can convert an array of objects to a flattened CSV friendly structure', function(){
+        var flatten = CsvService.flatten([fedrampData, fedrampDataWithoutAtoLetters]);
+        expect(flatten).not.toBeNull();
+        expect(flatten.length).toEqual(2);
+    });
 
-	describe('flattenProviders() without ato letters', function(){
+	describe('flatten() without ato letters', function(){
 		it('Converts an array of Providers to a flatten csv friendly structure', function(){
-            var flattenProviders = CsvService.flattenProviders([providerDataWithoutAtoLetters]);
-            expect(flattenProviders).not.toBeNull();
-            expect(flattenProviders.length).toEqual(1);
+            var flatten = CsvService.flatten([fedrampDataWithoutAtoLetters]);
+            expect(flatten).not.toBeNull();
+            expect(flatten.length).toEqual(1);
 		});
 	});
 
 	describe('toCsv() Converts an object csv string', function(){
 		it('Converts an object of providers to a csv string', function(){
-            var flattenProviders = CsvService.flattenProviders([providerData, providerDataWithoutAtoLetters]);
+            var flatten = CsvService.flatten([fedrampData, fedrampDataWithoutAtoLetters]);
 
-            expect(flattenProviders).not.toBeNull();
-            expect(flattenProviders.length).toEqual(3);
+            expect(flatten).not.toBeNull();
+            expect(flatten.length).toEqual(2);
 
-            var csv = CsvService.toCsv(flattenProviders);
+            var csv = CsvService.toCsv(flatten);
             expect(csv).not.toBeNull();
             expect(csv.length).toBeGreaterThan(0);
 		});

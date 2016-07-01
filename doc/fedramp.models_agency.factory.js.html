@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Controllers</title>
+    <title>JSDoc: Source: fedramp.models/agency.factory.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,102 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Controllers</h1>
+    <h1 class="page-title">Source: fedramp.models/agency.factory.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>Controllers</h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
 
-<article>
-    <div class="container-overview">
-    
-        
+    angular
+        .module('fedramp.models')
+        .factory('Agency', AgencyFactory);
 
-        
+    AgencyFactory.$inject = [];
 
+    function AgencyFactory () {
+        /**
+         * The agency
+         * @constructor
+         * @memberof Models
+         */
+        function Agency (options) {
+            // Scope `this` to self
+            var self = this;
 
-<dl class="details">
+            self.type = 'agency';
+            self.name = '';
+            self.reuses = 0;
+            self.sponsored = 0;
+            self.authorized = 0;
+            self.providers = [];
+            self.products = [];
+            self.assessors = [];
+        }
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_fedramp.module.js.html">fedramp/fedramp.module.js</a>, <a href="fedramp_fedramp.module.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="Controllers.HomeController.html">HomeController</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+        return Agency;
+    }
+})();
+</code></pre>
+        </article>
+    </section>
 
 
 

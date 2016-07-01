@@ -2,15 +2,24 @@
 describe('Home controller with data', function () {
     'use strict';
 
-    var Provider;
+    var StorageData;
+    var Data;
     var homeController;
+    var storage;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.services');
         inject(function ($controller, $injector) {
-            Provider = $injector.get('Provider');
+            StorageData = $injector.get('StorageData');
+            Data = $injector.get('Data');
+
+            var data = new Data(TestData.Letters[0]);
+            storage = new StorageData();
+            storage.clear();
+            storage.update(data.hash(), data);
+            
             homeController = $controller('HomeController', { 
-                providers: [new Provider(TestData.Letters[0])]
+                fedrampData: storage
             });
         });
     });
@@ -113,7 +122,7 @@ describe('Home controller with data', function () {
 
         it('for a 3PAO', function () {
             homeController.toggleFilter('3pao');
-            expect(homeController.filterOptions.length).toBe(0);
+            expect(homeController.filterOptions.length).toBe(2);
         });
     });
 });
@@ -121,15 +130,21 @@ describe('Home controller with data', function () {
 describe('Home controller with no data', function () {
     'use strict';
 
-    var Provider;
+    var StorageData;
+    var Data;
     var homeController;
+    var storage;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.services');
         inject(function ($controller, $injector) {
-            Provider = $injector.get('Provider');
+            StorageData = $injector.get('StorageData');
+            Data = $injector.get('Data');
+            storage = new StorageData();
+            storage.clear();
+
             homeController = $controller('HomeController', { 
-                providers: []
+                fedrampData: storage
             });
         });
     });

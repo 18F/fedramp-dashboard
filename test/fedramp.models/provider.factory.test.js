@@ -1,11 +1,11 @@
-describe('Provider can map', function () {
+describe('Data can map', function () {
     'use strict';
 
-    var providerMapping;
-    var Provider;
+    var dataMapping;
+    var Data;
     
     beforeAll(function () {
-        providerMapping = {
+        dataMapping = {
             'Cloud_Service_Provider_Name': 'name',
             'Cloud_Service_Provider_Package': 'pkg',
             'Path': 'path',
@@ -26,7 +26,7 @@ describe('Provider can map', function () {
     beforeEach(function(){
         module('fedramp.models');
         inject(function($injector){
-            Provider = $injector.get('Provider');
+            Data = $injector.get('Data');
         });
     });
 
@@ -41,7 +41,7 @@ describe('Provider can map', function () {
             'Active': 'Active'
         }];
 
-        for (var x in providerMapping) {
+        for (var x in dataMapping) {
             var options = {};
             if (x === 'Leveraged_ATO_Letters') {
                 options[x] = expectedArray;
@@ -49,11 +49,11 @@ describe('Provider can map', function () {
                 options[x] = expectedValue;
             }
 
-            var p = new Provider(options);
+            var d = new Data(options);
             if (x === 'Leveraged_ATO_Letters') {
-                expect(p[providerMapping[x]].length).toBe(1);
+                expect(d[dataMapping[x]].length).toBe(1);
             } else {
-                expect(p[providerMapping[x]]).toBe(expectedValue);
+                expect(d[dataMapping[x]]).toBe(expectedValue);
             }
         }
     });
@@ -69,8 +69,8 @@ describe('Provider can map', function () {
             'Active': 'Active'
         }];
 
-        for (var x in providerMapping) {
-            var key = providerMapping[x];
+        for (var x in dataMapping) {
+            var key = dataMapping[x];
             var options = {};
             if (key === 'atoLetters') {
                 options[key] = expectedArray;
@@ -78,29 +78,30 @@ describe('Provider can map', function () {
                 options[key] = expectedValue;
             }
 
-            var p = new Provider(options);
+            var d = new Data(options);
             if (key === 'atoLetters') {
-                expect(p[key].length).toBe(1);
+                expect(d[key].length).toBe(1);
             } else {
-                expect(p[key]).toBe(expectedValue);
+                expect(d[key]).toBe(expectedValue);
             }
         }
     });
 });
 
-describe('Provider hash', function () {
+describe('Data hash', function () {
     'use strict';
-    var Provider;
+
+    var Data;
 
     beforeEach(function(){
         module('fedramp.models');
         inject(function($injector){
-            Provider = $injector.get('Provider');
+            Data = $injector.get('Data');
         });
     });
 
     it('is described according to the properties', function () {
-        var p = new Provider({
+        var d = new Data({
             'Cloud_Service_Provider_Name': 'test',
             'Designation': 'Compliant',
             'Service_Model': [
@@ -120,7 +121,8 @@ describe('Provider hash', function () {
                 }
             ]
         });
-        var expected = '' + p.name + p.pkg + p.pkgId + p.sponsoringAgency;
-        expect(p.hash()).toBe(expected);
+
+        var expected = '' + d.name + d.pkg + d.pkgId + d.sponsoringAgency;
+        expect(d.hash()).toBe(expected);
     });
 });

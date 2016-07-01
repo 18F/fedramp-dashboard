@@ -33,16 +33,17 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'providers', 'CsvService'];
+    HomeController.$inject = ['$log', 'fedrampData', 'CsvService'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, providers, CsvService) {
+    function HomeController ($log, fedrampData, CsvService) {
         var self = this;
         var lastFilterType = '';
         var downloadBlob = null;
+        var rawData = fedrampData.all();
 
         /**
          * The title displayed on the home page
@@ -52,12 +53,18 @@
         self.title = 'FedRAMP';
 
         /**
+         * Display the tiles in an expanded format
+         * @member {boolean}
+         * @memberof Controllers.HomeController
+         **/
+        self.expandTiles = true;
+        
+        /**
          * The download URL
          * @member {string}
          * @memberof Controllers.HomeController
          */
         self.downloadUrl = '#';
-
 
         /**
          * Sort by property.
@@ -78,7 +85,7 @@
          * @member {array}
          * @memberof Controllers.HomeController
          */
-        self.filteredData = providers;
+        self.filteredData = rawData;
 
         /**
          * The type of filter applied to the data
@@ -110,7 +117,7 @@
          *  A value indicating if any data is stored
          */
         self.hasData = function () {
-            return providers &amp;&amp; providers.length > 0;
+            return rawData &amp;&amp; rawData.length > 0;
         };
 
         /**
@@ -129,7 +136,7 @@
 
             // If there is no filter applied then we show everything
             if (!type || !filter) {
-                self.filteredData = providers;
+                self.filteredData = rawData;
                 sortData();
                 return;
             }
@@ -141,8 +148,8 @@
 
             switch (type) {
             case 'csp':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i &lt; rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.name.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -150,8 +157,8 @@
                 break;
 
             case 'cso':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i &lt; rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.pkg.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -159,8 +166,8 @@
                 break;
 
             case 'agency':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i &lt; rawData.length; i++) {
+                    let p = rawData[i];
                     if ((p.sponsoringAgency + p.sponsoringSubagency).indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     } else {
@@ -177,8 +184,8 @@
                 break;
 
             case '3pao':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
+                for (let i = 0; i &lt; rawData.length; i++) {
+                    let p = rawData[i];
                     if (p.independentAssessor.indexOf(filter) !== -1) {
                         prefiltered.push(p);
                     }
@@ -200,7 +207,7 @@
             downloadBlob = null;
 
             // Parse the data here
-            var csv = CsvService.toCsv(CsvService.flattenProviders(prefiltered));
+            var csv = CsvService.toCsv(CsvService.flatten(prefiltered));
             if (csv) {
                 downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
                 self.downloadUrl = window.URL.createObjectURL(downloadBlob);
@@ -229,62 +236,19 @@
 
             switch (type) {
             case 'csp':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
-                    if (p.name &amp;&amp; !options.includes(p.name)) {
-                        options.push(p.name);
-                    }
-                }
+                fedrampData.providers().forEach(x => options.push(x.name));
                 break;
 
             case 'cso':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
-                    if (p.pkg &amp;&amp; !options.includes(p.pkg)) {
-                        options.push(p.pkg);
-                    }
-                }
+                fedrampData.products().forEach(x => options.push(x.name));
                 break;
 
             case 'agency':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
-                    if (p.sponsoringAgency &amp;&amp; !options.includes(p.sponsoringAgency)) {
-                        options.push(p.sponsoringAgency);
-                    }
-
-                    if (p.sponsoringSubagency &amp;&amp; !options.includes(p.sponsoringSubagency)) {
-                        options.push(p.sponsoringSubagency);
-                    }
-
-                    // NOTE: Determine if it is necessary to check the leveraged ATO letters
-                    for (let j = 0; j &lt; p.atoLetters.length; j++) {
-                        let l = p.atoLetters[j];
-                        if (l.authorizingAgency &amp;&amp; !options.includes(l.authorizingAgency)) {
-                            options.push(l.authorizingAgency);
-                        }
-
-                        if (l.authorizingSubagency &amp;&amp; !options.includes(l.authorizingSubagency)) {
-                            options.push(l.authorizingSubagency);
-                        }
-                    }
-                }
+                fedrampData.agencies().forEach(x => options.push(x.name));
                 break;
 
             case '3pao':
-                for (let i = 0; i &lt; providers.length; i++) {
-                    let p = providers[i];
-                    if (p.independentAssessor &amp;&amp; !options.includes(p.independentAssessor)) {
-                        options.push(p.independentAssessor);
-                    }
-
-                    for (let j = 0; j &lt; p.atoLetters.length; j++) {
-                        let l = p.atoLetters[j];
-                        if (l.independentAssessor &amp;&amp; !options.includes(l.independentAssessor)) {
-                            options.push(l.independentAssessor);
-                        }
-                    }
-                }
+                fedrampData.assessors().forEach(x => options.push(x.name));
                 break;
             }
 
@@ -342,18 +306,7 @@
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
-            var totalAuthorized = 0;
-
-            var counted = [];
-            for (var i = 0; i &lt; providers.length; i++) {
-                var p = providers[i];
-                if (p.name &amp;&amp; !counted.includes(p.name)) {
-                    counted.push(p.name);
-                    totalAuthorized++;
-                }
-            }
-
-            return totalAuthorized;
+            return fedrampData.providers().length;
         };
 
         /**
@@ -379,6 +332,7 @@
 
         self.leveragedAtos = function () {
             let totalReuses = 0;
+            let providers = fedrampData.all();
             providers.forEach(csp => {
                 totalReuses += self.calcCSPReuse(csp, providers, false);
             });
@@ -479,13 +433,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.ProviderService.html">ProviderService</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageProvider.html">StorageProvider</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Jun 30 2016 16:16:33 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jul 01 2016 16:43:19 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

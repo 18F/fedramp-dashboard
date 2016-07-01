@@ -1,5 +1,5 @@
 (function(){
-    "use strict";
+    'use strict';
 
     angular
         .module('fedramp.services')
@@ -14,10 +14,8 @@
     function CsvService($log) {
 
         var self = this;
-
-        self.flattenProviders = flattenProviders;
+        self.flatten = flatten;
         self.toCsv = toCsv;
-
 
         /**
          * Takes an object and converts to a csv string
@@ -28,80 +26,95 @@
          * @returns
          * A csv string representation of an object.
          */
-        function toCsv(data, config){
+        function toCsv (data, config) {
             return Papa.unparse(data, config);
         }
 
         /**
-         * Iterates through all the providers and creates a flatten array containing Provider 
-         * and AtoLetter values.
+         * Iterates through an array creating an array of flattened objects
          *
          * @public
          * @memberof Services.CsvService
          *
+         * @param {array} data
+         *  An array of complex objects
+         *
          * @returns
-         * A flatten array of array values containing Provider and AtoLetter information
+         *  A flatten array of array values
          */
-        function flattenProviders(providers){
-            var rows = [];
+        function flatten (data) {
+            let rows = [];
 
-            for(var x = 0; x < providers.length; x++){
-                var provider = providers[x];
-                var row = fromProvider(provider);
-                var atoLetters = providers[x].atoLetters;
-
-                // If no Ato Letters exist, add to row 
-                if(!atoLetters || atoLetters.length === 0){
-                    rows.push(row);
-                    continue;
-                }
-
-                for(var l = 0; l < providers[x].atoLetters.length; l++){
-                    // Copy row array since we'll be using the same row data multiple times
-                    var rowCopy = angular.copy(row);
-                    var letter = providers[x].atoLetters[l];
-                    var letterRow = fromAtoLetter(letter);
-
-                    // Combine provider object with ato letter
-                    // resulting array = [a,b,c,x,y,z]
-                    rowCopy = angular.extend(rowCopy, letterRow);
-                    rows.push(rowCopy);
-                }
-
+            for (let i = 0; i < data.length; i++) {
+                rows.push(flattenObject(data[i]));
             }
+
             return rows;
         }
 
         /**
-         * Creates an object containing the values for a Provider
+         * Iterates through the properties of an object creating a flat structure
+         *
+         * @public
+         * @memberof Services.CsvService
+         *
+         * @param {object} obj
+         *
+         * @returns
+         *  A flattened object
          */
-        function fromProvider(provider) {
-            return {
-                "Cloud Service Provider Name": provider.name,
-                "Designation": provider.designation,
-                "Service Model": provider.serviceModel.join(','),
-                "Deployment Model": provider.deploymentModel,
-                "Impact Level": provider.impactLevel,
-                "Sponsoring_Agency": provider.sponsoringAgency,
-                "Sponsoring_Subagency": provider.sponsoringSubagency
-            };
+        function flattenObject (obj) {
+            let flat = {};
+
+            for (let prop in obj) {
+                if (typeof obj[prop] === 'function') {
+                    continue;
+                } else if (Array.isArray(obj[prop])) {
+                    if (obj[prop].length === 0) {
+                        flat[unicornString(prop)] = '';
+                        continue;
+                    }
+                    
+                    if (typeof obj[prop][0] === 'string') {
+                        flat[unicornString(prop)] = obj[prop].join(', ');
+                    } else if (typeof obj[prop][0] === 'object') {
+                        let a = flatten(obj[prop]);
+                        for (let i = 0; i < a.length; i++) {
+                            let o = a[i];
+                            for (let p in o) {
+                                flat[unicornString(prop) + ' - ' + unicornString(p)] = o[p];
+                            }
+                        }
+                    }
+                } else if (typeof obj[prop] === 'object') {
+                    let o = flattenObject(obj[prop]);
+
+                    for (let p in o) {
+                        flat[unicornString(prop) + ' - ' + unicornString(p)] = o[p];
+                    }
+                } else {
+                    flat[unicornString(prop)] = obj[prop];
+                }
+            }
+
+            return flat;
         }
 
         /**
-         * Creates an object containing the values for an AtoLetter
+         * Creates a magical and readable string from camelcase
+         *
+         * @public
+         * @memberof Services.CsvService
+         *
+         * @param {string} camelCase
+         *
+         * @returns
+         *  A human readable string
          */
-        function fromAtoLetter(letter){
-            return  {
-                "Letter Date": letter.letterDate,
-                "Letter Expiration Date": letter.letterExpirationDate,
-                "Authorization Date": letter.authorizationDate,
-                "Authorizing Letter Signed Date": letter.authorizingLetterSignedDate,
-                "Authorizing Agency" : letter.authorizingAgency,
-                "Authorizing Subagency" : letter.authorizingSubagency,
-                "Letter Active" : letter.active,
-                "Include In Marketplace" : letter.includeInMarketplace
-            };
+        function unicornString (camelCase) {
+            return camelCase
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, function (s) { return s.toUpperCase(); });
         }
     }
-
 })();

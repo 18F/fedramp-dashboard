@@ -1,6 +1,7 @@
-describe('The provider service', function(){
+describe('The data service', function(){
 	'use strict';
-	var ProviderService;
+
+	var DataService;
 	var $httpBackend;
     var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
 
@@ -16,9 +17,7 @@ describe('The provider service', function(){
     beforeEach(function () {
         module('fedramp.services');
         inject(function ($injector) {
-            ProviderService = $injector.get('ProviderService');
-
-            // Use $injector to grab services/factories
+            DataService = $injector.get('DataService');
             $httpBackend = $injector.get('$httpBackend');
         });
     });
@@ -28,15 +27,14 @@ describe('The provider service', function(){
 		$httpBackend.verifyNoOutstandingRequest();
 	});
 
-	describe('pull()', function() {
-		it('Retrieves latest FedRAMP provider information', function () {
-
+	describe('for pull()', function() {
+		it('can retrieve the latest FedRAMP information', function () {
             // Mock http request
 			$httpBackend.expectGET(githubUrl).respond(201, dataJson);
 
             // Perform call
-			ProviderService.pull().then(function (response) {
-				expect(response.length).toBe(0);
+			DataService.pull().then(function (response) {
+				expect(response).toBeDefined();
 			});
 
 			$httpBackend.flush();

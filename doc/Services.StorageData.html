@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: CsvService</title>
+    <title>JSDoc: Class: StorageData</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: CsvService</h1>
+    <h1 class="page-title">Class: StorageData</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Services.html">Services</a>.</span>CsvService</h2>
+            <span class="ancestors"><a href="Services.html">Services</a>.</span>StorageData</h2>
         
     
 </header>
@@ -41,11 +41,15 @@
 
     
 
-    <h4 class="name" id="CsvService"><span class="type-signature"></span>new CsvService<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="StorageData"><span class="type-signature"></span>new StorageData<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    Provides storage specific functionality that extends the StorageManager
+</div>
 
 
 
@@ -88,7 +92,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_csv.service.js.html">fedramp.services/csv.service.js</a>, <a href="fedramp.services_csv.service.js.html#line14">line 14</a>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -118,6 +122,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>StorageManager</li>
+    </ul>
+
+
+    
 
     
 
@@ -137,14 +152,382 @@
 
     
 
-    <h4 class="name" id=".flatten"><span class="type-signature">(static) </span>flatten<span class="signature">(data)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.agencies"><span class="type-signature">(static) </span>self.agencies<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Iterates through an array creating an array of flattened objects
+    Extracts unique agencies
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line162">line 162</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of agencies
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.assessors"><span class="type-signature">(static) </span>self.assessors<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Extracts unique independent assessors
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of independent assessors
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.products"><span class="type-signature">(static) </span>self.products<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Extracts unique products
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of products
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.providers"><span class="type-signature">(static) </span>self.providers<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Extracts unique providers
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of providers
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.transform"><span class="type-signature">(static) </span>self.transform<span class="signature">(raw)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Transforms the raw object to a specifec model
 </div>
 
 
@@ -180,13 +563,13 @@
 
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>raw</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">Object</span>
 
 
             
@@ -196,7 +579,7 @@
 
             
 
-            <td class="description last">An array of complex objects</td>
+            <td class="description last">The JSON object</td>
         </tr>
 
     
@@ -237,7 +620,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_csv.service.js.html">fedramp.services/csv.service.js</a>, <a href="fedramp.services_csv.service.js.html#line45">line 45</a>
+        <a href="fedramp.services_storage-data.factory.js.html">fedramp.services/storage-data.factory.js</a>, <a href="fedramp.services_storage-data.factory.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -264,289 +647,7 @@
 
         
 <div class="param-desc">
-    A flatten array of array values
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".flattenObject"><span class="type-signature">(static) </span>flattenObject<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Iterates through the properties of an object creating a flat structure
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_csv.service.js.html">fedramp.services/csv.service.js</a>, <a href="fedramp.services_csv.service.js.html#line66">line 66</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A flattened object
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".unicornString"><span class="type-signature">(static) </span>unicornString<span class="signature">(camelCase)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Creates a magical and readable string from camelcase
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>camelCase</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_csv.service.js.html">fedramp.services/csv.service.js</a>, <a href="fedramp.services_csv.service.js.html#line114">line 114</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A human readable string
+    The item
 </div>
 
 

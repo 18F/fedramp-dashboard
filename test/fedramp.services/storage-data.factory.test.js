@@ -1,30 +1,37 @@
-describe('StorageProvider manager', function () {
+describe('StorageData manager', function () {
     'use strict';
 
-    var StorageProvider;
+    var StorageData;
+    var Data;
+    var Agency;
+    var Assessor;
+    var Product;
     var Provider;
 
     beforeEach(function(){
         module('fedramp.services');
         inject(function($injector){
-            StorageProvider = $injector.get('StorageProvider');
+            StorageData = $injector.get('StorageData');
+            Data = $injector.get('Data');
+            Agency = $injector.get('Agency');
+            Assessor = $injector.get('Assessor');
+            Product = $injector.get('Product');
             Provider = $injector.get('Provider');
-
         });
     });
 
     it('initialize a new instance', function () {
-        var storage = new StorageProvider();
+        var storage = new StorageData();
         expect(storage).not.toBe(undefined);
     });
 
-    it('initialize with the providers container', function () {
-        var storage = new StorageProvider();
-        expect(storage.storageContainer).toBe('providers');
+    it('initialize with the data container', function () {
+        var storage = new StorageData();
+        expect(storage.storageContainer).toBe('data');
     });
 
     it('can store item', function () {
-        var provider = new Provider({
+        var data = new Data({
             'Cloud_Service_Provider_Name': 'test',
             'Designation': 'Compliant',
             'Service_Model': [
@@ -45,16 +52,16 @@ describe('StorageProvider manager', function () {
             ]
         });
 
-        var storage = new StorageProvider();
+        var storage = new StorageData();
         storage.clear();
-        storage.update(provider.hash(), provider);
+        storage.update(data.hash(), data);
 
-        var expected = storage.byId(provider.hash());
-        expect(expected.hash()).toBe(provider.hash());
+        var expected = storage.byId(data.hash());
+        expect(expected.hash()).toBe(data.hash());
     });
 
     it('can get item by ID', function () {
-        var provider = new Provider({
+        var data = new Data({
             'Cloud_Service_Provider_Name': 'test',
             'Designation': 'Compliant',
             'Service_Model': [
@@ -75,16 +82,16 @@ describe('StorageProvider manager', function () {
             ]
         });
 
-        var storage = new StorageProvider();
+        var storage = new StorageData();
         storage.clear();
-        storage.update(provider.hash(), provider);
+        storage.update(data.hash(), data);
 
-        var expected = storage.byId(provider.hash());
-        expect(expected.hash()).toBe(provider.hash());
+        var expected = storage.byId(data.hash());
+        expect(expected.hash()).toBe(data.hash());
     });
 
     it('can update item', function () {
-        var provider = new Provider({
+        var data = new Data({
             'Cloud_Service_Provider_Name': 'test',
             'Designation': 'Compliant',
             'Service_Model': [
@@ -105,11 +112,11 @@ describe('StorageProvider manager', function () {
             ]
         });
 
-        var storage = new StorageProvider();
+        var storage = new StorageData();
         storage.clear();
-        storage.update(provider.hash(), provider);
+        storage.update(data.hash(), data);
 
-        var x = storage.byId(provider.hash());
+        var x = storage.byId(data.hash());
         expect(x.atoLetters.length).toBe(1);
 
         x.atoLetters = [];
@@ -120,7 +127,7 @@ describe('StorageProvider manager', function () {
     });
 
     it('can clear', function () {
-        var provider = new Provider({
+        var data = new Data({
             'Cloud_Service_Provider_Name': 'test',
             'Designation': 'Compliant',
             'Service_Model': [
@@ -141,12 +148,44 @@ describe('StorageProvider manager', function () {
             ]
         });
 
-        var storage = new StorageProvider();
+        var storage = new StorageData();
         storage.clear();
-        storage.update(provider.hash(), provider);
+        storage.update(data.hash(), data);
         expect(storage.all().length).toBe(1);
 
         storage.clear();
         expect(storage.all().length).toBe(0);
+    });
+
+    it('can return providers', function () {
+        var data = new Data(TestData.Letters[0]);
+        var storage = new StorageData();
+        storage.clear();
+        storage.update(data.hash(), data);
+        expect(storage.providers().length).toBe(1);
+    });
+
+    it('can return products', function () {
+        var data = new Data(TestData.Letters[0]);
+        var storage = new StorageData();
+        storage.clear();
+        storage.update(data.hash(), data);
+        expect(storage.products().length).toBe(1);
+    });
+
+    it('can return agencies', function () {
+        var data = new Data(TestData.Letters[0]);
+        var storage = new StorageData();
+        storage.clear();
+        storage.update(data.hash(), data);
+        expect(storage.agencies().length).toBe(3);
+    });
+
+    it('can return assessors', function () {
+        var data = new Data(TestData.Letters[0]);
+        var storage = new StorageData();
+        storage.clear();
+        storage.update(data.hash(), data);
+        expect(storage.assessors().length).toBe(2);
     });
 });

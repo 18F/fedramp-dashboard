@@ -1,4 +1,4 @@
-describe('Fedramp Routes', function(){
+describe('Fedramp routing', function(){
 	'use strict';
 
 	var $httpBackend;
@@ -15,14 +15,13 @@ describe('Fedramp Routes', function(){
         });
     });
 
-
 	afterEach(function() { 
         $httpBackend.verifyNoOutstandingExpectation(); 
         $httpBackend.verifyNoOutstandingRequest();
 	});
 
-	describe('home.state', function(){
-		it('Accesses the Home state and executes provider', function(){
+	describe('for home', function(){
+		it('can access the state and executes fetching data', function(){
             var expected = 'fedramp.home';
 
             // Account for template GET request

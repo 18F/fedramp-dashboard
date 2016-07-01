@@ -16,15 +16,11 @@
     Tile.$inject = ['$log'];
 
     function Tile ($log) {
-        var self = this;
+        // var self = this;
 
-        self.$onInit = function () {
-            $log.info(self.expand);
-            $log.info(self.model);
-        };
-
-        self.$onChanges = function (changes) {};
-        self.$onDestroy = function () {};
-        self.$postLink = function () {};
+        // self.$onInit = function () {};
+        // self.$onChanges = function (changes) {};
+        // self.$onDestroy = function () {};
+        // self.$postLink = function () {};
     }
 })();

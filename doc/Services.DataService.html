@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: StorageSettings</title>
+    <title>JSDoc: Class: DataService</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: StorageSettings</h1>
+    <h1 class="page-title">Class: DataService</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Services.html">Services</a>.</span>StorageSettings</h2>
+            <span class="ancestors"><a href="Services.html">Services</a>.</span>DataService</h2>
         
     
 </header>
@@ -41,15 +41,11 @@
 
     
 
-    <h4 class="name" id="StorageSettings"><span class="type-signature"></span>new StorageSettings<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DataService"><span class="type-signature"></span>new DataService<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    Provides storage specific functionality that extends the StorageManager
-</div>
 
 
 
@@ -92,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_storage-settings.factory.js.html">fedramp.services/storage-settings.factory.js</a>, <a href="fedramp.services_storage-settings.factory.js.html#line17">line 17</a>
+        <a href="fedramp.services_data.service.js.html">fedramp.services/data.service.js</a>, <a href="fedramp.services_data.service.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -122,17 +118,6 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>StorageManager</li>
-    </ul>
-
-
-    
 
     
 
@@ -152,14 +137,14 @@
 
     
 
-    <h4 class="name" id=".self.transform"><span class="type-signature">(static) </span>self.transform<span class="signature">(raw)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.pull"><span class="type-signature">(static) </span>self.pull<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Transforms the raw object to a specifec model
+    Issue a GET request for the given URL.
 </div>
 
 
@@ -168,55 +153,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>raw</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The JSON object</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -252,7 +188,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_storage-settings.factory.js.html">fedramp.services/storage-settings.factory.js</a>, <a href="fedramp.services_storage-settings.factory.js.html#line34">line 34</a>
+        <a href="fedramp.services_data.service.js.html">fedramp.services/data.service.js</a>, <a href="fedramp.services_data.service.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -279,7 +215,7 @@
 
         
 <div class="param-desc">
-    The item
+    The response as a promise
 </div>
 
 

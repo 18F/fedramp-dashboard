@@ -18,7 +18,7 @@
     run.$inject = ['$log','$rootScope'];
 
     function run ($log, $rootScope) {
-        $log.debug('FedRAMP Module Initializing');
+        $log.debug('fedramp module initializing');
         $rootScope.$on("$stateChangeError", $log.debug.bind($log));
     }
 })();
