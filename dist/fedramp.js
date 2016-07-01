@@ -36,21 +36,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })();
 
 /**
- * @namespace Services
- */
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services', ['fedramp.models']).run(run);
-
-    run.$inject = ['$log'];
-
-    function run($log) {
-        $log.debug('fedramp.services module initializing');
-    }
-})();
-
-/**
  * @namespace Models
  */
 (function () {
@@ -65,10 +50,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 })();
 
+/**
+ * @namespace Services
+ */
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services', ['fedramp.models']).run(run);
+
+    run.$inject = ['$log'];
+
+    function run($log) {
+        $log.debug('fedramp.services module initializing');
+    }
+})();
+
 angular.module('fedramp').run(['$templateCache', function ($templateCache) {
     $templateCache.put('src/fedramp/fedramp.html', '<header>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <!--<img class="header" src="img/fedramp.png"/>-->\n            <h1>FedRAMP</h1>\n        </div>\n    </div>\n\n</header>\n<ui-view></ui-view>\n');
     $templateCache.put('src/fedramp.components/tile.html', '<div ng-if="controller.expand" class="usa-width-one-whole">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <strong>{{ controller.model.name }} - {{ controller.model.pkg }}</strong>\n        </div>\n        <div class="usa-width-one-sixth">\n            <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.deploymentModel }}</span>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.impactLevel }}</span>\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="usa-width-one-half">\n    <div class="usa-grid">\n        <div class="usa-width-two-thirds">\n            <!-- Logo -->\n            Logo\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <div>\n                <strong>Service Model:</strong>\n                {{ controller.model.serviceModel.join(\', \') }}\n            </div>\n            <div>\n                <strong>Deployment Model:</strong>\n                {{ controller.model.deploymentModel }}\n            </div>\n            <div>\n                <strong>Impact Level:</strong>\n                {{ controller.model.impactLevel }}\n            </div>\n        </div>\n    </div>\n</div>\n');
-    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>${{homeController.totalCostSavings()}}</h4>\n                <div>Cost Savings:</div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <div>\n                    <h4>{{homeController.totalAuthorized()}}</h4>\n                    Total Authorized:\n                </div>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <h4>{{homeController.leveragedAtos()}}</h4>\n                <div>Leveraged ATOs:</div>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <div class="usa-width-one-third">&nbsp;</div>\n            <div class="usa-width-one-twelfth">&nbsp;</div>\n            <div class="usa-width-one-third">\n                <label>\n                    <input type="checkbox" ng-model="homeController.expandTiles" />\n                    <p ng-if="homeController.expandTiles">View as tiles</p>\n                    <p ng-if="!homeController.expandTiles">View as list</p>\n                </label>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <tile ng-repeat="item in homeController.filteredData" expand="homeController.expandTiles" model="item" />\n        </div>\n    </div>\n</div>\n');
+    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>\n                    <div>Cost Savings</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>\n                    <div>Total Authorized</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>\n                    <div>Leveraged ATOs</div>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <div class="usa-width-one-third">&nbsp;</div>\n            <div class="usa-width-one-twelfth">&nbsp;</div>\n            <div class="usa-width-one-third">\n                <label>\n                    <input type="checkbox" ng-model="homeController.expandTiles" />\n                    <p ng-if="homeController.expandTiles">View as tiles</p>\n                    <p ng-if="!homeController.expandTiles">View as list</p>\n                </label>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <tile ng-repeat="item in homeController.filteredData" expand="homeController.expandTiles" model="item" />\n        </div>\n    </div>\n</div>\n');
 }]);
 (function () {
     'use strict';
@@ -132,797 +132,6 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
         // self.$onChanges = function (changes) {};
         // self.$onDestroy = function () {};
         // self.$postLink = function () {};
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').service('CsvService', CsvService);
-
-    CsvService.$inject = ['$log'];
-
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function CsvService($log) {
-
-        var self = this;
-        self.flatten = flatten;
-        self.toCsv = toCsv;
-
-        /**
-         * Takes an object and converts to a csv string
-         *
-         * @public
-         * @memberof Service.CsvService
-         *
-         * @returns
-         * A csv string representation of an object.
-         */
-        function toCsv(data, config) {
-            return Papa.unparse(data, config);
-        }
-
-        /**
-         * Iterates through an array creating an array of flattened objects
-         *
-         * @public
-         * @memberof Services.CsvService
-         *
-         * @param {array} data
-         *  An array of complex objects
-         *
-         * @returns
-         *  A flatten array of array values
-         */
-        function flatten(data) {
-            var rows = [];
-
-            for (var i = 0; i < data.length; i++) {
-                rows.push(flattenObject(data[i]));
-            }
-
-            return rows;
-        }
-
-        /**
-         * Iterates through the properties of an object creating a flat structure
-         *
-         * @public
-         * @memberof Services.CsvService
-         *
-         * @param {object} obj
-         *
-         * @returns
-         *  A flattened object
-         */
-        function flattenObject(obj) {
-            var flat = {};
-
-            for (var prop in obj) {
-                if (typeof obj[prop] === 'function') {
-                    continue;
-                } else if (Array.isArray(obj[prop])) {
-                    if (obj[prop].length === 0) {
-                        flat[unicornString(prop)] = '';
-                        continue;
-                    }
-
-                    if (typeof obj[prop][0] === 'string') {
-                        flat[unicornString(prop)] = obj[prop].join(', ');
-                    } else if (_typeof(obj[prop][0]) === 'object') {
-                        var a = flatten(obj[prop]);
-                        for (var i = 0; i < a.length; i++) {
-                            var o = a[i];
-                            for (var p in o) {
-                                flat[unicornString(prop) + ' - ' + unicornString(p)] = o[p];
-                            }
-                        }
-                    }
-                } else if (_typeof(obj[prop]) === 'object') {
-                    var _o = flattenObject(obj[prop]);
-
-                    for (var _p in _o) {
-                        flat[unicornString(prop) + ' - ' + unicornString(_p)] = _o[_p];
-                    }
-                } else {
-                    flat[unicornString(prop)] = obj[prop];
-                }
-            }
-
-            return flat;
-        }
-
-        /**
-         * Creates a magical and readable string from camelcase
-         *
-         * @public
-         * @memberof Services.CsvService
-         *
-         * @param {string} camelCase
-         *
-         * @returns
-         *  A human readable string
-         */
-        function unicornString(camelCase) {
-            return camelCase.replace(/([A-Z])/g, ' $1').replace(/^./, function (s) {
-                return s.toUpperCase();
-            });
-        }
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').service('DataService', DataService);
-
-    DataService.$inject = ['$log', 'StorageManager', 'StorageData', 'Data', 'DatasourceService'];
-
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function DataService($log, StorageManager, StorageData, Data, DatasourceService) {
-        var self = this;
-        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
-
-        /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.DataService
-         *
-         * @returns
-         *  The response as a promise
-         */
-        self.pull = function () {
-            return DatasourceService.pull(dataUrl).then(function (response) {
-                var meta = response.meta;
-                var data = response.data;
-                var storage = new StorageData();
-                storage.clear();
-
-                for (var i = 0; i < data.length; i++) {
-                    var d = new Data(data[i]);
-                    storage.update(d.hash(), d);
-                }
-
-                return storage;
-            });
-        };
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').service('DatasourceService', DatasourceService);
-
-    DatasourceService.$inject = ['$http'];
-
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function DatasourceService($http) {
-        var self = this;
-
-        /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.DatasourceService
-         *
-         * @param {string} url
-         *  The URL
-         *
-         * @returns
-         *  The response as a promise
-         */
-        self.pull = function (url) {
-            return $http.get(url).then(function (response) {
-                return response.data;
-            });
-        };
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').factory('StorageData', StorageDataFactory);
-
-    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider'];
-
-    function StorageDataFactory(StorageManager, Data, Agency, Assessor, Product, Provider) {
-        /**
-         * Provides storage specific functionality that extends the StorageManager
-         * @constructor
-         * @memberof Services
-         * @extends StorageManager
-         */
-        function StorageData(options) {
-            StorageManager.call(this);
-
-            var self = this;
-            self.storageContainer = 'data';
-
-            /**
-             * Transforms the raw object to a specifec model
-             * @public
-             * @memberof Services.StorageData
-             *
-             * @param {Object} raw
-             *  The JSON object
-             *
-             * @returns
-             *  The item
-             */
-            self.transform = function (raw) {
-                return new Data(raw);
-            };
-
-            /**
-             * Extracts unique providers
-             * @public
-             * @memberof Services.StorageData
-             *
-             * @returns
-             *  An array of providers
-             */
-            self.providers = function () {
-                var names = [];
-                var items = [];
-                var data = self.all();
-
-                for (var i = 0; i < data.length; i++) {
-                    var d = data[i];
-                    if (!d.name || names.includes(d.name)) {
-                        continue;
-                    }
-
-                    names.push(d.name);
-
-                    var item = new Provider();
-                    item.name = d.name;
-                    items.push(item);
-                }
-
-                items.forEach(function (item) {
-                    item.products = self.products().filter(function (x) {
-                        return x.name === item.name;
-                    });
-                    item.products.forEach(function (prod) {
-                        item.reuses += prod.reuses;
-
-                        item.products.forEach(function (prod) {
-                            prod.serviceModels.forEach(function (model) {
-                                if (!item.serviceModels.includes(model)) {
-                                    item.serviceModels.push(model);
-                                }
-                            });
-                        });
-
-                        item.products.forEach(function (prod) {
-                            prod.deplomentModels.forEach(function (model) {
-                                if (!item.deploymentModels.includes(model)) {
-                                    item.deploymentModels.push(model);
-                                }
-                            });
-                        });
-
-                        item.products.forEach(function (prod) {
-                            if (!item.designations.includes(prod.deploymentModel)) {
-                                item.designations.push(prod.deploymentModel);
-                            }
-                        });
-                    });
-                });
-
-                return items;
-            };
-
-            /**
-             * Extracts unique products
-             * @public
-             * @memberof Services.StorageData
-             *
-             * @returns
-             *  An array of products
-             */
-            self.products = function () {
-                var names = [];
-                var items = [];
-                var data = self.all();
-
-                for (var i = 0; i < data.length; i++) {
-                    var d = data[i];
-                    if (!d.pkg || names.includes(d.pkg)) {
-                        continue;
-                    }
-
-                    names.push(d.pkg);
-
-                    var item = new Product();
-                    item.name = d.pkg;
-                    item.provider = d.name;
-                    item.serviceModels = d.serviceModel;
-                    item.deploymentModel = d.deploymentModel;
-                    item.designation = d.designation;
-                    item.impactLevel = d.impactLevel;
-                    items.push(item);
-                }
-
-                items.forEach(function (item) {
-                    data.forEach(function (d) {
-                        if (d.pkg === item.name) {
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
-                                item.agencies.push(d.sponsoringAgency);
-                            }
-
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
-                                item.agencies.push(d.sponsoringSubagency);
-                            }
-
-                            d.atoLetters.forEach(function (a) {
-                                if (!item.agencies.includes(a.authorizingAgency)) {
-                                    item.agencies.push(d.authorizingAgency);
-                                }
-
-                                if (!item.agencies.includes(a.authorizingSubagency)) {
-                                    item.agencies.push(d.authorizingSubagency);
-                                }
-                            });
-                        }
-                    });
-                });
-
-                return items;
-            };
-
-            /**
-             * Extracts unique agencies
-             * @public
-             * @memberof Services.StorageData
-             *
-             * @returns
-             *  An array of agencies
-             */
-            self.agencies = function () {
-                var names = [];
-                var items = [];
-                var data = self.all();
-
-                // Top level
-                for (var i = 0; i < data.length; i++) {
-                    var d = data[i];
-
-                    if (d.sponsoringAgency && !names.includes(d.sponsoringAgency)) {
-                        names.push(d.sponsoringAgency);
-                        var item = new Agency();
-                        item.name = name;
-                        items.push(item);
-                    }
-
-                    if (d.sponsoringSubagency && !names.includes(d.sponsoringSubagency)) {
-                        names.push(d.sponsoringSubagency);
-                        var _item = new Agency();
-                        _item.name = name;
-                        items.push(_item);
-                    }
-                }
-
-                // Nested
-                for (var _i = 0; _i < data.length; _i++) {
-                    var _d = data[_i];
-                    for (var j = 0; j < _d.atoLetters.length; j++) {
-                        var l = _d.atoLetters[j];
-
-                        if (l.authorizingAgency && !names.includes(l.authorizingAgency)) {
-                            names.push(l.authorizingAgency);
-                            var _item2 = new Agency();
-                            _item2.name = l.authorizingAgency;
-                            items.push(_item2);
-                        }
-
-                        if (l.authorizingSubagency && !names.includes(l.authorizingSubagency)) {
-                            names.push(l.authorizingSubagency);
-                            var _item3 = new Agency();
-                            _item3.name = l.authorizingSubagency;
-                            items.push(_item3);
-                        }
-                    }
-                }
-
-                items.forEach(function (item) {
-                    data.forEach(function (d) {
-                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name || d.atoLetters.filter(function (x) {
-                            return x.authorizingAgency === item.name || x.authorizingSubagency === item.name;
-                        })) {
-                            if (!item.products.includes(d.pkg)) {
-                                item.products.push(d.pkg);
-                            }
-
-                            if (!item.providers.includes(d.name)) {
-                                item.providers.push(d.name);
-                            }
-
-                            if (!item.assessors.includes(d.independentAssessor)) {
-                                item.assessors.push(d.independentAssessor);
-                            }
-                        }
-
-                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name) {
-                            item.sponsored++;
-                        }
-
-                        if (d.authorizingAgency === item.name || d.authorizingSubagency === item.name) {
-                            item.authorized++;
-                        }
-                    });
-                });
-
-                return items;
-            };
-
-            /**
-             * Extracts unique independent assessors
-             * @public
-             * @memberof Services.StorageData
-             *
-             * @returns
-             *  An array of independent assessors
-             */
-            self.assessors = function () {
-                var names = [];
-                var items = [];
-                var data = self.all();
-
-                // Top level
-                for (var i = 0; i < data.length; i++) {
-                    var d = data[i];
-                    if (!d.independentAssessor || names.includes(d.independentAssessor)) {
-                        continue;
-                    }
-
-                    names.push(d.independentAssessor);
-
-                    var item = new Assessor();
-                    item.name = d.independentAssessor;
-                    items.push(item);
-                }
-
-                // Nested
-                for (var _i2 = 0; _i2 < data.length; _i2++) {
-                    var _d2 = data[_i2];
-                    for (var j = 0; j < _d2.atoLetters.length; j++) {
-                        var l = _d2.atoLetters[j];
-                        var _name = '';
-
-                        if (!l.independentAssessor || names.includes(l.independentAssessor)) {
-                            continue;
-                        }
-
-                        names.push(l.independentAssessor);
-
-                        var _item4 = new Assessor();
-                        _item4.name = l.independentAssessor;
-                        items.push(_item4);
-                    }
-                }
-
-                items.forEach(function (item) {
-                    data.forEach(function (d) {
-                        if (d.independentAssessor === item.name) {
-                            if (!item.products.includes(d.pkg)) {
-                                item.products.push(d.pkg);
-                            }
-
-                            if (!item.providers.includes(d.name)) {
-                                item.providers.push(d.name);
-                            }
-
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
-                                item.agencies.push(d.sponsoringAgency);
-                            }
-
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
-                                item.agencies.push(d.sponsoringSubagency);
-                            }
-                        }
-
-                        d.atoLetters.forEach(function (a) {
-                            if (a.independentAssessor === item.name) {
-                                if (!item.agencies.includes(a.authorizingAgency)) {
-                                    item.agencies.push(a.authorizingAgency);
-                                }
-
-                                if (!item.agencies.includes(a.authorizingSubagency)) {
-                                    item.agencies.push(a.authorizingSubagency);
-                                }
-                            }
-                        });
-                    });
-                });
-
-                return items;
-            };
-
-            return self.init(options);
-        }
-
-        StorageData.prototype = Object.create(StorageManager.prototype);
-        StorageData.prototype.constructor = StorageData;
-
-        return StorageData;
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').factory('StorageManager', StorageManagerFactory);
-
-    function StorageManagerFactory() {
-        return StorageManager;
-    }
-
-    /**
-     * Storage manager handles the storage and retrieval of items.
-     * @constructor
-     * @memberof Services
-     */
-    function StorageManager(options) {
-        // Scope `this` to self.
-        var self = this;
-
-        // Properties
-        self.storageContainer = 'default';
-
-        /**
-         * Initialize the storage manager.
-         * @public
-         * @memberof Services.StorageManager
-         *
-         * @param {object} options
-         *  A dictionary of options to configure the storage manager
-         *
-         * @returns
-         *  The storage manager
-         */
-        self.init = function (options) {
-            var e = prechecks();
-            if (e && e.length !== 0) {
-                throw e;
-            }
-
-            if (options && options.storageContainer) {
-                self.storageContainer = options.storageContainer;
-            }
-
-            return self;
-        };
-
-        /**
-         * Update the status of an item.
-         * @public
-         * @memberof Services.StorageManager
-         *
-         * @param {string} id
-         *  The identifier of the item
-         * @param {object} properties
-         *  The item properties
-         */
-        self.update = function (id, properties) {
-            store(id, properties);
-        };
-
-        /**
-         * Queries for an item by identifier.
-         * @public
-         * @memberof Services.StorageManager
-         *
-         * @param {string} id
-         *  The identifier of the item
-         *
-         * @returns
-         *  The item
-         */
-        self.byId = function (id) {
-            return fetch(id);
-        };
-
-        /**
-         * Clear the item queue.
-         * @public
-         * @memberof Services.StorageManager
-         */
-        self.clear = function () {
-            purge();
-        };
-
-        /**
-         * Queries all items in the storage container.
-         * @public
-         * @memberof Services.StorageManager
-         *
-         * @returns
-         *  An array of items
-         */
-        self.all = function () {
-            return all();
-        };
-
-        /**
-         * Transforms the raw object to a specifec model. Subclasses should override
-         * this method.
-         * @public
-         * @memberof Services.StorageManager
-         *
-         * @param {Object} raw
-         *  The JSON object
-         *
-         * @returns
-         *  The item
-         */
-        self.transform = function (raw) {
-            return raw;
-        };
-
-        /**
-         * Perform all prechecks necessary to ensure dependencies are met
-         * @private
-         *
-         * @returns
-         *  An error message if a dependency is not met
-         */
-        function prechecks() {
-            if (typeof Storage === 'undefined') {
-                return 'Local storage is not supported';
-            }
-
-            return null;
-        }
-
-        /**
-         * Retrieve all items in local storage.
-         * @private
-         *
-         * @returns
-         *  An array of items
-         */
-        function all() {
-            var items = [];
-
-            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
-            if (storage) {
-                for (var key in storage) {
-                    items.push(self.transform(storage[key]));
-                }
-            }
-
-            return items;
-        }
-
-        /**
-         * Fetchs an item from local storage.
-         * @private
-         *
-         * @param {string} id
-         *  The identifier of the item
-         *
-         * @returns
-         *  The item
-         */
-        function fetch(id) {
-            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
-            if (!storage) {
-                return null;
-            }
-
-            if (storage[id]) {
-                return self.transform(storage[id]);
-            }
-
-            return null;
-        }
-
-        /**
-         * Stores an item to local storage.
-         * @private
-         *
-         * @param {string} id
-         *  The identifier of the item
-         * @param {object} properties
-         *  The item properties
-         */
-        function store(id, properties) {
-            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
-            if (!storage) {
-                storage = {};
-            }
-
-            if (id) {
-                storage[id] = properties;
-                self.transform(storage[id]);
-                localStorage.setItem(self.storageContainer, JSON.stringify(storage));
-            }
-        }
-
-        /**
-         * Removes an item from local storage.
-         * @private
-         *
-         * @param {string} id
-         *  The identifier of the item
-         */
-        function remove(id) {
-            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
-            if (!storage || !storage[id]) {
-                return;
-            }
-
-            self.transform(storage[id]);
-            delete storage[id];
-            localStorage.setItem(self.storageContainer, JSON.stringify(storage));
-        }
-
-        /**
-         * Purges all items from local storage.
-         * @private
-         */
-        function purge() {
-            if (localStorage.getItem(self.storageContainer)) {
-                localStorage.removeItem(self.storageContainer);
-            }
-        }
-
-        return self.init(options);
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular.module('fedramp.services').factory('StorageSettings', StorageSettingsFactory);
-
-    StorageSettingsFactory.$inject = ['StorageManager', 'Settings'];
-
-    function StorageSettingsFactory(StorageManager, Settings) {
-        /**
-         * Provides storage specific functionality that extends the StorageManager
-         * @constructor
-         * @memberof Services
-         * @extends StorageManager
-         */
-        function StorageSettings(options) {
-            StorageManager.call(this);
-
-            var self = this;
-            self.storageContainer = 'fedramp';
-
-            /**
-             * Transforms the raw object to a specifec model
-             * @public
-             * @memberof Services.StorageSettings
-             *
-             * @param {Object} raw
-             *  The JSON object
-             *
-             * @returns
-             *  The item
-             */
-            self.transform = function (raw) {
-                return new Settings(raw);
-            };
-
-            return self.init(options);
-        }
-        StorageSettings.prototype = Object.create(StorageManager.prototype);
-        StorageSettings.prototype.constructor = StorageSettings;
-
-        return StorageSettings;
     }
 })();
 
@@ -1316,8 +525,8 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     } else {
                         if (self.hasOwnProperty(x)) {
                             if (x === 'atoLetters') {
-                                for (var _i3 = 0; _i3 < options[x].length; _i3++) {
-                                    self[x].push(new AtoLetter(options[x][_i3]));
+                                for (var _i = 0; _i < options[x].length; _i++) {
+                                    self[x].push(new AtoLetter(options[x][_i]));
                                 }
                             } else {
                                 self[x] = options[x];
@@ -1523,6 +732,797 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
         }
 
         return self.init(options);
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').service('CsvService', CsvService);
+
+    CsvService.$inject = ['$log'];
+
+    /**
+     * @constructor
+     * @memberof Services
+     */
+    function CsvService($log) {
+
+        var self = this;
+        self.flatten = flatten;
+        self.toCsv = toCsv;
+
+        /**
+         * Takes an object and converts to a csv string
+         *
+         * @public
+         * @memberof Service.CsvService
+         *
+         * @returns
+         * A csv string representation of an object.
+         */
+        function toCsv(data, config) {
+            return Papa.unparse(data, config);
+        }
+
+        /**
+         * Iterates through an array creating an array of flattened objects
+         *
+         * @public
+         * @memberof Services.CsvService
+         *
+         * @param {array} data
+         *  An array of complex objects
+         *
+         * @returns
+         *  A flatten array of array values
+         */
+        function flatten(data) {
+            var rows = [];
+
+            for (var i = 0; i < data.length; i++) {
+                rows.push(flattenObject(data[i]));
+            }
+
+            return rows;
+        }
+
+        /**
+         * Iterates through the properties of an object creating a flat structure
+         *
+         * @public
+         * @memberof Services.CsvService
+         *
+         * @param {object} obj
+         *
+         * @returns
+         *  A flattened object
+         */
+        function flattenObject(obj) {
+            var flat = {};
+
+            for (var prop in obj) {
+                if (typeof obj[prop] === 'function') {
+                    continue;
+                } else if (Array.isArray(obj[prop])) {
+                    if (obj[prop].length === 0) {
+                        flat[unicornString(prop)] = '';
+                        continue;
+                    }
+
+                    if (typeof obj[prop][0] === 'string') {
+                        flat[unicornString(prop)] = obj[prop].join(', ');
+                    } else if (_typeof(obj[prop][0]) === 'object') {
+                        var a = flatten(obj[prop]);
+                        for (var i = 0; i < a.length; i++) {
+                            var o = a[i];
+                            for (var p in o) {
+                                flat[unicornString(prop) + ' - ' + unicornString(p)] = o[p];
+                            }
+                        }
+                    }
+                } else if (_typeof(obj[prop]) === 'object') {
+                    var _o = flattenObject(obj[prop]);
+
+                    for (var _p in _o) {
+                        flat[unicornString(prop) + ' - ' + unicornString(_p)] = _o[_p];
+                    }
+                } else {
+                    flat[unicornString(prop)] = obj[prop];
+                }
+            }
+
+            return flat;
+        }
+
+        /**
+         * Creates a magical and readable string from camelcase
+         *
+         * @public
+         * @memberof Services.CsvService
+         *
+         * @param {string} camelCase
+         *
+         * @returns
+         *  A human readable string
+         */
+        function unicornString(camelCase) {
+            return camelCase.replace(/([A-Z])/g, ' $1').replace(/^./, function (s) {
+                return s.toUpperCase();
+            });
+        }
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').service('DataService', DataService);
+
+    DataService.$inject = ['$log', 'StorageManager', 'StorageData', 'Data', 'DatasourceService'];
+
+    /**
+     * @constructor
+     * @memberof Services
+     */
+    function DataService($log, StorageManager, StorageData, Data, DatasourceService) {
+        var self = this;
+        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
+
+        /**
+         * Issue a GET request for the given URL.
+         * @public
+         * @memberof Services.DataService
+         *
+         * @returns
+         *  The response as a promise
+         */
+        self.pull = function () {
+            return DatasourceService.pull(dataUrl).then(function (response) {
+                var meta = response.meta;
+                var data = response.data;
+                var storage = new StorageData();
+                storage.clear();
+
+                for (var i = 0; i < data.length; i++) {
+                    var d = new Data(data[i]);
+                    storage.update(d.hash(), d);
+                }
+
+                return storage;
+            });
+        };
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').service('DatasourceService', DatasourceService);
+
+    DatasourceService.$inject = ['$http'];
+
+    /**
+     * @constructor
+     * @memberof Services
+     */
+    function DatasourceService($http) {
+        var self = this;
+
+        /**
+         * Issue a GET request for the given URL.
+         * @public
+         * @memberof Services.DatasourceService
+         *
+         * @param {string} url
+         *  The URL
+         *
+         * @returns
+         *  The response as a promise
+         */
+        self.pull = function (url) {
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
+        };
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').factory('StorageData', StorageDataFactory);
+
+    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider'];
+
+    function StorageDataFactory(StorageManager, Data, Agency, Assessor, Product, Provider) {
+        /**
+         * Provides storage specific functionality that extends the StorageManager
+         * @constructor
+         * @memberof Services
+         * @extends StorageManager
+         */
+        function StorageData(options) {
+            StorageManager.call(this);
+
+            var self = this;
+            self.storageContainer = 'data';
+
+            /**
+             * Transforms the raw object to a specifec model
+             * @public
+             * @memberof Services.StorageData
+             *
+             * @param {Object} raw
+             *  The JSON object
+             *
+             * @returns
+             *  The item
+             */
+            self.transform = function (raw) {
+                return new Data(raw);
+            };
+
+            /**
+             * Extracts unique providers
+             * @public
+             * @memberof Services.StorageData
+             *
+             * @returns
+             *  An array of providers
+             */
+            self.providers = function () {
+                var names = [];
+                var items = [];
+                var data = self.all();
+
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i];
+                    if (!d.name || names.includes(d.name)) {
+                        continue;
+                    }
+
+                    names.push(d.name);
+
+                    var item = new Provider();
+                    item.name = d.name;
+                    items.push(item);
+                }
+
+                items.forEach(function (item) {
+                    item.products = self.products().filter(function (x) {
+                        return x.name === item.name;
+                    });
+                    item.products.forEach(function (prod) {
+                        item.reuses += prod.reuses;
+
+                        item.products.forEach(function (prod) {
+                            prod.serviceModels.forEach(function (model) {
+                                if (!item.serviceModels.includes(model)) {
+                                    item.serviceModels.push(model);
+                                }
+                            });
+                        });
+
+                        item.products.forEach(function (prod) {
+                            prod.deplomentModels.forEach(function (model) {
+                                if (!item.deploymentModels.includes(model)) {
+                                    item.deploymentModels.push(model);
+                                }
+                            });
+                        });
+
+                        item.products.forEach(function (prod) {
+                            if (!item.designations.includes(prod.deploymentModel)) {
+                                item.designations.push(prod.deploymentModel);
+                            }
+                        });
+                    });
+                });
+
+                return items;
+            };
+
+            /**
+             * Extracts unique products
+             * @public
+             * @memberof Services.StorageData
+             *
+             * @returns
+             *  An array of products
+             */
+            self.products = function () {
+                var names = [];
+                var items = [];
+                var data = self.all();
+
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i];
+                    if (!d.pkg || names.includes(d.pkg)) {
+                        continue;
+                    }
+
+                    names.push(d.pkg);
+
+                    var item = new Product();
+                    item.name = d.pkg;
+                    item.provider = d.name;
+                    item.serviceModels = d.serviceModel;
+                    item.deploymentModel = d.deploymentModel;
+                    item.designation = d.designation;
+                    item.impactLevel = d.impactLevel;
+                    items.push(item);
+                }
+
+                items.forEach(function (item) {
+                    data.forEach(function (d) {
+                        if (d.pkg === item.name) {
+                            if (!item.agencies.includes(d.sponsoringAgency)) {
+                                item.agencies.push(d.sponsoringAgency);
+                            }
+
+                            if (!item.agencies.includes(d.sponsoringSubagency)) {
+                                item.agencies.push(d.sponsoringSubagency);
+                            }
+
+                            d.atoLetters.forEach(function (a) {
+                                if (!item.agencies.includes(a.authorizingAgency)) {
+                                    item.agencies.push(d.authorizingAgency);
+                                }
+
+                                if (!item.agencies.includes(a.authorizingSubagency)) {
+                                    item.agencies.push(d.authorizingSubagency);
+                                }
+                            });
+                        }
+                    });
+                });
+
+                return items;
+            };
+
+            /**
+             * Extracts unique agencies
+             * @public
+             * @memberof Services.StorageData
+             *
+             * @returns
+             *  An array of agencies
+             */
+            self.agencies = function () {
+                var names = [];
+                var items = [];
+                var data = self.all();
+
+                // Top level
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i];
+
+                    if (d.sponsoringAgency && !names.includes(d.sponsoringAgency)) {
+                        names.push(d.sponsoringAgency);
+                        var item = new Agency();
+                        item.name = name;
+                        items.push(item);
+                    }
+
+                    if (d.sponsoringSubagency && !names.includes(d.sponsoringSubagency)) {
+                        names.push(d.sponsoringSubagency);
+                        var _item = new Agency();
+                        _item.name = name;
+                        items.push(_item);
+                    }
+                }
+
+                // Nested
+                for (var _i2 = 0; _i2 < data.length; _i2++) {
+                    var _d = data[_i2];
+                    for (var j = 0; j < _d.atoLetters.length; j++) {
+                        var l = _d.atoLetters[j];
+
+                        if (l.authorizingAgency && !names.includes(l.authorizingAgency)) {
+                            names.push(l.authorizingAgency);
+                            var _item2 = new Agency();
+                            _item2.name = l.authorizingAgency;
+                            items.push(_item2);
+                        }
+
+                        if (l.authorizingSubagency && !names.includes(l.authorizingSubagency)) {
+                            names.push(l.authorizingSubagency);
+                            var _item3 = new Agency();
+                            _item3.name = l.authorizingSubagency;
+                            items.push(_item3);
+                        }
+                    }
+                }
+
+                items.forEach(function (item) {
+                    data.forEach(function (d) {
+                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name || d.atoLetters.filter(function (x) {
+                            return x.authorizingAgency === item.name || x.authorizingSubagency === item.name;
+                        })) {
+                            if (!item.products.includes(d.pkg)) {
+                                item.products.push(d.pkg);
+                            }
+
+                            if (!item.providers.includes(d.name)) {
+                                item.providers.push(d.name);
+                            }
+
+                            if (!item.assessors.includes(d.independentAssessor)) {
+                                item.assessors.push(d.independentAssessor);
+                            }
+                        }
+
+                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name) {
+                            item.sponsored++;
+                        }
+
+                        if (d.authorizingAgency === item.name || d.authorizingSubagency === item.name) {
+                            item.authorized++;
+                        }
+                    });
+                });
+
+                return items;
+            };
+
+            /**
+             * Extracts unique independent assessors
+             * @public
+             * @memberof Services.StorageData
+             *
+             * @returns
+             *  An array of independent assessors
+             */
+            self.assessors = function () {
+                var names = [];
+                var items = [];
+                var data = self.all();
+
+                // Top level
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i];
+                    if (!d.independentAssessor || names.includes(d.independentAssessor)) {
+                        continue;
+                    }
+
+                    names.push(d.independentAssessor);
+
+                    var item = new Assessor();
+                    item.name = d.independentAssessor;
+                    items.push(item);
+                }
+
+                // Nested
+                for (var _i3 = 0; _i3 < data.length; _i3++) {
+                    var _d2 = data[_i3];
+                    for (var j = 0; j < _d2.atoLetters.length; j++) {
+                        var l = _d2.atoLetters[j];
+                        var _name = '';
+
+                        if (!l.independentAssessor || names.includes(l.independentAssessor)) {
+                            continue;
+                        }
+
+                        names.push(l.independentAssessor);
+
+                        var _item4 = new Assessor();
+                        _item4.name = l.independentAssessor;
+                        items.push(_item4);
+                    }
+                }
+
+                items.forEach(function (item) {
+                    data.forEach(function (d) {
+                        if (d.independentAssessor === item.name) {
+                            if (!item.products.includes(d.pkg)) {
+                                item.products.push(d.pkg);
+                            }
+
+                            if (!item.providers.includes(d.name)) {
+                                item.providers.push(d.name);
+                            }
+
+                            if (!item.agencies.includes(d.sponsoringAgency)) {
+                                item.agencies.push(d.sponsoringAgency);
+                            }
+
+                            if (!item.agencies.includes(d.sponsoringSubagency)) {
+                                item.agencies.push(d.sponsoringSubagency);
+                            }
+                        }
+
+                        d.atoLetters.forEach(function (a) {
+                            if (a.independentAssessor === item.name) {
+                                if (!item.agencies.includes(a.authorizingAgency)) {
+                                    item.agencies.push(a.authorizingAgency);
+                                }
+
+                                if (!item.agencies.includes(a.authorizingSubagency)) {
+                                    item.agencies.push(a.authorizingSubagency);
+                                }
+                            }
+                        });
+                    });
+                });
+
+                return items;
+            };
+
+            return self.init(options);
+        }
+
+        StorageData.prototype = Object.create(StorageManager.prototype);
+        StorageData.prototype.constructor = StorageData;
+
+        return StorageData;
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').factory('StorageManager', StorageManagerFactory);
+
+    function StorageManagerFactory() {
+        return StorageManager;
+    }
+
+    /**
+     * Storage manager handles the storage and retrieval of items.
+     * @constructor
+     * @memberof Services
+     */
+    function StorageManager(options) {
+        // Scope `this` to self.
+        var self = this;
+
+        // Properties
+        self.storageContainer = 'default';
+
+        /**
+         * Initialize the storage manager.
+         * @public
+         * @memberof Services.StorageManager
+         *
+         * @param {object} options
+         *  A dictionary of options to configure the storage manager
+         *
+         * @returns
+         *  The storage manager
+         */
+        self.init = function (options) {
+            var e = prechecks();
+            if (e && e.length !== 0) {
+                throw e;
+            }
+
+            if (options && options.storageContainer) {
+                self.storageContainer = options.storageContainer;
+            }
+
+            return self;
+        };
+
+        /**
+         * Update the status of an item.
+         * @public
+         * @memberof Services.StorageManager
+         *
+         * @param {string} id
+         *  The identifier of the item
+         * @param {object} properties
+         *  The item properties
+         */
+        self.update = function (id, properties) {
+            store(id, properties);
+        };
+
+        /**
+         * Queries for an item by identifier.
+         * @public
+         * @memberof Services.StorageManager
+         *
+         * @param {string} id
+         *  The identifier of the item
+         *
+         * @returns
+         *  The item
+         */
+        self.byId = function (id) {
+            return fetch(id);
+        };
+
+        /**
+         * Clear the item queue.
+         * @public
+         * @memberof Services.StorageManager
+         */
+        self.clear = function () {
+            purge();
+        };
+
+        /**
+         * Queries all items in the storage container.
+         * @public
+         * @memberof Services.StorageManager
+         *
+         * @returns
+         *  An array of items
+         */
+        self.all = function () {
+            return all();
+        };
+
+        /**
+         * Transforms the raw object to a specifec model. Subclasses should override
+         * this method.
+         * @public
+         * @memberof Services.StorageManager
+         *
+         * @param {Object} raw
+         *  The JSON object
+         *
+         * @returns
+         *  The item
+         */
+        self.transform = function (raw) {
+            return raw;
+        };
+
+        /**
+         * Perform all prechecks necessary to ensure dependencies are met
+         * @private
+         *
+         * @returns
+         *  An error message if a dependency is not met
+         */
+        function prechecks() {
+            if (typeof Storage === 'undefined') {
+                return 'Local storage is not supported';
+            }
+
+            return null;
+        }
+
+        /**
+         * Retrieve all items in local storage.
+         * @private
+         *
+         * @returns
+         *  An array of items
+         */
+        function all() {
+            var items = [];
+
+            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
+            if (storage) {
+                for (var key in storage) {
+                    items.push(self.transform(storage[key]));
+                }
+            }
+
+            return items;
+        }
+
+        /**
+         * Fetchs an item from local storage.
+         * @private
+         *
+         * @param {string} id
+         *  The identifier of the item
+         *
+         * @returns
+         *  The item
+         */
+        function fetch(id) {
+            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
+            if (!storage) {
+                return null;
+            }
+
+            if (storage[id]) {
+                return self.transform(storage[id]);
+            }
+
+            return null;
+        }
+
+        /**
+         * Stores an item to local storage.
+         * @private
+         *
+         * @param {string} id
+         *  The identifier of the item
+         * @param {object} properties
+         *  The item properties
+         */
+        function store(id, properties) {
+            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
+            if (!storage) {
+                storage = {};
+            }
+
+            if (id) {
+                storage[id] = properties;
+                self.transform(storage[id]);
+                localStorage.setItem(self.storageContainer, JSON.stringify(storage));
+            }
+        }
+
+        /**
+         * Removes an item from local storage.
+         * @private
+         *
+         * @param {string} id
+         *  The identifier of the item
+         */
+        function remove(id) {
+            var storage = JSON.parse(localStorage.getItem(self.storageContainer));
+            if (!storage || !storage[id]) {
+                return;
+            }
+
+            self.transform(storage[id]);
+            delete storage[id];
+            localStorage.setItem(self.storageContainer, JSON.stringify(storage));
+        }
+
+        /**
+         * Purges all items from local storage.
+         * @private
+         */
+        function purge() {
+            if (localStorage.getItem(self.storageContainer)) {
+                localStorage.removeItem(self.storageContainer);
+            }
+        }
+
+        return self.init(options);
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular.module('fedramp.services').factory('StorageSettings', StorageSettingsFactory);
+
+    StorageSettingsFactory.$inject = ['StorageManager', 'Settings'];
+
+    function StorageSettingsFactory(StorageManager, Settings) {
+        /**
+         * Provides storage specific functionality that extends the StorageManager
+         * @constructor
+         * @memberof Services
+         * @extends StorageManager
+         */
+        function StorageSettings(options) {
+            StorageManager.call(this);
+
+            var self = this;
+            self.storageContainer = 'fedramp';
+
+            /**
+             * Transforms the raw object to a specifec model
+             * @public
+             * @memberof Services.StorageSettings
+             *
+             * @param {Object} raw
+             *  The JSON object
+             *
+             * @returns
+             *  The item
+             */
+            self.transform = function (raw) {
+                return new Settings(raw);
+            };
+
+            return self.init(options);
+        }
+        StorageSettings.prototype = Object.create(StorageManager.prototype);
+        StorageSettings.prototype.constructor = StorageSettings;
+
+        return StorageSettings;
     }
 })();
 
@@ -1812,7 +1812,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
-            return fedrampData.providers().length;
+            return fedrampData.products().length;
         };
 
         /**

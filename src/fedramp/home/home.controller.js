@@ -278,7 +278,7 @@
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
-            return fedrampData.providers().length;
+            return fedrampData.products().length;
         };
 
         /**

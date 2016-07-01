@@ -2,22 +2,26 @@
     <div class="usa-grid">
         <div class="usa-width-one-third">
             <div class="circle">
-                <h4>${{homeController.totalCostSavings()}}</h4>
-                <div>Cost Savings:</div>
+                <p>
+                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>
+                    <div>Cost Savings</div>
+                </p>
             </div>
         </div>
         <div class="usa-width-one-third">
             <div class="circle">
-                <div>
-                    <h4>{{homeController.totalAuthorized()}}</h4>
-                    Total Authorized:
-                </div>
+                <p>
+                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>
+                    <div>Total Authorized</div>
+                </p>
             </div>
         </div>
         <div class="usa-width-one-third">
             <div class="circle">
-                <h4>{{homeController.leveragedAtos()}}</h4>
-                <div>Leveraged ATOs:</div>
+                <p>
+                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>
+                    <div>Leveraged ATOs</div>
+                </p>
             </div>
         </div>
     </div>
