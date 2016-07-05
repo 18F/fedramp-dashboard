@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('fedramp.services')
+        .module('fedramp.components')
         .component('product', {
             templateUrl: 'src/fedramp.components/product.html',
             controller: Product,
@@ -13,13 +13,13 @@
             }
         });
 
-    Product.$inject = ['$log', '$state', '$stateParams', 'helperService'];
+    Product.$inject = ['$log', '$state'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Product ($log) {
+    function Product ($log, $state) {
         var self = this;
 
         /**
