@@ -13,10 +13,29 @@
             }
         });
 
-    Tile.$inject = ['$log'];
+    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
 
-    function Tile ($log) {
-        // var self = this;
+    function Tile ($log, $state, $stateParams, helperService) {
+        var self = this;
+
+        /**
+         * Redirect to the appropriate view
+         */
+        self.view = function () {
+            if ($stateParams.name) {
+                $state.go(
+                    'fedramp.' + self.model.type + '.comparison',
+                    {
+                        second: helperService.slugify(self.model.name)
+                    });
+            } else {
+                $state.go(
+                    'fedramp.' + self.model.type,
+                    {
+                        name: helperService.slugify(self.model.name)
+                    });
+            }
+        };
 
         // self.$onInit = function () {};
         // self.$onChanges = function (changes) {};

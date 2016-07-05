@@ -29,66 +29,68 @@
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
             })
-            .state('fedramp.home.provider', {
-                url: '/provider',
-                templateUrl: 'src/fedramp/home/provider.html',
-                controller: 'ProviderController as controller'
+            // .state('fedramp.home.providers', {
+            //     url: '/providers',
+            //     templateUrl: 'src/fedramp/home/providers.html',
+            //     controller: 'ProviderController as controller'
+            // })
+            // .state('fedramp.home.provider', {
+            //     url: '/provider/:name',
+            //     templateUrl: 'src/fedramp/home/provider.html',
+            //     controller: 'ProviderInformationController as controller'
+            // })
+            // .state('fedramp.home.provider.comparison', {
+            //     url: '/:first/versus/:second',
+            //     templateUrl: 'src/fedramp/home/provider-comparison.html',
+            //     controller: 'ProviderComparisonController as controller'
+            // })
+
+            .state('fedramp.home.products', {
+                url: '/products',
+                templateUrl: 'src/fedramp/home/products.html',
+                controller: 'ProductsController as controller'
             })
-            .state('fedramp.home.provider.information', {
-                url: '/provider/:name',
-                templateUrl: 'src/fedramp/home/provider-information.html',
-                controller: 'ProviderInformationController as controller'
-            })
-            .state('fedramp.home.provider.information.comparison', {
-                url: '/provider/:first/versus/:second',
-                templateUrl: 'src/fedramp/home/provider-comparison.html',
-                controller: 'ProviderComparisonController as controller'
-            })
-            .state('fedramp.home.product', {
-                url: '/product',
-                templateUrl: 'src/fedramp/home/product.html',
-                controller: 'ProductController as controller'
-            })
-            .state('fedramp.home.product.information', {
+            .state('fedramp.product', {
                 url: '/product/:name',
                 templateUrl: 'src/fedramp/home/product-information.html',
                 controller: 'ProductInformationController as controller'
             })
-            .state('fedramp.home.product.information.comparison', {
-                url: '/product/:first/versus/:second',
+            .state('fedramp.product.comparison', {
+                url: '/versus/:second',
                 templateUrl: 'src/fedramp/home/product-comparison.html',
                 controller: 'ProductComparisonController as controller'
-            })
-            .state('fedramp.home.agency', {
-                url: '/agency',
-                templateUrl: 'src/fedramp/home/agency.html',
-                controller: 'AgencyController as controller'
-            })
-            .state('fedramp.home.agency.information', {
-                url: '/agency/:name',
-                templateUrl: 'src/fedramp/home/agency-information.html',
-                controller: 'AgencyInformationController as controller'
-            })
-            .state('fedramp.home.agency.information.comparison', {
-                url: '/agency/:first/versus/:second',
-                templateUrl: 'src/fedramp/home/agency-comparison.html',
-                controller: 'AgencyComparisonController as controller'
-            })
-            .state('fedramp.home.assessor', {
-                url: '/assessor',
-                templateUrl: 'src/fedramp/home/assessor.html',
-                controller: 'AssessorController as controller'
-            })
-            .state('fedramp.home.assessor.information', {
-                url: '/assessor/:name',
-                templateUrl: 'src/fedramp/home/assessor-information.html',
-                controller: 'AssessorInformationController as controller'
-            })
-            .state('fedramp.home.assessor.information.comparison', {
-                url: '/assessor/:first/versus/:second',
-                templateUrl: 'src/fedramp/home/assessor-comparison.html',
-                controller: 'AssessorComparisonController as controller'
             });
+
+            // .state('fedramp.home.agency', {
+            //     url: '/agency',
+            //     templateUrl: 'src/fedramp/home/agency.html',
+            //     controller: 'AgencyController as controller'
+            // })
+            // .state('fedramp.home.agency.information', {
+            //     url: '/:name',
+            //     templateUrl: 'src/fedramp/home/agency-information.html',
+            //     controller: 'AgencyInformationController as controller'
+            // })
+            // .state('fedramp.home.agency.information.comparison', {
+            //     url: '/:first/versus/:second',
+            //     templateUrl: 'src/fedramp/home/agency-comparison.html',
+            //     controller: 'AgencyComparisonController as controller'
+            // })
+            // .state('fedramp.home.assessor', {
+            //     url: '/assessor',
+            //     templateUrl: 'src/fedramp/home/assessor.html',
+            //     controller: 'AssessorController as controller'
+            // })
+            // .state('fedramp.home.assessor.information', {
+            //     url: '/:name',
+            //     templateUrl: 'src/fedramp/home/assessor-information.html',
+            //     controller: 'AssessorInformationController as controller'
+            // })
+            // .state('fedramp.home.assessor.information.comparison', {
+            //     url: '/:first/versus/:second',
+            //     templateUrl: 'src/fedramp/home/assessor-comparison.html',
+            //     controller: 'AssessorComparisonController as controller'
+            // });
 
         /**
          * Retrieves the providers for a particular day

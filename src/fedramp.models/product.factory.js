@@ -19,6 +19,7 @@
 
             self.type = 'product';
             self.name = '';
+            self.pkgId = '';
             self.reuses = 0;
             self.provider = '';
             self.agencies = [];

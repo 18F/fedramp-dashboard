@@ -117,6 +117,7 @@
                     let item = new Product();
                     item.name = d.pkg;
                     item.provider = d.name;
+                    item.pkgId = d.pkgId;
                     item.serviceModels = d.serviceModel;
                     item.deploymentModel = d.deploymentModel;
                     item.designation = d.designation;
@@ -127,20 +128,20 @@
                 items.forEach(item => {
                     data.forEach(d => {
                         if (d.pkg === item.name) {
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
+                            if (d.sponsoringAgency && !item.agencies.includes(d.sponsoringAgency)) {
                                 item.agencies.push(d.sponsoringAgency);
                             }
 
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
+                            if (d.sponsoringSubagency && !item.agencies.includes(d.sponsoringSubagency)) {
                                 item.agencies.push(d.sponsoringSubagency);
                             }
 
                             d.atoLetters.forEach(a => {
-                                if (!item.agencies.includes(a.authorizingAgency)) {
+                                if (d.authorizationAgency && !item.agencies.includes(a.authorizingAgency)) {
                                     item.agencies.push(d.authorizingAgency);
                                 }
 
-                                if (!item.agencies.includes(a.authorizingSubagency)) {
+                                if (d.authorizingSubagency && !item.agencies.includes(a.authorizingSubagency)) {
                                     item.agencies.push(d.authorizingSubagency);
                                 }
                             });

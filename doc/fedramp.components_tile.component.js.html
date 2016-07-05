@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/fedramp-services.module.js</title>
+    <title>JSDoc: Source: fedramp.components/tile.component.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/fedramp-services.module.js</h1>
+    <h1 class="page-title">Source: fedramp.components/tile.component.js</h1>
 
     
 
@@ -26,20 +26,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @namespace Services
- */
-(function () {
+            <pre class="prettyprint source linenums"><code>(function () {
     'use strict';
 
     angular
-        .module('fedramp.services', ['fedramp.models'])
-        .run(run);
+        .module('fedramp.services')
+        .component('tile', {
+            templateUrl: 'src/fedramp.components/tile.html',
+            controller: Tile,
+            controllerAs: 'controller',
+            bindings: {
+                expand: '&lt;',
+                model: '&lt;'
+            }
+        });
 
-    run.$inject = ['$log'];
+    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
 
-    function run ($log) {
-        $log.debug('fedramp.services module initializing');
+    function Tile ($log, $state, $stateParams, helperService) {
+        var self = this;
+
+        /**
+         * Redirect to the appropriate view
+         */
+        self.view = function () {
+            if ($stateParams.name) {
+                $state.go(
+                    'fedramp.' + self.model.type + '.comparison',
+                    {
+                        second: helperService.slugify(self.model.name)
+                    });
+            } else {
+                $state.go(
+                    'fedramp.' + self.model.type,
+                    {
+                        name: helperService.slugify(self.model.name)
+                    });
+            }
+        };
+
+        // self.$onInit = function () {};
+        // self.$onChanges = function (changes) {};
+        // self.$onDestroy = function () {};
+        // self.$postLink = function () {};
     }
 })();
 </code></pre>

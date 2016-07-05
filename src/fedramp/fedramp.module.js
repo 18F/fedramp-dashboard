@@ -20,5 +20,6 @@
     function run ($log, $rootScope) {
         $log.debug('fedramp module initializing');
         $rootScope.$on("$stateChangeError", $log.debug.bind($log));
+        $rootScope.$on("$stateChangeError", console.log.bind(console));
     }
 })();

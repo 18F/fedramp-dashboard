@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/fedramp-services.module.js</title>
+    <title>JSDoc: Source: fedramp/home/product.information.controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/fedramp-services.module.js</h1>
+    <h1 class="page-title">Source: fedramp/home/product.information.controller.js</h1>
 
     
 
@@ -26,20 +26,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @namespace Services
- */
-(function () {
+            <pre class="prettyprint source linenums"><code>(function () {
     'use strict';
 
     angular
-        .module('fedramp.services', ['fedramp.models'])
-        .run(run);
+        .module('fedramp')
+        .controller('ProductInformationController', ProductInformationController);
 
-    run.$inject = ['$log'];
+    ProductInformationController.$inject = ['$log', '$stateParams', 'fedrampData', 'helperService'];
 
-    function run ($log) {
-        $log.debug('fedramp.services module initializing');
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
+    function ProductInformationController ($log, $stateParams, fedrampData, helperService) {
+        var self = this;
+
+        /**
+         * The related items for this type of item
+         * @member {array}
+         * @memberof Controllers.ProductInformationController
+         */
+        self.items = fedrampData.products();
+
+        /**
+         * The item
+         * @member {object}
+         * @memberof Controllers.ProductInformationController
+         */
+        self.item = self.items.find(x => helperService.slugify(x.name) === $stateParams.name);
+        $log.info(self.item);
     }
 })();
 </code></pre>

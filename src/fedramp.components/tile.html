@@ -1,57 +1,58 @@
-<div ng-if="controller.expand" class="usa-width-one-whole">
-    <div class="usa-grid">
-        <div class="usa-width-one-third">
-            <strong>{{ controller.model.name }} - {{ controller.model.pkg }}</strong>
-        </div>
-        <div class="usa-width-one-sixth">
-            <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>
-        </div>
-        <div class="usa-width-one-sixth">
-            <span>{{ controller.model.deploymentModel }}</span>
-        </div>
-        <div class="usa-width-one-sixth">
-            <span>{{ controller.model.impactLevel }}</span>
-        </div>
-        <div class="usa-width-one-twelfth">
-            <!-- Status -->
-            Status
-        </div>
-        <div class="usa-width-one-twelfth">
-            <!-- Reuses -->
-            0
-        </div>
-    </div>
-</div>
-
-<div ng-if="!controller.expand" class="usa-width-one-half">
-    <div class="usa-grid">
-        <div class="usa-width-two-thirds">
-            <!-- Logo -->
-            Logo
-        </div>
-        <div class="usa-width-one-sixth">
-            <!-- Status -->
-            Status
-        </div>
-        <div class="usa-width-one-sixth">
-            <!-- Reuses -->
-            0
-        </div>
-    </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <div>
-                <strong>Service Model:</strong>
-                {{ controller.model.serviceModel.join(', ') }}
+<a ng-click="controller.view()">
+    <div ng-if="controller.expand" class="usa-width-one-whole">
+        <div class="usa-grid">
+            <div class="usa-width-one-third">
+                <strong>{{ controller.model.name }} - {{ controller.model.pkg }}</strong>
             </div>
-            <div>
-                <strong>Deployment Model:</strong>
-                {{ controller.model.deploymentModel }}
+            <div class="usa-width-one-sixth">
+                <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>
             </div>
-            <div>
-                <strong>Impact Level:</strong>
-                {{ controller.model.impactLevel }}
+            <div class="usa-width-one-sixth">
+                <span>{{ controller.model.deploymentModel }}</span>
+            </div>
+            <div class="usa-width-one-sixth">
+                <span>{{ controller.model.impactLevel }}</span>
+            </div>
+            <div class="usa-width-one-twelfth">
+                <!-- Status -->
+                Status
+            </div>
+            <div class="usa-width-one-twelfth">
+                <!-- Reuses -->
+                0
             </div>
         </div>
     </div>
-</div>
+    <div ng-if="!controller.expand" class="usa-width-one-half">
+        <div class="usa-grid">
+            <div class="usa-width-two-thirds">
+                <!-- Logo -->
+                Logo
+            </div>
+            <div class="usa-width-one-sixth">
+                <!-- Status -->
+                Status
+            </div>
+            <div class="usa-width-one-sixth">
+                <!-- Reuses -->
+                0
+            </div>
+        </div>
+        <div class="usa-grid">
+            <div class="usa-width-one-whole">
+                <div>
+                    <strong>Service Model:</strong>
+                    {{ controller.model.serviceModel.join(', ') }}
+                </div>
+                <div>
+                    <strong>Deployment Model:</strong>
+                    {{ controller.model.deploymentModel }}
+                </div>
+                <div>
+                    <strong>Impact Level:</strong>
+                    {{ controller.model.impactLevel }}
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
