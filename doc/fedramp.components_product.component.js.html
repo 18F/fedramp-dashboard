@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Models</title>
+    <title>JSDoc: Source: fedramp.components/product.component.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,120 +17,58 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Models</h1>
+    <h1 class="page-title">Source: fedramp.components/product.component.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>Models</h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
 
-<article>
-    <div class="container-overview">
-    
-        
+    angular
+        .module('fedramp.services')
+        .component('product', {
+            templateUrl: 'src/fedramp.components/product.html',
+            controller: Product,
+            controllerAs: 'controller',
+            bindings: {
+                model: '&lt;',
+                onClose: '&lt;'
+            }
+        });
 
-        
+    Product.$inject = ['$log', '$state', '$stateParams', 'helperService'];
 
+    /**
+     * @constructor
+     * @memberof Components
+     */
+    function Product ($log) {
+        var self = this;
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_fedramp-models.module.js.html">fedramp.models/fedramp-models.module.js</a>, <a href="fedramp.models_fedramp-models.module.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="Models.Agency.html">Agency</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.Assessor.html">Assessor</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.AtoLetter.html">AtoLetter</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.Data.html">Data</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.Product.html">Product</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.Provider.html">Provider</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Models.Settings.html">Settings</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+        /**
+         * Close the informational panel
+         * @public
+         * @member {object}
+         * @memberof Components.Product
+         */
+        self.close = function () {
+            if (self.onClose) {
+                self.onClose();
+                return;
+            }
+            
+            $state.go('fedramp.home', {}, { reload: true });
+        };
+    }
+})();
+</code></pre>
+        </article>
+    </section>
 
 
 

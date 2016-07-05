@@ -51,12 +51,16 @@
                 controller: 'ProductsController as controller'
             })
             .state('fedramp.product', {
-                url: '/product/:name',
+                url: '/product',
+                templateUrl: 'src/fedramp/home/product.html'
+            })
+            .state('fedramp.product.information', {
+                url: '/:name',
                 templateUrl: 'src/fedramp/home/product-information.html',
                 controller: 'ProductInformationController as controller'
             })
             .state('fedramp.product.comparison', {
-                url: '/versus/:second',
+                url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/product-comparison.html',
                 controller: 'ProductComparisonController as controller'
             });

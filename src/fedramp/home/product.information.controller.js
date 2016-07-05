@@ -5,13 +5,13 @@
         .module('fedramp')
         .controller('ProductInformationController', ProductInformationController);
 
-    ProductInformationController.$inject = ['$log', '$stateParams', 'fedrampData', 'helperService'];
+    ProductInformationController.$inject = ['$log', '$state', '$stateParams', 'fedrampData', 'helperService'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function ProductInformationController ($log, $stateParams, fedrampData, helperService) {
+    function ProductInformationController ($log, $state, $stateParams, fedrampData, helperService) {
         var self = this;
 
         /**
@@ -27,6 +27,15 @@
          * @memberof Controllers.ProductInformationController
          */
         self.item = self.items.find(x => helperService.slugify(x.name) === $stateParams.name);
-        $log.info(self.item);
+
+        /**
+         * Close the information and return to the home view
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductInformationController
+         */
+        self.close = function () {
+            $state.go('fedramp.home', {}, { reload: true });
+        };
     }
 })();

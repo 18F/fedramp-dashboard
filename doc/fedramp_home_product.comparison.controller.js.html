@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.components/tile.component.js</title>
+    <title>JSDoc: Source: fedramp/home/product.comparison.controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.components/tile.component.js</h1>
+    <h1 class="page-title">Source: fedramp/home/product.comparison.controller.js</h1>
 
     
 
@@ -30,59 +30,72 @@
     'use strict';
 
     angular
-        .module('fedramp.services')
-        .component('tile', {
-            templateUrl: 'src/fedramp.components/tile.html',
-            controller: Tile,
-            controllerAs: 'controller',
-            bindings: {
-                expand: '&lt;',
-                model: '&lt;'
-            }
-        });
+        .module('fedramp')
+        .controller('ProductComparisonController', ProductComparisonController);
 
-    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
+    ProductComparisonController.$inject = ['$log', '$state', '$stateParams', 'fedrampData', 'helperService'];
 
     /**
      * @constructor
-     * @memberof Components
+     * @memberof Controllers
      */
-    function Tile ($log, $state, $stateParams, helperService) {
+    function ProductComparisonController ($log, $state, $stateParams, fedrampData, helperService) {
         var self = this;
 
         /**
-         * Redirect to the appropriate view
+         * The related items for this type of item
+         * @member {array}
+         * @memberof Controllers.ProductComparisonController
+         */
+        self.items = fedrampData.products();
+
+        /**
+         * The first item
+         * @member {object}
+         * @memberof Controllers.ProductComparisonController
+         */
+        self.first = self.items.find(x => helperService.slugify(x.name) === $stateParams.first);
+
+        /**
+         * The second item
+         * @member {object}
+         * @memberof Controllers.ProductComparisonController
+         */
+        self.second = self.items.find(x => helperService.slugify(x.name) === $stateParams.second);
+
+        /**
+         * Close the first item and return to the informational view
          * @public
          * @member {object}
-         * @memberof Components.Tile
+         * @memberof Controllers.ProductComparisonController
          */
-        self.view = function () {
-            if ($stateParams.name) {
-                $state.go(
-                    'fedramp.' + self.model.type + '.comparison',
-                    {
-                        first: helperService.slugify($stateParams.name),
-                        second: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            } else {
-                $state.go(
-                    'fedramp.' + self.model.type + '.information',
-                    {
-                        name: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            }
+        self.closeFirst = function () {
+            $state.go(
+                'fedramp.' + self.second.type + '.information',
+                {
+                    name: $stateParams.second
+                },
+                {
+                    reload: true
+                });
         };
 
-        // self.$onInit = function () {};
-        // self.$onChanges = function (changes) {};
-        // self.$onDestroy = function () {};
-        // self.$postLink = function () {};
+        /**
+         * Close the second item and return to the informational view
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductComparisonController
+         */
+        self.closeSecond = function () {
+            $state.go(
+                'fedramp.' + self.first.type + '.information',
+                {
+                    name: $stateParams.first
+                },
+                {
+                    reload: true
+                });
+        };
     }
 })();
 </code></pre>
