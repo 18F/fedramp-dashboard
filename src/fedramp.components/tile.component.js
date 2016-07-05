@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('fedramp.services')
+        .module('fedramp.components')
         .component('tile', {
             templateUrl: 'src/fedramp.components/tile.html',
             controller: Tile,
