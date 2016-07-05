@@ -130,7 +130,6 @@
                 for(var x = 0; x < self.selectedAgencies.length; x++){
                     var curValue = self.selectedAgencies[x];
                     if(value.agencies.includes(curValue)){
-                        console.log(curValue);
                         found = true;
                     }
                 }
@@ -149,7 +148,6 @@
                         filterCache[self.selectedFilter.name] = true;
                         break;
                     case 'Agency':
-                        console.log('Agency case: ', self.selectedFilter);
                         self.selectedAgencies.push(self.selectedFilter.name);
                         filterCache[self.selectedFilter.name] = true;
                         break;
@@ -160,27 +158,22 @@
                 }
 
             }
-            console.log(self.selectedAgencies);
         }
 
         function removeProviderFilter(filter){
-            console.log(filter);
             var pos = self.selectedNames.indexOf(filter);
-            console.log(pos);
             self.selectedNames.splice(pos, 1);
             filterCache[filter] = false;
         }
 
         function removeAgencyFilter(filter){
             var pos = self.selectedAgencies.indexOf(filter);
-            console.log(pos);
             self.selectedAgencies.splice(pos, 1);
             filterCache[filter] = false;
         }
         
         function removeServiceModelFilter(filter){
             var pos = self.selectedServiceModels.indexOf(filter);
-            console.log(pos);
             self.selectedServiceModels.splice(pos, 1);
             filterCache[filter] = false;
         }
