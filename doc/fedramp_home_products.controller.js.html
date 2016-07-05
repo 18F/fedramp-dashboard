@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fedramp/home/products.controller.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: fedramp/home/products.controller.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function(){
+    "use strict";
+
+    angular
+        .module('fedramp')
+        .controller('ProductController', ProductController);
+
+    ProductController.$inject = ['$log', 'products', '$stateParams'];
+
+    function ProductController($log, products, $stateParams){
+        var self = this;
+        self.filterOptionGroups = [];
+
+        // Agencies
+        self.agencies = [];
+
+        // Product Names
+        self.productNames = [];
+
+        // Service Models
+        self.serviceModels = [];
+
+        // Selected product names
+        self.selectedNames = [];
+
+        // Selected agencies
+        self.selectedAgencies = [];
+
+        self.selectedServiceModels = [];
+
+        // Assign products resolve to controller
+        self.products = products;
+
+
+        // Funcs
+        self.filterName = filterName;
+        self.filterServiceModel = filterServiceModel;
+        self.filterAgency = filterAgency;
+        self.filterSelected = filterSelected;
+        self.removeProviderFilter = removeProviderFilter;
+        self.removeAgencyFilter = removeAgencyFilter;
+        self.removeServiceModelFilter = removeServiceModelFilter;
+
+        var filterCache = {};
+
+        function onInit(){
+            // Populate Product names
+            //self.products.forEach(x => self.productNames.push(x.name)); 
+            var providerCache = {};
+
+            self.products.forEach(function(value, index, arr){
+                if(!providerCache[value.provider]){
+                    value.type = 'Product Name';
+                    self.filterOptionGroups.push({
+                        name: value.provider,
+                        type: 'Provider'
+                    });
+                    providerCache[value.provider] = true;
+                }
+            });
+
+            // Populate Agency list
+            var agencyMap = {};
+            self.products.forEach(function(element, index, array){
+                if(element &amp;&amp; element.agencies){
+                    element.agencies.forEach(function(agency){
+                        if(agency &amp;&amp; !agencyMap[agency]){
+                            self.agencies.push(agency);
+
+                            self.filterOptionGroups.push({
+                                name: agency,
+                                type: 'Agency'
+                            });
+                            agencyMap[agency] = true;
+                        }
+                    });
+                }
+            });
+
+            // Populate service models
+            self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
+            self.serviceModels.forEach(function(value, index, arr){
+                self.filterOptionGroups.push({
+                    name: value,
+                    type: 'Service Model'
+                });
+            });
+        }
+
+
+        /**
+         * Filter applied to render by product name
+         */
+        function filterName (value, index, arr){
+            if(self.selectedNames &amp;&amp; self.selectedNames.length > 0){
+                if(self.selectedNames.includes(value.provider)){
+                    return value;
+                } 
+                return null;
+            }
+            return value;
+        }
+
+        /**
+         * Filter applied to render by service model
+         */
+        function filterServiceModel (value, index, arr){
+            if(self.selectedServiceModels &amp;&amp; self.selectedServiceModels.length > 0){
+                var found = false;
+                self.selectedServiceModels.forEach(function(curValue){
+                    if(value.serviceModels.includes(curValue)){
+                        found = true;
+                    }
+                });
+
+                if(!found){
+                    return null;
+                }
+
+            }
+            return value;
+        }
+
+        /**
+         * Filter applied to render by agency
+         */
+        function filterAgency (value, index, arr){
+            if(self.selectedAgencies &amp;&amp; self.selectedAgencies.length > 0 &amp;&amp; value.agencies){
+                var found = false;
+                for(var x = 0; x &lt; self.selectedAgencies.length; x++){
+                    var curValue = self.selectedAgencies[x];
+                    if(value.agencies.includes(curValue)){
+                        console.log(curValue);
+                        found = true;
+                    }
+                }
+                if(!found){
+                    return null;
+                }
+            }
+            return value;
+        }
+
+        function filterSelected(){
+            if(!filterCache[self.selectedFilter.name]){
+                switch(self.selectedFilter.type){
+                    case 'Provider':
+                        self.selectedNames.push(self.selectedFilter.name);
+                        filterCache[self.selectedFilter.name] = true;
+                        break;
+                    case 'Agency':
+                        console.log('Agency case: ', self.selectedFilter);
+                        self.selectedAgencies.push(self.selectedFilter.name);
+                        filterCache[self.selectedFilter.name] = true;
+                        break;
+                    case 'Service Model':
+                        self.selectedServiceModels.push(self.selectedFilter.name);
+                        filterCache[self.selectedFilter.name] = true;
+                        break;
+                }
+
+            }
+            console.log(self.selectedAgencies);
+        }
+
+        function removeProviderFilter(filter){
+            console.log(filter);
+            var pos = self.selectedNames.indexOf(filter);
+            console.log(pos);
+            self.selectedNames.splice(pos, 1);
+            filterCache[filter] = false;
+        }
+
+        function removeAgencyFilter(filter){
+            var pos = self.selectedAgencies.indexOf(filter);
+            console.log(pos);
+            self.selectedAgencies.splice(pos, 1);
+            filterCache[filter] = false;
+        }
+        
+        function removeServiceModelFilter(filter){
+            var pos = self.selectedServiceModels.indexOf(filter);
+            console.log(pos);
+            self.selectedServiceModels.splice(pos, 1);
+            filterCache[filter] = false;
+        }
+        // Initialize everything
+        onInit();
+    }
+
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 17:11:31 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

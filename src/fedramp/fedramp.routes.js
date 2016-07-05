@@ -52,30 +52,8 @@
                     products: ProductsResolve
                 }
             })
-            .state('fedramp.product', {
-                url: '/product/:name',
-                template: 'Some product info',
-
-                params: {
-                    // Some filter object to recreate filtes passed in from originating list
-                    filters: null
-                },
-                resolve: {
-                    filteredStuff: function($stateParams){ 
-                        // Maybe pass filters from originating page?
-                        // These wouldn't be from url but passed via internal params
-                        //
-                        // $stateParams.filter.name
-                        // $stateParams.filter.agencies
-                        // 
-                        return null;
-                    }
-                }
-            })
             .state('fedramp.home.product', {
-                url: '/products',
-                templateUrl: 'src/fedramp/home/product.html',
-                controller: 'ProductController as controller'
+                url: '/product'
             })
             .state('fedramp.home.product.information', {
                 url: '/product/:name',

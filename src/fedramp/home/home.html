@@ -29,7 +29,6 @@
     <div ng-show="homeController.hasData()">
         <div class="filters usa-grid">
             <div class="usa-width-one-fourth">
-                [><a ui-sref="fedramp.home.csp">CSP</a><]
                 <button id="filterByCSP"
                         ng-click="homeController.toggleFilter('csp')">CSP
                 </button>
@@ -37,7 +36,8 @@
             <div class="usa-width-one-fourth">
                 <button id="filterByCSO"
                         type="radio"
-                        ng-click="homeController.toggleFilter('cso')">CSO
+                        ui-sref="fedramp.home.products">
+                        CSO
                 </button>
             </div>
             <div class="usa-width-one-fourth">

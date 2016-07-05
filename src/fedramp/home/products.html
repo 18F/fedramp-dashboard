@@ -1,0 +1,57 @@
+<!--<select id="filter"-->
+        <!--ng-model="controller.search.name"-->
+        <!--ng-options="option for option in controller.filterOptions"-->
+        <!--ng-change="controller.applyFilter()">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<select -->
+        <!--ng-model="controller.search.agency"-->
+        <!--ng-options="option for option in controller.agencies">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<select -->
+        <!--ng-model="controller.search.serviceModel"-->
+        <!--ng-options="option for option in controller.serviceModels">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<input type="text" ng-model="controller.search.provider"/>-->
+
+<style>
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+}
+</style>
+<div>
+    <select style="margin:0 auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
+</div>
+<span ng-repeat="selected in controller.selectedNames" class="badge">
+    {{selected}} <a ng-click="controller.removeProviderFilter(selected)">(X)</a>
+</span>
+
+<span ng-repeat="selected in controller.selectedAgencies" class="badge">
+    {{selected}} <a ng-click="controller.removeAgencyFilter(selected)">(X)</a>
+</span>
+
+<span ng-repeat="selected in controller.selectedServiceModels" class="badge">
+    {{selected}} <a ng-click="controller.removeServiceModelFilter(selected)">(X)</a>
+</span>
+<tile 
+ ng-repeat="item in controller.products |
+
+ filter:controller.filterName | 
+ filter:controller.filterServiceModel | 
+ filter:controller.filterAgency | 
+ filter:{provider: controller.search.provider} 
+ track by $index" 
+ 
+expand="homeController.expandTiles" model="item" />
