@@ -26,7 +26,7 @@ describe('ProductController controller with no data', function () {
 
     it('filters with result hits', function () {
         inject(function (_$filter_, $controller, $injector) {
-            var productController = $controller('ProductController', { 
+            var productController = $controller('ProductsController', { 
                 products: [product],
                 $stateParams: {},
                 $log: log,
@@ -50,7 +50,7 @@ describe('ProductController controller with no data', function () {
     it('filters with no hits', function () {
         inject(function (_$filter_, _$rootScope_, $controller, $injector) {
             var $scope = {search: ''};
-            var productController = $controller('ProductController', 
+            var productController = $controller('ProductsController', 
                 {
                     $scope: $scope,
                     products: [],
