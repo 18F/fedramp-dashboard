@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fedramp/home/agency.comparison.controller.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: fedramp/home/agency.comparison.controller.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
+
+    angular
+        .module('fedramp')
+        .controller('AgencyComparisonController', AgencyComparisonController);
+
+    AgencyComparisonController.$inject = ['$log', '$state', '$stateParams', 'fedrampData', 'helperService'];
+
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
+    function AgencyComparisonController ($log, $state, $stateParams, fedrampData, helperService) {
+        var self = this;
+
+        /**
+         * The related items for this type of item
+         * @member {array}
+         * @memberof Controllers.AgencyComparisonController
+         */
+        self.items = fedrampData.agencies();
+
+        /**
+         * The first item
+         * @member {object}
+         * @memberof Controllers.AgencyComparisonController
+         */
+        self.first = self.items.find(x => helperService.slugify(x.name) === $stateParams.first);
+
+        /**
+         * The second item
+         * @member {object}
+         * @memberof Controllers.AgencyComparisonController
+         */
+        self.second = self.items.find(x => helperService.slugify(x.name) === $stateParams.second);
+
+        /**
+         * Close the first item and return to the informational view
+         * @public
+         * @member {object}
+         * @memberof Controllers.AgencyComparisonController
+         */
+        self.closeFirst = function () {
+            $state.go(
+                'fedramp.' + self.second.type + '.information',
+                {
+                    name: $stateParams.second
+                },
+                {
+                    reload: true
+                });
+        };
+
+        /**
+         * Close the second item and return to the informational view
+         * @public
+         * @member {object}
+         * @memberof Controllers.AgencyComparisonController
+         */
+        self.closeSecond = function () {
+            $state.go(
+                'fedramp.' + self.first.type + '.information',
+                {
+                    name: $stateParams.first
+                },
+                {
+                    reload: true
+                });
+        };
+    }
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 18:03:40 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
