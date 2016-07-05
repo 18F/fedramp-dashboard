@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/datasource.service.js</title>
+    <title>JSDoc: Class: ProductController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,52 +17,126 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/datasource.service.js</h1>
+    <h1 class="page-title">Class: ProductController</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function () {
-    'use strict';
+        <h2>
+            <span class="ancestors"><a href="Controllers.html">Controllers</a>.</span>ProductController</h2>
+        
+    
+</header>
 
-    angular
-        .module('fedramp.services')
-        .service('DatasourceService', DatasourceService);
+<article>
+    <div class="container-overview">
+    
+        
 
-    DatasourceService.$inject = ['$http'];
+    
 
-    /**
-     * @constructor
-     * @memberof Services
-     */
-    function DatasourceService ($http) {
-        var self = this;
+    <h4 class="name" id="ProductController"><span class="type-signature"></span>new ProductController<span class="signature">()</span><span class="type-signature"></span></h4>
 
-        /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.DatasourceService
-         *
-         * @param {string} url
-         *  The URL
-         *
-         * @returns
-         *  The response as a promise
-         */
-        self.pull = function (url) {
-            return $http.get(url).then(function (response) {
-                return response.data;
-            });
-        };
-    }
-})();
-</code></pre>
-        </article>
-    </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp_home_product.controller.js.html">fedramp/home/product.controller.js</a>, <a href="fedramp_home_product.controller.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

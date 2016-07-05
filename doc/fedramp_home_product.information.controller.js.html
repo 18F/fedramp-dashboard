@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.services/datasource.service.js</title>
+    <title>JSDoc: Source: fedramp/home/product.information.controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.services/datasource.service.js</h1>
+    <h1 class="page-title">Source: fedramp/home/product.information.controller.js</h1>
 
     
 
@@ -30,33 +30,40 @@
     'use strict';
 
     angular
-        .module('fedramp.services')
-        .service('DatasourceService', DatasourceService);
+        .module('fedramp')
+        .controller('ProductInformationController', ProductInformationController);
 
-    DatasourceService.$inject = ['$http'];
+    ProductInformationController.$inject = ['$log', '$state', '$stateParams', 'fedrampData', 'helperService'];
 
     /**
      * @constructor
-     * @memberof Services
+     * @memberof Controllers
      */
-    function DatasourceService ($http) {
+    function ProductInformationController ($log, $state, $stateParams, fedrampData, helperService) {
         var self = this;
 
         /**
-         * Issue a GET request for the given URL.
-         * @public
-         * @memberof Services.DatasourceService
-         *
-         * @param {string} url
-         *  The URL
-         *
-         * @returns
-         *  The response as a promise
+         * The related items for this type of item
+         * @member {array}
+         * @memberof Controllers.ProductInformationController
          */
-        self.pull = function (url) {
-            return $http.get(url).then(function (response) {
-                return response.data;
-            });
+        self.items = fedrampData.products();
+
+        /**
+         * The item
+         * @member {object}
+         * @memberof Controllers.ProductInformationController
+         */
+        self.item = self.items.find(x => helperService.slugify(x.name) === $stateParams.name);
+
+        /**
+         * Close the information and return to the home view
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductInformationController
+         */
+        self.close = function () {
+            $state.go('fedramp.home', {}, { reload: true });
         };
     }
 })();

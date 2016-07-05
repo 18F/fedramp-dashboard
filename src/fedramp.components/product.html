@@ -1,0 +1,72 @@
+<div class="usa-grid">
+    <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-two-thirds">
+        <!-- Logo -->
+        Logo
+    </div>
+    <div class="usa-width-one-sixth">
+        <!-- Status -->
+        Status
+    </div>
+    <div class="usa-width-one-sixth">
+        {{controller.model.reuse}}
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>System Profile</strong>
+    </div>
+    <div>
+        Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span>:
+        {{controller.model.serviceModels.join(', ')}}
+    </div>
+    <div>
+        Deployment Model:
+        {{controller.model.deploymentModel}}
+    </div>
+    <div>
+        Impact Level:
+        {{controller.model.impactLevel}}
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>Contact Information</strong>
+    </div>
+    <div>POC:</div>
+    <div>E-mail:</div>
+    <div>Website:</div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>Package ID</strong>
+        <p>{{controller.model.pkgId}}</p>
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>Service Description</strong>
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>FedRAMP Compliant Detail</strong>
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>Associated Risks</strong>
+    </div>
+</div>
+<div class="usa-grid">
+    <div class="usa-width-one-whole">
+        <strong>Agencies using this service</strong>
+    </div>
+    <div class="usa-width-one-whole">
+        <ul>
+            <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
+        </ul>
+    </div>
+</div>

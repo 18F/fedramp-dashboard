@@ -3,7 +3,7 @@
 
     angular
         .module('fedramp')
-        .controller('ProductController', ProductController);
+        .controller('ProductsController', ProductController);
 
     ProductController.$inject = ['$log', 'products', '$stateParams'];
 

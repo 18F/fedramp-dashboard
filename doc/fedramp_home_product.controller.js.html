@@ -26,77 +26,22 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>(function(){
-    "use strict";
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
 
     angular
         .module('fedramp')
         .controller('ProductController', ProductController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams'];
+    ProductController.$inject = ['$log', 'fedrampData'];
 
-    function ProductController($log, products, $stateParams){
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
+    function ProductController ($log, fedrampData) {
         var self = this;
-        self.agencies = [];
-        self.filterOptions = [];
-        self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
-
-        self.products = products;
-        self.products.forEach(x => self.filterOptions.push(x.name)); 
-        var agencyMap = {};
-
-        self.products.forEach(function(element, index, array){
-            if(element &amp;&amp; element.agencies){
-                element.agencies.forEach(function(agency){
-                    if(agency &amp;&amp; !agencyMap[agency]){
-                        self.agencies.push(agency);
-                        agencyMap[agency] = true;
-                    }
-                });
-            }
-        });
-
-        /**
-         * Filter applied to render by product name
-         */
-        self.filterName = function(value, index, arr){
-            console.log('search: ', self.search);
-            if(self.search &amp;&amp; self.search.name){
-                if(self.search &amp;&amp; self.search.name === value.name){
-                    return value;
-                } 
-                return null;
-            }
-            return value;
-        };
-
-        /**
-         * Filter applied to render by service model
-         */
-        self.filterServiceModel = function(value, index, arr){
-            if(self.search &amp;&amp; self.search.serviceModel){
-                if(value.serviceModels.includes(self.search.serviceModel)){
-                    return value;
-                }
-                return null;
-            }
-            return value;
-        };
-
-        /**
-         * Filter applied to render by agency
-         */
-        self.filterAgency = function(value, index, arr){
-            if(self.search &amp;&amp; self.search.agency &amp;&amp;  value.agencies){
-                if(value.agencies.includes(self.search.agency)){
-                    return value;
-                }
-                return null;
-            }
-            return value;
-        };
     }
-
 })();
 </code></pre>
         </article>
@@ -108,13 +53,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 12:28:34 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 05 2016 17:37:23 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>
