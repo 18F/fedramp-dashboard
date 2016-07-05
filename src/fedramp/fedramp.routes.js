@@ -28,6 +28,26 @@
                 url: '/',
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
+            })
+            .state('fedramp.home.provider', {
+                url: '/provider',
+                templateUrl: 'src/fedramp/home/provider.html',
+                controller: 'ProviderController as controller'
+            })
+            .state('fedramp.home.product', {
+                url: '/product',
+                templateUrl: 'src/fedramp/home/product.html',
+                controller: 'ProductController as controller'
+            })
+            .state('fedramp.home.agency', {
+                url: '/agency',
+                templateUrl: 'src/fedramp/home/agency.html',
+                controller: 'AgencyController as controller'
+            })
+            .state('fedramp.home.assessor', {
+                url: '/assessor',
+                templateUrl: 'src/fedramp/home/assessor.html',
+                controller: 'AssessorController as controller'
             });
 
         /**
