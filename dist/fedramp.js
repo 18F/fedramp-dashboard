@@ -66,9 +66,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })();
 
 angular.module('fedramp').run(['$templateCache', function ($templateCache) {
-    $templateCache.put('src/fedramp/fedramp.html', '<header>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <!--<img class="header" src="img/fedramp.png"/>-->\n            <h1>FedRAMP</h1>\n        </div>\n    </div>\n\n</header>\n<ui-view></ui-view>\n');
+    $templateCache.put('src/fedramp/fedramp.html', '<!--<header>-->\n    <!--<div class="usa-grid">-->\n        <!--<div class="usa-width-one-whole">-->\n            <!--[><img class="header" src="img/fedramp.png"/><]-->\n            <!--<h1>FedRAMP</h1>-->\n        <!--</div>-->\n    <!--</div>-->\n\n<!--</header>-->\n<ui-view></ui-view>\n');
     $templateCache.put('src/fedramp.components/tile.html', '<div ng-if="controller.expand" class="usa-width-one-whole">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <strong>{{ controller.model.name }} - {{ controller.model.pkg }}</strong>\n        </div>\n        <div class="usa-width-one-sixth">\n            <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.deploymentModel }}</span>\n        </div>\n        <div class="usa-width-one-sixth">\n            <span>{{ controller.model.impactLevel }}</span>\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-twelfth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="usa-width-one-half">\n    <div class="usa-grid">\n        <div class="usa-width-two-thirds">\n            <!-- Logo -->\n            Logo\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Status -->\n            Status\n        </div>\n        <div class="usa-width-one-sixth">\n            <!-- Reuses -->\n            0\n        </div>\n    </div>\n    <div class="usa-grid">\n        <div class="usa-width-one-whole">\n            <div>\n                <strong>Service Model:</strong>\n                {{ controller.model.serviceModel.join(\', \') }}\n            </div>\n            <div>\n                <strong>Deployment Model:</strong>\n                {{ controller.model.deploymentModel }}\n            </div>\n            <div>\n                <strong>Impact Level:</strong>\n                {{ controller.model.impactLevel }}\n            </div>\n        </div>\n    </div>\n</div>\n');
-    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>\n                    <div>Cost Savings</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>\n                    <div>Total Authorized</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>\n                    <div>Leveraged ATOs</div>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <div class="usa-width-one-third">&nbsp;</div>\n            <div class="usa-width-one-twelfth">&nbsp;</div>\n            <div class="usa-width-one-third">\n                <label>\n                    <input type="checkbox" ng-model="homeController.expandTiles" />\n                    <p ng-if="homeController.expandTiles">View as tiles</p>\n                    <p ng-if="!homeController.expandTiles">View as list</p>\n                </label>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <tile ng-repeat="item in homeController.filteredData" expand="homeController.expandTiles" model="item" />\n        </div>\n    </div>\n</div>\n');
+    $templateCache.put('src/fedramp/home/header.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>\n                    <div>Cost Savings</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>\n                    <div>Total Authorized</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>\n                    <div>Leveraged ATOs</div>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                <!--<a ui-sref="fedramp.home.csp">CSP</a>-->\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <div class="usa-width-one-third">&nbsp;</div>\n            <div class="usa-width-one-twelfth">&nbsp;</div>\n            <div class="usa-width-one-third">\n                <label>\n                    <input type="checkbox" ng-model="homeController.expandTiles" />\n                    <p ng-if="homeController.expandTiles">View as tiles</p>\n                    <p ng-if="!homeController.expandTiles">View as list</p>\n                </label>\n            </div>\n        </div>\n    </div>\n</div>\n');
+    $templateCache.put('src/fedramp/home/home.html', '<div class="usa-content">\n    <div class="usa-grid">\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>\n                    <div>Cost Savings</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>\n                    <div>Total Authorized</div>\n                </p>\n            </div>\n        </div>\n        <div class="usa-width-one-third">\n            <div class="circle">\n                <p>\n                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>\n                    <div>Leveraged ATOs</div>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>\n    <div ng-show="homeController.hasData()">\n        <div class="filters usa-grid">\n            <div class="usa-width-one-fourth">\n                [><a ui-sref="fedramp.home.csp">CSP</a><]\n                <button id="filterByCSP"\n                        ng-click="homeController.toggleFilter(\'csp\')">CSP\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByCSO"\n                        type="radio"\n                        ng-click="homeController.toggleFilter(\'cso\')">CSO\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterByAgency"\n                        ng-click="homeController.toggleFilter(\'agency\')">Agency\n                </button>\n            </div>\n            <div class="usa-width-one-fourth">\n                <button id="filterBy3PAO"\n                        ng-click="homeController.toggleFilter(\'3pao\')">3PAO\n                </button>\n            </div>\n        </div>\n        <div class="usa-grid" ng-show="!!homeController.filterType">\n            <div style="text-align:center;" class="usa-width-one-whole">\n                <div style="margin:0 auto;display:table;">\n                    <label for="filter">Filter using:</label>\n                    <select id="filter"\n                            ng-model="homeController.filter"\n                            ng-options="option for option in homeController.filterOptions"\n                            ng-change="homeController.applyFilter()">\n                        <option value=""></option>\n                    </select>\n                </div>\n                <a href="{{homeController.downloadUrl}}"\n                   download="{{homeController.filename()}}"\n                   ng-click="homeController.download()">\n                    Download\n                </a>\n            </div>\n        </div>\n        <div class="usa-grid">\n            <div class="usa-width-one-third">&nbsp;</div>\n            <div class="usa-width-one-twelfth">&nbsp;</div>\n            <div class="usa-width-one-third">\n                <label>\n                    <input type="checkbox" ng-model="homeController.expandTiles" />\n                    <p ng-if="homeController.expandTiles">View as tiles</p>\n                    <p ng-if="!homeController.expandTiles">View as list</p>\n                </label>\n            </div>\n        </div>\n    </div>\n</div>\n<ui-view/>\n');
+    $templateCache.put('src/fedramp/home/product.html', '<!--<select id="filter"-->\n        <!--ng-model="controller.search.name"-->\n        <!--ng-options="option for option in controller.filterOptions"-->\n        <!--ng-change="controller.applyFilter()">-->\n    <!--<option value=""></option>-->\n<!--</select>-->\n<!--<select -->\n        <!--ng-model="controller.search.agency"-->\n        <!--ng-options="option for option in controller.agencies">-->\n    <!--<option value=""></option>-->\n<!--</select>-->\n<!--<select -->\n        <!--ng-model="controller.search.serviceModel"-->\n        <!--ng-options="option for option in controller.serviceModels">-->\n    <!--<option value=""></option>-->\n<!--</select>-->\n<!--<input type="text" ng-model="controller.search.provider"/>-->\n\n<tile \n ng-repeat="item in controller.products |\n\n filter:controller.filterName | \n filter:controller.filterServiceModel | \n filter:controller.filterAgency | \n filter:{provider: controller.search.provider} \n track by $index" \n \nexpand="homeController.expandTiles" model="item" />\n<ui-view></ui-view>\n');
 }]);
 (function () {
     'use strict';
@@ -93,10 +95,44 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 fedrampData: FedRampData
             }
         }).state('fedramp.home', {
-            url: '/',
+            url: '',
             templateUrl: 'src/fedramp/home/home.html',
             controller: 'HomeController as homeController'
+        }).state('fedramp.home.products', {
+            url: '/products',
+            templateUrl: 'src/fedramp/home/product.html',
+            controller: 'ProductController as controller',
+            resolve: {
+                products: ProductsResolve
+            }
+        }).state('fedramp.product', {
+            url: '/product/:name',
+            template: 'Some product info',
+
+            params: {
+                // Some filter object to recreate filtes passed in from originating list
+                filters: null
+            },
+            resolve: {
+                filteredStuff: function filteredStuff($stateParams) {
+                    // Maybe pass filters from originating page?
+                    // These wouldn't be from url but passed via internal params
+                    //
+                    // $stateParams.filter.name
+                    // $stateParams.filter.agencies
+                    //
+                    return null;
+                }
+            }
         });
+
+        /**
+         * Retrieves producsts for Product route
+         */
+        ProductsResolve.$inject = ['fedrampData'];
+        function ProductsResolve(fedrampData) {
+            return fedrampData.products();
+        }
 
         /**
          * Retrieves the providers for a particular day
@@ -998,6 +1034,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
 
                         item.products.forEach(function (prod) {
                             prod.serviceModels.forEach(function (model) {
+                                model = model.trim();
                                 if (!item.serviceModels.includes(model)) {
                                     item.serviceModels.push(model);
                                 }
@@ -1006,6 +1043,7 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
 
                         item.products.forEach(function (prod) {
                             prod.deplomentModels.forEach(function (model) {
+                                model = model.trim();
                                 if (!item.deploymentModels.includes(model)) {
                                     item.deploymentModels.push(model);
                                 }
@@ -1047,7 +1085,9 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                     var item = new Product();
                     item.name = d.pkg;
                     item.provider = d.name;
-                    item.serviceModels = d.serviceModel;
+                    item.serviceModels = d.serviceModel.map(function (x) {
+                        return x.trim();
+                    });
                     item.deploymentModel = d.deploymentModel;
                     item.designation = d.designation;
                     item.impactLevel = d.impactLevel;
@@ -1057,11 +1097,11 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 items.forEach(function (item) {
                     data.forEach(function (d) {
                         if (d.pkg === item.name) {
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
+                            if (d.sponsoringAgency && !item.agencies.includes(d.sponsoringAgency)) {
                                 item.agencies.push(d.sponsoringAgency);
                             }
 
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
+                            if (d.sponsoringSubagency && !item.agencies.includes(d.sponsoringSubagency)) {
                                 item.agencies.push(d.sponsoringSubagency);
                             }
 
@@ -1929,5 +1969,77 @@ angular.module('fedramp').run(['$templateCache', function ($templateCache) {
                 return a[self.sortBy] > b[self.sortBy] ? -1 : 1;
             });
         }
+    }
+})();
+
+(function () {
+    "use strict";
+
+    angular.module('fedramp').controller('ProductController', ProductController);
+
+    ProductController.$inject = ['$log', 'products', '$stateParams'];
+
+    function ProductController($log, products, $stateParams) {
+        var self = this;
+        self.agencies = [];
+        self.filterOptions = [];
+        self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
+
+        self.products = products;
+        self.products.forEach(function (x) {
+            return self.filterOptions.push(x.name);
+        });
+        var agencyMap = {};
+
+        self.products.forEach(function (element, index, array) {
+            if (element && element.agencies) {
+                element.agencies.forEach(function (agency) {
+                    if (agency && !agencyMap[agency]) {
+                        self.agencies.push(agency);
+                        agencyMap[agency] = true;
+                    }
+                });
+            }
+        });
+
+        /**
+         * Filter applied to render by product name
+         */
+        self.filterName = function (value, index, arr) {
+            console.log('search: ', self.search);
+            if (self.search && self.search.name) {
+                if (self.search && self.search.name === value.name) {
+                    return value;
+                }
+                return null;
+            }
+            return value;
+        };
+
+        /**
+         * Filter applied to render by service model
+         */
+        self.filterServiceModel = function (value, index, arr) {
+            if (self.search && self.search.serviceModel) {
+                if (value.serviceModels.includes(self.search.serviceModel)) {
+                    return value;
+                }
+                return null;
+            }
+            return value;
+        };
+
+        /**
+         * Filter applied to render by agency
+         */
+        self.filterAgency = function (value, index, arr) {
+            if (self.search && self.search.agency && value.agencies) {
+                if (value.agencies.includes(self.search.agency)) {
+                    return value;
+                }
+                return null;
+            }
+            return value;
+        };
     }
 })();

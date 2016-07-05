@@ -1,0 +1,29 @@
+<!--<select id="filter"-->
+        <!--ng-model="controller.search.name"-->
+        <!--ng-options="option for option in controller.filterOptions"-->
+        <!--ng-change="controller.applyFilter()">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<select -->
+        <!--ng-model="controller.search.agency"-->
+        <!--ng-options="option for option in controller.agencies">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<select -->
+        <!--ng-model="controller.search.serviceModel"-->
+        <!--ng-options="option for option in controller.serviceModels">-->
+    <!--<option value=""></option>-->
+<!--</select>-->
+<!--<input type="text" ng-model="controller.search.provider"/>-->
+
+<tile 
+ ng-repeat="item in controller.products |
+
+ filter:controller.filterName | 
+ filter:controller.filterServiceModel | 
+ filter:controller.filterAgency | 
+ filter:{provider: controller.search.provider} 
+ track by $index" 
+ 
+expand="homeController.expandTiles" model="item" />
+<ui-view></ui-view>

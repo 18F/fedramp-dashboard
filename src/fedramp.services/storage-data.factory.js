@@ -68,6 +68,7 @@
 
                         item.products.forEach(prod => {
                             prod.serviceModels.forEach(model => {
+                                model = model.trim();
                                 if (!item.serviceModels.includes(model)) {
                                     item.serviceModels.push(model);
                                 }
@@ -76,6 +77,7 @@
 
                         item.products.forEach(prod => {
                             prod.deplomentModels.forEach(model => {
+                                model = model.trim();
                                 if (!item.deploymentModels.includes(model)) {
                                     item.deploymentModels.push(model);
                                 }
@@ -117,7 +119,7 @@
                     let item = new Product();
                     item.name = d.pkg;
                     item.provider = d.name;
-                    item.serviceModels = d.serviceModel;
+                    item.serviceModels = d.serviceModel.map(x => x.trim());
                     item.deploymentModel = d.deploymentModel;
                     item.designation = d.designation;
                     item.impactLevel = d.impactLevel;
@@ -127,11 +129,11 @@
                 items.forEach(item => {
                     data.forEach(d => {
                         if (d.pkg === item.name) {
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
+                            if (d.sponsoringAgency && !item.agencies.includes(d.sponsoringAgency)) {
                                 item.agencies.push(d.sponsoringAgency);
                             }
 
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
+                            if (d.sponsoringSubagency && !item.agencies.includes(d.sponsoringSubagency)) {
                                 item.agencies.push(d.sponsoringSubagency);
                             }
 

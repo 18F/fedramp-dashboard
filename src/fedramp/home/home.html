@@ -29,6 +29,7 @@
     <div ng-show="homeController.hasData()">
         <div class="filters usa-grid">
             <div class="usa-width-one-fourth">
+                [><a ui-sref="fedramp.home.csp">CSP</a><]
                 <button id="filterByCSP"
                         ng-click="homeController.toggleFilter('csp')">CSP
                 </button>
@@ -79,8 +80,6 @@
                 </label>
             </div>
         </div>
-        <div class="usa-grid">
-            <tile ng-repeat="item in homeController.filteredData" expand="homeController.expandTiles" model="item" />
-        </div>
     </div>
 </div>
+<ui-view/>
