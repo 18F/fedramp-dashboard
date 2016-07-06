@@ -1,1 +1,8 @@
-<tile ng-repeat="item in controller.assessors  track by $index" expand="homeController.expandTiles" model="item" />
+<div class="usa-grid">
+    <div style="text-align:center;margin-bottom:10px;">
+        <download-csv content="controller.assessors">
+            <button>Export CSV</button>
+        </download-csv>
+    </div>
+    <tile ng-repeat="item in controller.assessors  track by $index" expand="homeController.expandTiles" model="item" />
+</div>
