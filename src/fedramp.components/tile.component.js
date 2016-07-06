@@ -31,7 +31,7 @@
         self.view = function () {
             if ($stateParams.name) {
                 $state.go(
-                    'fedramp.' + self.model.type + '.comparison',
+                    'fedramp.app.' + self.model.type + '.comparison',
                     {
                         first: helperService.slugify($stateParams.name),
                         second: helperService.slugify(self.model.name)
@@ -41,7 +41,7 @@
                     });
             } else {
                 $state.go(
-                    'fedramp.' + self.model.type + '.information',
+                    'fedramp.app.' + self.model.type + '.information',
                     {
                         name: helperService.slugify(self.model.name)
                     },

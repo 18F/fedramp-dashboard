@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.components/assessor.component.js</title>
+    <title>JSDoc: Source: fedramp/sitemap/sitemap.controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.components/assessor.component.js</h1>
+    <h1 class="page-title">Source: fedramp/sitemap/sitemap.controller.js</h1>
 
     
 
@@ -30,40 +30,23 @@
     'use strict';
 
     angular
-        .module('fedramp.components')
-        .component('assessor', {
-            templateUrl: 'src/fedramp.components/assessor.html',
-            controller: Assessor,
-            controllerAs: 'controller',
-            bindings: {
-                model: '&lt;',
-                onClose: '&lt;'
-            }
-        });
+        .module('fedramp')
+        .controller('SitemapController', SitemapController);
 
-    Assessor.$inject = ['$log', '$state'];
+    SitemapController.$inject = ['$log', 'fedrampData', 'helperService'];
 
     /**
      * @constructor
-     * @memberof Components
+     * @memberof Controllers
      */
-    function Assessor ($log, $state) {
+    function SitemapController ($log, fedrampData, helperService) {
         var self = this;
-
-        /**
-         * Close the informational panel
-         * @public
-         * @member {object}
-         * @memberof Components.Assessor
-         */
-        self.close = function () {
-            if (self.onClose) {
-                self.onClose();
-                return;
-            }
-            
-            $state.go('fedramp.app.home', {}, { reload: true });
-        };
+        self.providers = fedrampData.providers();
+        self.products = fedrampData.products();
+        self.agencies = fedrampData.agencies();
+        self.assessors = fedrampData.assessors();
+        self.today = helperService.today();
+        self.slugify = helperService.slugify;
     }
 })();
 </code></pre>

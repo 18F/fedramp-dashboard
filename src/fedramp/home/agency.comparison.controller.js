@@ -43,7 +43,7 @@
          */
         self.closeFirst = function () {
             $state.go(
-                'fedramp.' + self.second.type + '.information',
+                'fedramp.app.' + self.second.type + '.information',
                 {
                     name: $stateParams.second
                 },
@@ -60,7 +60,7 @@
          */
         self.closeSecond = function () {
             $state.go(
-                'fedramp.' + self.first.type + '.information',
+                'fedramp.app.' + self.first.type + '.information',
                 {
                     name: $stateParams.first
                 },

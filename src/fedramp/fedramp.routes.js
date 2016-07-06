@@ -19,112 +19,121 @@
         $stateProvider
             .state('fedramp', {
                 abstract: true,
-                templateUrl: 'src/fedramp/fedramp.html',
+                templateUrl: 'src/fedramp/base.html',
                 resolve: {
-                    fedrampData: ['DataService', function(DataService){
-                        return DataService.pull().then(function(storage){
+                    fedrampData: ['DataService', function (DataService) {
+                        return DataService.pull().then(function (storage) {
                             return storage;
                         });
                     }]
                 }
             })
-            .state('fedramp.home', {
+            .state('fedramp.sitemap', {
+                url: '/sitemap.xml',
+                templateUrl: 'src/fedramp/sitemap/sitemap.html',
+                controller: 'SitemapController as controller',
+            })
+            .state('fedramp.app', {
+                abstract: true,
+                templateUrl: 'src/fedramp/fedramp.html',
+            })
+            .state('fedramp.app.home', {
                 url: '',
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
             })
-            .state('fedramp.home.providers', {
+            .state('fedramp.app.home.providers', {
                 url: '/providers',
                 templateUrl: 'src/fedramp/home/providers.html',
                 controller: 'ProvidersController as controller',
                 resolve: {
-                    providers: ['fedrampData', function(fedrampData){
+                    providers: ['fedrampData', function (fedrampData) {
                         return fedrampData.providers();
                     }]
                 }
             })
-            .state('fedramp.provider', {
+            .state('fedramp.app.provider', {
                 url: '/provider',
                 templateUrl: 'src/fedramp/home/provider.html'
             })
-            .state('fedramp.provider.information', {
+            .state('fedramp.app.provider.information', {
                 url: '/:name',
                 templateUrl: 'src/fedramp/home/provider-information.html',
                 controller: 'ProviderInformationController as controller'
             })
-            .state('fedramp.home.provider.comparison', {
+            .state('fedramp.app.home.provider.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/provider-comparison.html',
                 controller: 'ProviderComparisonController as controller'
             })
-            .state('fedramp.home.products', {
+            .state('fedramp.app.home.products', {
                 url: '/products',
                 templateUrl: 'src/fedramp/home/products.html',
                 controller: 'ProductsController as controller',
                 resolve: {
-                    products: ['fedrampData', function(fedrampData){
+                    products: ['fedrampData', function (fedrampData) {
                         return fedrampData.products();
                     }]
                 }                
             })
-            .state('fedramp.product', {
+            .state('fedramp.app.product', {
                 url: '/product',
                 templateUrl: 'src/fedramp/home/product.html'
             })
-            .state('fedramp.product.information', {
+            .state('fedramp.app.product.information', {
                 url: '/:name',
                 templateUrl: 'src/fedramp/home/product-information.html',
                 controller: 'ProductInformationController as controller'
             })
-            .state('fedramp.product.comparison', {
+            .state('fedramp.app.product.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/product-comparison.html',
                 controller: 'ProductComparisonController as controller'
             })
-            .state('fedramp.home.agencies', {
+            .state('fedramp.app.home.agencies', {
                 url: '/agencies',
                 templateUrl: 'src/fedramp/home/agencies.html',
                 controller: 'AgenciesController as controller',
                 resolve: {
-                    agencies: ['fedrampData', function(fedrampData){
+                    agencies: ['fedrampData', function (fedrampData) {
                         return fedrampData.agencies();
                     }]
                 }
             })
-            .state('fedramp.agency', {
+            .state('fedramp.app.agency', {
                 url: '/agency',
                 templateUrl: 'src/fedramp/home/agency.html',
             })
-            .state('fedramp.agency.information', {
+            .state('fedramp.app.agency.information', {
                 url: '/:name',
                 templateUrl: 'src/fedramp/home/agency-information.html',
                 controller: 'AgencyInformationController as controller'
             })
-            .state('fedramp.agency.information.comparison', {
+            .state('fedramp.app.agency.information.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/agency-comparison.html',
-                controller: 'AgencyComparisonController as controller'
+                controller: 'AgencyComparisonController as controller,'
             })
-            .state('fedramp.home.assessors', {
+            .state('fedramp.app.home.assessors', {
                 url: '/assessors',
                 templateUrl: 'src/fedramp/home/assessors.html',
                 controller: 'AssessorsController as controller',
                 resolve: {
-                    assessors: ['fedrampData', function(fedrampData){
+                    assessors: ['fedrampData', function (fedrampData) {
                         return fedrampData.assessors();
                     }]
                 }
             })
-            .state('fedramp.assessor', {
+            .state('fedramp.app.assessor', {
                 url: '/assessor',
                 templateUrl: 'src/fedramp/home/assessor.html'
             })
-            .state('fedramp.assessor.information', {
+            .state('fedramp.app.assessor.information', {
                 url: '/:name',
                 templateUrl: 'src/fedramp/home/assessor-information.html',
                 controller: 'AssessorInformationController as controller'
             })
-            .state('fedramp.assessor.information.comparison', {
+            .state('fedramp.app.assessor.information.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/assessor-comparison.html',
                 controller: 'AssessorComparisonController as controller'

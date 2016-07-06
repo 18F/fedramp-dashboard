@@ -66,8 +66,7 @@ describe('ProductController controller with no data', function () {
             _$rootScope_.$apply();
 
             var result = productController.filterName(product, 0, [product]);
-            console.log(result);
-
+            expect(result).toBeDefined();
         });
     });
 });

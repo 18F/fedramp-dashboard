@@ -22,9 +22,10 @@ describe('Fedramp routing', function(){
 
 	describe('for home', function(){
 		it('can access the state and executes fetching data', function(){
-            var expected = 'fedramp.home';
+            var expected = 'fedramp.app.home';
 
             // Account for template GET request
+            $httpBackend.whenGET('src/fedramp/base.html').respond('');
             $httpBackend.whenGET('src/fedramp/fedramp.html').respond('');
             $httpBackend.whenGET('src/fedramp/home/home.html').respond('');
             $httpBackend.whenGET(githubUrl).respond({

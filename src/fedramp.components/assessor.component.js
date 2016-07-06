@@ -34,7 +34,7 @@
                 return;
             }
             
-            $state.go('fedramp.home', {}, { reload: true });
+            $state.go('fedramp.app.home', {}, { reload: true });
         };
     }
 })();
