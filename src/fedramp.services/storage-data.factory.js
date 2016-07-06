@@ -61,30 +61,39 @@
                     items.push(item);
                 }
 
+                
                 items.forEach(item => {
                     item.products = self.products().filter(x => x.name === item.name);
+                    if (!item.products) {
+                        item.products = [];
+                    }
+                    
                     item.products.forEach(prod => {
                         item.reuses += prod.reuses;
 
                         item.products.forEach(prod => {
-                            prod.serviceModels.forEach(model => {
-                                if (include(model, item.serviceModels)) {
-                                    item.serviceModels.push(model.trim());
-                                }
-                            });
+                            if (prod.serviceModels) {
+                                prod.serviceModels.forEach(model => {
+                                    if (include(model, item.serviceModels)) {
+                                        item.serviceModels.push(model.trim());
+                                    }
+                                });
+                            }
                         });
 
                         item.products.forEach(prod => {
-                            prod.deplomentModels.forEach(model => {
-                                if (include(model, item.deploymentModels)) {
-                                    item.deploymentModels.push(model.trim());
-                                }
-                            });
+                            if (prod.deploymentModels) {
+                                prod.deplomentModels.forEach(model => {
+                                    if (include(model, item.deploymentModels)) {
+                                        item.deploymentModels.push(model.trim());
+                                    }
+                                });
+                            }
                         });
 
                         item.products.forEach(prod => {
-                            if (include(prod.deploymentModel, item.designations)) {
-                                item.designations.push(prod.deploymentModel.trim());
+                            if (include(prod.designation, item.designations)) {
+                                item.designations.push(prod.designation.trim());
                             }
                         });
                     });
