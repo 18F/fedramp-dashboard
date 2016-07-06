@@ -31,27 +31,25 @@
     border-radius: 10px;
 }
 </style>
-<div style="width:600px;margin:0 auto;">
-    <select style="text-align:center;margin:0 auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
-    <span ng-repeat="selected in controller.selectedNames" class="badge">
-        {{selected}} <a ng-click="controller.removeProviderFilter(selected)">(X)</a>
-    </span>
+<div class="usa-grid">
+    <div>
+        <select style="text-align:center;margin:0 auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
+        <span ng-repeat="selected in controller.selectedNames" class="badge">
+            {{selected}} <a ng-click="controller.removeProviderFilter(selected)">(X)</a>
+        </span>
 
-    <span ng-repeat="selected in controller.selectedAgencies" class="badge">
-        {{selected}} <a ng-click="controller.removeAgencyFilter(selected)">(X)</a>
-    </span>
+        <span ng-repeat="selected in controller.selectedAgencies" class="badge">
+            {{selected}} <a ng-click="controller.removeAgencyFilter(selected)">(X)</a>
+        </span>
 
-    <span ng-repeat="selected in controller.selectedServiceModels" class="badge">
-        {{selected}} <a ng-click="controller.removeServiceModelFilter(selected)">(X)</a>
-    </span>
+        <span ng-repeat="selected in controller.selectedServiceModels" class="badge">
+            {{selected}} <a ng-click="controller.removeServiceModelFilter(selected)">(X)</a>
+        </span>
+    </div>
+    <div style="text-align:center;margin-bottom:10px;">
+        <download-csv content="controller.filteredData">
+            <button>Export CSV</button>
+        </download-csv>
+    </div>
+    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
 </div>
-<tile 
- ng-repeat="item in controller.products |
-
- filter:controller.filterName | 
- filter:controller.filterServiceModel | 
- filter:controller.filterAgency | 
- filter:{provider: controller.search.provider} 
- track by $index" 
- 
-expand="homeController.expandTiles" model="item" />

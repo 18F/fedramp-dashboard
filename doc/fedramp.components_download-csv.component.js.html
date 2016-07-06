@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fedramp.components/download-csv.component.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: fedramp.components/download-csv.component.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
+
+    angular
+        .module('fedramp.components')
+        .component('downloadCsv', {
+            transclude: true,
+            template: '&lt;a href="{{controller.downloadUrl}}" download="{{controller.filename()}}" ng-click="controller.download()">&lt;ng-transclude/>&lt;/a>',
+            controller: DownloadCsv,
+            controllerAs: 'controller',
+            bindings: {
+                // Contains array of information to be transformed into csv
+                content: '&lt;'
+            }
+        });
+
+    DownloadCsv.$inject = ['$log', 'CsvService'];
+
+    /**
+     * @constructor
+     * @memberof Components
+     */
+    function DownloadCsv ($log, CsvService) {
+        var self = this;
+
+        self.$onChanges = $onChanges;
+        self.download = download;
+        self.filename = filename;
+
+        /**
+         * Listens when updates are made to content. Prepares the download
+         * url when updates come in.
+         */
+        function $onChanges(changes){
+            $log.debug(changes);
+            prepareDownload();
+        }
+
+
+        /**
+         * Generates the appropriate csv content and blob and sets it on the downloadUrl
+         */
+        function prepareDownload(){
+            var csv = CsvService.toCsv(CsvService.flatten(self.content));
+            if (csv) {
+                var downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
+                self.downloadUrl = window.URL.createObjectURL(downloadBlob);
+            }
+        }
+
+        /**
+         * Filters and transforms data for download
+         * @public
+         * @memberof Components.DownloadCsv
+         */
+        function download () {
+            $log.info('Download clicked');
+
+            if (navigator.msSaveBlob &amp;&amp; downloadBlob) {
+                // IE 11 and Edge
+                navigator.msSaveBlob(downloadBlob, self.filename());
+            }
+        }
+
+        /**
+         * Generates the file name to be used when downloading the data
+         * @public
+         * @memberof Controllers.HomeController
+         *
+         * @returns
+         *  A file name in the format "fedramp-YYYY-mm-dd.csv"
+         */
+        function filename (date) {
+            if (!date) {
+                date = new Date();
+            }
+
+            var dd = date.getDate();
+            var mm = date.getMonth() + 1;
+            var yyyy = date.getFullYear();
+
+            if (dd &lt; 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm &lt; 10) {
+                mm = '0' + mm;
+            }
+
+            return 'fedramp-' + yyyy + '-' + mm + '-' + dd + '.csv';
+        }
+
+        // self.$onInit = function () {};
+        // self.$onChanges = function (changes) {};
+        // self.$onDestroy = function () {};
+        // self.$postLink = function () {};
+    }
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 07:54:04 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -5,9 +5,9 @@
         .module('fedramp')
         .controller('ProductsController', ProductController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams'];
+    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter'];
 
-    function ProductController($log, products, $stateParams){
+    function ProductController($log, products, $stateParams, $filter){
         var self = this;
         self.filterOptionGroups = [];
 
@@ -26,6 +26,7 @@
         // Selected agencies
         self.selectedAgencies = [];
 
+        // Selected service models
         self.selectedServiceModels = [];
 
         // Assign products resolve to controller
@@ -41,16 +42,15 @@
         self.removeAgencyFilter = removeAgencyFilter;
         self.removeServiceModelFilter = removeServiceModelFilter;
 
+        // Used to prevent duplicate options
         var filterCache = {};
 
         function onInit(){
             // Populate Product names
-            //self.products.forEach(x => self.productNames.push(x.name)); 
             var providerCache = {};
 
             self.products.forEach(function(value, index, arr){
                 if(!providerCache[value.provider]){
-                    value.type = 'Product Name';
                     self.filterOptionGroups.push({
                         name: value.provider,
                         type: 'Provider'
@@ -85,6 +85,8 @@
                     type: 'Service Model'
                 });
             });
+
+            applyFilters();
         }
 
 
@@ -156,27 +158,54 @@
                         filterCache[self.selectedFilter.name] = true;
                         break;
                 }
-
             }
+
+            applyFilters();
         }
 
+        /**
+         * Applies angular filters rather than applying them in markup. This
+         * improves efficiency and allows us to retain a reference to the filtered
+         * items
+         */
+        function applyFilters(){
+            var f = $filter('filter')(self.products, filterName);
+            f = $filter('filter')(f, filterAgency);
+            f = $filter('filter')(f, filterServiceModel);
+            self.filteredData = f;
+            
+        }
+
+        /**
+         * Removes a provider tag filter
+         */
         function removeProviderFilter(filter){
             var pos = self.selectedNames.indexOf(filter);
             self.selectedNames.splice(pos, 1);
             filterCache[filter] = false;
+            applyFilters();
         }
 
+        /**
+         * Removes an agency tag filter
+         */
         function removeAgencyFilter(filter){
             var pos = self.selectedAgencies.indexOf(filter);
             self.selectedAgencies.splice(pos, 1);
             filterCache[filter] = false;
+            applyFilters();
         }
-        
+
+        /**
+         * Removes a service model tag filter
+         */
         function removeServiceModelFilter(filter){
             var pos = self.selectedServiceModels.indexOf(filter);
             self.selectedServiceModels.splice(pos, 1);
             filterCache[filter] = false;
+            applyFilters();
         }
+
         // Initialize everything
         onInit();
     }

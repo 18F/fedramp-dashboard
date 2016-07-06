@@ -30,7 +30,8 @@
         <div class="filters usa-grid">
             <div class="usa-width-one-fourth">
                 <button id="filterByCSP"
-                        ng-click="homeController.toggleFilter('csp')">CSP
+                        ui-sref="fedramp.home.providers">
+                    CSP
                 </button>
             </div>
             <div class="usa-width-one-fourth">
@@ -42,12 +43,12 @@
             </div>
             <div class="usa-width-one-fourth">
                 <button id="filterByAgency"
-                        ng-click="homeController.toggleFilter('agency')">Agency
+                        ui-sref="fedramp.home.agencies">Agency
                 </button>
             </div>
             <div class="usa-width-one-fourth">
                 <button id="filterBy3PAO"
-                        ng-click="homeController.toggleFilter('3pao')">3PAO
+                        ui-sref="fedramp.home.assessors">3PAO
                 </button>
             </div>
         </div>

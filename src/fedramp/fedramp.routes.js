@@ -21,18 +21,27 @@
                 abstract: true,
                 templateUrl: 'src/fedramp/fedramp.html',
                 resolve: {
-                    fedrampData: FedRampData
+                    fedrampData: ['DataService', function(DataService){
+                        return DataService.pull().then(function(storage){
+                            return storage;
+                        });
+                    }]
                 }
             })
             .state('fedramp.home', {
-                url: '/',
+                url: '',
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
             })
             .state('fedramp.home.providers', {
                 url: '/providers',
                 templateUrl: 'src/fedramp/home/providers.html',
-                controller: 'ProvidersController as controller'
+                controller: 'ProvidersController as controller',
+                resolve: {
+                    providers: ['fedrampData', function(fedrampData){
+                        return fedrampData.providers();
+                    }]
+                }
             })
             .state('fedramp.provider', {
                 url: '/provider',
@@ -53,7 +62,9 @@
                 templateUrl: 'src/fedramp/home/products.html',
                 controller: 'ProductsController as controller',
                 resolve: {
-                    products: ProductsResolve
+                    products: ['fedrampData', function(fedrampData){
+                        return fedrampData.products();
+                    }]
                 }                
             })
             .state('fedramp.product', {
@@ -70,10 +81,15 @@
                 templateUrl: 'src/fedramp/home/product-comparison.html',
                 controller: 'ProductComparisonController as controller'
             })
-            .state('fedramp.home.agency', {
+            .state('fedramp.home.agencies', {
                 url: '/agencies',
                 templateUrl: 'src/fedramp/home/agencies.html',
-                controller: 'AgenciesController as controller'
+                controller: 'AgenciesController as controller',
+                resolve: {
+                    agencies: ['fedrampData', function(fedrampData){
+                        return fedrampData.agencies();
+                    }]
+                }
             })
             .state('fedramp.agency', {
                 url: '/agency',
@@ -89,10 +105,15 @@
                 templateUrl: 'src/fedramp/home/agency-comparison.html',
                 controller: 'AgencyComparisonController as controller'
             })
-            .state('fedramp.home.assessor', {
+            .state('fedramp.home.assessors', {
                 url: '/assessors',
                 templateUrl: 'src/fedramp/home/assessors.html',
-                controller: 'AssessorsController as controller'
+                controller: 'AssessorsController as controller',
+                resolve: {
+                    assessors: ['fedrampData', function(fedrampData){
+                        return fedrampData.assessors();
+                    }]
+                }
             })
             .state('fedramp.assessor', {
                 url: '/assessor',
@@ -108,20 +129,5 @@
                 templateUrl: 'src/fedramp/home/assessor-comparison.html',
                 controller: 'AssessorComparisonController as controller'
             });
-
-        ProductsResolve.$inject = ['fedrampData'];
-        function ProductsResolve (fedrampData) {
-            return fedrampData.products();
-        }
-
-        /**
-         * Retrieves the providers for a particular day
-         */
-        FedRampData.$inject = ['DataService'];
-        function FedRampData (DataService) {
-            return DataService.pull().then(function (storage) {
-                return storage;
-            });
-        }
     }
 })();
