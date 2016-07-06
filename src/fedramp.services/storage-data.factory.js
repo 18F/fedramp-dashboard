@@ -50,14 +50,14 @@
                 
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
-                    if (!d.name || names.includes(d.name)) {
+                    if (!include(d.name, names)) {
                         continue;
                     }
 
-                    names.push(d.name);
+                    names.push(d.name.trim());
 
                     let item = new Provider();
-                    item.name = d.name;
+                    item.name = d.name.trim();
                     items.push(item);
                 }
 
@@ -68,23 +68,23 @@
 
                         item.products.forEach(prod => {
                             prod.serviceModels.forEach(model => {
-                                if (!item.serviceModels.includes(model)) {
-                                    item.serviceModels.push(model);
+                                if (include(model, item.serviceModels)) {
+                                    item.serviceModels.push(model.trim());
                                 }
                             });
                         });
 
                         item.products.forEach(prod => {
                             prod.deplomentModels.forEach(model => {
-                                if (!item.deploymentModels.includes(model)) {
-                                    item.deploymentModels.push(model);
+                                if (include(model, item.deploymentModels)) {
+                                    item.deploymentModels.push(model.trim());
                                 }
                             });
                         });
 
                         item.products.forEach(prod => {
-                            if (!item.designations.includes(prod.deploymentModel)) {
-                                item.designations.push(prod.deploymentModel);
+                            if (include(prod.deploymentModel, item.designations)) {
+                                item.designations.push(prod.deploymentModel.trim());
                             }
                         });
                     });
@@ -108,41 +108,41 @@
                 
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
-                    if (!d.pkg || names.includes(d.pkg)) {
+                    if (!include(d.pkg, names)) {
                         continue;
                     }
 
-                    names.push(d.pkg);
+                    names.push(d.pkg.trim());
 
                     let item = new Product();
-                    item.name = d.pkg;
-                    item.provider = d.name;
-                    item.pkgId = d.pkgId;
+                    item.name = d.pkg.trim();
+                    item.provider = d.name.trim();
+                    item.pkgId = d.pkgId.trim();
                     item.serviceModels = d.serviceModel;
-                    item.deploymentModel = d.deploymentModel;
-                    item.designation = d.designation;
-                    item.impactLevel = d.impactLevel;
+                    item.deploymentModel = d.deploymentModel.trim();
+                    item.designation = d.designation.trim();
+                    item.impactLevel = d.impactLevel.trim();
                     items.push(item);
                 }
 
                 items.forEach(item => {
                     data.forEach(d => {
                         if (d.pkg === item.name) {
-                            if (d.sponsoringAgency && !item.agencies.includes(d.sponsoringAgency)) {
-                                item.agencies.push(d.sponsoringAgency);
+                            if (include(d.sponsoringAgency, item.agencies)) {
+                                item.agencies.push(d.sponsoringAgency.trim());
                             }
 
-                            if (d.sponsoringSubagency && !item.agencies.includes(d.sponsoringSubagency)) {
-                                item.agencies.push(d.sponsoringSubagency);
+                            if (include(d.sponsoringSubagency, item.agencies)) {
+                                item.agencies.push(d.sponsoringSubagency.trim());
                             }
 
                             d.atoLetters.forEach(a => {
-                                if (d.authorizationAgency && !item.agencies.includes(a.authorizingAgency)) {
-                                    item.agencies.push(d.authorizingAgency);
+                                if (include(a.authorizingAgency, item.agencies)) {
+                                    item.agencies.push(a.authorizingAgency.trim());
                                 }
 
-                                if (d.authorizingSubagency && !item.agencies.includes(a.authorizingSubagency)) {
-                                    item.agencies.push(d.authorizingSubagency);
+                                if (include(a.authorizingSubagency, item.agencies)) {
+                                    item.agencies.push(a.authorizingSubagency.trim());
                                 }
                             });
                         }
@@ -169,17 +169,17 @@
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
 
-                    if (d.sponsoringAgency && !names.includes(d.sponsoringAgency)) {
-                        names.push(d.sponsoringAgency);
+                    if (include(d.sponsoringAgency, names)) {
+                        names.push(d.sponsoringAgency.trim());
                         let item = new Agency();
-                        item.name = name;
+                        item.name = name.trim();
                         items.push(item);
                     }
 
-                    if (d.sponsoringSubagency && !names.includes(d.sponsoringSubagency)) {
-                        names.push(d.sponsoringSubagency);
+                    if (include(d.sponsoringSubagency, names)) {
+                        names.push(d.sponsoringSubagency.trim());
                         let item = new Agency();
-                        item.name = name;
+                        item.name = name.trim();
                         items.push(item);
                     }
                 }
@@ -190,17 +190,17 @@
                     for (let j = 0; j < d.atoLetters.length; j++) {
                         let l = d.atoLetters[j];
 
-                        if (l.authorizingAgency && !names.includes(l.authorizingAgency)) {
-                            names.push(l.authorizingAgency);
+                        if (include(l.authorizingAgency, names)) {
+                            names.push(l.authorizingAgency.trim());
                             let item = new Agency();
-                            item.name = l.authorizingAgency;
+                            item.name = l.authorizingAgency.trim();
                             items.push(item);
                         }
 
-                        if (l.authorizingSubagency && !names.includes(l.authorizingSubagency)) {
-                            names.push(l.authorizingSubagency);
+                        if (include(l.authorizingSubagency, names)) {
+                            names.push(l.authorizingSubagency.trim());
                             let item = new Agency();
-                            item.name = l.authorizingSubagency;
+                            item.name = l.authorizingSubagency.trim();
                             items.push(item);
                         }
                     }
@@ -208,25 +208,25 @@
 
                 items.forEach(item => {
                     data.forEach(d => {
-                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name || d.atoLetters.filter(x => x.authorizingAgency === item.name || x.authorizingSubagency === item.name)) {
-                            if (!item.products.includes(d.pkg)) {
-                                item.products.push(d.pkg);
+                        if (safeTrim(d.sponsoringAgency) === item.name || safeTrim(d.sponsoringSubagency) === item.name || d.atoLetters.filter(x => x.authorizingAgency === item.name || x.authorizingSubagency === item.name)) {
+                            if (include(d.pkg, item.products)) {
+                                item.products.push(d.pkg.trim());
                             }
 
-                            if (!item.providers.includes(d.name)) {
-                                item.providers.push(d.name);
+                            if (include(d.name, item.providers)) {
+                                item.providers.push(d.name.trim());
                             }
 
-                            if (!item.assessors.includes(d.independentAssessor)) {
-                                item.assessors.push(d.independentAssessor);
+                            if (include(d.independentAssessor, item.assessors)) {
+                                item.assessors.push(d.independentAssessor.trim());
                             }
                         }
 
-                        if (d.sponsoringAgency === item.name || d.sponsoringSubagency === item.name) {
+                        if (safeTrim(d.sponsoringAgency) === item.name || safeTrim(d.sponsoringSubagency) === item.name) {
                             item.sponsored++;
                         }
 
-                        if (d.authorizingAgency === item.name || d.authorizingSubagency === item.name) {
+                        if (safeTrim(d.authorizingAgency) === item.name || safeTrim(d.authorizingSubagency) === item.name) {
                             item.authorized++;
                         }
                     });
@@ -251,14 +251,14 @@
                 // Top level
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
-                    if (!d.independentAssessor || names.includes(d.independentAssessor)) {
+                    if (!include(d.independentAssessor, names)) {
                         continue;
                     }
 
-                    names.push(d.independentAssessor);
+                    names.push(d.independentAssessor.trim());
 
                     let item = new Assessor();
-                    item.name = d.independentAssessor;
+                    item.name = d.independentAssessor.trim();
                     items.push(item);
                 }
 
@@ -269,46 +269,46 @@
                         let l = d.atoLetters[j];
                         let name = '';
 
-                        if (!l.independentAssessor || names.includes(l.independentAssessor)) {
+                        if (!include(l.independentAssessor, names)) {
                             continue;
                         }
 
-                        names.push(l.independentAssessor);
+                        names.push(l.independentAssessor.trim());
 
                         let item = new Assessor();
-                        item.name = l.independentAssessor;
+                        item.name = l.independentAssessor.trim();
                         items.push(item);
                     }
                 }
 
                 items.forEach(item => {
                     data.forEach(d => {
-                        if (d.independentAssessor === item.name) {
-                            if (!item.products.includes(d.pkg)) {
-                                item.products.push(d.pkg);
+                        if (safeTrim(d.independentAssessor) === item.name) {
+                            if (include(d.pkg, item.products)) {
+                                item.products.push(d.pkg.trim());
                             }
 
-                            if (!item.providers.includes(d.name)) {
-                                item.providers.push(d.name);
+                            if (include(d.name, item.providers)) {
+                                item.providers.push(d.name.trim());
                             }
 
-                            if (!item.agencies.includes(d.sponsoringAgency)) {
-                                item.agencies.push(d.sponsoringAgency);
+                            if (include(d.sponsoringAgency, item.agencies)) {
+                                item.agencies.push(d.sponsoringAgency.trim());
                             }
 
-                            if (!item.agencies.includes(d.sponsoringSubagency)) {
-                                item.agencies.push(d.sponsoringSubagency);
+                            if (include(d.sponsoringSubagency, item.agencies)) {
+                                item.agencies.push(d.sponsoringSubagency.trim());
                             }
                         }
 
                         d.atoLetters.forEach(a => {
-                            if (a.independentAssessor === item.name) {
-                                if (!item.agencies.includes(a.authorizingAgency)) {
-                                    item.agencies.push(a.authorizingAgency);
+                            if (safeTrim(a.independentAssessor) === item.name) {
+                                if (include(a.authorizingAgency, item.agencies)) {
+                                    item.agencies.push(a.authorizingAgency.trim());
                                 }
 
-                                if (!item.agencies.includes(a.authorizingSubagency)) {
-                                    item.agencies.push(a.authorizingSubagency);
+                                if (include(a.authorizingSubagency, item.agencies)) {
+                                    item.agencies.push(a.authorizingSubagency.trim());
                                 }
                             }
                         });
@@ -317,6 +317,21 @@
 
                 return items;
             };
+
+            function safeTrim (s) {
+                if (s) {
+                    return s.trim();
+                }
+                return '';
+            }
+
+            function include (s, a) {
+                let st = safeTrim(s);
+                if (st && a) {
+                    return !a.includes(st);
+                }
+                return false;
+            }
 
             return self.init(options);
         }
