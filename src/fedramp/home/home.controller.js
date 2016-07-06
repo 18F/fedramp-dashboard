@@ -303,75 +303,11 @@
          */
 
         self.leveragedAtos = function () {
-            let totalReuses = 0;
-            let providers = fedrampData.all();
-            providers.forEach(csp => {
-                totalReuses += self.calcCSPReuse(csp, providers, false);
-            });
-            return totalReuses;
-        };
-
-        // /**
-        //  * The total leveraged ATO letters from authorized cloud service providers
-        //  * @public
-        //  * @memberof Controllers.HomeController
-        //  *
-        //  * @returns
-        //  *  Appends a list of the number of times leveraged by dependent package id to the provided array of CSPs
-        //  *
-        //  * @param {array} data
-        //  * The an array of all of the CSP data
-        //  */
-
-        // self.displayReuse = function (data) {
-        //     data.forEach(csp =>{
-        //         csp['Dependent_CSP'] = self.calcCSPRuse(csp, data, true);
-        //     });
-        //     return data;
-        // };
-
-        /**
-         * The total leveraged ATO letters from authorized cloud service providers
-         * @public
-         * @memberof Controllers.HomeController
-         *
-         * @param {object} csp
-         *  The information for an individual CSP
-         * @param {array} fullData
-         *  The information for all of the CSPs
-         * @param {boolean} asObject
-         *  True/False to determine where to return an array of object reuses or the total sum of reuses
-         *
-         * @returns
-         *  An object of the number of times a CSP was reused by package id if asObject = true. If asObject = false, it will return the sum of the reuses for an individual CSP if
-         */
-        self.calcCSPReuse = function (csp, fullData, asObject) {
-            const directlyLeveraged = csp.atoLetters.length;
-            const leveragedATOs = fullData.filter(otherCSP => {
-                if (otherCSP.underlyingCspPackages) {
-                    return otherCSP.underlyingCspPackages.includes(csp.pkgId);
-                }
-            });
-
-            // // Allows this function to be used to return an object of
-            // if (asObject) {
-            //     return leveragedATOs.map(otherCSP => {
-            //         var rObj = {};
-            //         rObj[otherCSP.pkgId] = otherCSP.atoLetters.length + 1; //Add the plus one for the unleveraged CSP
-            //         return rObj;
-            //     });
-            // }
-
-            // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
-            let summedReuses = leveragedATOs.length;
-            if(leveragedATOs.length > 0){
-                // Add leveraged ATO of CSP dependencies
-                summedReuses += leveragedATOs
-                    .map(otherCSP => otherCSP.atoLetters.length)
-                    .reduce((prev, curr) => prev + curr);
+            let products = fedrampData.products();
+            if (products.length) {
+                return products.map(x => x.reuses).reduce((p, c) => p + c);
             }
-
-            return directlyLeveraged + summedReuses;
+            return 0;
         };
 
         /**

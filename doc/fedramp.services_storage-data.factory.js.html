@@ -91,10 +91,7 @@
 
                 
                 items.forEach(item => {
-                    item.products = self.products().filter(x => x.name === item.name);
-                    if (!item.products) {
-                        item.products = [];
-                    }
+                    item.products = self.products().filter(x => x.provider === item.name);
                     
                     item.products.forEach(prod => {
                         item.reuses += prod.reuses;
@@ -124,6 +121,7 @@
                                 item.designations.push(prod.designation.trim());
                             }
                         });
+
                     });
                 });
 
@@ -155,10 +153,23 @@
                     item.name = d.pkg.trim();
                     item.provider = d.name.trim();
                     item.pkgId = d.pkgId.trim();
-                    item.serviceModels = d.serviceModel;
+                    item.serviceModels = d.serviceModel ? d.serviceModel : [];
                     item.deploymentModel = d.deploymentModel.trim();
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
+
+                    item.reuses = d.atoLetters.length;
+                    let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
+                    if (leveraged.length > 0) {
+                        // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
+                        item.reuses += leveraged.length;
+
+                        // Add leveraged ATO of CSP dependencies
+                        item.reuses += leveraged
+                            .map(x => x.atoLetters.length)
+                            .reduce((p, c) => p + c);
+                    }
+
                     items.push(item);
                 }
 
@@ -167,10 +178,6 @@
                         if (d.pkg === item.name) {
                             if (include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
-                            }
-
-                            if (include(d.sponsoringSubagency, item.agencies)) {
-                                item.agencies.push(d.sponsoringSubagency.trim());
                             }
 
                             d.atoLetters.forEach(a => {
@@ -209,14 +216,7 @@
                     if (include(d.sponsoringAgency, names)) {
                         names.push(d.sponsoringAgency.trim());
                         let item = new Agency();
-                        item.name = name.trim();
-                        items.push(item);
-                    }
-
-                    if (include(d.sponsoringSubagency, names)) {
-                        names.push(d.sponsoringSubagency.trim());
-                        let item = new Agency();
-                        item.name = name.trim();
+                        item.name = d.sponsoringAgency.trim();
                         items.push(item);
                     }
                 }
@@ -245,7 +245,25 @@
 
                 items.forEach(item => {
                     data.forEach(d => {
-                        if (safeTrim(d.sponsoringAgency) === item.name || safeTrim(d.sponsoringSubagency) === item.name || d.atoLetters.filter(x => x.authorizingAgency === item.name || x.authorizingSubagency === item.name)) {
+                        d.atoLetters
+                            .filter(x => safeTrim(x.authorizingAgency) === item.name || safeTrim(x.authorizingSubagency) === item.name)
+                            .forEach(a => {
+                                item.authorized++;
+                                if (include(d.pkg, item.products)) {
+                                    item.products.push(d.pkg.trim());
+                                }
+
+                                if (include(d.name, item.providers)) {
+                                    item.providers.push(d.name.trim());
+                                }
+                                
+                                if (include(a.independentAssessor, item.assessors)) {
+                                    item.assessors.push(a.independentAssessor.trim());
+                                }
+                            });
+
+                        if (safeTrim(d.sponsoringAgency) === item.name) {
+                            item.sponsored++;
                             if (include(d.pkg, item.products)) {
                                 item.products.push(d.pkg.trim());
                             }
@@ -258,15 +276,9 @@
                                 item.assessors.push(d.independentAssessor.trim());
                             }
                         }
-
-                        if (safeTrim(d.sponsoringAgency) === item.name || safeTrim(d.sponsoringSubagency) === item.name) {
-                            item.sponsored++;
-                        }
-
-                        if (safeTrim(d.authorizingAgency) === item.name || safeTrim(d.authorizingSubagency) === item.name) {
-                            item.authorized++;
-                        }
                     });
+
+                    item.reuses = item.sponsored + item.authorized;
                 });
 
                 return items;
@@ -332,14 +344,18 @@
                             if (include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
-
-                            if (include(d.sponsoringSubagency, item.agencies)) {
-                                item.agencies.push(d.sponsoringSubagency.trim());
-                            }
                         }
 
                         d.atoLetters.forEach(a => {
                             if (safeTrim(a.independentAssessor) === item.name) {
+                                if (include(d.pkg, item.products)) {
+                                    item.products.push(d.pkg.trim());
+                                }
+
+                                if (include(d.name, item.providers)) {
+                                    item.providers.push(d.name.trim());
+                                }
+
                                 if (include(a.authorizingAgency, item.agencies)) {
                                     item.agencies.push(a.authorizingAgency.trim());
                                 }
@@ -350,6 +366,8 @@
                             }
                         });
                     });
+
+                    item.reuses = item.products.length;
                 });
 
                 return items;
@@ -395,7 +413,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 11:34:42 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 14:22:04 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -17,7 +17,6 @@ describe('Data can map', function () {
             'Original_Authorization_Date': 'authorizationDate',
             'Original_Expiration_Date': 'expirationDate',
             'Sponsoring_Agency': 'sponsoringAgency',
-            'Sponsoring_Subagency': 'sponsoringSubagency',
             'Leveraged_ATO_Letters': 'atoLetters',
             'Underlying_CSP_Package_ID': 'underlyingCspPackages'
         };

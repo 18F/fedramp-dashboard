@@ -29,7 +29,6 @@
                 'Original_Authorization_Date': 'authorizationDate',
                 'Original_Expiration_Date': 'expirationDate',
                 'Sponsoring_Agency': 'sponsoringAgency',
-                'Sponsoring_Subagency': 'sponsoringSubagency',
                 'Active': 'active',
                 'CSP_URL': 'cspUrl',
                 'Underlying_CSP_Package_ID': 'underlyingCspPackages',
@@ -114,13 +113,6 @@
              * @memberof Models.Data
              */
             self.sponsoringAgency = '';
-
-            /**
-             * Sponsoring subagency
-             * @member {string}
-             * @memberof Models.Data
-             */
-            self.sponsoringSubagency = '';
 
             /**
              * Active status
