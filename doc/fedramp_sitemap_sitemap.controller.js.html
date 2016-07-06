@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp/fedramp.module.js</title>
+    <title>JSDoc: Source: fedramp/sitemap/sitemap.controller.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp/fedramp.module.js</h1>
+    <h1 class="page-title">Source: fedramp/sitemap/sitemap.controller.js</h1>
 
     
 
@@ -26,29 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @namespace Controllers
- */
-(function () {
+            <pre class="prettyprint source linenums"><code>(function () {
     'use strict';
 
     angular
-        .module('fedramp', [
-            'ui.router',
-            'fedramp.models',
-            'fedramp.services',
-            'fedramp.components'
-        ])
-        .config(['$compileProvider', function ($compileProvider) {
-            $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|blob|data):/);
-        }])
-        .run(run);
+        .module('fedramp')
+        .controller('SitemapController', SitemapController);
 
-    run.$inject = ['$log','$rootScope'];
+    SitemapController.$inject = ['$log', 'fedrampData', 'helperService'];
 
-    function run ($log, $rootScope) {
-        $log.debug('fedramp module initializing');
-        $rootScope.$on("$stateChangeError", $log.debug.bind($log));
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
+    function SitemapController ($log, fedrampData, helperService) {
+        var self = this;
+        self.providers = fedrampData.providers();
+        self.products = fedrampData.products();
+        self.agencies = fedrampData.agencies();
+        self.assessors = fedrampData.assessors();
+        self.today = helperService.today();
+        self.slugify = helperService.slugify;
     }
 })();
 </code></pre>
