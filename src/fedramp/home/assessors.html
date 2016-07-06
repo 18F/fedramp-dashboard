@@ -1,8 +1,11 @@
-<div class="usa-grid">
-    <div style="text-align:center;margin-bottom:10px;">
+<tile ng-repeat="item in controller.assessors track by $index" expand="homeController.expandTiles" model="item" />
+<div class="usa-grid-full">
+    <div class="usa-width-one-whole text-center">
         <download-csv content="controller.assessors">
-            <button>Export CSV</button>
+            <button>
+                <span>Export to CSV</span>
+                <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+            </button>
         </download-csv>
     </div>
-    <tile ng-repeat="item in controller.assessors  track by $index" expand="homeController.expandTiles" model="item" />
 </div>

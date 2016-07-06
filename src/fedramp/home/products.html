@@ -31,9 +31,9 @@
     border-radius: 10px;
 }
 </style>
-<div class="usa-grid">
-    <div>
-        <select style="text-align:center;margin:0 auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
+<div class="usa-grid-full">
+    <div class="usa-width-one-whole">
+        <select style="text-align:center;margin:1em auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
         <span ng-repeat="selected in controller.selectedNames" class="badge">
             {{selected}} <a ng-click="controller.removeProviderFilter(selected)">(X)</a>
         </span>
@@ -46,10 +46,15 @@
             {{selected}} <a ng-click="controller.removeServiceModelFilter(selected)">(X)</a>
         </span>
     </div>
-    <div style="text-align:center;margin-bottom:10px;">
+</div>
+<tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
+<div class="usa-grid-full">
+    <div class="usa-width-one-whole text-center">
         <download-csv content="controller.filteredData">
-            <button>Export CSV</button>
+            <button>
+                <span>Export to CSV</span>
+                <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+            </button>
         </download-csv>
     </div>
-    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
 </div>

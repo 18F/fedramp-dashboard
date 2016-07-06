@@ -1,17 +1,20 @@
 <a ng-click="controller.view()">
-    <div ng-if="controller.expand" class="usa-width-one-whole">
-        <div class="usa-grid">
+    <div ng-if="controller.expand" class="usa-width-one-whole tile expanded">
+        <div class="usa-grid-full">
             <div class="usa-width-one-third">
                 <strong>{{ controller.model.name }}</strong>
             </div>
             <div class="usa-width-one-sixth">
                 <div ng-repeat="service in controller.model.serviceModel">{{ service }}</div>
+                &nbsp;
             </div>
             <div class="usa-width-one-sixth">
                 <span>{{ controller.model.deploymentModel }}</span>
+                &nbsp;
             </div>
             <div class="usa-width-one-sixth">
                 <span>{{ controller.model.impactLevel }}</span>
+                &nbsp;
             </div>
             <div class="usa-width-one-twelfth">
                 <!-- Status -->
@@ -20,11 +23,12 @@
             <div class="usa-width-one-twelfth">
                 <!-- Reuses -->
                 {{ controller.model.reuses }}
+                &nbsp;
             </div>
         </div>
     </div>
-    <div ng-if="!controller.expand" class="usa-width-one-half">
-        <div class="usa-grid">
+    <div ng-if="!controller.expand" class="usa-width-one-half tile">
+        <div class="usa-grid-full">
             <div class="usa-width-two-thirds">
                 <!-- Logo -->
                 Logo
@@ -38,7 +42,7 @@
                 {{ controller.model.reuses }}
             </div>
         </div>
-        <div class="usa-grid">
+        <div class="usa-grid-full">
             <div class="usa-width-one-whole">
                 <div>
                     <strong>Service Model:</strong>
