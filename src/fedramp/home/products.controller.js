@@ -5,15 +5,17 @@
         .module('fedramp')
         .controller('ProductsController', ProductController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter'];
+    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter', '$location'];
 
-    function ProductController($log, products, $stateParams, $filter){
+    function ProductController($log, products, $stateParams, $filter, $location){
         var self = this;
+        self.testItems = [{name: 'Ace', type: 'Provider'}, {name: 'Winston', type: 'Agency'}, {name: 'John', type:'Agency'}, {name: 'Bryans', type: 'Product'}];
+
         self.filterOptionGroups = [];
 
         // Agencies
         self.agencies = [];
-
+        self.providers = [];
         // Product Names
         self.productNames = [];
 
@@ -32,6 +34,7 @@
         // Assign products resolve to controller
         self.products = products;
 
+        console.log(self.savedServiceModels);
 
         // Funcs
         self.filterName = filterName;
@@ -41,6 +44,19 @@
         self.removeProviderFilter = removeProviderFilter;
         self.removeAgencyFilter = removeAgencyFilter;
         self.removeServiceModelFilter = removeServiceModelFilter;
+        self.addServiceModelFilter = addServiceModelFilter;
+
+
+
+        self.sortDeploymentModel = function(a, b){
+            if(a.deploymentModel < b.deploymentModel){
+                return -1;
+            }
+            if(a.deploymentModel > b.deploymentModel){
+                return 1;
+            }
+            return 0;
+        };
 
         // Used to prevent duplicate options
         var filterCache = {};
@@ -51,10 +67,7 @@
 
             self.products.forEach(function(value, index, arr){
                 if(!providerCache[value.provider]){
-                    self.filterOptionGroups.push({
-                        name: value.provider,
-                        type: 'Provider'
-                    });
+                    self.providers.push(value.provider);
                     providerCache[value.provider] = true;
                 }
             });
@@ -67,10 +80,10 @@
                         if(agency && !agencyMap[agency]){
                             self.agencies.push(agency);
 
-                            self.filterOptionGroups.push({
-                                name: agency,
-                                type: 'Agency'
-                            });
+                            //self.filterOptionGroups.push({
+                                //name: agency,
+                                //type: 'Agency'
+                            //});
                             agencyMap[agency] = true;
                         }
                     });
@@ -79,12 +92,6 @@
 
             // Populate service models
             self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
-            self.serviceModels.forEach(function(value, index, arr){
-                self.filterOptionGroups.push({
-                    name: value,
-                    type: 'Service Model'
-                });
-            });
 
             self.filterOptionGroups.sort(function(a,b){
                 if(a.name === b.name){
@@ -96,7 +103,11 @@
                 }
                 return 1;
             });
-            applyFilters();
+            console.log(self.filteredData);
+            //applyFilters();
+            self.savedServiceModels = $location.search().serviceModels ? $location.search().serviceModels.split(',') : [];
+            self.savedAgencies = $location.search().agencies ? $location.search().agencies.split(',') : [];
+            self.filteredData = angular.copy(self.products);
         }
 
 
@@ -150,6 +161,11 @@
                 }
             }
             return value;
+        }
+
+        function addServiceModelFilter(serviceModel){
+            self.selectedServiceModels.push(serviceModel);
+            self.filteredData = $filter('filter')(self.products, filterServiceModel);
         }
 
         function filterSelected(){

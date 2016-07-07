@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fedramp.components/grid-filter.component.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: fedramp.components/grid-filter.component.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function(){
+    "use strict";
+    angular
+        .module('fedramp.components')
+        .component('gridFilter', {
+            controller: GridFilter,
+            controllerAs: 'controller',
+            templateUrl: 'src/fedramp.components/grid-filter.html',
+            require: {
+                // We require that this component live inside of &lt;grid>&lt;/grid> so it can
+                // communicate and share information
+                gridController: '^grid'
+            },
+            bindings: {
+                // The property on a list to manage
+                property: '@',
+
+                // User friendly text to describe filter
+                header: '@',
+
+                // Any options that can be selected by this filter. If none are passed in, a distinct list
+                // of all possible values for the current property are populated.
+                options: '&lt;',
+
+                // Load any initial selected values. For instance, to restore filter state
+                initialValues: '&lt;',
+
+                // Whether to render expanded template vs the dropdown
+                expanded: '&lt;'
+            }
+        });
+
+    GridFilter.$inject = ['$filter'];
+    function GridFilter ($filter) {
+        var self = this;
+        self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
+        
+        // Options available to filter based on property
+        self.options = [];
+
+        // Options that have been selected
+        self.selectedOptionValues = [];
+
+        // List of filtered data based on this particular filter
+        self.filtered = [];
+
+
+        // Exposed public functions
+        self.$onInit = $onInit;
+        self.$onChanges = $onChanges;
+        self.filterFunc = filterFunc;
+        self.selectOption = selectOption;
+        self.clear = clear;
+
+        function $onInit(){
+            // We give the parent controller a reference to this filter
+            self.gridController.addFilter(self);
+
+            // If no options have been loaded, we load default ones
+            if(self.options.length === 0){
+                loadDefaultOptions();        
+            }
+
+            // Apply pre-selected options
+            if(self.initialValues &amp;&amp; self.initialValues.length > 0){
+                loadInitialValues(self.initialValues);
+                applyFilter();
+            }
+        }
+
+        function $onChanges(changes){ }
+
+
+        /**
+         * Toggles the selection of an option and then executes filter.
+         */
+        function selectOption(option){
+            option.selected = !option.selected;
+            var pos = self.selectedOptionValues.indexOf(option);
+            if(pos == -1){
+                self.selectedOptionValues.push(option);
+            } else {
+                self.selectedOptionValues.splice(pos,1);
+            }
+            applyFilter();
+        }
+
+        /**
+         * Filter using current property to populate a list containing items relevant to current filter.
+         * Then, we call the doFilter() on the parent gridController which will consolidate and merge all filtered
+         * data from other filters.
+         */
+        function applyFilter(){
+            self.filtered = $filter('filter')(self.gridController.rawItems, self.filterFunc);
+            self.gridController.doFilter();
+        }
+
+        /**
+         * Filter function applied when using $filter('filter'); When a match occurs, 
+         * we return the object being compared. When we return null, that means to exclude
+         * the object from the filtered dataset
+         */
+        function filterFunc(obj, index, arr){
+            // When no option is selected, return everything
+            if(self.selectedOptionValues.length === 0){
+                return obj;
+            }
+            var property = obj[self.property];
+
+            // Handle when object is array
+            if(angular.isArray(property)){
+                return arrayFilterFunc(obj, index, arr);
+            }
+
+            // Handle when basic object
+            if(angular.isString(property)){
+                return objectFilterFunc(obj, index, arr);
+            }
+
+            throw 'Invalid object. Cannot filter';
+        }
+
+        /**
+         * Generic filter that finds where a property value is found within
+         * the list of selection options.
+         */
+        function objectFilterFunc(obj, index, arr){
+            var value = obj[self.property];
+            var foundObject = self.selectedOptionValues.find(function(option){
+                return option.value === value;
+            });
+            return foundObject;
+        }
+
+
+        /**
+         * Generic filter that finds where a selected option is found within an array property
+         */
+        function arrayFilterFunc(obj, index, arr){
+            var values = obj[self.property];
+            var found = false;
+
+            values.forEach(function(value){
+                var foundObject = self.selectedOptionValues.find(function(option){
+                    return option.value === value;
+                });
+                if(foundObject){
+                    found = true;
+                }
+            });
+
+            if(found){
+                return obj;
+            }
+            return null;
+        }
+
+        /**
+         * Loads a distinct list of values found in the specified property attribute.
+         * If the property value is a basic string, an array of strings will be set for the options.
+         *
+         * If the property is an array, each instance of the array will be iterated to extract the contents to
+         * generate an array containing unique values. This is done by using a set.
+         */
+        function loadDefaultOptions(){
+            var set = new Set();
+            self.gridController.rawItems.forEach(function(obj){
+                var property = obj[self.property];
+
+                // Handle when object is array
+                if(angular.isArray(property)){
+                    property.forEach(x=> set.add(x.trim()));
+                    //return arrayFilterFunc(obj, index, arr);
+                }
+
+                // Handle when basic object
+                if(angular.isString(property) || angular.isNumber(property)){
+                    set.add(property);
+                }
+            });
+            //self.options = Array.from(set);
+            self.options = toOptionArray(set);
+        }
+
+        /**
+         * Takes a basic list of values in an array [x, y, z] and transforms it to
+         * an array of option objects
+         *
+         * [{ value: x, selected: false}]
+         */
+        function toOptionArray(data){
+            var options = [];
+            Array.from(data).forEach(x=> 
+                options.push({
+                    value: x,
+                    selected: false
+                })
+            );
+            return options;
+        }
+
+        /**
+         * Loads options that should be selected on initial load
+         */
+        function loadInitialValues(initialValues){
+            self.selectedOptionValues = initialValues;
+
+            self.selectedOptionValues.forEach(function(value){
+                self.options.forEach(function(option){
+                    if(option.value === value){
+                        option.selected = true;
+                    }
+                });
+            });
+        }
+
+
+        /**
+         * Clears filter and resets dataset
+         */
+        function clear(){
+            self.selectedOptionValues = [];
+            self.options.forEach(x=> x.selected = false);
+            applyFilter();
+        }
+    }
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Jul 07 2016 19:21:00 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

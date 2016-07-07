@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.components/tile.component.js</title>
+    <title>JSDoc: Source: fedramp.components/grid-filter-clear.component.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.components/tile.component.js</h1>
+    <h1 class="page-title">Source: fedramp.components/grid-filter-clear.component.js</h1>
 
     
 
@@ -31,58 +31,33 @@
 
     angular
         .module('fedramp.components')
-        .component('tile', {
-            templateUrl: 'src/fedramp.components/tile.html',
-            controller: Tile,
+        .component('gridFilterClear', {
+            transclude: true,
+            template: '&lt;ng-transclude ng-click="controller.clear()">&lt;/ng-transclude>',
+            controller: GridFilterClear,
             controllerAs: 'controller',
+            require: {
+                gridController: '^grid'
+            },
             bindings: {
-                expand: '&lt;',
-                model: '&lt;'
             }
         });
 
-    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
+    GridFilterClear.$inject = [];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Tile ($log, $state, $stateParams, helperService) {
+    function GridFilterClear () {
         var self = this;
 
-        /**
-         * Redirect to the appropriate view
-         * @public
-         * @member {object}
-         * @memberof Components.Tile
-         */
-        self.view = function () {
-            if ($stateParams.name) {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.comparison',
-                    {
-                        first: helperService.slugify($stateParams.name),
-                        second: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            } else {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.information',
-                    {
-                        name: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            }
-        };
+        self.clear = clear;
 
-        // self.$onInit = function () {};
-        // self.$onChanges = function (changes) {};
-        // self.$onDestroy = function () {};
-        // self.$postLink = function () {};
+        // Calls parents controller to clear all filters.
+        function clear(){
+            self.gridController.clearFilters();
+        }
     }
 })();
 </code></pre>

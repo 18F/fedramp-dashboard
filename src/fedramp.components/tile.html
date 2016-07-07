@@ -1,5 +1,5 @@
 <a ng-click="controller.view()">
-    <div ng-if="controller.expand" class="usa-width-one-whole">
+    <div ng-if="controller.expand" class="usa-width-one-whole" style="border-bottom:1px solid black;">
         <div class="usa-grid">
             <div class="usa-width-one-third">
                 <strong>{{ controller.model.name }}</strong>
@@ -22,6 +22,8 @@
                 {{ controller.model.reuses }}
             </div>
         </div>
+        <div>{{controller.model.agencies | json }}</div>
+        <div>{{controller.model.serviceModels | json }}</div>
     </div>
     <div ng-if="!controller.expand" class="usa-width-one-half">
         <div class="usa-grid">

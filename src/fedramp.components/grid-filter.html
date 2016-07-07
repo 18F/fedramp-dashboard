@@ -1,0 +1,13 @@
+<div ng-if="!controller.expanded" style="position:relative;width:140px;border:1px solid black;">
+    <div style="background-color:#e5e5e5;" ng-click="controller.expand = !controller.expand">{{controller.header}}</div>
+    <div ng-show="controller.expand" style="z-index:2000;position:absolute;width: 200px;padding:10px;height:200px;overflow:auto;background-color:white;border:1px solid black;">
+        <ng-include src="controller.gridFilterOptionsTemplatePath"></ng-include>
+    </div>
+</div>
+
+<div ng-if="controller.expanded">
+    <div style="background-color:#e5e5e5;" ng-click="controller.expand = !controller.expand">{{controller.header}}</div>
+        <ng-include src="controller.gridFilterOptionsTemplatePath"></ng-include>
+    </div>
+</div>
+

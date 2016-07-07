@@ -33,15 +33,17 @@
         .module('fedramp')
         .controller('ProductsController', ProductController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter'];
+    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter', '$location'];
 
-    function ProductController($log, products, $stateParams, $filter){
+    function ProductController($log, products, $stateParams, $filter, $location){
         var self = this;
+        self.testItems = [{name: 'Ace', type: 'Provider'}, {name: 'Winston', type: 'Agency'}, {name: 'John', type:'Agency'}, {name: 'Bryans', type: 'Product'}];
+
         self.filterOptionGroups = [];
 
         // Agencies
         self.agencies = [];
-
+        self.providers = [];
         // Product Names
         self.productNames = [];
 
@@ -60,6 +62,7 @@
         // Assign products resolve to controller
         self.products = products;
 
+        console.log(self.savedServiceModels);
 
         // Funcs
         self.filterName = filterName;
@@ -69,6 +72,19 @@
         self.removeProviderFilter = removeProviderFilter;
         self.removeAgencyFilter = removeAgencyFilter;
         self.removeServiceModelFilter = removeServiceModelFilter;
+        self.addServiceModelFilter = addServiceModelFilter;
+
+
+
+        self.sortDeploymentModel = function(a, b){
+            if(a.deploymentModel &lt; b.deploymentModel){
+                return -1;
+            }
+            if(a.deploymentModel > b.deploymentModel){
+                return 1;
+            }
+            return 0;
+        };
 
         // Used to prevent duplicate options
         var filterCache = {};
@@ -79,10 +95,7 @@
 
             self.products.forEach(function(value, index, arr){
                 if(!providerCache[value.provider]){
-                    self.filterOptionGroups.push({
-                        name: value.provider,
-                        type: 'Provider'
-                    });
+                    self.providers.push(value.provider);
                     providerCache[value.provider] = true;
                 }
             });
@@ -95,10 +108,10 @@
                         if(agency &amp;&amp; !agencyMap[agency]){
                             self.agencies.push(agency);
 
-                            self.filterOptionGroups.push({
-                                name: agency,
-                                type: 'Agency'
-                            });
+                            //self.filterOptionGroups.push({
+                                //name: agency,
+                                //type: 'Agency'
+                            //});
                             agencyMap[agency] = true;
                         }
                     });
@@ -107,12 +120,6 @@
 
             // Populate service models
             self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
-            self.serviceModels.forEach(function(value, index, arr){
-                self.filterOptionGroups.push({
-                    name: value,
-                    type: 'Service Model'
-                });
-            });
 
             self.filterOptionGroups.sort(function(a,b){
                 if(a.name === b.name){
@@ -124,7 +131,11 @@
                 }
                 return 1;
             });
-            applyFilters();
+            console.log(self.filteredData);
+            //applyFilters();
+            self.savedServiceModels = $location.search().serviceModels ? $location.search().serviceModels.split(',') : [];
+            self.savedAgencies = $location.search().agencies ? $location.search().agencies.split(',') : [];
+            self.filteredData = angular.copy(self.products);
         }
 
 
@@ -178,6 +189,11 @@
                 }
             }
             return value;
+        }
+
+        function addServiceModelFilter(serviceModel){
+            self.selectedServiceModels.push(serviceModel);
+            self.filteredData = $filter('filter')(self.products, filterServiceModel);
         }
 
         function filterSelected(){
@@ -259,13 +275,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 06 2016 14:22:04 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Jul 07 2016 19:21:00 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

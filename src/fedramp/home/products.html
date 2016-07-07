@@ -30,26 +30,38 @@
     background-color: #e5e5e5;
     border-radius: 10px;
 }
+
+.grid-filter {
+    float: left;
+    display:block;
+    width: 155px;
+    margin-bottom: 200px;
+}
+
+.filter-options {
+    margin-left:10px;
+}
 </style>
+
+
+<grid items="controller.filteredData" raw-items="controller.products">
 <div class="usa-grid">
-    <div>
-        <select style="text-align:center;margin:0 auto;" ng-model="controller.selectedFilter" ng-options="option as option.name group by option.type for option in controller.filterOptionGroups" ng-change="controller.filterSelected()"></select>
-        <span ng-repeat="selected in controller.selectedNames" class="badge">
-            {{selected}} <a ng-click="controller.removeProviderFilter(selected)">(X)</a>
-        </span>
-
-        <span ng-repeat="selected in controller.selectedAgencies" class="badge">
-            {{selected}} <a ng-click="controller.removeAgencyFilter(selected)">(X)</a>
-        </span>
-
-        <span ng-repeat="selected in controller.selectedServiceModels" class="badge">
-            {{selected}} <a ng-click="controller.removeServiceModelFilter(selected)">(X)</a>
-        </span>
+    <div class="usa-width-one-third">
+        <grid-filter-clear><button>Clear</button></grid-filter-clear>
+        <div>Show results for</div>
+        <grid-filter property="serviceModels" header="Service Models" initial-values="controller.savedServiceModels" expanded="true"></grid-filter>
+        <!--<grid-filter property="impactLevel" header="Impact Level" expanded="true"></grid-filter>-->
+        <grid-filter property="agencies" header="Agencies" options="controller.agencies" initial-values="controller.savedAgencies" expanded="true"></grid-filter>
     </div>
-    <div style="text-align:center;margin-bottom:10px;">
-        <download-csv content="controller.filteredData">
-            <button>Export CSV</button>
-        </download-csv>
+    <div class="usa-width-two-thirds">
+
+        <grid-sort property="reuses"><button>Sort by Uses</button></grid-sort>    
+
+        <grid-filter property="provider" header="Provider" class="grid-filter"></grid-filter>
+        <grid-filter property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
+        <grid-filter property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
+        <grid-filter property="serviceModels" header="Service Models" class="grid-filter"></grid-filter>
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
     </div>
-    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
 </div>
+</grid>

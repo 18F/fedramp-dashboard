@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.components/tile.component.js</title>
+    <title>JSDoc: Class: Grid</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,77 +17,308 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.components/tile.component.js</h1>
+    <h1 class="page-title">Class: Grid</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>(function () {
-    'use strict';
+        <h2>
+            <span class="ancestors"><a href="Components.html">Components</a>.</span>Grid</h2>
+        
+    
+</header>
 
-    angular
-        .module('fedramp.components')
-        .component('tile', {
-            templateUrl: 'src/fedramp.components/tile.html',
-            controller: Tile,
-            controllerAs: 'controller',
-            bindings: {
-                expand: '&lt;',
-                model: '&lt;'
-            }
-        });
+<article>
+    <div class="container-overview">
+    
+        
 
-    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
+    
 
-    /**
-     * @constructor
-     * @memberof Components
-     */
-    function Tile ($log, $state, $stateParams, helperService) {
-        var self = this;
+    <h4 class="name" id="Grid"><span class="type-signature"></span>new Grid<span class="signature">()</span><span class="type-signature"></span></h4>
 
-        /**
-         * Redirect to the appropriate view
-         * @public
-         * @member {object}
-         * @memberof Components.Tile
-         */
-        self.view = function () {
-            if ($stateParams.name) {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.comparison',
-                    {
-                        first: helperService.slugify($stateParams.name),
-                        second: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            } else {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.information',
-                    {
-                        name: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
-            }
-        };
+    
 
-        // self.$onInit = function () {};
-        // self.$onChanges = function (changes) {};
-        // self.$onDestroy = function () {};
-        // self.$postLink = function () {};
-    }
-})();
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~addFilter"><span class="type-signature">(inner) </span>addFilter<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    When first loading, all child grid-filter components will call this method to add
+themselves to thos controller.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~doFilter"><span class="type-signature">(inner) </span>doFilter<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Iterates through all the results obtained from all child grid filters and
+executes all filter funcs to reduce the data to a single dataset
+
+To describe somewhat visually, imagine if we have two filters
+
+<grid-filter property="agency"></grid-filter>
+<grid-filter property="deploymentModel"></grid-filter>
+
+Agency may result with a data set containing {1, 2, 3, 4} 
+while
+DeploymentModel may contain a dataset with {a,b,c}
+
+However, if we apply the filterfunc from each filter to every single data point,
+we may end up with {1,2,a,c}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
