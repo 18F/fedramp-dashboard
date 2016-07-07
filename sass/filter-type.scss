@@ -1,0 +1,18 @@
+.filters button {
+    width: 100%;
+    background-color: #aaa;
+}
+
+.filters > div {
+    margin-right: 2px !important;
+}
+
+.filters button {
+    border-radius: 0;
+    height: 3.5em;
+}
+
+.filters button.active {
+    color: #fff;
+    background-color: blue;
+}
