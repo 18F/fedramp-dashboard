@@ -1,84 +1,80 @@
 <div class="usa-content">
-    <div class="usa-grid">
-        <div class="usa-width-one-third">
-            <div class="circle">
-                <p>
-                    <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>
-                    <div>Cost Savings</div>
-                </p>
-            </div>
+    <div class="usa-grid-full text-center">
+        <div class="usa-width-one-half">
+            <p>
+                <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>
+                <div>Total reuses</div>
+            </p>
         </div>
-        <div class="usa-width-one-third">
-            <div class="circle">
-                <p>
-                    <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>
-                    <div>Total Authorized</div>
-                </p>
-            </div>
-        </div>
-        <div class="usa-width-one-third">
-            <div class="circle">
-                <p>
-                    <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>
-                    <div>Leveraged ATOs</div>
-                </p>
-            </div>
+        <div class="usa-width-one-half">
+            <p>
+                <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>
+                <div>Total Authorized</div>
+            </p>
         </div>
     </div>
-    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"> Search by </div>
+    <div class="usa-grid-full text-center">
+        <div class="usa-width-one-third">
+            <p>
+                <strong style="font-size: larger;">67%</strong>
+                <div>TBD</div>
+            </p>
+        </div>
+        <div class="usa-width-one-third">
+            <p>
+                <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>
+                <div>Cost Savings</div>
+            </p>
+        </div>
+        <div class="usa-width-one-third">
+            <p>
+                <strong style="font-size: larger;">3,297</strong>
+                <div>TBD</div>
+            </p>
+        </div>
+    </div>
+    <div class="text-center">Filter results by</div>
     <div ng-show="homeController.hasData()">
-        <div class="filters usa-grid">
-            <div class="usa-width-one-fourth">
-                <button id="filterByCSP"
-                        ui-sref="fedramp.app.home.providers">
-                    CSP
-                </button>
-            </div>
+        <div class="filters usa-grid-full">
             <div class="usa-width-one-fourth">
                 <button id="filterByCSO"
                         type="radio"
                         ui-sref="fedramp.app.home.products">
-                        CSO
+                    Cloud Service Offerings
+                </button>
+            </div>
+            <div class="usa-width-one-fourth">
+                <button id="filterByCSP"
+                        ui-sref="fedramp.app.home.providers">
+                    Cloud Service Providers
                 </button>
             </div>
             <div class="usa-width-one-fourth">
                 <button id="filterByAgency"
-                        ui-sref="fedramp.app.home.agencies">Agency
+                        ui-sref="fedramp.app.home.agencies">
+                    Agencies
                 </button>
             </div>
             <div class="usa-width-one-fourth">
                 <button id="filterBy3PAO"
-                        ui-sref="fedramp.app.home.assessors">3PAO
+                        ui-sref="fedramp.app.home.assessors">
+                    3PAO
                 </button>
             </div>
         </div>
-        <div class="usa-grid" ng-show="!!homeController.filterType">
-            <div style="text-align:center;" class="usa-width-one-whole">
-                <div style="margin:0 auto;display:table;">
-                    <label for="filter">Filter using:</label>
-                    <select id="filter"
-                            ng-model="homeController.filter"
-                            ng-options="option for option in homeController.filterOptions"
-                            ng-change="homeController.applyFilter()">
-                        <option value=""></option>
-                    </select>
+        <div class="usa-grid-full">
+            <div class="usa-width-one-whole">
+                <div style="float: right;">
+                    <label>
+                        <input type="checkbox" ng-model="homeController.expandTiles" />
+                        <div>
+                            <span><i class="fa fa-th fa-1" aria-hidden="true"></i></span>
+                        </div>
+                        <div>
+                            <span><i class="fa fa-th-list fa-1" aria-hidden="true"></i></span>
+                        </div>
+                    </label>
                 </div>
-                <a href="{{homeController.downloadUrl}}"
-                   download="{{homeController.filename()}}"
-                   ng-click="homeController.download()">
-                    Download
-                </a>
-            </div>
-        </div>
-        <div class="usa-grid">
-            <div class="usa-width-one-third">&nbsp;</div>
-            <div class="usa-width-one-twelfth">&nbsp;</div>
-            <div class="usa-width-one-third">
-                <label>
-                    <input type="checkbox" ng-model="homeController.expandTiles" />
-                    <p ng-if="homeController.expandTiles">View as tiles</p>
-                    <p ng-if="!homeController.expandTiles">View as list</p>
-                </label>
             </div>
         </div>
     </div>

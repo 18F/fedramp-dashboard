@@ -1,0 +1,16 @@
+.text-center {
+    text-align: center;
+}
+
+/* override standards */
+label {
+    max-width: none !important;
+}
+
+p {
+    max-width: none !important;
+}
+
+input {
+    max-width: none !important;
+}

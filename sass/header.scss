@@ -1,0 +1,59 @@
+#header {
+    clear: both;
+    margin: 20px auto 10px;
+    
+    #sitetitle {
+        text-align: left;
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    #catnav {
+        margin: 0 auto;
+        float: none;
+        clear: both;
+        display: block;
+        border-top: 1px dotted #ddd;
+        background: #fafafa;
+        font-size: 12pt;
+        font-weight: normal;
+        font-family: Calibri,Arial,sans-serif;
+        text-transform: uppercase;
+    
+        ul {
+            margin: 0 auto;
+            float: none;
+            clear: both;
+            padding: 0;
+            list-style: none;
+
+            li {
+                float: left;
+                width: auto;
+                margin-bottom: 0;
+
+                a {
+                    line-height: 40px;
+                    border-right: 1px solid #eee;
+                    border: 0 !important;
+                    color: #274784;
+                    position: relative;
+                    display: block;
+                    z-index: 100;
+                    padding: 0 15px;
+                }
+            }
+
+            li::before {
+                content: '';
+            }
+        }
+
+        .select-menu-catnav {
+            display: none;
+        }
+    }
+}
