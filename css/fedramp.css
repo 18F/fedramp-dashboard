@@ -2284,7 +2284,7 @@ input {
 
 .filters button {
   width: 100%;
-  background-color: #aaa; }
+  background-color: #767676; }
 
 .filters > div {
   margin-right: 2px !important; }
@@ -2296,6 +2296,163 @@ input {
 .filters button.active {
   color: #fff;
   background-color: blue; }
+
+#header {
+  clear: both;
+  margin: 20px auto 10px; }
+  #header #sitetitle {
+    text-align: left; }
+    #header #sitetitle img {
+      max-width: 100%;
+      height: auto; }
+  #header #catnav {
+    margin: 0 auto;
+    float: none;
+    clear: both;
+    display: block;
+    border-top: 1px dotted #ddd;
+    background: #fafafa;
+    font-size: 12pt;
+    font-weight: normal;
+    font-family: Calibri,Arial,sans-serif;
+    text-transform: uppercase; }
+    #header #catnav ul {
+      margin: 0 auto;
+      float: none;
+      clear: both;
+      padding: 0;
+      list-style: none; }
+      #header #catnav ul li {
+        float: left;
+        width: auto;
+        margin-bottom: 0; }
+        #header #catnav ul li a {
+          line-height: 40px;
+          border-right: 1px solid #eee;
+          border: 0 !important;
+          color: #274784;
+          position: relative;
+          display: block;
+          z-index: 100;
+          padding: 0 15px; }
+      #header #catnav ul li::before {
+        content: ''; }
+    #header #catnav .select-menu-catnav {
+      display: none; }
+
+#topnav .limit {
+  clear: both;
+  margin: 0 auto;
+  padding: 0; }
+  #topnav .limit form {
+    float: right; }
+    #topnav .limit form input {
+      border: 1px solid #DADADA;
+      color: #888;
+      height: 25px;
+      margin-top: 2px;
+      outline: 0 none;
+      padding: 3px 3px 3px 5px;
+      width: 160px;
+      font-size: 12px;
+      line-height: 15px;
+      box-shadow: inset 0 1px 4px #ECECEC;
+      -moz-box-shadow: inset 0 1px 4px #ECECEC;
+      -webkit-box-shadow: inset 0 1px 4px #ECECEC;
+      border-radius: 0; }
+    #topnav .limit form input[type="text"] {
+      border: 1px solid #eeeeee;
+      background: #fafafa;
+      font-family: inherit;
+      font-size: 16px;
+      height: 2em;
+      padding: 2%;
+      margin: 16px 0 20px;
+      width: 70%;
+      display: block; }
+    #topnav .limit form input[type="submit"] {
+      font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+      width: 65px;
+      height: 32px;
+      padding: 0;
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: #2980b9;
+      border: 0;
+      border-bottom: 2px solid #2475ab;
+      cursor: pointer;
+      -webkit-box-shadow: inset 0 -2px #2475ab;
+      box-shadow: inset 0 -2px #2475ab; }
+  #topnav .limit .nav {
+    float: right;
+    list-style: none;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    text-transform: uppercase;
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: Helvetica,Arial,sans-serif; }
+    #topnav .limit .nav li {
+      list-style: none;
+      float: left;
+      width: auto;
+      display: inline; }
+      #topnav .limit .nav li a {
+        color: #274784;
+        font-size: 12px;
+        position: relative;
+        display: block;
+        z-index: 100;
+        padding: 0 10px;
+        line-height: 40px;
+        text-decoration: none; }
+  #topnav .limit .select-menu {
+    display: none;
+    visibility: hidden; }
+  #topnav .limit .sub-icons {
+    float: right;
+    margin: 0;
+    padding: 0; }
+    #topnav .limit .sub-icons ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline; }
+      #topnav .limit .sub-icons ul li {
+        list-style-type: none;
+        text-align: center;
+        display: inline;
+        float: left; }
+        #topnav .limit .sub-icons ul li a {
+          padding: 0;
+          margin: 0;
+          display: block;
+          width: 40px;
+          height: 40px;
+          text-indent: -9999px;
+          background-position: 0px 0px;
+          background-repeat: no-repeat;
+          opacity: 0.7; }
+        #topnav .limit .sub-icons ul li .subicon.rss {
+          background-image: url(images/rss.png); }
+        #topnav .limit .sub-icons ul li .subicon.twitter {
+          background-image: url(images/twitter.png); }
+  #topnav .limit li::before {
+    content: ''; }
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+  margin: 0;
+  padding: 0; }
 
 .tile {
   height: 17em; }
