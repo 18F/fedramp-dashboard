@@ -37,6 +37,11 @@
                 abstract: true,
                 templateUrl: 'src/fedramp/fedramp.html',
             })
+            .state('fedramp.app.search', {
+                url: '/search/:query',
+                templateUrl: 'src/fedramp/search/search.html',
+                controller: 'SearchController as controller'
+            })
             .state('fedramp.app.home', {
                 url: '',
                 templateUrl: 'src/fedramp/home/home.html',
