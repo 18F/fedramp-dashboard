@@ -26,12 +26,15 @@
                 initialValues: '<',
 
                 // Whether to render expanded template vs the dropdown
-                expanded: '<'
+                expanded: '<',
+
+                // Whether to initially render expanded mode with panels opened
+                opened: '<'
             }
         });
 
-    GridFilter.$inject = ['$filter'];
-    function GridFilter ($filter) {
+    GridFilter.$inject = ['$location'];
+    function GridFilter ($location) {
         var self = this;
         self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
         
@@ -44,13 +47,18 @@
         // List of filtered data based on this particular filter
         self.filtered = [];
 
+        // Whether to initially render expanded mode with panels opened
+        self.opened = true;
 
         // Exposed public functions
         self.$onInit = $onInit;
         self.$onChanges = $onChanges;
         self.filterFunc = filterFunc;
+        self.applyFilter = applyFilter;
         self.selectOption = selectOption;
         self.clear = clear;
+        self.reloadOptions = reloadOptions;
+        self.loadInitialValues = loadInitialValues;
 
         function $onInit(){
             // We give the parent controller a reference to this filter
@@ -66,17 +74,38 @@
                 loadInitialValues(self.initialValues);
                 applyFilter();
             }
+
+            if(self.gridController.savedState){
+                var initialValues = loadSavedOptions();
+                if(!initialValues || initialValues.length === 0){
+                    return;
+                }
+
+                console.log('Doing stuff', initialValues.split(','));
+                loadInitialValues(initialValues.split(','));
+                applyFilter();
+            }
+            console.log('$gridFilter $onInit');
         }
 
         function $onChanges(changes){ }
 
+
+        function loadSavedOptions(){
+            var params = $location.search();
+            if(!(self.property in params)){
+                return null;
+            }
+            var values = params[self.property];
+            return values;
+        }
 
         /**
          * Toggles the selection of an option and then executes filter.
          */
         function selectOption(option){
             option.selected = !option.selected;
-            var pos = self.selectedOptionValues.indexOf(option);
+            var pos = self.selectedOptionValues.findIndex(x=>x.value === option.value);
             if(pos == -1){
                 self.selectedOptionValues.push(option);
             } else {
@@ -91,7 +120,7 @@
          * data from other filters.
          */
         function applyFilter(){
-            self.filtered = $filter('filter')(self.gridController.rawItems, self.filterFunc);
+            self.filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.gridController.doFilter();
         }
 
@@ -113,7 +142,7 @@
             }
 
             // Handle when basic object
-            if(angular.isString(property)){
+            if(angular.isString(property) || angular.isNumber(property)){
                 return objectFilterFunc(obj, index, arr);
             }
 
@@ -142,7 +171,8 @@
 
             values.forEach(function(value){
                 var foundObject = self.selectedOptionValues.find(function(option){
-                    return option.value === value;
+                    console.log('arrayFilterFunc');
+                    return option.value.trim() === value.trim();
                 });
                 if(foundObject){
                     found = true;
@@ -163,8 +193,17 @@
          * generate an array containing unique values. This is done by using a set.
          */
         function loadDefaultOptions(){
+            reloadOptions(self.gridController.rawItems);
+        }
+
+
+        /**
+         * Loads a distinct list of possible values from the provided source. Values will
+         * be extracted using the filters `property` binding value
+         */
+        function reloadOptions(source){
             var set = new Set();
-            self.gridController.rawItems.forEach(function(obj){
+            source.forEach(function(obj){
                 var property = obj[self.property];
 
                 // Handle when object is array
@@ -178,7 +217,6 @@
                     set.add(property);
                 }
             });
-            //self.options = Array.from(set);
             self.options = toOptionArray(set);
         }
 
@@ -203,11 +241,11 @@
          * Loads options that should be selected on initial load
          */
         function loadInitialValues(initialValues){
-            self.selectedOptionValues = initialValues;
+            self.selectedOptionValues = toOptionArray(initialValues);
 
-            self.selectedOptionValues.forEach(function(value){
+            self.selectedOptionValues.forEach(function(selectedOption){
                 self.options.forEach(function(option){
-                    if(option.value === value){
+                    if(option.value === selectedOption.value){
                         option.selected = true;
                     }
                 });

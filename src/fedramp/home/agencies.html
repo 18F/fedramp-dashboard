@@ -1,4 +1,32 @@
-<tile ng-repeat="item in controller.agencies track by $index" expand="homeController.expandTiles" model="item" />
+<grid items="controller.filteredData" raw-items="controller.agencies">
+<div class="usa-grid-full">
+    <div class="usa-width-one-third">
+        <div>
+            <grid-filter property="sponsored" header="Sponsored" expanded="true" opened="true" class="grid-filter"></grid-filter>
+        </div>
+        <div>
+            <grid-filter property="assessors" header="Assessors" expanded="true" class="grid-filter"></grid-filter>
+        </div>
+        <div>
+            <grid-filter property="products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        </div>
+        <div>
+            <grid-filter property="providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
+        </div>
+    </div>
+    <div class="usa-width-two-thirds">
+        <div class="usa-grid-full">
+            <div class="usa-width-one-third">
+                <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>    
+            </div>
+            <div class="usa-width-one-third">
+                <grid-sort property="reuses" header="Reuses" class="grid-sort"></grid-sort>    
+            </div>
+        </div>
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
+    </div>
+</div>
+</grid>
 <div class="usa-grid-full">
     <div class="usa-width-one-whole text-center">
         <download-csv content="controller.agencies">

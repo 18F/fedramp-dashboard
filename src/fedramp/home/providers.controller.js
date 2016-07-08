@@ -14,5 +14,6 @@
     function ProvidersController ($log, providers) {
         var self = this;
         self.providers = providers;
+        $log.debug(providers);
     }
 })();

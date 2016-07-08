@@ -1,70 +1,24 @@
-<!--<select id="filter"-->
-        <!--ng-model="controller.search.name"-->
-        <!--ng-options="option for option in controller.filterOptions"-->
-        <!--ng-change="controller.applyFilter()">-->
-    <!--<option value=""></option>-->
-<!--</select>-->
-<!--<select -->
-        <!--ng-model="controller.search.agency"-->
-        <!--ng-options="option for option in controller.agencies">-->
-    <!--<option value=""></option>-->
-<!--</select>-->
-<!--<select -->
-        <!--ng-model="controller.search.serviceModel"-->
-        <!--ng-options="option for option in controller.serviceModels">-->
-    <!--<option value=""></option>-->
-<!--</select>-->
-<!--<input type="text" ng-model="controller.search.provider"/>-->
+<grid items="controller.filteredData" raw-items="controller.products" saved-state="true">
+    <div class="">
+        <div class="usa-width-one-whole">
+            <div class="usa-grid-full">
+                <grid-filter property="name" header="Name" class="grid-filter"></grid-filter>
+                <grid-sort property="name" class="grid-sort"></grid-sort>    
 
-<style>
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-size: 12px;
-    line-height: 1;
-    color: #000;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #e5e5e5;
-    border-radius: 10px;
-}
+                <grid-filter property="serviceModels" header="Service Models" class="grid-filter"></grid-filter>
+                <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
 
-.grid-filter {
-    float: left;
-    display:block;
-    width: 155px;
-    margin-bottom: 200px;
-}
+                <grid-filter property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
+                <grid-sort property="deploymentModel" class="grid-sort"></grid-sort>    
 
-.filter-options {
-    margin-left:10px;
-}
-</style>
+                <grid-filter property="designation" header="Status" class="grid-filter"></grid-filter>
+                <grid-sort property="reuses" class="grid-sort"></grid-sort>    
+            </div>
 
-
-<grid items="controller.filteredData" raw-items="controller.products">
-    <div class="usa-grid">
-        <div class="usa-width-one-third">
-            <grid-filter-clear><button>Clear</button></grid-filter-clear>
-            <div>Show results for</div>
-            <grid-filter property="serviceModels" header="Service Models" initial-values="controller.savedServiceModels" expanded="true"></grid-filter>
-            <!--<grid-filter property="impactLevel" header="Impact Level" expanded="true"></grid-filter>-->
-            <grid-filter property="agencies" header="Agencies" options="controller.agencies" initial-values="controller.savedAgencies" expanded="true"></grid-filter>
-        </div>
-        <div class="usa-width-two-thirds">
-
-            <grid-sort property="reuses"><button>Sort by Uses</button></grid-sort>    
-
-            <grid-filter property="provider" header="Provider" class="grid-filter"></grid-filter>
-            <grid-filter property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
-            <grid-filter property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
-            <grid-filter property="serviceModels" header="Service Models" class="grid-filter"></grid-filter>
             <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
         </div>
     </div>
-    <download-csv content="controller.filteredData">
+    <download-csv content="controller.filteredData" ng-if="controller.filteredData">
         <button>
             <span>Export to CSV</span>
             <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>

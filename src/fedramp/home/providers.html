@@ -1,11 +1,15 @@
-<tile ng-repeat="item in controller.providers track by $index" expand="homeController.expandTiles" model="item" />
+<grid items="controller.filteredData" raw-items="controller.providers">
 <div class="usa-grid-full">
-    <div class="usa-width-one-whole text-center">
-        <download-csv content="controller.providers">
-            <button>
-                <span>Export to CSV</span>
-                <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
-            </button>
-        </download-csv>
+    <div class="usa-width-one-third">
+        <div>
+            <grid-filter property="designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
+        </div>
+        <div>
+            <grid-filter property="serviceModels" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
+        </div>
+    </div>
+    <div class="usa-width-two-thirds">
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
     </div>
 </div>
+</grid>

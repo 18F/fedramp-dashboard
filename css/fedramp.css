@@ -2377,6 +2377,18 @@ input {
   color: #fff;
   background-color: blue; }
 
+grid .grid-sort {
+  display: inline-block;
+  width: 20px;
+  position: relative;
+  top: 13px;
+  left: 3px; }
+
+grid .grid-filter {
+  display: inline-block;
+  width: 200px;
+  cursor: pointer; }
+
 #header {
   clear: both;
   margin: 20px auto 10px; }

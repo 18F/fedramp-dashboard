@@ -1,0 +1,14 @@
+grid {
+    .grid-sort {
+        display:inline-block;
+        width:20px;
+        position:relative;
+        top: 13px;
+        left:3px;
+    }
+    .grid-filter {
+       display:inline-block; 
+       width: 200px;
+       cursor: pointer;
+    }
+}

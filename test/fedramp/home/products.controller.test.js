@@ -24,49 +24,4 @@ describe('ProductController controller with no data', function () {
         });
     });
 
-    it('filters with result hits', function () {
-        inject(function (_$filter_, $controller, $injector) {
-            var productController = $controller('ProductsController', { 
-                products: [product],
-                $stateParams: {},
-                $log: log,
-                search: {
-                    name: 'Google',
-                    agency: 'Department of Energy',
-                    serviceModel: 'PaaS'
-                }
-            });
-            var result = filter('filter')(productController.products, productController.filterName); 
-            expect(result.length).toBe(1);
-
-            result = filter('filter')(productController.products, productController.filterAgency); 
-            expect(result.length).toBe(1);
-
-            result = filter('filter')(productController.products, productController.filterServiceModel); 
-            expect(result.length).toBe(1);
-        });
-    });
-
-    it('filters with no hits', function () {
-        inject(function (_$filter_, _$rootScope_, $controller, $injector) {
-            var $scope = {search: ''};
-            var productController = $controller('ProductsController', 
-                {
-                    $scope: $scope,
-                    products: [],
-                    $stateParams: {},
-                    $log: log
-                }
-            );
-
-            $scope.search =  {
-                name: 'John'
-            };
-
-            _$rootScope_.$apply();
-
-            var result = productController.filterName(product, 0, [product]);
-            expect(result).toBeDefined();
-        });
-    });
 });

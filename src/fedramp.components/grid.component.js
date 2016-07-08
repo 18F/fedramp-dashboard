@@ -7,27 +7,41 @@
             controller: Grid,
             controllerAs: 'gridController',
             bindings: {
+                // Contains all the filtered items
                 items: '=',
-                rawItems: '<'
+
+                // Contains original unfiltered dataset
+                rawItems: '<',
+
+                // Determines whether grid will maintain state via query params
+                savedState: '<'
             }
         });
 
-    Grid.$inject = ['$log', '$filter'];
+    Grid.$inject = ['$log', '$location'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Grid ($log, $filter) {
+    function Grid ($log, $location) {
         var self = this;
 
         // Maintains a list of filters
         var filters = [];
 
+        self.$onInit = $onInit;
         self.addFilter = addFilter;
         self.doFilter = doFilter;
         self.clearFilters = clearFilters;
-        
+
+        function $onInit(){
+            if(!self.items){
+                self.items = self.rawItems;
+            }
+        }
+
+
         /**
          * Iterates through all the results obtained from all child grid filters and
          * executes all filter funcs to reduce the data to a single dataset
@@ -55,6 +69,8 @@
             // Remove duplicates
             combinedFilterResults = Array.from(new Set(combinedFilterResults));
 
+            // clear $location query params
+            $location.search({});
 
             var filtered = null;
             // Iterate through each filter to extract what it has found
@@ -64,11 +80,22 @@
                 if(filter.filtered.length === 0){
                     return;
                 }
-                combinedFilterResults = $filter('filter')(combinedFilterResults, filter.filterFunc);
+
+                // Filter the data!
+                combinedFilterResults = combinedFilterResults.filter(filter.filterFunc);
+
+                // If required to save state, uses the property name as the key and comma separated list
+                // of option values for the values
+                if(self.savedState){
+                    if(filter.selectedOptionValues && filter.selectedOptionValues.length > 0){
+                        $location.search(filter.property, filter.selectedOptionValues.map(x=> x.value).join(','));
+                    }
+                }
             });
 
             self.items = combinedFilterResults;
         }
+
 
         function clearFilters(){
             filters.forEach(function(filter){
@@ -78,7 +105,7 @@
 
         /**
          * When first loading, all child grid-filter components will call this method to add
-         * themselves to thos controller.
+         * themselves to this controller.
          */
         function addFilter(filter){
             filters.push(filter);
