@@ -25,7 +25,6 @@
         /**
          * Redirect to the appropriate view
          * @public
-         * @member {object}
          * @memberof Components.Tile
          */
         self.view = function () {
@@ -50,10 +49,5 @@
                     });
             }
         };
-
-        // self.$onInit = function () {};
-        // self.$onChanges = function (changes) {};
-        // self.$onDestroy = function () {};
-        // self.$postLink = function () {};
     }
 })();

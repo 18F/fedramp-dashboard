@@ -18,19 +18,45 @@
     function Search ($log, $state) {
         var self = this;
 
-        self.format = 'json';
+        /**
+         * The format to be used when rendering results in Bing.
+         * For browsers where AngularJS does not work we would want
+         * normal functionality.
+         *
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
+        self.format = 'html';
+
+        /**
+         * The search query.
+         *
+         * @member {string}
+         * @memberof Controllers.HomeController
+         */
         self.query = '';
 
+        /**
+         * Redirect to the search view to handle rendering of results
+         *
+         * @public
+         * @memberof Components.Search
+         */
         self.search = function (e) {
-            e.preventDefault();
-            $state.go(
-                'fedramp.app.search',
-                {
-                    query: self.query,
-                },
-                {
-                    reload: true
-                });
+            if (e) {
+                e.preventDefault();
+            }
+
+            if (self.query) {
+                $state.go(
+                    'fedramp.app.search',
+                    {
+                        query: self.query,
+                    },
+                    {
+                        reload: true
+                    });
+            }
         };
     }
 })();

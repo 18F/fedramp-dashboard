@@ -1,1 +1,24 @@
-{{controller.results}}
+<div id="search">
+    <div class="article usa-grid-full" ng-repeat="article in controller.results track by $index">
+        <h4 class="article-title">
+            <span class="article-ext-type">{{controller.extension(article.unescapedUrl)}}</span>
+            <a ng-href="{{article.unescapedUrl}}" title="{{article.title}}">{{article.title}}</a>
+        </h4>
+        <div class="article-url">{{article.unescapedUrl}}</div>
+        <span class="article-description" ng-bind-html="controller.markdown(article.content)"></span>
+        <ul class="article-site-links">
+            <li ng-repeat="link in article.siteLinks"></li>
+        </ul>
+    </div>
+    <div id="internal-only" class="text-center" ng-if="controller.results.length > 0">
+        <p>
+            For more results please go to <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>
+        </p>
+    </div>
+    <div id="no-results" class="text-center" ng-if="controller.results.length === 0">
+        <p>
+            There was a problem retrieving your search results. Please try the
+            search at <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>
+        </p>
+    </div>
+</div>

@@ -89,10 +89,5 @@
 
             return 'fedramp-' + yyyy + '-' + mm + '-' + dd + '.csv';
         }
-
-        // self.$onInit = function () {};
-        // self.$onChanges = function (changes) {};
-        // self.$onDestroy = function () {};
-        // self.$postLink = function () {};
     }
 })();
