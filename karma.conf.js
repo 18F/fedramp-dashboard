@@ -17,10 +17,10 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'node_modules/babel-polyfill/dist/polyfill.js',
             'lib/angular.min.js',
             'lib/angular-ui-router.min.js',
             'lib/**/*.js',
-            'test/phantomjs-shim.js',
             'dist/fedramp.js',
             'test/**/*.js',
         ],

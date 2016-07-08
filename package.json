@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
   "devDependencies": {
+    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "coveralls": "^2.11.9",
     "del": "^2.2.1",

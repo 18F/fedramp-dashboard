@@ -15,18 +15,22 @@
             controllerAs: 'controller',
             bindings: {
                 property: '@',
-                sortFunc: '<',
                 caseSensitive: '@',
                 header: '@'
             }
-        })
-    ;
-    GridSort.$inject = ['$transclude'];
+        });
     
-    function GridSort($transclude){
+    GridSort.$inject = [];
+
+    /**
+     * @constructor
+     * @memberof Components
+     * @example <grid-sort property="provider" header="Provider"></grid-sort>
+     */
+    function GridSort(){
         var self = this;
-        var dir = -1;
         self.asc = true;
+
         self.$onInit = $onInit;
         self.sort = sort;
 
@@ -40,15 +44,21 @@
             }
             
         }
-        self.filled = function(){
-            return $transclude.isSlotFilled('sort');
-        };
 
+        /**
+         * Sorts a list of items in the grid controller by the property for this particular
+         * grid sort.
+         * @public
+         * @memberof Components.GridSort
+         */
         function sort(doAscending){
             self.asc = doAscending;
             self.gridController.items.sort(self.sortFunc);
         }
 
+        /**
+         * Performs a generic sort.
+         */
         function sortFunc(_a, _b) {
             var a = value(_a);
             var b = value(_b);
@@ -66,6 +76,9 @@
             return 0;
         }
 
+        /**
+         * Handles generic numerica sort.
+         */
         function numberSortFunc(a, b){
             if(self.asc){
                 return a - b;
@@ -73,6 +86,9 @@
             return b - a;
         }
 
+        /**
+         * Gets reference to property value when sorting
+         */
         function value(obj){
             var value = obj[self.property];
             if(angular.isString(value)){

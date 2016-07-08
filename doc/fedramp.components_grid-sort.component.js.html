@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: fedramp.models/assessor.factory.js</title>
+    <title>JSDoc: Source: fedramp.components/grid-sort.component.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: fedramp.models/assessor.factory.js</h1>
+    <h1 class="page-title">Source: fedramp.components/grid-sort.component.js</h1>
 
     
 
@@ -30,34 +30,103 @@
     'use strict';
 
     angular
-        .module('fedramp.models')
-        .factory('Assessor', AssessorFactory);
+        .module('fedramp.components')
+        .component('gridSort', {
+            transclude: {
+                sort: '?sort'
+            },
+            templateUrl: 'src/fedramp.components/grid-sort.html',
+            require: {
+                gridController: '^grid'
+            },
+            controller: GridSort,
+            controllerAs: 'controller',
+            bindings: {
+                property: '@',
+                caseSensitive: '@',
+                header: '@'
+            }
+        });
+    
+    GridSort.$inject = [];
 
-    AssessorFactory.$inject = [];
+    /**
+     * @constructor
+     * @memberof Components
+     * @example &lt;grid-sort property="provider" header="Provider">&lt;/grid-sort>
+     */
+    function GridSort(){
+        var self = this;
+        self.asc = true;
 
-    function AssessorFactory () {
-        /**
-         * The independent assessor
-         * @constructor
-         * @memberof Models
-         */
-        function Assessor (options) {
-            // Scope `this` to self
-            var self = this;
+        self.$onInit = $onInit;
+        self.sort = sort;
 
-            self.type = 'assessor';
-            self.name = '';
-            self.reuses = 0;
-            self.providers = [];
-            self.products = [];
-            self.agencies = [];
-            self.pointOfContact = '';
-            self.email = '';
-            self.url = '';
+
+        function $onInit(){
+            if(self.property){
+                self.sortFunc = sortFunc;
+            }
+            if(!self.sortFunc){
+                throw 'Must specify sort property or sort function';
+            }
+            
         }
 
-        return Assessor;
+        /**
+         * Sorts a list of items in the grid controller by the property for this particular
+         * grid sort.
+         * @public
+         * @memberof Components.GridSort
+         */
+        function sort(doAscending){
+            self.asc = doAscending;
+            self.gridController.items.sort(self.sortFunc);
+        }
+
+        /**
+         * Performs a generic sort.
+         */
+        function sortFunc(_a, _b) {
+            var a = value(_a);
+            var b = value(_b);
+
+            if(angular.isNumber(a)){
+                return numberSortFunc(a, b);
+            }
+
+            if(a &lt; b){
+                return self.asc ? -1 : 1;
+            }
+            if(a > b) {
+                return self.asc ? 1 : -1;
+            }
+            return 0;
+        }
+
+        /**
+         * Handles generic numerica sort.
+         */
+        function numberSortFunc(a, b){
+            if(self.asc){
+                return a - b;
+            }
+            return b - a;
+        }
+
+        /**
+         * Gets reference to property value when sorting
+         */
+        function value(obj){
+            var value = obj[self.property];
+            if(angular.isString(value)){
+                return value.toLowerCase().trim();
+            }
+           
+            return value;
+        }
     }
+
 })();
 </code></pre>
         </article>

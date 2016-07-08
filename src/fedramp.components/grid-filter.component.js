@@ -34,6 +34,12 @@
         });
 
     GridFilter.$inject = ['$location'];
+
+    /**
+     * @constructor
+     * @memberof Components
+     * @example <grid-filter property="name" header="Name" options="" initialValues="" expanded="true" opened="true"></grid-filter>
+     */
     function GridFilter ($location) {
         var self = this;
         self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
@@ -52,7 +58,6 @@
 
         // Exposed public functions
         self.$onInit = $onInit;
-        self.$onChanges = $onChanges;
         self.filterFunc = filterFunc;
         self.applyFilter = applyFilter;
         self.selectOption = selectOption;
@@ -81,16 +86,16 @@
                     return;
                 }
 
-                console.log('Doing stuff', initialValues.split(','));
                 loadInitialValues(initialValues.split(','));
                 applyFilter();
             }
-            console.log('$gridFilter $onInit');
         }
 
-        function $onChanges(changes){ }
 
-
+        /**
+         * Checks if any relevant query params exist containing filter values to load and then
+         * adds them
+         */
         function loadSavedOptions(){
             var params = $location.search();
             if(!(self.property in params)){
@@ -102,6 +107,8 @@
 
         /**
          * Toggles the selection of an option and then executes filter.
+         * @public
+         * @memberof Components.GridFilter
          */
         function selectOption(option){
             option.selected = !option.selected;
@@ -118,6 +125,8 @@
          * Filter using current property to populate a list containing items relevant to current filter.
          * Then, we call the doFilter() on the parent gridController which will consolidate and merge all filtered
          * data from other filters.
+         * @public
+         * @memberof Components.GridFilter
          */
         function applyFilter(){
             self.filtered = self.gridController.rawItems.filter(self.filterFunc);
@@ -128,6 +137,8 @@
          * Filter function applied when using $filter('filter'); When a match occurs, 
          * we return the object being compared. When we return null, that means to exclude
          * the object from the filtered dataset
+         * @public
+         * @memberof Components.GridFilter
          */
         function filterFunc(obj, index, arr){
             // When no option is selected, return everything
@@ -171,7 +182,6 @@
 
             values.forEach(function(value){
                 var foundObject = self.selectedOptionValues.find(function(option){
-                    console.log('arrayFilterFunc');
                     return option.value.trim() === value.trim();
                 });
                 if(foundObject){
@@ -239,6 +249,8 @@
 
         /**
          * Loads options that should be selected on initial load
+         * @public
+         * @memberof Components.GridFilter
          */
         function loadInitialValues(initialValues){
             self.selectedOptionValues = toOptionArray(initialValues);
@@ -255,6 +267,8 @@
 
         /**
          * Clears filter and resets dataset
+         * @public
+         * @memberof Components.GridFilter
          */
         function clear(){
             self.selectedOptionValues = [];

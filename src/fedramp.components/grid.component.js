@@ -23,6 +23,7 @@
     /**
      * @constructor
      * @memberof Components
+     * @example <grid items="items" raw-items="agencies" saved-state="true"></grid>
      */
     function Grid ($log, $location) {
         var self = this;
@@ -57,6 +58,8 @@
          *
          * However, if we apply the filterfunc from each filter to every single data point,
          * we may end up with {1,2,a,c}
+         * @public
+         * @memberof Components.Grid
          */
         function doFilter(){
             var combinedFilterResults = [];
@@ -96,7 +99,11 @@
             self.items = combinedFilterResults;
         }
 
-
+        /**
+         * Iterates through all filters and clears out their options
+         * @public
+         * @memberof Components.Grid
+         */
         function clearFilters(){
             filters.forEach(function(filter){
                 filter.clear();
@@ -106,6 +113,8 @@
         /**
          * When first loading, all child grid-filter components will call this method to add
          * themselves to this controller.
+         * @public
+         * @memberof Components.Grid
          */
         function addFilter(filter){
             filters.push(filter);

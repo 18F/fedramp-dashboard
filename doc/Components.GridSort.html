@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AgencyInformationController</title>
+    <title>JSDoc: Class: GridSort</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AgencyInformationController</h1>
+    <h1 class="page-title">Class: GridSort</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Controllers.html">Controllers</a>.</span>AgencyInformationController</h2>
+            <span class="ancestors"><a href="Components.html">Components</a>.</span>GridSort</h2>
         
     
 </header>
@@ -41,7 +41,7 @@
 
     
 
-    <h4 class="name" id="AgencyInformationController"><span class="type-signature"></span>new AgencyInformationController<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="GridSort"><span class="type-signature"></span>new GridSort<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -88,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_home_agency.information.controller.js.html">fedramp/home/agency.information.controller.js</a>, <a href="fedramp_home_agency.information.controller.js.html#line14">line 14</a>
+        <a href="fedramp.components_grid-sort.component.js.html">fedramp.components/grid-sort.component.js</a>, <a href="fedramp.components_grid-sort.component.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -111,6 +111,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;grid-sort property="provider" header="Provider">&lt;/grid-sort></code></pre>
 
 
 
@@ -128,30 +133,33 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id=".self.close"><span class="type-signature">(static) </span>self.close<span class="type-signature"> :object</span></h4>
 
+    
+
+    <h4 class="name" id=".sort"><span class="type-signature">(static) </span>sort<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 <div class="description">
-    Close the information and return to the home view
+    Sorts a list of items in the grid controller by the property for this particular
+grid sort.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
 
 
-        </li>
-    </ul>
+
+
+
 
 
 
@@ -186,7 +194,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_home_agency.information.controller.js.html">fedramp/home/agency.information.controller.js</a>, <a href="fedramp_home_agency.information.controller.js.html#line37">line 37</a>
+        <a href="fedramp.components_grid-sort.component.js.html">fedramp.components/grid-sort.component.js</a>, <a href="fedramp.components_grid-sort.component.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -202,28 +210,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
         
             
-<h4 class="name" id=".self.item"><span class="type-signature">(static) </span>self.item<span class="type-signature"> :object</span></h4>
 
+    
+
+    <h4 class="name" id="~numberSortFunc"><span class="type-signature">(inner) </span>numberSortFunc<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 <div class="description">
-    The item
+    Handles generic numerica sort.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
 
 
-        </li>
-    </ul>
+
+
+
 
 
 
@@ -258,7 +276,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_home_agency.information.controller.js.html">fedramp/home/agency.information.controller.js</a>, <a href="fedramp_home_agency.information.controller.js.html#line29">line 29</a>
+        <a href="fedramp.components_grid-sort.component.js.html">fedramp.components/grid-sort.component.js</a>, <a href="fedramp.components_grid-sort.component.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -274,28 +292,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
         
             
-<h4 class="name" id=".self.items"><span class="type-signature">(static) </span>self.items<span class="type-signature"> :array</span></h4>
 
+    
+
+    <h4 class="name" id="~sortFunc"><span class="type-signature">(inner) </span>sortFunc<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 <div class="description">
-    The related items for this type of item
+    Performs a generic sort.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">array</span>
 
 
-        </li>
-    </ul>
+
+
+
 
 
 
@@ -330,7 +358,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_home_agency.information.controller.js.html">fedramp/home/agency.information.controller.js</a>, <a href="fedramp_home_agency.information.controller.js.html#line22">line 22</a>
+        <a href="fedramp.components_grid-sort.component.js.html">fedramp.components/grid-sort.component.js</a>, <a href="fedramp.components_grid-sort.component.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -346,9 +374,99 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
         
+            
+
     
 
+    <h4 class="name" id="~value"><span class="type-signature">(inner) </span>value<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Gets reference to property value when sorting
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid-sort.component.js.html">fedramp.components/grid-sort.component.js</a>, <a href="fedramp.components_grid-sort.component.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
