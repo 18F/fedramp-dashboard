@@ -1,0 +1,51 @@
+@mixin background-image ($url) {
+    background-image: url($url + '.png');
+    background-image: url($url + '.svg');
+    background-repeat: no-repeat;
+}
+
+.icon {
+    width: 50px;
+    height: auto;
+}
+
+.icon-cloud-compliant {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-cloud-compliant');
+}
+
+.icon-cloud-in-process {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-cloud-in-process');
+}
+
+.icon-compliant {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-compliant-grey');
+}
+
+.icon-compliant.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-compliant-blue');
+}
+
+
+.icon-in-process {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-in-process-grey');
+}
+
+.icon-in-process.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-in-process-blue');
+}
+
+.icon-ready {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-ready-grey');
+}
+
+.icon-ready.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-ready-blue');
+}
