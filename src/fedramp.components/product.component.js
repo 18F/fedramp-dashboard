@@ -25,7 +25,6 @@
         /**
          * Close the informational panel
          * @public
-         * @member {object}
          * @memberof Components.Product
          */
         self.close = function () {
