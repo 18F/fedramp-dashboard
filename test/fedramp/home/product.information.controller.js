@@ -40,6 +40,6 @@ describe('Product information controller', function () {
     });
 
     it('can call close', function () {
-        controller.close();
+        expect(controller.close).not.toThrow();
     });
 });

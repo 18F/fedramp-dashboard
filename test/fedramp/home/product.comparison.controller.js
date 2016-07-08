@@ -42,10 +42,10 @@ describe('Product comparison controller', function () {
     });
 
     it('can call close on the first item', function () {
-        controller.closeFirst();
+        expect(controller.closeFirst).not.toThrow();
     });
 
     it('can call close on the second item', function () {
-        controller.closeSecond();
+        expect(controller.closeSecond).not.toThrow();
     });
 });

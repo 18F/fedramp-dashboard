@@ -12,13 +12,17 @@ describe('The search component', function () {
         });
     });
 
+    it('default format is html', function () {
+        expect(component.format).toBe('html');
+    });
+
     it('can search with query', function () {
         component.query = 'test';
-        component.search();
+        expect(component.search).not.toThrow();
     });
 
     it('cannot search with empty query', function () {
         component.query = '';
-        component.search();
+        expect(component.search).not.toThrow();
     });
 });

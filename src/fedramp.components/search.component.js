@@ -24,7 +24,7 @@
          * normal functionality.
          *
          * @member {string}
-         * @memberof Controllers.HomeController
+         * @memberof Components.Search
          */
         self.format = 'html';
 
@@ -32,7 +32,7 @@
          * The search query.
          *
          * @member {string}
-         * @memberof Controllers.HomeController
+         * @memberof Components.Search
          */
         self.query = '';
 

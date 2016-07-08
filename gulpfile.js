@@ -62,6 +62,7 @@ gulp.task('copy:lib', ['clean'], function(){
             'lib/angular-ui-router.min.js',
             'lib/jquery-3.0.0.min.js',
             'lib/papaparse.min.js',
+            'lib/showdown.min.js',
             'lib/uswds.min.js'
         ])
         .pipe(gulp.dest('build/lib'))

@@ -1,0 +1,10 @@
+@import '../node_modules/uswds/src/stylesheets/lib/css3/_font-face';
+
+@include font-face(
+    'Font Awesome',
+    '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont',
+    400,
+    normal,
+    $asset-pipeline: false,
+    $file-formats: eot svg woff2 woff ttf
+);

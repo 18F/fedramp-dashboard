@@ -40,7 +40,7 @@ describe('Search controller', function () {
     });
 
     it('can create internal links', function () {
-        expect(controller.internalLink('provider', 'acme')).toBe('http://localhost:9876/context.html#/provider/acme');
+        expect(controller.internalLink('provider', 'acme').indexOf('#/provider/acme')).not.toBe(-1);
     });
 
     it('can extrapolate the file extension', function () {
