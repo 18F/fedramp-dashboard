@@ -664,7 +664,95 @@ self.storageContainer='default';/**
              *
              * @returns
              *  The item
-             */self.transform=function(raw){return new Settings(raw);};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('AgenciesController',AgenciesController);AgenciesController.$inject=['$log','agencies'];/**
+             */self.transform=function(raw){return new Settings(raw);};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
+     * @constructor
+     * @memberof Controllers
+     */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
+         * Flag if there was an error receiving a response
+         *
+         * @member {boolean}
+         * @memberof Controllers.SearchController
+         */self.error=false;/**
+         * The search query
+         *
+         * @member {string}
+         * @memberof Controllers.SearchController
+         */self.query=$stateParams.query;/**
+         * The search results.
+         *
+         * @member {array}
+         * @memberof Controllers.SearchController
+         */self.results=[];/**
+         * The external search link.
+         *
+         * @member {string}
+         * @memberof Controllers.SearchController
+         */self.externalLink='https://search.usa.gov/search?utf8=✓&affiliate=fedramp&format=html&output=embed&commit=Search&query='+self.query;/**
+         * Get the absolute URL of an internal link
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} path
+         * @param {string} name
+         *
+         * @returns
+         *  The absolute URL
+         */self.internalLink=function(path,name){var loc=window.location;return loc.protocol+'//'+loc.host+loc.pathname+'#/'+path+'/'+helperService.slugify(name);};/**
+         * Determines what extension (if any) the URI is referencing
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} url
+         *  The URL
+         *
+         * @returns
+         *  The extesion abbreviation
+         */self.extension=function(url){if(url){var m=url.match(/(.*)[\/\\]([^\/\\]+)\.(\w+)$/);if(m&&m.length>=3){return'['+m[3].toUpperCase()+']';}}return'';};/**
+         * Parses possible markdown, or other encoded text, as HTML
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} text
+         *  The text to parse
+         *
+         * @returns
+         *  The text in HTML format
+         */self.markdown=function(text){text=text.replace('','**').replace('','**');text=text.replace('–','-');return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));};/**
+         * Filters arrays of objects by their name
+         *
+         * @private
+         * @memberof Controllers.SearchController
+         *
+         * @param {array} items
+         *  The array of items to iterate
+         * @param {string} query
+         *  The filter query
+         *
+         * @returns
+         *  An array of matching items
+         */function filterByName(items,query){return items.filter(function(x){return x.name.toLowerCase().indexOf(query.toLowerCase())!==-1;});}(function(){filterByName(fedrampData.providers(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('provider',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.products(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('product',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.agencies(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('agency',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.assessors(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('assessor',x.name),publishedAt:null,siteLinks:[]});});// Attempt to query using the form parameters but returning as JSON.
+// This will have issues in development due to CORS.
+$http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp',format:'json',commit:'Search',query:self.query}}).then(function(response){// Sample response:
+//
+// {
+//     "total": 35,
+//     "startrecord": 1,
+//     "endrecord": 20,
+//     "results": [
+//         {
+//             "title": "www.\ue000fedramp.gov\ue001",
+//             "content": "\ue000Test\ue001 Cases \u2013 If the system is a PaaS or SaaS that is leveraging another system, the Control Summary Worksheet should indicate which controls will be tested and ...",
+//             "unescapedUrl": "https://www.fedramp.gov/files/2015/08/FedRAMP-SAP-Detailed-Review-Checklist-Template-v2-0.xlsx",
+//             "publishedAt": null,
+//             "sitelinks": []
+//         }
+//     ],
+//     "related": []
+// }
+if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('AgenciesController',AgenciesController);AgenciesController.$inject=['$log','agencies'];/**
      * @constructor
      * @memberof Controllers
      */function AgenciesController($log,agencies){var self=this;$log.debug(agencies);self.agencies=agencies;}})();(function(){'use strict';angular.module('fedramp').controller('AgencyComparisonController',AgencyComparisonController);AgencyComparisonController.$inject=['$log','$state','$stateParams','fedrampData','helperService'];/**
@@ -943,95 +1031,7 @@ navigator.msSaveBlob(downloadBlob,self.filename());}};/**
          */self.close=function(){$state.go('fedramp.app.home',{},{reload:true});};}})();(function(){'use strict';angular.module('fedramp').controller('ProvidersController',ProvidersController);ProvidersController.$inject=['$log','providers'];/**
      * @constructor
      * @memberof Controllers
-     */function ProvidersController($log,providers){var self=this;self.providers=providers;$log.debug(providers);}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
-     * @constructor
-     * @memberof Controllers
-     */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
-         * Flag if there was an error receiving a response
-         *
-         * @member {boolean}
-         * @memberof Controllers.SearchController
-         */self.error=false;/**
-         * The search query
-         *
-         * @member {string}
-         * @memberof Controllers.SearchController
-         */self.query=$stateParams.query;/**
-         * The search results.
-         *
-         * @member {array}
-         * @memberof Controllers.SearchController
-         */self.results=[];/**
-         * The external search link.
-         *
-         * @member {string}
-         * @memberof Controllers.SearchController
-         */self.externalLink='https://search.usa.gov/search?utf8=✓&affiliate=fedramp&format=html&output=embed&commit=Search&query='+self.query;/**
-         * Get the absolute URL of an internal link
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} path
-         * @param {string} name
-         *
-         * @returns
-         *  The absolute URL
-         */self.internalLink=function(path,name){var loc=window.location;return loc.protocol+'//'+loc.host+loc.pathname+'#/'+path+'/'+helperService.slugify(name);};/**
-         * Determines what extension (if any) the URI is referencing
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} url
-         *  The URL
-         *
-         * @returns
-         *  The extesion abbreviation
-         */self.extension=function(url){if(url){var m=url.match(/(.*)[\/\\]([^\/\\]+)\.(\w+)$/);if(m&&m.length>=3){return'['+m[3].toUpperCase()+']';}}return'';};/**
-         * Parses possible markdown, or other encoded text, as HTML
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} text
-         *  The text to parse
-         *
-         * @returns
-         *  The text in HTML format
-         */self.markdown=function(text){text=text.replace('','**').replace('','**');text=text.replace('–','-');return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));};/**
-         * Filters arrays of objects by their name
-         *
-         * @private
-         * @memberof Controllers.SearchController
-         *
-         * @param {array} items
-         *  The array of items to iterate
-         * @param {string} query
-         *  The filter query
-         *
-         * @returns
-         *  An array of matching items
-         */function filterByName(items,query){return items.filter(function(x){return x.name.toLowerCase().indexOf(query.toLowerCase())!==-1;});}(function(){filterByName(fedrampData.providers(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('provider',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.products(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('product',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.agencies(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('agency',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.assessors(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('assessor',x.name),publishedAt:null,siteLinks:[]});});// Attempt to query using the form parameters but returning as JSON.
-// This will have issues in development due to CORS.
-$http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp',format:'json',commit:'Search',query:self.query}}).then(function(response){// Sample response:
-//
-// {
-//     "total": 35,
-//     "startrecord": 1,
-//     "endrecord": 20,
-//     "results": [
-//         {
-//             "title": "www.\ue000fedramp.gov\ue001",
-//             "content": "\ue000Test\ue001 Cases \u2013 If the system is a PaaS or SaaS that is leveraging another system, the Control Summary Worksheet should indicate which controls will be tested and ...",
-//             "unescapedUrl": "https://www.fedramp.gov/files/2015/08/FedRAMP-SAP-Detailed-Review-Checklist-Template-v2-0.xlsx",
-//             "publishedAt": null,
-//             "sitelinks": []
-//         }
-//     ],
-//     "related": []
-// }
-if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
+     */function ProvidersController($log,providers){var self=this;self.providers=providers;$log.debug(providers);}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
      * @constructor
      * @memberof Controllers
      */function SitemapController($log,fedrampData,helperService){var self=this;self.providers=fedrampData.providers();self.products=fedrampData.products();self.agencies=fedrampData.agencies();self.assessors=fedrampData.assessors();self.today=helperService.today();self.slugify=helperService.slugify;}})();
