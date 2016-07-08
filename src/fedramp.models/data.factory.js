@@ -29,11 +29,14 @@
                 'Original_Authorization_Date': 'authorizationDate',
                 'Original_Expiration_Date': 'expirationDate',
                 'Sponsoring_Agency': 'sponsoringAgency',
-                'Active': 'active',
                 'CSP_URL': 'cspUrl',
-                'Underlying_CSP_Package_ID': 'underlyingCspPackages',
                 'Stage': 'stage',
                 'Independent_Assessor': 'independentAssessor',
+                'Underlying_CSP_Package_ID': 'underlyingCspPackages',
+                'FedRAMP_Website_URL': 'fedrampWebsite',
+                'CSP_Website': 'cspWebsite',
+                'CSO_Description': 'csoDescription',
+                'Expected_Compliance_Date': 'expectedCompliance',
                 'Leveraged_ATO_Letters': 'atoLetters'
             };
 
@@ -115,26 +118,11 @@
             self.sponsoringAgency = '';
 
             /**
-             * Active status
-             * @deprecated
-             * @member {string}
-             * @memberof Models.Data
-             */
-            self.active = '';
-
-            /**
              * The CSP URL
              * @member {string}
              * @memberof Models.Data
              */
             self.cspUrl = '';
-
-            /**
-             * Underlying CSP packages
-             * @member {array}
-             * @memberof Models.Data
-             */
-            self.underlyingCspPackages = [];
 
             /**
              * Stage in validation process
@@ -149,6 +137,41 @@
              * @memberof Models.Data
              */
             self.independentAssessor = '';
+
+            /**
+             * Underlying CSP packages
+             * @member {array}
+             * @memberof Models.Data
+             */
+            self.underlyingCspPackages = [];
+
+            /**
+             * The FedRAMP website
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.fedrampWebsite = '';
+
+            /**
+             * The CSP website
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.cspWebsite = '';
+
+            /**
+             * The CSO package services description
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.csoDescription = '';
+
+            /**
+             * Date of expected compliance
+             * @member {date}
+             * @memberof Models.Data
+             */
+            self.expectedCompliance = null;
 
             /**
              * Leveraged ATO letters
