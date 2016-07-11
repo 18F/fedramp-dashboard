@@ -1,1 +1,0 @@
-<div ng-include src="controller.templateUrl"></div> 

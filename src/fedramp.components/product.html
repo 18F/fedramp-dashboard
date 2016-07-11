@@ -1,19 +1,48 @@
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
-    <div class="usa-width-two-thirds">
-        <!-- Logo -->
-        Logo
+    <div class="usa-width-one-half">
+        <div class="logo">
+            <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
+        </div>
+        <div class="title">
+            <strong>{{ controller.model.pkgId }} - {{ controller.model.name }}</strong>
+        </div>
     </div>
-    <div class="usa-width-one-sixth">
-        <!-- Status -->
-        Status
-    </div>
-    <div class="usa-width-one-sixth">
+    <div class="usa-width-one-half reuse">
         {{controller.model.reuse}}
     </div>
 </div>
+<!-- <div class="row"> -->
+<div class="usa-grid status">
+    <!-- <div class="col ready"> -->
+    <div class="usa-width-one-third ready">
+        <img ng-if="controller.isReady()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
+        <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />
+    </div>                                 
+    <!-- <div class="col in-process"> -->
+    <div class="usa-width-one-third in-process">
+        <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
+        <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />
+    </div>                                 
+    <!-- <div class="col compliant"> -->
+    <div class="usa-width-one-third compliant">
+        <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
+        <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Compliant" />
+    </div>
+    <!-- <div class="col progress"></div> -->
+    <div class="usa-width-one-whole progress">
+        <div class="percent percent-{{controller.percentComplete()}}"></div>
+    </div>
+    <!-- <div class="col messege"></div> -->
+    <div class="usa-width-one-whole message">
+        {{ controller.statusMessage() }}
+    </div>
+</div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>System Profile</strong>
@@ -31,6 +60,7 @@
         {{controller.model.impactLevel}}
     </div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>Contact Information</strong>
@@ -39,27 +69,32 @@
     <div>E-mail:</div>
     <div>Website:</div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>Package ID</strong>
         <p>{{controller.model.pkgId}}</p>
     </div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>Service Description</strong>
     </div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>FedRAMP Compliant Detail</strong>
     </div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>Associated Risks</strong>
     </div>
 </div>
+<!-- <div class="row"> -->
 <div class="usa-grid">
     <div class="usa-width-one-whole">
         <strong>Agencies using this service</strong>

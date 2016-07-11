@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: Controllers</title>
+    <title>JSDoc: Source: fedramp.services/helpers.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,144 +17,107 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: Controllers</h1>
+    <h1 class="page-title">Source: fedramp.services/helpers.service.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>Controllers</h2>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
+    'use strict';
+
+    angular
+        .module('fedramp.services')
+        .service('helperService', HelperService);
+
+    HelperService.$inject = ['$log'];
+
+    /**
+     * @constructor
+     * @memberof Services
+     */
+    function HelperService ($log) {
+        var self = this;
         
-    
-</header>
+        /**
+         * Takes a string and creates a string in slug format for URLs
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @param {string} s
+         *  The string
+         *
+         * @returns
+         *  A slugified string
+         */
+        self.slugify = function (s) {
+            return s.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        };
 
-<article>
-    <div class="container-overview">
-    
-        
+        /**
+         * Creates a formatted date string
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @returns
+         *  Today's date formatting as YYYY/mm/dd
+         */
+        self.today = function () {
+            var d = new Date();
+            var dd = d.getDate();
+            var mm = d.getMonth() + 1;
+            var yyyy = d.getFullYear();
 
-        
+            if (dd &lt; 10) {
+                dd = '0' + dd;
+            } 
 
+            if (mm &lt; 10) {
+                mm = '0' + mm;
+            } 
 
-<dl class="details">
+            return yyyy + '/' + mm + '/' + dd;
+        };
 
-    
+        /**
+         * Creates a formatted date string
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @param {string} str
+         *  The date in string format
+         *
+         * @returns
+         *  Today's date formatting as mm/dd/YYYY
+         */
+        self.toDate = function (str) {
+            if (!str) {
+                return '';
+            }
+            
+            var d = new Date(str);
+            var dd = d.getDate();
+            var mm = d.getMonth() + 1;
+            var yyyy = d.getFullYear();
 
-    
+            if (dd &lt; 10) {
+                dd = '0' + dd;
+            } 
 
-    
+            if (mm &lt; 10) {
+                mm = '0' + mm;
+            } 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp_fedramp.module.js.html">fedramp/fedramp.module.js</a>, <a href="fedramp_fedramp.module.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="Controllers.AgenciesController.html">AgenciesController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.AssessorsController.html">AssessorsController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.HomeController.html">HomeController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProductController.html">ProductController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProductInformationController.html">ProductInformationController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.ProvidersController.html">ProvidersController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.SearchController.html">SearchController</a></dt>
-            <dd></dd>
-        
-            <dt><a href="Controllers.SitemapController.html">SitemapController</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+            return mm + '/' + dd + '/' + yyyy;
+        };
+    }
+})();
+</code></pre>
+        </article>
+    </section>
 
 
 
