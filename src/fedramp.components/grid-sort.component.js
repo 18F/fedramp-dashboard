@@ -4,9 +4,6 @@
     angular
         .module('fedramp.components')
         .component('gridSort', {
-            transclude: {
-                sort: '?sort'
-            },
             templateUrl: 'src/fedramp.components/grid-sort.html',
             require: {
                 gridController: '^grid'
@@ -16,29 +13,45 @@
             bindings: {
                 property: '@',
                 caseSensitive: '@',
-                header: '@'
+                header: '@',
+                default: '@'
             }
         });
     
-    GridSort.$inject = [];
+    GridSort.$inject = ['$log', '$parse'];
 
     /**
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
      */
-    function GridSort(){
+    function GridSort($log, $parse){
         var self = this;
+        self.activated = null;
+
         self.asc = true;
 
         self.$onInit = $onInit;
         self.sort = sort;
-
+        self.highlight = highlight;
+        self.toggleSort = toggleSort;
 
         function $onInit(){
             if(self.property){
                 self.sortFunc = sortFunc;
             }
+            self.propertyParser = $parse(self.property);
+
+            if(self.default){
+                // Parse if default should be in asc/desc
+                self.asc = self.default.split('-').reduce(function(p, c){
+                    return false;
+                });
+                self.sort(self.asc);
+            }
+
+            self.gridController.addSort(self);
+
         }
 
         /**
@@ -48,8 +61,25 @@
          * @memberof Components.GridSort
          */
         function sort(doAscending){
+            self.activated = angular.isDefined(doAscending);
             self.asc = doAscending;
+            self.gridController.defaultSort = self;
             self.gridController.items.sort(self.sortFunc);
+            // Update state of all sorts
+            self.gridController.updateSort();
+        }
+
+        /**
+         * Toggles the sort. To maintain a consistent interaction, we always set the toggle to ascending
+         * if the sort is not activated. This case would be hit when the user has clicked on the sort for the 
+         * first time or after another sort.
+         */
+        function toggleSort(){
+            if(!self.activated){
+                self.sort(true);
+                return;
+            }
+            self.sort(!self.asc);
         }
 
         /**
@@ -85,12 +115,25 @@
          * Gets reference to property value when sorting
          */
         function value(obj){
-            var value = obj[self.property];
+            var value = self.propertyParser(obj);
             if(angular.isString(value)){
                 return value.toLowerCase().trim();
             }
            
             return value;
+        }
+
+        function highlight(asc){
+            if(!self.activated){
+                return false;
+            }
+            if(self !== self.gridController.defaultSort){
+                return false;
+            }
+            if(self.asc === asc){
+                return true;
+            }
+            return false;
         }
     }
 

@@ -28,6 +28,8 @@
             self.serviceModels = [];
             self.impactLevel = '';
             self.logo = '';
+            self.authorizationDate = '';
+            self.expectedCompliance = '';
         }
 
         return Product;

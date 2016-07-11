@@ -1,5 +1,7 @@
 <div ng-if="controller.header" class="grid-sort-header"><span>{{controller.header}}</span></div>
-<div class="grid-sort-arrows">
-    <div><i ng-click="controller.sort(true)" class="fa fa-caret-up" aria-hidden="true"></i></div>
-    <div><i ng-click="controller.sort(false)" class="fa fa-caret-down" aria-hidden="true"></i></div>
+<div ng-click="controller.toggleSort()" class="grid-sort-arrows">
+    <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>
+    <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{'grid-sort-selected': controller.highlight(true)}" aria-hidden="true"></i>
+    <i class="fa fa-caret-down"  ng-if="controller.activated && !controller.asc" ng-class="{'grid-sort-selected': controller.highlight(false)}" aria-hidden="true"></i>
+    <!--<i class="fa fa-caret-down" ng-class="{'grid-sort-selected': controller.highlight(false)}" aria-hidden="true"></i>-->
 </div>

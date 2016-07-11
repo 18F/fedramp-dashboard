@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: StorageSettings</title>
+    <title>JSDoc: Class: HelperService</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: StorageSettings</h1>
+    <h1 class="page-title">Class: HelperService</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Services.html">Services</a>.</span>StorageSettings</h2>
+            <span class="ancestors"><a href="Services.html">Services</a>.</span>HelperService</h2>
         
     
 </header>
@@ -41,15 +41,11 @@
 
     
 
-    <h4 class="name" id="StorageSettings"><span class="type-signature"></span>new StorageSettings<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="HelperService"><span class="type-signature"></span>new HelperService<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    Provides storage specific functionality that extends the StorageManager
-</div>
 
 
 
@@ -92,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_storage-settings.factory.js.html">fedramp.services/storage-settings.factory.js</a>, <a href="fedramp.services_storage-settings.factory.js.html#line17">line 17</a>
+        <a href="fedramp.services_helpers.service.js.html">fedramp.services/helpers.service.js</a>, <a href="fedramp.services_helpers.service.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -122,17 +118,6 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>StorageManager</li>
-    </ul>
-
-
-    
 
     
 
@@ -152,14 +137,14 @@
 
     
 
-    <h4 class="name" id=".self.transform"><span class="type-signature">(static) </span>self.transform<span class="signature">(raw)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".self.slugify"><span class="type-signature">(static) </span>self.slugify<span class="signature">(s)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Transforms the raw object to a specifec model
+    Takes a string and creates a string in slug format for URLs
 </div>
 
 
@@ -195,13 +180,13 @@
 
         <tr>
             
-                <td class="name"><code>raw</code></td>
+                <td class="name"><code>s</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">string</span>
 
 
             
@@ -211,7 +196,7 @@
 
             
 
-            <td class="description last">The JSON object</td>
+            <td class="description last">The string</td>
         </tr>
 
     
@@ -252,7 +237,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_storage-settings.factory.js.html">fedramp.services/storage-settings.factory.js</a>, <a href="fedramp.services_storage-settings.factory.js.html#line34">line 34</a>
+        <a href="fedramp.services_helpers.service.js.html">fedramp.services/helpers.service.js</a>, <a href="fedramp.services_helpers.service.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -279,7 +264,240 @@
 
         
 <div class="param-desc">
-    The item
+    A slugified string
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.toDate"><span class="type-signature">(static) </span>self.toDate<span class="signature">(str)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Creates a formatted date string
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The date in string format</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_helpers.service.js.html">fedramp.services/helpers.service.js</a>, <a href="fedramp.services_helpers.service.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Today's date formatting as mm/dd/YYYY
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".self.today"><span class="type-signature">(static) </span>self.today<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Creates a formatted date string
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.services_helpers.service.js.html">fedramp.services/helpers.service.js</a>, <a href="fedramp.services_helpers.service.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Today's date formatting as YYYY/mm/dd
 </div>
 
 

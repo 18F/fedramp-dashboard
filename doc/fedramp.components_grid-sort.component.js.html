@@ -32,9 +32,6 @@
     angular
         .module('fedramp.components')
         .component('gridSort', {
-            transclude: {
-                sort: '?sort'
-            },
             templateUrl: 'src/fedramp.components/grid-sort.html',
             require: {
                 gridController: '^grid'
@@ -44,29 +41,45 @@
             bindings: {
                 property: '@',
                 caseSensitive: '@',
-                header: '@'
+                header: '@',
+                default: '@'
             }
         });
     
-    GridSort.$inject = [];
+    GridSort.$inject = ['$log', '$parse'];
 
     /**
      * @constructor
      * @memberof Components
      * @example &lt;grid-sort property="provider" header="Provider">&lt;/grid-sort>
      */
-    function GridSort(){
+    function GridSort($log, $parse){
         var self = this;
+        self.activated = null;
+
         self.asc = true;
 
         self.$onInit = $onInit;
         self.sort = sort;
-
+        self.highlight = highlight;
+        self.toggleSort = toggleSort;
 
         function $onInit(){
             if(self.property){
                 self.sortFunc = sortFunc;
             }
+            self.propertyParser = $parse(self.property);
+
+            if(self.default){
+                // Parse if default should be in asc/desc
+                self.asc = self.default.split('-').reduce(function(p, c){
+                    return false;
+                });
+                self.sort(self.asc);
+            }
+
+            self.gridController.addSort(self);
+
         }
 
         /**
@@ -76,8 +89,25 @@
          * @memberof Components.GridSort
          */
         function sort(doAscending){
+            self.activated = angular.isDefined(doAscending);
             self.asc = doAscending;
+            self.gridController.defaultSort = self;
             self.gridController.items.sort(self.sortFunc);
+            // Update state of all sorts
+            self.gridController.updateSort();
+        }
+
+        /**
+         * Toggles the sort. To maintain a consistent interaction, we always set the toggle to ascending
+         * if the sort is not activated. This case would be hit when the user has clicked on the sort for the 
+         * first time or after another sort.
+         */
+        function toggleSort(){
+            if(!self.activated){
+                self.sort(true);
+                return;
+            }
+            self.sort(!self.asc);
         }
 
         /**
@@ -113,12 +143,25 @@
          * Gets reference to property value when sorting
          */
         function value(obj){
-            var value = obj[self.property];
+            var value = self.propertyParser(obj);
             if(angular.isString(value)){
                 return value.toLowerCase().trim();
             }
            
             return value;
+        }
+
+        function highlight(asc){
+            if(!self.activated){
+                return false;
+            }
+            if(self !== self.gridController.defaultSort){
+                return false;
+            }
+            if(self.asc === asc){
+                return true;
+            }
+            return false;
         }
     }
 
@@ -133,13 +176,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 11 2016 12:34:24 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 11 2016 17:10:16 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

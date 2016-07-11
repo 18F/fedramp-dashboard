@@ -42,7 +42,7 @@ describe('the grid filter component', function () {
         });
     });
 
-    it('should add a new filter', function () {
+    it('should add a new filter and add expanded class', function () {
         gridFilter = $componentController('gridFilter', 
             {
                 $log: $log,
@@ -58,10 +58,12 @@ describe('the grid filter component', function () {
                 opened: true
             }
         );
-
+        gridFilter.$postLink();
         grid.addFilter(gridFilter);
         expect(grid.items).toBeDefined();
         expect(grid.items.length).toBe(1);
+        expect($element.hasClass('grid-filter-expanded')).toBe(true);
+
     });
 
     it('should clear filters', function () {
@@ -88,6 +90,27 @@ describe('the grid filter component', function () {
         expect(gridFilter.selectedOptionValues.length).toBe(0);
     });
 
+    it('should not die if no values are found', function () {
+        gridFilter = $componentController('gridFilter', 
+            {
+                $log: $log,
+                $element: $element
+            },
+            {
+                property: 'agencies',
+                id: 'agencies',
+                header: 'Agencies',
+                option: null,
+                initialValues: null,
+                expanded: true,
+                opened: true,
+                gridController: grid
+            }
+        );
+        gridFilter.$onInit();
+        gridFilter.filtered = [];
+        grid.doFilter();
+    });
     it('should pull saved params from $location', function () {
         gridFilter = $componentController('gridFilter', 
             {
