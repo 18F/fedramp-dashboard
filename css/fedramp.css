@@ -2413,6 +2413,21 @@ grid-sort {
   margin-bottom: 700px;
   display: block; }
 
+.grid-sort-selected {
+  color: #0070ba; }
+
+.grid-sort-arrows {
+  position: relative;
+  display: inline-block; }
+  .grid-sort-arrows .fa-caret-up {
+    display: block;
+    position: relative;
+    top: -4px; }
+  .grid-sort-arrows .fa-caret-down {
+    display: block;
+    position: relative;
+    bottom: -4px; }
+
 #header {
   clear: both;
   margin: 20px auto 10px; }

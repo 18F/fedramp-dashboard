@@ -30,11 +30,17 @@
 
         // Maintains a list of filters
         var filters = [];
+        var sorts = [];
 
         self.$onInit = $onInit;
         self.addFilter = addFilter;
+        self.addSort = addSort;
         self.doFilter = doFilter;
         self.clearFilters = clearFilters;
+        self.updateSort = updateSort;
+
+        // Default sort to utilize for results
+        self.defaultSort = null;
 
         function $onInit(){
             if(!self.items){
@@ -85,6 +91,13 @@
                 combinedFilterResults = combinedFilterResults.filter(filter.doFilter);
             });
 
+            // Apply default sort if one exists
+            if(self.defaultSort){
+                combinedFilterResults.sort(self.defaultSort.sortFunc);
+            }
+
+            self.updateSort();
+
             self.items = combinedFilterResults;
         }
 
@@ -107,6 +120,25 @@
          */
         function addFilter(filter){
             filters.push(filter);
+        }
+
+        /**
+         * When sorts first load, they will add themselves to this controller using this method
+         */
+        function addSort(sort){
+            sorts.push(sort);
+        }
+
+        /**
+         * Updates the state of all sorts so that the latest one used is the only one that's 
+         * activated.
+         */
+        function updateSort(){
+            sorts.forEach(function(sort){
+                if(!angular.equals(sort, self.defaultSort)){
+                    sort.activated = false;
+                }
+            });
         }
     }
 

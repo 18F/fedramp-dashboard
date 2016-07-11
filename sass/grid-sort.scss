@@ -5,3 +5,21 @@ grid-sort {
     margin-bottom: 700px;
     display:block;
 }
+.grid-sort-selected {
+    color:#0070ba;
+}
+.grid-sort-arrows {
+    position:relative;
+    display:inline-block;
+
+    .fa-caret-up {
+        display:block;
+        position:relative;
+        top:-4px;
+    }
+    .fa-caret-down {
+        display:block;
+        position:relative;
+        bottom:-4px;
+    }
+}

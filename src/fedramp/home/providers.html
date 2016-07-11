@@ -12,7 +12,7 @@
     <div class="usa-width-two-thirds">
         Name <grid-sort property="name" class="grid-sort"></grid-sort>    
         Service Models <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
-        Reuses <grid-sort property="reuses" class="grid-sort"></grid-sort>    
+        Reuses <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
         <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
     </div>
 </div>
