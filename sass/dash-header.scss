@@ -57,6 +57,7 @@ $color-shadow:               rgba(#000, 0.3);
 .fr-dash-header {
  	background-color: $color-primary-darkest;
 
+ 	// large metrics row
  	.fr-large-metrics {
 	 	height:376px;
 	 	color:$color-primary-alt;
@@ -70,6 +71,7 @@ $color-shadow:               rgba(#000, 0.3);
 		 	margin-right:0;
 	 	}
 
+	 	// remove border on last
 	 	> div:last-child {
 		 	border-right:none;
 	 	}
@@ -82,6 +84,7 @@ $color-shadow:               rgba(#000, 0.3);
 		}
  	}
 
+ 	// smaller metrics row
  	.fr-small-metrics {
 	 	border-top:2px solid #0d2747;
 	 	height:80px;
@@ -106,13 +109,16 @@ $color-shadow:               rgba(#000, 0.3);
 	 		}
 		}
  	}
+ 	// clean up spacing / line height for large numbers
  	.fr-large-number {
 	 	margin:0;
 	 	line-height:1;
  	}
+ 	// white colors for dashboard metrics, numbers only
  	.fr-large-number strong {
 	 	color:$color-white;
  	}
+ 	// apply this class to a span or other to provide a 400 font weight
  	.fr-light-font {
 	 	font-weight:$font-normal;
  	}
