@@ -9,10 +9,12 @@ describe('the grid component', function () {
     var $location;
     var filteredItems;
     var $scope;
+    var $element;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
         inject(function (_$componentController_, $injector, $rootScope) {
+            $element = angular.element('<div></div>');
             $componentController = _$componentController_;
             $log = $injector.get('$log');
             $location = $injector.get('$location');
@@ -20,7 +22,8 @@ describe('the grid component', function () {
 
             grid = $componentController('grid', {
                 $log: $log,
-                $location: $location
+                $location: $location,
+                $element: $element
             },{
                 items: filteredItems,
                 rawItems: [{
@@ -37,7 +40,8 @@ describe('the grid component', function () {
     it('should filter a basic string property in a list', function () {
         gridFilter = $componentController('gridFilter', 
             {
-            $log: $log,
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'name',
@@ -59,7 +63,8 @@ describe('the grid component', function () {
     it('should select a value to filter on', function () {
         gridFilter = $componentController('gridFilter', 
             {
-            $log: $log,
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'name',
@@ -87,6 +92,7 @@ describe('the grid component', function () {
         gridFilter = $componentController('gridFilter', 
             {
             $log: $log,
+            $element: $element
             },
             {
                 property: 'name',

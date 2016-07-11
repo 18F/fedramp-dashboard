@@ -9,6 +9,7 @@ describe('the grid filter component', function () {
     var $location;
     var filteredItems;
     var $scope;
+    var $element;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
@@ -17,7 +18,7 @@ describe('the grid filter component', function () {
             $log = $injector.get('$log');
             $location = $injector.get('$location');
             $scope = $rootScope.$new();
-
+            $element = angular.element('<div></div>');
             grid = $componentController('grid', {
                 $log: $log,
                 $location: $location
@@ -44,7 +45,8 @@ describe('the grid filter component', function () {
     it('should add a new filter', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'agaency in agencies',
@@ -65,7 +67,8 @@ describe('the grid filter component', function () {
     it('should clear filters', function () {
         gridFilter = $componentController('gridFilter', 
             {
-            $log: $log,
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'agencies',
@@ -88,7 +91,8 @@ describe('the grid filter component', function () {
     it('should pull saved params from $location', function () {
         gridFilter = $componentController('gridFilter', 
             {
-            $log: $log,
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'agency in agencies',
@@ -111,7 +115,8 @@ describe('the grid filter component', function () {
     it('should filter on property containing multiple primitive values', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'agency in agencies',
@@ -142,7 +147,8 @@ describe('the grid filter component', function () {
     it('should filter on property containing multiple object values', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'p.name in products',
@@ -172,7 +178,8 @@ describe('the grid filter component', function () {
     it('should warn user if no filterFunc or optionFunc has been specified when property attribute is not populated', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 header: 'Products',
@@ -188,7 +195,8 @@ describe('the grid filter component', function () {
     it('should warn user if no unique id was provided', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 header: 'Products',

@@ -9,6 +9,7 @@ describe('the grid filter clear component', function () {
     var $location;
     var filteredItems;
     var $scope;
+    var $element;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
@@ -17,6 +18,7 @@ describe('the grid filter clear component', function () {
             $log = $injector.get('$log');
             $location = $injector.get('$location');
             $scope = $rootScope.$new();
+            $element = angular.element('<div></div>');
 
             grid = $componentController('grid', {
                 $log: $log,
@@ -44,7 +46,8 @@ describe('the grid filter clear component', function () {
     it('should clear all filters', function () {
         gridFilter = $componentController('gridFilter', 
             {
-                $log: $log
+                $log: $log,
+                $element: $element
             },
             {
                 property: 'name',
