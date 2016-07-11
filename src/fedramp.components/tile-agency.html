@@ -1,0 +1,34 @@
+<!-- TODO: Determine if the US Grid layout should be used -->
+<div ng-if="controller.expand" class="tile expanded">
+    <!-- <div class="row"> -->
+    <div class="usa-grid">
+        <!-- <div class="col"> -->
+        <div class="usa-width-one-half title">
+            <strong>{{ controller.model.name }}</strong>
+        </div>
+        <!-- <div class="col reuses"> -->
+        <div class="usa-width-one-half reuses">
+            {{ controller.model.reuses }}
+        </div>
+    </div>
+</div>
+
+<div ng-if="!controller.expand" class="tile">
+    <!-- <div class="row"> -->
+    <div class="usa-grid">
+        <!-- <div class="col"> -->
+        <div class="usa-width-one-half title">
+            <strong>{{ controller.model.name }}</strong>
+        </div>
+        <!-- <div class="col reuses"> -->
+        <div class="usa-width-one-half reuses">
+            {{ controller.model.reuses }}
+        </div>
+    </div>
+    <!-- <div class="row"> -->
+    <div class="usa-grid">
+        <!-- <div class="col"> -->
+        <div class="usa-width-one-whole">
+        </div>
+    </div>
+</div>

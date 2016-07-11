@@ -58,6 +58,7 @@
 
                     let item = new Provider();
                     item.name = d.name.trim();
+                    item.logo = d.cspUrl;
                     items.push(item);
                 }
 
@@ -81,12 +82,10 @@
                         });
 
                         item.products.forEach(prod => {
-                            if (prod.deploymentModels) {
-                                prod.deplomentModels.forEach(model => {
-                                    if (include(model, item.deploymentModels)) {
-                                        item.deploymentModels.push(model.trim());
-                                    }
-                                });
+                            if (prod.deploymentModel) {
+                                if (include(prod.deploymentModel, item.deploymentModels)) {
+                                    item.deploymentModels.push(prod.deploymentModel.trim());
+                                }
                             }
                         });
 
@@ -131,6 +130,7 @@
                     item.deploymentModel = d.deploymentModel.trim();
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
+                    item.logo = d.cspUrl;
 
                     item.reuses = d.atoLetters.length;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
