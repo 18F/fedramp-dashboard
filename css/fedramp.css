@@ -2383,9 +2383,17 @@ input {
   font-weight: 400;
   src: font-source-declaration("Font Awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont", false, eot svg woff2 woff ttf, font-url-prefixer(false)); }
 
+grid-filter {
+  display: inline-block; }
+
+.grid-filter-expanded {
+  display: block; }
+
+.grid-filter {
+  cursor: pointer; }
+
 .filter-dropdown {
-  position: relative;
-  background-color: #d5d6da; }
+  position: relative; }
 
 .filter-dropdown-panel {
   z-index: 2000;
@@ -2404,16 +2412,6 @@ grid-sort {
 .grid {
   margin-bottom: 700px;
   display: block; }
-  .grid .grid-sort {
-    display: inline-block;
-    width: 20px;
-    position: relative;
-    top: 13px;
-    left: 3px; }
-  .grid .grid-filter {
-    display: inline-block;
-    width: 200px;
-    cursor: pointer; }
 
 #header {
   clear: both;

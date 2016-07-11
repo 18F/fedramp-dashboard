@@ -43,7 +43,7 @@
             }
         });
 
-    GridFilter.$inject = ['$location', '$parse', '$httpParamSerializer'];
+    GridFilter.$inject = ['$location', '$parse', '$element'];
 
     /**
      * @constructor
@@ -51,7 +51,7 @@
      * @example 
      * <grid-filter property="name" header="Name" options="" expanded="true" opened="true"></grid-filter>
      */
-    function GridFilter ($location, $parse, $httpParamSerializer) {
+    function GridFilter ($location, $parse, $element) {
         var self = this;
 
         // Regex to parse out array based filter keys
@@ -79,6 +79,7 @@
         self.clear = clear;
         self.doFilter = doFilter;
         self.loadOptions = loadOptions;
+        self.$postLink = $postLink;
 
         //Array parsing expressions
         self.parser = null;
@@ -118,6 +119,11 @@
             }
         }
 
+        function $postLink(){
+            if(self.expanded){
+                $element.addClass('grid-filter-expanded');
+            }
+        }
 
         /**
          * Checks if any relevant query params exist containing filter values to load and then

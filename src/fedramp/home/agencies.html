@@ -14,10 +14,10 @@
     <div class="usa-width-two-thirds">
         <div class="usa-grid-full">
             <div class="usa-width-one-third">
-                <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>    
+                Name <grid-sort property="name" class="grid-sort"></grid-sort>    
             </div>
             <div class="usa-width-one-third">
-                <grid-sort property="reuses" header="Reuses" class="grid-sort"></grid-sort>    
+                Reuses <grid-sort property="reuses" class="grid-sort"></grid-sort>    
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />

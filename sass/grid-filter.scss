@@ -1,8 +1,15 @@
 grid-filter {
+    display:inline-block;
+}
+
+.grid-filter-expanded {
+    display:block;
+}
+.grid-filter {
+    cursor: pointer;
 }
 .filter-dropdown {
     position:relative;
-    background-color:#d5d6da;
 }
 .filter-dropdown-panel {
         z-index:2000;

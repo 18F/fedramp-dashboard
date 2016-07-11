@@ -2,16 +2,34 @@
 <div class="">
     <div class="usa-grid-full">
         <div class="usa-width-one-whole">
-            <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
-            <grid-sort property="name" class="grid-sort"></grid-sort>    
 
-            <grid-filter id="serviceModels" property="i in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
-            <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
-            <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
-            <grid-sort property="deploymentModel"></grid-sort>    
-            <grid-filter id="reuseRange" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" header="Usage Range (Testing custom)" class="grid-filter"></grid-filter>
-            <grid-sort property="reuses"></grid-sort>    
-            <grid-filter id="designation" property="designation" header="Designation" class="grid-filter"></grid-filter>
+            <div class="usa-width-one-third">
+                <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
+                <grid-sort property="name" class="grid-sort"></grid-sort>    
+            </div>
+            <div class="usa-width-one-sixth">
+                <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
+                <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
+            </div>
+            <div class="usa-width-one-sixth">
+                <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
+                <grid-sort property="deploymentModel" class="grid-sort"></grid-sort>    
+            </div>
+            <div class="usa-width-one-sixth">
+                <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
+                <grid-sort property="impactLevel" class="grid-sort"></grid-sort>    
+                
+            </div>
+            <div class="usa-width-one-twelfth">
+                Reuses
+                <grid-sort property="reuses" class="grid-sort"></grid-sort>    
+            </div>
+
+            <!--<grid-sort property="deploymentModel"></grid-sort>    -->
+            <!--<grid-filter id="reuseRange" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" header="Usage Range (Testing custom)" class="grid-filter"></grid-filter>-->
+
+            <!--<grid-sort property="reuses"></grid-sort>    -->
+            <!--<grid-filter id="designation" property="designation" header="Designation" class="grid-filter"></grid-filter>-->
         </div>
 
         <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>

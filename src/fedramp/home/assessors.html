@@ -14,6 +14,8 @@
         <grid-filter id="providers" property="p in providers" header="Providers" class="grid-filter"></grid-filter>
         <grid-sort property="providers" class="grid-sort"></grid-sort>    
 
+        Reuses
+        <grid-sort property="reuses" class="grid-sort"></grid-sort>    
         <tile class="row" ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
     </div>
 </div>

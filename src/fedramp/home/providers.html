@@ -2,14 +2,17 @@
 <div class="usa-grid-full">
     <div class="usa-width-one-third">
         <div>
-            <!--<grid-filter filter-func="controller.productFilterFunc" options-func="controller.productOptionsFunc" header="Designations" expanded="true" class="grid-filter"></grid-filter>-->
-        </div>
-        <div>
             <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->
-            <grid-filter id="serviceModels" property="i.name in products" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
+            <grid-filter id="designations" property="d in designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
+            <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+            <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
+            <grid-filter id="products" property="p.name in products" header="Products" expanded="true" class="grid-filter"></grid-filter>
         </div>
     </div>
     <div class="usa-width-two-thirds">
+        Name <grid-sort property="name" class="grid-sort"></grid-sort>    
+        Service Models <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
+        Reuses <grid-sort property="reuses" class="grid-sort"></grid-sort>    
         <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
     </div>
 </div>
