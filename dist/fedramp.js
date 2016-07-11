@@ -376,7 +376,7 @@ var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'
          * @constructor
          * @memberof Models
          */function Data(options){// Scope `this` to self
-var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','Active':'active','CSP_URL':'cspUrl','Underlying_CSP_Package_ID':'underlyingCspPackages','Stage':'stage','Independent_Assessor':'independentAssessor','Leveraged_ATO_Letters':'atoLetters'};/**
+var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','CSP_URL':'cspUrl','Stage':'stage','Independent_Assessor':'independentAssessor','Underlying_CSP_Package_ID':'underlyingCspPackages','FedRAMP_Website_URL':'fedrampWebsite','CSP_Website':'cspWebsite','CSO_Description':'csoDescription','Expected_Compliance_Date':'expectedCompliance','Leveraged_ATO_Letters':'atoLetters'};/**
              * Cloud service provider name
              * @member {string}
              * @memberof Models.Data
@@ -421,19 +421,10 @@ var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_P
              * @member {string}
              * @memberof Models.Data
              */self.sponsoringAgency='';/**
-             * Active status
-             * @deprecated
-             * @member {string}
-             * @memberof Models.Data
-             */self.active='';/**
              * The CSP URL
              * @member {string}
              * @memberof Models.Data
              */self.cspUrl='';/**
-             * Underlying CSP packages
-             * @member {array}
-             * @memberof Models.Data
-             */self.underlyingCspPackages=[];/**
              * Stage in validation process
              * @member {string}
              * @memberof Models.Data
@@ -442,6 +433,26 @@ var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_P
              * @member {string}
              * @memberof Models.Data
              */self.independentAssessor='';/**
+             * Underlying CSP packages
+             * @member {array}
+             * @memberof Models.Data
+             */self.underlyingCspPackages=[];/**
+             * The FedRAMP website
+             * @member {string}
+             * @memberof Models.Data
+             */self.fedrampWebsite='';/**
+             * The CSP website
+             * @member {string}
+             * @memberof Models.Data
+             */self.cspWebsite='';/**
+             * The CSO package services description
+             * @member {string}
+             * @memberof Models.Data
+             */self.csoDescription='';/**
+             * Date of expected compliance
+             * @member {date}
+             * @memberof Models.Data
+             */self.expectedCompliance=null;/**
              * Leveraged ATO letters
              * @member {array}
              * @memberof Models.Data
