@@ -1,28 +1,3 @@
-<style>
-grid-filter {
-    display:inline-block;
-    width: 100%;
-}
-.filter-dropdown {
-    position:relative;
-    background-color:#d5d6da;
-    padding: 16px;
-    width: 100%;
-}
-.filter-dropdown-panel {
-        z-index:2000;
-        position:absolute;
-        width: 200px;
-        padding:10px;
-        height:200px;
-        overflow:auto;
-        background-color:white;
-        border:1px solid black;
-        top: 46px;
-        left:0px;
-}
-</style>
-
 <div ng-if="!controller.expanded" class="filter-dropdown" ng-mouseleave="controller.expand = false">
     <div ng-click="controller.expand = !controller.expand">
         {{controller.header}}

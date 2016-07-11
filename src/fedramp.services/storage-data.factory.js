@@ -66,6 +66,8 @@
                     item.products = self.products().filter(x => x.provider === item.name);
                     
                     item.products.forEach(prod => {
+
+                        prod.name = prod.name.trim();
                         item.reuses += prod.reuses;
 
                         item.products.forEach(prod => {
@@ -141,6 +143,8 @@
                             .map(x => x.atoLetters.length)
                             .reduce((p, c) => p + c);
                     }
+
+                    item.serviceModels = item.serviceModels.map(x=>x.trim());
 
                     items.push(item);
                 }

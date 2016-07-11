@@ -72,9 +72,6 @@
             // Remove duplicates
             combinedFilterResults = Array.from(new Set(combinedFilterResults));
 
-            // clear $location query params
-            $location.search({});
-
             var filtered = null;
             // Iterate through each filter to extract what it has found
             filters.forEach(function(filter){
@@ -85,15 +82,7 @@
                 }
 
                 // Filter the data!
-                combinedFilterResults = combinedFilterResults.filter(filter.filterFunc);
-
-                // If required to save state, uses the property name as the key and comma separated list
-                // of option values for the values
-                if(self.savedState){
-                    if(filter.selectedOptionValues && filter.selectedOptionValues.length > 0){
-                        $location.search(filter.property, filter.selectedOptionValues.map(x=> x.value).join(','));
-                    }
-                }
+                combinedFilterResults = combinedFilterResults.filter(filter.doFilter);
             });
 
             self.items = combinedFilterResults;

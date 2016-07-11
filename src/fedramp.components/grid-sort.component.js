@@ -39,10 +39,6 @@
             if(self.property){
                 self.sortFunc = sortFunc;
             }
-            if(!self.sortFunc){
-                throw 'Must specify sort property or sort function';
-            }
-            
         }
 
         /**
@@ -62,7 +58,6 @@
         function sortFunc(_a, _b) {
             var a = value(_a);
             var b = value(_b);
-
             if(angular.isNumber(a)){
                 return numberSortFunc(a, b);
             }

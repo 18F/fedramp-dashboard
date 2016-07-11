@@ -1,30 +1,20 @@
-<style>
 
-</style>
 <grid class="grid" items="controller.filteredData" raw-items="controller.assessors">
 <div class="usa-grid-full">
     <div class="usa-width-one-whole">
-        <grid-filter property="name" header="Name" class="grid-filter"></grid-filter>
-        <grid-sort property="reuses" class="grid-sort"></grid-sort>    
-        <grid-filter property="agencies" header="Agencies" class="grid-filter"></grid-filter>
+        <grid-filter id="assessorName" property="name" header="Name" class="grid-filter"></grid-filter>
+        <grid-sort property="name" class="grid-sort"></grid-sort>    
+
+        <grid-filter id="agencyNames" property="a in agencies" header="Agencies" class="grid-filter"></grid-filter>
         <grid-sort property="agencies" class="grid-sort"></grid-sort>    
-        <grid-filter property="products" header="Products" class="grid-filter"></grid-filter>
+        
+        <grid-filter id="products" property="p in products" header="Products" class="grid-filter"></grid-filter>
         <grid-sort property="products" class="grid-sort"></grid-sort>    
-        <grid-filter property="providers" header="Providers" class="grid-filter"></grid-filter>
+
+        <grid-filter id="providers" property="p in providers" header="Providers" class="grid-filter"></grid-filter>
         <grid-sort property="providers" class="grid-sort"></grid-sort>    
-        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
+
+        <tile class="row" ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
     </div>
 </div>
 </grid>
-
-<tile ng-repeat="item in controller.assessors track by $index" expand="homeController.expandTiles" model="item" />
-<div class="usa-grid-full">
-    <div class="usa-width-one-whole text-center">
-        <download-csv content="controller.assessors">
-            <button>
-                <span>Export to CSV</span>
-                <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
-            </button>
-        </download-csv>
-    </div>
-</div>

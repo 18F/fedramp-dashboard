@@ -2,10 +2,11 @@
 <div class="usa-grid-full">
     <div class="usa-width-one-third">
         <div>
-            <grid-filter property="designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
+            <!--<grid-filter filter-func="controller.productFilterFunc" options-func="controller.productOptionsFunc" header="Designations" expanded="true" class="grid-filter"></grid-filter>-->
         </div>
         <div>
-            <grid-filter property="serviceModels" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
+            <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->
+            <grid-filter id="serviceModels" property="i.name in products" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
         </div>
     </div>
     <div class="usa-width-two-thirds">

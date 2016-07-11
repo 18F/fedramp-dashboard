@@ -41,9 +41,9 @@ describe('the grid component', function () {
             },
             {
                 property: 'name',
+                id: 'name',
                 header: 'Name',
                 option: null,
-                initialValues: null,
                 expanded: true,
                 opened: true,
                 // simulate require
@@ -64,8 +64,8 @@ describe('the grid component', function () {
             {
                 property: 'name',
                 header: 'Name',
+                id: 'name',
                 option: null,
-                initialValues: null,
                 expanded: true,
                 opened: true,
                 // simulate require
@@ -90,9 +90,10 @@ describe('the grid component', function () {
             },
             {
                 property: 'name',
+                id: 'name',
                 header: 'Name',
                 option: null,
-                initialValues: ['Amazon'],
+                selectedOptionValues: [{value: 'Amazon'}],
                 expanded: true,
                 opened: true,
                 // simulate require

@@ -2377,17 +2377,43 @@ input {
   color: #fff;
   background-color: blue; }
 
-grid .grid-sort {
-  display: inline-block;
-  width: 20px;
-  position: relative;
-  top: 13px;
-  left: 3px; }
+@font-face {
+  font-family: "Font Awesome";
+  font-style: normal;
+  font-weight: 400;
+  src: font-source-declaration("Font Awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont", false, eot svg woff2 woff ttf, font-url-prefixer(false)); }
 
-grid .grid-filter {
-  display: inline-block;
+.filter-dropdown {
+  position: relative;
+  background-color: #d5d6da; }
+
+.filter-dropdown-panel {
+  z-index: 2000;
+  position: absolute;
   width: 200px;
-  cursor: pointer; }
+  padding: 10px;
+  height: 200px;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid black;
+  left: 0px; }
+
+grid-sort {
+  display: inline-block; }
+
+.grid {
+  margin-bottom: 700px;
+  display: block; }
+  .grid .grid-sort {
+    display: inline-block;
+    width: 20px;
+    position: relative;
+    top: 13px;
+    left: 3px; }
+  .grid .grid-filter {
+    display: inline-block;
+    width: 200px;
+    cursor: pointer; }
 
 #header {
   clear: both;
@@ -2431,6 +2457,50 @@ grid .grid-filter {
         content: ''; }
     #header #catnav .select-menu-catnav {
       display: none; }
+
+.icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active {
+  width: 50px;
+  height: auto; }
+
+.icon-cloud-compliant {
+  background-image: url("../img/fedramp-process-cloud-compliant.png");
+  background-image: url("../img/fedramp-process-cloud-compliant.svg");
+  background-repeat: no-repeat; }
+
+.icon-cloud-in-process {
+  background-image: url("../img/fedramp-process-cloud-in-process.png");
+  background-image: url("../img/fedramp-process-cloud-in-process.svg");
+  background-repeat: no-repeat; }
+
+.icon-compliant {
+  background-image: url("../img/fedramp-process-compliant-grey.png");
+  background-image: url("../img/fedramp-process-compliant-grey.svg");
+  background-repeat: no-repeat; }
+
+.icon-compliant.active {
+  background-image: url("../img/fedramp-process-compliant-blue.png");
+  background-image: url("../img/fedramp-process-compliant-blue.svg");
+  background-repeat: no-repeat; }
+
+.icon-in-process {
+  background-image: url("../img/fedramp-process-in-process-grey.png");
+  background-image: url("../img/fedramp-process-in-process-grey.svg");
+  background-repeat: no-repeat; }
+
+.icon-in-process.active {
+  background-image: url("../img/fedramp-process-in-process-blue.png");
+  background-image: url("../img/fedramp-process-in-process-blue.svg");
+  background-repeat: no-repeat; }
+
+.icon-ready {
+  background-image: url("../img/fedramp-process-ready-grey.png");
+  background-image: url("../img/fedramp-process-ready-grey.svg");
+  background-repeat: no-repeat; }
+
+.icon-ready.active {
+  background-image: url("../img/fedramp-process-ready-blue.png");
+  background-image: url("../img/fedramp-process-ready-blue.svg");
+  background-repeat: no-repeat; }
 
 #topnav .limit {
   clear: both;

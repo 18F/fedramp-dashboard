@@ -25,7 +25,15 @@ describe('the grid filter clear component', function () {
                 items: filteredItems,
                 rawItems: [{
                     name: 'Amazon',
-                    agencies: ['DoD', 'DEA']
+                    agencies: ['DoD', 'DEA'],
+                    products: [
+                        {
+                            name: 'Dog Bone'
+                        },
+                        {
+                            name: 'Treats'
+                        }
+                    ]
                 }],
                 savedState: true
             });
@@ -40,13 +48,15 @@ describe('the grid filter clear component', function () {
             },
             {
                 property: 'name',
+                id: 'name',
                 header: 'Name',
-                initialValues: ['Amazon'] ,
+                selectedOptionValues: [{value: 'Amazon', selected: true}] ,
                 expanded: true,
                 opened: true,
                 gridController: grid
             }
         );
+
 
         var gridFilterClear = $componentController('gridFilterClear', 
             null, {
@@ -55,7 +65,6 @@ describe('the grid filter clear component', function () {
         );
         gridFilter.$onInit();
         gridFilter.applyFilter();
-        grid.addFilter(gridFilter);
         expect(grid.items).toBeDefined();
         expect(grid.items.length).toBe(1);
         expect(gridFilter.selectedOptionValues.length).toBe(1);

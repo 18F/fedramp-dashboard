@@ -50,33 +50,49 @@
                 // of all possible values for the current property are populated.
                 options: '&lt;',
 
-                // Load any initial selected values. For instance, to restore filter state
-                initialValues: '&lt;',
+                // Load any initial selected values. For instance, to restore filter state. In the form
+                // {value: &lt;value>, label: &lt;label>, selected: &lt;boolean>}
+                selectedOptionValues: '&lt;',
 
                 // Whether to render expanded template vs the dropdown
                 expanded: '&lt;',
 
                 // Whether to initially render expanded mode with panels opened
-                opened: '&lt;'
+                opened: '&lt;',
+
+                // Custom function that returns available filter options. Defaults to default func if not provided
+                optionsFunc: '&lt;',
+
+                // Custom function that performs a comparison when filtering. Defaults to default func if not provides
+                filterFunc: '&lt;',
+
+                // Identifier for filter
+                id: '@'
             }
         });
 
-    GridFilter.$inject = ['$location'];
+    GridFilter.$inject = ['$location', '$parse', '$httpParamSerializer'];
 
     /**
      * @constructor
      * @memberof Components
-     * @example &lt;grid-filter property="name" header="Name" options="" initialValues="" expanded="true" opened="true">&lt;/grid-filter>
+     * @example 
+     * &lt;grid-filter property="name" header="Name" options="" expanded="true" opened="true">&lt;/grid-filter>
      */
-    function GridFilter ($location) {
+    function GridFilter ($location, $parse, $httpParamSerializer) {
         var self = this;
+
+        // Regex to parse out array based filter keys
+        var ARRAY_FILTER_REGEX = /^(.*)\sin\s(.+)$/;
+
+        // Default template used to render option values
         self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
         
         // Options available to filter based on property
         self.options = [];
 
         // Options that have been selected
-        self.selectedOptionValues = [];
+        self.selectedOptionValues = self.selectedOptionValues || [];
 
         // List of filtered data based on this particular filter
         self.filtered = [];
@@ -86,36 +102,47 @@
 
         // Exposed public functions
         self.$onInit = $onInit;
-        self.filterFunc = filterFunc;
         self.applyFilter = applyFilter;
         self.selectOption = selectOption;
         self.clear = clear;
-        self.reloadOptions = reloadOptions;
-        self.loadInitialValues = loadInitialValues;
+        self.doFilter = doFilter;
+        self.loadOptions = loadOptions;
+
+        //Array parsing expressions
+        self.parser = null;
 
         function $onInit(){
+            if(!self.id){
+                throw 'Please add an id attribute';
+            }
+            if(!self.property &amp;&amp; (!self.optionsFunc || !self.filterFunc)){
+                throw 'If property is not specified, optionsFunc and filterFunc must be passed in';
+            }
+
+            // We check if we're filtering on a property that contains multiple values
+            self.isArray = self.property ? (self.property.match(ARRAY_FILTER_REGEX) !== null) : false;
+
+            // Allow custom optionsFunc and filterFuncs to be passed for custom filtering
+            self.optionsFunc = self.optionsFunc || optionsFunc;
+            self.filterFunc = self.filterFunc || filterFunc;
+
+            if(self.isArray){
+                configureArrayParsers();
+            }
             // We give the parent controller a reference to this filter
             self.gridController.addFilter(self);
 
             // If no options have been loaded, we load default ones
             if(self.options.length === 0){
-                loadDefaultOptions();        
-            }
-
-            // Apply pre-selected options
-            if(self.initialValues &amp;&amp; self.initialValues.length > 0){
-                loadInitialValues(self.initialValues);
-                applyFilter();
+                self.loadOptions(self.gridController.rawItems);
             }
 
             if(self.gridController.savedState){
-                var initialValues = loadSavedOptions();
-                if(!initialValues || initialValues.length === 0){
-                    return;
+                var selected = loadSavedOptions();
+                if(selected){
+                    self.selectedOptionValues = selected;
+                    applyFilter();
                 }
-
-                loadInitialValues(initialValues.split(','));
-                applyFilter();
             }
         }
 
@@ -126,11 +153,23 @@
          */
         function loadSavedOptions(){
             var params = $location.search();
-            if(!(self.property in params)){
+            if(!(self.id in params)){
                 return null;
             }
-            var values = params[self.property];
-            return values;
+            var values = params[self.id];
+            var selected = [];
+            values.split(',').forEach(function(val){
+                selected.push({
+                    value: val,
+                    selected: true
+                });
+                self.options.forEach(function(option){
+                    if(option.value === val){
+                        option.selected = true;
+                    }
+                });
+            });
+            return selected;
         }
 
         /**
@@ -146,56 +185,95 @@
             } else {
                 self.selectedOptionValues.splice(pos,1);
             }
+
+            if(self.gridController.savedState){
+                saveState();
+            }
             applyFilter();
         }
 
         /**
-         * Filter using current property to populate a list containing items relevant to current filter.
+         * If save state is activated, stores the selected results in the query string.
+         *
+         * TODO: Need to appropriately handle complex objects in query param
+         */
+        function saveState(){
+            if(self.selectedOptionValues &amp;&amp; self.selectedOptionValues.length > 0){
+                var options =  self.selectedOptionValues.map(function(option){
+                    return option.value;
+                }).join(',');
+                $location.search(self.id, options);
+            } else {
+                $location.search(self.id, null);
+            }
+        }
+
+        /**
+         * Filter using current property or filterFunc to populate a list containing items relevant to current filter.
          * Then, we call the doFilter() on the parent gridController which will consolidate and merge all filtered
          * data from other filters.
          * @public
          * @memberof Components.GridFilter
          */
         function applyFilter(){
-            self.filtered = self.gridController.rawItems.filter(self.filterFunc);
+            self.filtered = self.gridController.rawItems.filter(self.doFilter);
             self.gridController.doFilter();
         }
 
         /**
-         * Filter function applied when using $filter('filter'); When a match occurs, 
+         * Filter function applied when using `Array.prototype.filter`; When a match occurs, 
          * we return the object being compared. When we return null, that means to exclude
          * the object from the filtered dataset
          * @public
          * @memberof Components.GridFilter
          */
-        function filterFunc(obj, index, arr){
+        function doFilter(obj, index, arr){
             // When no option is selected, return everything
             if(self.selectedOptionValues.length === 0){
                 return obj;
             }
-            var property = obj[self.property];
+            return self.filterFunc(obj, index, arr, self.selectedOptionValues);
+        }
 
-            // Handle when object is array
-            if(angular.isArray(property)){
+
+        /**
+         * Executes a filter on the current data set.
+         *
+         * If custom behavior is required, this method may be overriden by passing in
+         * a function for this component.
+         *
+         * @param {object} obj Current object in dataset being filtered
+         * @param {int} index Index of current object
+         * @param {array} arr Array containing entire dataset being filtered
+         * @param {array} selectedOptionValues Array of options that have been selected by the user
+         *
+         * @return
+         *  whether an object was found within the selected options.
+         */
+        function filterFunc(obj, index, arr, selectedOptionValues){
+
+            // Handle when property being searched is an array
+           if(self.isArray){
                 return arrayFilterFunc(obj, index, arr);
             }
 
             // Handle when basic object
-            if(angular.isString(property) || angular.isNumber(property)){
-                return objectFilterFunc(obj, index, arr);
-            }
-
-            throw 'Invalid object. Cannot filter';
+            return objectFilterFunc(obj, index, arr);
         }
+
 
         /**
          * Generic filter that finds where a property value is found within
          * the list of selection options.
+         *
+         * @param {object} obj Current object in dataset being filtered
+         * @param {int} index Index of current object
+         * @param {array} arr Array containing entire dataset being filtered
          */
         function objectFilterFunc(obj, index, arr){
-            var value = obj[self.property];
+            var value = $parse(self.property)(obj);
             var foundObject = self.selectedOptionValues.find(function(option){
-                return option.value === value;
+                return comparator(obj, option);
             });
             return foundObject;
         }
@@ -203,26 +281,76 @@
 
         /**
          * Generic filter that finds where a selected option is found within an array property
+         *
+         * @param {object} obj Current object in dataset being filtered
+         * @param {int} index Index of current object
+         * @param {array} arr Array containing entire dataset being filtered
          */
         function arrayFilterFunc(obj, index, arr){
-            var values = obj[self.property];
-            var found = false;
-
-            values.forEach(function(value){
-                var foundObject = self.selectedOptionValues.find(function(option){
-                    return option.value.trim() === value.trim();
+            var values = arrayFilterValues(obj);
+            return values.find(function(val){
+                return self.selectedOptionValues.find(function(option){
+                    return val === option.value;
                 });
-                if(foundObject){
-                    found = true;
-                }
             });
-
-            if(found){
-                return obj;
-            }
-            return null;
         }
 
+
+        /**
+         * Creates an array containing all values for a particular key that is an array. 
+         *
+         * @example
+         * //For instance
+         * //if property had the following
+         * 
+         *  &lt;grid-filter property="i in serviceModels">&lt;/grid-filter>
+         *
+         * // and the data set looked like
+         * {
+         *     name: 'blah',
+         *     serviceModels:['IaaS', 'PaaS']
+         * },
+         * {
+         *     name: 'blah2',
+         *     serviceModels:['SaaS']
+         * }
+         * // This would return ['IaaS', 'PaaS', 'SaaS']
+         * 
+         * //Or if using an object key 
+         *
+         *  &lt;grid-filter property="i.name in products" >&lt;/grid-filter->
+         *
+         * //and the data set looked like
+         * {
+         *     name: 'blah',
+         *     products:[{name:'Product1']
+         * },
+         * {
+         *     name: 'blah2',
+         *     products:[{name:'Product2']
+         * }
+         *
+         * This would return ['Product1', 'Product2']
+         */
+        function arrayFilterValues(obj){
+            return self.parser.valuesFunc(obj)
+                .reduce(function(p,c){
+                    if(self.parser.valueIsObject){
+                        p.push(self.parser.valueFunc(c));
+                    } else {
+                        p.push(c);
+                    }
+                    return p;
+                }, []);
+        }
+
+
+        /**
+         * Default comparator when filtering items. 
+         */
+        function comparator(obj, option){
+            return obj[self.property] === option.value;
+        }
         /**
          * Loads a distinct list of values found in the specified property attribute.
          * If the property value is a basic string, an array of strings will be set for the options.
@@ -230,68 +358,99 @@
          * If the property is an array, each instance of the array will be iterated to extract the contents to
          * generate an array containing unique values. This is done by using a set.
          */
-        function loadDefaultOptions(){
-            reloadOptions(self.gridController.rawItems);
+        function loadOptions(source){
+            self.options = self.optionsFunc(source);
         }
 
 
         /**
-         * Loads a distinct list of possible values from the provided source. Values will
-         * be extracted using the filters `property` binding value
+         * Creates a set of options for a particular property to be filtered on. If the property
+         * being filtered on contains an array of possible values, then we delegate to array options func.
+         *
+         * Override this method to add custom options.
+         *
+         * @example
+         * //Sample dataset to return if overriding
+         * {
+         *      value: value,
+         *      label: label,
+         *      selected: boolean
+         * }
+         *
+         * @param source The dataset to generate options from.
+         *
+         * @returns {array}  
+         * An array of options that can be selected to filter. These must be in the form 
          */
-        function reloadOptions(source){
-            var set = new Set();
+        function optionsFunc(source){
+            if(self.isArray){
+                return arrayOptionsFunc(source);
+            }
+            var options = [];
+            var cache = {};
             source.forEach(function(obj){
-                var property = obj[self.property];
-
-                // Handle when object is array
-                if(angular.isArray(property)){
-                    property.forEach(x=> set.add(x.trim()));
-                    //return arrayFilterFunc(obj, index, arr);
-                }
-
-                // Handle when basic object
-                if(angular.isString(property) || angular.isNumber(property)){
-                    set.add(property);
+                var val = $parse(self.property)(obj);
+                if(!cache[val]){
+                    options.push({
+                        label: val,
+                        value: val,
+                        selected: false
+                    });
+                    cache[val] = true;
                 }
             });
-            self.options = toOptionArray(set);
-        }
-
-        /**
-         * Takes a basic list of values in an array [x, y, z] and transforms it to
-         * an array of option objects
-         *
-         * [{ value: x, selected: false}]
-         */
-        function toOptionArray(data){
-            var options = [];
-            Array.from(data).forEach(x=> 
-                options.push({
-                    value: x,
-                    selected: false
-                })
-            );
             return options;
         }
 
         /**
-         * Loads options that should be selected on initial load
-         * @public
-         * @memberof Components.GridFilter
+         * Generates a list of option values for an array key
          */
-        function loadInitialValues(initialValues){
-            self.selectedOptionValues = toOptionArray(initialValues);
-
-            self.selectedOptionValues.forEach(function(selectedOption){
-                self.options.forEach(function(option){
-                    if(option.value === selectedOption.value){
-                        option.selected = true;
+        function arrayOptionsFunc(source){
+            var cache = {};
+            var options = [];
+            source.forEach(function(obj){
+                var values = arrayFilterValues(obj);
+                values.forEach(function(val){
+                    if(!cache[val]){
+                        options.push({
+                            label: val,
+                            value: val,
+                            selected: false
+                        });
+                        cache[val] = true;
                     }
                 });
             });
+            return options;
         }
 
+        /**
+         * When filtering on a property that may contain multiple values, configures necessary
+         * parsers to allow the data to be iterated and compared against. 
+         *
+         * @example
+         * //$parse is a service that allows an expression to be evaluated against an object. For instance
+         * //given:
+         *
+         * var person = {
+         *  name: 'John',
+         *  dogs: ['Dog1']
+         * };
+         *
+         * // $parse('name')(person) => 'John'
+         * // $parse('dogs')(person) => ['Dog1']
+         *
+         *
+         */
+        function configureArrayParsers(){
+            var match = self.property.match(/^(.*)\sin\s(.+)$/);
+            var keyExpression = match[1].split('.').splice(1).join('.');
+            var valuesExpression = match[2];
+            self.parser = {};
+            self.parser.valuesFunc = $parse(valuesExpression);
+            self.parser.valueFunc = $parse(keyExpression);
+            self.parser.valueIsObject = (!!keyExpression);
+        }
 
         /**
          * Clears filter and resets dataset
@@ -321,7 +480,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jul 08 2016 15:49:45 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 11 2016 07:04:47 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

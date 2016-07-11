@@ -1,27 +1,27 @@
-<grid items="controller.filteredData" raw-items="controller.products" saved-state="true">
-    <div class="">
+<grid class="grid" items="controller.filteredData" raw-items="controller.products" saved-state="true">
+<div class="">
+    <div class="usa-grid-full">
         <div class="usa-width-one-whole">
-            <div class="usa-grid-full">
-                <grid-filter property="name" header="Name" class="grid-filter"></grid-filter>
-                <grid-sort property="name" class="grid-sort"></grid-sort>    
+            <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
+            <grid-sort property="name" class="grid-sort"></grid-sort>    
 
-                <grid-filter property="serviceModels" header="Service Models" class="grid-filter"></grid-filter>
-                <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
-
-                <grid-filter property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
-                <grid-sort property="deploymentModel" class="grid-sort"></grid-sort>    
-
-                <grid-filter property="designation" header="Status" class="grid-filter"></grid-filter>
-                <grid-sort property="reuses" class="grid-sort"></grid-sort>    
-            </div>
-
-            <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
+            <grid-filter id="serviceModels" property="i in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
+            <grid-sort property="serviceModels" class="grid-sort"></grid-sort>    
+            <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
+            <grid-sort property="deploymentModel"></grid-sort>    
+            <grid-filter id="reuseRange" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" header="Usage Range (Testing custom)" class="grid-filter"></grid-filter>
+            <grid-sort property="reuses"></grid-sort>    
+            <grid-filter id="designation" property="designation" header="Designation" class="grid-filter"></grid-filter>
         </div>
+
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
     </div>
-    <download-csv content="controller.filteredData" ng-if="controller.filteredData">
-        <button>
-            <span>Export to CSV</span>
-            <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
-        </button>
-    </download-csv>
+</div>
+<download-csv content="controller.filteredData" ng-if="controller.filteredData">
+    <button>
+        <span>Export to CSV</span>
+        <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+    </button>
+</download-csv>
 </grid>
+
