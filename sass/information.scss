@@ -1,0 +1,216 @@
+@import '../node_modules/uswds/src/stylesheets/all.scss';
+
+.comparison-list {
+    .message {
+        margin-bottom: 2em;
+
+        hr {
+            width: 20%;
+            display: inline-block;
+            border-top: 2px solid $color-gray-dark;
+            margin-bottom: 3px;
+        }
+
+        hr.left {
+            margin-right: 5px;
+        }
+
+        hr.right {
+            margin-left: 5px;
+        }
+
+        span {
+            font-size: smaller;
+            font-weight: bolder;
+            color: $color-gray-dark;
+        }
+    }
+}
+
+.information {
+    .row {
+        display: block;
+        width: 100%;
+        clear: both;
+        border-top: 1px solid $color-gray-light;
+        padding: 1em 0;
+
+        h4 {
+            margin-top: 0;
+        }
+    }
+
+    .col {
+        display: inline-block;
+        p {
+            margin-top: 0;
+        }
+    }
+    
+    .close {
+        background-color: $color-gray-dark;
+
+        .col {
+            width: 100%;
+        }
+
+        a {
+            color: $color-gray-light;
+            font-size: smaller;
+            text-align: center;
+            text-decoration: none;
+
+            i {
+                font-size: 2em;
+            }
+        }
+    }
+
+    .header {
+        border-top: none;
+        padding-top: 0;
+
+        .logo {
+            padding-top: 1em;
+
+            img {
+                max-width: 100%;
+                max-height: 4em;
+            }
+        }
+
+        .title {
+            font-weight: bolder;
+            font-size: smaller;
+            padding-bottom: 1em;
+        }
+
+        .reuse {
+            float: right;
+            text-align: center;
+            width: 6em;
+            height: 6em;
+            padding-top: 1.5em;
+            background-color: $color-primary;
+            color: $color-white;
+            font-weight: bolder;
+
+            .text {
+                font-size: smaller;
+            }
+
+            .number {
+                font-size: 2em;
+                margin-bottom: -10px;
+            }
+        }
+    }
+
+    .status {
+        padding: 1em 0;
+        text-align: center;
+
+        .col {
+            .text {
+                font-size: smaller;
+            }
+        }
+        
+        .ready {
+            width: 30%;
+        }
+
+        .in-process {
+            width: 30%;
+        }
+
+        .compliant {
+            width: 30%;
+        }
+
+        .progress {
+            height: 5px;
+            background-color: $color-gray-light;
+            width: 100%;
+            
+            .percent {
+                height: 5px;
+                background-color: $color-primary;
+            }
+
+            .percent-30 {
+                width: 30%;
+            }
+
+            .percent-50 {
+                width: 50%;
+            }
+
+            .percent-100 {
+                width: 100%;
+            }
+        }
+
+        .message {
+            width: 100%;
+            color: $color-primary;
+            font-size: smaller;
+        }
+    }
+
+    .system-profile {
+        .contact-information {
+            width: 50%;
+            background-color: $color-cool-blue-lightest;
+            color: $color-black;
+            float: right;
+            padding: 1em;
+            margin-top: 1em;
+
+            h5 {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .fedramp {
+        dt {
+            font-weight: bolder;
+        }
+    }
+
+    .service-description {
+        border-top: none;
+        background-color: $color-gray-lightest;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        .col {
+            width: 100%;
+
+            h4 {
+                display: inline;
+            }
+            
+            i {
+                float: right;
+            }
+        }
+    }
+
+    .agencies {
+        border-top: none;
+
+        ul {
+            margin-left: -5px;
+            
+            li {
+                list-style: none;
+            }
+
+            li::before {
+                content: '';
+            }
+        }
+    }
+}
