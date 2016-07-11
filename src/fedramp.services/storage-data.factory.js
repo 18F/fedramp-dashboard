@@ -5,9 +5,9 @@
         .module('fedramp.services')
         .factory('StorageData', StorageDataFactory);
 
-    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider'];
+    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider', 'helperService'];
 
-    function StorageDataFactory (StorageManager, Data, Agency, Assessor, Product, Provider) {
+    function StorageDataFactory (StorageManager, Data, Agency, Assessor, Product, Provider, helperService) {
         /**
          * Provides storage specific functionality that extends the StorageManager
          * @constructor
@@ -131,6 +131,8 @@
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
                     item.logo = d.cspUrl;
+                    item.authorizationDate = helperService.toDate(d.authorizationDate);
+                    item.expectedCompliance = helperService.toDate(d.expectedCompliance);
 
                     item.reuses = d.atoLetters.length;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
