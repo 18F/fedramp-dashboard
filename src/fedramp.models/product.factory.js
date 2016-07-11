@@ -27,6 +27,7 @@
             self.designation = '';
             self.serviceModels = [];
             self.impactLevel = '';
+            self.logo = '';
         }
 
         return Product;

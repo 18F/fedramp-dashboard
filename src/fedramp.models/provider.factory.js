@@ -24,6 +24,7 @@
             self.deploymentModels = [];
             self.serviceModels = [];
             self.designations = [];
+            self.logo = '';
         }
 
         return Provider;

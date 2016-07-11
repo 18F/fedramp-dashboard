@@ -23,6 +23,11 @@
         var self = this;
 
         /**
+         * The tile template for the model type.
+         */
+        self.tileTemplate = 'src/fedramp.components/tile-' + self.model.type + '.html';
+
+        /**
          * Redirect to the appropriate view
          * @public
          * @memberof Components.Tile
