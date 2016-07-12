@@ -2704,8 +2704,14 @@ body {
   .information .system-profile .contact-information h5 {
     margin-top: 0; }
 
-.information .fedramp dt {
-  font-weight: bolder; }
+.information .fedramp dl dt {
+  float: left;
+  font-weight: bolder;
+  clear: left;
+  display: inline-block; }
+
+.information .fedramp dl dd {
+  margin-left: 0; }
 
 .information .service-description {
   border-top: none;

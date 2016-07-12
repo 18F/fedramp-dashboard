@@ -179,8 +179,17 @@
     }
 
     .fedramp {
-        dt {
-            font-weight: bolder;
+        dl {
+            dt {
+                float: left;
+                font-weight: bolder;
+                clear: left;
+                display: inline-block;
+            }
+
+            dd {
+                margin-left: 0;
+            }
         }
     }
 

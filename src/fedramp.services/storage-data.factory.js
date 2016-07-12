@@ -67,7 +67,6 @@
                     item.products = self.products().filter(x => x.provider === item.name);
                     
                     item.products.forEach(prod => {
-
                         prod.name = prod.name.trim();
                         item.reuses += prod.reuses;
 
@@ -131,8 +130,12 @@
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
                     item.logo = d.cspUrl;
+                    item.independentAssessor = d.independentAssessor;
+                    item.authorizationType = d.path;
+                    item.sponsoringAgency = d.sponsoringAgency;
                     item.authorizationDate = helperService.toDate(d.authorizationDate);
                     item.expectedCompliance = helperService.toDate(d.expectedCompliance);
+                    item.expirationDate = helperService.toDate(d.expirationDate);
 
                     item.reuses = d.atoLetters.length;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
