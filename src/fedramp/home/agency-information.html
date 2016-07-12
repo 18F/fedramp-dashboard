@@ -3,8 +3,13 @@
         <div class="usa-width-one-half">
             <agency model="controller.item" on-close="controller.close" />
         </div>
-        <div class="usa-width-one-half">
+        <div class="usa-width-one-half comparison-list">
             <div ng-show="controller.items.length > 0">
+                <div class="message">
+                    <hr class="left" />
+                    <span>Select another to compare</span>
+                    <hr class="right" />
+                </div>
                 <div class="usa-grid">
                     <tile ng-repeat="model in controller.items track by $index" expand="true" model="model" />
                 </div>

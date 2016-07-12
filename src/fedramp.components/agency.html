@@ -1,61 +1,63 @@
-<div class="usa-grid">
-    <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-two-thirds">
-        <!-- Logo -->
-        Logo
+<div class="information agency">
+    <div class="row close">
+        <a ng-click="controller.close()">
+            <div class="col">
+                <i class="fa fa-times"></i>
+                <br />
+                Close
+            </div>
+        </a>
     </div>
-    <div class="usa-width-one-sixth">
-        <!-- Status -->
-        Status
+    <div class="row header">
+        <div class="col">
+            <div class="title">
+                <strong>{{ controller.model.name }}</strong>
+            </div>
+        </div>
+        <div class="col reuse">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
+        </div>
     </div>
-    <div class="usa-width-one-sixth">
-        {{controller.model.reuse}}
+    <div class="row system-profile">
+        <div class="col contact-information">
+            <h5>Contact Information</h5>
+            <div><strong>POC:</strong></div>
+            <div><strong>E-mail:</strong></div>
+            <div><strong>Website:</strong></div>
+        </div>
+        <div class="col">
+            <h4>FedRAMP Compliant Detail</h4>
+
+            <h5>Authorization Type</h5>
+            <p></p>
+
+            <h5>Agency Lead</h5>
+            <p></p>
+        </div>
     </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Contact Information</strong>
+    <div class="row providers">
+        <div class="col">
+            <h4>Providers</h4>
+            <ul>
+                <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
+            </ul>
+        </div>
     </div>
-    <div>POC:</div>
-    <div>E-mail:</div>
-    <div>Website:</div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Providers:</strong>
+    <div class="row products">
+        <div class="col">
+            <h4>Products</h4>
+            <ul>
+                <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
+            </ul>
+        </div>
     </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
-        </ul>
+    <div class="row assessors">
+        <div class="col">
+            <h4>Independent Assessors</h4>
+            <ul>
+                <li ng-repeat="assessor in controller.model.assessors track by $index">{{assessor}}</li>
+            </ul>
+        </div>
     </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Products:</strong>
-    </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
-        </ul>
-    </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Independent Assessors:</strong>
-    </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="assessor in controller.model.assessors track by $index">{{assessor}}</li>
-        </ul>
-    </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>FedRAMP Compliant Detail</strong>
-    </div>
-    <div>Authorization Type:</div>
-    <div>Agency Lead:</div>
 </div>
