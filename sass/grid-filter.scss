@@ -32,6 +32,11 @@ grid-filter {
 .grid-filter {
     cursor: pointer;
 }
+.filter-header {
+    font-size: 14px !important;
+    font-weight:600;
+}
+
 .filter-dropdown {
     position:relative;
 }

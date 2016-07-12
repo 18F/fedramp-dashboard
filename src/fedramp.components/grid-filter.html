@@ -1,6 +1,6 @@
 <div ng-if="!controller.expanded" class="filter-dropdown" ng-mouseleave="controller.expand = false">
     <div ng-click="controller.expand = !controller.expand">
-        {{controller.header}}
+        <span class="filter-header">{{controller.header}}</span>
         <i class="fa fa-chevron-down" aria-hidden="true"></i>
     </div>
     <div ng-show="controller.expand" class="filter-dropdown-panel">

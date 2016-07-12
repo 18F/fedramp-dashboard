@@ -13,7 +13,7 @@
      */
     function routeConfig ($stateProvider, $urlRouterProvider) {
         // Go to root if something goes wrong
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/products');
 
         // Routes
         $stateProvider

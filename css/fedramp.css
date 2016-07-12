@@ -2452,6 +2452,9 @@ input {
       margin-right: 0; }
     .fr-filters .fr-filters-row .usa-width-one-fourth:last-child {
       border-right: none; }
+    .fr-filters .fr-filters-row .selected {
+      background-color: #0071bc;
+      color: #ffffff; }
   .fr-filters button {
     width: 100%;
     height: 8.5rem;
@@ -2505,6 +2508,10 @@ grid-filter {
 
 .grid-filter {
   cursor: pointer; }
+
+.filter-header {
+  font-size: 14px !important;
+  font-weight: 600; }
 
 .filter-dropdown {
   position: relative; }
