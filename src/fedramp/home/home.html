@@ -40,31 +40,33 @@
         <span class="fr-filter-label-text">Filter results by</span>
     </div>
     <div ng-show="homeController.hasData()">
-        <div class="filters usa-grid-full">
-            <div class="usa-width-one-fourth">
-                <button id="filterByCSO"
-                        type="radio"
-                        ui-sref="fedramp.app.home.products">
-                    Cloud Service Offerings
-                </button>
-            </div>
-            <div class="usa-width-one-fourth">
-                <button id="filterByCSP"
-                        ui-sref="fedramp.app.home.providers">
-                    Cloud Service Providers
-                </button>
-            </div>
-            <div class="usa-width-one-fourth">
-                <button id="filterByAgency"
-                        ui-sref="fedramp.app.home.agencies">
-                    Agencies
-                </button>
-            </div>
-            <div class="usa-width-one-fourth">
-                <button id="filterBy3PAO"
-                        ui-sref="fedramp.app.home.assessors">
-                    3PAO
-                </button>
+        <div class="fr-filters usa-grid-full">
+            <div class="fr-filters-row">
+                <div class="usa-width-one-fourth">
+                    <button id="filterByCSO"
+                            type="radio"
+                            ui-sref="fedramp.app.home.products">
+                        <span>Cloud Service Offerings</span>
+                    </button>
+                </div>
+                <div class="usa-width-one-fourth">
+                    <button id="filterByCSP"
+                            ui-sref="fedramp.app.home.providers">
+                        <span>Cloud Service Providers</span>
+                    </button>
+                </div>
+                <div class="usa-width-one-fourth">
+                    <button id="filterByAgency"
+                            ui-sref="fedramp.app.home.agencies">
+                        <span>Agencies</span>
+                    </button>
+                </div>
+                <div class="usa-width-one-fourth">
+                    <button id="filterBy3PAO"
+                            ui-sref="fedramp.app.home.assessors">
+                        <span>3PAO</span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="usa-grid-full">
