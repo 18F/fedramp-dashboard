@@ -13,9 +13,6 @@
 
 <div ng-if="!controller.expand" class="agency card">
     <div class="row header">
-        <div class="col name">
-            <strong>{{ controller.model.name }}</strong>
-        </div>
         <div class="col reuses">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">Reuses</div>
@@ -23,6 +20,9 @@
     </div>
     <div class="row content">
         <div class="col">
+            <div class="title">
+                <strong>{{ controller.model.name }}</strong>
+            </div>
         </div>
     </div>
 </div>

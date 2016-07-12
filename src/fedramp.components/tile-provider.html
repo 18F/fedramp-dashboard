@@ -24,12 +24,9 @@
 
 <div ng-if="!controller.expand" class="provider card">
     <div class="row header">
-        <div class="col">
+        <div class="col name">
             <div class="logo">
                 <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
-            </div>
-            <div class="title">
-                <strong>{{ controller.model.name }}</strong>
             </div>
         </div>
         <div class="col reuses">
@@ -39,14 +36,15 @@
     </div>
     <div class="row content">
         <div class="col">
-            <div class="service-model">
-                <strong>Service Model:</strong>
-                {{ controller.model.serviceModels.join(', ') }}
+            <div class="title">
+                <strong>{{ controller.model.name }}</strong>
             </div>
-            <div class="deployment-model">
-                <strong>Deployment Models:</strong>
-                {{ controller.model.deploymentModels.join(', ') }}
-            </div>
+            <dl>
+                <dt>Service Model:</dt>
+                <dd>{{ controller.model.serviceModels.join(', ') }}</dd>
+                <dt>Deployment Model:</dt>
+                <dd>{{ controller.model.deploymentModels.join(', ') }}</dd>
+            </dl>
         </div>
     </div>
 </div>

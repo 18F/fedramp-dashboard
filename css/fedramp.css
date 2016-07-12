@@ -2881,7 +2881,10 @@ body {
   /* border-right: 1px solid $color-gray-lightest; */ }
 
 .tile .card {
-  height: 17em; }
+  height: 17em;
+  width: 45%;
+  float: left;
+  margin: 1em; }
 
 .tile,
 .tile:hover,
@@ -2889,6 +2892,50 @@ body {
   color: #000000;
   text-decoration: none;
   cursor: pointer; }
+
+.provider.card .col {
+  width: 33.33333%; }
+
+.provider.card .header {
+  height: 6em; }
+  .provider.card .header .name .logo {
+    padding: 0.34em 0; }
+    .provider.card .header .name .logo img {
+      max-width: 100%;
+      max-height: 3em; }
+  .provider.card .header .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .provider.card .header .reuses .text {
+      font-size: smaller; }
+    .provider.card .header .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
+
+.provider.card .content .col {
+  width: 100%; }
+
+.provider.card .content .title {
+  /* padding-left: 0.34em; */ }
+
+.provider.card .content dl {
+  font-size: smaller; }
+  .provider.card .content dl dt {
+    clear: left;
+    font-weight: bold;
+    display: inline-block;
+    float: left; }
+  .provider.card .content dl dd {
+    float: left;
+    margin-left: 1em; }
 
 .provider.expanded .col {
   width: 23%;
@@ -2929,6 +2976,55 @@ body {
   .provider.expanded .reuses .number {
     font-size: 2em;
     margin-bottom: -10px; }
+
+.product.card .col {
+  width: 33.33333%; }
+
+.product.card .header {
+  height: 6em; }
+  .product.card .header .name .logo {
+    padding: 0.34em 0; }
+    .product.card .header .name .logo img {
+      max-width: 100%;
+      max-height: 3em; }
+  .product.card .header .status {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em; }
+  .product.card .header .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .product.card .header .reuses .text {
+      font-size: smaller; }
+    .product.card .header .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
+
+.product.card .content .col {
+  width: 100%; }
+
+.product.card .content .title {
+  /* padding-left: 0.34em; */ }
+
+.product.card .content dl {
+  font-size: smaller; }
+  .product.card .content dl dt {
+    clear: left;
+    font-weight: bold;
+    display: inline-block;
+    float: left; }
+  .product.card .content dl dd {
+    float: left;
+    margin-left: 1em; }
 
 .product.expanded .col {
   width: 13.33333%;
@@ -2980,6 +3076,45 @@ body {
     font-size: 2em;
     margin-bottom: -10px; }
 
+.agency.card .col {
+  width: 100%; }
+
+.agency.card .header {
+  height: 6em; }
+  .agency.card .header .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .agency.card .header .reuses .text {
+      font-size: smaller; }
+    .agency.card .header .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
+
+.agency.card .content .col {
+  width: 100%; }
+
+.agency.card .content .title {
+  /* padding-left: 0.34em; */ }
+
+.agency.card .content dl {
+  font-size: smaller; }
+  .agency.card .content dl dt {
+    clear: left;
+    font-weight: bold;
+    display: inline-block;
+    float: left; }
+  .agency.card .content dl dd {
+    float: left;
+    margin-left: 1em; }
+
 .agency.expanded .col {
   width: 40%;
   vertical-align: top;
@@ -3001,6 +3136,45 @@ body {
   .agency.expanded .reuses .number {
     font-size: 2em;
     margin-bottom: -10px; }
+
+.assessor.card .col {
+  width: 100%; }
+
+.assessor.card .header {
+  height: 6em; }
+  .assessor.card .header .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .assessor.card .header .reuses .text {
+      font-size: smaller; }
+    .assessor.card .header .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
+
+.assessor.card .content .col {
+  width: 100%; }
+
+.assessor.card .content .title {
+  /* padding-left: 0.34em; */ }
+
+.assessor.card .content dl {
+  font-size: smaller; }
+  .assessor.card .content dl dt {
+    clear: left;
+    font-weight: bold;
+    display: inline-block;
+    float: left; }
+  .assessor.card .content dl dd {
+    float: left;
+    margin-left: 1em; }
 
 .assessor.expanded .col {
   width: 40%;

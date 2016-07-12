@@ -37,9 +37,10 @@
             <div class="logo">
                 <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
             </div>
-            <div class="title">
-                <strong>{{ controller.model.pkgId }} - {{ controller.model.name }}</strong>
-            </div>
+        </div>
+        <div class="col reuses">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
         </div>
         <div class="col status">
             <img ng-if="controller.model.designation === 'Compliant'" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
@@ -47,25 +48,20 @@
             <img ng-if="controller.model.designation === 'In PMO Review'" ng-src="img/fedramp-process-compliant-blue.png" alt="In PMO Review" />
             <img ng-if="controller.model.designation === 'Ready'" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
         </div>
-        <div class="col reuses">
-            <div class="number">{{controller.model.reuses}}</div>
-            <div class="text">Reuses</div>
-        </div>
     </div>
     <div class="row content">
         <div class="col">
-            <div class="service-model">
-                <strong>Service Model:</strong>
-                {{ controller.model.serviceModels.join(', ') }}
+            <div class="title">
+                <strong>{{ controller.model.provider }} - {{ controller.model.name }}</strong>
             </div>
-            <div class="deployment-model">
-                <strong>Deployment Model:</strong>
-                {{ controller.model.deploymentModel }}
-            </div>
-            <div class="impact-model">
-                <strong>Impact Level:</strong>
-                {{ controller.model.impactLevel }}
-            </div>
+            <dl>
+                <dt>Service Model:</dt>
+                <dd>{{ controller.model.serviceModels.join(', ') }}</dd>
+                <dt>Deployment Model:</dt>
+                <dd>{{ controller.model.deploymentModel }}</dd>
+                <dt>Impact Level:</dt>
+                <dd>{{ controller.model.impactLevel }}</dd>
+            </dl>
         </div>
     </div>
 </div>
