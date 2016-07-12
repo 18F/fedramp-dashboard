@@ -2546,6 +2546,10 @@ grid-sort {
     position: relative;
     bottom: -4px; }
 
+grid tile.expanded {
+  display: inline-block;
+  width: 100%; }
+
 #header {
   clear: both;
   margin: 20px auto 10px; }
@@ -3097,45 +3101,44 @@ body {
     float: left;
     margin-left: 1em; }
 
-.provider.expanded .col {
-  width: 23%;
-  vertical-align: top;
-  padding-top: 0.34em; }
-
-.provider.expanded .name {
-  width: 40%; }
-  .provider.expanded .name .logo {
-    padding: 0.34em 0; }
-    .provider.expanded .name .logo img {
-      max-width: 100%;
-      max-height: 3em; }
-  .provider.expanded .name .title {
-    /* padding-left: 0.34em; */ }
-
-.provider.expanded .service-model {
-  width: 15%;
-  font-size: smaller; }
-
-.provider.expanded .deployment-model {
-  width: 15%;
-  font-size: smaller; }
-
-.provider.expanded .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .provider.expanded .reuses .text {
+.provider.expanded {
+  display: inline-block;
+  width: 100%; }
+  .provider.expanded .col {
+    width: 23%;
+    vertical-align: top;
+    padding-top: 0.34em; }
+  .provider.expanded .name {
+    width: 40%; }
+    .provider.expanded .name .logo {
+      padding: 0.34em 0; }
+      .provider.expanded .name .logo img {
+        max-width: 100%;
+        max-height: 3em; }
+    .provider.expanded .name .title {
+      /* padding-left: 0.34em; */ }
+  .provider.expanded .service-model {
+    width: 15%;
     font-size: smaller; }
-  .provider.expanded .reuses .number {
-    font-size: 2em;
-    margin-bottom: -10px; }
+  .provider.expanded .deployment-model {
+    width: 15%;
+    font-size: smaller; }
+  .provider.expanded .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .provider.expanded .reuses .text {
+      font-size: smaller; }
+    .provider.expanded .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
 
 .product.card .col {
   width: 33.33333%; }
