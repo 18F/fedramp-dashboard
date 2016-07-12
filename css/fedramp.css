@@ -2611,6 +2611,17 @@ body {
 .lt-ie9 * {
   filter: none !important; }
 
+.comparison {
+  display: inline-block;
+  width: 100%; }
+  .comparison .first {
+    display: inline-block;
+    float: left;
+    width: 50%; }
+  .comparison .second {
+    display: inline-block;
+    width: 50%; }
+
 .comparison-list .message {
   margin-bottom: 2em; }
   .comparison-list .message hr {
