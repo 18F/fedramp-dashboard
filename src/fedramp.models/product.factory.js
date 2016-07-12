@@ -30,6 +30,10 @@
             self.logo = '';
             self.authorizationDate = '';
             self.expectedCompliance = '';
+            self.expirationDate = '';
+            self.independentAssessor = '';
+            self.authorizationType = '';
+            self.sponsoringAgency = '';
         }
 
         return Product;

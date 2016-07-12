@@ -32,7 +32,6 @@
          * url when updates come in.
          */
         function $onChanges(changes){
-            $log.debug(changes);
             prepareDownload();
         }
 

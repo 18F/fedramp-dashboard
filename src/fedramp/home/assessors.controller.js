@@ -13,7 +13,6 @@
      */
     function AssessorsController ($log, assessors) {
         var self = this;
-        $log.debug(assessors);
 
         self.assessors = assessors;
     }

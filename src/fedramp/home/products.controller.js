@@ -9,9 +9,7 @@
 
     function ProductController($log, products, $stateParams, $filter, $location){
         var self = this;
+
         self.products = products;
-        $log.debug(products);
-
     }
-
 })();

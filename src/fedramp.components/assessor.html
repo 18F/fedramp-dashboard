@@ -36,25 +36,34 @@
     <div class="row providers">
         <div class="col">
             <h4>Providers</h4>
-            <ul>
+            <ul ng-if="controller.model.providers.length > 0">
                 <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
             </ul>
+            <p ng-if="controller.model.providers.length === 0">
+                None
+            </p>
         </div>
     </div>
     <div class="row products">
         <div class="col">
             <h4>Products</h4>
-            <ul>
+            <ul ng-if="controller.model.products.length > 0">
                 <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
             </ul>
+            <p ng-if="controller.model.products.length === 0">
+                None
+            </p>
         </div>
     </div>
     <div class="row agencies">
         <div class="col">
             <h4>Agencies</h4>
-            <ul>
-                <li ng-repeat="agency in controller.model.agencys track by $index">{{agency}}</li>
+            <ul ng-if="controller.model.agencies.length > 0">
+                <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
             </ul>
+            <p ng-if="controller.model.agencies.length === 0">
+                None
+            </p>
         </div>
     </div>
 </div>
