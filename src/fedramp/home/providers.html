@@ -2,6 +2,7 @@
 <div class="usa-grid-full">
     <div class="usa-width-one-third">
         <div>
+            <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
             <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->
             <grid-filter id="designations" property="d in designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
             <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>

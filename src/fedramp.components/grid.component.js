@@ -82,11 +82,6 @@
             // Iterate through each filter to extract what it has found
             filters.forEach(function(filter){
 
-                // If the current filter has no data, skip it
-                if(filter.filtered.length === 0){
-                    return;
-                }
-
                 // Filter the data!
                 combinedFilterResults = combinedFilterResults.filter(filter.doFilter);
             });
