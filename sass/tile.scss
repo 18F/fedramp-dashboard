@@ -1,7 +1,274 @@
+@import '../node_modules/uswds/src/stylesheets/all.scss';
+
 .tile {
-    height: 17em;
+    .row {
+        display: block;
+        width: 100%;
+        clear: both;
+        /* border-top: 1px solid $color-gray-light; */
+        /* padding: 1em 0; */
+    }
+
+    .col {
+        display: inline-block;
+        float: left;
+    }
+
+    .expanded {
+        .row {
+            height: 6em;
+            border-bottom: 1px solid $color-gray-lightest;
+        }
+
+        .col {
+            /* border-right: 1px solid $color-gray-lightest; */
+        }
+    }
+
+    .card {
+        height: 17em;
+    }
 }
 
-.tile.expanded {
-    height: 3.5em;
+.tile,
+.tile:hover,
+.tile:visited {
+    color: $color-black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.provider.card {
+    .row {
+    }
+
+    .col {
+    }
+
+    .header {
+        .logo {
+            img {
+            }
+        }
+
+        .title {
+        }
+
+        .reuses {
+        }
+    }
+
+    .content {
+        .service-model {
+        }
+
+        .deployment-model {
+        }
+    }
+}
+
+.provider.expanded {
+    .row {
+    }
+
+    .col {
+        width: 23%;
+        vertical-align: top;
+        padding-top: 0.34em;
+    }
+
+    .name {
+        width: 40%;
+        
+        .logo {
+            padding: 0.34em 0;
+            
+            img {
+                max-width: 100%;
+                max-height: 3em;
+            }
+        }
+
+        .title {
+            /* padding-left: 0.34em; */
+        }
+    }
+
+    .service-model {
+        width: 15%;
+        font-size: smaller;
+    }
+
+    .deployment-model {
+        width: 15%;
+        font-size: smaller;
+    }
+
+    .reuses {
+        float: right;
+        text-align: center;
+        width: 6em;
+        height: 6em;
+        padding-top: 1.5em;
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: bolder;
+        border-right: none;
+        border-bottom: 1px solid $color-white;
+
+        .text {
+            font-size: smaller;
+        }
+
+        .number {
+            font-size: 2em;
+            margin-bottom: -10px;
+        }
+    }
+}
+
+.product.expanded {
+    .row {
+    }
+
+    .col {
+        width: 1 / 6 * 80%;
+        vertical-align: top;
+        padding-top: 0.34em;
+    }
+
+    .name {
+        width: 2/6 * 100%;
+        
+        .logo {
+            padding: 0.34em 0;
+            
+            img {
+                max-width: 100%;
+                max-height: 3em;
+            }
+        }
+
+        .title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 1em;
+        }
+    }
+
+    .service-model {
+        font-size: smaller;
+    }
+
+    .deployment-model {
+        font-size: smaller;
+    }
+
+    .impact-level {
+        text-align: center;
+        font-size: smaller;
+    }
+
+    .status {
+        text-align: center;
+        
+        img {
+            max-width: 100%;
+            max-height: auto;
+        }
+    }
+
+    .reuses {
+        float: right;
+        text-align: center;
+        width: 6em;
+        height: 6em;
+        padding-top: 1.5em;
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: bolder;
+        border-right: none;
+        border-bottom: 1px solid $color-white;
+
+        .text {
+            font-size: smaller;
+        }
+
+        .number {
+            font-size: 2em;
+            margin-bottom: -10px;
+        }
+    }
+}
+
+.agency.expanded {
+    .row {
+    }
+
+    .col {
+        width: 1 / 2 * 80%;
+        vertical-align: top;
+        padding-top: 0.34em;
+    }
+
+    .name {
+    }
+
+    .reuses {
+        float: right;
+        text-align: center;
+        width: 6em;
+        height: 6em;
+        padding-top: 1.5em;
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: bolder;
+        border-right: none;
+        border-bottom: 1px solid $color-white;
+
+        .text {
+            font-size: smaller;
+        }
+
+        .number {
+            font-size: 2em;
+            margin-bottom: -10px;
+        }
+    }
+}
+
+.assessor.expanded {
+    .row {
+    }
+
+    .col {
+        width: 1 / 2 * 80%;
+        vertical-align: top;
+        padding-top: 0.34em;
+    }
+
+    .name {
+    }
+
+    .reuses {
+        float: right;
+        text-align: center;
+        width: 6em;
+        height: 6em;
+        padding-top: 1.5em;
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: bolder;
+        border-right: none;
+        border-bottom: 1px solid $color-white;
+
+        .text {
+            font-size: smaller;
+        }
+
+        .number {
+            font-size: 2em;
+            margin-bottom: -10px;
+        }
+    }
 }
