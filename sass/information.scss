@@ -4,6 +4,22 @@
 @import '../node_modules/uswds/src/stylesheets/core/_defaults';
 @import '../node_modules/uswds/src/stylesheets/core/_base';
 
+.comparison {
+    display: inline-block;
+    width: 100%;
+
+    .first {
+        display: inline-block;
+        float: left;
+        width: 1/2 * 100%;
+    }
+
+    .second {
+        display: inline-block;
+        width: 1/2 * 100%;
+    }
+}
+
 .comparison-list {
     .message {
         margin-bottom: 2em;
