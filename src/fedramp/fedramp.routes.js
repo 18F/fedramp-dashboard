@@ -66,7 +66,7 @@
                 templateUrl: 'src/fedramp/home/provider-information.html',
                 controller: 'ProviderInformationController as controller'
             })
-            .state('fedramp.app.home.provider.comparison', {
+            .state('fedramp.app.provider.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/provider-comparison.html',
                 controller: 'ProviderComparisonController as controller'
@@ -114,10 +114,10 @@
                 templateUrl: 'src/fedramp/home/agency-information.html',
                 controller: 'AgencyInformationController as controller'
             })
-            .state('fedramp.app.agency.information.comparison', {
+            .state('fedramp.app.agency.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/agency-comparison.html',
-                controller: 'AgencyComparisonController as controller,'
+                controller: 'AgencyComparisonController as controller'
             })
             .state('fedramp.app.home.assessors', {
                 url: '/assessors',
@@ -138,7 +138,7 @@
                 templateUrl: 'src/fedramp/home/assessor-information.html',
                 controller: 'AssessorInformationController as controller'
             })
-            .state('fedramp.app.assessor.information.comparison', {
+            .state('fedramp.app.assessor.comparison', {
                 url: '/:first/versus/:second',
                 templateUrl: 'src/fedramp/home/assessor-comparison.html',
                 controller: 'AssessorComparisonController as controller'

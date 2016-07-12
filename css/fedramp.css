@@ -2585,7 +2585,8 @@ body {
     margin-top: 0; }
 
 .information .close {
-  background-color: #323a45; }
+  background-color: #323a45;
+  cursor: pointer; }
   .information .close .col {
     width: 100%; }
   .information .close a {
@@ -2677,13 +2678,25 @@ body {
     .information .service-description .col i {
       float: right; }
 
-.information .agencies {
+.information .providers,
+.information .products,
+.information .agencies,
+.information .assessors {
   border-top: none; }
-  .information .agencies ul {
+  .information .providers ul,
+  .information .products ul,
+  .information .agencies ul,
+  .information .assessors ul {
     margin-left: -5px; }
-    .information .agencies ul li {
+    .information .providers ul li,
+    .information .products ul li,
+    .information .agencies ul li,
+    .information .assessors ul li {
       list-style: none; }
-    .information .agencies ul li::before {
+    .information .providers ul li::before,
+    .information .products ul li::before,
+    .information .agencies ul li::before,
+    .information .assessors ul li::before {
       content: ''; }
 
 #topnav .limit {

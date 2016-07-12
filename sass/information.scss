@@ -53,6 +53,7 @@
     
     .close {
         background-color: $color-gray-dark;
+        cursor: pointer;
 
         .col {
             width: 100%;
@@ -202,7 +203,10 @@
         }
     }
 
-    .agencies {
+    .providers,
+    .products,
+    .agencies,
+    .assessors {
         border-top: none;
 
         ul {

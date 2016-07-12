@@ -1,60 +1,59 @@
 <div class="information assessor">
-    <div class="usa-grid">
-        <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
+    <div class="row close">
+        <a ng-click="controller.close()">
+            <div class="col">
+                <i class="fa fa-times"></i>
+                <br />
+                Close
+            </div>
+        </a>
     </div>
-    <div class="usa-grid">
-        <div class="usa-width-two-thirds">
-            <!-- Logo -->
-            Logo
+    <div class="row header">
+        <div class="col">
+            <div class="title">
+                <strong>{{ controller.model.name }}</strong>
+            </div>
         </div>
-        <div class="usa-width-one-sixth">
-            <!-- Status -->
-            Status
-        </div>
-        <div class="usa-width-one-sixth">
-            {{controller.model.reuse}}
-        </div>
-    </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <strong>Contact Information</strong>
-        </div>
-        <div>POC: {{controller.model.pointOfContact}}</div>
-        <div>E-mail: {{controller.model.email}}</div>
-        <div>Website: {{controller.model.url}}</div>
-    </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <strong>Description</strong>
+        <div class="col reuse">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
         </div>
     </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <strong>Providers:</strong>
+    <div class="row system-profile">
+        <div class="col">
+            <h4>Contact Information</h4>
+
+            <h5>POC</h5>
+            <p>{{controller.model.pointOfContact}}</p>
+
+            <h5>E-mail</h5>
+            <p>{{controller.model.email}}</p>
+
+            <h5>Website</h5>
+            <p>{{controller.model.url}}</p>
         </div>
-        <div class="usa-width-one-whole">
+    </div>
+    <div class="row providers">
+        <div class="col">
+            <h4>Providers</h4>
             <ul>
                 <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
             </ul>
         </div>
     </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <strong>Products:</strong>
-        </div>
-        <div class="usa-width-one-whole">
+    <div class="row products">
+        <div class="col">
+            <h4>Products</h4>
             <ul>
                 <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
             </ul>
         </div>
     </div>
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-            <strong>Agencies:</strong>
-        </div>
-        <div class="usa-width-one-whole">
+    <div class="row agencies">
+        <div class="col">
+            <h4>Agencies</h4>
             <ul>
-                <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
+                <li ng-repeat="agency in controller.model.agencys track by $index">{{agency}}</li>
             </ul>
         </div>
     </div>
