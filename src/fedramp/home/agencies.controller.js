@@ -13,7 +13,6 @@
      */
     function AgenciesController ($log, agencies) {
         var self = this;
-        $log.debug(agencies);
 
         self.agencies = agencies;
     }
