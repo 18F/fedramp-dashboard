@@ -1,9 +1,7 @@
 <!-- TODO: Determine if the US Grid layout should be used -->
-<div ng-if="controller.expand" class="tile expanded">
-    <!-- <div class="row"> -->
-    <div class="usa-grid">
-        <!-- <div class="col"> -->
-        <div class="usa-width-one-fourth">
+<div ng-if="controller.expand" class="provider expanded">
+    <div class="row">
+        <div class="col name">
             <div class="logo">
                 <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
             </div>
@@ -11,50 +9,42 @@
                 <strong>{{ controller.model.name }}</strong>
             </div>
         </div>
-        <!-- <div class="col service-model"> -->
-        <div class="usa-width-one-fourth service-model">
+        <div class="col service-model">
             <div ng-repeat="model in controller.model.serviceModels">{{ model }}</div>
         </div>
-        <!-- <div class="col deployment-level"> -->
-        <div class="usa-width-one-fourth deployment-level">
+        <div class="col deployment-model">
             <div ng-repeat="model in controller.model.deploymentModels">{{ model }}</div>
         </div>
-        <!-- <div class="col reuses"> -->
-        <div class="usa-width-one-fourth reuses">
-            {{ controller.model.reuses }}
+        <div class="col reuses">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
         </div>
     </div>
 </div>
 
-<div ng-if="!controller.expand" class="tile">
-    <!-- <div class="row"> -->
-    <div class="usa-grid">
-        <!-- <div class="col"> -->
-        <div class="usa-width-one-half">
+<div ng-if="!controller.expand" class="provider card">
+    <div class="row header">
+        <div class="col name">
             <div class="logo">
                 <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
             </div>
+        </div>
+        <div class="col reuses">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col">
             <div class="title">
                 <strong>{{ controller.model.name }}</strong>
             </div>
-        </div>
-        <!-- <div class="col reuses"> -->
-        <div class="usa-width-one-half reuses">
-            {{ controller.model.reuses }}
-        </div>
-    </div>
-    <!-- <div class="row"> -->
-    <div class="usa-grid">
-        <!-- <div class="col"> -->
-        <div class="usa-width-one-whole">
-            <div class="service-model">
-                <strong>Service Model:</strong>
-                {{ controller.model.serviceModels.join(', ') }}
-            </div>
-            <div class="deployment-model">
-                <strong>Deployment Models:</strong>
-                {{ controller.model.deploymentModels.join(', ') }}
-            </div>
+            <dl>
+                <dt>Service Model:</dt>
+                <dd>{{ controller.model.serviceModels.join(', ') }}</dd>
+                <dt>Deployment Model:</dt>
+                <dd>{{ controller.model.deploymentModels.join(', ') }}</dd>
+            </dl>
         </div>
     </div>
 </div>

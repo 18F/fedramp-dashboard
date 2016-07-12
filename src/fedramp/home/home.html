@@ -1,39 +1,44 @@
 <div class="usa-content">
-    <div class="usa-grid-full text-center">
-        <div class="usa-width-one-half">
-            <p>
-                <strong style="font-size: larger;">{{homeController.leveragedAtos()}}</strong>
-                <div>Total reuses</div>
-            </p>
+    <div class="fr-dash-header usa-color-primary-darkest">
+        <div class="usa-grid-full text-center fr-large-metrics">
+            <div class="usa-width-one-half">
+                <p class="fr-large-number">
+                    <strong>{{homeController.leveragedAtos()}}</strong>
+                    <div>Total reuses</div>
+                </p>
+            </div>
+            <div class="usa-width-one-half">
+                <p class="fr-large-number">
+                    <strong>{{homeController.totalAuthorized()}}</strong>
+                    <div>Total Authorized</div>
+                </p>
+            </div>
         </div>
-        <div class="usa-width-one-half">
-            <p>
-                <strong style="font-size: larger;">{{homeController.totalAuthorized()}}</strong>
-                <div>Total Authorized</div>
-            </p>
+        <div class="usa-grid-full text-center fr-small-metrics">
+            <div class="usa-width-one-third">
+                <p class="fr-large-number">
+                    <strong>67<span class="fr-light-font">%</span></strong>
+                    <div>TBD</div>
+                </p>
+            </div>
+            <div class="usa-width-one-third">
+                <p class="fr-large-number">
+                    <strong><span class="fr-light-font">$</span>{{homeController.totalCostSavings()}}</strong>
+                    <div>Cost Savings</div>
+                </p>
+            </div>
+            <div class="usa-width-one-third">
+                <p class="fr-large-number">
+                    <strong>3,297</strong>
+                    <div>TBD</div>
+                </p>
+            </div>
         </div>
     </div>
-    <div class="usa-grid-full text-center">
-        <div class="usa-width-one-third">
-            <p>
-                <strong style="font-size: larger;">67%</strong>
-                <div>TBD</div>
-            </p>
-        </div>
-        <div class="usa-width-one-third">
-            <p>
-                <strong style="font-size: larger;">${{homeController.totalCostSavings()}}</strong>
-                <div>Cost Savings</div>
-            </p>
-        </div>
-        <div class="usa-width-one-third">
-            <p>
-                <strong style="font-size: larger;">3,297</strong>
-                <div>TBD</div>
-            </p>
-        </div>
+    <div class="text-center fr-filter-label">
+        <span class="fr-filter-label-rule"></span>
+        <span class="fr-filter-label-text">Filter results by</span>
     </div>
-    <div class="text-center">Filter results by</div>
     <div ng-show="homeController.hasData()">
         <div class="filters usa-grid-full">
             <div class="usa-width-one-fourth">

@@ -1,107 +1,108 @@
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-half">
-        <div class="logo">
-            <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
+<div class="information product">
+    <div class="row close">
+        <a ng-click="controller.close()">
+            <div class="col">
+                <i class="fa fa-times"></i>
+                <br />
+                Close
+            </div>
+        </a>
+    </div>
+    <div class="row header">
+        <div class="col">
+            <div class="logo">
+                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
+            </div>
+            <div class="title">
+                <strong>{{ controller.model.provider }} - {{ controller.model.name }}</strong>
+            </div>
         </div>
-        <div class="title">
-            <strong>{{ controller.model.pkgId }} - {{ controller.model.name }}</strong>
+        <div class="col reuse">
+            <div class="number">{{controller.model.reuses}}</div>
+            <div class="text">Reuses</div>
         </div>
     </div>
-    <div class="usa-width-one-half reuse">
-        {{controller.model.reuse}}
+    <div class="row status">
+        <div class="col ready">
+            <img ng-if="controller.isReady()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
+            <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />
+            <div class="text">FedRAMP Ready</div>
+        </div>                                 
+        <div class="col in-process">
+            <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
+            <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />
+            <div class="text">FedRAMP In Process</div>
+        </div>                                 
+        <div class="col compliant">
+            <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
+            <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Compliant" />
+            <div class="text">FedRAMP Compliant</div>
+        </div>
+        <div class="col progress">
+            <div class="percent percent-{{controller.percentComplete()}}"></div>
+        </div>
+        <div class="col message">
+            {{ controller.statusMessage() }}
+
+        </div>
     </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid status">
-    <!-- <div class="col ready"> -->
-    <div class="usa-width-one-third ready">
-        <img ng-if="controller.isReady()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
-        <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />
-    </div>                                 
-    <!-- <div class="col in-process"> -->
-    <div class="usa-width-one-third in-process">
-        <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
-        <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />
-    </div>                                 
-    <!-- <div class="col compliant"> -->
-    <div class="usa-width-one-third compliant">
-        <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
-        <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Compliant" />
+    <div class="row system-profile">
+        <div class="col contact-information">
+            <h5>Contact Information</h5>
+            <div><strong>POC:</strong></div>
+            <div><strong>E-mail:</strong></div>
+            <div><strong>Website:</strong></div>
+        </div>
+        <div class="col">
+            <h4>System Profile</h4>
+
+            <h5>Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span></h5>
+            <p>{{controller.model.serviceModels.join(', ')}}</p>
+
+            <h5>Deployment Model</h5>
+            <p>{{controller.model.deploymentModel}}</p>
+
+            <h5>Impact Level</h5>
+            <p>{{controller.model.impactLevel}}</p>
+        </div>
     </div>
-    <!-- <div class="col progress"></div> -->
-    <div class="usa-width-one-whole progress">
-        <div class="percent percent-{{controller.percentComplete()}}"></div>
+    <div class="row fedramp">
+        <div class="col">
+            <h4>Package ID</h4>
+            <p>
+                {{controller.model.pkgId}}
+                <br />
+                <a href="#">Package Access Request Form</a>
+            </p>
+
+            <h4>FedRAMP Compliant Detail</h4>
+            <dl>
+                <dt>Authorization Type:</dt>
+                <dd></dd>
+                <dt>Agency Lead:</dt>
+                <dd></dd>
+                <dt>Independent Assessor:</dt>
+                <dd></dd>
+                <dt>Authorization Date:</dt>
+                <dd></dd>
+                <dt>Expiration Date:</dt>
+                <dd></dd>
+            </dl>
+            <a href="#">View Authorization Letter</a>
+        </div>
     </div>
-    <!-- <div class="col messege"></div> -->
-    <div class="usa-width-one-whole message">
-        {{ controller.statusMessage() }}
+    <div class="row service-description">
+        <div class="col">
+            <h4>Service Description</h4>
+            <i class="fa fa-plus"></i>
+        </div>
     </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>System Profile</strong>
-    </div>
-    <div>
-        Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span>:
-        {{controller.model.serviceModels.join(', ')}}
-    </div>
-    <div>
-        Deployment Model:
-        {{controller.model.deploymentModel}}
-    </div>
-    <div>
-        Impact Level:
-        {{controller.model.impactLevel}}
-    </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Contact Information</strong>
-    </div>
-    <div>POC:</div>
-    <div>E-mail:</div>
-    <div>Website:</div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Package ID</strong>
-        <p>{{controller.model.pkgId}}</p>
-    </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Service Description</strong>
-    </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>FedRAMP Compliant Detail</strong>
-    </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Associated Risks</strong>
-    </div>
-</div>
-<!-- <div class="row"> -->
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Agencies using this service</strong>
-    </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
-        </ul>
+    <div class="row agencies">
+        <div class="col">
+            <h4>Agencies using this service</h4>
+            <ul>
+                <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
+            </ul>
+        </div>
     </div>
 </div>

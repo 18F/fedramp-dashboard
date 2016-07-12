@@ -1,59 +1,61 @@
-<div class="usa-grid">
-    <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-two-thirds">
-        <!-- Logo -->
-        Logo
+<div class="information assessor">
+    <div class="usa-grid">
+        <a ng-click="controller.close()"><div class="usa-width-whole">Close</div></a>
     </div>
-    <div class="usa-width-one-sixth">
-        <!-- Status -->
-        Status
+    <div class="usa-grid">
+        <div class="usa-width-two-thirds">
+            <!-- Logo -->
+            Logo
+        </div>
+        <div class="usa-width-one-sixth">
+            <!-- Status -->
+            Status
+        </div>
+        <div class="usa-width-one-sixth">
+            {{controller.model.reuse}}
+        </div>
     </div>
-    <div class="usa-width-one-sixth">
-        {{controller.model.reuse}}
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+            <strong>Contact Information</strong>
+        </div>
+        <div>POC: {{controller.model.pointOfContact}}</div>
+        <div>E-mail: {{controller.model.email}}</div>
+        <div>Website: {{controller.model.url}}</div>
     </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Contact Information</strong>
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+            <strong>Description</strong>
+        </div>
     </div>
-    <div>POC: {{controller.model.pointOfContact}}</div>
-    <div>E-mail: {{controller.model.email}}</div>
-    <div>Website: {{controller.model.url}}</div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Description</strong>
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+            <strong>Providers:</strong>
+        </div>
+        <div class="usa-width-one-whole">
+            <ul>
+                <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
+            </ul>
+        </div>
     </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Providers:</strong>
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+            <strong>Products:</strong>
+        </div>
+        <div class="usa-width-one-whole">
+            <ul>
+                <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
+            </ul>
+        </div>
     </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="provider in controller.model.providers track by $index">{{provider}}</li>
-        </ul>
-    </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Products:</strong>
-    </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="product in controller.model.products track by $index">{{product}}</li>
-        </ul>
-    </div>
-</div>
-<div class="usa-grid">
-    <div class="usa-width-one-whole">
-        <strong>Agencies:</strong>
-    </div>
-    <div class="usa-width-one-whole">
-        <ul>
-            <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
-        </ul>
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+            <strong>Agencies:</strong>
+        </div>
+        <div class="usa-width-one-whole">
+            <ul>
+                <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
+            </ul>
+        </div>
     </div>
 </div>
