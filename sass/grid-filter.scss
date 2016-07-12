@@ -2,10 +2,32 @@
 
 grid-filter {
     display:inline-block;
+    span.option {
+        font-size: 0.8em;
+        .fa-check-circle {
+            color: #0070ba;
+        }
+    }
+    span.option.selected {
+        font-weight:600;
+    }
 }
 
 .grid-filter-expanded {
     display:block;
+    margin-top:12px;
+    margin-bottom:12px;
+    span.icons {
+        float:right;
+        font-size:0.8em;
+    }
+    span.filter-header {
+        font-weight: 600;
+        font-size: 0.8em;
+    }
+    div.options {
+        padding-left: 16px;
+    }
 }
 .grid-filter {
     cursor: pointer;

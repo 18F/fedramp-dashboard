@@ -9,12 +9,14 @@
 </div>
 
 <div ng-if="controller.expanded">
-    <div style="background-color:#e5e5e5;" ng-click="controller.opened = !controller.opened">
-        {{controller.header}}
-        <i class="fa fa-plus" aria-hidden="true" ng-if="!controller.opened"></i>
-        <i class="fa fa-minus" aria-hidden="true" ng-if="controller.opened"></i>
+    <div ng-click="controller.opened = !controller.opened">
+        <span class="filter-header">{{controller.header}}</span>
+        <span class="icons">
+            <i class="fa fa-plus" aria-hidden="true" ng-if="!controller.opened"></i>
+            <i class="fa fa-minus" aria-hidden="true" ng-if="controller.opened"></i>
+        </span>
     </div>
-    <div ng-show="controller.opened">
+    <div class="options" ng-show="controller.opened">
         <ng-include src="controller.gridFilterOptionsTemplatePath"></ng-include>
     </div>
 </div>
