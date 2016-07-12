@@ -2282,6 +2282,12 @@ p {
 input {
   max-width: none !important; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 .fr-dash-header {
   background-color: #112e51; }
   .fr-dash-header .fr-large-metrics {
@@ -2324,6 +2330,12 @@ input {
   .fr-dash-header .fr-light-font {
     font-weight: 400; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 .fr-filter-label {
   height: 118px;
   position: relative; }
@@ -2344,15 +2356,38 @@ input {
     padding: 0 12px;
     font-weight: 700; }
 
-.filters {
-  max-width: none; }
-  .filters button {
+.fr-filters {
+  display: table;
+  width: 100%;
+  max-width: none;
+  height: 8.5rem;
+  line-height: 8.5rem; }
+  .fr-filters .fr-filters-row {
+    display: table-row; }
+    .fr-filters .fr-filters-row .usa-width-one-fourth {
+      border-right: 1px solid #ffffff;
+      display: table-cell; }
+    .fr-filters .fr-filters-row .usa-width-one-fourth, .fr-filters .fr-filters-row .usa-width-one-fourth:nth-child(2n) {
+      width: 25%;
+      margin-right: 0; }
+    .fr-filters .fr-filters-row .usa-width-one-fourth:last-child {
+      border-right: none; }
+  .fr-filters button {
     width: 100%;
+    height: 8.5rem;
     border-radius: 0;
-    height: 3.5em; }
-  .filters button.active {
-    color: #fff;
-    background-color: blue; }
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+    background-color: #d6d7d9;
+    color: #5b616b;
+    transition: background-color 0.2s, color 0.2s; }
+    .fr-filters button span {
+      display: block;
+      line-height: 1.7rem; }
+  .fr-filters button.active, .fr-filters button:hover {
+    background-color: #0071bc;
+    color: #fff; }
 
 @font-face {
   font-family: "Font Awesome";
@@ -2360,6 +2395,12 @@ input {
   font-weight: 400;
   src: font-source-declaration("Font Awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont", false, eot svg woff2 woff ttf, font-url-prefixer(false)); }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 grid-filter {
   display: inline-block; }
 
