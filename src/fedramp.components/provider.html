@@ -43,7 +43,7 @@
         <div class="col">
             <h4>Products provided</h4>
             <ul ng-if="controller.model.products.length > 0">
-                <li ng-repeat="product in controller.model.products track by $index">{{product.name}}</li>
+                <li ng-repeat="product in controller.model.products | orderBy:'+name' track by $index">{{product.name}}</li>
             </ul>
             <p ng-if="controller.model.products.length === 0">
                 None
@@ -54,7 +54,7 @@
         <div class="col">
             <h4>Agencies</h4>
             <ul ng-if="controller.model.agencies.length > 0">
-                <li ng-repeat="agency in controller.model.agencies track by $index">{{agency}}</li>
+                <li ng-repeat="agency in controller.model.agencies | orderBy:'+' track by $index">{{agency}}</li>
             </ul>
             <p ng-if="controller.model.agencies.length === 0">
                 None

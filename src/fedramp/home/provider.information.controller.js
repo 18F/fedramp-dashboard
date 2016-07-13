@@ -35,7 +35,7 @@
          * @memberof Controllers.ProviderInformationController
          */
         self.close = function () {
-            $state.go('fedramp.app.home', {}, { reload: true });
+            $state.go('fedramp.app.home.providers', {}, { reload: true });
         };
     }
 })();
