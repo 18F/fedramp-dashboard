@@ -31,6 +31,7 @@
      */
     function GridSearch (Searcher) {
         var self = this;
+        var searcher = new Searcher();
         self.filtered = [];
         self.$onInit = $onInit;
 
@@ -46,8 +47,12 @@
          */
         function doFilter(obj, index, arr){
             if(self.searchTerm){
-                var found = new Searcher(obj, self.property).search(self.searchTerm);
-                return found;
+                var found = searcher.prop(self.property).contains(obj, self.searchTerm);
+                if(found.length > 0){
+                    return obj;
+                } else {
+                    return null;
+                }
             } else {
                 return obj;
             }

@@ -33,7 +33,10 @@
          *
          * }
          *
-         * new Searcher(objectToSearch, propertyExpression);
+         * var searcher = new Searcher();
+         * search.prop(<expression>).<action>
+         *
+         * search.prop('i.name in products').contains(dataToSearch, searchTerm);
          *
          * Property expression examples:
          *
@@ -46,17 +49,159 @@
          * @constructor
          * @memberof Services
          */
-        function Searcher(data, propExpression){
+        function Searcher(){
+            var self = this;
+
+            self.prop = prop;
+
+            /**
+             * Executes search by defined property expression
+             */
+            function prop(expression){
+                return new PropertyExpression(expression);
+            }
+        }
+
+
+        /**
+         * Handles searching for information within an object using a property expression.
+         */
+        function PropertyExpression(expression){
+
+            var self = this;
+
+            self.contains = contains;
+            self.equals = equals;
+            self.withinDateRange = withinDateRange;
+            self.criteriaFunc = criteriaFunc;
+
+            /**
+             * Allows a function to be passed in to perform a manual comparison.
+             */
+            function criteriaFunc(data, func){
+                var results = [];
+                eachResult(data, function(currentObject, value){
+                    var add = func.call(self, currentObject, value);
+                    if(add){
+                        results.push(add);
+                    }
+                });
+                return results;
+            }
+
+            /**
+             * Iterates through an objects properties using the specified property expression
+             * and performs a contains comparison.
+             */
+            function contains(data, searchTerm){
+                var results = [];
+
+                eachResult(data, function(currentObject, value){
+                    if(value.toString().toLowerCase().indexOf(searchTerm.toString().toLowerCase()) !== -1){
+                        results.push(currentObject);
+                        return true;
+                    }
+                    return false;
+                });
+
+                return results;
+            }
+
+            /**
+             * Iterates through an objects properties using the specifed property expression 
+             * and performs an equals comparison.
+             */
+            function equals(data, searchTerm){
+                var results = [];
+                eachResult(data, function(currentObject, value){
+                    if(value.toString() === searchTerm.toString()){
+                        results.push(currentObject);
+                        return true;
+                    }
+                    return false;
+                });
+                return results;
+            }
+
+            /**
+             * Performs a date range comparison
+             */
+            function withinDateRange(data, start, end){
+                var results = [];
+                var startDate = new Date(start);
+                var endDate = new Date(end);
+
+                eachResult(data, function(currentObject, value){
+                    var valueDate = new Date(value);
+                    if(valueDate >= startDate && valueDate <= endDate){
+                        results.push(currentObject);
+                        return true;
+                    }
+                    return false;
+
+                });
+                return results;
+            }
+
+            /**
+             * Helper function iterates through all objects making the property expression.
+             */
+            function eachResult(data, func){
+                if(!angular.isArray(data)){
+                    data = [data];
+                }
+                data.forEach(function(currentObject){
+                    new Walker(currentObject, expression).walk(function(obj){
+                        return func.call(self, currentObject, obj);
+                    });
+                });
+            }
+        }
+
+        /**
+         * Traverses an object based on the property expression
+         */
+        function Walker(data, propExpression){
             var self = this;
             var targetKey = null;
             var targetProps = null;
             var isPrimitive = true;
             var useIndex = false;
-            // public funcs
-            self.search = search;
+            
+            self.walk = walk;
 
-            function init(){
-                parseKeys();
+            function walk(func){
+                find(data, targetProps, func);
+            }
+
+            /**
+             * Recursively walks an object to reach the property expression
+             */
+            function find(obj, props, q){
+                props = angular.copy(props);
+
+                if(!props){
+                    return q.call(self, $parse(targetKey)(obj));
+                }
+
+                if(props.length === 0){
+                    if(isPrimitive || useIndex){
+                        //return match(obj, q);
+                        return q.call(self, obj);
+                    } 
+                    return q.call(self, $parse(targetKey)(obj));
+                }
+
+                var curProp = props.shift();
+                var value = $parse(curProp)(obj);
+                if(angular.isArray(value)){
+                    for(var x = 0; x < value.length; x++){
+                        var found = find(value[x], props, q);
+                        if(found){
+                            return;
+                        }
+                    }
+                }
             }
 
             function parseKeys(){
@@ -71,82 +216,7 @@
                 }
             }
 
-            /**
-             * Executes a search using the property expression and data defined in the constructor.
-             * @public
-             * @memberof Services.Searcher
-             * @param {string} q parameter to search in object(s)
-             * @returns
-             *  If a single object is found, returns the object if found or null otherwise. If an array of objects
-             *  is passed in, an array of found objects is returned.
-             */
-            function search(q){
-                if(angular.isArray(data)){
-                    return data.filter(function(obj){
-                        var found = find(obj, targetProps, q);
-                        if(found){
-                            return obj;
-                        }
-                        return null;
-                    });
-                }
-
-                var found = find(data, targetProps, q);
-                if(found){
-                    return data;
-                }
-                return null;
-            }
-
-            /**
-             * Recursively walks the properties of an object defined in the property expression and compares
-             * if their values are a match against the search term.
-             *
-             * @public
-             * @memberof Services.Searcher
-             * @param {object} obj the current object being checked
-             * @param {array} props the properties that are left to be evaluated
-             * @param {string} q the search term
-             *
-             * @returns
-             * if object has been found
-             */
-            function find(obj, props, q){
-
-                if(!props){
-                    return match($parse(targetKey)(obj), q);
-                }
-
-                props = angular.copy(props);
-                if(props.length === 0){
-                    if(isPrimitive || useIndex){
-                        return match(obj, q);
-                    } 
-                    return match($parse(targetKey)(obj), q);
-                }
-                var curProp = props.shift();
-
-                var value = $parse(curProp)(obj);
-                if(angular.isArray(value)){
-                    for(var x = 0; x < value.length; x++){
-                        var found = (find(value[x], props, q));
-                        if(found){
-                            return found;
-                        }
-                    }
-                }
-                return false;
-            }
-
-            /**
-             * The default comparator when determining if a search is a match
-             */
-            function match(value, searchTerm){
-                var pos = value.toString().toLowerCase().indexOf(searchTerm.toString().toLowerCase());
-                return pos !== -1;
-            }
-
-            init();
+            parseKeys();
         }
     }
 

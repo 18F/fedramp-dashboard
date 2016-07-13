@@ -37,12 +37,22 @@ describe('Searcher', function(){
 
     var  data = [
         {
-        name: 'John',
-        owns:[1,2,3,4]
+        name: 'Winston',
+        owns:[1,2,3],
+        authorized: '01/10/2016',
+        buys:[
+            {
+                name: 'beer',
+                addons: [
+                    'Table', 'Chairs'
+                ]
+            }
+        ]
         },
         {
         name: 'John',
-        owns:[1, 10]
+        owns:[1, 10,3,40],
+        authorized: '01/10/2012'
         }
     ];
 
@@ -54,27 +64,30 @@ describe('Searcher', function(){
         });
     });
 
-	describe('search()', function(){
+	describe('prop()', function(){
+
         it('Can search through nested arrays', function(){
-            var found = new Searcher(toSearch, 'i.name in owns.dogs.toys').search('bone');
-            expect(found).toBeDefined();
+            var s = new Searcher();
+            expect(s.prop('o in owns').contains(data, '1').length).toBe(2);
+            expect(s.prop('name').contains(data, 'Win').length).toBe(1);
+            expect(s.prop('b.name in buys').contains(data, 'beer').length).toBe(1);
+            expect(s.prop('b.name in buys').equals(data, 'beer').length).toBe(1);
+            expect(s.prop('b.name in buys').equals(data, 'Beer').length).toBe(0);
+            expect(s.prop('addon in buys.addons').contains(data, 'tabl').length).toBe(1);
+            expect(s.prop('toy.type.large in owns.dogs.toys').contains(toSearch, 1).length).toBe(1);
+            expect(s.prop('toy.type.large in owns.dogs.toys').contains(toSearch, 5).length).toBe(0);
+            expect(s.prop('authorized').withinDateRange(data, '01/01/2012', '02/01/2012').length).toBe(1);
+
+            expect(s.prop('own.name in owns.dogs').contains(toSearch, 'winston').length).toBe(1);
+
+            var criteriaFunc = function(currentObject){
+                if(currentObject.name === 'Winston'){
+                    return true;
+                }
+                return false;
+            };
+            expect(s.prop('').criteriaFunc(data, criteriaFunc).length).toBe(1);
         });
-
-        it('Can handle a search miss', function(){
-            var found = new Searcher(toSearch, 'i.name in owns.dogs.toys').search('stuffs');
-            expect(found).toBe(null);
-        });
-
-		it('Can search array of nested arrays', function(){
-            var found = new Searcher(data, 'name in owns').search(2);
-            expect(found.length).toBe(1);
-
-            found = new Searcher(data, 'name in owns').search(1);
-            expect(found.length).toBe(2);
-
-            found = new Searcher(toSearch, 'name').search('John');
-            expect(found).toBeDefined();
-		});
 
 	});
 });
