@@ -1,3 +1,8 @@
+@import 'variables';
+
+ui-view {
+	background-color:$color-gray-lightest;
+}
 .text-center {
     text-align: center;
 }

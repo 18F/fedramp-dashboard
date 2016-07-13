@@ -33,6 +33,7 @@
 	max-width:none;
 	height:8.5rem;
 	line-height:8.5rem;
+	margin-bottom:1.8rem;
 
 	.fr-filters-row {
 		display:table-row;
@@ -64,7 +65,8 @@
 		// added span and tighter line height to preserve nice wrapping
 		span {
 			display:block;
-			line-height:1.7rem;
+			line-height:1.8rem;
+			font-size:1.8rem
 		}
 	}
 	// filter active / hover state alts
@@ -72,4 +74,59 @@
 		background-color:$color-primary;
 	    color: #fff;
 	}
+}
+.fr-post-filter-metrics {
+	max-width:none;
+	height:7.6rem;
+	background-color:$color-primary-darkest;
+
+	> div {
+		position:relative;
+	}
+	// grid / list view controls
+	.controls {
+		position:absolute;
+		top:0;
+		right:0;
+		height:7.6rem;
+		width:3.8rem;
+		border-left:3px solid $color-white;
+		background-color:$color-gray-lighter;
+
+		label {
+			height:100%;
+			width:100%;
+			margin-top:0;
+			cursor:pointer;
+		}
+		div {
+			height:50%;
+			text-align:center;
+			font-size:2.2rem;
+			padding-top:0.4rem;
+		}
+		.list-view, .grid-view {
+			transition:background-color 0.3s, color 0.3s;
+		}
+		.ng-empty, .ng-not-empty:hover {
+			~ .list-view {
+				color:$color-gray;
+				background-color:$color-gray-lighter;
+			}
+			~ .grid-view {
+				color:$color-white;
+				background-color: $color-primary;
+			}
+		}
+		.ng-not-empty, .ng-empty:hover {
+			~ .list-view {
+				color:$color-white;
+				background-color: $color-primary;
+			}
+			~ .grid-view {
+				color:$color-gray;
+				background-color:$color-gray-lighter;
+			}
+		}
+	}	
 }
