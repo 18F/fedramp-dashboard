@@ -49,6 +49,10 @@
 		.usa-width-one-fourth:last-child {
 			border-right:none;
 		}
+        .selected {
+            background-color:$color-primary;
+            color:$color-white;
+        }
 	}
 	// undid much of web standards to conform to design
 	button {

@@ -361,21 +361,32 @@
          * An array of options that can be selected to filter. These must be in the form 
          */
         function optionsFunc(source){
-            if(self.isArray){
-                return arrayOptionsFunc(source);
-            }
             var options = [];
-            var cache = {};
-            source.forEach(function(obj){
-                var val = $parse(self.property)(obj);
-                if(!cache[val]){
-                    options.push({
-                        label: val,
-                        value: val,
-                        selected: false
-                    });
-                    cache[val] = true;
+            if(self.isArray){
+                options =  arrayOptionsFunc(source);
+            } else {
+                var cache = {};
+                source.forEach(function(obj){
+                    var val = $parse(self.property)(obj);
+                    if(!cache[val]){
+                        options.push({
+                            label: val,
+                            value: val,
+                            selected: false
+                        });
+                        cache[val] = true;
+                    }
+                });
+            }
+            options.sort(function(o1, o2){
+                if(o1.value === o2.value){
+                    return 0;
                 }
+                if(o1.label < o2.label){
+                    return -1;
+                }
+
+                return 1;
             });
             return options;
         }

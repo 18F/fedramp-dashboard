@@ -2349,6 +2349,15 @@ fieldset {
     top: 0;
     transition: all 0.2s ease-in-out; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
+ui-view {
+  background-color: #f1f1f1; }
+
 .text-center {
   text-align: center; }
 
@@ -2441,7 +2450,8 @@ input {
   width: 100%;
   max-width: none;
   height: 8.5rem;
-  line-height: 8.5rem; }
+  line-height: 8.5rem;
+  margin-bottom: 1.8rem; }
   .fr-filters .fr-filters-row {
     display: table-row; }
     .fr-filters .fr-filters-row .usa-width-one-fourth {
@@ -2452,6 +2462,9 @@ input {
       margin-right: 0; }
     .fr-filters .fr-filters-row .usa-width-one-fourth:last-child {
       border-right: none; }
+    .fr-filters .fr-filters-row .selected {
+      background-color: #0071bc;
+      color: #ffffff; }
   .fr-filters button {
     width: 100%;
     height: 8.5rem;
@@ -2464,10 +2477,50 @@ input {
     transition: background-color 0.2s, color 0.2s; }
     .fr-filters button span {
       display: block;
-      line-height: 1.7rem; }
+      line-height: 1.8rem;
+      font-size: 1.8rem; }
   .fr-filters button.active, .fr-filters button:hover {
     background-color: #0071bc;
     color: #fff; }
+
+.fr-post-filter-metrics {
+  max-width: none;
+  height: 7.6rem;
+  background-color: #112e51; }
+  .fr-post-filter-metrics > div {
+    position: relative; }
+  .fr-post-filter-metrics .controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 7.6rem;
+    width: 3.8rem;
+    border-left: 3px solid #ffffff;
+    background-color: #d6d7d9; }
+    .fr-post-filter-metrics .controls label {
+      height: 100%;
+      width: 100%;
+      margin-top: 0;
+      cursor: pointer; }
+    .fr-post-filter-metrics .controls div {
+      height: 50%;
+      text-align: center;
+      font-size: 2.2rem;
+      padding-top: 0.4rem; }
+    .fr-post-filter-metrics .controls .list-view, .fr-post-filter-metrics .controls .grid-view {
+      transition: background-color 0.3s, color 0.3s; }
+    .fr-post-filter-metrics .controls .ng-empty ~ .list-view, .fr-post-filter-metrics .controls .ng-not-empty:hover ~ .list-view {
+      color: #5b616b;
+      background-color: #d6d7d9; }
+    .fr-post-filter-metrics .controls .ng-empty ~ .grid-view, .fr-post-filter-metrics .controls .ng-not-empty:hover ~ .grid-view {
+      color: #ffffff;
+      background-color: #0071bc; }
+    .fr-post-filter-metrics .controls .ng-not-empty ~ .list-view, .fr-post-filter-metrics .controls .ng-empty:hover ~ .list-view {
+      color: #ffffff;
+      background-color: #0071bc; }
+    .fr-post-filter-metrics .controls .ng-not-empty ~ .grid-view, .fr-post-filter-metrics .controls .ng-empty:hover ~ .grid-view {
+      color: #5b616b;
+      background-color: #d6d7d9; }
 
 @font-face {
   font-family: "Font Awesome";
@@ -2481,8 +2534,45 @@ input {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
+grid {
+  display: block;
+  max-width: none;
+  width: 100%;
+  margin-bottom: 700px; }
+  grid .fr-grid-layout {
+    display: table;
+    height: 4.4rem;
+    line-height: 4.4rem;
+    width: 100%;
+    font-size: 1.4rem; }
+    grid .fr-grid-layout .fr-grid-layout-row {
+      display: table-row; }
+      grid .fr-grid-layout .fr-grid-layout-row > div {
+        display: table-cell; }
+  grid .fr-grid-layout.fr-grid-header {
+    white-space: nowrap; }
+  grid > div > .fr-grid-layout {
+    margin: 2.3rem 0 1.6rem; }
+  grid .fr-grid-cell-name {
+    width: 31%;
+    padding-left: 1rem; }
+  grid .fr-grid-cell-service {
+    width: 16%; }
+  grid .fr-grid-cell-deployment {
+    width: 20%; }
+  grid .fr-grid-cell-impact {
+    width: 15%; }
+  grid .fr-grid-cell-icon {
+    width: 10%; }
+  grid .fr-grid-cell-metric {
+    width: 8%;
+    text-align: center; }
+
 grid-filter {
-  display: inline-block; }
+  display: inline-block;
+  background-color: #d6d7d9;
+  padding: 0 1rem 0 2rem;
+  color: #212121; }
   grid-filter span.option {
     font-size: 0.8em; }
     grid-filter span.option .fa-check-circle {
@@ -2506,6 +2596,10 @@ grid-filter {
 .grid-filter {
   cursor: pointer; }
 
+.filter-header {
+  font-size: 14px !important;
+  font-weight: 600; }
+
 .filter-dropdown {
   position: relative; }
 
@@ -2520,12 +2614,15 @@ grid-filter {
   border: 1px solid black;
   left: 0px; }
 
-grid-sort {
-  display: inline-block; }
+/*
+	provide condensed version of web standards variables for use
 
-.grid {
-  margin-bottom: 700px;
-  display: block; }
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
+grid-sort {
+  display: inline-block;
+  width: 3rem; }
 
 .grid-sort-selected {
   color: #0070ba; }
@@ -2545,6 +2642,10 @@ grid-sort {
     display: block;
     position: relative;
     bottom: -4px; }
+
+grid tile.expanded {
+  display: inline-block;
+  width: 100%; }
 
 #header {
   clear: both;
@@ -2694,6 +2795,17 @@ body {
 
 .lt-ie9 * {
   filter: none !important; }
+
+.comparison {
+  display: inline-block;
+  width: 100%; }
+  .comparison .first {
+    display: inline-block;
+    float: left;
+    width: 50%; }
+  .comparison .second {
+    display: inline-block;
+    width: 50%; }
 
 .comparison-list .message {
   margin-bottom: 2em; }
@@ -3022,23 +3134,18 @@ body {
 .lt-ie9 * {
   filter: none !important; }
 
+.tile .fr-grid-layout-row > div {
+  border-bottom: 1px solid #f1f1f1;
+  border-right: 1px solid #f1f1f1; }
+
 .tile .row {
   display: block;
   width: 100%;
-  clear: both;
-  /* border-top: 1px solid $color-gray-light; */
-  /* padding: 1em 0; */ }
-
-.tile .col {
-  display: inline-block;
-  float: left; }
+  clear: both; }
 
 .tile .expanded .row {
-  height: 6em;
+  height: 9.5rem;
   border-bottom: 1px solid #f1f1f1; }
-
-.tile .expanded .col {
-  /* border-right: 1px solid $color-gray-lightest; */ }
 
 .tile .card {
   height: 17em;
@@ -3097,45 +3204,44 @@ body {
     float: left;
     margin-left: 1em; }
 
-.provider.expanded .col {
-  width: 23%;
-  vertical-align: top;
-  padding-top: 0.34em; }
-
-.provider.expanded .name {
-  width: 40%; }
-  .provider.expanded .name .logo {
-    padding: 0.34em 0; }
-    .provider.expanded .name .logo img {
-      max-width: 100%;
-      max-height: 3em; }
-  .provider.expanded .name .title {
-    /* padding-left: 0.34em; */ }
-
-.provider.expanded .service-model {
-  width: 15%;
-  font-size: smaller; }
-
-.provider.expanded .deployment-model {
-  width: 15%;
-  font-size: smaller; }
-
-.provider.expanded .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .provider.expanded .reuses .text {
+.provider.expanded {
+  display: inline-block;
+  width: 100%; }
+  .provider.expanded .col {
+    width: 23%;
+    vertical-align: top;
+    padding-top: 0.34em; }
+  .provider.expanded .name {
+    width: 40%; }
+    .provider.expanded .name .logo {
+      padding: 0.34em 0; }
+      .provider.expanded .name .logo img {
+        max-width: 100%;
+        max-height: 3em; }
+    .provider.expanded .name .title {
+      /* padding-left: 0.34em; */ }
+  .provider.expanded .service-model {
+    width: 15%;
     font-size: smaller; }
-  .provider.expanded .reuses .number {
-    font-size: 2em;
-    margin-bottom: -10px; }
+  .provider.expanded .deployment-model {
+    width: 15%;
+    font-size: smaller; }
+  .provider.expanded .reuses {
+    float: right;
+    text-align: center;
+    width: 6em;
+    height: 6em;
+    padding-top: 1.5em;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .provider.expanded .reuses .text {
+      font-size: smaller; }
+    .provider.expanded .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
 
 .product.card .col {
   width: 33.33333%; }
@@ -3186,55 +3292,42 @@ body {
     float: left;
     margin-left: 1em; }
 
-.product.expanded .col {
-  width: 13.33333%;
-  vertical-align: top;
-  padding-top: 0.34em; }
-
-.product.expanded .name {
-  width: 33.33333%; }
+.product.expanded {
+  font-size: 1.6rem; }
+  .product.expanded .fr-grid-cell-name {
+    font-size: 1.8rem;
+    padding-left: 2rem; }
   .product.expanded .name .logo {
-    padding: 0.34em 0; }
-    .product.expanded .name .logo img {
-      max-width: 100%;
-      max-height: 3em; }
+    height: 4.4rem;
+    width: 15rem;
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    margin: 1rem 0; }
   .product.expanded .name .title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 1em; }
-
-.product.expanded .service-model {
-  font-size: smaller; }
-
-.product.expanded .deployment-model {
-  font-size: smaller; }
-
-.product.expanded .impact-level {
-  text-align: center;
-  font-size: smaller; }
-
-.product.expanded .status {
-  text-align: center; }
-  .product.expanded .status img {
-    max-width: 100%;
-    max-height: auto; }
-
-.product.expanded .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .product.expanded .reuses .text {
-    font-size: smaller; }
-  .product.expanded .reuses .number {
-    font-size: 2em;
-    margin-bottom: -10px; }
+    text-overflow: ellipsis; }
+  .product.expanded .impact-level {
+    /*
+        text-align: center;
+        font-size: smaller;
+*/ }
+  .product.expanded .status {
+    text-align: center; }
+    .product.expanded .status img {
+      max-width: 4.5rem;
+      max-height: auto; }
+  .product.expanded .reuses {
+    text-align: center;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .product.expanded .reuses .text {
+      font-size: smaller; }
+    .product.expanded .reuses .number {
+      font-size: 2em;
+      margin-bottom: -10px; }
 
 .agency.card .col {
   width: 100%; }
