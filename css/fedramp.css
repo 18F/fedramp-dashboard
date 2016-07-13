@@ -2355,7 +2355,7 @@ fieldset {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
-ui-view {
+ui-view .usa-content {
   background-color: #f1f1f1; }
 
 .text-center {
@@ -2441,7 +2441,7 @@ input {
     font-size: 18px;
     line-height: 118px;
     color: #5b616b;
-    background-color: #ffffff;
+    background-color: #f1f1f1;
     padding: 0 12px;
     font-weight: 700; }
 
@@ -2734,6 +2734,12 @@ grid tile.expanded {
   background-image: url("../img/fedramp-process-ready-blue.svg");
   background-repeat: no-repeat; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 @font-face {
   font-family: "Source Sans Pro";
   font-style: normal;
@@ -2799,13 +2805,26 @@ body {
 .comparison {
   display: inline-block;
   width: 100%; }
+  .comparison .first, .comparison .second {
+    display: inline-block;
+    width: 48.925%;
+    background-color: #ffffff; }
   .comparison .first {
-    display: inline-block;
     float: left;
-    width: 50%; }
-  .comparison .second {
-    display: inline-block;
-    width: 50%; }
+    margin-right: 2%; }
+  .comparison .second .usa-grid {
+    background-color: #ffffff; }
+  .comparison .second.comparison-list {
+    background: none; }
+
+.comparison-list .usa-grid {
+  padding-right: 0; }
+
+.comparison-list .fr-filter-label {
+  height: 7.6rem; }
+  .comparison-list .fr-filter-label .fr-filter-label-text {
+    line-height: 7.6rem;
+    background-color: #f1f1f1; }
 
 .comparison-list .message {
   margin-bottom: 2em; }
@@ -2823,140 +2842,201 @@ body {
     font-weight: bolder;
     color: #323a45; }
 
-.information .row {
-  display: block;
-  width: 100%;
-  clear: both;
-  border-top: 1px solid #aeb0b5;
-  padding: 1em 0; }
-  .information .row h4 {
-    margin-top: 0; }
-
-.information .col {
-  display: inline-block; }
-  .information .col p {
-    margin-top: 0; }
-
-.information .close {
-  background-color: #323a45;
-  cursor: pointer; }
-  .information .close .col {
-    width: 100%; }
-  .information .close a {
-    color: #aeb0b5;
-    font-size: smaller;
+.comparison-list tile .fr-grid-layout-row {
+  position: relative;
+  min-height: 20rem; }
+  .comparison-list tile .fr-grid-layout-row > div {
+    border: none; }
+  .comparison-list tile .fr-grid-layout-row .fr-grid-cell-name {
+    max-width: 66%;
+    padding-left: 0;
+    padding-top: 1.4rem;
+    margin-bottom: 3.5rem; }
+  .comparison-list tile .fr-grid-layout-row .fr-grid-cell-service, .comparison-list tile .fr-grid-layout-row .fr-grid-cell-deployment, .comparison-list tile .fr-grid-layout-row .fr-grid-cell-impact {
+    display: block;
+    float: left;
+    width: 30%;
+    line-height: 1.7rem;
+    font-size: 1.4rem; }
+  .comparison-list tile .fr-grid-layout-row .fr-grid-cell-icon {
+    position: absolute;
+    top: 0;
+    right: 10rem;
+    width: 11.5rem;
+    height: 10.1rem;
     text-align: center;
-    text-decoration: none; }
-    .information .close a i {
-      font-size: 2em; }
-
-.information .header {
-  border-top: none;
-  padding-top: 0; }
-  .information .header .logo {
-    padding-top: 1em; }
-    .information .header .logo img {
-      max-width: 100%;
-      max-height: 4em; }
-  .information .header .title {
-    font-weight: bolder;
-    font-size: smaller;
-    padding-bottom: 1em; }
-  .information .header .reuse {
-    float: right;
+    padding-top: 2rem; }
+  .comparison-list tile .fr-grid-layout-row .fr-grid-cell-metric {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 9.5rem;
+    height: 10.1rem;
     text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
+    padding-top: 2.7rem;
     background-color: #0071bc;
     color: #ffffff;
-    font-weight: bolder; }
-    .information .header .reuse .text {
-      font-size: smaller; }
-    .information .header .reuse .number {
-      font-size: 2em;
-      margin-bottom: -10px; }
+    font-weight: 700; }
+    .comparison-list tile .fr-grid-layout-row .fr-grid-cell-metric .text {
+      font-size: 1.3rem;
+      font-weight: 400; }
+    .comparison-list tile .fr-grid-layout-row .fr-grid-cell-metric .number {
+      font-size: 2.6rem;
+      margin-bottom: -0.8rem; }
 
-.information .status {
-  padding: 1em 0;
-  text-align: center; }
-  .information .status .col .text {
-    font-size: smaller; }
-  .information .status .ready {
-    width: 30%; }
-  .information .status .in-process {
-    width: 30%; }
-  .information .status .compliant {
-    width: 30%; }
-  .information .status .progress {
-    height: 5px;
-    background-color: #aeb0b5;
-    width: 100%; }
-    .information .status .progress .percent {
-      height: 5px;
-      background-color: #0071bc; }
-    .information .status .progress .percent-30 {
-      width: 30%; }
-    .information .status .progress .percent-50 {
-      width: 50%; }
-    .information .status .progress .percent-100 {
+.information {
+  font-size: 1.6rem; }
+  .information .row {
+    display: block;
+    padding: 1em 0; }
+    .information .row h1, .information .row h2, .information .row h3, .information .row h4, .information .row h5, .information .row h6 {
+      font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; }
+    .information .row h4 {
+      margin-top: 0;
+      font-size: 2rem; }
+    .information .row h5 {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 1.6rem; }
+    .information .row p {
+      margin-top: 0;
+      margin-bottom: 1rem; }
+  .information .col {
+    display: inline-block; }
+  .information .close {
+    background-color: #323a45;
+    cursor: pointer; }
+    .information .close .col {
       width: 100%; }
-  .information .status .message {
-    width: 100%;
-    color: #0071bc;
-    font-size: smaller; }
+    .information .close a {
+      color: #aeb0b5;
+      font-size: smaller;
+      text-align: center;
+      text-decoration: none; }
+      .information .close a i {
+        font-size: 2em; }
+  .information .header {
+    border-top: none;
+    padding-top: 0;
+    margin-left: 4.2rem; }
+    .information .header .logo {
+      margin-top: 2.1rem; }
+      .information .header .logo img {
+        max-width: auto;
+        max-height: 5.3rem; }
+    .information .header .title {
+      font-weight: 700;
+      font-size: 1.8rem; }
+    .information .header .reuse, .information .header .comparison-list tile .reuses {
+      float: right;
+      text-align: center;
+      width: 9.5rem;
+      height: 10.1rem;
+      padding-top: 2.7rem;
+      background-color: #0071bc;
+      color: #ffffff;
+      font-weight: bolder; }
+      .information .header .reuse .text, .information .header .comparison-list tile .reuses .text {
+        font-size: 1.3rem;
+        font-weight: 400; }
+      .information .header .reuse .number, .information .header .comparison-list tile .reuses .number {
+        font-size: 2.6rem;
+        margin-bottom: -0.8rem; }
+  .information .status {
+    padding: 2.5rem 0 1rem;
+    text-align: center;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+    /*
+        .in-process {
+            width: 30%;
+        }
 
-.information .system-profile .contact-information {
-  width: 50%;
-  background-color: #dce4ef;
-  color: #000000;
-  float: right;
-  padding: 1em;
-  margin-top: 1em; }
-  .information .system-profile .contact-information h5 {
-    margin-top: 0; }
-
-.information .fedramp dl dt {
-  float: left;
-  font-weight: bolder;
-  clear: left;
-  display: inline-block; }
-
-.information .fedramp dl dd {
-  margin-left: 0; }
-
-.information .service-description {
-  border-top: none;
-  background-color: #f1f1f1;
-  padding-left: 1em;
-  padding-right: 1em; }
-  .information .service-description .col {
-    width: 100%; }
-    .information .service-description .col h4 {
-      display: inline; }
-    .information .service-description .col i {
-      float: right; }
-
-.information .providers,
-.information .products,
-.information .agencies,
-.information .assessors {
-  border-top: none; }
-  .information .providers ul,
-  .information .products ul,
-  .information .agencies ul,
-  .information .assessors ul {
-    margin-left: -5px; }
-    .information .providers ul li,
-    .information .products ul li,
-    .information .agencies ul li,
-    .information .assessors ul li {
-      list-style: none; }
-    .information .providers ul li::before,
-    .information .products ul li::before,
-    .information .agencies ul li::before,
-    .information .assessors ul li::before {
-      content: ''; }
+        .compliant {
+            width: 30%;
+        }
+*/ }
+    .information .status .col .text {
+      font-size: 1.2rem; }
+    .information .status .ready, .information .status .in-process, .information .status .compliant {
+      width: 23%; }
+      .information .status .ready img, .information .status .in-process img, .information .status .compliant img {
+        max-width: 4rem;
+        max-height: 4rem; }
+    .information .status .progress {
+      height: 5px;
+      background-color: #aeb0b5;
+      width: 100%; }
+      .information .status .progress .percent {
+        height: 5px;
+        background-color: #205493; }
+      .information .status .progress .percent-30 {
+        width: 30%; }
+      .information .status .progress .percent-50 {
+        width: 50%; }
+      .information .status .progress .percent-100 {
+        width: 100%; }
+    .information .status .message {
+      width: 100%;
+      color: #205493;
+      font-size: smaller; }
+  .information .system-profile, .information .fedramp, .information .agencies {
+    padding-left: 2.8rem; }
+  .information .system-profile {
+    margin-top: 4rem;
+    padding-top: 0;
+    border-bottom: 1px solid #f1f1f1; }
+    .information .system-profile .contact-information {
+      width: 50%;
+      background-color: #dce4ef;
+      color: #000000;
+      float: right;
+      padding: 2rem; }
+      .information .system-profile .contact-information h5 {
+        margin-top: 0; }
+  .information .fedramp dl dt {
+    float: left;
+    font-weight: bolder;
+    clear: left;
+    display: inline-block; }
+  .information .fedramp dl dd {
+    margin-left: 0; }
+  .information .fedramp .col {
+    display: block;
+    clear: both; }
+  .information .service-description {
+    border-top: none;
+    background-color: #f1f1f1;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 2.8rem;
+    margin-right: 2.8rem; }
+    .information .service-description .col {
+      width: 100%; }
+      .information .service-description .col h4 {
+        display: inline; }
+      .information .service-description .col i {
+        float: right; }
+  .information .providers,
+  .information .products,
+  .information .agencies,
+  .information .assessors {
+    border-top: none; }
+    .information .providers ul,
+    .information .products ul,
+    .information .agencies ul,
+    .information .assessors ul {
+      margin-left: -5px; }
+      .information .providers ul li,
+      .information .products ul li,
+      .information .agencies ul li,
+      .information .assessors ul li {
+        list-style: none; }
+      .information .providers ul li::before,
+      .information .products ul li::before,
+      .information .agencies ul li::before,
+      .information .assessors ul li::before {
+        content: ''; }
 
 #topnav .limit {
   clear: both;

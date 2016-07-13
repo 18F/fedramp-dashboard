@@ -1,7 +1,10 @@
 @import 'variables';
 
 ui-view {
-	background-color:$color-gray-lightest;
+	// add background gray for entire UI
+	.usa-content {
+		background-color:$color-gray-lightest;
+	}
 }
 .text-center {
     text-align: center;
