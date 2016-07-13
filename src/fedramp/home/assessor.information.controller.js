@@ -35,7 +35,7 @@
          * @memberof Controllers.AssessorInformationController
          */
         self.close = function () {
-            $state.go('fedramp.app.home', {}, { reload: true });
+            $state.go('fedramp.app.home.assessors', {}, { reload: true });
         };
     }
 })();

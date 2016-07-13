@@ -35,7 +35,7 @@
          * @memberof Controllers.ProductInformationController
          */
         self.close = function () {
-            $state.go('fedramp.app.home', {}, { reload: true });
+            $state.go('fedramp.app.home.products', {}, { reload: true });
         };
     }
 })();

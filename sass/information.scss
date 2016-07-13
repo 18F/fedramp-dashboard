@@ -66,54 +66,64 @@
         }
     }
     tile {
-	    .fr-grid-layout-row {
-		    position:relative;
+	    .fr-grid-layout {
+		    display:block;
 		    min-height:20rem;
-	
-		    > div {
-			    border:none;
-		    }
-			.fr-grid-cell-name {
-				max-width:66%;
-				padding-left:0;
-				padding-top:1.4rem;
-				margin-bottom:3.5rem;
-			}
-			.fr-grid-cell-service, .fr-grid-cell-deployment, .fr-grid-cell-impact {
-				display:block;
-				float:left;
-				width:30%;
-				line-height:1.7rem;
-				font-size:1.4rem;
-			} 
-		    .fr-grid-cell-icon {
-			    position:absolute;
-			    top:0;
-			    right:10rem;
-				width:11.5rem;
-				height:10.1rem;
-	            text-align: center;
-	            padding-top: 2rem;
-			}
-		    .fr-grid-cell-metric {
-			    position:absolute;
-			    top:0;
-			    right:0;
-				width:9.5rem;
-				height:10.1rem;
-	            text-align: center;
-	            padding-top:2.7rem;
-	            background-color: $color-primary;
-	            color: $color-white;
-	            font-weight:$font-bold;
-	            .text {
-	                font-size: 1.3rem;
-	                font-weight:$font-normal;
-	            }
-	            .number {
-	                font-size: 2.6rem;
-	                margin-bottom: -0.8rem;
-	            }
+
+		    .fr-grid-layout-row {
+			    position:relative;
+			    display:block;
+			    padding-left:3rem;
+			    height:100%;
+		
+			    > div {
+				    border:none;
+			    }
+				.fr-grid-cell-name {
+					display:block;
+					max-width:66%;
+					width:auto;
+					padding-left:0;
+					padding-top:1.4rem;
+					line-height:1.7rem;
+					margin-bottom:3.5rem;
+				}
+				.fr-grid-cell-service, .fr-grid-cell-deployment, .fr-grid-cell-impact {
+					display:block;
+					float:left;
+					width:30%;
+					line-height:1.7rem;
+					font-size:1.4rem;
+				} 
+			    .fr-grid-cell-icon {
+				    position:absolute;
+				    top:0;
+				    right:10rem;
+					width:11.5rem;
+					height:10.1rem;
+		            text-align: center;
+		            padding-top: 2rem;
+				}
+			    .fr-grid-cell-metric {
+				    position:absolute;
+				    top:0;
+				    right:0;
+					width:9.5rem;
+					height:10.1rem;
+		            text-align: center;
+		            padding-top:2.7rem;
+		            background-color: $color-primary;
+		            color: $color-white;
+		            font-weight:$font-bold;
+		            .text {
+		                font-size: 1.3rem;
+		                font-weight:$font-normal;
+		            }
+		            .number {
+		                font-size: 2.6rem;
+		                margin-bottom: -0.8rem;
+		            }
+			    }
 		    }
 	    }
 	}

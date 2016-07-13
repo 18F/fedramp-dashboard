@@ -94,7 +94,7 @@ when you execute a search.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line49">line 49</a>
+        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -136,7 +136,10 @@ when you execute a search.
 
 }
 
-new Searcher(objectToSearch, propertyExpression);
+var searcher = new Searcher();
+search.prop(&lt;expression>).&lt;action>
+
+search.prop('i.name in products').contains(dataToSearch, searchTerm);
 
 Property expression examples:
 
@@ -170,344 +173,14 @@ Property expression examples:
 
     
 
-    <h4 class="name" id=".find"><span class="type-signature">(static) </span>find<span class="signature">(obj, props, q)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~prop"><span class="type-signature">(inner) </span>prop<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Recursively walks the properties of an object defined in the property expression and compares
-if their values are a match against the search term.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the current object being checked</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>props</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the properties that are left to be evaluated</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>q</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the search term</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line114">line 114</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    if object has been found
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".search"><span class="type-signature">(static) </span>search<span class="signature">(q)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Executes a search using the property expression and data defined in the constructor.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>q</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">parameter to search in object(s)</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line83">line 83</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    If a single object is found, returns the object if found or null otherwise. If an array of objects
- is passed in, an array of found objects is returned.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~match"><span class="type-signature">(inner) </span>match<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    The default comparator when determining if a search is a match
+    Executes search by defined property expression
 </div>
 
 
@@ -551,7 +224,7 @@ if their values are a match against the search term.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line144">line 144</a>
+        <a href="fedramp.services_searcher.factory.js.html">fedramp.services/searcher.factory.js</a>, <a href="fedramp.services_searcher.factory.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -599,7 +272,7 @@ if their values are a match against the search term.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 12 2016 15:05:43 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jul 13 2016 16:02:14 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

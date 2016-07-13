@@ -109,7 +109,7 @@ describe('the grid filter component', function () {
         );
         gridFilter.$onInit();
         gridFilter.filtered = [];
-        grid.doFilter();
+        expect(grid.doFilter).not.toThrow();
     });
     it('should pull saved params from $location', function () {
         gridFilter = $componentController('gridFilter', 
