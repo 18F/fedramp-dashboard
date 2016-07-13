@@ -5,27 +5,28 @@
 @import '../node_modules/uswds/src/stylesheets/core/_base';
 
 .tile {
+	.fr-grid-layout-row {
+		> div {
+			border-bottom: 1px solid $color-gray-lightest;
+			border-right: 1px solid $color-gray-lightest;
+		}
+	}
     .row {
         display: block;
         width: 100%;
         clear: both;
-        /* border-top: 1px solid $color-gray-light; */
-        /* padding: 1em 0; */
     }
 
     .col {
-        display: inline-block;
-        float: left;
     }
 
     .expanded {
         .row {
-            height: 6em;
+            height: 9.5rem;
             border-bottom: 1px solid $color-gray-lightest;
         }
 
         .col {
-            /* border-right: 1px solid $color-gray-lightest; */
         }
     }
 
@@ -259,62 +260,58 @@
 }
 
 .product.expanded {
-    .row {
-    }
 
-    .col {
-        width: 1 / 6 * 80%;
-        vertical-align: top;
-        padding-top: 0.34em;
-    }
+	font-size:1.6rem;
 
+	.fr-grid-cell-name {
+		font-size:1.8rem;
+		padding-left:2rem;
+	}
     .name {
-        width: 2/6 * 100%;
+//         width: 2/6 * 100%;
         
         .logo {
-            padding: 0.34em 0;
-            
-            img {
-                max-width: 100%;
-                max-height: 3em;
-            }
+	        height:4.4rem;
+	        width:15rem;
+	        background-size:contain;
+	        background-position:left center;
+	        background-repeat:no-repeat;
+			margin:1rem 0;
         }
 
         .title {
-            overflow: hidden;
+//             overflow: hidden;
             text-overflow: ellipsis;
-            height: 1em;
+//             height: 1em;
         }
     }
 
     .service-model {
-        font-size: smaller;
+//         font-size: smaller;
     }
 
     .deployment-model {
-        font-size: smaller;
+//         font-size: smaller;
     }
 
     .impact-level {
+/*
         text-align: center;
         font-size: smaller;
+*/
     }
 
     .status {
         text-align: center;
         
         img {
-            max-width: 100%;
+            max-width: 4.5rem;
             max-height: auto;
         }
     }
 
     .reuses {
-        float: right;
         text-align: center;
-        width: 6em;
-        height: 6em;
-        padding-top: 1.5em;
         background-color: $color-primary;
         color: $color-white;
         font-weight: bolder;

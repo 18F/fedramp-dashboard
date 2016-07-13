@@ -35,7 +35,7 @@
          * @memberof Controllers.AgencyInformationController
          */
         self.close = function () {
-            $state.go('fedramp.app.home', {}, { reload: true });
+            $state.go('fedramp.app.home.agencies', {}, { reload: true });
         };
     }
 })();

@@ -1,9 +1,8 @@
+@import 'variables';
+
 grid-sort {
     display:inline-block;
-}
-.grid {
-    margin-bottom: 700px;
-    display:block;
+    width:3rem;
 }
 .grid-sort-selected {
     color:#0070ba;

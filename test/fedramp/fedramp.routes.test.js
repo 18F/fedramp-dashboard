@@ -22,7 +22,7 @@ describe('Fedramp routing', function(){
 
 	describe('for home', function(){
 		it('can access the state and executes fetching data', function(){
-            var expected = 'fedramp.app.home';
+            var expected = 'fedramp.app.home.products';
 
             // Account for template GET request
             $httpBackend.whenGET('src/fedramp/base.html').respond('');

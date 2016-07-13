@@ -78,22 +78,27 @@
                                     }
                                 });
                             }
-                        });
 
-                        item.products.forEach(prod => {
                             if (prod.deploymentModel) {
                                 if (include(prod.deploymentModel, item.deploymentModels)) {
                                     item.deploymentModels.push(prod.deploymentModel.trim());
                                 }
                             }
-                        });
 
-                        item.products.forEach(prod => {
                             if (include(prod.designation, item.designations)) {
                                 item.designations.push(prod.designation.trim());
                             }
-                        });
 
+                            if (include(prod.sponsoringAgency, item.agencies)) {
+                                item.agencies.push(prod.sponsoringAgency.trim());
+                            }
+
+                            prod.agencies.forEach(a => {
+                                if (include(a, item.agencies)) {
+                                    item.agencies.push(a);
+                                }
+                            });
+                        });
                     });
                 });
 

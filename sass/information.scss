@@ -5,55 +5,41 @@
 @import '../node_modules/uswds/src/stylesheets/core/_base';
 
 .comparison {
-    display: inline-block;
+    display: table;
     width: 100%;
+    background-color: $color-gray-lightest;
 
     .first {
-        display: inline-block;
-        float: left;
-        width: 1/2 * 100%;
+        display: table-cell;
+        padding-right: 0.75em;
+        width: 50%;
     }
 
     .second {
-        display: inline-block;
-        width: 1/2 * 100%;
+        display: table-cell;
+        padding-left: 0.75em;
+        width: 50%;
     }
 }
 
 .comparison-list {
-    .message {
-        margin-bottom: 2em;
+    padding-left: 1em;
 
-        hr {
-            width: 20%;
-            display: inline-block;
-            border-top: 2px solid $color-gray-dark;
-            margin-bottom: 3px;
-        }
-
-        hr.left {
-            margin-right: 5px;
-        }
-
-        hr.right {
-            margin-left: 5px;
-        }
-
-        span {
-            font-size: smaller;
-            font-weight: bolder;
-            color: $color-gray-dark;
-        }
+    .fr-filter-label-text {
+        background-color: $color-gray-lightest;
+        line-height: 110px;
     }
 }
 
 .information {
+    background-color: $color-white;
+    
     .row {
         display: block;
         width: 100%;
         clear: both;
-        border-top: 1px solid $color-gray-light;
-        padding: 1em 0;
+        border-top: 1px solid $color-gray-lightest;
+        padding: 1em 0 1em 1em;
 
         h4 {
             margin-top: 0;
@@ -76,7 +62,7 @@
         }
 
         a {
-            color: $color-gray-light;
+            color: $color-gray-lighter;
             font-size: smaller;
             text-align: center;
             text-decoration: none;
@@ -192,6 +178,16 @@
                 margin-top: 0;
             }
         }
+
+        h5 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
     }
 
     .fedramp {
@@ -201,10 +197,12 @@
                 font-weight: bolder;
                 clear: left;
                 display: inline-block;
+                padding-right: 0.5rem;
             }
 
             dd {
                 margin-left: 0;
+                display: inline-block;
             }
         }
     }
@@ -214,6 +212,9 @@
         background-color: $color-gray-lightest;
         padding-left: 1em;
         padding-right: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        width: auto;
 
         .col {
             width: 100%;

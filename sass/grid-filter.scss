@@ -1,7 +1,61 @@
 @import 'variables';
 
+grid,
+.grid {
+    display:block;
+	max-width:none;
+	width:100%;
+    margin-bottom: 700px;
+    background-color: $color-white;
+
+	.fr-grid-layout {
+		display:table;
+		height:4.4rem;
+		line-height:4.4rem;
+		width:100%;
+		font-size:1.4rem;
+
+		.fr-grid-layout-row {
+			display:table-row;
+			
+			> div {
+				display:table-cell;
+			}
+		}
+	}
+	.fr-grid-layout.fr-grid-header {
+		white-space:nowrap;
+	}
+	> div > .fr-grid-layout {
+		margin:2.3rem 0 1.6rem;
+	}
+	.fr-grid-cell-name {
+		width:31%;
+		padding-left:1rem;
+	}
+	.fr-grid-cell-service {
+		width:16%;
+	}
+	.fr-grid-cell-deployment {
+		width:20%;
+	}
+	.fr-grid-cell-impact {
+		width:15%;
+	}
+	.fr-grid-cell-icon {
+		width:10%;
+	}
+	.fr-grid-cell-metric {
+		width:8%;
+		text-align:center;
+	}
+}
 grid-filter {
     display:inline-block;
+    background-color:$color-gray-lighter;
+    padding:0 1rem 0 2rem;
+	color:$color-base;
+
     span.option {
         font-size: 0.8em;
         .fa-check-circle {
