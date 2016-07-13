@@ -2722,10 +2722,12 @@ body {
   background-color: #f1f1f1; }
   .comparison .first {
     display: table-cell;
-    padding-right: 0.75em; }
+    padding-right: 0.75em;
+    width: 50%; }
   .comparison .second {
     display: table-cell;
-    padding-left: 0.75em; }
+    padding-left: 0.75em;
+    width: 50%; }
 
 .comparison-list {
   padding-left: 1em; }
