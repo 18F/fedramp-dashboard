@@ -2269,6 +2269,71 @@ fieldset {
     top: 0;
     transition: all 0.2s ease-in-out; }
 
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 400;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 400;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 700;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+html {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  background-color: #ffffff; }
+
+.lt-ie9 * {
+  filter: none !important; }
+
+body {
+  background-color: #d6d7d9; }
+
 .text-center {
   text-align: center; }
 
@@ -2472,7 +2537,7 @@ grid tile.expanded {
 
 #header {
   clear: both;
-  margin: 20px auto 10px; }
+  margin: 20px auto 0; }
   #header #sitetitle {
     text-align: left; }
     #header #sitetitle img {
@@ -2620,166 +2685,157 @@ body {
   filter: none !important; }
 
 .comparison {
-  display: inline-block;
-  width: 100%; }
-  .comparison .first {
-    display: inline-block;
-    float: left;
-    width: 50%; }
-  .comparison .second {
-    display: inline-block;
-    width: 50%; }
-
-.comparison-list .message {
-  margin-bottom: 2em; }
-  .comparison-list .message hr {
-    width: 20%;
-    display: inline-block;
-    border-top: 2px solid #323a45;
-    margin-bottom: 3px; }
-  .comparison-list .message hr.left {
-    margin-right: 5px; }
-  .comparison-list .message hr.right {
-    margin-left: 5px; }
-  .comparison-list .message span {
-    font-size: smaller;
-    font-weight: bolder;
-    color: #323a45; }
-
-.information .row {
-  display: block;
+  display: table;
   width: 100%;
-  clear: both;
-  border-top: 1px solid #aeb0b5;
-  padding: 1em 0; }
-  .information .row h4 {
-    margin-top: 0; }
+  background-color: #f1f1f1; }
+  .comparison .first {
+    display: table-cell;
+    padding-right: 0.75em; }
+  .comparison .second {
+    display: table-cell;
+    padding-left: 0.75em; }
 
-.information .col {
-  display: inline-block; }
-  .information .col p {
-    margin-top: 0; }
+.comparison-list {
+  padding-left: 1em; }
 
-.information .close {
-  background-color: #323a45;
-  cursor: pointer; }
-  .information .close .col {
-    width: 100%; }
-  .information .close a {
-    color: #aeb0b5;
-    font-size: smaller;
-    text-align: center;
-    text-decoration: none; }
-    .information .close a i {
-      font-size: 2em; }
-
-.information .header {
-  border-top: none;
-  padding-top: 0; }
-  .information .header .logo {
-    padding-top: 1em; }
-    .information .header .logo img {
-      max-width: 100%;
-      max-height: 4em; }
-  .information .header .title {
-    font-weight: bolder;
-    font-size: smaller;
-    padding-bottom: 1em; }
-  .information .header .reuse {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder; }
-    .information .header .reuse .text {
-      font-size: smaller; }
-    .information .header .reuse .number {
-      font-size: 2em;
-      margin-bottom: -10px; }
-
-.information .status {
-  padding: 1em 0;
-  text-align: center; }
-  .information .status .col .text {
-    font-size: smaller; }
-  .information .status .ready {
-    width: 30%; }
-  .information .status .in-process {
-    width: 30%; }
-  .information .status .compliant {
-    width: 30%; }
-  .information .status .progress {
-    height: 5px;
-    background-color: #aeb0b5;
-    width: 100%; }
-    .information .status .progress .percent {
-      height: 5px;
-      background-color: #0071bc; }
-    .information .status .progress .percent-30 {
-      width: 30%; }
-    .information .status .progress .percent-50 {
-      width: 50%; }
-    .information .status .progress .percent-100 {
-      width: 100%; }
-  .information .status .message {
+.information {
+  background-color: #ffffff; }
+  .information .row {
+    display: block;
     width: 100%;
-    color: #0071bc;
-    font-size: smaller; }
-
-.information .system-profile .contact-information {
-  width: 50%;
-  background-color: #dce4ef;
-  color: #000000;
-  float: right;
-  padding: 1em;
-  margin-top: 1em; }
-  .information .system-profile .contact-information h5 {
-    margin-top: 0; }
-
-.information .fedramp dl dt {
-  float: left;
-  font-weight: bolder;
-  clear: left;
-  display: inline-block; }
-
-.information .fedramp dl dd {
-  margin-left: 0; }
-
-.information .service-description {
-  border-top: none;
-  background-color: #f1f1f1;
-  padding-left: 1em;
-  padding-right: 1em; }
-  .information .service-description .col {
-    width: 100%; }
-    .information .service-description .col h4 {
-      display: inline; }
-    .information .service-description .col i {
-      float: right; }
-
-.information .providers,
-.information .products,
-.information .agencies,
-.information .assessors {
-  border-top: none; }
-  .information .providers ul,
-  .information .products ul,
-  .information .agencies ul,
-  .information .assessors ul {
-    margin-left: -5px; }
-    .information .providers ul li,
-    .information .products ul li,
-    .information .agencies ul li,
-    .information .assessors ul li {
-      list-style: none; }
-    .information .providers ul li::before,
-    .information .products ul li::before,
-    .information .agencies ul li::before,
-    .information .assessors ul li::before {
-      content: ''; }
+    clear: both;
+    border-top: 1px solid #f1f1f1;
+    padding: 1em 0 1em 1em; }
+    .information .row h4 {
+      margin-top: 0; }
+  .information .col {
+    display: inline-block; }
+    .information .col p {
+      margin-top: 0; }
+  .information .close {
+    background-color: #323a45;
+    cursor: pointer; }
+    .information .close .col {
+      width: 100%; }
+    .information .close a {
+      color: #d6d7d9;
+      font-size: smaller;
+      text-align: center;
+      text-decoration: none; }
+      .information .close a i {
+        font-size: 2em; }
+  .information .header {
+    border-top: none;
+    padding-top: 0; }
+    .information .header .logo {
+      padding-top: 1em; }
+      .information .header .logo img {
+        max-width: 100%;
+        max-height: 4em; }
+    .information .header .title {
+      font-weight: bolder;
+      font-size: smaller;
+      padding-bottom: 1em; }
+    .information .header .reuse {
+      float: right;
+      text-align: center;
+      width: 6em;
+      height: 6em;
+      padding-top: 1.5em;
+      background-color: #0071bc;
+      color: #ffffff;
+      font-weight: bolder; }
+      .information .header .reuse .text {
+        font-size: smaller; }
+      .information .header .reuse .number {
+        font-size: 2em;
+        margin-bottom: -10px; }
+  .information .status {
+    padding: 1em 0;
+    text-align: center; }
+    .information .status .col .text {
+      font-size: smaller; }
+    .information .status .ready {
+      width: 30%; }
+    .information .status .in-process {
+      width: 30%; }
+    .information .status .compliant {
+      width: 30%; }
+    .information .status .progress {
+      height: 5px;
+      background-color: #aeb0b5;
+      width: 100%; }
+      .information .status .progress .percent {
+        height: 5px;
+        background-color: #0071bc; }
+      .information .status .progress .percent-30 {
+        width: 30%; }
+      .information .status .progress .percent-50 {
+        width: 50%; }
+      .information .status .progress .percent-100 {
+        width: 100%; }
+    .information .status .message {
+      width: 100%;
+      color: #0071bc;
+      font-size: smaller; }
+  .information .system-profile .contact-information {
+    width: 50%;
+    background-color: #dce4ef;
+    color: #000000;
+    float: right;
+    padding: 1em;
+    margin-top: 1em; }
+    .information .system-profile .contact-information h5 {
+      margin-top: 0; }
+  .information .system-profile h5 {
+    margin-top: 0;
+    margin-bottom: 0; }
+  .information .system-profile p {
+    margin-top: 0;
+    margin-bottom: 1rem; }
+  .information .fedramp dl dt {
+    float: left;
+    font-weight: bolder;
+    clear: left;
+    display: inline-block;
+    padding-right: 0.5rem; }
+  .information .fedramp dl dd {
+    margin-left: 0;
+    display: inline-block; }
+  .information .service-description {
+    border-top: none;
+    background-color: #f1f1f1;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    width: auto; }
+    .information .service-description .col {
+      width: 100%; }
+      .information .service-description .col h4 {
+        display: inline; }
+      .information .service-description .col i {
+        float: right; }
+  .information .providers,
+  .information .products,
+  .information .agencies,
+  .information .assessors {
+    border-top: none; }
+    .information .providers ul,
+    .information .products ul,
+    .information .agencies ul,
+    .information .assessors ul {
+      margin-left: -5px; }
+      .information .providers ul li,
+      .information .products ul li,
+      .information .agencies ul li,
+      .information .assessors ul li {
+        list-style: none; }
+      .information .providers ul li::before,
+      .information .products ul li::before,
+      .information .agencies ul li::before,
+      .information .assessors ul li::before {
+        content: ''; }
 
 #topnav .limit {
   clear: both;
