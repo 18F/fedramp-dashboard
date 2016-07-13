@@ -24,6 +24,10 @@
 
 .comparison-list {
     padding-left: 1em;
+
+    .fr-filter-label-text {
+        background-color: $color-gray-lightest;
+    }
 }
 
 .information {

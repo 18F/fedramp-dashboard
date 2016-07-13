@@ -1,10 +1,12 @@
 @import 'variables';
 
-grid {
+grid,
+.grid {
     display:block;
 	max-width:none;
 	width:100%;
     margin-bottom: 700px;
+    background-color: $color-white;
 
 	.fr-grid-layout {
 		display:table;
