@@ -43,7 +43,6 @@
                 controller: 'SearchController as controller'
             })
             .state('fedramp.app.home', {
-                url: '',
                 templateUrl: 'src/fedramp/home/home.html',
                 controller: 'HomeController as homeController'
             })
