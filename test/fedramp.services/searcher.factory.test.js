@@ -66,20 +66,29 @@ describe('Searcher', function(){
 
 	describe('prop()', function(){
 
-        it('Can search through nested arrays', function(){
+        it('Can search an object using equals()', function(){
+            var s = new Searcher();
+            expect(s.prop('b.name in buys').equals(data, 'beer').length).toBe(1);
+            expect(s.prop('b.name in buys').equals(data, 'Beer').length).toBe(0);
+        });
+
+        it('Can search an object using contains()', function(){
             var s = new Searcher();
             expect(s.prop('o in owns').contains(data, '1').length).toBe(2);
             expect(s.prop('name').contains(data, 'Win').length).toBe(1);
             expect(s.prop('b.name in buys').contains(data, 'beer').length).toBe(1);
-            expect(s.prop('b.name in buys').equals(data, 'beer').length).toBe(1);
-            expect(s.prop('b.name in buys').equals(data, 'Beer').length).toBe(0);
             expect(s.prop('addon in buys.addons').contains(data, 'tabl').length).toBe(1);
             expect(s.prop('toy.type.large in owns.dogs.toys').contains(toSearch, 1).length).toBe(1);
             expect(s.prop('toy.type.large in owns.dogs.toys').contains(toSearch, 5).length).toBe(0);
+        });
+
+        it('Can search an object using withinDateRange()', function(){
+            var s = new Searcher();
             expect(s.prop('authorized').withinDateRange(data, '01/01/2012', '02/01/2012').length).toBe(1);
+        });
 
-            expect(s.prop('own.name in owns.dogs').contains(toSearch, 'winston').length).toBe(1);
-
+        it('Can search an object using custom criteriaFunc()', function(){
+            var s = new Searcher();
             var criteriaFunc = function(currentObject){
                 if(currentObject.name === 'Winston'){
                     return true;
@@ -88,6 +97,5 @@ describe('Searcher', function(){
             };
             expect(s.prop('').criteriaFunc(data, criteriaFunc).length).toBe(1);
         });
-
 	});
 });
