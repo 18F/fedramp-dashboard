@@ -2745,7 +2745,8 @@ body {
 .comparison-list {
   padding-left: 1em; }
   .comparison-list .fr-filter-label-text {
-    background-color: #f1f1f1; }
+    background-color: #f1f1f1;
+    line-height: 110px; }
 
 .information {
   background-color: #ffffff; }
