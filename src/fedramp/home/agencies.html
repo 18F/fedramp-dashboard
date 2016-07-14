@@ -7,18 +7,17 @@
     <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
 </div>
 
-<div style="float:right;width:80%;">
-        <div class="fr-grid-layout fr-grid-header">
-            <div class="fr-grid-layout-row">
-                <div class="fr-grid-cell-name">
+<div class="grid" style="float:right;width:80%;">
+    <div class="fr-grid-layout fr-grid-header">
+        <div class="fr-grid-layout-row">
+            <div class="fr-grid-cell-name">
                 <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>          
-                </div>
-                <div class="fr-grid-cell-metric">
-                    <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
-                </div>
+            </div>
+            <div class="fr-grid-cell-metric">
+                <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
             </div>
         </div>
-
+    </div>
     <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
 </div>
 </grid>
