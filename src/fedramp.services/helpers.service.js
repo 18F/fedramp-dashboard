@@ -11,7 +11,7 @@
      * @constructor
      * @memberof Services
      */
-    function HelperService ($log) {
+    function HelperService ($log, $location, $anchorScroll) {
         var self = this;
         
         /**
@@ -84,6 +84,36 @@
             } 
 
             return mm + '/' + dd + '/' + yyyy;
+        };
+
+        /**
+         * Scrolls to an anchor
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @param {string} anchor
+         *  The anchor element's ID
+         */
+        self.scrollTo = function (anchor) {
+            if (anchor) {
+                // Minor delay so most of the page is rendered.
+                setTimeout(function () {
+                    let el = document.getElementById(anchor);
+                    if (!el) {
+                        return;
+                    }
+                    
+                    let y = el.offsetTop;
+                    let node = el;
+
+                    while (node.offsetParent && node.offsetParent != document.body) {
+                        node = node.offsetParent;
+                        y += node.offsetTop;
+                    }
+
+                    scrollTo(0, y);
+                }, 100);
+            }
         };
     }
 })();
