@@ -22,11 +22,16 @@ grid,
 			}
 		}
 	}
+	// handle styling for grid view filters, need padding for positioning
+	.fr-grid-header {
+		> div > div {
+			padding-top:2.3rem;
+		}
+	}
 	.fr-grid-layout.fr-grid-header {
 		white-space:nowrap;
-	}
-	> div > .fr-grid-layout {
-		margin:2.3rem 0 1.6rem;
+		height:8.4rem;
+		background:$color-gray-lightest;
 	}
 	.fr-grid-cell-name {
 		width:31%;

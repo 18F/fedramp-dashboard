@@ -2574,12 +2574,14 @@ grid,
       grid .fr-grid-layout .fr-grid-layout-row > div,
       .grid .fr-grid-layout .fr-grid-layout-row > div {
         display: table-cell; }
+  grid .fr-grid-header > div > div,
+  .grid .fr-grid-header > div > div {
+    padding-top: 2.3rem; }
   grid .fr-grid-layout.fr-grid-header,
   .grid .fr-grid-layout.fr-grid-header {
-    white-space: nowrap; }
-  grid > div > .fr-grid-layout,
-  .grid > div > .fr-grid-layout {
-    margin: 2.3rem 0 1.6rem; }
+    white-space: nowrap;
+    height: 8.4rem;
+    background: #f1f1f1; }
   grid .fr-grid-cell-name,
   .grid .fr-grid-cell-name {
     width: 31%;
@@ -2655,26 +2657,25 @@ grid-filter {
 */
 grid-sort {
   display: inline-block;
-  width: 3rem; }
+  width: 3rem;
+  height: 4.4rem; }
 
 .grid-sort-selected {
   color: #0070ba; }
 
 .grid-sort-header {
-  font-size: 14px !important;
+  font-size: 1.4rem !important;
   font-weight: 600; }
 
 .grid-sort-arrows {
   position: relative;
-  display: inline-block; }
-  .grid-sort-arrows .fa-caret-up {
-    display: block;
-    position: relative;
-    top: -4px; }
-  .grid-sort-arrows .fa-caret-down {
-    display: block;
-    position: relative;
-    bottom: -4px; }
+  display: block;
+  background-color: #d6d7d9;
+  text-align: center;
+  cursor: pointer; }
+  .grid-sort-arrows .fa-caret-up, .grid-sort-arrows .fa-caret-down {
+    color: #0071bc;
+    position: relative; }
 
 grid tile.expanded {
   display: inline-block;

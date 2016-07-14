@@ -3,26 +3,24 @@
 grid-sort {
     display:inline-block;
     width:3rem;
+    height:4.4rem;
 }
 .grid-sort-selected {
     color:#0070ba;
 }
 .grid-sort-header {
-    font-size: 14px !important;
+    font-size: 1.4rem !important;
     font-weight:600;
 }
 .grid-sort-arrows {
     position:relative;
-    display:inline-block;
+    display:block;
+    background-color:$color-gray-lighter;
+	text-align:center;
+	cursor:pointer;
 
-    .fa-caret-up {
-        display:block;
+    .fa-caret-up, .fa-caret-down {
+		color:$color-primary;
         position:relative;
-        top:-4px;
-    }
-    .fa-caret-down {
-        display:block;
-        position:relative;
-        bottom:-4px;
     }
 }
