@@ -1,3 +1,4 @@
+@import 'variables';
 @import '../node_modules/uswds/src/stylesheets/lib/addons/_font-stacks';
 @import '../node_modules/uswds/src/stylesheets/lib/css3/_font-face';
 @import '../node_modules/uswds/src/stylesheets/core/_fonts';
@@ -5,52 +6,155 @@
 @import '../node_modules/uswds/src/stylesheets/core/_base';
 
 .comparison {
-    display: table;
+    display: inline-block;
     width: 100%;
-    background-color: $color-gray-lightest;
 
+	.first, .second {
+        display: inline-block;
+        width: 48.925%;
+        background-color:$color-white;
+	}
     .first {
-        display: table-cell;
-        padding-right: 0.75em;
-        width: 50%;
+		float:left;
+        margin-right:2%;
     }
 
     .second {
-        display: table-cell;
-        padding-left: 0.75em;
-        width: 50%;
+		.usa-grid {
+	        background-color:$color-white;
+		}
     }
+	.second.comparison-list {
+		background:none;
+	}
 }
 
 .comparison-list {
-    padding-left: 1em;
-
-    .fr-filter-label-text {
-        background-color: $color-gray-lightest;
-        line-height: 110px;
+    .usa-grid {
+	    padding-right:0;
     }
+    .fr-filter-label {
+	    height:7.6rem;
+
+	    .fr-filter-label-text {
+		    line-height:7.6rem;
+			background-color:$color-gray-lightest;
+	    }
+    }
+    .message {
+        margin-bottom: 2em;
+
+        hr {
+            width: 20%;
+            display: inline-block;
+            border-top: 2px solid $color-gray-dark;
+            margin-bottom: 3px;
+        }
+
+        hr.left {
+            margin-right: 5px;
+        }
+
+        hr.right {
+            margin-left: 5px;
+        }
+
+        span {
+            font-size: smaller;
+            font-weight: bolder;
+            color: $color-gray-dark;
+        }
+    }
+    tile {
+	    .fr-grid-layout {
+		    display:block;
+		    min-height:20rem;
+
+		    .fr-grid-layout-row {
+			    position:relative;
+			    display:block;
+			    padding-left:3rem;
+			    height:100%;
+		
+			    > div {
+				    border:none;
+			    }
+				.fr-grid-cell-name {
+					display:block;
+					max-width:66%;
+					width:auto;
+					padding-left:0;
+					padding-top:1.4rem;
+					line-height:1.7rem;
+					margin-bottom:3.5rem;
+				}
+				.fr-grid-cell-service, .fr-grid-cell-deployment, .fr-grid-cell-impact {
+					display:block;
+					float:left;
+					width:30%;
+					line-height:1.7rem;
+					font-size:1.4rem;
+				} 
+			    .fr-grid-cell-icon {
+				    position:absolute;
+				    top:0;
+				    right:10rem;
+					width:11.5rem;
+					height:10.1rem;
+		            text-align: center;
+		            padding-top: 2rem;
+				}
+			    .fr-grid-cell-metric {
+				    position:absolute;
+				    top:0;
+				    right:0;
+					width:9.5rem;
+					height:10.1rem;
+		            text-align: center;
+		            padding-top:2.7rem;
+		            background-color: $color-primary;
+		            color: $color-white;
+		            font-weight:$font-bold;
+		            .text {
+		                font-size: 1.3rem;
+		                font-weight:$font-normal;
+		            }
+		            .number {
+		                font-size: 2.6rem;
+		                margin-bottom: -0.8rem;
+		            }
+			    }
+		    }
+	    }
+	}
 }
 
 .information {
-    background-color: $color-white;
-    
+	font-size:1.6rem;
     .row {
         display: block;
-        width: 100%;
-        clear: both;
-        border-top: 1px solid $color-gray-lightest;
-        padding: 1em 0 1em 1em;
-
+//         width: 100%;
+//         clear: both;
+        padding: 1em 0;
+        h1, h2, h3, h4, h5, h6 {
+	        font-family:$font-sans;
+        }
         h4 {
             margin-top: 0;
+            font-size:2rem;
+        }
+        h5 {
+	        margin-top:0;
+	        margin-bottom:0;
+	        font-size:1.6rem;
+        }
+        p {
+            margin-top:0;
+            margin-bottom:1rem;
         }
     }
-
     .col {
         display: inline-block;
-        p {
-            margin-top: 0;
-        }
     }
     
     .close {
@@ -62,7 +166,7 @@
         }
 
         a {
-            color: $color-gray-lighter;
+            color: $color-gray-light;
             font-size: smaller;
             text-align: center;
             text-decoration: none;
@@ -76,57 +180,66 @@
     .header {
         border-top: none;
         padding-top: 0;
+        margin-left:4.2rem;
 
         .logo {
-            padding-top: 1em;
+	        margin-top:2.1rem;
 
             img {
-                max-width: 100%;
-                max-height: 4em;
+                max-width: auto;
+                max-height: 5.3rem;
             }
         }
 
         .title {
-            font-weight: bolder;
-            font-size: smaller;
-            padding-bottom: 1em;
+            font-weight: $font-bold;
+            font-size: 1.8rem;
         }
 
-        .reuse {
+        .reuse, .comparison-list tile .reuses {
             float: right;
             text-align: center;
-            width: 6em;
-            height: 6em;
-            padding-top: 1.5em;
+            width: 9.5rem;
+            height: 10.1rem;
+            padding-top:2.7rem;
             background-color: $color-primary;
             color: $color-white;
             font-weight: bolder;
 
             .text {
-                font-size: smaller;
+                font-size: 1.3rem;
+                font-weight:$font-normal;
             }
 
             .number {
-                font-size: 2em;
-                margin-bottom: -10px;
+                font-size: 2.6rem;
+                margin-bottom: -0.8rem;
             }
         }
     }
 
     .status {
-        padding: 1em 0;
+        padding: 2.5rem 0 1rem;
         text-align: center;
+		border-top:1px solid $color-gray-lightest;
+		border-bottom:1px solid $color-gray-lightest;
 
         .col {
             .text {
-                font-size: smaller;
+                font-size:1.2rem;
             }
         }
         
-        .ready {
-            width: 30%;
+        .ready, .in-process, .compliant {
+            width: 23%;
+
+            img {
+	            max-width:4rem;
+	            max-height:4rem;
+            }
         }
 
+/*
         .in-process {
             width: 30%;
         }
@@ -134,6 +247,7 @@
         .compliant {
             width: 30%;
         }
+*/
 
         .progress {
             height: 5px;
@@ -142,7 +256,7 @@
             
             .percent {
                 height: 5px;
-                background-color: $color-primary;
+                background-color: $color-primary-darker;
             }
 
             .percent-30 {
@@ -160,33 +274,28 @@
 
         .message {
             width: 100%;
-            color: $color-primary;
+            color: $color-primary-darker;
             font-size: smaller;
         }
     }
+    .system-profile, .fedramp, .agencies {
+	    padding-left:2.8rem;
+	}
 
     .system-profile {
+	    margin-top:4rem;
+	    padding-top:0;
+		border-bottom:1px solid $color-gray-lightest;
         .contact-information {
             width: 50%;
             background-color: $color-cool-blue-lightest;
             color: $color-black;
             float: right;
-            padding: 1em;
-            margin-top: 1em;
-
+            padding: 2rem;
+           
             h5 {
                 margin-top: 0;
             }
-        }
-
-        h5 {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        p {
-            margin-top: 0;
-            margin-bottom: 1rem;
         }
     }
 
@@ -197,13 +306,15 @@
                 font-weight: bolder;
                 clear: left;
                 display: inline-block;
-                padding-right: 0.5rem;
             }
 
             dd {
                 margin-left: 0;
-                display: inline-block;
             }
+        }
+        .col {
+	        display:block;
+			clear:both;
         }
     }
 
@@ -212,9 +323,8 @@
         background-color: $color-gray-lightest;
         padding-left: 1em;
         padding-right: 1em;
-        margin-left: 1em;
-        margin-right: 1em;
-        width: auto;
+        margin-left:2.8rem;
+        margin-right:2.8rem;
 
         .col {
             width: 100%;
