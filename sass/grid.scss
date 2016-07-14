@@ -1,6 +1,18 @@
-grid {
+grid,
+.grid {
+    .sidebar {
+        float: left;
+        width: 20%;
+        margin-right: 20px;
+    }
+
+    .grid-with-sidebar {
+        float: right;
+        width: 78%;
+    }
+    
     tile.expanded {
-            display:inline-block;
-            width:100%;
-        }
+        display: inline-block;
+        width: 100%;
+    }
 }

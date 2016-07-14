@@ -2603,7 +2603,19 @@ grid-sort {
     color: #0071bc;
     position: relative; }
 
-grid tile.expanded {
+grid .sidebar,
+.grid .sidebar {
+  float: left;
+  width: 20%;
+  margin-right: 20px; }
+
+grid .grid-with-sidebar,
+.grid .grid-with-sidebar {
+  float: right;
+  width: 78%; }
+
+grid tile.expanded,
+.grid tile.expanded {
   display: inline-block;
   width: 100%; }
 
