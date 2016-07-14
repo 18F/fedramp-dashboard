@@ -68,5 +68,7 @@
                     reload: true
                 });
         };
+
+        helperService.scrollTo('scrollToContent');
     }
 })();

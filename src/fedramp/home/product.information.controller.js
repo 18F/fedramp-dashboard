@@ -37,5 +37,7 @@
         self.close = function () {
             $state.go('fedramp.app.home.products', {}, { reload: true });
         };
+
+        helperService.scrollTo('scrollToContent');
     }
 })();
