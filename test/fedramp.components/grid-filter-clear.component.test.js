@@ -25,6 +25,7 @@ describe('the grid filter clear component', function () {
                 $location: $location
             },{
                 items: filteredItems,
+                onUpdate: function(){},
                 rawItems: [{
                     name: 'Amazon',
                     agencies: ['DoD', 'DEA'],

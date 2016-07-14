@@ -10,50 +10,22 @@ describe('the grid component', function () {
     var filteredItems;
     var $scope;
     var $element;
+    var dataFactory;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
-        inject(function (_$componentController_, $injector, $rootScope) {
-            $element = angular.element('<div></div>');
-            $componentController = _$componentController_;
-            $log = $injector.get('$log');
-            $location = $injector.get('$location');
-            $scope = $rootScope.$new();
+        dataFactory = new TestDataFactory(inject);
 
-            grid = $componentController('grid', {
-                $log: $log,
-                $location: $location,
-                $element: $element
-            },{
-                items: filteredItems,
-                rawItems: [{
-                    name: 'Amazon',
-                    agencies: ['DoD', 'DEA']
-                }],
-                savedState: true
-            });
-            grid.$onInit();
-        });
+        grid = dataFactory.gridComponent();
+        grid.$onInit();
     });
 
 
     it('should filter a basic string property in a list', function () {
-        gridFilter = $componentController('gridFilter', 
-            {
-                $log: $log,
-                $element: $element
-            },
-            {
-                property: 'name',
-                id: 'name',
-                header: 'Name',
-                option: null,
-                expanded: true,
-                opened: true,
-                // simulate require
-                gridController: grid
-            }
-        );
+        gridFilter = dataFactory.gridFilterComponent({
+            gridController: grid
+        });
+
         gridFilter.$onInit();
         gridFilter.selectedOptionValues = [{value: 'Amazon', selected: false}];
         gridFilter.applyFilter();
@@ -61,23 +33,17 @@ describe('the grid component', function () {
     });
 
     it('should select a value to filter on', function () {
-        gridFilter = $componentController('gridFilter', 
-            {
-                $log: $log,
-                $element: $element
-            },
-            {
-                property: 'name',
-                header: 'Name',
-                id: 'name',
-                option: null,
-                expanded: true,
-                opened: true,
-                // simulate require
-                gridController: grid
-            }
-        );
         var option = {value: 'Amazon', selected: false};
+        gridFilter = dataFactory.gridFilterComponent({
+            property: 'name',
+            header: 'Name',
+            id: 'name',
+            option: null,
+            expanded: true,
+            opened: true,
+            // simulate require
+            gridController: grid
+        });
 
         gridFilter.$onInit();
         expect(gridFilter.selectedOptionValues.length).toBe(0);
@@ -89,25 +55,29 @@ describe('the grid component', function () {
     });
 
     it('should load existing selected values', function () {
-        gridFilter = $componentController('gridFilter', 
-            {
-            $log: $log,
-            $element: $element
-            },
-            {
-                property: 'name',
-                id: 'name',
-                header: 'Name',
-                option: null,
-                selectedOptionValues: [{value: 'Amazon'}],
-                expanded: true,
-                opened: true,
-                // simulate require
-                gridController: grid
-            }
-        );
+        gridFilter = dataFactory.gridFilterComponent({
+            property: 'name',
+            id: 'name',
+            header: 'Name',
+            option: null,
+            selectedOptionValues: [{value: 'Amazon'}],
+            expanded: true,
+            opened: true,
+            // simulate require
+            gridController: grid
+        });
 
         gridFilter.$onInit();
         expect(gridFilter.selectedOptionValues.length).toBe(1);
     });
+
+    it('should complain if onUpdate is not specified', function () {
+        gridFilter = dataFactory.gridComponent({
+            onUpdate: null
+        });
+
+        expect(gridFilter.$onInit).toThrow();
+    });
+
+
 });

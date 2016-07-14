@@ -1,5 +1,7 @@
-<grid class="grid" items="controller.filteredData" raw-items="controller.products" saved-state="true">
+<grid class="grid" raw-items="controller.products" saved-state="true" on-update="controller.onUpdate(items)">
     <div class="">
+        <!-- Showing custom filter func -->
+        <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
         <div class="fr-grid-layout fr-grid-header">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">

@@ -65,6 +65,7 @@
             self.asc = doAscending;
             self.gridController.defaultSort = self;
             self.gridController.items.sort(self.sortFunc);
+
             // Update state of all sorts
             self.gridController.updateSort();
         }

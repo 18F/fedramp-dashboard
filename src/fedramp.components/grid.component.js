@@ -7,14 +7,13 @@
             controller: Grid,
             controllerAs: 'gridController',
             bindings: {
-                // Contains all the filtered items
-                items: '=',
-
                 // Contains original unfiltered dataset
                 rawItems: '<',
 
                 // Determines whether grid will maintain state via query params
-                savedState: '<'
+                savedState: '<',
+
+                onUpdate: '&'
             }
         });
 
@@ -32,6 +31,7 @@
         var filters = [];
         var sorts = [];
 
+
         self.$onInit = $onInit;
         self.addFilter = addFilter;
         self.addSort = addSort;
@@ -41,11 +41,14 @@
 
         // Default sort to utilize for results
         self.defaultSort = null;
+        self.items = [];
 
         function $onInit(){
-            if(!self.items){
-                self.items = self.rawItems;
+            if(!self.onUpdate){
+                throw 'Specify an onUpdate function! Otherwise, you don\' get updates.';
             }
+            self.items = self.rawItems;
+            self.onUpdate({items: self.rawItems});
         }
 
 
@@ -83,7 +86,7 @@
             filters.forEach(function(filter){
 
                 // Filter the data!
-                combinedFilterResults = combinedFilterResults.filter(filter.doFilter);
+                combinedFilterResults = combinedFilterResults.filter(filter.filterFunc);
             });
 
             // Apply default sort if one exists
@@ -94,6 +97,9 @@
             self.updateSort();
 
             self.items = combinedFilterResults;
+
+            // Pass updated dataset
+            self.onUpdate({items: combinedFilterResults});
         }
 
         /**
@@ -134,6 +140,7 @@
                     sort.activated = false;
                 }
             });
+            //self.onUpdate({items: self.items});
         }
     }
 

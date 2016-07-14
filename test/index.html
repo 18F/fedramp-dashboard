@@ -15,13 +15,14 @@
         <link href="../lib/jasmine-2.4.1/jasmine_favicon.png" rel="shortcut icon" type="image/png">
         <link href="../lib/jasmine-2.4.1/jasmine.css" rel="stylesheet" >
 
-        <script src="../lib/jquery-3.0.0.min.js"></script>
+        <script src="../lib/jquery.min.js"></script>
         <script src="../lib/jasmine-2.4.1/jasmine.js"></script>
         <script src="../lib/jasmine-2.4.1/jasmine-html.js"></script>
         <script src="../lib/jasmine-2.4.1/boot.js"></script>	
         <script src="../lib/mock-ajax.js"></script>
 
         <!-- Jasmine 2.4.1 and Blanketjs Integration -->
+        <script src="../lib/polyfill.min.js"></script>
         <script src="../lib/blanket.min.js"></script>
         <script src="../lib/jasmine-blanket.js"></script>
         <script src="../lib/angular.min.js"></script>
@@ -33,6 +34,7 @@
 
         <!-- Stores test data to reuse -->
         <script src="test-data.js"></script>
+        <script src="test-data-factory.js"></script>
 
         <!--Add a data-cover attribute to any source script tags you want covered:-->
         <script data-cover src="../dist/fedramp.js"></script>	

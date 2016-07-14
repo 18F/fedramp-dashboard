@@ -24,6 +24,7 @@ describe('the grid sort component', function () {
                 $location: $location
             },{
                 items: filteredItems,
+                onUpdate: function(){},
                 rawItems: [{
                     name: 'Microsoft',
                     count: 1
