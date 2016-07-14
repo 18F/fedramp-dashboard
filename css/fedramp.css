@@ -2611,7 +2611,7 @@ grid tile.expanded {
   clear: both;
   margin: 20px auto 0; }
   #header #sitetitle {
-    width: 960px;
+    max-width: 960px;
     margin: 0 auto;
     text-align: left; }
     #header #sitetitle img {
@@ -3033,7 +3033,7 @@ body {
 
 #topnav .limit {
   clear: both;
-  width: 960px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0; }
   #topnav .limit form {
