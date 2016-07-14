@@ -4,12 +4,13 @@
     display:block;
 	max-width:none;
 	width:100%;
-    background-color: $color-white;
+    background-color: $color-gray-lightest;
 
 	.fr-grid-layout {
 		display:table;
 		width:100%;
 		font-size:1.6rem;
+		background-color:$color-white;
 
 		.fr-grid-layout-row {
 			display:table-row;

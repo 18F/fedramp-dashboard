@@ -2559,11 +2559,12 @@ input {
   display: block;
   max-width: none;
   width: 100%;
-  background-color: #ffffff; }
+  background-color: #f1f1f1; }
   .grid .fr-grid-layout {
     display: table;
     width: 100%;
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    background-color: #ffffff; }
     .grid .fr-grid-layout .fr-grid-layout-row {
       display: table-row; }
       .grid .fr-grid-layout .fr-grid-layout-row > div {
@@ -3289,6 +3290,10 @@ body {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
+tile:nth-child(2n) .card {
+  float: right;
+  margin-right: 0; }
+
 .tile .fr-grid-layout-row > div {
   border-bottom: 1px solid #f1f1f1;
   border-right: 1px solid #f1f1f1; }
@@ -3303,10 +3308,11 @@ body {
   border-bottom: 1px solid #f1f1f1; }
 
 .tile .card {
-  height: 17em;
-  width: 45%;
+  height: 25rem;
+  width: 48.925%;
+  margin-right: 2%;
   float: left;
-  margin: 1em; }
+  background-color: #ffffff; }
 
 .tile,
 .tile:hover,
@@ -3398,55 +3404,53 @@ body {
       font-size: 2.6rem;
       margin-bottom: 0.8rem; }
 
-.product.card .col {
-  width: 33.33333%; }
-
-.product.card .header {
-  height: 6em; }
-  .product.card .header .name .logo {
-    padding: 0.34em 0; }
-    .product.card .header .name .logo img {
+.card {
+  padding-left: 4.8rem;
+  margin-bottom: 2.7rem; }
+  .card .header .name {
+    display: inline-block;
+    margin-top: 2.3rem; }
+    .card .header .name .logo img {
       max-width: 100%;
       max-height: 3em; }
-  .product.card .header .status {
+  .card .header .reuses {
+    float: right;
+    width: 9.5rem;
+    height: 10.1rem;
+    background-color: #0071bc;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 2.7rem; }
+    .card .header .reuses .text {
+      font-size: 1.3rem;
+      font-weight: 400; }
+    .card .header .reuses .number {
+      margin-bottom: -0.8rem;
+      font-size: 2.6rem;
+      font-weight: 700; }
+  .card .header .status {
     float: right;
     text-align: center;
     width: 6em;
     height: 6em; }
-  .product.card .header .reuses {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .product.card .header .reuses .text {
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .product.card .header .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: -0.8rem; }
-
-.product.card .content .col {
-  width: 100%; }
-
-.product.card .content .title {
-  /* padding-left: 0.34em; */ }
-
-.product.card .content dl {
-  font-size: smaller; }
-  .product.card .content dl dt {
-    clear: left;
-    font-weight: bold;
-    display: inline-block;
-    float: left; }
-  .product.card .content dl dd {
-    float: left;
-    margin-left: 1em; }
+    .card .header .status img {
+      max-width: 4.5rem;
+      margin-right: 1rem;
+      margin-top: 2.3rem; }
+  .card .content .col {
+    width: 100%; }
+  .card .content .title {
+    /* padding-left: 0.34em; */ }
+  .card .content dl {
+    font-size: smaller; }
+    .card .content dl dt {
+      clear: left;
+      font-weight: bold;
+      display: inline-block;
+      float: left; }
+    .card .content dl dd {
+      float: left;
+      margin-left: 1em; }
 
 .product.expanded .name .logo {
   height: 4.2rem;
