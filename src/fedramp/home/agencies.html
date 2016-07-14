@@ -1,34 +1,36 @@
-<grid raw-items="controller.agencies" on-update="controller.onUpdate(items)">
-
-<div style="float:left;width:20%;padding-right:20px;">
-    <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
-    <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>
-    <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="true" class="grid-filter"></grid-filter>
-    <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
-</div>
-
-<div class="grid" style="float:right;width:80%;">
-    <div class="fr-grid-layout fr-grid-header">
-        <div class="fr-grid-layout-row">
-            <div class="fr-grid-cell-name">
-                <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>          
-            </div>
-            <div class="fr-grid-cell-metric">
-                <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
+<grid class="grid" raw-items="controller.agencies" on-update="controller.onUpdate(items)">
+    <div ng-if="controller.sidebar" class="sidebar">
+        <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
+        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>
+        <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="true" class="grid-filter"></grid-filter>
+        <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
+    </div>
+    <div class="grid" ng-class="{'grid-with-sidebar': controller.sidebar === true}">
+        <div class="fr-grid-layout fr-grid-header">
+            <div class="fr-grid-layout-row">
+                <div class="fr-grid-cell-name">
+                    <span ng-if="controller.sidebar">Name</span>
+                    <grid-filter ng-if="controller.sidebar == false" id="agencyName" property="name" header="Name" class="grid-filter"></grid-filter>
+                    <grid-sort property="name" class="grid-sort"></grid-sort>          
+                </div>
+                <div class="fr-grid-cell-metric">
+                    <grid-sort property="reuses" header="Reuses" class="grid-sort" default="-true"></grid-sort>    
+                </div>
             </div>
         </div>
-    </div>
-    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
-</div>
-</grid>
-
-<div class="usa-grid-full">
-    <div class="usa-width-one-whole text-center">
-        <download-csv content="controller.agencies">
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
+        <download-csv content="controller.filteredData" ng-if="controller.filteredData">
             <button>
                 <span>Export to CSV</span>
                 <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
             </button>
         </download-csv>
+
+        <!-- TODO: Remove after testing -->
+        <label style="float: right;">
+            Show Sidebar
+            <input type="checkbox" ng-model="controller.sidebar" />
+        </label>
     </div>
-</div>
+</grid>
