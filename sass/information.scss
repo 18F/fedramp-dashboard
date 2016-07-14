@@ -180,7 +180,9 @@
     .header {
         border-top: none;
         padding-top: 0;
-        margin-left:4.2rem;
+        padding-left: 4.2rem;
+        min-height: 11.6rem;
+		border-bottom: 1px solid $color-gray-lightest;
 
         .logo {
 	        margin-top:2.1rem;
@@ -221,8 +223,8 @@
     .status {
         padding: 2.5rem 0 1rem;
         text-align: center;
-		border-top:1px solid $color-gray-lightest;
-		border-bottom:1px solid $color-gray-lightest;
+		/* border-top: 1px solid $color-gray-lightest; */
+		border-bottom: 1px solid $color-gray-lightest;
 
         .col {
             .text {
@@ -344,6 +346,8 @@
     .agencies,
     .assessors {
         border-top: none;
+	    padding-left:2.8rem;
+		border-bottom: 1px solid $color-gray-lightest;
 
         ul {
             margin-left: -5px;
