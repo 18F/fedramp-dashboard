@@ -2380,7 +2380,7 @@ input {
 .fr-dash-header {
   background-color: #112e51; }
   .fr-dash-header .fr-large-metrics {
-    height: 376px;
+    height: 37.6rem;
     color: #02bfe7;
     text-align: center; }
     .fr-dash-header .fr-large-metrics > div {
@@ -2391,13 +2391,21 @@ input {
     .fr-dash-header .fr-large-metrics > div:last-child {
       border-right: none; }
     .fr-dash-header .fr-large-metrics .fr-large-number {
-      font-size: 28px;
-      margin-top: 170px; }
+      font-size: 2.8rem;
+      margin-top: 17rem; }
       .fr-dash-header .fr-large-metrics .fr-large-number strong {
-        font-size: 100px; }
+        font-size: 10rem; }
+    .fr-dash-header .fr-large-metrics .fr-metric-icon {
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      width: 100%;
+      height: 10rem;
+      background-size: contain;
+      background-position: center center; }
   .fr-dash-header .fr-small-metrics {
     border-top: 2px solid #0d2747;
-    height: 80px;
+    height: 8rem;
     color: #02bfe7; }
     .fr-dash-header .fr-small-metrics > div {
       border-right: 2px solid #0d2747;
@@ -2407,17 +2415,30 @@ input {
     .fr-dash-header .fr-small-metrics > div:last-child {
       border-right: none; }
     .fr-dash-header .fr-small-metrics .fr-large-number {
-      font-size: 16px;
-      margin-top: 18px; }
+      font-size: 1.6rem;
+      margin-top: 1.8rem;
+      display: inline-block; }
       .fr-dash-header .fr-small-metrics .fr-large-number strong {
-        font-size: 28px; }
+        font-size: 2.8rem; }
+    .fr-dash-header .fr-small-metrics .fr-metric-icon {
+      display: inline-block;
+      width: 3.7rem;
+      height: 3.7rem;
+      float: left;
+      margin-right: 1rem;
+      background-size: contain;
+      background-position: center center; }
   .fr-dash-header .fr-large-number {
+    position: relative;
     margin: 0;
     line-height: 1; }
   .fr-dash-header .fr-large-number strong {
     color: #ffffff; }
   .fr-dash-header .fr-light-font {
     font-weight: 400; }
+  .fr-dash-header .fr-metric-label {
+    display: block;
+    font-size: 1.8rem; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -2702,7 +2723,7 @@ grid tile.expanded {
     #header #catnav .select-menu-catnav {
       display: none; }
 
-.icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active {
+.icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active, .icon-cloud, .icon-cloud.active, .icon-reuse, .icon-reuse.active {
   width: 50px;
   height: auto; }
 
@@ -2744,6 +2765,36 @@ grid tile.expanded {
 .icon-ready.active {
   background-image: url("../img/fedramp-process-ready-blue.png");
   background-image: url("../img/fedramp-process-ready-blue.svg");
+  background-repeat: no-repeat; }
+
+.icon-cloud {
+  background-image: url("../img/fedramp-metric-cloud-icon.png");
+  background-image: url("../img/fedramp-metric-cloud-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-cloud.active {
+  background-image: url("../img/fedramp-metric-cloud-icon.png");
+  background-image: url("../img/fedramp-metric-cloud-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-compliant {
+  background-image: url("../img/fedramp-metric-compliant-icon.png");
+  background-image: url("../img/fedramp-metric-compliant-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-compliant.active {
+  background-image: url("../img/fedramp-metric-compliant-icon.png");
+  background-image: url("../img/fedramp-metric-compliant-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-reuse {
+  background-image: url("../img/fedramp-metric-reuse-icon.png");
+  background-image: url("../img/fedramp-metric-reuse-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-reuse.active {
+  background-image: url("../img/fedramp-metric-reuse-icon.png");
+  background-image: url("../img/fedramp-metric-reuse-icon.svg");
   background-repeat: no-repeat; }
 
 /*

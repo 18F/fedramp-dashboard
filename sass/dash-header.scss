@@ -6,7 +6,7 @@
 
  	// large metrics row
  	.fr-large-metrics {
-	 	height:376px;
+	 	height:37.6rem;
 	 	color:$color-primary-alt;
 	 	text-align:center;
 
@@ -23,18 +23,28 @@
 		 	border-right:none;
 	 	}
 	 	.fr-large-number {
-	 		font-size:28px;
-	 		margin-top:170px;
+	 		font-size:2.8rem;
+	 		margin-top:17rem;
 	 		strong {
-		 		font-size:100px;
+		 		font-size:10rem;
 	 		}
+		}
+		// large size metric icons
+		.fr-metric-icon {
+			position:absolute;
+			top:-9rem;
+			left:0;
+			width:100%;
+			height:10rem;
+			background-size:contain;
+			background-position:center center;
 		}
  	}
 
  	// smaller metrics row
  	.fr-small-metrics {
 	 	border-top:2px solid #0d2747;
-	 	height:80px;
+	 	height:8rem;
 	 	color:$color-primary-alt;
 
 	 	> div {
@@ -49,15 +59,27 @@
 		 	border-right:none;
 	 	}
 	 	.fr-large-number {
-	 		font-size:16px;
-	 		margin-top:18px;
+	 		font-size:1.6rem;
+	 		margin-top:1.8rem;
+	 		display:inline-block;
 	 		strong {
-	 			font-size:28px;
+	 			font-size:2.8rem;
 	 		}
+		}
+		// smaller size metric icons
+		.fr-metric-icon {
+			display:inline-block;
+			width:3.7rem;
+			height:3.7rem;
+			float:left;
+			margin-right:1rem;
+			background-size:contain;
+			background-position:center center;
 		}
  	}
  	// clean up spacing / line height for large numbers
  	.fr-large-number {
+ 		position:relative;
 	 	margin:0;
 	 	line-height:1;
  	}
@@ -68,5 +90,10 @@
  	// apply this class to a span or other to provide a 400 font weight
  	.fr-light-font {
 	 	font-weight:$font-normal;
+ 	}
+ 	// label text for metric font sized shared
+ 	.fr-metric-label {
+	 	display:block;
+	 	font-size:1.8rem;
  	}
 }

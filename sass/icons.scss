@@ -29,7 +29,6 @@
     @include background-image('../img/fedramp-process-compliant-blue');
 }
 
-
 .icon-in-process {
     @extend .icon;
     @include background-image('../img/fedramp-process-in-process-grey');
@@ -44,8 +43,32 @@
     @extend .icon;
     @include background-image('../img/fedramp-process-ready-grey');
 }
-
 .icon-ready.active {
     @extend .icon;
     @include background-image('../img/fedramp-process-ready-blue');
+}
+// metric icons
+.icon-cloud {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-cloud-icon');
+}
+.icon-cloud.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-cloud-icon');
+}
+.icon-compliant {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-compliant-icon');
+}
+.icon-compliant.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-compliant-icon');
+}
+.icon-reuse {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-reuse-icon');
+}
+.icon-reuse.active {
+    @extend .icon;
+    @include background-image('../img/fedramp-metric-reuse-icon');
 }
