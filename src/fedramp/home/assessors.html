@@ -35,17 +35,20 @@
             </div>
         </div>
         <tile class="row" ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
-        <download-csv content="controller.filteredData" ng-if="controller.filteredData">
-            <button>
-                <span>Export to CSV</span>
-                <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
-            </button>
-        </download-csv>
-
-        <!-- TODO: Remove after testing -->
-        <label style="float: right;">
-            Show Sidebar
-            <input type="checkbox" ng-model="controller.sidebar" />
-        </label>
     </div>
 </grid>
+
+<div style="clear: both;">
+    <download-csv content="controller.filteredData" ng-if="controller.filteredData" style="float: right;">
+        <button>
+            <span>Export to CSV</span>
+            <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+        </button>
+    </download-csv>
+
+    <!-- TODO: Remove after testing -->
+    <label style="float: right; margin-right: 1rem; margin-top: 2rem;">
+        Show Sidebar
+        <input type="checkbox" ng-model="controller.sidebar" />
+    </label>
+</div>
