@@ -1,12 +1,12 @@
 <!-- TODO: Determine if the US Grid layout should be used -->
-<div ng-if="controller.expand" class="assessor expanded">
-    <div class="row">
-        <div class="col name">
+<div ng-if="controller.expand" class="assessor expanded fr-grid-layout">
+    <div class="row fr-grid-layout-row">
+        <div class="col name fr-grid-cell-name">
             <div class="title">
                 <strong>{{ controller.model.name }}</strong>
             </div>
         </div>
-        <div class="col reuses">
+        <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">Reuses</div>
         </div>
