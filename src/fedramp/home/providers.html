@@ -1,32 +1,38 @@
-<grid raw-items="controller.providers" on-update="controller.onUpdate(items)">
-<div style="float:left;width:20%;padding-right:20px;">
-    <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
-    <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->
-    <grid-filter id="designations" property="d in designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
-    <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
-    <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
-    <grid-filter id="products" property="p.name in products" header="Products" expanded="true" class="grid-filter"></grid-filter>
-</div>
-<div style="float:right;width:80%;">
-    <div class="tile provider expanded">
-        <div class="row">
-            <div class="col name">
-                <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>          
-            </div>
-            <div class="col service-model">
-                <grid-sort property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>    
-            </div>
-            <div class="col deployment-model">
-                <grid-sort property="deploymentModels" header="Deployment Models" class="grid-sort"></grid-sort>    
-            </div>
+<grid classs="grid" raw-items="controller.providers" on-update="controller.onUpdate(items)">
+    <div style="float:left;width:20%;padding-right:20px;">
+        <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
+        <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->
+        <grid-filter id="designations" property="d in designations" header="Designations" expanded="true" class="grid-filter"></grid-filter>
+        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" class="grid-filter"></grid-filter>
+        <grid-filter id="products" property="p.name in products" header="Products" expanded="true" class="grid-filter"></grid-filter>
+    </div>
+    <div class="grid" style="float:right;width:80%;">
+        <div class="fr-grid-layout fr-grid-header">
+            <div class="row fr-grid-layout-row">
+                <div class="fr-grid-cell-name">
+                    <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>          
+                </div>
+                <div class="fr-grid-cell-service">
+                    <grid-sort property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>    
+                </div>
+                <div class="fr-grid-cell-deployment">
+                    <grid-sort property="deploymentModels" header="Deployment Models" class="grid-sort"></grid-sort>    
+                </div>
 
-            <!-- Move out to file when we figure out how to do this for every page-->
-            <div class="col" style="width:6em; float:right; text-align:center;position:relative;bottom:6px;">
-                <grid-sort property="reuses" header="Reuses" class="grid-sort" default="-true"></grid-sort>    
+                <!-- Move out to file when we figure out how to do this for every page-->
+                <div class="fr-grid-cell-metric">
+                    <grid-sort property="reuses" header="Reuses" class="grid-sort" default="-true"></grid-sort>    
+                </div>
             </div>
         </div>
-    </div>
 
-    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
-</div>
+        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
+    </div>
 </grid>
+<download-csv content="controller.filteredData" ng-if="controller.filteredData">
+    <button>
+        <span>Export to CSV</span>
+        <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+    </button>
+</download-csv>

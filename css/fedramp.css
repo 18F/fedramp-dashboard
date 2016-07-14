@@ -3286,44 +3286,35 @@ tile:nth-child(2n) .card {
     float: left;
     margin-left: 1em; }
 
-.provider.expanded {
-  display: inline-block;
-  width: 100%; }
-  .provider.expanded .col {
-    width: 23%;
-    vertical-align: top;
-    padding-top: 0.34em; }
-  .provider.expanded .name {
-    width: 40%; }
-    .provider.expanded .name .logo {
-      padding: 0.34em 0; }
-      .provider.expanded .name .logo img {
-        max-width: 100%;
-        max-height: 3em; }
-    .provider.expanded .name .title {
-      /* padding-left: 0.34em; */ }
-  .provider.expanded .service-model {
-    width: 15%;
-    font-size: smaller; }
-  .provider.expanded .deployment-model {
-    width: 15%;
-    font-size: smaller; }
-  .provider.expanded .reuses {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .provider.expanded .reuses .text {
-      font-size: smaller; }
-    .provider.expanded .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: 0.8rem; }
+.provider.expanded .col {
+  width: 23%;
+  vertical-align: top;
+  padding-top: 0.34em; }
+
+.provider.expanded .name .logo {
+  height: 4.2rem;
+  width: 15rem;
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+  margin: 0 0 0.5rem; }
+
+.provider.expanded .name .title {
+  text-overflow: ellipsis; }
+
+.provider.expanded .reuses {
+  text-align: center;
+  background-color: #0071bc;
+  color: #ffffff;
+  font-weight: bolder;
+  border-right: none;
+  border-bottom: 1px solid #ffffff; }
+  .provider.expanded .reuses .text {
+    font-size: 1.3rem;
+    font-weight: 400; }
+  .provider.expanded .reuses .number {
+    font-size: 2.6rem;
+    margin-bottom: -0.8rem; }
 
 .card {
   padding-left: 4.8rem;
