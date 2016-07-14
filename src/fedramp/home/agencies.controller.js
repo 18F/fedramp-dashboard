@@ -16,7 +16,7 @@
         self.filteredData = [];
         self.agencies = agencies;
         self.onUpdate = onUpdate;
-
+        console.log(agencies);
         function onUpdate(items){
             self.filteredData = items;
         }

@@ -11,10 +11,12 @@ grid-sort {
 .grid-sort-header {
     font-size: 1.4rem !important;
     font-weight:600;
+    color:#212121;
 }
 .grid-sort-arrows {
     position:relative;
-    display:block;
+    display:inline-block;
+    width:3rem;
     background-color:$color-gray-lighter;
 	text-align:center;
 	cursor:pointer;

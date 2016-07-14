@@ -18,14 +18,14 @@
             }
         });
     
-    GridSort.$inject = ['$log', '$parse'];
+    GridSort.$inject = ['$log', '$parse', '$element'];
 
     /**
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
      */
-    function GridSort($log, $parse){
+    function GridSort($log, $parse, $element){
         var self = this;
         self.activated = null;
 
@@ -35,6 +35,7 @@
         self.sort = sort;
         self.highlight = highlight;
         self.toggleSort = toggleSort;
+        self.clear = clear;
 
         function $onInit(){
             if(self.property){
@@ -49,7 +50,6 @@
                 });
                 self.sort(self.asc);
             }
-
             self.gridController.addSort(self);
 
         }
@@ -65,7 +65,7 @@
             self.asc = doAscending;
             self.gridController.defaultSort = self;
             self.gridController.items.sort(self.sortFunc);
-
+            $element.addClass('sort-selected');
             // Update state of all sorts
             self.gridController.updateSort();
         }
@@ -135,6 +135,14 @@
                 return true;
             }
             return false;
+        }
+
+        /**
+         * Clears the sorting.
+         */ 
+        function clear(){
+            self.activated = false;
+            $element.removeClass('sort-selected');
         }
     }
 

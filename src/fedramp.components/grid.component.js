@@ -137,7 +137,7 @@
         function updateSort(){
             sorts.forEach(function(sort){
                 if(!angular.equals(sort, self.defaultSort)){
-                    sort.activated = false;
+                    sort.clear();
                 }
             });
             //self.onUpdate({items: self.items});

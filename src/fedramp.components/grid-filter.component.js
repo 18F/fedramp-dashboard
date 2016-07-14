@@ -70,7 +70,7 @@
         self.filtered = [];
 
         // Whether to initially render expanded mode with panels opened
-        self.opened = true;
+        self.opened = (angular.isDefined(self.opened) ? self.opened :  true);
 
         // Exposed public functions
         self.$onInit = $onInit;

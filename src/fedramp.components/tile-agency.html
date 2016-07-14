@@ -1,14 +1,23 @@
 <!-- TODO: Determine if the US Grid layout should be used -->
-<div ng-if="controller.expand" class="agency expanded">
-    <div class="row">
-        <div class="col name">
-            <strong>{{ controller.model.name }}</strong>
+<div ng-if="controller.expand" class="agency expanded fr-grid-layout">
+    <div class="row fr-grid-layout-row">
+        <div class="col name fr-grid-cell-name">
+            <div class="title">
+                <strong>{{ controller.model.name }}</strong>
+            </div>
         </div>
-        <div class="col reuses">
+        <div class="col status fr-grid-cell-icon">
+            <img ng-if="controller.model.designation === 'Compliant'" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
+            <img ng-if="controller.model.designation === 'In-Process'" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
+            <img ng-if="controller.model.designation === 'In PMO Review'" ng-src="img/fedramp-process-compliant-blue.png" alt="In PMO Review" />
+            <img ng-if="controller.model.designation === 'Ready'" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
+        </div>
+        <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">Reuses</div>
         </div>
     </div>
+
 </div>
 
 <div ng-if="!controller.expand" class="agency card">
