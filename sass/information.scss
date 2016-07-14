@@ -133,8 +133,6 @@
 	font-size:1.6rem;
     .row {
         display: block;
-//         width: 100%;
-//         clear: both;
         padding: 1em 0;
         h1, h2, h3, h4, h5, h6 {
 	        font-family:$font-sans;
@@ -181,7 +179,6 @@
         border-top: none;
         padding-top: 0;
         margin-left:3rem;
-
         .logo {
 	        margin-top:2.1rem;
 
@@ -221,8 +218,8 @@
     .status {
         padding: 2.5rem 0 1rem;
         text-align: center;
-		border-top:1px solid $color-gray-lightest;
-		border-bottom:1px solid $color-gray-lightest;
+		border-top: 1px solid $color-gray-lightest;
+		border-bottom: 1px solid $color-gray-lightest;
 
         .col {
             .text {
@@ -238,17 +235,6 @@
 	            max-height:4rem;
             }
         }
-
-/*
-        .in-process {
-            width: 30%;
-        }
-
-        .compliant {
-            width: 30%;
-        }
-*/
-
         .progress {
             height: 5px;
             background-color: $color-gray-light;
@@ -344,6 +330,8 @@
     .agencies,
     .assessors {
         border-top: none;
+	    padding-left:2.8rem;
+		border-bottom: 1px solid $color-gray-lightest;
 
         ul {
             margin-left: -5px;

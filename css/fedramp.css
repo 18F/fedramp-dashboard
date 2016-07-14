@@ -3022,16 +3022,7 @@ body {
     padding: 2.5rem 0 1rem;
     text-align: center;
     border-top: 1px solid #f1f1f1;
-    border-bottom: 1px solid #f1f1f1;
-    /*
-        .in-process {
-            width: 30%;
-        }
-
-        .compliant {
-            width: 30%;
-        }
-*/ }
+    border-bottom: 1px solid #f1f1f1; }
     .information .status .col .text {
       font-size: 1.2rem; }
     .information .status .ready, .information .status .in-process, .information .status .compliant {
@@ -3097,7 +3088,9 @@ body {
   .information .products,
   .information .agencies,
   .information .assessors {
-    border-top: none; }
+    border-top: none;
+    padding-left: 2.8rem;
+    border-bottom: 1px solid #f1f1f1; }
     .information .providers ul,
     .information .products ul,
     .information .agencies ul,
@@ -3586,25 +3579,24 @@ body {
     float: left;
     margin-left: 1em; }
 
-.assessor.expanded .col {
-  width: 40%;
-  vertical-align: top;
-  padding-top: 0.34em; }
-
-.assessor.expanded .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .assessor.expanded .reuses .text {
-    font-size: 1.3rem;
-    font-weight: 400; }
-  .assessor.expanded .reuses .number {
-    font-size: 2.6rem;
-    margin-bottom: -0.8rem; }
+.assessor.expanded {
+  font-size: 1.6rem; }
+  .assessor.expanded .fr-grid-cell-name {
+    font-size: 1.8rem;
+    padding-left: 2rem; }
+  .assessor.expanded .name .title {
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .assessor.expanded .reuses {
+    text-align: center;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-right: none;
+    border-bottom: 1px solid #ffffff; }
+    .assessor.expanded .reuses .text {
+      font-size: 1.3rem;
+      font-weight: 400; }
+    .assessor.expanded .reuses .number {
+      font-size: 2.6rem;
+      margin-bottom: -0.8rem; }

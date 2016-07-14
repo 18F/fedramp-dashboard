@@ -475,24 +475,22 @@
 }
 
 .assessor.expanded {
-    .row {
-    }
+	font-size: 1.6rem;
 
-    .col {
-        width: 1 / 2 * 80%;
-        vertical-align: top;
-        padding-top: 0.34em;
-    }
+	.fr-grid-cell-name {
+		font-size: 1.8rem;
+		padding-left: 2rem;
+	}
 
     .name {
+        .title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 
     .reuses {
-        float: right;
         text-align: center;
-        width: 6em;
-        height: 6em;
-        padding-top: 1.5em;
         background-color: $color-primary;
         color: $color-white;
         font-weight: bolder;
