@@ -13,7 +13,12 @@
      */
     function AgenciesController ($log, agencies) {
         var self = this;
-
+        self.filteredData = [];
         self.agencies = agencies;
+        self.onUpdate = onUpdate;
+
+        function onUpdate(items){
+            self.filteredData = items;
+        }
     }
 })();

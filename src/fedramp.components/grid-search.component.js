@@ -51,7 +51,7 @@
                 throw 'If property is not specified, filterFunc must be provided';
             }
             
-            self.filterFunc = self.filterFunc || filterFunc;
+            self.filterFunc = (self.filterFunc ? wrapFilterFunc(self.filterFunc) : filterFunc);
             self.gridController.addFilter(self);
         }
 
@@ -80,6 +80,12 @@
             var filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.filtered = filtered;
             self.gridController.doFilter();
+        }
+
+        function wrapFilterFunc(func){
+            return function(obj, index, arr){
+                return func(obj, index, arr, self.searchTerm);
+            };
         }
 
     }

@@ -1,5 +1,4 @@
-
-<grid class="grid" items="controller.filteredData" raw-items="controller.assessors">
+<grid class="grid" raw-items="controller.assessors" on-update="controller.onUpdate(items)">
 <div class="usa-grid-full">
     <div class="usa-width-one-whole">
         <grid-filter id="assessorName" property="name" header="Name" class="grid-filter"></grid-filter>

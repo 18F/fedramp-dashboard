@@ -14,6 +14,12 @@
     function AssessorsController ($log, assessors) {
         var self = this;
 
+        self.filteredData = [];
         self.assessors = assessors;
+        self.onUpdate = onUpdate;
+
+        function onUpdate(items){
+            self.filteredData = items;
+        }
     }
 })();
