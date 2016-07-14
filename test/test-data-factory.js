@@ -6,6 +6,7 @@ function TestDataFactory(inject){
     self.gridFilterComponent = gridFilterComponent;
     self.gridSearchComponent = gridSearchComponent;
     self.gridClearComponent = gridClearComponent;
+    self.gridSortComponent = gridSortComponent;
 
     function gridComponent(properties){
         properties = properties || {};
@@ -110,4 +111,24 @@ function TestDataFactory(inject){
         return filter;
     }
 
+    function gridSortComponent(properties){
+        var filter;
+        var config = angular.extend({
+
+        }, properties);
+
+        inject(function (_$componentController_, $injector, $rootScope) {
+            var $componentController = _$componentController_;
+            var $log = $injector.get('$log');
+            var $element = angular.element('<div></div>');
+            filter = $componentController('gridSort', 
+                {
+                $log: $log,
+                $element: $element
+            },properties
+            );
+        });
+
+        return filter;
+    }
 }

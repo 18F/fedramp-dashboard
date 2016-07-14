@@ -2674,7 +2674,8 @@ grid-sort {
 
 .grid-sort-arrows {
   position: relative;
-  display: block;
+  display: inline-block;
+  width: 3rem;
   background-color: #d6d7d9;
   text-align: center;
   cursor: pointer; }

@@ -14,7 +14,8 @@ grid-sort {
 }
 .grid-sort-arrows {
     position:relative;
-    display:block;
+    display:inline-block;
+    width:3rem;
     background-color:$color-gray-lighter;
 	text-align:center;
 	cursor:pointer;

@@ -1,29 +1,28 @@
 <grid raw-items="controller.agencies" on-update="controller.onUpdate(items)">
-<div class="usa-grid-full">
-    <div class="usa-width-one-third">
-        <div>
-            <grid-filter id="assessors" property="a in assessors" header="Assessors" expanded="true" class="grid-filter"></grid-filter>
-        </div>
-        <div>
-            <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
-        </div>
-        <div>
-            <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
-        </div>
-    </div>
-    <div class="usa-width-two-thirds">
-        <div class="usa-grid-full">
-            <div class="usa-width-one-third">
-                Name <grid-sort property="name" class="grid-sort"></grid-sort>    
-            </div>
-            <div class="usa-width-one-third">
-                Reuses <grid-sort property="reuses" class="grid-sort"></grid-sort>    
+
+<div style="float:left;width:20%;padding-right:20px;">
+    <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
+    <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>
+    <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="true" class="grid-filter"></grid-filter>
+    <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
+</div>
+
+<div style="float:right;width:80%;">
+        <div class="fr-grid-layout fr-grid-header">
+            <div class="fr-grid-layout-row">
+                <div class="fr-grid-cell-name">
+                <grid-sort property="name" header="Name" class="grid-sort"></grid-sort>          
+                </div>
+                <div class="fr-grid-cell-metric">
+                    <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
+                </div>
             </div>
         </div>
-        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item" />
-    </div>
+
+    <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"/>
 </div>
 </grid>
+
 <div class="usa-grid-full">
     <div class="usa-width-one-whole text-center">
         <download-csv content="controller.agencies">
