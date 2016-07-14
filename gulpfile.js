@@ -59,12 +59,15 @@ gulp.task('copy:lib', ['clean'], function(){
     console.log('Copying over all of the lib files');
     return gulp
         .src([
-            'lib/angular-ui-router.min.js',
-            'lib/jquery-3.0.0.min.js',
-            'lib/papaparse.min.js',
-            'lib/showdown.min.js',
-            'lib/uswds.min.js'
+            'node_modules/babel-polyfill/dist/*.min.js',
+            'node_modules/angular/angular.min.js',
+            'node_modules/angular-ui-router/release/*.min.js',
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/papaparse/papaparse.min.js',
+            'node_modules/showdown/dist/*.min.js',
+            'node_modules/uswds/dist/js/*.min.js'
         ])
+        .pipe(gulp.dest('lib'))
         .pipe(gulp.dest('build/lib'))
         .pipe(gulp.dest('build/dest/lib'));
 });
