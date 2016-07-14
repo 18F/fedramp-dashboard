@@ -9,7 +9,14 @@
 
     function ProductController($log, products, $stateParams, $filter, $location){
         var self = this;
-
+        self.onUpdate = onUpdate;
         self.products = products;
+
+
+
+        function onUpdate(items){
+            $log.debug('Incoming dataset');
+            self.filteredData = items;
+        }
     }
 })();

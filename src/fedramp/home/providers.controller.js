@@ -19,7 +19,11 @@
         self.providers = providers;
         self.reuseRangeOptions = reuseRangeOptions;
         self.reuseRangeFilter = reuseRangeFilter;
+        self.onUpdate = onUpdate;
 
+        function onUpdate(items){
+            self.filteredData = items;
+        }
 
         function reuseRangeOptions(providers){
             return [

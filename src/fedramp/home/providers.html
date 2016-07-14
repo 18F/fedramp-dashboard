@@ -1,4 +1,4 @@
-<grid items="controller.filteredData" raw-items="controller.providers">
+<grid raw-items="controller.providers" on-update="controller.onUpdate(items)">
 <div style="float:left;width:20%;padding-right:20px;">
     <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
     <!--<grid-filter property="name" header="Name" expanded="true" class="grid-filter"></grid-filter>-->

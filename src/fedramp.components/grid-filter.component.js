@@ -77,7 +77,7 @@
         self.applyFilter = applyFilter;
         self.selectOption = selectOption;
         self.clear = clear;
-        self.doFilter = doFilter;
+        //self.doFilter = doFilter;
         self.loadOptions = loadOptions;
         self.$postLink = $postLink;
 
@@ -97,7 +97,8 @@
 
             // Allow custom optionsFunc and filterFuncs to be passed for custom filtering
             self.optionsFunc = self.optionsFunc || optionsFunc;
-            self.filterFunc = self.filterFunc || filterFunc;
+            // Wrap custom func
+            self.filterFunc = (self.filterFunc ? wrapFilterFunc(self.filterFunc) : filterFunc);
 
             if(self.isArray){
                 configureArrayParsers();
@@ -194,23 +195,8 @@
          * @memberof Components.GridFilter
          */
         function applyFilter(){
-            self.filtered = self.gridController.rawItems.filter(self.doFilter);
+            self.filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.gridController.doFilter();
-        }
-
-        /**
-         * Filter function applied when using `Array.prototype.filter`; When a match occurs, 
-         * we return the object being compared. When we return null, that means to exclude
-         * the object from the filtered dataset
-         * @public
-         * @memberof Components.GridFilter
-         */
-        function doFilter(obj, index, arr){
-            // When no option is selected, return everything
-            if(self.selectedOptionValues.length === 0){
-                return obj;
-            }
-            return self.filterFunc(obj, index, arr, self.selectedOptionValues);
         }
 
 
@@ -229,9 +215,14 @@
          *  whether an object was found within the selected options.
          */
         function filterFunc(obj, index, arr, selectedOptionValues){
+            
+            // When no option is selected, return everything
+            if(self.selectedOptionValues.length === 0){
+                return obj;
+            }
 
             // Handle when property being searched is an array
-           if(self.isArray){
+            if(self.isArray){
                 return arrayFilterFunc(obj, index, arr);
             }
 
@@ -450,6 +441,20 @@
             self.selectedOptionValues = [];
             self.options.forEach(x=> x.selected = false);
             applyFilter();
+        }
+
+        /**
+         * Wraps a custom filter func with some additonal pre-processing logic to ensure
+         * that a filter without any selected options is returned. We also ensure to pass an additonal
+         * parameter selectedOptionValues to the callers.
+         */
+        function wrapFilterFunc(func){
+            return function(obj, index, arr){
+                if(self.selectedOptionValues.length === 0){
+                    return obj;
+                }
+                return func(obj, index, arr, self.selectedOptionValues);
+            };
         }
     }
 })();
