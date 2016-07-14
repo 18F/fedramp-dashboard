@@ -1,6 +1,5 @@
 @import 'variables';
 
-grid,
 .grid {
     display:block;
 	max-width:none;
@@ -9,36 +8,65 @@ grid,
 
 	.fr-grid-layout {
 		display:table;
-		height:4.4rem;
-		line-height:4.4rem;
 		width:100%;
-		font-size:1.4rem;
+		font-size:1.6rem;
 
 		.fr-grid-layout-row {
 			display:table-row;
 			
 			> div {
 				display:table-cell;
+				vertical-align:middle;
 			}
 		}
 	}
 	// handle styling for grid view filters, need padding for positioning
 	.fr-grid-header {
-		> div > div {
-			padding-top:2.3rem;
+		font-size:1.4rem;
+		height:4.4rem;
+		line-height:4.4rem;
+
+		.fr-grid-layout-row {
+			> div {
+				padding-top:2.3rem;
+				vertical-align: top;
+			}
+			.fr-grid-cell-name {
+				line-height:4.4rem;
+			}
 		}
 	}
+	// background handling for the filtering header
 	.fr-grid-layout.fr-grid-header {
 		white-space:nowrap;
 		height:8.4rem;
 		background:$color-gray-lightest;
 	}
+	// padding for text based columns
+	// exxempt icon & metric cols
+	.fr-grid-layout-row {
+		> div {
+			padding-left:2rem;
+		}
+		// name needs some extra padding
+		> div:first-child {
+			padding-left:2.8rem;
+		}
+		.fr-grid-cell-icon,
+		.fr-grid-cell-metric {
+		 	padding-left:0;
+		 }
+	}
 	.fr-grid-cell-name {
 		width:31%;
-		padding-left:1rem;
+		line-height:1;
 	}
 	.fr-grid-cell-service {
 		width:16%;
+		> div {
+			float:left;
+			margin-right:1rem;
+		}
 	}
 	.fr-grid-cell-deployment {
 		width:20%;

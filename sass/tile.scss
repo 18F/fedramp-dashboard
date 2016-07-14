@@ -3,6 +3,7 @@
 @import '../node_modules/uswds/src/stylesheets/core/_fonts';
 @import '../node_modules/uswds/src/stylesheets/core/_defaults';
 @import '../node_modules/uswds/src/stylesheets/core/_base';
+@import 'variables';
 
 .tile {
 	.fr-grid-layout-row {
@@ -85,8 +86,8 @@
             }
 
             .number {
-                font-size: 2em;
-                margin-bottom: -10px;
+                font-size: 2.6rem;
+                margin-bottom: -0.8rem;
             }
         }
     }
@@ -174,8 +175,8 @@
         }
 
         .number {
-            font-size: 2em;
-            margin-bottom: -10px;
+            font-size: 2.6rem;
+            margin-bottom: 0.8rem;
         }
     }
 }
@@ -222,12 +223,13 @@
             border-bottom: 1px solid $color-white;
 
             .text {
-                font-size: smaller;
+                font-size: 1.3rem;
+                font-weight:$font-normal;
             }
 
             .number {
-                font-size: 2em;
-                margin-bottom: -10px;
+                font-size: 2.6rem;
+                margin-bottom: -0.8rem;
             }
         }
     }
@@ -261,45 +263,28 @@
 
 .product.expanded {
 
-	font-size:1.6rem;
-
-	.fr-grid-cell-name {
-		font-size:1.8rem;
-		padding-left:2rem;
-	}
+	.fr-grid-cell-name {}
     .name {
-//         width: 2/6 * 100%;
         
         .logo {
-	        height:4.4rem;
+	        height:4.2rem;
 	        width:15rem;
 	        background-size:contain;
 	        background-position:left center;
 	        background-repeat:no-repeat;
-			margin:1rem 0;
+			margin:0 0 0.5rem;
         }
 
         .title {
-//             overflow: hidden;
             text-overflow: ellipsis;
-//             height: 1em;
         }
     }
 
-    .service-model {
-//         font-size: smaller;
-    }
+    .service-model {}
 
-    .deployment-model {
-//         font-size: smaller;
-    }
+    .deployment-model {}
 
-    .impact-level {
-/*
-        text-align: center;
-        font-size: smaller;
-*/
-    }
+    .impact-level {}
 
     .status {
         text-align: center;
@@ -319,12 +304,13 @@
         border-bottom: 1px solid $color-white;
 
         .text {
-            font-size: smaller;
+            font-size: 1.3rem;
+            font-weight:$font-normal;
         }
 
         .number {
-            font-size: 2em;
-            margin-bottom: -10px;
+            font-size: 2.6rem;
+            margin-bottom: -0.8rem;
         }
     }
 }
@@ -353,12 +339,13 @@
             border-bottom: 1px solid $color-white;
 
             .text {
-                font-size: smaller;
+	            font-size: 1.3rem;
+	            font-weight:$font-normal;
             }
 
             .number {
-                font-size: 2em;
-                margin-bottom: -10px;
+                font-size: 2.6rem;
+                margin-bottom: -0.8rem;
             }
         }
     }
@@ -368,9 +355,7 @@
             width: 100%;
         }
 
-        .title {
-            /* padding-left: 0.34em; */
-        }
+        .title {}
 
         dl {
             font-size: smaller;
@@ -416,12 +401,13 @@
         border-bottom: 1px solid $color-white;
 
         .text {
-            font-size: smaller;
+            font-size: 1.3rem;
+            font-weight:$font-normal;
         }
 
         .number {
-            font-size: 2em;
-            margin-bottom: -10px;
+            font-size: 2.6rem;
+            margin-bottom: -0.8rem;
         }
     }
 }
@@ -450,12 +436,13 @@
             border-bottom: 1px solid $color-white;
 
             .text {
-                font-size: smaller;
+	            font-size: 1.3rem;
+	            font-weight:$font-normal;
             }
 
             .number {
-                font-size: 2em;
-                margin-bottom: -10px;
+                font-size: 2.6rem;
+                margin-bottom: -0.8rem;
             }
         }
     }
@@ -513,12 +500,13 @@
         border-bottom: 1px solid $color-white;
 
         .text {
-            font-size: smaller;
+            font-size: 1.3rem;
+            font-weight:$font-normal;
         }
 
         .number {
-            font-size: 2em;
-            margin-bottom: -10px;
+            font-size: 2.6rem;
+            margin-bottom: -0.8rem;
         }
     }
 }
