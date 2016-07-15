@@ -280,7 +280,7 @@ id:'@'}});GridFilter.$inject=['$location','$parse','$element'];/**
      * @memberof Components
      * @example 
      * <grid-filter property="name" header="Name" options="" expanded="true" opened="true"></grid-filter>
-     */function GridFilter($location,$parse,$element){var self=this;// Regex to parse out array based filter keys
+     */function GridFilter($location,$parse,$element){var self=this;var selectedCss='grid-filter-selected';// Regex to parse out array based filter keys
 var ARRAY_FILTER_REGEX=/^(.*)\sin\s(.+)$/;// Default template used to render option values
 self.gridFilterOptionsTemplatePath="src/fedramp.components/grid-filter-options.html";// Options available to filter based on property
 self.options=[];// Options that have been selected
@@ -311,7 +311,7 @@ if(self.options.length===0){self.loadOptions(self.gridController.rawItems);}if(s
          * data from other filters.
          * @public
          * @memberof Components.GridFilter
-         */function applyFilter(){self.filtered=self.gridController.rawItems.filter(self.filterFunc);self.gridController.doFilter();}/**
+         */function applyFilter(){toggleCss();self.filtered=self.gridController.rawItems.filter(self.filterFunc);self.gridController.doFilter();}/**
          * Executes a filter on the current data set.
          *
          * If custom behavior is required, this method may be overriden by passing in
@@ -428,7 +428,7 @@ return objectFilterFunc(obj,index,arr);}/**
          * Wraps a custom filter func with some additonal pre-processing logic to ensure
          * that a filter without any selected options is returned. We also ensure to pass an additonal
          * parameter selectedOptionValues to the callers.
-         */function wrapFilterFunc(func){return function(obj,index,arr){if(self.selectedOptionValues.length===0){return obj;}return func(obj,index,arr,self.selectedOptionValues);};}}})();(function(){'use strict';angular.module('fedramp.components').component('gridSearch',{templateUrl:'src/fedramp.components/grid-search.html',controller:GridSearch,controllerAs:'controller',require:{gridController:'^grid'},bindings:{// Property expression. Tells search which property to search on. 
+         */function wrapFilterFunc(func){return function(obj,index,arr){if(self.selectedOptionValues.length===0){return obj;}return func(obj,index,arr,self.selectedOptionValues);};}function toggleCss(){if(self.selectedOptionValues.length>0){$element.addClass(selectedCss);}else{$element.removeClass(selectedCss);}}}})();(function(){'use strict';angular.module('fedramp.components').component('gridSearch',{templateUrl:'src/fedramp.components/grid-search.html',controller:GridSearch,controllerAs:'controller',require:{gridController:'^grid'},bindings:{// Property expression. Tells search which property to search on. 
 property:'@',placeholder:'@',id:'@',filterFunc:'<'}});GridSearch.$inject=['Searcher'];/**
      * Allows a dataset to be searched using free text searches. This component utilizes a property 
      * expression to determine which field to search on. See {@link Services.Searcher Searcher} example for 
@@ -1196,7 +1196,10 @@ if(!searchTerm){return product;}searchTerm=searchTerm.toLowerCase();var productN
          */self.close=function(){$state.go('fedramp.app.home.providers',{},{reload:true});};helperService.scrollTo('scrollToContent');}})();(function(){'use strict';angular.module('fedramp').controller('ProvidersController',ProvidersController);ProvidersController.$inject=['$log','providers'];/**
      * @constructor
      * @memberof Controllers
-     */function ProvidersController($log,providers){var self=this;self.sidebar=true;self.filteredData=[];self.providers=providers;self.reuseRangeOptions=reuseRangeOptions;self.reuseRangeFilter=reuseRangeFilter;self.onUpdate=onUpdate;function onUpdate(items){self.filteredData=items;}function reuseRangeOptions(providers){return[{value:{min:0,max:5},label:'0 - 5',selected:false},{value:{min:6,max:10},label:'5 - 10',selected:false},{value:{min:11,max:1000},label:'> 10',selected:false}];}function reuseRangeFilter(provider,index,arr,selectedOptions){return selectedOptions.find(function(option){if(provider.reuses>=option.value.min&&provider.reuses<=option.value.max){return option;}});}}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
+     */function ProvidersController($log,providers){var self=this;self.sidebar=true;self.filteredData=[];self.providers=providers;self.reuseRangeOptions=reuseRangeOptions;self.reuseRangeFilter=reuseRangeFilter;self.onUpdate=onUpdate;function onUpdate(items){self.filteredData=items;}function reuseRangeOptions(providers){return[{value:{min:0,max:5},label:'0 - 5',selected:false},{value:{min:6,max:10},label:'5 - 10',selected:false},{value:{min:11,max:1000},label:'> 10',selected:false}];}function reuseRangeFilter(provider,index,arr,selectedOptions){return selectedOptions.find(function(option){if(provider.reuses>=option.value.min&&provider.reuses<=option.value.max){return option;}});}}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
+     * @constructor
+     * @memberof Controllers
+     */function SitemapController($log,fedrampData,helperService){var self=this;self.providers=fedrampData.providers();self.products=fedrampData.products();self.agencies=fedrampData.agencies();self.assessors=fedrampData.assessors();self.today=helperService.today();self.slugify=helperService.slugify;}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
      * @constructor
      * @memberof Controllers
      */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
@@ -1284,7 +1287,4 @@ $http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp
 //     ],
 //     "related": []
 // }
-if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
-     * @constructor
-     * @memberof Controllers
-     */function SitemapController($log,fedrampData,helperService){var self=this;self.providers=fedrampData.providers();self.products=fedrampData.products();self.agencies=fedrampData.agencies();self.assessors=fedrampData.assessors();self.today=helperService.today();self.slugify=helperService.slugify;}})();
+if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();
