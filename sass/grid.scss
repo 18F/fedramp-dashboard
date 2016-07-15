@@ -21,8 +21,12 @@ grid,
     .grid-with-sidebar {
         float: right;
         width: 72.9%;
-    }
-    
+		.grid-sort-arrows {
+		    .fa-caret-up, .fa-caret-down {
+			    color: $color-primary;
+		    }
+		}
+	}
     tile.expanded {
         display: inline-block;
         width: 100%;
