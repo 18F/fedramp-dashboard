@@ -13,7 +13,8 @@
                 // Determines whether grid will maintain state via query params
                 savedState: '<',
 
-                onUpdate: '&'
+                onUpdate: '&',
+                state: '<'
             }
         });
 
@@ -38,6 +39,9 @@
         self.doFilter = doFilter;
         self.clearFilters = clearFilters;
         self.updateSort = updateSort;
+        self.stateUpdate = stateUpdate;
+
+        self.state = self.state || {};
 
         // Default sort to utilize for results
         self.defaultSort = null;
@@ -48,7 +52,7 @@
                 throw 'Specify an onUpdate function! Otherwise, you don\' get updates.';
             }
             self.items = self.rawItems;
-            self.onUpdate({items: self.rawItems});
+            //self.onUpdate({items: self.rawItems});
         }
 
 
@@ -94,12 +98,10 @@
                 combinedFilterResults.sort(self.defaultSort.sortFunc);
             }
 
-            self.updateSort();
-
             self.items = combinedFilterResults;
 
             // Pass updated dataset
-            self.onUpdate({items: combinedFilterResults});
+            self.onUpdate({items: combinedFilterResults, state: self.state});
         }
 
         /**
@@ -140,7 +142,11 @@
                     sort.clear();
                 }
             });
-            //self.onUpdate({items: self.items});
+        }
+
+        function stateUpdate(state){
+            state = angular.extend(self.state, state);
+            self.onUpdate({items: self.items, state: state});
         }
     }
 

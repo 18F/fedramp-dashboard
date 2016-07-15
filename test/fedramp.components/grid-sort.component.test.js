@@ -105,6 +105,15 @@ describe('the grid sort component', function () {
         expect(gridSort.highlight(true)).toBe(false);
         expect(gridSort.highlight(true)).toBe(false);
 
+        nameGridSort.activated = false;
+        expect(nameGridSort.highlight(true)).toBe(false);
+
+        grid.defaultSort = null;
+        nameGridSort.activated = true;
+        expect(nameGridSort.highlight(true)).toBe(false);
+        grid.defaultSort = nameGridSort;
+        expect(nameGridSort.highlight(true)).toBe(true);
+
         grid.doFilter();
     });
 });

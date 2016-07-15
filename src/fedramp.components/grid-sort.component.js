@@ -11,6 +11,7 @@
             controller: GridSort,
             controllerAs: 'controller',
             bindings: {
+                id: '@',
                 property: '@',
                 caseSensitive: '@',
                 header: '@',
@@ -18,14 +19,14 @@
             }
         });
     
-    GridSort.$inject = ['$log', '$parse', '$element'];
+    GridSort.$inject = ['$log', '$parse', '$element', '$location'];
 
     /**
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
      */
-    function GridSort($log, $parse, $element){
+    function GridSort($log, $parse, $element, $location){
         var self = this;
         self.activated = null;
 
@@ -43,6 +44,40 @@
             }
             self.propertyParser = $parse(self.property);
 
+            restoreState();
+            self.gridController.addSort(self);
+        }
+
+        function saveState(){
+            // Merge any existing parameters
+            var existingParams = 
+                angular.extend(
+                    self.gridController.state,{
+                        'sort': (self.asc ? '' : '-') + self.id
+                    });
+
+            // Update url
+            self.gridController.stateUpdate(existingParams);
+        }
+
+        function restoreState(){
+            var sortParam = self.gridController.state.sort;
+            if(!sortParam){
+                loadDefaultSort();
+                return;
+            }
+
+            var m = sortParam.match(/(-)?(.*)/);
+            if(m[2] !== self.id){
+                return;
+            }
+
+            self.asc = (m[1] === undefined);
+            self.activated = true;
+            self.sort(self.asc);
+        }
+
+        function loadDefaultSort(){
             if(self.default){
                 // Parse if default should be in asc/desc
                 self.asc = self.default.split('-').reduce(function(p, c){
@@ -50,8 +85,6 @@
                 });
                 self.sort(self.asc);
             }
-            self.gridController.addSort(self);
-
         }
 
         /**
@@ -68,6 +101,8 @@
             $element.addClass('sort-selected');
             // Update state of all sorts
             self.gridController.updateSort();
+            saveState();
+
         }
 
         /**

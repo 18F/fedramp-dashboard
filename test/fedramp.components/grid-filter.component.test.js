@@ -34,6 +34,18 @@ describe('the grid filter component', function () {
                         name: 'Treats'
                     }
                 ]
+            },
+            {
+                name: 'Google',
+                agencies: ['Dept of Dogs'],
+                products: [
+                    {
+                        name: 'Stuffed Cow'
+                    },
+                    {
+                        name: 'Box'
+                    }
+                ]
             }],
             savedState: true
         });
@@ -56,7 +68,7 @@ describe('the grid filter component', function () {
         gridFilter.$postLink();
         grid.addFilter(gridFilter);
         expect(grid.items).toBeDefined();
-        expect(grid.items.length).toBe(1);
+        expect(grid.items.length).toBe(2);
         expect($element.hasClass('grid-filter-expanded')).toBe(true);
 
     });
@@ -133,7 +145,7 @@ describe('the grid filter component', function () {
         gridFilter.$onInit();
         gridFilter.applyFilter();
         expect(grid.items).toBeDefined();
-        expect(grid.items.length).toBe(1);
+        expect(grid.items.length).toBe(2);
         expect(gridFilter.selectedOptionValues.length).toBe(0);
         gridFilter.selectOption({value: 'DoD'});
         expect(gridFilter.selectedOptionValues.length).toBe(1);
@@ -157,7 +169,7 @@ describe('the grid filter component', function () {
         grid.addFilter(gridFilter);
         gridFilter.applyFilter();
         expect(grid.items).toBeDefined();
-        expect(grid.items.length).toBe(1);
+        expect(grid.items.length).toBe(2);
         expect(gridFilter.selectedOptionValues.length).toBe(0);
         gridFilter.selectOption({value: 'Treats'});
         expect(gridFilter.selectedOptionValues.length).toBe(1);
@@ -205,5 +217,60 @@ describe('the grid filter component', function () {
 
         gridFilter.applyFilter();
         expect(gridFilter.filtered.length).toBe(1);
+    });
+
+    it('should restore state for one filter', function () {
+
+        gridFilter = dataFactory.gridFilterComponent({
+            header: 'Products',
+            id: 'agenciesFilter',
+            expanded: true,
+            property: 'a in agencies',
+            gridController: grid
+        });
+        grid.state = {
+            'agenciesFilter': 'DoD'
+        };
+        grid.$onInit();
+        gridFilter.$onInit();
+        expect(grid.items.length).toBe(1);
+
+    });
+
+    it('should restore state for filter and sort in ascendind and descending', function () {
+
+        gridFilter = dataFactory.gridFilterComponent({
+            header: 'Products',
+            id: 'agenciesFilter',
+            expanded: true,
+            property: 'a in agencies',
+            gridController: grid
+        });
+        var gridSort = dataFactory.gridSortComponent({
+            property: 'name',
+            header: 'Name',
+            id: 'name',
+            gridController: grid
+        });
+
+        grid.state = {
+            'agenciesFilter': 'DoD',
+            'sort': '-name'
+        };
+
+        grid.$onInit();
+        gridFilter.$onInit();
+        gridSort.$onInit();
+        expect(grid.items[0].name).toBe('Amazon');
+
+        grid.state = {
+            'sort': '-name'
+        };
+
+        grid.$onInit();
+        gridFilter.$onInit();
+        gridSort.$onInit();
+        expect(grid.items[0].name).toBe('Google');
+        gridSort.clear();
     });
 });

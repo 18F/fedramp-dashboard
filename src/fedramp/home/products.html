@@ -1,4 +1,4 @@
-<grid class="grid" raw-items="controller.products" saved-state="true" on-update="controller.onUpdate(items)">
+<grid class="grid" raw-items="controller.products" saved-state="true" on-update="controller.onUpdate(items, state)" state="controller.savedState">
     <div class="">
         <!-- Showing custom filter func -->
         <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
@@ -6,7 +6,7 @@
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
                     <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
-                    <grid-sort property="name" class="grid-sort"></grid-sort>    
+                    <grid-sort id="sortProductName" property="name" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-service">
                     <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
@@ -26,7 +26,7 @@
                     <grid-sort property="designation" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort property="reuses" default="-true" class="grid-sort"></grid-sort>
+                    <grid-sort id="sortReuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
                 </div>
                 <!--<grid-sort property="deploymentModel"></grid-sort>    -->
                 <!--<grid-filter id="reuseRange" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" header="Usage Range (Testing custom)" class="grid-filter"></grid-filter>-->

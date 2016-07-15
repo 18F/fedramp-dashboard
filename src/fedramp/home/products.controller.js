@@ -12,12 +12,14 @@
         self.onUpdate = onUpdate;
         self.products = products;
         self.productNameSearchFilterFunc = productNameSearchFilterFunc;
+        self.savedState = angular.copy($location.search());
 
 
-
-        function onUpdate(items){
+        function onUpdate(items, state){
             $log.debug('Incoming dataset');
             self.filteredData = items;
+            $location.search(state);
+            console.log('onUpdate:', state);
         }
 
         

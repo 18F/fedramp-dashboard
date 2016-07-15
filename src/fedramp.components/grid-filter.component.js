@@ -111,7 +111,7 @@
                 self.loadOptions(self.gridController.rawItems);
             }
 
-            if(self.gridController.savedState){
+            if(self.gridController.state){
                 var selected = loadSavedOptions();
                 if(selected){
                     self.selectedOptionValues = selected;
@@ -131,7 +131,7 @@
          * adds them
          */
         function loadSavedOptions(){
-            var params = $location.search();
+            var params = self.gridController.state;
             if(!(self.id in params)){
                 return null;
             }
@@ -181,9 +181,9 @@
                 var options =  self.selectedOptionValues.map(function(option){
                     return option.value;
                 }).join(',');
-                $location.search(self.id, options);
+                self.gridController.state[self.id] = options;
             } else {
-                $location.search(self.id, null);
+                delete self.gridController.state[self.id];
             }
         }
 
