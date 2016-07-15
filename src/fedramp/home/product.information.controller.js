@@ -28,6 +28,23 @@
          */
         self.item = self.items.find(x => helperService.slugify(x.name) === $stateParams.name);
 
+        self.similarItems = function () {
+            let similar = [];
+            let models = self.item.serviceModels;
+            let name = self.item.name;
+            
+            self.items.filter(x => x.name !== name).forEach(x => {
+                for (let i = 0; i < models.length; i++) {
+                    if (x.serviceModels.includes(models[i])) {
+                        similar.push(x);
+                        break;
+                    }
+                }
+            });
+
+            return similar;
+        };
+        
         /**
          * Close the information and return to the home view
          * @public
