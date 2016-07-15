@@ -21,6 +21,11 @@
         self.reuseRangeFilter = reuseRangeFilter;
         self.onUpdate = onUpdate;
 
+        self.heavyUsers = function () {
+            let heavy = self.filteredData.filter(x => x.reuses >= 5).length;
+            return Math.round((heavy / self.filteredData.length) * 100);
+        };
+
         function onUpdate (items) {
             self.filteredData = items;
         }

@@ -20,6 +20,10 @@
             self.filteredData = items;
         }
 
+        self.compliant = function () {
+            let compliant = self.filteredData.filter(x => x.designation === 'Compliant' || x.designation === 'In PMO Review').length;
+            return Math.round((compliant / self.filteredData.length) * 100);
+        };
         
         function productNameSearchFilterFunc(product, i, arr, searchTerm){
             // If no search term, we display result since this is the same as having nothing selected

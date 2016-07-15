@@ -25,6 +25,11 @@
             self.filteredData = items;
         }
 
+        self.heavyUsers = function () {
+            let heavy = self.filteredData.filter(x => x.reuses >= 5).length;
+            return Math.round((heavy / self.filteredData.length) * 100);
+        };
+
         function reuseRangeOptions (agencies) {
             return [
                 {value: {min: 0, max: 5}, label: '0 - 5', selected: false}, 

@@ -1,3 +1,33 @@
+<div class="fr-post-filter-metrics usa-grid-full">
+    <div class="usa-width-one-whole">
+        <div class="col">
+            <p class="fr-large-number">
+                <span class="fr-metric-icon icon-cloud"></span>
+                <strong>{{controller.filteredData.length}}</strong>
+                <span class="fr-metric-label">Total</span>
+            </p>
+        </div>
+        <div class="col">
+            <p class="fr-large-number">
+                <span class="fr-metric-icon icon-cloud"></span>
+                <strong>{{controller.compliant()}}%</strong>
+                <span class="fr-metric-label">Compliant</span>
+            </p>
+        </div>
+    </div>
+    <div class="controls">
+        <label>
+            <input type="checkbox" ng-model="homeController.expandTiles" />
+            <div class="list-view">
+                <span><i class="fa fa-th-list fa-1" aria-hidden="true"></i></span>
+            </div>
+            <div class="grid-view">
+                <span><i class="fa fa-th fa-1" aria-hidden="true"></i></span>
+            </div>
+        </label>
+    </div>
+</div>
+
 <grid classs="grid" raw-items="controller.providers" on-update="controller.onUpdate(items)">
     <div ng-if="controller.sidebar" class="sidebar">
         <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
