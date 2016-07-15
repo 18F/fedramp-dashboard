@@ -31,10 +31,10 @@
 <grid class="grid" raw-items="controller.agencies" on-update="controller.onUpdate(items)">
     <div ng-if="controller.sidebar" class="sidebar">
         <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
-        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>
-        <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="true" class="grid-filter"></grid-filter>
-        <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" class="grid-filter"></grid-filter>
+        <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
     </div>
     <div class="grid" ng-class="{'grid-with-sidebar': controller.sidebar === true}">
         <div class="fr-grid-layout fr-grid-header">
@@ -45,7 +45,7 @@
                     <grid-sort property="name" class="grid-sort"></grid-sort>          
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort property="reuses" header="Reuses" class="grid-sort" default="-true"></grid-sort>    
+                    <grid-sort property="reuses" class="grid-sort" default="-true"></grid-sort>    
                 </div>
             </div>
         </div>
@@ -60,10 +60,4 @@
             <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
         </button>
     </download-csv>
-
-    <!-- TODO: Remove after testing -->
-    <label style="float: right; margin-right: 1rem; margin-top: 2rem;">
-        Show Sidebar
-        <input type="checkbox" ng-model="controller.sidebar" />
-    </label>
 </div>
