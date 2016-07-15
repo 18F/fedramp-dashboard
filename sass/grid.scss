@@ -11,6 +11,9 @@ grid,
 		.grid-filter {
 			background:none;
 			padding:0;
+			span {
+				color:$color-black;
+			}
 		}
 		.filter-header {
 			font-size:1.6rem;

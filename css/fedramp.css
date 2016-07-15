@@ -2745,6 +2745,9 @@ grid .sidebar,
   .grid .sidebar .grid-filter {
     background: none;
     padding: 0; }
+    grid .sidebar .grid-filter span,
+    .grid .sidebar .grid-filter span {
+      color: #000000; }
   grid .sidebar .filter-header,
   .grid .sidebar .filter-header {
     font-size: 1.6rem;
