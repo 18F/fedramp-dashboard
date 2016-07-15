@@ -249,7 +249,7 @@ describe('the grid filter component', function () {
         var gridSort = dataFactory.gridSortComponent({
             property: 'name',
             header: 'Name',
-            id: 'name',
+            name: 'name',
             gridController: grid
         });
 

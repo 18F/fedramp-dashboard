@@ -5,13 +5,13 @@
         .module('fedramp.services')
         .service('helperService', HelperService);
 
-    HelperService.$inject = ['$log'];
+    HelperService.$inject = ['$log', '$location'];
 
     /**
      * @constructor
      * @memberof Services
      */
-    function HelperService ($log, $location, $anchorScroll) {
+    function HelperService ($log, $location) {
         var self = this;
         
         /**
@@ -114,6 +114,44 @@
                     scrollTo(0, y);
                 }, 100);
             }
+        };
+
+        /**
+         * Navigate to a given URL
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @param {string} url
+         *  The URL to navigate the browser to
+         */
+        self.navigateTo = function (url) {
+            $location.url(url);
+        };
+
+        /**
+         * Get the query string from the location search
+         * @public
+         * @memberof Services.HelperService
+         *
+         * @returns
+         *  The query string
+         */
+        self.queryString = function () {
+            let query = '';
+            let search = $location.search();
+
+            for (let n in search) {
+                if (query.length > 0) {
+                    query += '&';
+                }
+                query += n + '=' + search[n];
+            }
+
+            if (query.length > 0) {
+                query = '?' + query;
+            }
+
+            return query;
         };
     }
 })();

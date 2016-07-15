@@ -83,9 +83,56 @@
 	max-width:none;
 	height:7.6rem;
 	background-color:$color-primary-darkest;
+	position:relative;
+	color:$color-white;
 
 	> div {
 		position:relative;
+	}
+
+	.col {
+		width:45%;
+		text-align:center;
+		float:left;
+		margin-top:1rem;
+	 	.fr-large-number {
+	 		font-size:1.6rem;
+	 		margin-top:1.8rem;
+	 		display:inline-block;
+	 		strong {
+	 			font-size:2.8rem;
+	 		}
+		}
+		// smaller size metric icons
+		.fr-metric-icon {
+			display:inline-block;
+			width:3.7rem;
+			height:3.7rem;
+			float:left;
+			margin-right:1rem;
+			background-size:contain;
+			background-position:center center;
+		}
+	 	// clean up spacing / line height for large numbers
+	 	.fr-large-number {
+	 		position:relative;
+		 	margin:0;
+		 	line-height:1;
+	 	}
+	 	// white colors for dashboard metrics, numbers only
+	 	.fr-large-number strong {
+		 	color:$color-white;
+	 	}
+	 	// apply this class to a span or other to provide a 400 font weight
+	 	.fr-light-font {
+		 	font-weight:$font-normal;
+	 	}
+	 	// label text for metric font sized shared
+	 	.fr-metric-label {
+		 	display:block;
+		 	font-size:1.6rem;
+		 	color:$color-primary-alt;
+	 	}
 	}
 	// grid / list view controls
 	.controls {

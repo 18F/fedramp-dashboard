@@ -78,7 +78,7 @@
                     products: ['fedrampData', function (fedrampData) {
                         return fedrampData.products();
                     }]
-                }                
+                }
             })
             .state('fedramp.app.product', {
                 url: '/product',

@@ -119,6 +119,20 @@ grid-filter {
 .grid-filter {
     cursor: pointer;
 }
+.grid-filter.grid-filter-selected {
+	background-color:$color-primary;
+	span, i {
+		color:$color-white;
+	}
+	.filter-dropdown-panel {
+		span {
+			color:$color-black;
+		}
+		i {
+			color:$color-primary;
+		}
+	}
+}
 .filter-header {
     font-size: 14px !important;
     font-weight:600;
@@ -128,13 +142,14 @@ grid-filter {
     position:relative;
 }
 .filter-dropdown-panel {
-        z-index:2000;
-        position:absolute;
-        width: 200px;
-        padding:10px;
-        height:200px;
-        overflow:auto;
-        background-color:white;
-        border:1px solid black;
-        left:0px;
+	z-index:2000;
+	position:absolute;
+	width: 20rem;
+	padding:1rem;
+	height:20rem;
+	overflow:auto;
+	line-height: 2.2rem;
+	background-color:white;
+	border:1px solid black;
+	left:-2rem;
 }

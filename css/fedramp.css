@@ -2507,9 +2507,42 @@ input {
 .fr-post-filter-metrics {
   max-width: none;
   height: 7.6rem;
-  background-color: #112e51; }
+  background-color: #112e51;
+  position: relative;
+  color: #ffffff; }
   .fr-post-filter-metrics > div {
     position: relative; }
+  .fr-post-filter-metrics .col {
+    width: 45%;
+    text-align: center;
+    float: left;
+    margin-top: 1rem; }
+    .fr-post-filter-metrics .col .fr-large-number {
+      font-size: 1.6rem;
+      margin-top: 1.8rem;
+      display: inline-block; }
+      .fr-post-filter-metrics .col .fr-large-number strong {
+        font-size: 2.8rem; }
+    .fr-post-filter-metrics .col .fr-metric-icon {
+      display: inline-block;
+      width: 3.7rem;
+      height: 3.7rem;
+      float: left;
+      margin-right: 1rem;
+      background-size: contain;
+      background-position: center center; }
+    .fr-post-filter-metrics .col .fr-large-number {
+      position: relative;
+      margin: 0;
+      line-height: 1; }
+    .fr-post-filter-metrics .col .fr-large-number strong {
+      color: #ffffff; }
+    .fr-post-filter-metrics .col .fr-light-font {
+      font-weight: 400; }
+    .fr-post-filter-metrics .col .fr-metric-label {
+      display: block;
+      font-size: 1.6rem;
+      color: #02bfe7; }
   .fr-post-filter-metrics .controls {
     position: absolute;
     top: 0;
@@ -2636,6 +2669,15 @@ grid-filter {
 .grid-filter {
   cursor: pointer; }
 
+.grid-filter.grid-filter-selected {
+  background-color: #0071bc; }
+  .grid-filter.grid-filter-selected span, .grid-filter.grid-filter-selected i {
+    color: #ffffff; }
+  .grid-filter.grid-filter-selected .filter-dropdown-panel span {
+    color: #000000; }
+  .grid-filter.grid-filter-selected .filter-dropdown-panel i {
+    color: #0071bc; }
+
 .filter-header {
   font-size: 14px !important;
   font-weight: 600; }
@@ -2646,13 +2688,14 @@ grid-filter {
 .filter-dropdown-panel {
   z-index: 2000;
   position: absolute;
-  width: 200px;
-  padding: 10px;
-  height: 200px;
+  width: 20rem;
+  padding: 1rem;
+  height: 20rem;
   overflow: auto;
+  line-height: 2.2rem;
   background-color: white;
   border: 1px solid black;
-  left: 0px; }
+  left: -2rem; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -2663,10 +2706,12 @@ grid-filter {
 grid-sort {
   display: inline-block;
   width: 3rem;
-  height: 4.4rem; }
+  height: 4.4rem;
+  background-color: #d6d7d9;
+  transition: background-color 0.3s; }
 
-.grid-sort-selected {
-  color: #0070ba; }
+.sort-selected {
+  background-color: #0071bc; }
 
 .grid-sort-header {
   font-size: 1.4rem !important;
@@ -2676,21 +2721,64 @@ grid-sort {
   position: relative;
   display: inline-block;
   width: 3rem;
-  background-color: #d6d7d9;
   text-align: center;
   cursor: pointer; }
+  .grid-sort-arrows i {
+    transition: color 0.3s; }
   .grid-sort-arrows .fa-caret-up, .grid-sort-arrows .fa-caret-down {
-    color: #0071bc;
+    color: #fff;
     position: relative; }
 
-grid tile.expanded {
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
+grid .sidebar,
+.grid .sidebar {
+  float: left;
+  width: 27%;
+  padding: 6.8rem 2% 3rem;
+  background-color: #f1f1f1; }
+  grid .sidebar .grid-filter,
+  .grid .sidebar .grid-filter {
+    background: none;
+    padding: 0; }
+    grid .sidebar .grid-filter span,
+    .grid .sidebar .grid-filter span {
+      color: #000000; }
+  grid .sidebar .filter-header,
+  .grid .sidebar .filter-header {
+    font-size: 1.6rem;
+    font-weight: 700; }
+
+grid .grid-with-sidebar,
+.grid .grid-with-sidebar {
+  float: right;
+  width: 72.9%; }
+  grid .grid-with-sidebar .grid-sort-arrows .fa-caret-up, grid .grid-with-sidebar .grid-sort-arrows .fa-caret-down,
+  .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-up,
+  .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-down {
+    color: #0071bc; }
+
+grid tile.expanded,
+.grid tile.expanded {
   display: inline-block;
   width: 100%; }
+
+grid-search input {
+  font-size: 1.4rem; }
+
+.grid-with-sidebar grid-sort {
+  background: none; }
 
 #header {
   clear: both;
   margin: 20px auto 0; }
   #header #sitetitle {
+    max-width: 960px;
+    margin: 0 auto;
     text-align: left; }
     #header #sitetitle img {
       max-width: 100%;
@@ -3111,6 +3199,7 @@ body {
 
 #topnav .limit {
   clear: both;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0; }
   #topnav .limit form {
@@ -3367,7 +3456,6 @@ tile:nth-child(2n) .card {
     margin-left: 1em; }
 
 .provider.expanded .col {
-  width: 23%;
   vertical-align: top;
   padding-top: 0.34em; }
 

@@ -9,17 +9,18 @@
             controllerAs: 'controller',
             bindings: {
                 expand: '<',
-                model: '<'
+                model: '<',
+                state: '<'
             }
         });
 
-    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService'];
+    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService', '$location'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Tile ($log, $state, $stateParams, helperService) {
+    function Tile ($log, $state, $stateParams, helperService, $location) {
         var self = this;
 
         /**
@@ -33,26 +34,13 @@
          * @memberof Components.Tile
          */
         self.view = function () {
+            let baseUrl = '';
             if ($stateParams.name) {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.comparison',
-                    {
-                        first: helperService.slugify($stateParams.name),
-                        second: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
+                baseUrl = '/' + self.model.type + '/' + $stateParams.name + '/versus/' + helperService.slugify(self.model.name);
             } else {
-                $state.go(
-                    'fedramp.app.' + self.model.type + '.information',
-                    {
-                        name: helperService.slugify(self.model.name)
-                    },
-                    {
-                        reload: true
-                    });
+                baseUrl = '/' + self.model.type + '/' + helperService.slugify(self.model.name);
             }
+            $location.url(baseUrl + helperService.queryString());
         };
     }
 })();

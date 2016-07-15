@@ -12,16 +12,15 @@
         self.onUpdate = onUpdate;
         self.products = products;
         self.productNameSearchFilterFunc = productNameSearchFilterFunc;
-        self.savedState = angular.copy($location.search());
-
 
         function onUpdate(items, state){
-            $log.debug('Incoming dataset');
             self.filteredData = items;
-            $location.search(state);
-            console.log('onUpdate:', state);
         }
 
+        self.compliant = function () {
+            let compliant = self.filteredData.filter(x => x.designation === 'Compliant' || x.designation === 'In PMO Review').length;
+            return self.filteredData.length === 0 ? 0 : Math.round((compliant / self.filteredData.length) * 100);
+        };
         
         function productNameSearchFilterFunc(product, i, arr, searchTerm){
             // If no search term, we display result since this is the same as having nothing selected

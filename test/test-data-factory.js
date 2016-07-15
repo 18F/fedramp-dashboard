@@ -114,7 +114,7 @@ function TestDataFactory(inject){
     function gridSortComponent(properties){
         var filter;
         var config = angular.extend({
-
+            name: 'someSort'
         }, properties);
 
         inject(function (_$componentController_, $injector, $rootScope) {
@@ -125,7 +125,7 @@ function TestDataFactory(inject){
                 {
                 $log: $log,
                 $element: $element
-            },properties
+            },config
             );
         });
 

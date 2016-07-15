@@ -1,4 +1,34 @@
-<grid class="grid" raw-items="controller.products" saved-state="true" on-update="controller.onUpdate(items, state)" state="controller.savedState">
+<div class="fr-post-filter-metrics usa-grid-full">
+    <div class="usa-width-one-whole">
+        <div class="col">
+            <p class="fr-large-number">
+                <span class="fr-metric-icon icon-cloud"></span>
+                <strong>{{controller.filteredData.length}}</strong>
+                <span class="fr-metric-label">Total</span>
+            </p>
+        </div>
+        <div class="col">
+            <p class="fr-large-number">
+                <span class="fr-metric-icon icon-cloud"></span>
+                <strong>{{controller.compliant()}}%</strong>
+                <span class="fr-metric-label">Compliant</span>
+            </p>
+        </div>
+    </div>
+    <div class="controls">
+        <label>
+            <input type="checkbox" ng-model="homeController.expandTiles" />
+            <div class="list-view">
+                <span><i class="fa fa-th-list fa-1" aria-hidden="true"></i></span>
+            </div>
+            <div class="grid-view">
+                <span><i class="fa fa-th fa-1" aria-hidden="true"></i></span>
+            </div>
+        </label>
+    </div>
+</div>
+
+<grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
     <div class="">
         <!-- Showing custom filter func -->
         <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
@@ -6,40 +36,39 @@
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
                     <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
-                    <grid-sort id="sortProductName" property="name" class="grid-sort"></grid-sort>    
+                    <grid-sort name="productName" property="name" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-service">
                     <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
-                    <grid-sort property="serviceModels" class="grid-sort"></grid-sort>
+                    <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-deployment">
                     <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
-                    <grid-sort property="deploymentModel" class="grid-sort"></grid-sort>
+                    <grid-sort name="deploymentModel" property="deploymentModel" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-impact">
                     <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
-                    <grid-sort property="impactLevel" class="grid-sort"></grid-sort>
+                    <grid-sort name="impactLevel" property="impactLevel" class="grid-sort"></grid-sort>
                     
                 </div>
                 <div class="fr-grid-cell-icon">
                     <grid-filter id="designation" property="designation" header="Status" class="grid-filter"></grid-filter>
-                    <grid-sort property="designation" class="grid-sort"></grid-sort>
+                    <grid-sort name="designation" property="designation" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort id="sortReuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
+                    <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
                 </div>
-                <!--<grid-sort property="deploymentModel"></grid-sort>    -->
-                <!--<grid-filter id="reuseRange" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" header="Usage Range (Testing custom)" class="grid-filter"></grid-filter>-->
-                <!--<grid-sort property="reuses"></grid-sort>    -->
-                <!--<grid-filter id="designation" property="designation" header="Designation" class="grid-filter"></grid-filter>-->
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
     </div>
 </grid>
-<download-csv content="controller.filteredData" ng-if="controller.filteredData">
-    <button>
-        <span>Export to CSV</span>
-        <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
-    </button>
-</download-csv>
+
+<div style="clear: both;">
+    <download-csv content="controller.filteredData" ng-if="controller.filteredData" style="float: right;">
+        <button>
+            <span>Export to CSV</span>
+            <i class="fa fa-download" aria-hidden="true" style="margin-left: 1rem;"></i>
+        </button>
+    </download-csv>
+</div>

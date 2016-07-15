@@ -53,6 +53,7 @@
      */
     function GridFilter ($location, $parse, $element) {
         var self = this;
+        var selectedCss = 'grid-filter-selected';
 
         // Regex to parse out array based filter keys
         var ARRAY_FILTER_REGEX = /^(.*)\sin\s(.+)$/;
@@ -165,7 +166,7 @@
                 self.selectedOptionValues.splice(pos,1);
             }
 
-            if(self.gridController.savedState){
+            if(self.gridController.state){
                 saveState();
             }
             applyFilter();
@@ -195,6 +196,7 @@
          * @memberof Components.GridFilter
          */
         function applyFilter(){
+            toggleCss();
             self.filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.gridController.doFilter();
         }
@@ -455,6 +457,14 @@
                 }
                 return func(obj, index, arr, self.selectedOptionValues);
             };
+        }
+
+        function toggleCss(){
+            if(self.selectedOptionValues.length > 0){
+                $element.addClass(selectedCss);
+            } else {
+                $element.removeClass(selectedCss);
+            }
         }
     }
 })();

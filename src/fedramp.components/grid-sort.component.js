@@ -11,7 +11,7 @@
             controller: GridSort,
             controllerAs: 'controller',
             bindings: {
-                id: '@',
+                name: '@',
                 property: '@',
                 caseSensitive: '@',
                 header: '@',
@@ -39,6 +39,9 @@
         self.clear = clear;
 
         function $onInit(){
+            if(!self.name){
+                throw 'Name must be specified for sort filter';
+            }
             if(self.property){
                 self.sortFunc = sortFunc;
             }
@@ -53,7 +56,7 @@
             var existingParams = 
                 angular.extend(
                     self.gridController.state,{
-                        'sort': (self.asc ? '' : '-') + self.id
+                        'sort': (self.asc ? '' : '-') + self.name
                     });
 
             // Update url
@@ -68,7 +71,7 @@
             }
 
             var m = sortParam.match(/(-)?(.*)/);
-            if(m[2] !== self.id){
+            if(m[2] !== self.name){
                 return;
             }
 

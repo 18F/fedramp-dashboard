@@ -10,22 +10,22 @@
                 // Contains original unfiltered dataset
                 rawItems: '<',
 
-                // Determines whether grid will maintain state via query params
-                savedState: '<',
-
+                // Callback function called when grid update occurs
                 onUpdate: '&',
+
+                // Determines whether grid will maintain state via query params
                 state: '<'
             }
         });
 
-    Grid.$inject = ['$log', '$location'];
+    Grid.$inject = ['$log', '$stateParams', '$location'];
 
     /**
      * @constructor
      * @memberof Components
      * @example <grid items="items" raw-items="agencies" saved-state="true"></grid>
      */
-    function Grid ($log, $location) {
+    function Grid ($log, $stateParams, $location) {
         var self = this;
 
         // Maintains a list of filters
@@ -41,7 +41,7 @@
         self.updateSort = updateSort;
         self.stateUpdate = stateUpdate;
 
-        self.state = self.state || {};
+        self.state = $location.search() || {};
 
         // Default sort to utilize for results
         self.defaultSort = null;
@@ -101,6 +101,7 @@
             self.items = combinedFilterResults;
 
             // Pass updated dataset
+            $location.search(self.state);
             self.onUpdate({items: combinedFilterResults, state: self.state});
         }
 
@@ -146,6 +147,7 @@
 
         function stateUpdate(state){
             state = angular.extend(self.state, state);
+            $location.search(state);
             self.onUpdate({items: self.items, state: state});
         }
     }

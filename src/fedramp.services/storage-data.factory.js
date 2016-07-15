@@ -100,6 +100,9 @@
                             });
                         });
                     });
+
+                    // Sort any service models
+                    item.serviceModels = item.serviceModels ? item.serviceModels.map(x => x.trim()).sort() : [];
                 });
 
                 return items;
@@ -130,7 +133,7 @@
                     item.name = d.pkg.trim();
                     item.provider = d.name.trim();
                     item.pkgId = d.pkgId.trim();
-                    item.serviceModels = d.serviceModel ? d.serviceModel : [];
+                    item.serviceModels = d.serviceModel ? d.serviceModel.map(x => x.trim()).sort() : [];
                     item.deploymentModel = d.deploymentModel.trim();
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
@@ -153,8 +156,6 @@
                             .map(x => x.atoLetters.length)
                             .reduce((p, c) => p + c);
                     }
-
-                    item.serviceModels = item.serviceModels.map(x=>x.trim());
 
                     items.push(item);
                 }

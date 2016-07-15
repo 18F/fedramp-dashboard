@@ -42,14 +42,8 @@
          * @memberof Controllers.AssessorComparisonController
          */
         self.closeFirst = function () {
-            $state.go(
-                'fedramp.app.' + self.second.type + '.information',
-                {
-                    name: $stateParams.second
-                },
-                {
-                    reload: true
-                });
+            let baseUrl = '/assessor/' + $stateParams.second;
+            helperService.navigateTo(baseUrl + helperService.queryString());
         };
 
         /**
@@ -59,14 +53,8 @@
          * @memberof Controllers.AssessorComparisonController
          */
         self.closeSecond = function () {
-            $state.go(
-                'fedramp.app.' + self.first.type + '.information',
-                {
-                    name: $stateParams.first
-                },
-                {
-                    reload: true
-                });
+            let baseUrl = '/assessor/' + $stateParams.first;
+            helperService.navigateTo(baseUrl + helperService.queryString());
         };
 
         helperService.scrollTo('scrollToContent');

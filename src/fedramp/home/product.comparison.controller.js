@@ -42,14 +42,8 @@
          * @memberof Controllers.ProductComparisonController
          */
         self.closeFirst = function () {
-            $state.go(
-                'fedramp.app.' + self.second.type + '.information',
-                {
-                    name: $stateParams.second
-                },
-                {
-                    reload: true
-                });
+            let baseUrl = '/product/' + $stateParams.second;
+            helperService.navigateTo(baseUrl + helperService.queryString());
         };
 
         /**
@@ -59,14 +53,8 @@
          * @memberof Controllers.ProductComparisonController
          */
         self.closeSecond = function () {
-            $state.go(
-                'fedramp.app.' + self.first.type + '.information',
-                {
-                    name: $stateParams.first
-                },
-                {
-                    reload: true
-                });
+            let baseUrl = '/product/' + $stateParams.first;
+            helperService.navigateTo(baseUrl + helperService.queryString());
         };
 
         helperService.scrollTo('scrollToContent');

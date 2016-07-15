@@ -35,7 +35,7 @@
          * @memberof Controllers.AssessorInformationController
          */
         self.close = function () {
-            $state.go('fedramp.app.home.assessors', {}, { reload: true });
+            helperService.navigateTo('/assessors' + helperService.queryString());
         };
 
         helperService.scrollTo('scrollToContent');

@@ -114,6 +114,6 @@ describe('the grid sort component', function () {
         grid.defaultSort = nameGridSort;
         expect(nameGridSort.highlight(true)).toBe(true);
 
-        grid.doFilter();
+        expect(grid.doFilter).not.toThrow();
     });
 });
