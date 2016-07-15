@@ -25,6 +25,11 @@
             self.filteredData = items;
         }
 
+        self.compliant = function () {
+            let compliant = self.filteredData.filter(x => x.designations.includes('Compliant') || x.designations.includes('In PMO Review')).length;
+            return Math.round((compliant / self.filteredData.length) * 100);
+        };
+
         function reuseRangeOptions (providers) {
             return [
                 {value: {min: 0, max:5}, label: '0 - 5', selected: false}, 
