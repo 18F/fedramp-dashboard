@@ -29,28 +29,30 @@
 </div>
 
 <grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
-    <div class="">
-        <!-- Showing custom filter func -->
+    <div class="sidebar">
         <grid-filter-clear><a>Clear Filters</a></grid-filter-clear>
-        <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
+        <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
+        <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
+        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
+    </div>
+    <div class="grid grid-with-sidebar">
         <div class="fr-grid-layout fr-grid-header">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
-                    <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
-                    <grid-sort name="productName" property="name" class="grid-sort"></grid-sort>    
+                    <grid-sort name="productName" property="name" header="Name" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-service">
-                    <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
-                    <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>
+                    <grid-sort name="serviceModels" property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-impact">
-                    <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
-                    <grid-sort name="impactLevel" property="impactLevel" class="grid-sort"></grid-sort>
-                    
+                    <grid-sort name="impactLevel" property="impactLevel" header="Impact Level" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-icon">
-                    <grid-filter id="designation" property="designation" header="Status" class="grid-filter"></grid-filter>
-                    <grid-sort name="designation" property="designation" class="grid-sort"></grid-sort>
+                    <grid-sort name="designation" property="designation" header="Status" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-metric">
                     <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>

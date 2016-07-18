@@ -14,7 +14,6 @@
     function AgenciesController ($log, agencies) {
         var self = this;
 
-        self.sidebar = true;
         self.filteredData = [];
         self.agencies = agencies;
         self.reuseRangeOptions = reuseRangeOptions;
