@@ -37,7 +37,8 @@
                 'CSP_Website': 'cspWebsite',
                 'CSO_Description': 'csoDescription',
                 'Expected_Compliance_Date': 'expectedCompliance',
-                'Leveraged_ATO_Letters': 'atoLetters'
+                'Leveraged_ATO_Letters': 'atoLetters',
+                'Announcement_Date': 'compliantDate'
             };
 
             /**
@@ -172,6 +173,13 @@
              * @memberof Models.Data
              */
             self.expectedCompliance = null;
+
+            /**
+             * Date of announcement when compliant
+             * @member {date}
+             * @memberof Models.Data
+             */
+            self.compliantDate = null;
 
             /**
              * Leveraged ATO letters
