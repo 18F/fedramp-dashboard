@@ -42,6 +42,7 @@
         self.filtered = [];
         self.$onInit = $onInit;
         self.search = search;
+        self.clear = clear;
 
         function $onInit(){
             if(!self.id){
@@ -111,5 +112,9 @@
             };
         }
 
+        function clear(){
+            self.searchTerm = '';
+            search();
+        }
     }
 })();
