@@ -43,7 +43,7 @@
             }
         });
 
-    GridFilter.$inject = ['$location', '$parse', '$element'];
+    GridFilter.$inject = ['$location', '$parse', '$element', '$httpParamSerializer'];
 
     /**
      * @constructor
@@ -51,12 +51,13 @@
      * @example 
      * <grid-filter property="name" header="Name" options="" expanded="true" opened="true"></grid-filter>
      */
-    function GridFilter ($location, $parse, $element) {
+    function GridFilter ($location, $parse, $element, $httpParamSerializer) {
         var self = this;
         var selectedCss = 'grid-filter-selected';
 
         // Regex to parse out array based filter keys
         var ARRAY_FILTER_REGEX = /^(.*)\sin\s(.+)$/;
+        var OBJECT_PARAM_REGEX = /\:\((.+?)\),{0,}/;
 
         // Default template used to render option values
         self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
@@ -129,7 +130,9 @@
 
         /**
          * Checks if any relevant query params exist containing filter values to load and then
-         * adds them
+         * adds them. Non-primitive objects are stored in the query param as follows:
+         *
+         * paramName=:(<json_representation>),:(<json_representation>)
          */
         function loadSavedOptions(){
             var params = self.gridController.state;
@@ -138,6 +141,30 @@
             }
             var values = params[self.id];
             var selected = [];
+
+            // Check if loading non-primitive object
+            var m = values.match(OBJECT_PARAM_REGEX);
+            if(m){
+                values = values.split(OBJECT_PARAM_REGEX)
+                    // Remove empty results
+                    .filter(Boolean)
+                    // Convert to js object
+                    .map(x => angular.fromJson(x))
+                    .forEach(function(val){
+                        selected.push({
+                            value: val,
+                            selected: true 
+                        });
+                        self.options.forEach(function(option){
+                            if(angular.equals(option.value, val)){
+                                option.selected = true;
+                            }
+                        });
+                    });
+                 return selected;
+            }
+
+            // Handle basic primitive options
             values.split(',').forEach(function(val){
                 selected.push({
                     value: val,
@@ -159,7 +186,7 @@
          */
         function selectOption(option){
             option.selected = !option.selected;
-            var pos = self.selectedOptionValues.findIndex(x=>x.value === option.value);
+            var pos = self.selectedOptionValues.findIndex(x=>angular.equals(x.value,option.value));
             if(pos == -1){
                 self.selectedOptionValues.push(option);
             } else {
@@ -175,11 +202,16 @@
         /**
          * If save state is activated, stores the selected results in the query string.
          *
-         * TODO: Need to appropriately handle complex objects in query param
          */
         function saveState(){
             if(self.selectedOptionValues && self.selectedOptionValues.length > 0){
                 var options =  self.selectedOptionValues.map(function(option){
+                    // When non-primitive object, store as json
+                    if(angular.isObject(option.value)){
+                        return ':(' + angular.toJson(option.value) + ')';
+                    }
+
+                    // Handle basic primitive value
                     return option.value;
                 }).join(',');
                 self.gridController.state[self.id] = options;
