@@ -90,6 +90,7 @@
             if(!self.id){
                 throw 'Please add an id attribute';
             }
+
             if(!self.property && (!self.optionsFunc || !self.filterFunc)){
                 throw 'If property is not specified, optionsFunc and filterFunc must be passed in';
             }

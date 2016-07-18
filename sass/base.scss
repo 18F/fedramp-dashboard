@@ -11,6 +11,11 @@ ui-view {
     text-align: center;
 }
 
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 /* override standards */
 label {
     max-width: none !important;

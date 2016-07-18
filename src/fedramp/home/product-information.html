@@ -9,44 +9,37 @@
                     <span class="fr-filter-label-rule"></span>
                     <span class="fr-filter-label-text">Select another to compare</span>
                 </div>
-                <div class="grid">
-
-                    <grid class="grid" raw-items="controller.items" on-update="controller.onUpdate(items, state)">
-                    <div class="">
-                        <!-- Showing custom filter func -->
-                        <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
-                        <div class="fr-grid-layout fr-grid-header">
-                            <div class="fr-grid-layout-row">
-                                <div class="fr-grid-cell-name">
-                                    <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
-                                    <grid-sort name="productName" property="name" class="grid-sort"></grid-sort>    
-                                </div>
-                                <div class="fr-grid-cell-service">
-                                    <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
-                                    <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>
-                                </div>
-                                <div class="fr-grid-cell-deployment">
-                                    <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
-                                    <grid-sort name="deploymentModel" property="deploymentModel" class="grid-sort"></grid-sort>
-                                </div>
-                                <div class="fr-grid-cell-impact">
-                                    <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
-                                    <grid-sort name="impactLevel" property="impactLevel" class="grid-sort"></grid-sort>
-
-                                </div>
-                                <div class="fr-grid-cell-icon">
-                                    <grid-filter id="designation" property="designation" header="Status" class="grid-filter"></grid-filter>
-                                    <grid-sort name="designation" property="designation" class="grid-sort"></grid-sort>
-                                </div>
-                                <div class="fr-grid-cell-metric">
-                                    <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
-                                </div>
+                <grid class="grid" raw-items="controller.items" on-update="controller.onUpdate(items, state)">
+                    <grid-search ng-show="false" id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.search"></grid-search>
+                    <div ng-show="false" class="fr-grid-layout fr-grid-header">
+                        <div class="fr-grid-layout-row">
+                            <div class="fr-grid-cell-name">
+                                <grid-filter id="productName" property="name" header="Name" class="grid-filter"></grid-filter>
+                                <grid-sort name="productName" property="name" class="grid-sort"></grid-sort>
+                            </div>
+                            <div class="fr-grid-cell-service">
+                                <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
+                                <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>
+                            </div>
+                            <div class="fr-grid-cell-deployment">
+                                <grid-filter id="deploymentModel" property="deploymentModel" header="Deployment Model" class="grid-filter"></grid-filter>
+                                <grid-sort name="deploymentModel" property="deploymentModel" class="grid-sort"></grid-sort>
+                            </div>
+                            <div class="fr-grid-cell-impact">
+                                <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" class="grid-filter"></grid-filter>
+                                <grid-sort name="impactLevel" property="impactLevel" class="grid-sort"></grid-sort>
+                            </div>
+                            <div class="fr-grid-cell-icon">
+                                <grid-filter id="designation" property="designation" header="Status" class="grid-filter"></grid-filter>
+                                <grid-sort name="designation" property="designation" class="grid-sort"></grid-sort>
+                            </div>
+                            <div class="fr-grid-cell-metric">
+                                <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
                             </div>
                         </div>
-                        <tile ng-repeat="item in controller.filteredData track by $index" expand="homeController.expandTiles" model="item"></tile>
                     </div>
-                    </grid>                    <!--<tile ng-repeat="model in controller.similarItems() | orderBy:'-reuses' track by $index" expand="true" model="model" />-->
-                </div>
+                    <tile ng-repeat="item in controller.filteredData track by $index" expand="true" model="item"></tile>
+                </grid>
             </div>
         </div>
     </div>
