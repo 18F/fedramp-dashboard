@@ -27,7 +27,8 @@
             'Authorizing_Subagency': 'authorizingSubagency',
             'Active': 'active',
             'Include_In_Marketplace': 'includeInMarketplace',
-            'Independent_Assessor': 'independentAssessor'
+            'Independent_Assessor': 'independentAssessor',
+            'Announcement_Date': 'compliantDate'
         };
 
         /**
@@ -93,6 +94,13 @@
          * @memberof Models.Provider
          */
         self.independentAssessor = '';
+
+        /**
+         * Date of announcement when compliant
+         * @member {date}
+         * @memberof Models.Data
+         */
+        self.compliantDate = null;
 
         /**
          * Initialize the ATO letter object.
