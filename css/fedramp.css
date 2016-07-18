@@ -3517,6 +3517,8 @@ tile:nth-child(2n) .card {
       max-width: 4.5rem;
       margin-right: 1rem;
       margin-top: 2.3rem; }
+    .card .header .status span {
+      display: block; }
   .card .content .col {
     width: 100%; }
   .card .content .title {
@@ -3548,6 +3550,8 @@ tile:nth-child(2n) .card {
   .product.expanded .status img {
     max-width: 4.5rem;
     max-height: auto; }
+  .product.expanded .status span {
+    display: block; }
 
 .product.expanded .reuses {
   text-align: center;
