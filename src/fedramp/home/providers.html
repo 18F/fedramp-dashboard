@@ -44,7 +44,7 @@
                 <div class="fr-grid-cell-name">
                     <span ng-if="controller.sidebar">Name</span>
                     <grid-filter ng-if="controller.sidebar === false" id="providerName" property="name" header="Name" class="grid-filter"></grid-filter>
-                    <grid-sort name="provider" property="name" class="grid-sort"></grid-sort>          
+                    <grid-sort name="provider" property="name" class="grid-sort" default="true"></grid-sort>          
                 </div>
                 <div class="fr-grid-cell-service">
                     <span ng-if="controller.sidebar">Service Models</span>
@@ -52,7 +52,7 @@
                     <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort name="reuses" property="reuses" class="grid-sort" default="-true"></grid-sort>    
+                    <grid-sort name="reuses" property="reuses" class="grid-sort"></grid-sort>    
                 </div>
             </div>
         </div>
