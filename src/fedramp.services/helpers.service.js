@@ -71,9 +71,9 @@
             }
             
             var d = new Date(str);
-            var dd = d.getDate();
-            var mm = d.getMonth() + 1;
-            var yyyy = d.getFullYear();
+            var dd = d.getUTCDate();
+            var mm = d.getUTCMonth() + 1;
+            var yyyy = d.getUTCFullYear();
 
             if (dd < 10) {
                 dd = '0' + dd;
