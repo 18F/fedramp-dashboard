@@ -14,7 +14,6 @@
     function ProvidersController ($log, providers) {
         var self = this;
 
-        self.sidebar = true;
         self.filteredData = [];
         self.providers = providers;
         self.reuseRangeOptions = reuseRangeOptions;

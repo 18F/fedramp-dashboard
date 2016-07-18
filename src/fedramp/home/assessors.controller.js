@@ -14,7 +14,6 @@
     function AssessorsController ($log, assessors) {
         var self = this;
 
-        self.sidebar = false;
         self.filteredData = [];
         self.assessors = assessors;
         self.reuseRangeOptions = reuseRangeOptions;
