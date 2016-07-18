@@ -30,7 +30,7 @@
 
 <grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
     <div class="sidebar">
-        <grid-filter-clear><a>Clear Filters</a></grid-filter-clear>
+        <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
         <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
         <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
