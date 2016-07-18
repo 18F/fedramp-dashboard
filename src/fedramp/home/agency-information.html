@@ -9,8 +9,17 @@
                     <span class="fr-filter-label-rule"></span>
                     <span class="fr-filter-label-text">Select another to compare</span>
                 </div>
-                <div class="usa-grid">
-                    <tile ng-repeat="model in controller.items | orderBy:'-reuses' track by $index" expand="true" model="model" />
+                <grid class="grid" raw-items="controller.items" on-update="controller.onUpdate(items, state)">
+                    <div class="hidden">
+                        <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
+                        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+                        <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>
+                        <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
+                        <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
+                        <grid-sort name="name" property="name" header="Name" class="grid-sort" default="true"></grid-sort>          
+                        <grid-sort name="reuses" property="reuses" class="grid-sort"></grid-sort>    
+                    </div>
+                    <tile ng-repeat="item in controller.filteredData track by $index" expand="true" model="item"></tile>
                 </div>
             </div>
         </div>
