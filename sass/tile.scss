@@ -44,9 +44,10 @@ tile:nth-child(2n) {
         background-color:$color-white;
     }
 }
-.tile,
-.tile:hover,
-.tile:visited {
+
+.tile a,
+.tile a:hover,
+.tile a:visited {
     color: $color-black;
     text-decoration: none;
     cursor: pointer;

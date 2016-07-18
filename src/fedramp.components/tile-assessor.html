@@ -2,9 +2,11 @@
 <div ng-if="controller.expand" class="assessor expanded fr-grid-layout">
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
-            <div class="title">
-                <strong>{{ controller.model.name }}</strong>
-            </div>
+            <a ng-click="controller.view()">
+                <div class="title">
+                    <strong>{{ controller.model.name }}</strong>
+                </div>
+            </a>
         </div>
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
@@ -16,8 +18,10 @@
 <div ng-if="!controller.expand" class="assessor card">
     <div class="row header">
         <div class="col reuses">
-            <div class="number">{{controller.model.reuses}}</div>
-            <div class="text">Reuses</div>
+            <a ng-click="controller.view()">
+                <div class="number">{{controller.model.reuses}}</div>
+                <div class="text">Reuses</div>
+            </a>
         </div>
     </div>
     <div class="row content">
