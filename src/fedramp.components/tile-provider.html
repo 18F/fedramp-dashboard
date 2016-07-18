@@ -10,9 +10,9 @@
         <div class="col service-model fr-grid-cell-service">
             <div ng-repeat="model in controller.model.serviceModels">{{ model }}</div>
         </div>
-        <div class="col deployment-model fr-grid-cell-deployment">
-            <div ng-repeat="model in controller.model.deploymentModels">{{ model }}</div>
-        </div>
+        <!-- <div class="col deployment-model fr-grid-cell-deployment">
+             <div ng-repeat="model in controller.model.deploymentModels">{{ model }}</div>
+             </div> -->
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">Reuses</div>
@@ -40,8 +40,8 @@
             <dl>
                 <dt>Service Model:</dt>
                 <dd>{{ controller.model.serviceModels.join(', ') }}</dd>
-                <dt>Deployment Model:</dt>
-                <dd>{{ controller.model.deploymentModels.join(', ') }}</dd>
+                <!-- <dt>Deployment Model:</dt>
+                     <dd>{{ controller.model.deploymentModels.join(', ') }}</dd> -->
             </dl>
         </div>
     </div>

@@ -50,11 +50,6 @@
                     <grid-filter ng-if="controller.sidebar === false" id="serviceModels" property="s in serviceModels" header="Service Models" class="grid-filter"></grid-filter>
                     <grid-sort name="serviceModels" property="serviceModels" class="grid-sort"></grid-sort>    
                 </div>
-                <div class="fr-grid-cell-deployment">
-                    <span ng-if="controller.sidebar">Deployment Models</span>
-                    <grid-filter ng-if="controller.sidebar === false" id="deploymentModels" property="d in deploymentModels" header="Deployment Models" class="grid-filter"></grid-filter>
-                    <grid-sort name="deploymentModels" property="deploymentModels" class="grid-sort"></grid-sort>    
-                </div>
                 <div class="fr-grid-cell-metric">
                     <grid-sort name="reuses" property="reuses" class="grid-sort" default="-true"></grid-sort>    
                 </div>
