@@ -35,7 +35,6 @@
             prepareDownload();
         }
 
-
         /**
          * Generates the appropriate csv content and blob and sets it on the downloadUrl
          */
@@ -53,10 +52,8 @@
          * @memberof Components.DownloadCsv
          */
         function download () {
-            $log.info('Download clicked');
-
+            // IE 11 and Edge
             if (navigator.msSaveBlob && downloadBlob) {
-                // IE 11 and Edge
                 navigator.msSaveBlob(downloadBlob, self.filename());
             }
         }

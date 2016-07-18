@@ -9,6 +9,8 @@
 
     function ProductController($log, products, $stateParams, $filter, $location){
         var self = this;
+
+        self.filteredData = [];
         self.onUpdate = onUpdate;
         self.products = products;
         self.productNameSearchFilterFunc = productNameSearchFilterFunc;
