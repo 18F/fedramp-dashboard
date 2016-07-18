@@ -29,35 +29,26 @@
 </div>
 
 <grid class="grid" raw-items="controller.assessors" on-update="controller.onUpdate(items, state)">
-    <div ng-if="controller.sidebar" class="sidebar">
+    <div class="sidebar">
+        <grid-filter-clear><a>Clear Filters</a></grid-filter-clear>
         <grid-search id="searchName" property="name" placeholder="Search by name"></grid-search>
         <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
     </div>
-    <div class="grid" ng-class="{'grid-with-sidebar': controller.sidebar === true}">
+    <div class="grid grid-with-sidebar">
         <div class="fr-grid-layout fr-grid-header">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
                     <span ng-if="controller.sidebar">Name</span>
-                    <grid-filter ng-if="controller.sidebar == false" id="assessorName" property="name" header="Name" class="grid-filter"></grid-filter>
-                    <grid-sort name="assessorName" property="name" class="grid-sort"></grid-sort>    
+                    <grid-sort name="assessorName" property="name" class="grid-sort" header="Name"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-agency">
-                    <span ng-if="controller.sidebar">Agencies</span>
-                    <grid-filter ng-if="controller.sidebar == false" id="agencyNames" property="a in agencies" header="Agencies" class="grid-filter"></grid-filter>
-                    <grid-sort name="agencies" property="agencies" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-product">
-                    <span ng-if="controller.sidebar">Products</span>
-                    <grid-filter ng-if="controller.sidebar == false" id="products" property="p in products" header="Products" class="grid-filter"></grid-filter>
-                    <grid-sort name="products" property="products" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-provider">
-                    <span ng-if="controller.sidebar">Providers</span>
-                    <grid-filter ng-if="controller.sidebar == false" id="providers" property="p in providers" header="Providers" class="grid-filter"></grid-filter>
-                    <grid-sort name="providers" property="providers" class="grid-sort"></grid-sort>    
                 </div>
                 <div class="fr-grid-cell-metric">
                     <grid-sort name="reuses" property="reuses" class="grid-sort" default="-true"></grid-sort>    

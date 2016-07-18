@@ -30,6 +30,7 @@
 
 <grid classs="grid" raw-items="controller.providers" on-update="controller.onUpdate(items, state)">
     <div ng-if="controller.sidebar" class="sidebar">
+        <grid-filter-clear><a>Clear Filters</a></grid-filter-clear>
         <grid-search id="searchName" property="name" placeholder="Search by Provider Name"></grid-search>
         <grid-filter id="designations" property="d in designations" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
