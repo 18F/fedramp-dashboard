@@ -13,6 +13,7 @@
         ])
         .config(['$compileProvider', function ($compileProvider) {
             $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|blob|data):/);
+            $compileProvider.debugInfoEnabled(false);
         }])
         .run(run);
 

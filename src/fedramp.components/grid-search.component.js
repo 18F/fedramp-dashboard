@@ -53,6 +53,7 @@
             
             self.filterFunc = (self.filterFunc ? wrapFilterFunc(self.filterFunc) : filterFunc);
             self.gridController.addFilter(self);
+            restoreState();
         }
 
         /**
@@ -77,11 +78,33 @@
          * all relevant fitlers.
          */
         function search(){
+            saveState();
             var filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.filtered = filtered;
             self.gridController.doFilter();
         }
 
+        function saveState(){
+            if(self.searchTerm){
+                self.gridController.state[self.id] = self.searchTerm;
+            } else {
+                delete self.gridController.state[self.id];
+            }
+        }
+
+        function restoreState(){
+            var params = self.gridController.state;
+            if(!(self.id in params)){
+                return null;
+            }
+            self.searchTerm = params[self.id];
+            self.gridController.doFilter();
+        }
+
+        /**
+         * When a custom filterFunc is provided, we wrap it with this function in order to properly
+         * pass the searchTerm to the passed in function.
+         */
         function wrapFilterFunc(func){
             return function(obj, index, arr){
                 return func(obj, index, arr, self.searchTerm);

@@ -114,11 +114,7 @@
             }
 
             if(self.gridController.state){
-                var selected = loadSavedOptions();
-                if(selected){
-                    self.selectedOptionValues = selected;
-                    applyFilter();
-                }
+                restoreState();
             }
         }
 
@@ -134,7 +130,7 @@
          *
          * paramName=:(<json_representation>),:(<json_representation>)
          */
-        function loadSavedOptions(){
+        function restoreState(){
             var params = self.gridController.state;
             if(!(self.id in params)){
                 return null;
@@ -161,22 +157,24 @@
                             }
                         });
                     });
-                 return selected;
+            } else {
+                // Handle basic primitive options
+                values.split(',').forEach(function(val){
+                    selected.push({
+                        value: val,
+                        selected: true
+                    });
+                    self.options.forEach(function(option){
+                        if(option.value === val){
+                            option.selected = true;
+                        }
+                    });
+                });
             }
-
-            // Handle basic primitive options
-            values.split(',').forEach(function(val){
-                selected.push({
-                    value: val,
-                    selected: true
-                });
-                self.options.forEach(function(option){
-                    if(option.value === val){
-                        option.selected = true;
-                    }
-                });
-            });
-            return selected;
+            self.selectedOptionValues = selected;
+            if(self.selectedOptionValues){
+                applyFilter();
+            }
         }
 
         /**
