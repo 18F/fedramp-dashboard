@@ -215,6 +215,10 @@ tile:nth-child(2n) {
 				margin-right:1rem;
 				margin-top:2.3rem;
 			}
+
+            span {
+                display: block;
+            }
 		}
 	}
     .content {
@@ -276,6 +280,10 @@ tile:nth-child(2n) {
         img {
             max-width: 4.5rem;
             max-height: auto;
+        }
+
+        span {
+            display: block;
         }
     }
 
