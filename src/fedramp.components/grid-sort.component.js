@@ -47,6 +47,7 @@
             }
             restoreState();
             self.gridController.addSort(self);
+            self.gridController.stateUpdate();
         }
 
         /**
