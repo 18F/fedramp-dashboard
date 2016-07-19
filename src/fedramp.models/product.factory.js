@@ -17,22 +17,123 @@
             // Scope `this` to self
             var self = this;
 
+            /**
+             * The model type
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.type = 'product';
+
+            /**
+             * The product name
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.name = '';
+
+            /**
+             * The package identifier
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.pkgId = '';
+
+            /**
+             * The number of times the product was used
+             * @member {integer}
+             * @memberof Models.Product
+             */
             self.reuses = 0;
+
+            /**
+             * The provider name
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.provider = '';
+
+            /**
+             * Agencies associated to the product
+             * @member {array}
+             * @memberof Models.Product
+             */
             self.agencies = [];
+
+            /**
+             * The deployment model
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.deploymentModel = '';
+
+            /**
+             * The designation or status
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.designation = '';
+
+            /**
+             * Service models
+             * @member {array}
+             * @memberof Models.Product
+             */
             self.serviceModels = [];
+
+            /**
+             * The impact level
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.impactLevel = '';
+
+            /**
+             * The logo URL
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.logo = '';
+
+            /**
+             * The authorization date
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.authorizationDate = '';
+
+            /**
+             * The expected compliance date
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.expectedCompliance = '';
+
+            /**
+             * The expiration date
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.expirationDate = '';
+
+            /**
+             * The independent assessor name
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.independentAssessor = '';
+
+            /**
+             * The authorization type
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.authorizationType = '';
+
+            /**
+             * The sponsoring agency name
+             * @member {string}
+             * @memberof Models.Product
+             */
             self.sponsoringAgency = '';
         }
 

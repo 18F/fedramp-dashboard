@@ -14,7 +14,6 @@
     function SearchController ($log, $sce, $http, $stateParams, fedrampData, helperService) {
         var self = this;
 
-
         /**
          * Flag if there was an error receiving a response
          *
