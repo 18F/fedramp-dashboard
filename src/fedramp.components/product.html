@@ -82,10 +82,10 @@
                 <dd>{{ controller.model.sponsoringAgency }}</dd>
                 <dt>Independent Assessor:</dt>
                 <dd>{{ controller.model.independentAssessor }}</dd>
-                <dt>Authorization Date:</dt>
-                <dd>{{ controller.model.authorizationDate }}</dd>
-                <dt>Expiration Date:</dt>
-                <dd>{{ controller.model.expirationDate }}</dd>
+                <dt ng-if="controller.model.authorizationDate">Authorization Date:</dt>
+                <dd ng-if="controller.model.authorizationDate">{{ controller.model.authorizationDate }}</dd>
+                <dt ng-if="controller.model.expirationDate">Expiration Date:</dt>
+                <dd ng-if="controller.model.expirationDate">{{ controller.model.expirationDate }}</dd>
             </dl>
         </div>
     </div>
