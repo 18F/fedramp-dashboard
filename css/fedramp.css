@@ -2617,7 +2617,7 @@ input {
   .grid .fr-grid-layout {
     display: table;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     background-color: #ffffff; }
     .grid .fr-grid-layout .fr-grid-layout-row {
       display: table-row; }
@@ -2634,9 +2634,11 @@ input {
     .grid .fr-grid-header .fr-grid-layout-row .fr-grid-cell-name {
       line-height: 4.4rem; }
   .grid .fr-grid-layout.fr-grid-header {
-    white-space: nowrap;
-    height: 8.4rem;
-    background: #f1f1f1; }
+    height: 6.8rem;
+    margin-top: 1.6rem;
+    background: #f1f1f1;
+    color: #5b616b;
+    white-space: nowrap; }
   .grid .fr-grid-layout-row > div {
     padding-left: 2rem; }
   .grid .fr-grid-layout-row > div:first-child {
@@ -2657,25 +2659,11 @@ input {
   .grid .fr-grid-cell-impact {
     width: 15%; }
   .grid .fr-grid-cell-icon {
-    width: 10%; }
+    width: 10%;
+    font-size: 1.2rem; }
   .grid .fr-grid-cell-metric {
     width: 8%;
     text-align: center; }
-
-.filter-dropdown {
-  position: relative; }
-
-.filter-dropdown-panel {
-  z-index: 2000;
-  position: absolute;
-  width: 20rem;
-  padding: 1rem;
-  height: 20rem;
-  overflow: auto;
-  line-height: 2.2rem;
-  background-color: white;
-  border: 1px solid black;
-  left: -2rem; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -2691,7 +2679,7 @@ grid-sort {
   transition: background-color 0.3s; }
 
 .sort-selected {
-  background-color: #0071bc; }
+  color: #0071bc; }
 
 .grid-sort-header {
   font-size: 1.4rem !important;
@@ -3294,7 +3282,8 @@ body {
         color: #0070ba;
         margin-left: 0.5rem; }
     .sidebar .grid-filter .options {
-      padding-left: 1.3rem; }
+      padding-left: 1.3rem;
+      color: #5b616b; }
   .sidebar .filter-header {
     font-size: 1.6rem;
     font-weight: 700;

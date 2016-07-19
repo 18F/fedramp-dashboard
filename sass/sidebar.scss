@@ -30,10 +30,8 @@
 		// indent filter child items
 	    .options {
 	        padding-left:1.3rem;
-
-		    // active icon state
+			color:$color-gray;
 	    }
-	    span.option.selected {}
 	}
 	.filter-header {
 		font-size:1.6rem;
