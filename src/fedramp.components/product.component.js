@@ -9,6 +9,7 @@
             controllerAs: 'controller',
             bindings: {
                 model: '<',
+                products: '<',
                 onClose: '<'
             }
         });
@@ -21,6 +22,13 @@
      */
     function Product ($log, $state, helperService) {
         var self = this;
+
+        /**
+         * Filter any additional products from the same provider
+         * @public
+         * @memberof Components.Product
+         */
+        self.additionalProducts = (self.products || []).filter(x => x.provider === self.model.provider);
 
         /**
          * Close the informational panel
