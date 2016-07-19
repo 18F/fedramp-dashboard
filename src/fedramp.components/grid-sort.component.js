@@ -19,14 +19,14 @@
             }
         });
     
-    GridSort.$inject = ['$log', '$parse', '$element', '$location'];
+    GridSort.$inject = ['$log', '$parse', '$element'];
 
     /**
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
      */
-    function GridSort($log, $parse, $element, $location){
+    function GridSort($log, $parse, $element){
         var self = this;
         self.activated = null;
 
@@ -45,8 +45,6 @@
             if(self.property){
                 self.sortFunc = sortFunc;
             }
-            self.propertyParser = $parse(self.property);
-
             restoreState();
             self.gridController.addSort(self);
         }
@@ -152,17 +150,28 @@
          * @memberof Components.GridSort
          */
         function sortFunc(_a, _b) {
-            var a = value(_a);
-            var b = value(_b);
-            if(angular.isNumber(a)){
-                return numberSortFunc(a, b);
-            }
+            // Enables to sort on multiple properties for a specific grid sort.
+            var props = self.property.split(',');
 
-            if(a < b){
-                return self.asc ? -1 : 1;
-            }
-            if(a > b) {
-                return self.asc ? 1 : -1;
+            for(var x = 0; x < props.length; x++){
+                var a = $parse(props[x])(_a);
+                var b = $parse(props[x])(_b);
+
+                // If we're dealing with numbers, delegate to number sort func
+                if(angular.isNumber(a)){
+                    return numberSortFunc(a, b);
+                }
+
+                // Normalize everything and make it all lowercase for fair comparison
+                a = a.toLowerCase();
+                b = b.toLowerCase();
+
+                if(a < b){
+                    return self.asc ? -1 : 1;
+                }
+                if(a > b) {
+                    return self.asc ? 1 : -1;
+                }
             }
             return 0;
         }
@@ -175,18 +184,6 @@
                 return a - b;
             }
             return b - a;
-        }
-
-        /**
-         * Gets reference to property value when sorting
-         */
-        function value(obj){
-            var value = self.propertyParser(obj);
-            if(angular.isString(value)){
-                return value.toLowerCase().trim();
-            }
-           
-            return value;
         }
 
         /**

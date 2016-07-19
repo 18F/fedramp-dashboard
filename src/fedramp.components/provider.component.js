@@ -13,13 +13,13 @@
             }
         });
 
-    Provider.$inject = ['$log', '$state'];
+    Provider.$inject = ['$log', '$state', 'helperService'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Provider ($log, $state) {
+    function Provider ($log, $state, helperService) {
         var self = this;
 
         /**
@@ -34,6 +34,23 @@
             }
             
             $state.go('fedramp.app.home', {}, { reload: true });
+        };
+
+        /**
+         * Build a link from the given item
+         * @public
+         * @memberof Components.Product
+         *
+         * @param {string} modelType
+         *  The item model type
+         * @param {string} name
+         *  The item name to be slugified
+         *
+         * @returns
+         *  The pach for a hyperlink
+         */
+        self.linkify = function (modelType, name) {
+            return '#/' + modelType + '/' + helperService.slugify(name) + helperService.queryString();
         };
     }
 })();

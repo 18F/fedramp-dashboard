@@ -9,18 +9,26 @@
             controllerAs: 'controller',
             bindings: {
                 model: '<',
+                products: '<',
                 onClose: '<'
             }
         });
 
-    Product.$inject = ['$log', '$state'];
+    Product.$inject = ['$log', '$state', 'helperService'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Product ($log, $state) {
+    function Product ($log, $state, helperService) {
         var self = this;
+
+        /**
+         * Filter any additional products from the same provider
+         * @public
+         * @memberof Components.Product
+         */
+        self.additionalProducts = (self.products || []).filter(x => x.provider === self.model.provider);
 
         /**
          * Close the informational panel
@@ -34,6 +42,23 @@
             }
             
             $state.go('fedramp.app.home', {}, { reload: true });
+        };
+
+        /**
+         * Build a link from the given item
+         * @public
+         * @memberof Components.Product
+         *
+         * @param {string} modelType
+         *  The item model type
+         * @param {string} name
+         *  The item name to be slugified
+         *
+         * @returns
+         *  The pach for a hyperlink
+         */
+        self.linkify = function (modelType, name) {
+            return '#/' + modelType + '/' + helperService.slugify(name) + helperService.queryString();
         };
 
         /**
