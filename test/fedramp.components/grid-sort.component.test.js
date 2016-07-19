@@ -27,9 +27,17 @@ describe('the grid sort component', function () {
                 rawItems: [{
                     name: 'Microsoft',
                     count: 1
+                },{
+                    name: 'Microsoft',
+                    count: 1
                 },
+
                 {
                     name: 'Amazon',
+                    count: 2
+                },
+                {
+                    name: 'Google',
                     count: 2
                 }
                 ],
@@ -115,5 +123,15 @@ describe('the grid sort component', function () {
         expect(nameGridSort.highlight(true)).toBe(true);
 
         expect(grid.doFilter).not.toThrow();
+    });
+
+    it('should complain if name attribute is not specified', function () {
+        gridSort = dataFactory.gridSortComponent({
+            property: 'name',
+            header: 'Name',
+            name: null,
+            gridController: grid
+        });
+        expect(gridSort.$onInit).toThrow();
     });
 });

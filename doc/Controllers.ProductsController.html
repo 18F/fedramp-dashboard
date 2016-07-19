@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AtoLetter</title>
+    <title>JSDoc: Class: ProductsController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AtoLetter</h1>
+    <h1 class="page-title">Class: ProductsController</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Models.html">Models</a>.</span>AtoLetter</h2>
+            <span class="ancestors"><a href="Controllers.html">Controllers</a>.</span>ProductsController</h2>
         
     
 </header>
@@ -41,15 +41,11 @@
 
     
 
-    <h4 class="name" id="AtoLetter"><span class="type-signature"></span>new AtoLetter<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ProductsController"><span class="type-signature"></span>new ProductsController<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    Leveraged ATO letter.
-</div>
 
 
 
@@ -92,7 +88,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line17">line 17</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -136,13 +132,13 @@
 
         
             
-<h4 class="name" id=".self.active"><span class="type-signature">(static) </span>self.active<span class="type-signature"> :string</span></h4>
+<h4 class="name" id=".self.compliant"><span class="type-signature">(static) </span>self.compliant<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    Active status
+    Determine how many compliant items are in the filtered data
 </div>
 
 
@@ -151,7 +147,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -178,8 +174,6 @@
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
-    
 
     
 
@@ -192,7 +186,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line82">line 82</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -210,13 +204,13 @@
 
         
             
-<h4 class="name" id=".self.authorizationDate"><span class="type-signature">(static) </span>self.authorizationDate<span class="type-signature"> :date</span></h4>
+<h4 class="name" id=".self.filteredData"><span class="type-signature">(static) </span>self.filteredData<span class="type-signature"> :array</span></h4>
 
 
 
 
 <div class="description">
-    The authorization date
+    The filtered data
 </div>
 
 
@@ -225,7 +219,7 @@
     <ul>
         <li>
             
-<span class="param-type">date</span>
+<span class="param-type">array</span>
 
 
         </li>
@@ -264,7 +258,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line53">line 53</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -282,13 +276,13 @@
 
         
             
-<h4 class="name" id=".self.authorizingAgency"><span class="type-signature">(static) </span>self.authorizingAgency<span class="type-signature"> :string</span></h4>
+<h4 class="name" id=".self.onUpdate"><span class="type-signature">(static) </span>self.onUpdate<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    Authorizing agency
+    Event reciever for when the grid is updated.
 </div>
 
 
@@ -297,7 +291,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -336,7 +330,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line67">line 67</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -354,13 +348,13 @@
 
         
             
-<h4 class="name" id=".self.authorizingLetterSignedDate"><span class="type-signature">(static) </span>self.authorizingLetterSignedDate<span class="type-signature"> :date</span></h4>
+<h4 class="name" id=".self.productNameSearchFilterFunc"><span class="type-signature">(static) </span>self.productNameSearchFilterFunc<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    Authorizing letter signed date
+    Custom search function used in filtering the grid.
 </div>
 
 
@@ -369,7 +363,7 @@
     <ul>
         <li>
             
-<span class="param-type">date</span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -408,7 +402,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line60">line 60</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -426,13 +420,13 @@
 
         
             
-<h4 class="name" id=".self.authorizingSubagency"><span class="type-signature">(static) </span>self.authorizingSubagency<span class="type-signature"> :string</span></h4>
+<h4 class="name" id=".self.products"><span class="type-signature">(static) </span>self.products<span class="type-signature"> :array</span></h4>
 
 
 
 
 <div class="description">
-    Authorizing subagency
+    The products
 </div>
 
 
@@ -441,7 +435,7 @@
     <ul>
         <li>
             
-<span class="param-type">string</span>
+<span class="param-type">array</span>
 
 
         </li>
@@ -480,7 +474,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line74">line 74</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -498,13 +492,13 @@
 
         
             
-<h4 class="name" id=".self.includeInMarketplace"><span class="type-signature">(static) </span>self.includeInMarketplace<span class="type-signature"> :date</span></h4>
+<h4 class="name" id=".self.reuseRangeFilter"><span class="type-signature">(static) </span>self.reuseRangeFilter<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    A value indicating if it should be included in the market place
+    Filter the data set by the reuse metric
 </div>
 
 
@@ -513,7 +507,7 @@
     <ul>
         <li>
             
-<span class="param-type">date</span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -552,7 +546,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line89">line 89</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -570,13 +564,13 @@
 
         
             
-<h4 class="name" id=".self.letterDate"><span class="type-signature">(static) </span>self.letterDate<span class="type-signature"> :date</span></h4>
+<h4 class="name" id=".self.reuseRangeOptions"><span class="type-signature">(static) </span>self.reuseRangeOptions<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    Letter date
+    Determine the options available for filtering the reuse metric
 </div>
 
 
@@ -585,7 +579,7 @@
     <ul>
         <li>
             
-<span class="param-type">date</span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -624,79 +618,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line39">line 39</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".self.letterExpirationDate"><span class="type-signature">(static) </span>self.letterExpirationDate<span class="type-signature"> :date</span></h4>
-
-
-
-
-<div class="description">
-    Letter expiration date
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">date</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.models_atoLetter.factory.js.html">fedramp.models/atoLetter.factory.js</a>, <a href="fedramp.models_atoLetter.factory.js.html#line46">line 46</a>
+        <a href="fedramp_home_products.controller.js.html">fedramp/home/products.controller.js</a>, <a href="fedramp_home_products.controller.js.html#line70">line 70</a>
     </li></ul></dd>
     
 

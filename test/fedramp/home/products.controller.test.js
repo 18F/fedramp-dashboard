@@ -1,13 +1,13 @@
-describe('ProductController controller with no data', function () {
+describe('ProductsController controller with no data', function () {
     'use strict';
 
-    var productController;
+    var productsController;
     var filter;
     var product;
     var log;
 
     beforeEach(function () {
-        module('fedramp', 'fedramp.services');
+        module('fedramp');
         inject(function (_$filter_, $controller, $injector) {
             filter = _$filter_;
             var Product = $injector.get('Product');
@@ -20,8 +20,17 @@ describe('ProductController controller with no data', function () {
             product.agencies = ['Department of Energy'];
             product.serviceModels = ['PaaS'];
 
-
+            productsController = $controller('ProductsController', {
+                $log: log,
+                products: [product],
+                $stateParams: {},
+                $location: {}
+            });
         });
+    });
+
+    it('displays the title', function () {
+        expect(productsController.products).toBeDefined();
     });
 
 });

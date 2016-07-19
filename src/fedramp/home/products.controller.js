@@ -3,15 +3,15 @@
 
     angular
         .module('fedramp')
-        .controller('ProductsController', ProductController);
+        .controller('ProductsController', ProductsController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter', '$location'];
+    ProductsController.$inject = ['$log', 'products', '$stateParams'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function ProductController($log, products, $stateParams, $filter, $location){
+    function ProductsController($log, products, $stateParams){
         var self = this;
 
         /**

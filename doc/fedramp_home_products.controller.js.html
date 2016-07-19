@@ -31,223 +31,138 @@
 
     angular
         .module('fedramp')
-        .controller('ProductsController', ProductController);
+        .controller('ProductsController', ProductsController);
 
-    ProductController.$inject = ['$log', 'products', '$stateParams', '$filter'];
+    ProductsController.$inject = ['$log', 'products', '$stateParams'];
 
-    function ProductController($log, products, $stateParams, $filter){
+    /**
+     * @constructor
+     * @memberof Controllers
+     */
+    function ProductsController($log, products, $stateParams){
         var self = this;
-        self.filterOptionGroups = [];
 
-        // Agencies
-        self.agencies = [];
+        /**
+         * The filtered data
+         * @member {array}
+         * @memberof Controllers.ProductsController
+         */
+        self.filteredData = [];
 
-        // Product Names
-        self.productNames = [];
-
-        // Service Models
-        self.serviceModels = [];
-
-        // Selected product names
-        self.selectedNames = [];
-
-        // Selected agencies
-        self.selectedAgencies = [];
-
-        // Selected service models
-        self.selectedServiceModels = [];
-
-        // Assign products resolve to controller
+        /**
+         * The products
+         * @member {array}
+         * @memberof Controllers.ProductsController
+         */
         self.products = products;
 
+        /**
+         * Event reciever for when the grid is updated.
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductsController
+         *
+         * @param {array} items
+         *  Array of items with filtering and sorting applied.
+         */
+        self.onUpdate = function (items, state) {
+            self.filteredData = items;
+        };
 
-        // Funcs
-        self.filterName = filterName;
-        self.filterServiceModel = filterServiceModel;
-        self.filterAgency = filterAgency;
-        self.filterSelected = filterSelected;
-        self.removeProviderFilter = removeProviderFilter;
-        self.removeAgencyFilter = removeAgencyFilter;
-        self.removeServiceModelFilter = removeServiceModelFilter;
+        /**
+         * Determine how many compliant items are in the filtered data
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductsController
+         *
+         * @returns
+         *  The number of compliant items
+         */
+        self.compliant = function () {
+            let compliant = self.filteredData.filter(x => x.designation === 'Compliant' || x.designation === 'In PMO Review').length;
+            return self.filteredData.length === 0 ? 0 : Math.round((compliant / self.filteredData.length) * 100);
+        };
 
-        // Used to prevent duplicate options
-        var filterCache = {};
+        /**
+         * Determine the options available for filtering the reuse metric
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductsController
+         *
+         * @param {array} products
+         *  Array of items available
+         *
+         * @returns
+         *  An array of option values for filtering
+         */
+        self.reuseRangeOptions = function (products) {
+            return [
+                {value: {min: 0, max:5}, label: '0 - 5', selected: false}, 
+                {value: {min: 6, max:10}, label: '5 - 10', selected:false},
+                {value: {min: 11, max:1000}, label: '> 10', selected:false}];
+        };
 
-        function onInit(){
-            // Populate Product names
-            var providerCache = {};
-
-            self.products.forEach(function(value, index, arr){
-                if(!providerCache[value.provider]){
-                    self.filterOptionGroups.push({
-                        name: value.provider,
-                        type: 'Provider'
-                    });
-                    providerCache[value.provider] = true;
+        /**
+         * Filter the data set by the reuse metric
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductsController
+         *
+         * @param {object} product
+         *  The product to compare
+         * @param {integer} index
+         *  The current index within the array of items
+         * @param {array} arr
+         *  Array of items
+         * @param {array} selectedOptions
+         *  Array of selected options
+         *
+         * @returns
+         *  The matched item or null
+         */
+        self.reuseRangeFilter = function (product, index, arr, selectedOptions) {
+            return selectedOptions.find(function (option) {
+                if (product.reuses >= option.value.min &amp;&amp; product.reuses &lt;= option.value.max) {
+                    return product;
                 }
             });
-
-            // Populate Agency list
-            var agencyMap = {};
-            self.products.forEach(function(element, index, array){
-                if(element &amp;&amp; element.agencies){
-                    element.agencies.forEach(function(agency){
-                        if(agency &amp;&amp; !agencyMap[agency]){
-                            self.agencies.push(agency);
-
-                            self.filterOptionGroups.push({
-                                name: agency,
-                                type: 'Agency'
-                            });
-                            agencyMap[agency] = true;
-                        }
-                    });
-                }
-            });
-
-            // Populate service models
-            self.serviceModels = ['IaaS', 'PaaS', 'SaaS'];
-            self.serviceModels.forEach(function(value, index, arr){
-                self.filterOptionGroups.push({
-                    name: value,
-                    type: 'Service Model'
-                });
-            });
-
-            self.filterOptionGroups.sort(function(a,b){
-                if(a.name === b.name){
-                    return 0;
-                }
-
-                if(a.name &lt; b.name){
-                    return -1;
-                }
-                return 1;
-            });
-            applyFilters();
-        }
-
-
+        };
+        
         /**
-         * Filter applied to render by product name
+         * Custom search function used in filtering the grid.
+         * @public
+         * @member {object}
+         * @memberof Controllers.ProductsController
+         *
+         * @param {object} product
+         *  The product to be compared
+         * @param {integer} i
+         *  The current index within the array of items
+         * @param {array} arr
+         *  The array of items
+         * @param {string} searchTerm
+         *  The search context
+         *
+         * @returns
+         *  An matched item or null
          */
-        function filterName (value, index, arr){
-            if(self.selectedNames &amp;&amp; self.selectedNames.length > 0){
-                if(self.selectedNames.includes(value.provider)){
-                    return value;
-                } 
-                return null;
-            }
-            return value;
-        }
-
-        /**
-         * Filter applied to render by service model
-         */
-        function filterServiceModel (value, index, arr){
-            if(self.selectedServiceModels &amp;&amp; self.selectedServiceModels.length > 0){
-                var found = false;
-                self.selectedServiceModels.forEach(function(curValue){
-                    if(value.serviceModels.includes(curValue)){
-                        found = true;
-                    }
-                });
-
-                if(!found){
-                    return null;
-                }
-
-            }
-            return value;
-        }
-
-        /**
-         * Filter applied to render by agency
-         */
-        function filterAgency (value, index, arr){
-            if(self.selectedAgencies &amp;&amp; self.selectedAgencies.length > 0 &amp;&amp; value.agencies){
-                var found = false;
-                for(var x = 0; x &lt; self.selectedAgencies.length; x++){
-                    var curValue = self.selectedAgencies[x];
-                    if(value.agencies.includes(curValue)){
-                        found = true;
-                    }
-                }
-                if(!found){
-                    return null;
-                }
-            }
-            return value;
-        }
-
-        function filterSelected(){
-            if(!filterCache[self.selectedFilter.name]){
-                switch(self.selectedFilter.type){
-                    case 'Provider':
-                        self.selectedNames.push(self.selectedFilter.name);
-                        filterCache[self.selectedFilter.name] = true;
-                        break;
-                    case 'Agency':
-                        self.selectedAgencies.push(self.selectedFilter.name);
-                        filterCache[self.selectedFilter.name] = true;
-                        break;
-                    case 'Service Model':
-                        self.selectedServiceModels.push(self.selectedFilter.name);
-                        filterCache[self.selectedFilter.name] = true;
-                        break;
-                }
+        self.productNameSearchFilterFunc = function (product, i, arr, searchTerm) {
+            // If no search term, we display result since this is the same as having nothing selected
+            if (!searchTerm) {
+                return product;
             }
 
-            applyFilters();
-        }
+            searchTerm = searchTerm.toLowerCase();
+            var productName = product.name.toLowerCase();
+            var providerName = product.provider.toLowerCase();
 
-        /**
-         * Applies angular filters rather than applying them in markup. This
-         * improves efficiency and allows us to retain a reference to the filtered
-         * items
-         */
-        function applyFilters(){
-            var f = $filter('filter')(self.products, filterName);
-            f = $filter('filter')(f, filterAgency);
-            f = $filter('filter')(f, filterServiceModel);
-            self.filteredData = f;
-            
-        }
+            if (productName.indexOf(searchTerm) !== -1 || providerName.indexOf(searchTerm) !== -1) {
+                return product;
+            }
 
-        /**
-         * Removes a provider tag filter
-         */
-        function removeProviderFilter(filter){
-            var pos = self.selectedNames.indexOf(filter);
-            self.selectedNames.splice(pos, 1);
-            filterCache[filter] = false;
-            applyFilters();
-        }
-
-        /**
-         * Removes an agency tag filter
-         */
-        function removeAgencyFilter(filter){
-            var pos = self.selectedAgencies.indexOf(filter);
-            self.selectedAgencies.splice(pos, 1);
-            filterCache[filter] = false;
-            applyFilters();
-        }
-
-        /**
-         * Removes a service model tag filter
-         */
-        function removeServiceModelFilter(filter){
-            var pos = self.selectedServiceModels.indexOf(filter);
-            self.selectedServiceModels.splice(pos, 1);
-            filterCache[filter] = false;
-            applyFilters();
-        }
-
-        // Initialize everything
-        onInit();
+            return null;
+        };
     }
-
 })();
 </code></pre>
         </article>
@@ -259,13 +174,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSearch.html">GridSearch</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProductsController.html">ProductsController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.Searcher.html">Searcher</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jul 08 2016 15:45:54 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 19 2016 09:10:35 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

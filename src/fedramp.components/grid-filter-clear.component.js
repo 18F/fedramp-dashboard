@@ -26,7 +26,11 @@
 
         self.clear = clear;
 
-        // Calls parents controller to clear all filters.
+        /**
+         * Calls clear on grid component to clear out all filters
+         * @public
+         * @memberof Components
+         */
         function clear(){
             self.gridController.clearFilters();
         }

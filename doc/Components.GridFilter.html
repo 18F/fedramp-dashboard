@@ -47,6 +47,13 @@
 
 
 
+<div class="description">
+    A generic filtering component that utilizes a property expression to extract all available options for a given
+property. 
+
+If a property expression is not provided, a custom filterFunc and optionsFunc must be provided
+</div>
+
 
 
 
@@ -88,7 +95,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line54">line 54</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -113,9 +120,54 @@
 
 
 
-    <h5>Example</h5>
+    <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>&lt;grid-filter property="name" header="Name" options="" expanded="true" opened="true">&lt;/grid-filter></code></pre>
+    <pre class="prettyprint"><code>// Given the following object being searched:
+
+{
+     name: 'John Doe',
+     nickname: 'JD',
+     counts: [1,2,3,4],
+     products: [{
+         name: 'Prod',
+         related: [{
+             relatedItemName: 'Some related item'   
+         }]
+     }]
+
+}
+
+
+
+Property expression examples:
+
+'i.relatedItemName in products.related' => would search everything in relatedItemName
+'i.name in products' => would search everything in the name key in products
+'i in counts' => would searching everything in the counts array
+'nickname' => would search in nickname
+If a property expression is not provided, a filterFunc and optionsFunc must be provided.</code></pre>
+
+    <pre class="prettyprint"><code>// Example HTML
+&lt;grid-filter property="name" header="Name" options="" expanded="true" opened="true">&lt;/grid-filter>
+
+// Example of custom filterFunc
+
+function myCustomFilterFunc(myObj, index, arr, selectedOptions){
+     selectedOptionValues.forEach(function(selectedOption){
+         if(myObj.someProperty === selectedOption.value){
+             return myObj;
+         }
+         return null;
+     });
+}
+
+// Example of custom optionsFunc
+function myCustomOptionsFunc(dataset){
+    return [{
+         label: 'Option 1',
+         value: 'My val'
+    }];
+}</code></pre>
 
 
 
@@ -195,7 +247,7 @@ data from other filters.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line229">line 229</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line271">line 271</a>
     </li></ul></dd>
     
 
@@ -277,7 +329,475 @@ data from other filters.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line473">line 473</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line372">line 372</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".loadOptions"><span class="type-signature">(static) </span>loadOptions<span class="signature">(source)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Loads a distinct list of values found in the specified property attribute.
+If the property value is a basic string, an array of strings will be set for the options.
+
+If the property is an array, each instance of the array will be iterated to extract the contents to
+generate an array containing unique values. This is done by using a set.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Dataset from which to generate available options from.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line321">line 321</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".optionsFunc"><span class="type-signature">(static) </span>optionsFunc<span class="signature">(source)</span><span class="type-signature"> &rarr; {array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Creates a set of options for a particular property to be filtered on.
+
+Override this method to add custom options.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The dataset to generate options from.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line348">line 348</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of options that can be selected to filter. These must be in the form
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>//Sample dataset to return if overriding
+{
+     value: value,
+     label: label,
+     selected: boolean
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".restoreState"><span class="type-signature">(static) </span>restoreState<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Checks if any relevant query params exist containing filter values to load and then
+adds them. Non-primitive objects are stored in the query param as follows:
+
+paramName=:(<json_representation>),:(<json_representation>)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".saveState"><span class="type-signature">(static) </span>saveState<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Stores all selected values to the grid state. Primitive values get stored as a comma-separated list 
+of strings. Non-primitive values (objects) get stored as a json string.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line247">line 247</a>
     </li></ul></dd>
     
 
@@ -359,7 +879,7 @@ data from other filters.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line186">line 186</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line227">line 227</a>
     </li></ul></dd>
     
 
@@ -390,191 +910,14 @@ data from other filters.
 
     
 
-    <h4 class="name" id="~arrayFilterFunc"><span class="type-signature">(inner) </span>arrayFilterFunc<span class="signature">(obj, index, arr)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".toggleCss"><span class="type-signature">(static) </span>toggleCss<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Generic filter that finds where a selected option is found within an array property
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Current object in dataset being filtered</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Index of current object</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Array containing entire dataset being filtered</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line291">line 291</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~arrayFilterValues"><span class="type-signature">(inner) </span>arrayFilterValues<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Creates an array containing all values for a particular key that is an array.
+    Toggles the selected css class.
 </div>
 
 
@@ -618,7 +961,7 @@ data from other filters.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line337">line 337</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line401">line 401</a>
     </li></ul></dd>
     
 
@@ -643,55 +986,22 @@ data from other filters.
 
 
 
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>//For instance
-//if property had the following
-
- &lt;grid-filter property="i in serviceModels">&lt;/grid-filter>
-
-// and the data set looked like
-{
-    name: 'blah',
-    serviceModels:['IaaS', 'PaaS']
-},
-{
-    name: 'blah2',
-    serviceModels:['SaaS']
-}
-// This would return ['IaaS', 'PaaS', 'SaaS']
-
-//Or if using an object key 
-
- &lt;grid-filter property="i.name in products" >&lt;/grid-filter->
-
-//and the data set looked like
-{
-    name: 'blah',
-    products:[{name:'Product1']
-},
-{
-    name: 'blah2',
-    products:[{name:'Product2']
-}
-
-This would return ['Product1', 'Product2']</code></pre>
-
-
 
         
             
 
     
 
-    <h4 class="name" id="~arrayOptionsFunc"><span class="type-signature">(inner) </span>arrayOptionsFunc<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".wrapFilterFunc"><span class="type-signature">(static) </span>wrapFilterFunc<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Generates a list of option values for an array key
+    Wraps a custom filter func with some additonal pre-processing logic to ensure
+that a filter without any selected options is returned. We also ensure to pass an additonal
+parameter selectedOptionValues to the callers.
 </div>
 
 
@@ -735,7 +1045,7 @@ This would return ['Product1', 'Product2']</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line421">line 421</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line386">line 386</a>
     </li></ul></dd>
     
 
@@ -758,185 +1068,6 @@ This would return ['Product1', 'Product2']</code></pre>
 
 
 
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~comparator"><span class="type-signature">(inner) </span>comparator<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Default comparator when filtering items.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line353">line 353</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~configureArrayParsers"><span class="type-signature">(inner) </span>configureArrayParsers<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    When filtering on a property that may contain multiple values, configures necessary
-parsers to allow the data to be iterated and compared against.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line458">line 458</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>//$parse is a service that allows an expression to be evaluated against an object. For instance
-//given:
-
-var person = {
- name: 'John',
- dogs: ['Dog1']
-};
-
-// $parse('name')(person) => 'John'
-// $parse('dogs')(person) => ['Dog1']</code></pre>
 
 
 
@@ -1117,7 +1248,7 @@ a function for this component.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line250">line 250</a>
+        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -1154,682 +1285,6 @@ a function for this component.
 
 
         
-            
-
-    
-
-    <h4 class="name" id="~loadOptions"><span class="type-signature">(inner) </span>loadOptions<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Loads a distinct list of values found in the specified property attribute.
-If the property value is a basic string, an array of strings will be set for the options.
-
-If the property is an array, each instance of the array will be iterated to extract the contents to
-generate an array containing unique values. This is done by using a set.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line363">line 363</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~objectFilterFunc"><span class="type-signature">(inner) </span>objectFilterFunc<span class="signature">(obj, index, arr)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Generic filter that finds where a property value is found within
-the list of selection options.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Current object in dataset being filtered</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Index of current object</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>arr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Array containing entire dataset being filtered</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line275">line 275</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~optionsFunc"><span class="type-signature">(inner) </span>optionsFunc<span class="signature">(source)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Creates a set of options for a particular property to be filtered on. If the property
-being filtered on contains an array of possible values, then we delegate to array options func.
-
-Override this method to add custom options.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>source</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The dataset to generate options from.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line387">line 387</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    An array of options that can be selected to filter. These must be in the form
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>//Sample dataset to return if overriding
-{
-     value: value,
-     label: label,
-     selected: boolean
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~restoreState"><span class="type-signature">(inner) </span>restoreState<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Checks if any relevant query params exist containing filter values to load and then
-adds them. Non-primitive objects are stored in the query param as follows:
-
-paramName=:(<json_representation>),:(<json_representation>)
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line134">line 134</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~saveState"><span class="type-signature">(inner) </span>saveState<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    If save state is activated, stores the selected results in the query string.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line205">line 205</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~wrapFilterFunc"><span class="type-signature">(inner) </span>wrapFilterFunc<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Wraps a custom filter func with some additonal pre-processing logic to ensure
-that a filter without any selected options is returned. We also ensure to pass an additonal
-parameter selectedOptionValues to the callers.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid-filter.component.js.html">fedramp.components/grid-filter.component.js</a>, <a href="fedramp.components_grid-filter.component.js.html#line484">line 484</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
 
     
@@ -1845,13 +1300,13 @@ parameter selectedOptionValues to the callers.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSearch.html">GridSearch</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.Searcher.html">Searcher</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSearch.html">GridSearch</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProductsController.html">ProductsController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.Searcher.html">Searcher</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 18 2016 15:48:01 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 19 2016 09:10:35 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

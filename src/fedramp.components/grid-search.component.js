@@ -13,6 +13,7 @@
             bindings: {
                 // Property expression. Tells search which property to search on. 
                 property: '@',
+                // Placeholder text to display on input field
                 placeholder: '@',
                 id: '@',
                 filterFunc: '<'
@@ -43,6 +44,7 @@
         self.$onInit = $onInit;
         self.search = search;
         self.clear = clear;
+        self.restoreState = restoreState;
 
         function $onInit(){
             if(!self.id){
@@ -59,6 +61,16 @@
 
         /**
          * Filter applied to dataset when user searches
+         *
+         * @public
+         * @memberof Components.GridSearch
+         *
+         * @param {object} obj
+         * The current object instance within a dataset being filtered
+         * @param {int} index
+         * The index of the current object
+         * @param {array} arr
+         * Reference to the dataset being filtered
          */
         function filterFunc(obj, index, arr){
             if(self.searchTerm){
@@ -77,6 +89,9 @@
          * Every time a user searches, we filter based on the entire dataset and then internally 
          * store the results and call doFilter() on the parent dataset to appropriately merge results from
          * all relevant fitlers.
+         *
+         * @public
+         * @memberof Components.GridSearch
          */
         function search(){
             saveState();
@@ -85,6 +100,12 @@
             self.gridController.doFilter();
         }
 
+        /**
+         * Stores the current search parameters to state.
+         *
+         * @public
+         * @memberof Components.GridSearch
+         */
         function saveState(){
             if(self.searchTerm){
                 self.gridController.state[self.id] = self.searchTerm;
@@ -93,6 +114,12 @@
             }
         }
 
+        /**
+         * Extracts state informatin to restore search filter
+         *
+         * @public
+         * @memberof Components.GridSearch
+         */
         function restoreState(){
             var params = self.gridController.state;
             if(!(self.id in params)){
@@ -105,6 +132,14 @@
         /**
          * When a custom filterFunc is provided, we wrap it with this function in order to properly
          * pass the searchTerm to the passed in function.
+         *
+         * @public
+         * @memberof Components.GridSearch
+         * @param {function} func
+         * Custom filterFunc to be wrapped
+         *
+         * @returns
+         * A function that has been wrapped to contain an additonal parameters
          */
         function wrapFilterFunc(func){
             return function(obj, index, arr){
@@ -112,6 +147,12 @@
             };
         }
 
+        /**
+         * Clears the search text
+         *
+         * @public
+         * @memberof Components.GridSearch
+         */
         function clear(){
             self.searchTerm = '';
             search();

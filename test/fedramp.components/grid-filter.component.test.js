@@ -65,7 +65,7 @@ describe('the grid filter component', function () {
             gridController: grid
         }, {$element: $element});
 
-        gridFilter.$postLink();
+        gridFilter.$onInit();
         grid.addFilter(gridFilter);
         expect(grid.items).toBeDefined();
         expect(grid.items.length).toBe(2);
@@ -272,5 +272,35 @@ describe('the grid filter component', function () {
         gridSort.$onInit();
         expect(grid.items[0].name).toBe('Google');
         gridSort.clear();
+    });
+
+    it('should restore non-primitive value in json based query param', function () {
+
+        var option = {
+            label: 'Custom action',
+            value: {min:0, max:10},
+            selected: true
+        };
+
+        gridFilter = dataFactory.gridFilterComponent({
+            header: 'Products',
+            id: 'agenciesFilter',
+            expanded: true,
+            optionsFunc: function(){
+                return [
+                    option
+                ];
+            },
+            filterFunc: function(obj){
+                return obj;
+            },
+            gridController: grid
+        });
+        grid.$onInit();
+        gridFilter.$onInit();
+        gridFilter.selectOption(option);
+        gridFilter.restoreState();
+        expect(grid.state.agenciesFilter).toBeDefined();
+        expect(grid.state.agenciesFilter).toEqual(':(' + angular.toJson(option.value) + ')');
     });
 });

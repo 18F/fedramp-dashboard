@@ -51,6 +51,12 @@
             self.gridController.addSort(self);
         }
 
+        /**
+         * Stores the sort information to the grid state.
+         *
+         * @public
+         * @memberof Components.GridSort
+         */
         function saveState(){
             // Merge any existing parameters
             var existingParams = 
@@ -63,6 +69,12 @@
             self.gridController.stateUpdate(existingParams);
         }
 
+        /**
+         * Restores the latest saved sort.
+         *
+         * @public
+         * @memberof Components.GridSort
+         */
         function restoreState(){
             var sortParam = self.gridController.state.sort;
             if(!sortParam){
@@ -80,6 +92,12 @@
             self.sort(self.asc);
         }
 
+        /**
+         * Loads a specified default sort. This is to ensure a grid applies a sort when first loaded.
+         *
+         * @public
+         * @memberof Components.GridSort
+         */
         function loadDefaultSort(){
             if(self.default){
                 // Parse if default should be in asc/desc
@@ -93,8 +111,11 @@
         /**
          * Sorts a list of items in the grid controller by the property for this particular
          * grid sort.
+         *
          * @public
          * @memberof Components.GridSort
+         * @param {boolean} doAscending
+         * Sort direction to use
          */
         function sort(doAscending){
             self.activated = angular.isDefined(doAscending);
@@ -112,6 +133,9 @@
          * Toggles the sort. To maintain a consistent interaction, we always set the toggle to ascending
          * if the sort is not activated. This case would be hit when the user has clicked on the sort for the 
          * first time or after another sort.
+         *
+         * @public
+         * @memberof Components.GridSort
          */
         function toggleSort(){
             if(!self.activated){
@@ -123,6 +147,9 @@
 
         /**
          * Performs a generic sort.
+         *
+         * @public
+         * @memberof Components.GridSort
          */
         function sortFunc(_a, _b) {
             var a = value(_a);
@@ -141,7 +168,7 @@
         }
 
         /**
-         * Handles generic numerica sort.
+         * Handles generic numerical sort.
          */
         function numberSortFunc(a, b){
             if(self.asc){
@@ -162,6 +189,9 @@
             return value;
         }
 
+        /**
+         * Determines whether to highlight sort selected option.
+         */
         function highlight(asc){
             if(!self.activated){
                 return false;
@@ -177,6 +207,9 @@
 
         /**
          * Clears the sorting.
+         *
+         * @public
+         * @memberof Components.GridSort
          */ 
         function clear(){
             self.activated = false;

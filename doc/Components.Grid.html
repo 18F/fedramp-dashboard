@@ -115,7 +115,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>&lt;grid items="items" raw-items="agencies" saved-state="true">&lt;/grid></code></pre>
+    <pre class="prettyprint"><code>&lt;grid items="items" raw-items="agencies">&lt;/grid></code></pre>
 
 
 
@@ -142,7 +142,7 @@
 
     
 
-    <h4 class="name" id=".addFilter"><span class="type-signature">(static) </span>addFilter<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".addFilter"><span class="type-signature">(static) </span>addFilter<span class="signature">(filter)</span><span class="type-signature"></span></h4>
 
     
 
@@ -159,6 +159,55 @@ themselves to this controller.
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Components.GridFilter.html">Components.GridFilter</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Instance of a GridFilter component</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -194,7 +243,138 @@ themselves to this controller.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line125">line 125</a>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line130">line 130</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".addSort"><span class="type-signature">(static) </span>addSort<span class="signature">(sort)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    When sorts first load, they will add themselves to this controller using this method
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sort</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Components.GridSort.html">Components.GridSort</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Instance of a GridSort component</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -276,7 +456,7 @@ themselves to this controller.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line113">line 113</a>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line115">line 115</a>
     </li></ul></dd>
     
 
@@ -371,7 +551,7 @@ we may end up with {1,2,a,c}
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line77">line 77</a>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -402,14 +582,15 @@ we may end up with {1,2,a,c}
 
     
 
-    <h4 class="name" id="~addSort"><span class="type-signature">(inner) </span>addSort<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".stateUpdate"><span class="type-signature">(static) </span>stateUpdate<span class="signature">(state)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    When sorts first load, they will add themselves to this controller using this method
+    Updates the state information for the grid by storing saved filters and sorting information in the $location.search().
+Then executes the callback method to pass back state and list of items to calling clients.
 </div>
 
 
@@ -418,6 +599,55 @@ we may end up with {1,2,a,c}
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Object containing key/value data to add to the state</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -453,7 +683,7 @@ we may end up with {1,2,a,c}
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line132">line 132</a>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -484,7 +714,7 @@ we may end up with {1,2,a,c}
 
     
 
-    <h4 class="name" id="~updateSort"><span class="type-signature">(inner) </span>updateSort<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".updateSort"><span class="type-signature">(static) </span>updateSort<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -536,7 +766,89 @@ activated.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line140">line 140</a>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~$onInit"><span class="type-signature">(inner) </span>$onInit<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Initializes the component.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="fedramp.components_grid.component.js.html">fedramp.components/grid.component.js</a>, <a href="fedramp.components_grid.component.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -578,13 +890,13 @@ activated.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSearch.html">GridSearch</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductController.html">ProductController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.Searcher.html">Searcher</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Components.Agency.html">Agency</a></li><li><a href="Components.Assessor.html">Assessor</a></li><li><a href="Components.DownloadCsv.html">DownloadCsv</a></li><li><a href="Components.Grid.html">Grid</a></li><li><a href="Components.GridFilter.html">GridFilter</a></li><li><a href="Components.GridFilterClear.html">GridFilterClear</a></li><li><a href="Components.GridSearch.html">GridSearch</a></li><li><a href="Components.GridSort.html">GridSort</a></li><li><a href="Components.Product.html">Product</a></li><li><a href="Components.Provider.html">Provider</a></li><li><a href="Components.Search.html">Search</a></li><li><a href="Components.Tile.html">Tile</a></li><li><a href="Controllers.AgenciesController.html">AgenciesController</a></li><li><a href="Controllers.AgencyComparisonController.html">AgencyComparisonController</a></li><li><a href="Controllers.AgencyInformationController.html">AgencyInformationController</a></li><li><a href="Controllers.AssessorComparisonController.html">AssessorComparisonController</a></li><li><a href="Controllers.AssessorInformationController.html">AssessorInformationController</a></li><li><a href="Controllers.AssessorsController.html">AssessorsController</a></li><li><a href="Controllers.HomeController.html">HomeController</a></li><li><a href="Controllers.ProductComparisonController.html">ProductComparisonController</a></li><li><a href="Controllers.ProductInformationController.html">ProductInformationController</a></li><li><a href="Controllers.ProductsController.html">ProductsController</a></li><li><a href="Controllers.ProviderComparisonController.html">ProviderComparisonController</a></li><li><a href="Controllers.ProviderInformationController.html">ProviderInformationController</a></li><li><a href="Controllers.ProvidersController.html">ProvidersController</a></li><li><a href="Controllers.SearchController.html">SearchController</a></li><li><a href="Controllers.SitemapController.html">SitemapController</a></li><li><a href="Models.Agency.html">Agency</a></li><li><a href="Models.Assessor.html">Assessor</a></li><li><a href="Models.AtoLetter.html">AtoLetter</a></li><li><a href="Models.Data.html">Data</a></li><li><a href="Models.Product.html">Product</a></li><li><a href="Models.Provider.html">Provider</a></li><li><a href="Models.Settings.html">Settings</a></li><li><a href="Services.CsvService.html">CsvService</a></li><li><a href="Services.DataService.html">DataService</a></li><li><a href="Services.DatasourceService.html">DatasourceService</a></li><li><a href="Services.HelperService.html">HelperService</a></li><li><a href="Services.Searcher.html">Searcher</a></li><li><a href="Services.StorageData.html">StorageData</a></li><li><a href="Services.StorageManager.html">StorageManager</a></li><li><a href="Services.StorageSettings.html">StorageSettings</a></li></ul><h3>Namespaces</h3><ul><li><a href="Components.html">Components</a></li><li><a href="Controllers.html">Controllers</a></li><li><a href="Models.html">Models</a></li><li><a href="Services.html">Services</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 18 2016 15:48:01 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Jul 19 2016 09:10:35 GMT-0400 (EDT)
 </footer>
 
 <script> prettyPrint(); </script>

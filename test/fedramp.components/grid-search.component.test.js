@@ -99,5 +99,33 @@ describe('the grid search  component', function () {
         });
         expect(gridSearch.$onInit).toThrow();
     });
+
+    it('Should clear the search filter', function () {
+        var gridSearch = dataFactory.gridSearchComponent({
+            gridController: grid,
+            property: 'p.name in products'
+        });
+
+        gridSearch.$onInit();
+        gridSearch.searchTerm = 'Hello';
+        gridSearch.search();
+        expect(gridSearch.searchTerm).toBeDefined();
+        gridSearch.clear();
+        expect(gridSearch.searchTerm).toBe('');
+    });
+
+    it('Should restore state for search', function () {
+        var gridSearch = dataFactory.gridSearchComponent({
+            gridController: grid,
+            property: 'p.name in products'
+        });
+
+        gridSearch.$onInit();
+        gridSearch.searchTerm = 'Hello';
+        gridSearch.search();
+        expect(gridSearch.searchTerm).toBeDefined();
+        gridSearch.restoreState();
+        expect(gridSearch.searchTerm).toBe('Hello');
+    });
 });
 
