@@ -161,7 +161,10 @@
                 if(angular.isNumber(a)){
                     return numberSortFunc(a, b);
                 }
-
+                if(angular.isArray(a)){
+                    a = a.join(',');
+                    b = b.join(',');
+                }
                 // Normalize everything and make it all lowercase for fair comparison
                 a = a.toLowerCase();
                 b = b.toLowerCase();
