@@ -5,7 +5,7 @@
         .component('gridFilter', {
             controller: GridFilter,
             controllerAs: 'controller',
-            templateUrl: 'src/fedramp.components/grid-filter.html',
+            templateUrl: 'src/templates/components/grid-filter.html',
             require: {
                 // We require that this component live inside of <grid></grid> so it can
                 // communicate and share information
@@ -109,7 +109,7 @@
         var OBJECT_PARAM_REGEX = /\:\((.+?)\),{0,}/;
 
         // Default template used to render option values
-        self.gridFilterOptionsTemplatePath = "src/fedramp.components/grid-filter-options.html";
+        self.gridFilterOptionsTemplatePath = "src/templates/components/grid-filter-options.html";
         
         // Options available to filter based on property
         self.options = [];
