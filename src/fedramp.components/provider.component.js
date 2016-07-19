@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('provider', {
-            templateUrl: 'src/fedramp.components/provider.html',
+            templateUrl: 'src/templates/components/provider.html',
             controller: Provider,
             controllerAs: 'controller',
             bindings: {
