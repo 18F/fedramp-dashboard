@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('gridSearch', {
-            templateUrl: 'src/fedramp.components/grid-search.html',
+            templateUrl: 'src/templates/components/grid-search.html',
             controller: GridSearch,
             controllerAs: 'controller',
             require: {
