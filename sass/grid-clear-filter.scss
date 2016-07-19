@@ -1,6 +1,9 @@
+@import 'variables';
+
 .clear-filters {
-    font-weight: 700;
-    color: #5b616b;
-    font-size: 1.5rem;
-    cursor: pointer;
+	display:block;
+    font-weight:$font-bold;
+    color:$color-gray;
+    font-size:1.5rem;
+    cursor:pointer;
 }

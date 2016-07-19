@@ -38,15 +38,15 @@
 	.fr-filters-row {
 		display:table-row;
 
-		.usa-width-one-fourth {
+		.usa-width-one-third {
 			border-right:1px solid $color-white;
 			display:table-cell;
 		}
-		.usa-width-one-fourth, .usa-width-one-fourth:nth-child(2n) {
-			width:25%;
+		.usa-width-one-third, .usa-width-one-third:nth-child(2n) {
+			width:33.33%;
 			margin-right:0;
 		}
-		.usa-width-one-fourth:last-child {
+		.usa-width-one-third:last-child {
 			border-right:none;
 		}
         .selected {

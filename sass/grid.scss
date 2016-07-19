@@ -1,29 +1,10 @@
 @import 'variables';
 
-grid,
 .grid {
-    .sidebar {
-        float: left;
-        width:27%;
-		padding:6.8rem 2% 3rem;
-		background-color:$color-gray-lightest;
-
-		.grid-filter {
-			background:none;
-			padding:0;
-			span {
-				color:$color-black;
-			}
-		}
-		.filter-header {
-			font-size:1.6rem;
-			font-weight:$font-bold;
-		}
-    }
-
+	
     .grid-with-sidebar {
         float: right;
-        width: 72.9%;
+        width: 77.4%;
 		.grid-sort-arrows {
 		    .fa-caret-up, .fa-caret-down {
 			    color: $color-primary;
@@ -34,11 +15,6 @@ grid,
         display: inline-block;
         width: 100%;
     }
-}
-grid-search {
-	input {
-		font-size:1.4rem;
-	}
 }
 .grid-with-sidebar grid-sort {
 	background:none;
