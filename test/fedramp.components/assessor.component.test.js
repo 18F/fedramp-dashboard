@@ -20,4 +20,9 @@ describe('The assessor component', function () {
         component.close();
         expect(i).toBe(1);
     });
+
+    it('can close by default', function () {
+        component.onClose = null;
+        expect(component.close).not.toThrow();
+    });
 });

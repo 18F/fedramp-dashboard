@@ -21,6 +21,11 @@ describe('The product component', function () {
         expect(i).toBe(1);
     });
 
+    it('can close by default', function () {
+        component.onClose = null;
+        expect(component.close).not.toThrow();
+    });
+
     it('can determine if the model is ready', function () {
         component.model = { designation: 'Compliant' };
         expect(component.isReady()).toBe(false);
