@@ -94,7 +94,7 @@
          */
         self.reuseRangeFilter = function (agency, index, arr, selectedOptions) {
             return selectedOptions.find(function (option) {
-                if (agency.reuses >= option.value.min && agency.reuses <= option.value.max) {
+                if (agency.products.length >= option.value.min && agency.products.length <= option.value.max) {
                     return agency;
                 }
             });

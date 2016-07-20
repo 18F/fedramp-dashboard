@@ -9,14 +9,10 @@
             </a>
         </div>
         <div class="col status fr-grid-cell-icon">
-            <img ng-if="controller.model.designation === 'Compliant'" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
-            <img ng-if="controller.model.designation === 'In-Process'" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
-            <img ng-if="controller.model.designation === 'In PMO Review'" ng-src="img/fedramp-process-compliant-blue.png" alt="In PMO Review" />
-            <img ng-if="controller.model.designation === 'Ready'" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
         </div>
         <div class="col reuses fr-grid-cell-metric">
-            <div class="number">{{controller.model.reuses}}</div>
-            <div class="text">Reuses</div>
+            <div class="number">{{controller.model.products.length}}</div>
+            <div class="text">Product{{ controller.model.products.length === 1 ? '' : 's'}} Used</div>
         </div>
     </div>
 
@@ -26,8 +22,8 @@
     <div class="row header">
         <div class="col reuses">
             <a ng-click="controller.view()">
-                <div class="number">{{controller.model.reuses}}</div>
-                <div class="text">Reuses</div>
+                <div class="number">{{controller.model.products.length}}</div>
+                <div class="text">Product{{ controller.model.products.length === 1 ? '' : 's'}} Used</div>
             </a>
         </div>
     </div>
