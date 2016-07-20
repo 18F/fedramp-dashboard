@@ -359,6 +359,16 @@
                     return value;
                 }
             });
+
+            options.sort(function(o1, o2){
+                if(o1.label < o2.label){
+                    return -1;
+                }
+                if(o1.label > o2.label){
+                    return 1;
+                }
+                return 0;
+            });
             return options;
         }
 
