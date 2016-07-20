@@ -66,19 +66,4 @@
             </p>
         </div>
     </div>
-    <div class="row assessors">
-        <div class="col">
-            <h4>Independent Assessors</h4>
-            <ul ng-if="controller.model.assessors.length > 0">
-                <li ng-repeat="assessor in controller.model.assessors | orderBy:'+' track by $index">
-                    <a title="{{assessor}}" ng-href="{{controller.linkify('assessor', assessor)}}">
-                        {{assessor}}
-                    </a>
-                </li>
-            </ul>
-            <p ng-if="controller.model.assessors.length === 0">
-                None
-            </p>
-        </div>
-    </div>
 </div>
