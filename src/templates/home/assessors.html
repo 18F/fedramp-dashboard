@@ -1,37 +1,8 @@
-<div class="fr-post-filter-metrics usa-grid-full">
-    <div class="usa-width-one-whole">
-        <div class="col">
-            <p class="fr-large-number">
-                <span class="fr-metric-icon icon-cloud"></span>
-                <strong>{{controller.filteredData.length}}</strong>
-                <span class="fr-metric-label">Total</span>
-            </p>
-        </div>
-        <div class="col">
-            <p class="fr-large-number">
-                <span class="fr-metric-icon icon-cloud"></span>
-                <strong>{{controller.heavyUsers()}}%</strong>
-                <span class="fr-metric-label">&gt;= 5 Reuses</span>
-            </p>
-        </div>
-    </div>
-    <div class="controls">
-        <label>
-            <input type="checkbox" ng-model="homeController.expandTiles" />
-            <div class="list-view">
-                <span><i class="fa fa-th-list fa-1" aria-hidden="true"></i></span>
-            </div>
-            <div class="grid-view">
-                <span><i class="fa fa-th fa-1" aria-hidden="true"></i></span>
-            </div>
-        </label>
-    </div>
-</div>
-
 <grid class="grid" raw-items="controller.assessors" on-update="controller.onUpdate(items, state)">
     <div class="sidebar">
         <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
         <grid-search id="searchName" property="name" placeholder="Search by name"></grid-search>
+        <grid-total></grid-total>
         <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>

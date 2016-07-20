@@ -42,20 +42,6 @@
         };
 
         /**
-         * Determine how many compliant items are in the filtered data
-         * @public
-         * @member {object}
-         * @memberof Controllers.ProductsController
-         *
-         * @returns
-         *  The number of compliant items
-         */
-        self.compliant = function () {
-            let compliant = self.filteredData.filter(x => x.designation === 'Compliant' || x.designation === 'In PMO Review').length;
-            return self.filteredData.length === 0 ? 0 : Math.round((compliant / self.filteredData.length) * 100);
-        };
-
-        /**
          * Determine the options available for filtering the reuse metric
          * @public
          * @member {object}

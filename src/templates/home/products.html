@@ -1,37 +1,10 @@
-<div class="fr-post-filter-metrics usa-grid-full">
-    <div class="usa-width-one-whole">
-        <div class="col">
-            <p class="fr-large-number">
-                <span class="fr-metric-icon icon-cloud"></span>
-                <strong>{{controller.filteredData.length}}</strong>
-                <span class="fr-metric-label">Total</span>
-            </p>
-        </div>
-        <div class="col">
-            <p class="fr-large-number">
-                <span class="fr-metric-icon icon-cloud"></span>
-                <strong>{{controller.compliant()}}%</strong>
-                <span class="fr-metric-label">Compliant</span>
-            </p>
-        </div>
-    </div>
-    <div class="controls">
-        <label>
-            <input type="checkbox" ng-model="homeController.expandTiles" />
-            <div class="list-view">
-                <span><i class="fa fa-th-list fa-1" aria-hidden="true"></i></span>
-            </div>
-            <div class="grid-view">
-                <span><i class="fa fa-th fa-1" aria-hidden="true"></i></span>
-            </div>
-        </label>
-    </div>
-</div>
-
 <grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
     <div class="sidebar">
         <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
         <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
+
+        <grid-total></grid-total>
+
         <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>

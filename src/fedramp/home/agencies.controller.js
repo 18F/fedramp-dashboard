@@ -42,20 +42,6 @@
         };
 
         /**
-         * Determine how many "heavy" users are in the system
-         * @public
-         * @member {object}
-         * @memberof Controllers.AgenciesController
-         *
-         * @returns
-         *  The number of heavy usages
-         */
-        self.heavyUsers = function () {
-            let heavy = self.filteredData.filter(x => x.reuses >= 5).length;
-            return self.filteredData.length === 0 ? 0 : Math.round((heavy / self.filteredData.length) * 100);
-        };
-
-        /**
          * Determine the options available for filtering the reuse metric
          * @public
          * @member {object}

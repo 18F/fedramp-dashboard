@@ -2479,8 +2479,7 @@ input {
   width: 100%;
   max-width: none;
   height: 8.5rem;
-  line-height: 8.5rem;
-  margin-bottom: 1.8rem; }
+  line-height: 8.5rem; }
   .fr-filters .fr-filters-row {
     display: table-row; }
     .fr-filters .fr-filters-row .usa-width-one-third {
@@ -2696,6 +2695,16 @@ grid-sort {
   .grid-sort-arrows .fa-caret-up, .grid-sort-arrows .fa-caret-down {
     color: #fff;
     position: relative; }
+
+grid-total {
+  color: #5b616b;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #d5d6d9;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block; }
+  grid-total .count {
+    font-weight: 700; }
 
 /*
 	provide condensed version of web standards variables for use
