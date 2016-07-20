@@ -19,14 +19,7 @@
             <span>{{ controller.model.impactLevel }}</span>
         </div>
         <div class="col status fr-grid-cell-icon">
-            <img ng-if="controller.model.designation === 'Compliant'" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
-            <img ng-if="controller.model.designation === 'In-Process'" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
-            <img ng-if="controller.model.designation === 'In PMO Review'" ng-src="img/fedramp-process-compliant-blue.png" alt="In PMO Review" />
-            <img ng-if="controller.model.designation === 'Ready'" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
-            <span ng-if="controller.model.designation === 'Compliant'">FedRAMP Compliant</span>
-            <span ng-if="controller.model.designation === 'In-Process'"> FedRAMP In Process</span>
-            <span ng-if="controller.model.designation === 'In PMO Review'">FedRAMP Compliant</span>
-            <span ng-if="controller.model.designation === 'Ready'">FedRAMP Ready</span>
+            <product-status status="controller.model.designation"></product-status>
         </div>
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
@@ -49,14 +42,7 @@
             <div class="text">Reuses</div>
         </div>
         <div class="col status">
-            <img ng-if="controller.model.designation === 'Compliant'" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
-            <img ng-if="controller.model.designation === 'In-Process'" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
-            <img ng-if="controller.model.designation === 'In PMO Review'" ng-src="img/fedramp-process-compliant-blue.png" alt="In PMO Review" />
-            <img ng-if="controller.model.designation === 'Ready'" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
-            <span ng-if="controller.model.designation === 'Compliant'">FedRAMP Compliant</span>
-            <span ng-if="controller.model.designation === 'In-Process'"> FedRAMP In Process</span>
-            <span ng-if="controller.model.designation === 'In PMO Review'">FedRAMP Compliant</span>
-            <span ng-if="controller.model.designation === 'Ready'">FedRAMP Ready</span>
+            <product-status status="controller.model.designation"></product-status>
         </div>
     </div>
     <div class="row content">
