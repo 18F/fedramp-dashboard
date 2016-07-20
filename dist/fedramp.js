@@ -239,7 +239,7 @@ if(self.selectedOptionValues.length===0){return obj;}return self.selectedOptionV
          * Clears filter and resets dataset
          * @public
          * @memberof Components.GridFilter
-         */function clear(){self.selectedOptionValues=[];self.options.forEach(function(x){return x.selected=false;});applyFilter();}/**
+         */function clear(){self.selectedOptionValues=[];self.options.forEach(function(x){return x.selected=false;});delete self.gridController.state[self.id];applyFilter();}/**
          * Wraps a custom filter func with some additonal pre-processing logic to ensure
          * that a filter without any selected options is returned. We also ensure to pass an additonal
          * parameter selectedOptionValues to the callers.
