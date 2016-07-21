@@ -1,0 +1,28 @@
+<div class="usa-content">
+    <div class="comparison" style="position:relative;z-index:10;">
+        <!-- 
+            This is passed in by using <first></first> 
+        -->
+        <div class="first" ng-transclude="first"></div>
+
+        <!-- 
+            This is passed in by using <second></second> 
+        -->
+        <div class="second" ng-transclude="second"></div>
+
+        <!--
+            Close both 
+        -->
+        <div class="information close-both">
+            <div class="row close" ui-sref="{{controller.onCloseBoth}}">
+                <a>
+                    <div class="col">
+                        <i class="fa fa-times"></i>
+                        <br>
+                        Close Both
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

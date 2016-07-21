@@ -57,6 +57,7 @@
             self.filterFunc = (self.filterFunc ? wrapFilterFunc(self.filterFunc) : filterFunc);
             self.gridController.addFilter(self);
             restoreState();
+            search();
         }
 
         /**
@@ -126,7 +127,6 @@
                 return null;
             }
             self.searchTerm = params[self.id];
-            self.gridController.doFilter();
         }
 
         /**
