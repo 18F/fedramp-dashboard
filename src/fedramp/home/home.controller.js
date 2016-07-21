@@ -56,7 +56,7 @@
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = function () {
-            return fedrampData.products().length;
+            return fedrampData.products().filter(x => x.designation !== 'In-Process').length;
         };
 
         /**
@@ -85,6 +85,30 @@
                 return products.map(x => x.reuses).reduce((p, c) => p + c);
             }
             return 0;
+        };
+
+        /**
+         * The total number of products that are In-Process
+         * @public
+         * @memberof Controllers.HomeController
+         *
+         * @returns
+         *  The total number of in-process products
+         */
+        self.totalInProcess = function(){
+            return fedrampData.products().filter(x => x.designation === 'In-Process').length;
+        };
+
+        /**
+         * The total number of products that are Ready
+         * @public
+         * @memberof Controllers.HomeController
+         *
+         * @returns
+         *  The total number of fedramp ready products
+         */
+        self.totalReady = function(){
+            return fedrampData.products().filter(x => x.designation === 'Compliant').length;
         };
     }
 })();

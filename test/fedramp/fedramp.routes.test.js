@@ -5,7 +5,7 @@ describe('Fedramp routing', function(){
     var $state;
     var $rootScope;
     var $location;
-    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
+    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
 
     beforeEach(function () {
         module('fedramp');

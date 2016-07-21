@@ -3,7 +3,7 @@ describe('The data service', function(){
 
 	var DataService;
 	var $httpBackend;
-    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
+    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
 
     // Do that good/bad data factory
     var dataJson = {

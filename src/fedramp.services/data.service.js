@@ -13,7 +13,7 @@
      */
     function DataService ($log, StorageManager, StorageData, Data, DatasourceService) {
         var self = this;
-        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
+        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
 
         /**
          * Issue a GET request for the given URL.

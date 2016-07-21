@@ -75,4 +75,12 @@ describe('Home controller with no data', function () {
     it('ATO re-uses is zero', function () {
         expect(homeController.leveragedAtos()).toBe(0);
     });
+
+    it('Total ready should be zero', function () {
+        expect(homeController.totalReady()).toBe(0);
+    });
+
+    it('Total in-process should be zero', function () {
+        expect(homeController.totalInProcess()).toBe(0);
+    });
 });
