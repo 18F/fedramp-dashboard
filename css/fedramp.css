@@ -2387,53 +2387,34 @@ input {
 */
 .fr-dash-header {
   background-color: #112e51; }
+  .fr-dash-header .fr-dash-label {
+    color: #ffffff;
+    line-height: 4.4rem;
+    font-size: 1.8rem;
+    background-color: #0d2747;
+    max-width: none; }
   .fr-dash-header .fr-large-metrics {
-    height: 37.6rem;
+    height: 29.4rem;
     color: #02bfe7;
     text-align: center; }
     .fr-dash-header .fr-large-metrics > div {
       border-right: 2px solid #0d2747;
       height: 100%;
-      width: 49.95%;
+      width: 33.33%;
       margin-right: 0; }
     .fr-dash-header .fr-large-metrics > div:last-child {
       border-right: none; }
     .fr-dash-header .fr-large-metrics .fr-large-number {
       font-size: 2.8rem;
-      margin-top: 17rem; }
+      margin-top: 12rem; }
       .fr-dash-header .fr-large-metrics .fr-large-number strong {
-        font-size: 10rem; }
+        font-size: 9.5rem; }
     .fr-dash-header .fr-large-metrics .fr-metric-icon {
       position: absolute;
-      top: -9rem;
+      top: -8rem;
       left: 0;
       width: 100%;
-      height: 10rem;
-      background-size: contain;
-      background-position: center center; }
-  .fr-dash-header .fr-small-metrics {
-    border-top: 2px solid #0d2747;
-    height: 8rem;
-    color: #02bfe7; }
-    .fr-dash-header .fr-small-metrics > div {
-      border-right: 2px solid #0d2747;
-      height: 100%;
-      width: 33.3%;
-      margin-right: 0; }
-    .fr-dash-header .fr-small-metrics > div:last-child {
-      border-right: none; }
-    .fr-dash-header .fr-small-metrics .fr-large-number {
-      font-size: 1.6rem;
-      margin-top: 1.8rem;
-      display: inline-block; }
-      .fr-dash-header .fr-small-metrics .fr-large-number strong {
-        font-size: 2.8rem; }
-    .fr-dash-header .fr-small-metrics .fr-metric-icon {
-      display: inline-block;
-      width: 3.7rem;
-      height: 3.7rem;
-      float: left;
-      margin-right: 1rem;
+      height: 8rem;
       background-size: contain;
       background-position: center center; }
   .fr-dash-header .fr-large-number {
@@ -2446,7 +2427,8 @@ input {
     font-weight: 400; }
   .fr-dash-header .fr-metric-label {
     display: block;
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    padding-top: 0.4rem; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -2455,7 +2437,7 @@ input {
 	@version	0.9.5	web standards version extracted from
 */
 .fr-filter-label {
-  height: 118px;
+  height: 6.8rem;
   position: relative; }
   .fr-filter-label .fr-filter-label-rule {
     position: absolute;
@@ -2468,7 +2450,7 @@ input {
     position: relative;
     display: inline-block;
     font-size: 18px;
-    line-height: 118px;
+    line-height: 6.8rem;
     color: #5b616b;
     background-color: #f1f1f1;
     padding: 0 12px;
