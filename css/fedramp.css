@@ -2918,7 +2918,9 @@ body {
   .comparison .first, .comparison .second {
     display: inline-block;
     width: 48.925%;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    position: relative;
+    z-index: 100; }
   .comparison .first {
     float: left;
     margin-right: 2%; }
@@ -2926,6 +2928,17 @@ body {
     background-color: #ffffff; }
   .comparison .second.comparison-list {
     background: none; }
+  .comparison .close-both {
+    position: absolute;
+    width: 99.8%;
+    top: 0; }
+    .comparison .close-both .row {
+      position: relative;
+      z-index: 110;
+      margin: 0 auto;
+      width: 12%; }
+    .comparison .close-both .close {
+      background-color: #323a45; }
 
 .comparison-list .usa-grid {
   padding-right: 0; }
@@ -3006,7 +3019,7 @@ body {
   font-size: 1.6rem; }
   .information .row {
     display: block;
-    padding: 1em 0; }
+    padding: 0.3em 0; }
     .information .row h1, .information .row h2, .information .row h3, .information .row h4, .information .row h5, .information .row h6 {
       font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; }
     .information .row h4 {
@@ -3022,7 +3035,7 @@ body {
   .information .col {
     display: inline-block; }
   .information .close {
-    background-color: #323a45;
+    background-color: #5b616b;
     cursor: pointer; }
     .information .close .col {
       width: 100%; }

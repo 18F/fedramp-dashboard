@@ -46,6 +46,8 @@
                 templateUrl: 'src/templates/home/home.html',
                 controller: 'HomeController as homeController'
             })
+
+            // Provider States
             .state('fedramp.app.home.providers', {
                 url: '/providers',
                 templateUrl: 'src/templates/home/providers.html',
@@ -70,6 +72,8 @@
                 templateUrl: 'src/templates/home/provider-comparison.html',
                 controller: 'ProviderComparisonController as controller'
             })
+
+            // Product States
             .state('fedramp.app.home.products', {
                 url: '/products',
                 templateUrl: 'src/templates/home/products.html',
@@ -94,6 +98,9 @@
                 templateUrl: 'src/templates/home/product-comparison.html',
                 controller: 'ProductComparisonController as controller'
             })
+
+
+            // Agency States
             .state('fedramp.app.home.agencies', {
                 url: '/agencies',
                 templateUrl: 'src/templates/home/agencies.html',
@@ -118,6 +125,8 @@
                 templateUrl: 'src/templates/home/agency-comparison.html',
                 controller: 'AgencyComparisonController as controller'
             })
+
+            // Assessor States
             .state('fedramp.app.home.assessors', {
                 url: '/assessors',
                 templateUrl: 'src/templates/home/assessors.html',

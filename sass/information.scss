@@ -13,6 +13,8 @@
         display: inline-block;
         width: 48.925%;
         background-color:$color-white;
+        position:relative;
+        z-index:100;
 	}
     .first {
 		float:left;
@@ -27,6 +29,22 @@
 	.second.comparison-list {
 		background:none;
 	}
+
+    .close-both {
+        position:absolute;
+        width:99.8%;
+        top:0;
+
+        .row {
+            position:relative;
+            z-index: 110;
+            margin:0 auto;
+            width:12%;
+        }
+        .close {
+            background-color:$color-gray-dark;
+        }
+    }
 }
 
 .comparison-list {
@@ -133,7 +151,7 @@
 	font-size:1.6rem;
     .row {
         display: block;
-        padding: 1em 0;
+        padding: 0.3em 0;
         h1, h2, h3, h4, h5, h6 {
 	        font-family:$font-sans;
         }
@@ -156,7 +174,7 @@
     }
     
     .close {
-        background-color: $color-gray-dark;
+        background-color: $color-gray;
         cursor: pointer;
 
         .col {
