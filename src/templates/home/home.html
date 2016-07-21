@@ -1,41 +1,28 @@
 <div class="usa-content">
     <div class="fr-dash-header usa-color-primary-darkest">
+        <div class="usa-grid-full text-center fr-dash-label">
+            <div class="usa-width-one-whole text-center">Products as a glance</div>
+        </div>
         <div class="usa-grid-full text-center fr-large-metrics">
-            <div class="usa-width-one-half">
+            <div class="usa-width-one-third">
                 <p class="fr-large-number">
-                    <span class="fr-metric-icon icon-reuse"></span>
-                    <strong>{{homeController.leveragedAtos()}}</strong>
-                    <span class="fr-metric-label">Total reuses</span>
+                    <span class="fr-metric-icon icon-ready"></span>
+                    <strong>{{homeController.totalAuthorized()}}</strong>
+                    <span class="fr-metric-label">Ready</span>
                 </p>
             </div>
-            <div class="usa-width-one-half">
+            <div class="usa-width-one-third">
+                <p class="fr-large-number">
+                    <span class="fr-metric-icon icon-in-process"></span>
+                    <strong>{{homeController.totalAuthorized()}}</strong>
+                    <span class="fr-metric-label">In Process</span>
+                </p>
+            </div>
+            <div class="usa-width-one-third">
                 <p class="fr-large-number">
                     <span class="fr-metric-icon icon-compliant"></span>
                     <strong>{{homeController.totalAuthorized()}}</strong>
-                    <span class="fr-metric-label">Total Authorized</span>
-                </p>
-            </div>
-        </div>
-        <div class="usa-grid-full text-center fr-small-metrics">
-            <div class="usa-width-one-third">
-                <p class="fr-large-number">
-                    <span class="fr-metric-icon icon-cloud"></span>
-                    <strong>67<span class="fr-light-font">%</span></strong>
-                    <span class="fr-metric-label">TBD</span>
-                </p>
-            </div>
-            <div class="usa-width-one-third">
-                <p class="fr-large-number">
-                    <span class="fr-metric-icon icon-compliant"></span>
-                    <strong><span class="fr-light-font">$</span>{{homeController.totalCostSavings()}}</strong>
-                    <span class="fr-metric-label">Cost Savings</span>
-                </p>
-            </div>
-            <div class="usa-width-one-third">
-                <p class="fr-large-number">
-                    <span class="fr-metric-icon icon-reuse"></span>
-                    <strong>3,297</strong>
-                    <span class="fr-metric-label">TBD</span>
+                    <span class="fr-metric-label">Authorized</span>
                 </p>
             </div>
         </div>
