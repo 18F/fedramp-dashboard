@@ -11,7 +11,11 @@
 		width:100%;
 		font-size:1.4rem;
 		background-color:$color-white;
+		transition:background-color 0.3s;
 
+		&:hover {
+			background-color:$color-cool-blue-lightest;
+		}
 		.fr-grid-layout-row {
 			display:table-row;
 			

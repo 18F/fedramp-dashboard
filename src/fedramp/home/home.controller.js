@@ -101,6 +101,8 @@
 
         /**
          * The total number of products that are Ready
+         * TODO: Need to validate how this will be calculated
+         *
          * @public
          * @memberof Controllers.HomeController
          *
@@ -108,7 +110,7 @@
          *  The total number of fedramp ready products
          */
         self.totalReady = function(){
-            return fedrampData.products().filter(x => x.designation === 'Compliant').length;
+            return 0;
         };
     }
 })();

@@ -28,11 +28,13 @@
 // style block of entity filters
 // don't prefer table display style, but most reliable in this configuration
 .fr-filters {
+	position:relative;
 	display:table;
-	width:100%;
+	width:96%;
 	max-width:none;
 	height:8.5rem;
 	line-height:8.5rem;
+	margin-left:0;
 
 	.fr-filters-row {
 		display:table-row;
@@ -77,69 +79,16 @@
 		background-color:$color-primary;
 	    color: #fff;
 	}
-}
-.fr-post-filter-metrics {
-	max-width:none;
-	height:7.6rem;
-	background-color:$color-primary-darkest;
-	position:relative;
-	color:$color-white;
-
-	> div {
-		position:relative;
-	}
-
-	.col {
-		width:45%;
-		text-align:center;
-		float:left;
-		margin-top:1rem;
-	 	.fr-large-number {
-	 		font-size:1.6rem;
-	 		margin-top:1.8rem;
-	 		display:inline-block;
-	 		strong {
-	 			font-size:2.8rem;
-	 		}
-		}
-		// smaller size metric icons
-		.fr-metric-icon {
-			display:inline-block;
-			width:3.7rem;
-			height:3.7rem;
-			float:left;
-			margin-right:1rem;
-			background-size:contain;
-			background-position:center center;
-		}
-	 	// clean up spacing / line height for large numbers
-	 	.fr-large-number {
-	 		position:relative;
-		 	margin:0;
-		 	line-height:1;
-	 	}
-	 	// white colors for dashboard metrics, numbers only
-	 	.fr-large-number strong {
-		 	color:$color-white;
-	 	}
-	 	// apply this class to a span or other to provide a 400 font weight
-	 	.fr-light-font {
-		 	font-weight:$font-normal;
-	 	}
-	 	// label text for metric font sized shared
-	 	.fr-metric-label {
-		 	display:block;
-		 	font-size:1.6rem;
-		 	color:$color-primary-alt;
-	 	}
-	}
 	// grid / list view controls
 	.controls {
+		display:block;
 		position:absolute;
 		top:0;
-		right:0;
-		height:7.6rem;
-		width:3.8rem;
+		left:100%;
+		width:4%;
+		min-width:3.8rem;
+		line-height:4rem;
+		height:8.5rem;
 		border-left:3px solid $color-white;
 		background-color:$color-gray-lighter;
 
@@ -148,6 +97,7 @@
 			width:100%;
 			margin-top:0;
 			cursor:pointer;
+			float:right;
 		}
 		div {
 			height:50%;
