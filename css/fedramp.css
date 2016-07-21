@@ -2457,11 +2457,13 @@ input {
     font-weight: 700; }
 
 .fr-filters {
+  position: relative;
   display: table;
-  width: 100%;
+  width: 96%;
   max-width: none;
   height: 8.5rem;
-  line-height: 8.5rem; }
+  line-height: 8.5rem;
+  margin-left: 0; }
   .fr-filters .fr-filters-row {
     display: table-row; }
     .fr-filters .fr-filters-row .usa-width-one-third {
@@ -2492,76 +2494,40 @@ input {
   .fr-filters button.active, .fr-filters button:hover {
     background-color: #0071bc;
     color: #fff; }
-
-.fr-post-filter-metrics {
-  max-width: none;
-  height: 7.6rem;
-  background-color: #112e51;
-  position: relative;
-  color: #ffffff; }
-  .fr-post-filter-metrics > div {
-    position: relative; }
-  .fr-post-filter-metrics .col {
-    width: 45%;
-    text-align: center;
-    float: left;
-    margin-top: 1rem; }
-    .fr-post-filter-metrics .col .fr-large-number {
-      font-size: 1.6rem;
-      margin-top: 1.8rem;
-      display: inline-block; }
-      .fr-post-filter-metrics .col .fr-large-number strong {
-        font-size: 2.8rem; }
-    .fr-post-filter-metrics .col .fr-metric-icon {
-      display: inline-block;
-      width: 3.7rem;
-      height: 3.7rem;
-      float: left;
-      margin-right: 1rem;
-      background-size: contain;
-      background-position: center center; }
-    .fr-post-filter-metrics .col .fr-large-number {
-      position: relative;
-      margin: 0;
-      line-height: 1; }
-    .fr-post-filter-metrics .col .fr-large-number strong {
-      color: #ffffff; }
-    .fr-post-filter-metrics .col .fr-light-font {
-      font-weight: 400; }
-    .fr-post-filter-metrics .col .fr-metric-label {
-      display: block;
-      font-size: 1.6rem;
-      color: #02bfe7; }
-  .fr-post-filter-metrics .controls {
+  .fr-filters .controls {
+    display: block;
     position: absolute;
     top: 0;
-    right: 0;
-    height: 7.6rem;
-    width: 3.8rem;
+    left: 100%;
+    width: 4%;
+    min-width: 3.8rem;
+    line-height: 4rem;
+    height: 8.5rem;
     border-left: 3px solid #ffffff;
     background-color: #d6d7d9; }
-    .fr-post-filter-metrics .controls label {
+    .fr-filters .controls label {
       height: 100%;
       width: 100%;
       margin-top: 0;
-      cursor: pointer; }
-    .fr-post-filter-metrics .controls div {
+      cursor: pointer;
+      float: right; }
+    .fr-filters .controls div {
       height: 50%;
       text-align: center;
       font-size: 2.2rem;
       padding-top: 0.4rem; }
-    .fr-post-filter-metrics .controls .list-view, .fr-post-filter-metrics .controls .grid-view {
+    .fr-filters .controls .list-view, .fr-filters .controls .grid-view {
       transition: background-color 0.3s, color 0.3s; }
-    .fr-post-filter-metrics .controls .ng-empty ~ .list-view, .fr-post-filter-metrics .controls .ng-not-empty:hover ~ .list-view {
+    .fr-filters .controls .ng-empty ~ .list-view, .fr-filters .controls .ng-not-empty:hover ~ .list-view {
       color: #5b616b;
       background-color: #d6d7d9; }
-    .fr-post-filter-metrics .controls .ng-empty ~ .grid-view, .fr-post-filter-metrics .controls .ng-not-empty:hover ~ .grid-view {
+    .fr-filters .controls .ng-empty ~ .grid-view, .fr-filters .controls .ng-not-empty:hover ~ .grid-view {
       color: #ffffff;
       background-color: #0071bc; }
-    .fr-post-filter-metrics .controls .ng-not-empty ~ .list-view, .fr-post-filter-metrics .controls .ng-empty:hover ~ .list-view {
+    .fr-filters .controls .ng-not-empty ~ .list-view, .fr-filters .controls .ng-empty:hover ~ .list-view {
       color: #ffffff;
       background-color: #0071bc; }
-    .fr-post-filter-metrics .controls .ng-not-empty ~ .grid-view, .fr-post-filter-metrics .controls .ng-empty:hover ~ .grid-view {
+    .fr-filters .controls .ng-not-empty ~ .grid-view, .fr-filters .controls .ng-empty:hover ~ .grid-view {
       color: #5b616b;
       background-color: #d6d7d9; }
 
@@ -2582,7 +2548,8 @@ input {
   font-weight: 700;
   color: #5b616b;
   font-size: 1.5rem;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-bottom: 1.2rem; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -2599,7 +2566,10 @@ input {
     display: table;
     width: 100%;
     font-size: 1.4rem;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    transition: background-color 0.3s; }
+    .grid .fr-grid-layout:hover {
+      background-color: #dce4ef; }
     .grid .fr-grid-layout .fr-grid-layout-row {
       display: table-row; }
       .grid .fr-grid-layout .fr-grid-layout-row > div {
@@ -2678,12 +2648,18 @@ grid-sort {
     color: #fff;
     position: relative; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 grid-total {
   color: #5b616b;
-  font-size: 1.5rem;
-  border-bottom: 2px solid #d5d6d9;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #d6d7d9;
+  margin-top: 1.4rem;
+  margin-bottom: 1.3rem;
   display: block; }
   grid-total .count {
     font-weight: 700; }
@@ -3256,10 +3232,10 @@ body {
   float: left;
   width: 21%;
   max-width: 32rem;
-  padding: 11.2rem 0 3rem 2.4rem; }
+  padding: 5.2rem 0 3rem 2.4rem; }
   .sidebar .grid-filter {
     background: none;
-    margin: 1.7rem 0;
+    margin: 2.3rem 0;
     padding: 0;
     display: block;
     cursor: pointer;
@@ -3272,6 +3248,8 @@ body {
       .sidebar .grid-filter .option .fa-check-circle {
         color: #0070ba;
         margin-left: 0.5rem; }
+    .sidebar .grid-filter .selected {
+      font-weight: 700; }
     .sidebar .grid-filter .options {
       padding-left: 1.3rem;
       color: #5b616b; }

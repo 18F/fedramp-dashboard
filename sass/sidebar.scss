@@ -4,12 +4,12 @@
     float:left;
     width:21%;
 	max-width:32rem;
-	padding:11.2rem 0 3rem 2.4rem;
+	padding:5.2rem 0 3rem 2.4rem;
 
 	// each contain a set of content filters
 	.grid-filter {
 		background:none;
-		margin:1.7rem 0;
+		margin:2.3rem 0;
 		padding:0;
 	    display:block;
 	    cursor: pointer;
@@ -22,10 +22,15 @@
 	        font-size:1.5rem;
 	        font-weight:$font-normal;
 
+			// check for active filter
 			.fa-check-circle {
 	            color: #0070ba;
 	            margin-left:0.5rem;
 	        }
+	    }
+		// sidebar filter active state
+	    .selected {
+		    font-weight:$font-bold;
 	    }
 		// indent filter child items
 	    .options {

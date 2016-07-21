@@ -1,12 +1,14 @@
+@import 'variables';
+
 grid-total {
-    color: #5b616b;
-    font-size: 1.5rem;
-    border-bottom:2px solid #d5d6d9;
-    margin-top:10px;
-    margin-bottom:10px;
+    color:$color-gray;
+    font-size: 1.3rem;
+    border-bottom:2px solid $color-gray-lighter;
+    margin-top:1.4rem;
+    margin-bottom:1.3rem;
     display:block;
 
     .count {
-        font-weight: 700;
+        font-weight:$font-bold;
     }
 }
