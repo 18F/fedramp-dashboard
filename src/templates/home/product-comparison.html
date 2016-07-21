@@ -1,21 +1,34 @@
-<div class="usa-content">
-    <div class="comparison" style="position:relative;z-index:10;">
-        <div class="first">
-            <product model="controller.first" products="controller.items" on-close="controller.closeFirst" />
-        </div>
-        <div class="second">
-            <product model="controller.second" products="controller.items" on-close="controller.closeSecond" />
-        </div>
-        <div class="information close-both">
-            <div class="row close" ui-sref="fedramp.app.home.products">
-                <a>
-                    <div class="col">
-                        <i class="fa fa-times"></i>
-                        <br>
-                        Close Both
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+<!--
+    For updates to the way this is displayed, go to templates/comparison.html
+-->
+
+<comparison on-close-both="fedramp.app.home.products">
+    <first>
+        <product model="controller.first" products="controller.items" on-close="controller.closeFirst" />
+    </first>
+    <second>
+        <product model="controller.second" products="controller.items" on-close="controller.closeSecond" />
+    </second>
+</comparison>
+
+<!--<div class="usa-content">-->
+    <!--<div class="comparison" style="position:relative;z-index:10;">-->
+        <!--<div class="first">-->
+            <!--<product model="controller.first" products="controller.items" on-close="controller.closeFirst" />-->
+        <!--</div>-->
+        <!--<div class="second">-->
+            <!--<product model="controller.second" products="controller.items" on-close="controller.closeSecond" />-->
+        <!--</div>-->
+        <!--<div class="information close-both">-->
+            <!--<div class="row close" ui-sref="fedramp.app.home.products">-->
+                <!--<a>-->
+                    <!--<div class="col">-->
+                        <!--<i class="fa fa-times"></i>-->
+                        <!--<br>-->
+                        <!--Close Both-->
+                    <!--</div>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

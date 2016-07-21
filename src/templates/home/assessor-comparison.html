@@ -1,10 +1,22 @@
-<div class="usa-content">
-    <div class="comparison">
-        <div class="first">
-            <assessor model="controller.first" on-close="controller.closeFirst" />
-        </div>
-        <div class="second">
-            <assessor model="controller.second" on-close="controller.closeSecond" />
-        </div>
-    </div>
-</div>
+<!--
+    For updates to the way this is displayed, go to templates/comparison.html
+-->
+<comparison on-close-both="fedramp.app.home.assessors">
+    <first>
+        <assessor model="controller.first" on-close="controller.closeFirst" />
+    </first>
+    <second>
+        <assessor model="controller.second" on-close="controller.closeSecond" />
+    </second>
+</comparison>
+
+<!--<div class="usa-content">-->
+    <!--<div class="comparison">-->
+        <!--<div class="first">-->
+            <!--<assessor model="controller.first" on-close="controller.closeFirst" />-->
+        <!--</div>-->
+        <!--<div class="second">-->
+            <!--<assessor model="controller.second" on-close="controller.closeSecond" />-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
