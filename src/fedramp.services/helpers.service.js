@@ -66,7 +66,7 @@
          *  Today's date formatting as mm/dd/YYYY
          */
         self.toDate = function (str) {
-            if (!str) {
+            if (!str || str === 'N/A') {
                 return '';
             }
             

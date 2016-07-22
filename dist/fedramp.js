@@ -1056,7 +1056,7 @@ var self=this;/**
          *
          * @returns
          *  Today's date formatting as mm/dd/YYYY
-         */self.toDate=function(str){if(!str){return'';}var d=new Date(str);var dd=d.getUTCDate();var mm=d.getUTCMonth()+1;var yyyy=d.getUTCFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;};/**
+         */self.toDate=function(str){if(!str||str==='N/A'){return'';}var d=new Date(str);var dd=d.getUTCDate();var mm=d.getUTCMonth()+1;var yyyy=d.getUTCFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;};/**
          * Scrolls to an anchor
          * @public
          * @memberof Services.HelperService
