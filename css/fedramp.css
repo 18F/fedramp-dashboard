@@ -3134,6 +3134,31 @@ body {
       .information .agencies ul li::before,
       .information .assessors ul li::before {
         content: ''; }
+  .information .accredited {
+    color: #205493;
+    font-weight: bold; }
+  .information .divider {
+    background-color: #205493;
+    width: 100%;
+    height: 6px;
+    margin-top: 6rem;
+    padding: 0; }
+
+.information.assessor .row {
+  clear: both; }
+  .information.assessor .row .contact-information {
+    background-color: #dce4ef;
+    color: #000000;
+    padding: 2rem; }
+  .information.assessor .row h5 {
+    margin-top: 0; }
+
+.agency .system-profile {
+  margin-top: 10rem;
+  border-bottom: none; }
+
+.agency .products {
+  margin-top: 6em; }
 
 #topnav .limit {
   clear: both;

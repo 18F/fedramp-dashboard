@@ -363,4 +363,40 @@
             }
         }
     }
+
+    .accredited {
+        color: $color-primary-darker;
+        font-weight: bold;
+    }
+    .divider {
+        background-color: $color-primary-darker;
+        width:100%;
+        height: 6px;
+        margin-top:6rem;
+        padding: 0;
+    }
+}
+
+.information.assessor {
+    .row {
+        clear:both;
+        .contact-information {
+            background-color: $color-cool-blue-lightest;
+            color: $color-black;
+            padding: 2rem;
+        }
+        h5 {
+            margin-top: 0;
+        }
+    }
+}
+
+.agency {
+    .system-profile {
+        margin-top:10rem;
+        border-bottom:none;
+    }
+    .products {
+        margin-top:6em;
+    }
 }
