@@ -34,9 +34,9 @@
             <div class="text">FedRAMP In Process</div>
         </div>                                 
         <div class="col compliant">
-            <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Compliant" />
-            <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Compliant" />
-            <div class="text">FedRAMP Compliant</div>
+            <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Authorized" />
+            <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Authorized" />
+            <div class="text">FedRAMP Authorized</div>
         </div>
         <div class="col progress">
             <div class="percent percent-{{controller.percentComplete()}}"></div>
@@ -74,7 +74,7 @@
                 <a href="#">Package Access Request Form</a>
             </p>
 
-            <h4>FedRAMP Compliant Detail</h4>
+            <h4>FedRAMP Authorized Detail</h4>
             <dl>
                 <dt>Authorization Type:</dt>
                 <dd>{{ controller.model.authorizationType }}</dd>
