@@ -256,6 +256,7 @@ gulp.task('sass', function () {
     'use strict';
     return gulp
         .src([
+            'node_modules/font-awesome/**/*.scss',
             'node_modules/uswds/src/stylesheets/**/*.scss',
             'sass/**/*.scss'
         ])
