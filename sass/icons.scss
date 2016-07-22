@@ -72,3 +72,17 @@
     @extend .icon;
     @include background-image('../img/fedramp-metric-reuse-icon');
 }
+// updated home page metric icons
+// 2016-07-22
+.icon-ready-light {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-ready-light-blue');
+}
+.icon-in-process-light {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-in-process-light-blue');
+}
+.icon-compliant-light {
+    @extend .icon;
+    @include background-image('../img/fedramp-process-compliant-light-blue');
+}

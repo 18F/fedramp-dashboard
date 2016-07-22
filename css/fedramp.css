@@ -2728,7 +2728,7 @@ grid-total {
     #header #catnav .select-menu-catnav {
       display: none; }
 
-.icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active, .icon-cloud, .icon-cloud.active, .icon-reuse, .icon-reuse.active {
+.icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active, .icon-cloud, .icon-cloud.active, .icon-reuse, .icon-reuse.active, .icon-ready-light, .icon-in-process-light, .icon-compliant-light {
   width: 50px;
   height: auto; }
 
@@ -2800,6 +2800,21 @@ grid-total {
 .icon-reuse.active {
   background-image: url("../img/fedramp-metric-reuse-icon.png");
   background-image: url("../img/fedramp-metric-reuse-icon.svg");
+  background-repeat: no-repeat; }
+
+.icon-ready-light {
+  background-image: url("../img/fedramp-process-ready-light-blue.png");
+  background-image: url("../img/fedramp-process-ready-light-blue.svg");
+  background-repeat: no-repeat; }
+
+.icon-in-process-light {
+  background-image: url("../img/fedramp-process-in-process-light-blue.png");
+  background-image: url("../img/fedramp-process-in-process-light-blue.svg");
+  background-repeat: no-repeat; }
+
+.icon-compliant-light {
+  background-image: url("../img/fedramp-process-compliant-light-blue.png");
+  background-image: url("../img/fedramp-process-compliant-light-blue.svg");
   background-repeat: no-repeat; }
 
 /*
