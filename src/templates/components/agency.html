@@ -36,21 +36,6 @@
             <p></p>
         </div>
     </div>
-    <div class="row providers">
-        <div class="col">
-            <h4>Providers</h4>
-            <ul ng-if="controller.model.providers.length > 0">
-                <li ng-repeat="provider in controller.model.providers | orderBy:'+' track by $index">
-                    <a title="{{provider}}" ng-href="{{controller.linkify('provider', provider)}}">
-                        {{provider}}
-                    </a>
-                </li>
-            </ul>
-            <p ng-if="controller.model.providers.length === 0">
-                None
-            </p>
-        </div>
-    </div>
     <div class="row products">
         <div class="col">
             <h4>Products</h4>
