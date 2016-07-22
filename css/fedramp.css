@@ -3153,12 +3153,18 @@ body {
   .information.assessor .row h5 {
     margin-top: 0; }
 
+.information.assessor .service-description {
+  margin-top: 2em; }
+
 .agency .system-profile {
   margin-top: 10rem;
   border-bottom: none; }
 
+.agency .service-description {
+  margin-top: 4em; }
+
 .agency .products {
-  margin-top: 6em; }
+  margin-top: 2em; }
 
 #topnav .limit {
   clear: both;
