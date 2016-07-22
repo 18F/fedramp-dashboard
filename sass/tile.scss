@@ -23,17 +23,10 @@ tile:nth-child(2n) {
         width: 100%;
         clear: both;
     }
-
-    .col {
-    }
-
     .expanded {
         .row {
             height: 9.5rem;
             border-bottom: 1px solid $color-gray-lightest;
-        }
-
-        .col {
         }
     }
     .card {
@@ -193,7 +186,9 @@ tile:nth-child(2n) {
             color: $color-white;
             text-align:center;
             padding-top:2.7rem;
-
+            a {
+	            color:$color-white;
+            }
             .text {
                 font-size: 1.3rem;
                 font-weight:$font-normal;
@@ -250,11 +245,10 @@ tile:nth-child(2n) {
     }
 }
 
-.product.expanded {
-
-	.fr-grid-cell-name {}
+.product.expanded,
+.agency.expanded,
+.assessor.expanded {
     .name {
-        
         .logo {
 	        height:4.2rem;
 	        width:15rem;
@@ -263,31 +257,20 @@ tile:nth-child(2n) {
 	        background-repeat:no-repeat;
 			margin:0 0 0.5rem;
         }
-
         .title {
             text-overflow: ellipsis;
         }
     }
-
-    .service-model {}
-
-    .deployment-model {}
-
-    .impact-level {}
-
     .status {
         text-align: center;
-        
         img {
             max-width: 4.5rem;
             max-height: auto;
         }
-
         span {
             display: block;
         }
     }
-
     .reuses {
         text-align: center;
         background-color: $color-primary;
@@ -295,12 +278,11 @@ tile:nth-child(2n) {
         font-weight: bolder;
         border-right: none;
         border-bottom: 1px solid $color-white;
-
         .text {
             font-size: 1.3rem;
             font-weight:$font-normal;
+            padding:0 2rem;
         }
-
         .number {
             font-size: 2.6rem;
             margin-bottom: -0.8rem;
@@ -317,7 +299,6 @@ tile:nth-child(2n) {
     }
 
     .header {
-        height: 6em;
 
         .reuses {
             float: right;
@@ -367,44 +348,6 @@ tile:nth-child(2n) {
         }
     }
 }
-
-.agency.expanded {
-    .row {
-    }
-
-    .col {
-        width: 1 / 2 * 80%;
-        vertical-align: top;
-        padding-top: 0.34em;
-    }
-
-    .name {
-    }
-
-    .reuses {
-        float: right;
-        text-align: center;
-        width: 6em;
-        height: 6em;
-        padding-top: 1.5em;
-        background-color: $color-primary;
-        color: $color-white;
-        font-weight: bolder;
-        border-right: none;
-        border-bottom: 1px solid $color-white;
-
-        .text {
-            font-size: 1.3rem;
-            font-weight:$font-normal;
-        }
-
-        .number {
-            font-size: 2.6rem;
-            margin-bottom: -0.8rem;
-        }
-    }
-}
-
 .assessor.card {
     .row {
     }
@@ -463,41 +406,6 @@ tile:nth-child(2n) {
                 float: left;
                 margin-left: 1em;
             }
-        }
-    }
-}
-
-.assessor.expanded {
-	font-size: 1.6rem;
-
-	.fr-grid-cell-name {
-		font-size: 1.8rem;
-		padding-left: 2rem;
-	}
-
-    .name {
-        .title {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-
-    .reuses {
-        text-align: center;
-        background-color: $color-primary;
-        color: $color-white;
-        font-weight: bolder;
-        border-right: none;
-        border-bottom: 1px solid $color-white;
-
-        .text {
-            font-size: 1.3rem;
-            font-weight:$font-normal;
-        }
-
-        .number {
-            font-size: 2.6rem;
-            margin-bottom: -0.8rem;
         }
     }
 }

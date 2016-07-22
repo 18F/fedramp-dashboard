@@ -3486,6 +3486,8 @@ tile:nth-child(2n) .card {
     color: #ffffff;
     text-align: center;
     padding-top: 2.7rem; }
+    .card .header .reuses a {
+      color: #ffffff; }
     .card .header .reuses .text {
       font-size: 1.3rem;
       font-weight: 400; }
@@ -3519,7 +3521,9 @@ tile:nth-child(2n) .card {
       float: left;
       margin-left: 1em; }
 
-.product.expanded .name .logo {
+.product.expanded .name .logo,
+.agency.expanded .name .logo,
+.assessor.expanded .name .logo {
   height: 4.2rem;
   width: 15rem;
   background-size: contain;
@@ -3527,53 +3531,66 @@ tile:nth-child(2n) .card {
   background-repeat: no-repeat;
   margin: 0 0 0.5rem; }
 
-.product.expanded .name .title {
+.product.expanded .name .title,
+.agency.expanded .name .title,
+.assessor.expanded .name .title {
   text-overflow: ellipsis; }
 
-.product.expanded .status {
+.product.expanded .status,
+.agency.expanded .status,
+.assessor.expanded .status {
   text-align: center; }
-  .product.expanded .status img {
+  .product.expanded .status img,
+  .agency.expanded .status img,
+  .assessor.expanded .status img {
     max-width: 4.5rem;
     max-height: auto; }
-  .product.expanded .status span {
+  .product.expanded .status span,
+  .agency.expanded .status span,
+  .assessor.expanded .status span {
     display: block; }
 
-.product.expanded .reuses {
+.product.expanded .reuses,
+.agency.expanded .reuses,
+.assessor.expanded .reuses {
   text-align: center;
   background-color: #0071bc;
   color: #ffffff;
   font-weight: bolder;
   border-right: none;
   border-bottom: 1px solid #ffffff; }
-  .product.expanded .reuses .text {
+  .product.expanded .reuses .text,
+  .agency.expanded .reuses .text,
+  .assessor.expanded .reuses .text {
     font-size: 1.3rem;
-    font-weight: 400; }
-  .product.expanded .reuses .number {
+    font-weight: 400;
+    padding: 0 2rem; }
+  .product.expanded .reuses .number,
+  .agency.expanded .reuses .number,
+  .assessor.expanded .reuses .number {
     font-size: 2.6rem;
     margin-bottom: -0.8rem; }
 
 .agency.card .col {
   width: 100%; }
 
-.agency.card .header {
-  height: 6em; }
-  .agency.card .header .reuses {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .agency.card .header .reuses .text {
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .agency.card .header .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: -0.8rem; }
+.agency.card .header .reuses {
+  float: right;
+  text-align: center;
+  width: 6em;
+  height: 6em;
+  padding-top: 1.5em;
+  background-color: #0071bc;
+  color: #ffffff;
+  font-weight: bolder;
+  border-right: none;
+  border-bottom: 1px solid #ffffff; }
+  .agency.card .header .reuses .text {
+    font-size: 1.3rem;
+    font-weight: 400; }
+  .agency.card .header .reuses .number {
+    font-size: 2.6rem;
+    margin-bottom: -0.8rem; }
 
 .agency.card .content .col {
   width: 100%; }
@@ -3588,29 +3605,6 @@ tile:nth-child(2n) .card {
   .agency.card .content dl dd {
     float: left;
     margin-left: 1em; }
-
-.agency.expanded .col {
-  width: 40%;
-  vertical-align: top;
-  padding-top: 0.34em; }
-
-.agency.expanded .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .agency.expanded .reuses .text {
-    font-size: 1.3rem;
-    font-weight: 400; }
-  .agency.expanded .reuses .number {
-    font-size: 2.6rem;
-    margin-bottom: -0.8rem; }
 
 .assessor.card .col {
   width: 100%; }
@@ -3651,25 +3645,3 @@ tile:nth-child(2n) .card {
   .assessor.card .content dl dd {
     float: left;
     margin-left: 1em; }
-
-.assessor.expanded {
-  font-size: 1.6rem; }
-  .assessor.expanded .fr-grid-cell-name {
-    font-size: 1.8rem;
-    padding-left: 2rem; }
-  .assessor.expanded .name .title {
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .assessor.expanded .reuses {
-    text-align: center;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .assessor.expanded .reuses .text {
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .assessor.expanded .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: -0.8rem; }
