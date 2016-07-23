@@ -1,0 +1,12 @@
+<ul ng-if="controller.productList.length > 0">
+    <li ng-repeat="product in controller.productList | orderBy:'+' track by $index">
+        <a title="{{product.provider}}" 
+           ui-sref-opts="{location:true}"
+            ui-sref="fedramp.app.provider.information({name: controller.slugify(product.provider)})">
+            {{product.provider}} 
+        </a> - 
+        <a title="{{product.name}}" ui-sref="fedramp.app.product.information({name: controller.slugify(product.name)})">
+            {{product.name}} 
+        </a>
+    </li>
+</ul>

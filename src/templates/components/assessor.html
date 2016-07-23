@@ -48,16 +48,7 @@
     <div class="row products">
         <div class="col">
             <h4>Products</h4>
-            <ul ng-if="controller.model.products.length > 0">
-                <li ng-repeat="product in controller.model.products | orderBy:'+' track by $index">
-                    <a title="{{product}}" ng-href="{{controller.linkify('product', product)}}">
-                        {{product}}
-                    </a>
-                </li>
-            </ul>
-            <p ng-if="controller.model.products.length === 0">
-                None
-            </p>
+            <product-list products="controller.model.products"></product-list>
         </div>
     </div>
 </div>
