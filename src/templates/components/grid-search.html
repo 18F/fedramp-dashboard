@@ -1,1 +1,1 @@
-<input type="text" placeholder="{{controller.placeholder}}" ng-model="controller.searchTerm" ng-change="controller.search()"/>
+<input type="text" placeholder="{{::controller.placeholder}}" ng-model="controller.searchTerm" ng-model-options="{ debounce: 150}" ng-change="controller.search()"/>

@@ -5,13 +5,13 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'fedrampData', 'CsvService'];
+    HomeController.$inject = ['$log', 'fedrampData', 'CsvService', 'Cache'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, fedrampData, CsvService) {
+    function HomeController ($log, fedrampData, CsvService, Cache) {
         var self = this;
 
         /**
@@ -55,9 +55,9 @@
          * @returns
          *  The total authorized cloud service providers
          */
-        self.totalAuthorized = function () {
+        self.totalAuthorized = Cache.wrap('totalAuthorized')(function () {
             return fedrampData.products().filter(x => x.designation !== 'In-Process').length;
-        };
+        });
 
         /**
          * The cost savings at a fixed rate per re-use
@@ -95,9 +95,9 @@
          * @returns
          *  The total number of in-process products
          */
-        self.totalInProcess = function(){
+        self.totalInProcess = Cache.wrap('totalInProcess')(function(){
             return fedrampData.products().filter(x => x.designation === 'In-Process').length;
-        };
+        });
 
         /**
          * The total number of products that are Ready
@@ -109,8 +109,8 @@
          * @returns
          *  The total number of fedramp ready products
          */
-        self.totalReady = function(){
+        self.totalReady = Cache.wrap('totalReady')(function(){
             return 0;
-        };
+        });
     }
 })();

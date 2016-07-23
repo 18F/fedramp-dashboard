@@ -3,26 +3,23 @@
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
             <a ng-click="controller.view()">
-                <div class="logo" style="background-image:url({{controller.model.logo}});"></div>
+                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>
                 <div class="title">
-                    <strong>{{ controller.model.name }}</strong>
+                    <strong>{{::controller.model.name }}</strong>
                 </div>
             </a>
         </div>
         <div class="col service-model fr-grid-cell-service">
-            <div ng-repeat="service in controller.model.serviceModels">{{ service }}</div>
+            <div ng-repeat="service in ::controller.model.serviceModels">{{ ::service }}</div>
         </div>
-        <!-- <div class="col deployment-model fr-grid-cell-deployment">
-             <span>{{ controller.model.deploymentModel }}</span>
-             </div> -->
         <div class="col impact-level fr-grid-cell-impact">
-            <span>{{ controller.model.impactLevel }}</span>
+            <span>{{ ::controller.model.impactLevel }}</span>
         </div>
         <div class="col status fr-grid-cell-icon">
-            <product-status status="controller.model.designation"></product-status>
+            <product-status status="::controller.model.designation"></product-status>
         </div>
         <div class="col reuses fr-grid-cell-metric">
-            <div class="number">{{controller.model.reuses}}</div>
+            <div class="number">{{::controller.model.reuses}}</div>
             <div class="text">Reuses</div>
         </div>
     </div>

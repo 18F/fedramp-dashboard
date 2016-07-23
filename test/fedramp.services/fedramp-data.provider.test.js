@@ -26,24 +26,4 @@ describe('The fedrampData provider', function () {
         expect(service.assessors).toBeDefined();
         expect(service.agencies).toBeDefined();
     });
-
-    it('should cache the result of a function call', function () {
-
-        var func =  function(){
-            return 1 + 1;
-        };
-
-        // Should call func since value is not in cache
-        var toCall = jasmine.createSpy('cache', func).and.callThrough();
-        var cachedFunc = service.cacheWrap('calc')(toCall);
-        cachedFunc();
-        expect(toCall).toHaveBeenCalled();
-
-        // Should pull from cache and NOT call func()
-        var toCall2 = jasmine.createSpy('cache', func).and.callThrough();
-        cachedFunc = service.cacheWrap('calc')(toCall2);
-        cachedFunc();
-        expect(toCall2).not.toHaveBeenCalled();
-
-    });
 });

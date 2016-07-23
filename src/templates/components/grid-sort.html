@@ -1,4 +1,4 @@
-<span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header">{{controller.header}}</span>
+<span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header">{{::controller.header}}</span>
 <div ng-click="controller.toggleSort()" class="grid-sort-arrows">
     <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>
     <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{'grid-sort-selected': controller.highlight(true)}" aria-hidden="true"></i>

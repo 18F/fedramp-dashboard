@@ -46,7 +46,7 @@
          *
          *
          */
-        provider.$get = ['$log', '$cacheFactory', function($log, $cacheFactory){
+        provider.$get = ['$log', 'Cache', function($log, Cache){
             return new FedrampDataService();
 
             /**
@@ -58,14 +58,10 @@
             function FedrampDataService () {
                 var self = this;
 
-                // Create a cache bucket
-                var cache = $cacheFactory('fedramp');
-
                 /**
                  * Stores cache storage data.
                  */
                 self.load = load;
-                self.cacheWrap = cacheWrap;
 
                 /**
                  * Takes the contents of a storage factory object and adds its properties and methods
@@ -76,36 +72,11 @@
                     // If we enable caching globally when configuring fedrampDataProvider,
                     // we wrap all data returning functions with a cache wrapper.
                     if(provider.defaults.cache){
-                        self.products = cacheWrap('products')(storage.products);
-                        self.providers = cacheWrap('providers')(storage.providers);
-                        self.assessors = cacheWrap('assessors')(storage.assessors);
-                        self.agencies = cacheWrap('agencies')(storage.agencies);
+                        self.products = Cache.wrap('products')(storage.products);
+                        self.providers = Cache.wrap('providers')(storage.providers);
+                        self.assessors = Cache.wrap('assessors')(storage.assessors);
+                        self.agencies = Cache.wrap('agencies')(storage.agencies);
                     }
-                    //console.log(self.products());
-                }
-
-                /*
-                 * Wraps a function with additional behavior that does the following:
-                 * 
-                 * 1. Checks if the result of the function call is in cache
-                 * 2. If result is in cache, returns.
-                 * 3. If not in cache, execute apply on function with arguments and then store
-                 * result in cache using the passed in key.
-                 */
-                function cacheWrap(key){
-                    return function(func){                        
-                        return function(){
-                            var data = cache.get(key);
-                            if (data){
-                                $log.debug(key, 'cache hit!');
-                                return data;
-                            }
-                            $log.debug(key, 'cache miss');
-                            var result = func.apply(null, arguments);
-                            cache.put(key, result);
-                            return result;
-                        };
-                    };
                 }
             }
         }];
