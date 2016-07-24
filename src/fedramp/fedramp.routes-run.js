@@ -36,8 +36,8 @@
             // the query params that were saved in the $stateChangeStart event.
             var match = fromState.name.match(STATE_REGEX);
             if(match) {
-                // We check if the location: <boolean> was defined for a particular route change.
-                if(!routeOptions.location){
+                // We check if the removeParams: <boolean> was defined for a particular route change.
+                if(!routeOptions.removeParams){
                     $location.search(params);
                 } else {
                     $location.search({});
