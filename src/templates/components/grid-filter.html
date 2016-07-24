@@ -1,14 +1,4 @@
-<!--<div ng-if="!controller.expanded" class="filter-dropdown" ng-mouseleave="controller.expand = false">-->
-    <!--<div ng-click="controller.expand = !controller.expand">-->
-        <!--<span class="filter-header">{{controller.header}}</span>-->
-        <!--<i class="fa fa-chevron-down" aria-hidden="true"></i>-->
-    <!--</div>-->
-    <!--<div ng-if="controller.expand" class="filter-dropdown-panel">-->
-        <!--<ng-include src="controller.gridFilterOptionsTemplatePath"></ng-include>-->
-    <!--</div>-->
-<!--</div>-->
-
-<div ng-if="controller.expanded">
+<div>
     <div ng-click="controller.toggleExpand()">
         <span class="filter-header">{{::controller.header}}</span>
         <span class="icons">
@@ -17,8 +7,8 @@
         </span>
     </div>
     <div class="options" ng-if="controller.opened">
-        <div ng-repeat="option in controller.options" ng-click="controller.selectOption(option)">
-            <span class="option" ng-class="{'selected': option.selected}">{{option.label}} <i class="fa fa-check-circle" aria-hidden="true" ng-if="option.selected"></i> </span>
+        <div ng-repeat="option in controller.options track by $index" ng-click="controller.selectOption(option)">
+            <span class="option" ng-class="{'selected': option.selected}">{{::option.label}} <i class="fa fa-check-circle" aria-hidden="true" ng-if="option.selected"></i> </span>
         </div>
     </div>
 </div>

@@ -144,7 +144,7 @@
                 if (query.length > 0) {
                     query += '&';
                 }
-                query += n + '=' + search[n];
+                query += n + '=' + encodeURIComponent(search[n]);
             }
 
             if (query.length > 0) {
