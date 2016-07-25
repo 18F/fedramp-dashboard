@@ -4807,6 +4807,10 @@ input {
   .grid .fr-grid-cell-metric {
     width: 8%;
     text-align: center; }
+  .grid .fr-grid-cell-contact {
+    width: 33%; }
+  .grid .agency .fr-grid-cell-metric {
+    width: 7%; }
 
 /*
 	provide condensed version of web standards variables for use

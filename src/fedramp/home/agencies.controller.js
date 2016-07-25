@@ -12,6 +12,7 @@
      * @memberof Controllers
      */
     function AgenciesController ($log, agencies) {
+        console.log(agencies);
         var self = this;
 
         /**
