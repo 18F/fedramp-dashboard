@@ -4628,6 +4628,23 @@ input {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
+.export {
+  margin-top: 2rem;
+  text-align: center;
+  clear: both; }
+  .export download-csv {
+    margin: 0 auto;
+    display: table; }
+
+download-csv .fa-download {
+  margin-left: 1rem; }
+
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 .fr-filter-label {
   height: 6.8rem;
   position: relative; }

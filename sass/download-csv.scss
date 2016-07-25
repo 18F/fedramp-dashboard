@@ -1,0 +1,18 @@
+@import 'variables';
+
+.export {
+    margin-top:2rem;
+    text-align:center;
+    clear:both;
+
+    download-csv {
+        margin: 0 auto;
+        display:table;
+    }
+}
+
+download-csv {
+    .fa-download {
+        margin-left: 1rem;
+    }
+}
