@@ -32,3 +32,10 @@ input {
     clear:both;
     float:none;
 }
+a,
+a:visited,
+a:active
+{
+    text-decoration:none;
+    color:$color-primary;
+}

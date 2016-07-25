@@ -4571,6 +4571,12 @@ input {
   clear: both;
   float: none; }
 
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #0071bc; }
+
 /*
 	provide condensed version of web standards variables for use
 
@@ -4683,8 +4689,11 @@ download-csv .fa-download {
       margin-right: 0; }
     .fr-filters .fr-filters-row .usa-width-one-third:last-child {
       border-right: none; }
-    .fr-filters .fr-filters-row .selected
-button,
+    .fr-filters .fr-filters-row .selected {
+      background-color: #0071bc;
+      color: #ffffff;
+      outline: none !important;
+      box-shadow: none !important; }
     .fr-filters .fr-filters-row button:focus {
       background-color: #0071bc;
       color: #ffffff;
@@ -5354,7 +5363,8 @@ body {
     .information .products ul,
     .information .agencies ul,
     .information .assessors ul {
-      margin-left: -5px; }
+      margin-left: -5px;
+      margin-top: 0px; }
       .information .providers ul li,
       .information .products ul li,
       .information .agencies ul li,

@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    <div class="row text-center">
+    <div class="row text-center" ng-if="controller.model.accreditationDate">
         <div class="divider"></div>
-        <div class="accredited">Accredited Since</div>
+        <div class="accredited">Accredited Since {{controller.model.accreditationDate}}</div>
     </div>
 
     <div class="row">
