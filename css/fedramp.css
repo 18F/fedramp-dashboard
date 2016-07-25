@@ -5237,6 +5237,8 @@ body {
       text-decoration: none; }
       .information .close a i {
         font-size: 2em; }
+  .information .close:hover {
+    background-color: #323a45; }
   .information .header {
     border-top: none;
     padding-top: 0;
