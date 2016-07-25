@@ -192,6 +192,9 @@
             }
         }
     }
+    .close:hover {
+        background-color:$color-gray-dark;
+    }
 
     .header {
         border-top: none;
