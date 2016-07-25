@@ -5,9 +5,9 @@
         .module('fedramp.services')
         .factory('StorageData', StorageDataFactory);
 
-    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider', 'helperService'];
+    StorageDataFactory.$inject = ['StorageManager', 'Data', 'Agency', 'Assessor', 'Product', 'Provider', 'AssessorData', 'helperService'];
 
-    function StorageDataFactory (StorageManager, Data, Agency, Assessor, Product, Provider, helperService) {
+    function StorageDataFactory (StorageManager, Data, Agency, Assessor, Product, Provider, AssessorData, helperService) {
         /**
          * Provides storage specific functionality that extends the StorageManager
          * @constructor
@@ -16,8 +16,8 @@
          */
         function StorageData (options) {
             StorageManager.call(this);
-
             var self = this;
+            var rawAssessors = (options && options['Assessors'] ? options.Assessors : []);
             self.storageContainer = 'data';
 
             /**
@@ -295,6 +295,7 @@
 
                     let item = new Assessor();
                     item.name = d.independentAssessor.trim();
+                    item = fillFromRawAssessor(item);
                     items.push(item);
                 }
 
@@ -312,6 +313,7 @@
                         names.push(l.independentAssessor.trim());
 
                         let item = new Assessor();
+                        item = fillFromRawAssessor(item);
                         item.name = l.independentAssessor.trim();
                         items.push(item);
                     }
@@ -373,6 +375,27 @@
                     return !a.includes(st);
                 }
                 return false;
+            }
+
+            /**
+             * Finds the assessor using a name from the list of raw assessors.
+             *
+             * @returns
+             * Assessor being populated.
+             */
+            function fillFromRawAssessor(assessor){
+                for (let x = 0; x < rawAssessors.length; x++){
+                    // Empty {} seem to be returned sometimes
+                    if(Object.keys(rawAssessors[x]).length === 0){
+                        continue;
+                    }
+                    var assessorData = new AssessorData(rawAssessors[x]);
+                    if(safeTrim(assessorData.name) === safeTrim(assessor.name)){
+                        assessor.accreditationDate = helperService.toDate(assessorData.accreditationDate);
+                        break;
+                    }
+                }
+                return assessor;
             }
 
             return self.init(options);

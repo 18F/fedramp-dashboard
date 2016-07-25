@@ -79,6 +79,14 @@
              * @memberof Models.Assessor
              */
             self.url = '';
+
+
+            /**
+             * The date assessor was accredited
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+             self.accreditationDate = '';
         }
 
         return Assessor;

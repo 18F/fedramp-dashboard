@@ -25,12 +25,12 @@
         self.pull = function () {
             return DatasourceService.pull(dataUrl).then(function (response) {
                 let meta = response.meta;
-                let data = response.data.Providers;
-                let storage = new StorageData();
+                let data = response.data;
+                let storage = new StorageData({Assessors: data.Assessors});
                 storage.clear();
 
-                for (let i = 0; i < data.length; i++) {
-                    let d = new Data(data[i]);
+                for (let i = 0; i < data.Providers.length; i++) {
+                    let d = new Data(data.Providers[i]);
                     storage.update(d.hash(), d);
                 }
 
