@@ -26,7 +26,7 @@
                         <grid-sort name="designation" property="designation" class="grid-sort"></grid-sort>
                         <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
                     </div>
-                    <tile ng-repeat="item in controller.filteredData track by $index" expand="true" model="item"></tile>
+                    <tile ng-repeat="item in controller.filteredData" expand="true" model="item"></tile>
                 </grid>
             </div>
         </div>

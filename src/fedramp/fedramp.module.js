@@ -11,9 +11,10 @@
             'fedramp.services',
             'fedramp.components'
         ])
-        .config(['$compileProvider', function ($compileProvider) {
+        .config(['$compileProvider', 'fedrampDataProvider', function ($compileProvider, fedrampDataProvider) {
             $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|blob|data):/);
             $compileProvider.debugInfoEnabled(false);
+            fedrampDataProvider.defaults.cache = true;
         }])
         .run(run);
 
