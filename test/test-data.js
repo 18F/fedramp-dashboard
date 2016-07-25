@@ -84,5 +84,15 @@ var TestData = {
                 'html': 'https://github.com/18F/fedramp-micropurchase/blob/master/data/data-2016-06-17.json'
             }
         }
-    ]
+        ],
+        DataJsonHttpResponse: {
+            'meta': {
+                'Created_At': '2016-06-23T18:30:37.926Z',
+                'Produced_By': 'General Services Administration'
+            },
+            'data': {
+                'Providers': [],
+                'Assessors': []
+            }
+        }
 };

@@ -5,15 +5,14 @@
         .module('fedramp.services')
         .service('DataService', DataService);
 
-    DataService.$inject = ['$log', 'StorageManager', 'StorageData', 'Data', 'DatasourceService'];
+    DataService.$inject = ['$log', 'StorageData', 'Data', 'DatasourceService', 'dataUrl'];
 
     /**
      * @constructor
      * @memberof Services
      */
-    function DataService ($log, StorageManager, StorageData, Data, DatasourceService) {
+    function DataService ($log, StorageData, Data, DatasourceService, dataUrl) {
         var self = this;
-        var dataUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
 
         /**
          * Issue a GET request for the given URL.
@@ -26,7 +25,7 @@
         self.pull = function () {
             return DatasourceService.pull(dataUrl).then(function (response) {
                 let meta = response.meta;
-                let data = response.data;
+                let data = response.data.Providers;
                 let storage = new StorageData();
                 storage.clear();
 

@@ -5,7 +5,7 @@ describe('Fedramp routing', function(){
     var $state;
     var $rootScope;
     var $location;
-    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
+    var githubUrl;
 
     beforeEach(function () {
         module('fedramp');
@@ -14,12 +14,10 @@ describe('Fedramp routing', function(){
             $rootScope = _$rootScope_;
             $httpBackend = $injector.get('$httpBackend');
             $location = $injector.get('$location');
+            githubUrl = $injector.get('dataUrl');
         });
 
-        $httpBackend.whenGET(githubUrl).respond({
-            meta: '',
-            data: []
-        });
+        $httpBackend.whenGET(githubUrl).respond(TestData.DataJsonHttpResponse);
     });
 
 	afterEach(function () { 

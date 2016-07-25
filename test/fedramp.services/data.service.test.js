@@ -3,22 +3,15 @@ describe('The data service', function(){
 
 	var DataService;
 	var $httpBackend;
-    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json';
-
-    // Do that good/bad data factory
-    var dataJson = {
-        'meta': {
-            'Created_At': '2016-06-23T18:30:37.926Z',
-            'Produced_By': 'General Services Administration'
-        },
-        'data': []
-    };
+    var githubUrl; 
+    var dataJson  = TestData.DataJsonHttpResponse;
 
     beforeEach(function () {
         module('fedramp.services');
         inject(function ($injector) {
             DataService = $injector.get('DataService');
             $httpBackend = $injector.get('$httpBackend');
+            githubUrl = $injector.get('dataUrl');
         });
     });
 
