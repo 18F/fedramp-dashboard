@@ -4826,7 +4826,8 @@ download-csv .fa-download {
     text-align: center; }
   .grid .fr-grid-cell-contact {
     width: 33%; }
-  .grid .agency .fr-grid-cell-metric {
+  .grid .agency .fr-grid-cell-metric,
+  .grid .assessor .fr-grid-cell-metric {
     width: 7%; }
 
 /*
@@ -5808,7 +5809,8 @@ tile:nth-child(2n) .card {
   .assessor.expanded .reuses .text {
     font-size: 1.3rem;
     font-weight: 400;
-    padding: 0 2rem; }
+    display: inline-block;
+    width: 9rem; }
   .product.expanded .reuses .number,
   .agency.expanded .reuses .number,
   .assessor.expanded .reuses .number {

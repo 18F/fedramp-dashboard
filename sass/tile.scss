@@ -281,7 +281,9 @@ tile:nth-child(2n) {
         .text {
             font-size: 1.3rem;
             font-weight:$font-normal;
-            padding:0 2rem;
+            //padding:0 2rem;
+            display:inline-block;
+            width: 9rem;
         }
         .number {
             font-size: 2.6rem;
