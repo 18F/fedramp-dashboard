@@ -7,6 +7,9 @@ grid-sort {
     background-color:$color-gray-lighter;
     transition:background-color 0.3s;
 }
+grid-sort:hover {
+    color: $color-primary;
+}
 .sort-selected {
     color: $color-primary;
 }
@@ -16,6 +19,7 @@ grid-sort {
 .grid-sort-header {
     font-size: 1.4rem !important;
     font-weight:$font-normal;
+    cursor:pointer;
 }
 .grid-sort-arrows {
     position:relative;
@@ -31,3 +35,4 @@ grid-sort {
         position:relative;
     }
 }
+

@@ -4764,6 +4764,9 @@ button,
   cursor: pointer;
   margin-bottom: 1.2rem; }
 
+.clear-filters:hover {
+  color: #0071bc; }
+
 /*
 	provide condensed version of web standards variables for use
 
@@ -4833,6 +4836,10 @@ button,
   .grid .agency .fr-grid-cell-metric,
   .grid .assessor .fr-grid-cell-metric {
     width: 7%; }
+  .grid .options .option:hover {
+    color: #0071bc; }
+  .grid .filter-header:hover {
+    color: #0071bc; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -4847,12 +4854,16 @@ grid-sort {
   background-color: #d6d7d9;
   transition: background-color 0.3s; }
 
+grid-sort:hover {
+  color: #0071bc; }
+
 .sort-selected {
   color: #0071bc; }
 
 .grid-sort-header {
   font-size: 1.4rem !important;
-  font-weight: 400; }
+  font-weight: 400;
+  cursor: pointer; }
 
 .grid-sort-arrows {
   position: relative;

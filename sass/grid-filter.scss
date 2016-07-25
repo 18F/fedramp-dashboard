@@ -100,4 +100,14 @@
             width:7%;
         }
     }
+
+    .options {
+        .option:hover {
+            color: $color-primary;
+        }
+    }
+
+    .filter-header:hover {
+        color: $color-primary;
+    }
 }
