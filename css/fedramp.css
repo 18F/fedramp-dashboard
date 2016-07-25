@@ -4683,9 +4683,13 @@ download-csv .fa-download {
       margin-right: 0; }
     .fr-filters .fr-filters-row .usa-width-one-third:last-child {
       border-right: none; }
-    .fr-filters .fr-filters-row .selected {
+    .fr-filters .fr-filters-row .selected
+button,
+    .fr-filters .fr-filters-row button:focus {
       background-color: #0071bc;
-      color: #ffffff; }
+      color: #ffffff;
+      outline: none !important;
+      box-shadow: none !important; }
   .fr-filters button {
     width: 100%;
     height: 8.5rem;

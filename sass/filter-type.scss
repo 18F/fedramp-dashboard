@@ -50,9 +50,14 @@
 		.usa-width-one-third:last-child {
 			border-right:none;
 		}
-        .selected {
+        .selected
+        button,
+        button:focus
+        {
             background-color:$color-primary;
             color:$color-white;
+            outline:none !important;
+            box-shadow:none !important;
         }
 	}
 	// undid much of web standards to conform to design
