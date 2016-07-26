@@ -37,20 +37,15 @@
         </div>
     </div>
 
-    <div class="row service-description clear">
-        <div class="col">
-            <h4>Agency Description</h4>
-            <i class="fa fa-plus"></i>
+    <panel header="Agency Description" class="clear">
+        <div class="row products">
+            <div class="col">
+                <h4>Products</h4>
+                <product-list products="controller.model.products"></product-list>
+                <p ng-if="controller.model.products.length === 0">
+                    None
+                </p>
+            </div>
         </div>
-    </div>
-
-    <div class="row products">
-        <div class="col">
-            <h4>Products</h4>
-            <product-list products="controller.model.products"></product-list>
-            <p ng-if="controller.model.products.length === 0">
-                None
-            </p>
-        </div>
-    </div>
+    </panel>
 </div>

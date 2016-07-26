@@ -284,6 +284,7 @@
     .system-profile {
 	    margin-top:4rem;
 	    padding-top:0;
+        margin-bottom:4rem;
 		border-bottom:1px solid $color-gray-lightest;
         .contact-information {
             width: 50%;
@@ -379,13 +380,14 @@
             background-color: $color-cool-blue-lightest;
             color: $color-black;
             padding: 2rem;
+            margin-bottom:4rem;
         }
         h5 {
             margin-top: 0;
         }
     }
-    .service-description {
-        margin-top:2em;
+    .not-accredited {
+        background-color:$color-gray-light;
     }
 }
 
@@ -396,8 +398,5 @@
     }
     .service-description {
         margin-top:4em;
-    }
-    .products {
-        margin-top:2em;
     }
 }

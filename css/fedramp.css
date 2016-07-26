@@ -5321,6 +5321,7 @@ grid-total {
   .information .system-profile {
     margin-top: 4rem;
     padding-top: 0;
+    margin-bottom: 4rem;
     border-bottom: 1px solid #f1f1f1; }
     .information .system-profile .contact-information {
       width: 50%;
@@ -5391,12 +5392,13 @@ grid-total {
   .information.assessor .row .contact-information {
     background-color: #dce4ef;
     color: #000000;
-    padding: 2rem; }
+    padding: 2rem;
+    margin-bottom: 4rem; }
   .information.assessor .row h5 {
     margin-top: 0; }
 
-.information.assessor .service-description {
-  margin-top: 2em; }
+.information.assessor .not-accredited {
+  background-color: #aeb0b5; }
 
 .agency .system-profile {
   margin-top: 10rem;
@@ -5405,33 +5407,35 @@ grid-total {
 .agency .service-description {
   margin-top: 4em; }
 
-.agency .products {
-  margin-top: 2em; }
-
 /*
 	provide condensed version of web standards variables for use
 
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
-panel .panel {
-  border-top: none;
-  background-color: #f1f1f1;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-left: 2.8rem;
-  margin-right: 2.8rem; }
-  panel .panel .header {
-    display: table;
-    width: 100%;
-    margin: 0;
-    padding-left: 2rem; }
-  panel .panel h4 {
-    display: table-cell;
-    width: 96%; }
-  panel .panel i {
-    display: table-cell;
-    padding-right: 1.6rem; }
+panel {
+  display: block; }
+  panel .panel {
+    border-top: none;
+    background-color: #f1f1f1;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 2.8rem;
+    margin-right: 2.8rem;
+    margin-bottom: 1rem; }
+    panel .panel .header {
+      display: table;
+      width: 100%;
+      margin: 0;
+      padding-left: 2rem;
+      cursor: pointer; }
+    panel .panel h4 {
+      display: table-cell;
+      width: 96%;
+      margin: 0 !important; }
+    panel .panel i {
+      display: table-cell;
+      padding-right: 1.6rem; }
 
 #topnav .limit {
   clear: both;

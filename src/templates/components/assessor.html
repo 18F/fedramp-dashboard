@@ -25,6 +25,11 @@
         <div class="accredited">Accredited Since {{controller.model.accreditationDate}}</div>
     </div>
 
+    <div class="row text-center" ng-if="!controller.model.accreditationDate">
+        <div class="divider not-accredited"></div>
+        <div>No Accreditation</div>
+    </div>
+
     <div class="row">
         <div class="contact-information">
             <h4>Contact Information</h4>
@@ -39,16 +44,12 @@
             <p>{{controller.model.url}}</p>
         </div>
     </div>
-    <div class="row service-description clear">
-        <div class="col">
-            <h4>Assessor Description</h4>
-            <i class="fa fa-plus"></i>
+    <panel header="Assessor Description">
+        <div class="row products">
+            <div class="col">
+                <h4>Products</h4>
+                <product-list products="controller.model.products"></product-list>
+            </div>
         </div>
-    </div>
-    <div class="row products">
-        <div class="col">
-            <h4>Products</h4>
-            <product-list products="controller.model.products"></product-list>
-        </div>
-    </div>
+    </panel>
 </div>
