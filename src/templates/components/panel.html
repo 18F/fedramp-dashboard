@@ -1,0 +1,10 @@
+<div class="row panel">
+    <div class="header" ng-click="controller.expand = !controller.expand">
+        <h4>{{controller.header}}</h4>
+        <i ng-if="!controller.expand" class="fa fa-plus"></i>
+        <i ng-if="controller.expand" class="fa fa-minus"></i>
+    </div>
+</div>
+<div ng-if="controller.expand">
+    <ng-transclude></ng-transclude>
+</div>

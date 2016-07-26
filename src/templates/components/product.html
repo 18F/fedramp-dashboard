@@ -89,37 +89,34 @@
             </dl>
         </div>
     </div>
-    <div class="row service-description">
-        <div class="col">
-            <h4>Service Description</h4>
-            <i class="fa fa-plus"></i>
+
+    <panel header="Service Description">
+        <div class="row products" ng-if="controller.additionalProducts.length > 0">
+            <div class="col">
+                <h4>Additional products from this provider</h4>
+                <ul>
+                    <li ng-repeat="product in controller.additionalProducts | orderBy:'+name' track by $index">
+                        <a title="{{product.name}}" ng-href="{{controller.linkify('product', product.name)}}">
+                            {{product.name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="row products" ng-if="controller.additionalProducts.length > 0">
-        <div class="col">
-            <h4>Additional products from this provider</h4>
-            <ul>
-                <li ng-repeat="product in controller.additionalProducts | orderBy:'+name' track by $index">
-                    <a title="{{product.name}}" ng-href="{{controller.linkify('product', product.name)}}">
-                        {{product.name}}
-                    </a>
-                </li>
-            </ul>
+        <div class="row agencies">
+            <div class="col">
+                <h4>Agencies using this service</h4>
+                <ul ng-if="controller.model.agencies.length > 0">
+                    <li ng-repeat="agency in controller.model.agencies | orderBy:'+' track by $index">
+                        <a title="{{agency}}" ng-href="{{controller.linkify('agency', agency)}}">
+                            {{agency}}
+                        </a>
+                    </li>
+                </ul>
+                <p ng-if="controller.model.agencies.length === 0">
+                    None
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="row agencies">
-        <div class="col">
-            <h4>Agencies using this service</h4>
-            <ul ng-if="controller.model.agencies.length > 0">
-                <li ng-repeat="agency in controller.model.agencies | orderBy:'+' track by $index">
-                    <a title="{{agency}}" ng-href="{{controller.linkify('agency', agency)}}">
-                        {{agency}}
-                    </a>
-                </li>
-            </ul>
-            <p ng-if="controller.model.agencies.length === 0">
-                None
-            </p>
-        </div>
-    </div>
+    </panel>
 </div>

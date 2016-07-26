@@ -1,0 +1,26 @@
+@import 'variables';
+panel {
+    .panel {
+        border-top: none;
+        background-color: $color-gray-lightest;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-left:2.8rem;
+        margin-right:2.8rem;
+
+        .header {
+            display:table;
+            width:100%;
+            margin:0;
+            padding-left:2rem;
+        }
+        h4 {
+            display:table-cell;
+            width:96%;
+        }
+        i {
+            display:table-cell;
+            padding-right: 1.6rem;
+        }
+    }
+}

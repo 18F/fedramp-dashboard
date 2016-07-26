@@ -5407,6 +5407,31 @@ body {
 .agency .products {
   margin-top: 2em; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
+panel .panel {
+  border-top: none;
+  background-color: #f1f1f1;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: 2.8rem;
+  margin-right: 2.8rem; }
+  panel .panel .header {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding-left: 2rem; }
+  panel .panel h4 {
+    display: table-cell;
+    width: 96%; }
+  panel .panel i {
+    display: table-cell;
+    padding-right: 1.6rem; }
+
 #topnav .limit {
   clear: both;
   max-width: 960px;
