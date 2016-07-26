@@ -2,7 +2,7 @@
 <div ng-if="controller.expand" class="product expanded fr-grid-layout">
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
-            <a ng-click="controller.view()">
+            <a ng-click="controller.view()" title="Click to compare">
                 <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>
                 <div class="title">
                     <strong>{{::controller.model.name }}</strong>
@@ -28,7 +28,7 @@
 <div ng-if="!controller.expand" class="product card">
     <div class="row header">
         <div class="col name">
-            <a ng-click="controller.view()">
+            <a ng-click="controller.view()" title="Click to compare">
                 <div class="logo">
                     <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
                 </div>
