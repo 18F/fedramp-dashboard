@@ -4726,7 +4726,8 @@ download-csv .fa-download {
     line-height: 4rem;
     height: 8.5rem;
     border-left: 3px solid #ffffff;
-    background-color: #d6d7d9; }
+    background-color: #d6d7d9;
+    cursor: pointer; }
     .fr-filters .controls label {
       height: 100%;
       width: 100%;
@@ -5564,7 +5565,6 @@ panel {
 .sidebar {
   float: left;
   width: 21%;
-  max-width: 32rem;
   padding: 5.2rem 0 3rem 2.4rem; }
   .sidebar .grid-filter {
     background: none;
