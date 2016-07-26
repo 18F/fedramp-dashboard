@@ -10,6 +10,10 @@
     </div>
     <div class="row header">
         <div class="col">
+            <div class="logo">
+                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
+                <div ng-if="!controller.model.logo" class="no-image"></div>
+            </div>
             <div class="title">
                 <strong>{{ controller.model.name }}</strong>
             </div>

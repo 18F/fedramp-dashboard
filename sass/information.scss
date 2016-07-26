@@ -371,6 +371,14 @@
         margin-top:6rem;
         padding: 0;
     }
+
+    .no-image {
+        border:1px solid $color-gray-light;
+        height: 90px;
+        width:90px;
+        display:inline-block;
+        color:$color-gray-light;
+    }
 }
 
 .information.assessor {

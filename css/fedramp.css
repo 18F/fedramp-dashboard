@@ -5387,6 +5387,12 @@ grid-total {
     height: 6px;
     margin-top: 6rem;
     padding: 0; }
+  .information .no-image {
+    border: 1px solid #aeb0b5;
+    height: 90px;
+    width: 90px;
+    display: inline-block;
+    color: #aeb0b5; }
 
 .information.assessor .row {
   clear: both; }
