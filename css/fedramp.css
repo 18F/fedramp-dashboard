@@ -4754,10 +4754,75 @@ download-csv .fa-download {
       background-color: #d6d7d9; }
 
 @font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 400;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 400;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 700;
+  src: font-source-declaration("Merriweather", "../fonts/merriweather-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
+
+html {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  background-color: #ffffff; }
+
+.lt-ie9 * {
+  filter: none !important; }
+
+@font-face {
   font-family: "Font Awesome";
   font-style: normal;
   font-weight: 400;
   src: font-source-declaration("Font Awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont", false, eot svg woff2 woff ttf, font-url-prefixer(false)); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; }
 
 /*
 	provide condensed version of web standards variables for use
@@ -5061,68 +5126,6 @@ grid-total {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 300;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: italic;
-  font-weight: 400;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 300;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 400;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: italic;
-  font-weight: 400;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 700;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-html {
-  box-sizing: border-box; }
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit; }
-
-body {
-  background-color: #ffffff; }
-
-.lt-ie9 * {
-  filter: none !important; }
-
 .comparison {
   display: inline-block;
   width: 100%; }
@@ -5231,8 +5234,6 @@ body {
   .information .row {
     display: block;
     padding: 0.3em 0; }
-    .information .row h1, .information .row h2, .information .row h3, .information .row h4, .information .row h5, .information .row h6 {
-      font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; }
     .information .row h4 {
       margin-top: 0;
       font-size: 2rem; }
@@ -5596,68 +5597,6 @@ panel .panel {
   .sidebar .icons {
     float: right;
     font-size: 0.8em; }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 300;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: italic;
-  font-weight: 400;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: font-source-declaration("Source Sans Pro", "../fonts/sourcesanspro-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 300;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-light-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 400;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-regular-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: italic;
-  font-weight: 400;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-italic-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-@font-face {
-  font-family: "Merriweather";
-  font-style: normal;
-  font-weight: 700;
-  src: font-source-declaration("Merriweather", "../fonts/merriweather-bold-webfont", false, eot woff2 woff ttf, font-url-prefixer(false)); }
-
-html {
-  box-sizing: border-box; }
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit; }
-
-body {
-  background-color: #ffffff; }
-
-.lt-ie9 * {
-  filter: none !important; }
 
 /*
 	provide condensed version of web standards variables for use

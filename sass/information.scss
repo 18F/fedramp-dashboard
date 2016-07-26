@@ -1,9 +1,4 @@
 @import 'variables';
-@import '../node_modules/uswds/src/stylesheets/lib/addons/_font-stacks';
-@import '../node_modules/uswds/src/stylesheets/lib/css3/_font-face';
-@import '../node_modules/uswds/src/stylesheets/core/_fonts';
-@import '../node_modules/uswds/src/stylesheets/core/_defaults';
-@import '../node_modules/uswds/src/stylesheets/core/_base';
 
 .comparison {
     display: inline-block;
@@ -152,9 +147,6 @@
     .row {
         display: block;
         padding: 0.3em 0;
-        h1, h2, h3, h4, h5, h6 {
-	        font-family:$font-sans;
-        }
         h4 {
             margin-top: 0;
             font-size:2rem;
