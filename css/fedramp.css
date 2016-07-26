@@ -5644,6 +5644,11 @@ tile:nth-child(2n) .card {
   float: left;
   background-color: #ffffff; }
 
+.tile .no-logo {
+  border: 1px solid #f1f1f1;
+  height: 50px;
+  width: 60px; }
+
 .tile a,
 .tile a:hover,
 .tile a:visited {
