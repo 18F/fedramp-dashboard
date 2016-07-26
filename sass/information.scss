@@ -78,6 +78,13 @@
             color: $color-gray-dark;
         }
     }
+    .tile {
+        border-bottom: 1px solid $color-gray-lightest;
+        background-color: #fff;
+        .row.fr-grid-layout-row {
+            border:none;
+        }        
+    }
     tile {
 	    .fr-grid-layout {
 		    display:block;

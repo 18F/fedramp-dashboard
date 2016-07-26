@@ -5180,6 +5180,12 @@ grid-total {
     font-weight: bolder;
     color: #323a45; }
 
+.comparison-list .tile {
+  border-bottom: 1px solid #f1f1f1;
+  background-color: #fff; }
+  .comparison-list .tile .row.fr-grid-layout-row {
+    border: none; }
+
 .comparison-list tile .fr-grid-layout {
   display: block;
   min-height: 20rem; }
