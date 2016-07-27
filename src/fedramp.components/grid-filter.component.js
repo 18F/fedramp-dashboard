@@ -203,7 +203,7 @@
                 // Handle basic primitive options
                 values.split(',').forEach(function(val){
                     selected.push({
-                        value: val,
+                        value: decodeURIComponent(val),
                         selected: true
                     });
                     self.options.forEach(function(option){
@@ -251,9 +251,8 @@
                     if(angular.isObject(option.value)){
                         return ':(' + angular.toJson(option.value) + ')';
                     }
-
                     // Handle basic primitive value
-                    return option.value;
+                    return encodeURIComponent(option.value);
                 }).join(',');
                 self.gridController.state[self.id] = options;
             } else {

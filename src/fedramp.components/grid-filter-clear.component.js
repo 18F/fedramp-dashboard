@@ -5,7 +5,7 @@
         .module('fedramp.components')
         .component('gridFilterClear', {
             transclude: true,
-            template: '<ng-transclude ng-click="controller.clear()"></ng-transclude>',
+            template: '<ng-transclude class="no-select" ng-click="controller.clear()"></ng-transclude>',
             controller: GridFilterClear,
             controllerAs: 'controller',
             require: {

@@ -43,6 +43,15 @@
 }
 
 .comparison-list {
+    .title {
+        font-size:1.8rem;
+    }
+
+    .detail {
+        display:block;
+        float: none !important;
+    }
+
     .usa-grid {
 	    padding-right:0;
     }
@@ -144,6 +153,9 @@
 		                margin-bottom: -0.8rem;
 		            }
 			    }
+                .fr-grid-cell-contact, .fr-grid-cell-service {
+                    padding-left:0px;
+                }
 		    }
 	    }
 	}
@@ -210,7 +222,7 @@
 
         .title {
             font-weight: $font-bold;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
         }
 
         .reuse, .comparison-list tile .reuses {

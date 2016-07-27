@@ -1,7 +1,9 @@
 @import 'variables';
 
 .grid {
-	
+    .detail {
+        display:none;
+    }
     .grid-with-sidebar {
         float: right;
         width: 77.4%;
@@ -15,6 +17,8 @@
         display: inline-block;
         width: 100%;
     }
+
+    min-height:100rem;
 }
 .grid-with-sidebar grid-sort {
 	background:none;

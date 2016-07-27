@@ -4577,6 +4577,17 @@ a:active {
   text-decoration: none;
   color: #0071bc; }
 
+.no-select {
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */ }
+
 /*
 	provide condensed version of web standards variables for use
 
@@ -4974,15 +4985,18 @@ grid-total {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
-.grid .grid-with-sidebar {
-  float: right;
-  width: 77.4%; }
-  .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-up, .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-down {
-    color: #0071bc; }
-
-.grid tile.expanded {
-  display: inline-block;
-  width: 100%; }
+.grid {
+  min-height: 100rem; }
+  .grid .detail {
+    display: none; }
+  .grid .grid-with-sidebar {
+    float: right;
+    width: 77.4%; }
+    .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-up, .grid .grid-with-sidebar .grid-sort-arrows .fa-caret-down {
+      color: #0071bc; }
+  .grid tile.expanded {
+    display: inline-block;
+    width: 100%; }
 
 .grid-with-sidebar grid-sort {
   background: none; }
@@ -5155,6 +5169,13 @@ grid-total {
     .comparison .close-both .close {
       background-color: #323a45; }
 
+.comparison-list .title {
+  font-size: 1.8rem; }
+
+.comparison-list .detail {
+  display: block;
+  float: none !important; }
+
 .comparison-list .usa-grid {
   padding-right: 0; }
 
@@ -5235,6 +5256,8 @@ grid-total {
       .comparison-list tile .fr-grid-layout .fr-grid-layout-row .fr-grid-cell-metric .number {
         font-size: 2.6rem;
         margin-bottom: -0.8rem; }
+    .comparison-list tile .fr-grid-layout .fr-grid-layout-row .fr-grid-cell-contact, .comparison-list tile .fr-grid-layout .fr-grid-layout-row .fr-grid-cell-service {
+      padding-left: 0px; }
 
 .information {
   font-size: 1.6rem; }
@@ -5278,7 +5301,7 @@ grid-total {
         max-height: 5.3rem; }
     .information .header .title {
       font-weight: 700;
-      font-size: 1.8rem; }
+      font-size: 1.9rem; }
     .information .header .reuse, .information .header .comparison-list tile .reuses {
       float: right;
       text-align: center;
