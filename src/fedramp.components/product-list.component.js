@@ -88,7 +88,7 @@
                             products[provider.name].push({
                                 name: product,
                                 provider: provider.name,
-                                slugified: helperService.slugify(provider.name)
+                                slugified: helperService.slugify(product)
                             });
                             break;
                         }
