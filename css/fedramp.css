@@ -5450,6 +5450,12 @@ panel {
       display: table-cell;
       padding-right: 1.6rem; }
 
+product-list .provider {
+  font-weight: 600; }
+
+product-list .product {
+  padding-left: 2rem; }
+
 #topnav .limit {
   clear: both;
   max-width: 960px;
