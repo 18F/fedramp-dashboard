@@ -51,14 +51,20 @@
                 if (!options) {
                     return;
                 }
-
                 for (var x in options) {
                     if (!options.hasOwnProperty(x)) {
                         continue;
                     }
                     var key = mapping[x];
-                    self[key] = options[x];
+                    if (key) {
+                        self[key] = options[x];
+                    } else {
+                        if (self.hasOwnProperty(x)) {
+                            self[x] = options[x];
+                        }
+                    }
                 }
+
 
                 return self;
             };

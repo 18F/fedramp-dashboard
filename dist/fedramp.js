@@ -507,8 +507,7 @@ $location.search(self.state);self.onUpdate({items:combinedFilterResults,state:se
          */function stateUpdate(state){state=angular.extend(self.state,state);$location.search(state);self.onUpdate({items:self.items,state:state});}}})();(function(){'use strict';angular.module('fedramp.components').component('panel',{transclude:true,templateUrl:'src/templates/components/panel.html',controller:Panel,controllerAs:'controller',bindings:{header:'@',iconClass:'@',expand:'<'}});Panel.$inject=[];/**
      * @constructor
      * @memberof Components
-     */function Panel(){var self=this;self.header=self.header||'';self.expand=angular.isDefined(self.expand)||true;// funcs
-self.$onInit=$onInit;function $onInit(){}}})();(function(){'use strict';angular.module('fedramp.components').component('productList',{templateUrl:'src/templates/components/product-list.html',controller:ProductList,controllerAs:'controller',bindings:{products:'<'}});ProductList.$inject=['fedrampData','helperService'];/**
+     */function Panel(){var self=this;self.header=self.header||'';self.expand=angular.isDefined(self.expand)||true;}})();(function(){'use strict';angular.module('fedramp.components').component('productList',{templateUrl:'src/templates/components/product-list.html',controller:ProductList,controllerAs:'controller',bindings:{products:'<'}});ProductList.$inject=['fedrampData','helperService'];/**
      * Renders a list of products with corresponding provider names. A link is generated for both provider and product.
      *
      * @constructor
@@ -682,7 +681,7 @@ var self=this;var mapping={'name':'name','Accreditation_Date':'accreditationDate
              *
              * @returns
              *  The provider
-             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];self[key]=options[x];}return self;};/**
+             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}else{if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};/**
              * Get a unique hash or identifier for the provider.
              * @public
              * @memberof Models.Data
@@ -1011,7 +1010,7 @@ var self=this;/**
      * @constructor
      * @memberof Models
      */function Settings(options){// Scope `this` to self
-var self=this;/**
+var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'};/**
          * The last refresh date
          * @member {string}
          * @memberof Models.Settings
@@ -1023,14 +1022,14 @@ var self=this;/**
          *
          * @returns
          *  The Settings object
-         */self.init=function(options){if(options){for(var x in options){if(!options.hasOwnProperty(x)){continue;}if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};/**
+         */self.init=function(options){if(options){for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}}}return self;};/**
          * Refreshes the date to current date
          * @public
          * @memberof Models.Settings
          *
          * @returns
          *  The last refresh date
-         */self.refresh=function(){self.lastRefresh=today();return self.lastRefresh;};/**
+         */self.refresh=function(){self.lastRefresh=today(new Date(self.lastRefresh));return self.lastRefresh;};/**
          * Clears last refresh
          * @public
          * @memberof Models.Settings
@@ -1041,14 +1040,14 @@ var self=this;/**
          *
          * @returns
          *  A boolean value
-         */self.needsRefresh=function(){return self.lastRefresh!==today();};/**
+         */self.needsRefresh=function(){return self.lastRefresh!==today(new Date());};self.hash=function(){return self.lastRefresh;};/**
          * Creates a formatted date string
          * @private
          * @memberof Models.Settings
          *
          * @returns
          *  Today's date formatting as mm/dd/YYYY
-         */function today(){var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;}return self.init(options);}})();(function(){'use strict';angular.module('fedramp.services').factory('Cache',CacheFactory);CacheFactory.$inject=['$cacheFactory'];/**
+         */function today(date){var d=date;var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;}return self.init(options);}})();(function(){'use strict';angular.module('fedramp.services').factory('Cache',CacheFactory);CacheFactory.$inject=['$cacheFactory'];/**
      * @constructor
      * @memberof Services
      */function CacheFactory($cacheFactory){var cache=$cacheFactory('fedramp');cache.wrap=wrap;return cache;/*
@@ -1100,17 +1099,27 @@ var self=this;/**
          *
          * @returns
          *  A human readable string
-         */function unicornString(camelCase){return camelCase.replace(/([A-Z])/g,' $1').replace(/^./,function(s){return s.toUpperCase();});}}})();(function(){'use strict';angular.module('fedramp.services').service('DataService',DataService);DataService.$inject=['$log','StorageData','Data','DatasourceService','dataUrl'];/**
+         */function unicornString(camelCase){return camelCase.replace(/([A-Z])/g,' $1').replace(/^./,function(s){return s.toUpperCase();});}}})();(function(){'use strict';angular.module('fedramp.services').service('DataService',DataService);DataService.$inject=['$log','StorageData','StorageAssessorData','StorageSettings','Settings','Data','AssessorData','DatasourceService','dataUrl'];/**
      * @constructor
      * @memberof Services
-     */function DataService($log,StorageData,Data,DatasourceService,dataUrl){var self=this;/**
+     */function DataService($log,StorageData,StorageAssessorData,StorageSettings,Settings,Data,AssessorData,DatasourceService,dataUrl){var self=this;/**
          * Issue a GET request for the given URL.
          * @public
          * @memberof Services.DataService
          *
          * @returns
          *  The response as a promise
-         */self.pull=function(){return DatasourceService.pull(dataUrl).then(function(response){var meta=response.meta;var data=response.data;var storage=new StorageData({Assessors:data.Assessors});storage.clear();for(var i=0;i<data.Providers.length;i++){var d=new Data(data.Providers[i]);storage.update(d.hash(),d);}return storage;});};}})();(function(){'use strict';angular.module('fedramp.services').service('DatasourceService',DatasourceService);DatasourceService.$inject=['$http'];/**
+         */self.pull=function(){return DatasourceService.pull(dataUrl).then(function(response){var meta=response.meta;var data=response.data;// Add Assessors
+var assessorStorage=saveAssessors(data.Assessors);// Add Providers
+var storage=saveProviders(data.Providers,assessorStorage.all());// Add Settings
+saveSettings(meta);return storage;});};/**
+         * Stores provider information into local storage
+         */function saveProviders(data,assessors){var storage=new StorageData({Assessors:assessors});// Fill up Provider data
+for(var i=0;i<data.length;i++){var d=new Data(data[i]);storage.update(d.hash(),d);}return storage;}/**
+         * Stores assessor information into local storage
+         */function saveAssessors(assessors){var assessorStorage=new StorageAssessorData();for(var i=0;i<assessors.length;i++){var d=new AssessorData(assessors[i]);assessorStorage.update(d.hash(),d);}return assessorStorage;}/**
+         * Stores setting information into local storage
+         */function saveSettings(meta){var settingStorage=new StorageSettings();var setting=new Settings(meta);setting.refresh();settingStorage.update(setting.hash(),setting);}}})();(function(){'use strict';angular.module('fedramp.services').service('DatasourceService',DatasourceService);DatasourceService.$inject=['$http'];/**
      * @constructor
      * @memberof Services
      */function DatasourceService($http){var self=this;/**
@@ -1276,7 +1285,22 @@ setTimeout(function(){var el=document.getElementById(anchor);if(!el){return;}var
          */function Walker(data,propExpression){var self=this;var targetKey=null;var targetProps=null;var isPrimitive=true;var useIndex=false;self.walk=walk;function walk(func){find(data,targetProps,func);}/**
              * Recursively walks an object to reach the property expression
              */function find(obj,props,q){props=angular.copy(props);if(!props){return q.call(self,$parse(targetKey)(obj));}if(props.length===0){if(isPrimitive||useIndex){//return match(obj, q);
-return q.call(self,obj);}return q.call(self,$parse(targetKey)(obj));}var curProp=props.shift();var value=$parse(curProp)(obj);if(angular.isArray(value)){for(var x=0;x<value.length;x++){var found=find(value[x],props,q);if(found){return;}}}}function parseKeys(){var m=propExpression.match(ARRAY_FILTER_REGEX);if(m){targetKey=m[1].split('.').splice(1).join('.');targetProps=m[2].split('.');isPrimitive=false;useIndex=targetKey==='';}else{targetKey=propExpression;}}parseKeys();}}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageData',StorageDataFactory);StorageDataFactory.$inject=['StorageManager','Data','Agency','Assessor','Product','Provider','AssessorData','helperService'];function StorageDataFactory(StorageManager,Data,Agency,Assessor,Product,Provider,AssessorData,helperService){/**
+return q.call(self,obj);}return q.call(self,$parse(targetKey)(obj));}var curProp=props.shift();var value=$parse(curProp)(obj);if(angular.isArray(value)){for(var x=0;x<value.length;x++){var found=find(value[x],props,q);if(found){return;}}}}function parseKeys(){var m=propExpression.match(ARRAY_FILTER_REGEX);if(m){targetKey=m[1].split('.').splice(1).join('.');targetProps=m[2].split('.');isPrimitive=false;useIndex=targetKey==='';}else{targetKey=propExpression;}}parseKeys();}}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageAssessorData',StorageAssessorDataFactory);StorageAssessorDataFactory.$inject=['StorageManager','AssessorData','helperService'];function StorageAssessorDataFactory(StorageManager,AssessorData,helperService){/**
+         * Provides storage specific functionality that extends the StorageManager
+         * @constructor
+         * @memberof Services
+         * @extends StorageManager
+         */function StorageAssessorData(options){StorageManager.call(this);var self=this;self.storageContainer='assessorData';/**
+             * Transforms the raw object to a specifec model
+             * @public
+             * @memberof Services.StorageAssessorData
+             *
+             * @param {Object} raw
+             *  The JSON object
+             *
+             * @returns
+             *  The item
+             */self.transform=function(raw){return new AssessorData(raw);};return self.init(options);}StorageAssessorData.prototype=Object.create(StorageManager.prototype);StorageAssessorData.prototype.constructor=StorageAssessorData;return StorageAssessorData;}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageData',StorageDataFactory);StorageDataFactory.$inject=['StorageManager','Data','Agency','Assessor','Product','Provider','AssessorData','helperService'];function StorageDataFactory(StorageManager,Data,Agency,Assessor,Product,Provider,AssessorData,helperService){/**
          * Provides storage specific functionality that extends the StorageManager
          * @constructor
          * @memberof Services
@@ -1442,7 +1466,7 @@ self.storageContainer='default';/**
              *
              * @returns
              *  The item
-             */self.transform=function(raw){return new Settings(raw);};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('AgenciesController',AgenciesController);AgenciesController.$inject=['$log','agencies'];/**
+             */self.transform=function(raw){var s=new Settings();s.lastRefresh=raw.lastRefresh;s.producedBy=raw.producedBy;return s;};self.first=function(){var settings=self.all();if(settings.length===0){return null;}return settings[0];};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('AgenciesController',AgenciesController);AgenciesController.$inject=['$log','agencies'];/**
      * @constructor
      * @memberof Controllers
      */function AgenciesController($log,agencies){var self=this;/**

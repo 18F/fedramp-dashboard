@@ -18,6 +18,11 @@
         // Scope `this` to self
         var self = this;
 
+        var mapping = {
+            'Created_At': 'lastRefresh',
+            'Produced_By' : 'producedBy'
+        };
+
         /**
          * The last refresh date
          * @member {string}
@@ -40,14 +45,15 @@
                     if (!options.hasOwnProperty(x)) {
                         continue;
                     }
-
-                    if (self.hasOwnProperty(x)) {
-                        self[x] = options[x];
+                    var key = mapping[x];
+                    if(key){
+                        self[key] = options[x];
                     }
                 }
             }
             return self;
         };
+
 
         /**
          * Refreshes the date to current date
@@ -58,7 +64,7 @@
          *  The last refresh date
          */
         self.refresh = function () {
-            self.lastRefresh = today();
+            self.lastRefresh = today(new Date(self.lastRefresh));
             return self.lastRefresh;
         };
 
@@ -80,7 +86,12 @@
          *  A boolean value
          */
         self.needsRefresh = function () {
-            return self.lastRefresh !== today();
+            return self.lastRefresh !== today(new Date());
+        };
+
+
+        self.hash = function(){
+            return self.lastRefresh;
         };
 
         /**
@@ -91,8 +102,8 @@
          * @returns
          *  Today's date formatting as mm/dd/YYYY
          */
-        function today () {
-            var d = new Date();
+        function today (date) {
+            var d = date;
             var dd = d.getDate();
             var mm = d.getMonth() + 1;
             var yyyy = d.getFullYear();

@@ -32,11 +32,23 @@
              *  The item
              */
             self.transform = function (raw) {
-                return new Settings(raw);
+                var s = new Settings();
+                s.lastRefresh = raw.lastRefresh;
+                s.producedBy = raw.producedBy;
+                return s;
+            };
+
+            self.first = function(){
+                var settings = self.all();
+                if(settings.length === 0){
+                    return null;
+                }
+                return settings[0];
             };
 
             return self.init(options);
         }
+
         StorageSettings.prototype = Object.create(StorageManager.prototype);
         StorageSettings.prototype.constructor = StorageSettings;
 

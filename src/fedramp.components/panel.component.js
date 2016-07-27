@@ -24,13 +24,5 @@
         var self = this;
         self.header = self.header || '';
         self.expand = angular.isDefined(self.expand) || true;
-
-        // funcs
-        self.$onInit = $onInit;
-
-
-        function $onInit(){
-
-        }
     }
 })();
