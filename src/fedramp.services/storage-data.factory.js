@@ -88,12 +88,12 @@
                                 item.designations.push(prod.designation.trim());
                             }
 
-                            if (include(prod.sponsoringAgency, item.agencies)) {
+                            if (validAgency(prod.sponsoringAgency) && include(prod.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(prod.sponsoringAgency.trim());
                             }
 
                             prod.agencies.forEach(a => {
-                                if (include(a, item.agencies)) {
+                                if (validAgency(a) && include(a, item.agencies)) {
                                     item.agencies.push(a);
                                 }
                             });
@@ -162,16 +162,16 @@
                 items.forEach(item => {
                     data.forEach(d => {
                         if (d.pkg.trim() === item.name) {
-                            if (include(d.sponsoringAgency, item.agencies)) {
+                            if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
 
                             d.atoLetters.forEach(a => {
-                                if (include(a.authorizingAgency, item.agencies)) {
+                                if (validAgency(a.authorizingAgency) && include(a.authorizingAgency, item.agencies)) {
                                     item.agencies.push(a.authorizingAgency.trim());
                                 }
 
-                                if (include(a.authorizingSubagency, item.agencies)) {
+                                if (validAgency(a.authorizingSubagency) && include(a.authorizingSubagency, item.agencies)) {
                                     item.agencies.push(a.authorizingSubagency.trim());
                                 }
                             });
@@ -199,7 +199,7 @@
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
 
-                    if (include(d.sponsoringAgency, names)) {
+                    if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, names)) {
                         names.push(d.sponsoringAgency.trim());
                         let item = new Agency();
                         item.name = d.sponsoringAgency.trim();
@@ -213,14 +213,14 @@
                     for (let j = 0; j < d.atoLetters.length; j++) {
                         let l = d.atoLetters[j];
 
-                        if (include(l.authorizingAgency, names)) {
+                        if (validAgency(l.authorizingAgency) && include(l.authorizingAgency, names)) {
                             names.push(l.authorizingAgency.trim());
                             let item = new Agency();
                             item.name = l.authorizingAgency.trim();
                             items.push(item);
                         }
 
-                        if (include(l.authorizingSubagency, names)) {
+                        if (validAgency(l.authorizingSubagency) && include(l.authorizingSubagency, names)) {
                             names.push(l.authorizingSubagency.trim());
                             let item = new Agency();
                             item.name = l.authorizingSubagency.trim();
@@ -329,7 +329,7 @@
                                 item.providers.push(d.name.trim());
                             }
 
-                            if (include(d.sponsoringAgency, item.agencies)) {
+                            if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
                         }
@@ -344,11 +344,11 @@
                                     item.providers.push(d.name.trim());
                                 }
 
-                                if (include(a.authorizingAgency, item.agencies)) {
+                                if (validAgency(a.authorizingAgency) && include(a.authorizingAgency, item.agencies)) {
                                     item.agencies.push(a.authorizingAgency.trim());
                                 }
 
-                                if (include(a.authorizingSubagency, item.agencies)) {
+                                if (validAgency(a.authorizingSubagency) && include(a.authorizingSubagency, item.agencies)) {
                                     item.agencies.push(a.authorizingSubagency.trim());
                                 }
                             }
@@ -374,6 +374,10 @@
                     return !a.includes(st);
                 }
                 return false;
+            }
+
+            function validAgency(agency) {
+                return include(agency, ['JAB Authorization', 'CSP Supplied']);
             }
 
             /**
