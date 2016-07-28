@@ -61,7 +61,6 @@
                     item.logo = d.cspUrl;
                     items.push(item);
                 }
-
                 
                 items.forEach(item => {
                     item.products = self.products().filter(x => x.provider === item.name);
@@ -162,7 +161,7 @@
 
                 items.forEach(item => {
                     data.forEach(d => {
-                        if (d.pkg === item.name) {
+                        if (d.pkg.trim() === item.name) {
                             if (include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
@@ -384,13 +383,13 @@
              * Assessor being populated.
              */
             function fillFromRawAssessor(assessor){
-                for (let x = 0; x < rawAssessors.length; x++){
+                for (let x = 0; x < rawAssessors.length; x++) {
                     // Empty {} seem to be returned sometimes
-                    if(Object.keys(rawAssessors[x]).length === 0){
+                    if (Object.keys(rawAssessors[x]).length === 0) {
                         continue;
                     }
                     var assessorData = new AssessorData(rawAssessors[x]);
-                    if(safeTrim(assessorData.name) === safeTrim(assessor.name)){
+                    if (safeTrim(assessorData.name) === safeTrim(assessor.name)) {
                         assessor.accreditationDate = helperService.toDate(assessorData.accreditationDate);
                         break;
                     }

@@ -15,9 +15,9 @@ describe('ATO letter can map', function () {
         };
     });
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.models');
-        inject(function($injector){
+        inject(function ($injector) {
             AtoLetter = $injector.get('AtoLetter');
         });
     });

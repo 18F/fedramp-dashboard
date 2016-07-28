@@ -1,5 +1,5 @@
 // Test menuService 
-describe('DatasourceService', function(){
+describe('DatasourceService', function () {
 	'use strict';
 	var DatasourceService;
 	var $httpBackend;
@@ -14,9 +14,9 @@ describe('DatasourceService', function(){
         'data': []
     };
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             DatasourceService = $injector.get('DatasourceService');
 
             // Use $injector to grab services/factories
@@ -24,14 +24,13 @@ describe('DatasourceService', function(){
         });
     });
 
-	afterEach(function() { 
+	afterEach(function () { 
 		$httpBackend.verifyNoOutstandingExpectation(); 
 		$httpBackend.verifyNoOutstandingRequest();
 	});
 
-	describe('pull()', function(){
-		it('Retrieves latest FedRAMP provider information', function(){
-
+	describe('pull()', function () {
+		it('Retrieves latest FedRAMP provider information', function () {
             // Mock http request
 			$httpBackend.expectGET(githubUrl).respond(201, dataJson);
 

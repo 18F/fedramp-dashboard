@@ -33,7 +33,7 @@
      * @constructor
      * @memberof Services
      */
-    function FedrampDataProvider(){
+    function FedrampDataProvider () {
         var provider = this;
         provider.defaults = {
             cache: true
@@ -42,11 +42,8 @@
         /**
          * $get is executed once when the application is bootstrapped and uses the defaults to construct
          * the object. These defaults must be configured inside a config function by injecting fedrampDataProvider.
-         * 
-         *
-         *
          */
-        provider.$get = ['$log', 'Cache', function($log, Cache){
+        provider.$get = ['$log', 'Cache', function ($log, Cache) {
             return new FedrampDataService();
 
             /**
@@ -65,13 +62,14 @@
 
                 /**
                  * Takes the contents of a storage factory object and adds its properties and methods
-                 * to this current object.                  */
-                function load(storage){
+                 * to this current object.
+                 */
+                function load (storage) {
                     angular.extend(self, storage);
 
                     // If we enable caching globally when configuring fedrampDataProvider,
                     // we wrap all data returning functions with a cache wrapper.
-                    if(provider.defaults.cache){
+                    if (provider.defaults.cache) {
                         self.products = Cache.wrap('products')(storage.products);
                         self.providers = Cache.wrap('providers')(storage.providers);
                         self.assessors = Cache.wrap('assessors')(storage.assessors);
@@ -81,5 +79,4 @@
             }
         }];
     }
-
 })();

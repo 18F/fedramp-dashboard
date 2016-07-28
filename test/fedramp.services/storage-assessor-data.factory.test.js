@@ -1,4 +1,3 @@
-
 describe('StorageAssessorData manager', function () {
     'use strict';
 
@@ -9,9 +8,9 @@ describe('StorageAssessorData manager', function () {
     var Product;
     var Provider;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             StorageAssessorData = $injector.get('StorageAssessorData');
             AssessorData = $injector.get('AssessorData');
             Agency = $injector.get('Agency');
@@ -45,5 +44,4 @@ describe('StorageAssessorData manager', function () {
         var expected = storage.byId(data.hash());
         expect(expected.hash()).toBe(data.hash());
     });
-
 });

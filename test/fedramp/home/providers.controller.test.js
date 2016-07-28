@@ -14,7 +14,6 @@ describe('ProvidersController controller with no data', function () {
                 $log: {},
                 providers: []
             });
-
         });
     });
 
@@ -23,15 +22,12 @@ describe('ProvidersController controller with no data', function () {
     });
 
     it('Finds item that matches custom reuse filter', function () {
-        var found = providerController.reuseRangeFilter({
-            reuses: 1
-        }, 0, [], [{
-            value: {
-                min: 0,
-                max: 5
-            }
-        }]);
+        var found = providerController.reuseRangeFilter(
+            {reuses: 1},
+            0,
+            [],
+            [{value: {min: 0, max: 5}}]);
+
         expect(found).toBeDefined();
     });
-
 });

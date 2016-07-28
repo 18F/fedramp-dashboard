@@ -18,7 +18,6 @@ describe('The grid total component', function () {
         });
     });
 
-
     it('can display total items', function () {
         expect(component.gridController.items.length).toBe(5);
     });

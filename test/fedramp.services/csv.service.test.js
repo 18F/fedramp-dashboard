@@ -14,9 +14,9 @@ describe('The CSV service', function(){
         'data': []
     };
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             var Provider = $injector.get('Provider');
             CsvService = $injector.get('CsvService');
 
@@ -67,22 +67,22 @@ describe('The CSV service', function(){
         });
     });
 
-    it('can convert an array of objects to a flattened CSV friendly structure', function(){
+    it('can convert an array of objects to a flattened CSV friendly structure', function () {
         var flatten = CsvService.flatten([fedrampData, fedrampDataWithoutAtoLetters]);
         expect(flatten).not.toBeNull();
         expect(flatten.length).toEqual(2);
     });
 
-	describe('flatten() without ato letters', function(){
-		it('Converts an array of Providers to a flatten csv friendly structure', function(){
+	describe('flatten() without ato letters', function () {
+		it('Converts an array of Providers to a flatten csv friendly structure', function () {
             var flatten = CsvService.flatten([fedrampDataWithoutAtoLetters]);
             expect(flatten).not.toBeNull();
             expect(flatten.length).toEqual(1);
 		});
 	});
 
-	describe('toCsv() Converts an object csv string', function(){
-		it('Converts an object of providers to a csv string', function(){
+	describe('toCsv() Converts an object csv string', function () {
+		it('Converts an object of providers to a csv string', function () {
             var flatten = CsvService.flatten([fedrampData, fedrampDataWithoutAtoLetters]);
 
             expect(flatten).not.toBeNull();

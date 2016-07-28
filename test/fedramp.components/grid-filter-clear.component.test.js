@@ -23,7 +23,7 @@ describe('the grid filter clear component', function () {
             grid = $componentController('grid', {
                 $log: $log,
                 $location: $location
-            },{
+            }, {
                 items: filteredItems,
                 onUpdate: function(){},
                 rawItems: [{
@@ -61,7 +61,6 @@ describe('the grid filter clear component', function () {
             }
         );
 
-
         var gridFilterClear = $componentController('gridFilterClear', 
             null, {
                 gridController: grid
@@ -75,5 +74,4 @@ describe('the grid filter clear component', function () {
         gridFilterClear.clear();
         expect(gridFilter.selectedOptionValues.length).toBe(0);
     });
-
 });
