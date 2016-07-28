@@ -4,7 +4,7 @@ describe('The Cache factory', function () {
     var service;
     var dataFactory;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
         dataFactory = new TestDataFactory(inject);
         inject(function ($injector) {
@@ -13,7 +13,6 @@ describe('The Cache factory', function () {
     });
 
     it('should cache the result of a function call', function () {
-
         var func =  function(){
             return 1 + 1;
         };
@@ -29,6 +28,5 @@ describe('The Cache factory', function () {
         cachedFunc = service.wrap('calc')(toCall2);
         cachedFunc();
         expect(toCall2).not.toHaveBeenCalled();
-
     });
 });

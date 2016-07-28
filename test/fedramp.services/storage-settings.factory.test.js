@@ -5,9 +5,9 @@ describe('StorageSettings manager', function () {
     var StorageSettings;
     var Settings;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             StorageSettings = $injector.get('StorageSettings');
             Settings = $injector.get('Settings');
         });

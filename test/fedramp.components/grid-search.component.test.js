@@ -68,11 +68,11 @@ describe('the grid search  component', function () {
         expect(grid.items.length).toBe(2);
     });
 
-    it('should allow custom filterFunc to filter using multiple properties', function(){
+    it('should allow custom filterFunc to filter using multiple properties', function () {
         var gridSearch = dataFactory.gridSearchComponent({
             gridController: grid,
             filterFunc: function(obj, index, arr){
-                if(obj.agencies.includes('Dept of Stuffs') || obj.agencies.includes('DEA')){
+                if (obj.agencies.includes('Dept of Stuffs') || obj.agencies.includes('DEA')) {
                     return obj;
                 }
                 return null;

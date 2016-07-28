@@ -32,5 +32,4 @@ describe('ProductsController controller with no data', function () {
     it('displays the title', function () {
         expect(productsController.products).toBeDefined();
     });
-
 });

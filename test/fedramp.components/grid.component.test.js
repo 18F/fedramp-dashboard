@@ -78,6 +78,4 @@ describe('the grid component', function () {
 
         expect(gridFilter.$onInit).toThrow();
     });
-
-
 });

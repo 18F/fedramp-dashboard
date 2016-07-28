@@ -48,5 +48,4 @@ describe('The product-list component', function () {
         expect(component.$onInit).not.toThrow();
         expect(component.products).toBeDefined();
     });
-
 });

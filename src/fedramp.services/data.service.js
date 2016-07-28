@@ -23,7 +23,6 @@
          *  The response as a promise
          */
         self.pull = function () {
-
             return DatasourceService.pull(dataUrl).then(function (response) {
                 let meta = response.meta;
                 let data = response.data;
@@ -44,7 +43,7 @@
         /**
          * Stores provider information into local storage
          */
-        function saveProviders(data, assessors){
+        function saveProviders (data, assessors) {
             var storage = new StorageData({Assessors: assessors});
             // Fill up Provider data
             for (let i = 0; i < data.length; i++) {
@@ -57,7 +56,7 @@
         /**
          * Stores assessor information into local storage
          */
-        function saveAssessors(assessors){
+        function saveAssessors (assessors) {
             let assessorStorage = new StorageAssessorData();
             for (let i = 0; i < assessors.length; i++) {
                 let d = new AssessorData(assessors[i]);
@@ -69,12 +68,11 @@
         /**
          * Stores setting information into local storage
          */
-        function saveSettings(meta){
+        function saveSettings (meta) {
             let settingStorage = new StorageSettings();
             var setting = new Settings(meta);
             setting.refresh();
             settingStorage.update(setting.hash(), setting);
         }
-
     }
 })();
