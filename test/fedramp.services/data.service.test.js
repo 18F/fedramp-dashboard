@@ -1,4 +1,4 @@
-describe('The data service', function(){
+describe('The data service', function () {
 	'use strict';
 
 	var DataService;
@@ -20,7 +20,7 @@ describe('The data service', function(){
 		$httpBackend.verifyNoOutstandingRequest();
 	});
 
-	describe('for pull()', function() {
+	describe('for pull()', function () {
 		it('can retrieve the latest FedRAMP information', function () {
             // Mock http request
 			$httpBackend.expectGET(githubUrl).respond(201, dataJson);

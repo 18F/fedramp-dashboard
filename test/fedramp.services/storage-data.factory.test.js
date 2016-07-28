@@ -9,9 +9,9 @@ describe('StorageData manager', function () {
     var Provider;
     var AssessorData;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             StorageData = $injector.get('StorageData');
             Data = $injector.get('Data');
             Agency = $injector.get('Agency');

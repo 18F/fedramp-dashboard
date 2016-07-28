@@ -1248,7 +1248,7 @@ var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'
          */function wrap(key){return function(func){return function(){var data=cache.get(key);if(angular.isDefined(data)){return data;}var result=func.apply(this,arguments);cache.put(key,result);return result;};};}}})();(function(){'use strict';angular.module('fedramp.services').service('CsvService',CsvService);CsvService.$inject=['$log'];/**
      * @constructor
      * @memberof Services
-     */function CsvService($log){var self=this;self.flatten=flatten;self.toCsv=toCsv;/**
+     */function CsvService($log){var self=this;/**
          * Takes an object and converts to a csv string
          *
          * @public
@@ -1256,7 +1256,7 @@ var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'
          *
          * @returns
          * A csv string representation of an object.
-         */function toCsv(data,config){return Papa.unparse(data,config);}/**
+         */self.toCsv=function(data,config){return Papa.unparse(data,config);};/**
          * Iterates through an array creating an array of flattened objects
          *
          * @public
@@ -1267,7 +1267,7 @@ var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'
          *
          * @returns
          *  A flatten array of array values
-         */function flatten(data){var rows=[];for(var i=0;i<data.length;i++){rows.push(flattenObject(data[i]));}return rows;}/**
+         */self.flatten=function(data){var rows=[];for(var i=0;i<data.length;i++){rows.push(flattenObject(data[i]));}return rows;};/**
          * Iterates through the properties of an object creating a flat structure
          *
          * @public
@@ -1350,9 +1350,6 @@ for(var i=0;i<data.length;i++){var d=new Data(data[i]);storage.update(d.hash(),d
      */function FedrampDataProvider(){var provider=this;provider.defaults={cache:true};/**
          * $get is executed once when the application is bootstrapped and uses the defaults to construct
          * the object. These defaults must be configured inside a config function by injecting fedrampDataProvider.
-         * 
-         *
-         *
          */provider.$get=['$log','Cache',function($log,Cache){return new FedrampDataService();/**
              * Fedramp Data Service is a service used to store queried information to be used by any component, service or 
              * factory. The intent is to have an object that can be passed around containing a cache of previously obtained data.
@@ -1362,7 +1359,8 @@ for(var i=0;i<data.length;i++){var d=new Data(data[i]);storage.update(d.hash(),d
                  * Stores cache storage data.
                  */self.load=load;/**
                  * Takes the contents of a storage factory object and adds its properties and methods
-                 * to this current object.                  */function load(storage){angular.extend(self,storage);// If we enable caching globally when configuring fedrampDataProvider,
+                 * to this current object.
+                 */function load(storage){angular.extend(self,storage);// If we enable caching globally when configuring fedrampDataProvider,
 // we wrap all data returning functions with a cache wrapper.
 if(provider.defaults.cache){self.products=Cache.wrap('products')(storage.products);self.providers=Cache.wrap('providers')(storage.providers);self.assessors=Cache.wrap('assessors')(storage.assessors);self.agencies=Cache.wrap('agencies')(storage.agencies);}}}}];}})();(function(){'use strict';angular.module('fedramp.services').service('helperService',HelperService);HelperService.$inject=['$log','$location'];/**
      * @constructor
@@ -1416,7 +1414,7 @@ setTimeout(function(){var el=document.getElementById(anchor);if(!el){return;}var
          *
          * @returns
          *  The query string
-         */self.queryString=function(){var query='';var search=$location.search();for(var n in search){if(query.length>0){query+='&';}query+=n+'='+encodeURIComponent(search[n]);}if(query.length>0){query='?'+query;}return query;};}})();(function(){"use strict";angular.module('fedramp.services').factory('Searcher',SearcherFactory);SearcherFactory.$inject=['$log','$parse'];function SearcherFactory($log,$parse){var ARRAY_FILTER_REGEX=/^(.*)\sin\s(.+)$/;return Searcher;/**
+         */self.queryString=function(){var query='';var search=$location.search();for(var n in search){if(query.length>0){query+='&';}query+=n+'='+encodeURIComponent(search[n]);}if(query.length>0){query='?'+query;}return query;};}})();(function(){'use strict';angular.module('fedramp.services').factory('Searcher',SearcherFactory);SearcherFactory.$inject=['$log','$parse'];function SearcherFactory($log,$parse){var ARRAY_FILTER_REGEX=/^(.*)\sin\s(.+)$/;return Searcher;/**
          * Searcher is a factory that allows objects to be traversed and searched
          * for. The idea is that you can specify a property expression to look through
          * when you execute a search. 
@@ -1452,25 +1450,25 @@ setTimeout(function(){var el=document.getElementById(anchor);if(!el){return;}var
          *
          * @constructor
          * @memberof Services
-         */function Searcher(){var self=this;self.prop=prop;/**
+         */function Searcher(){var self=this;/**
              * Executes search by defined property expression
-             */function prop(expression){return new PropertyExpression(expression);}}/**
+             */self.prop=function(expression){return new PropertyExpression(expression);};}/**
          * Handles searching for information within an object using a property expression.
-         */function PropertyExpression(expression){var self=this;self.contains=contains;self.equals=equals;self.withinDateRange=withinDateRange;self.criteriaFunc=criteriaFunc;/**
+         */function PropertyExpression(expression){var self=this;/**
              * Allows a function to be passed in to perform a manual comparison.
-             */function criteriaFunc(data,func){var results=[];eachResult(data,function(currentObject,value){var add=func.call(self,currentObject,value);if(add){results.push(add);}});return results;}/**
+             */self.criteriaFunc=function(data,func){var results=[];eachResult(data,function(currentObject,value){var add=func.call(self,currentObject,value);if(add){results.push(add);}});return results;};/**
              * Iterates through an objects properties using the specified property expression
              * and performs a contains comparison.
-             */function contains(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString().toLowerCase().indexOf(searchTerm.toString().toLowerCase())!==-1){results.push(currentObject);return true;}return false;});return results;}/**
+             */self.contains=function(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString().toLowerCase().indexOf(searchTerm.toString().toLowerCase())!==-1){results.push(currentObject);return true;}return false;});return results;};/**
              * Iterates through an objects properties using the specifed property expression 
              * and performs an equals comparison.
-             */function equals(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString()===searchTerm.toString()){results.push(currentObject);return true;}return false;});return results;}/**
+             */self.equals=function(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString()===searchTerm.toString()){results.push(currentObject);return true;}return false;});return results;};/**
              * Performs a date range comparison
-             */function withinDateRange(data,start,end){var results=[];var startDate=new Date(start);var endDate=new Date(end);eachResult(data,function(currentObject,value){var valueDate=new Date(value);if(valueDate>=startDate&&valueDate<=endDate){results.push(currentObject);return true;}return false;});return results;}/**
+             */self.withinDateRange=function(data,start,end){var results=[];var startDate=new Date(start);var endDate=new Date(end);eachResult(data,function(currentObject,value){var valueDate=new Date(value);if(valueDate>=startDate&&valueDate<=endDate){results.push(currentObject);return true;}return false;});return results;};/**
              * Helper function iterates through all objects making the property expression.
              */function eachResult(data,func){if(!angular.isArray(data)){data=[data];}data.forEach(function(currentObject){new Walker(currentObject,expression).walk(function(obj){return func.call(self,currentObject,obj);});});}}/**
          * Traverses an object based on the property expression
-         */function Walker(data,propExpression){var self=this;var targetKey=null;var targetProps=null;var isPrimitive=true;var useIndex=false;self.walk=walk;function walk(func){find(data,targetProps,func);}/**
+         */function Walker(data,propExpression){var self=this;var targetKey=null;var targetProps=null;var isPrimitive=true;var useIndex=false;self.walk=function(func){find(data,targetProps,func);};/**
              * Recursively walks an object to reach the property expression
              */function find(obj,props,q){props=angular.copy(props);if(!props){return q.call(self,$parse(targetKey)(obj));}if(props.length===0){if(isPrimitive||useIndex){//return match(obj, q);
 return q.call(self,obj);}return q.call(self,$parse(targetKey)(obj));}var curProp=props.shift();var value=$parse(curProp)(obj);if(angular.isArray(value)){for(var x=0;x<value.length;x++){var found=find(value[x],props,q);if(found){return;}}}}function parseKeys(){var m=propExpression.match(ARRAY_FILTER_REGEX);if(m){targetKey=m[1].split('.').splice(1).join('.');targetProps=m[2].split('.');isPrimitive=false;useIndex=targetKey==='';}else{targetKey=propExpression;}}parseKeys();}}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageAssessorData',StorageAssessorDataFactory);StorageAssessorDataFactory.$inject=['StorageManager','AssessorData','helperService'];function StorageAssessorDataFactory(StorageManager,AssessorData,helperService){/**
@@ -1520,7 +1518,7 @@ item.serviceModels=item.serviceModels?item.serviceModels.map(function(x){return 
              *  An array of products
              */self.products=function(){var names=[];var items=[];var data=self.all();var _loop=function _loop(i){var d=data[i];if(!include(d.pkg,names)){return'continue';}names.push(d.pkg.trim());var item=new Product();item.name=d.pkg.trim();item.provider=d.name.trim();item.pkgId=d.pkgId.trim();item.serviceModels=d.serviceModel?d.serviceModel.map(function(x){return x.trim();}).sort():[];item.deploymentModel=d.deploymentModel.trim();item.designation=d.designation.trim();item.impactLevel=d.impactLevel.trim();item.logo=d.cspUrl;item.independentAssessor=d.independentAssessor;item.authorizationType=d.path;item.sponsoringAgency=d.sponsoringAgency;item.authorizationDate=helperService.toDate(d.authorizationDate);item.expectedCompliance=helperService.toDate(d.expectedCompliance);item.expirationDate=helperService.toDate(d.expirationDate);item.reuses=d.atoLetters.length;var leveraged=data.filter(function(x){return x?x.underlyingCspPackages.includes(d.pkgId):false;});if(leveraged.length>0){// Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
 item.reuses+=leveraged.length;// Add leveraged ATO of CSP dependencies
-item.reuses+=leveraged.map(function(x){return x.atoLetters.length;}).reduce(function(p,c){return p+c;});}items.push(item);};for(var i=0;i<data.length;i++){var _ret=_loop(i);if(_ret==='continue')continue;}items.forEach(function(item){data.forEach(function(d){if(d.pkg===item.name){if(include(d.sponsoringAgency,item.agencies)){item.agencies.push(d.sponsoringAgency.trim());}d.atoLetters.forEach(function(a){if(include(a.authorizingAgency,item.agencies)){item.agencies.push(a.authorizingAgency.trim());}if(include(a.authorizingSubagency,item.agencies)){item.agencies.push(a.authorizingSubagency.trim());}});}});});return items;};/**
+item.reuses+=leveraged.map(function(x){return x.atoLetters.length;}).reduce(function(p,c){return p+c;});}items.push(item);};for(var i=0;i<data.length;i++){var _ret=_loop(i);if(_ret==='continue')continue;}items.forEach(function(item){data.forEach(function(d){if(d.pkg.trim()===item.name){if(include(d.sponsoringAgency,item.agencies)){item.agencies.push(d.sponsoringAgency.trim());}d.atoLetters.forEach(function(a){if(include(a.authorizingAgency,item.agencies)){item.agencies.push(a.authorizingAgency.trim());}if(include(a.authorizingSubagency,item.agencies)){item.agencies.push(a.authorizingSubagency.trim());}});}});});return items;};/**
              * Extracts unique agencies
              * @public
              * @memberof Services.StorageData

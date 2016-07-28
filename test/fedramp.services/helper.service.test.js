@@ -3,7 +3,7 @@ describe('The helper service', function () {
 
     var service;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
         inject(function ($injector) {
             service = $injector.get('helperService');

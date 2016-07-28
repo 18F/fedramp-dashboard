@@ -2,9 +2,9 @@ describe('Storage manager', function () {
     'use strict';
     var StorageManager;
 
-    beforeEach(function(){
+    beforeEach(function () {
         module('fedramp.services');
-        inject(function($injector){
+        inject(function ($injector) {
             StorageManager = $injector.get('StorageManager');
         });
     });

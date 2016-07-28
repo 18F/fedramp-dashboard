@@ -9,7 +9,7 @@ describe('Fedramp routing', function(){
 
     beforeEach(function () {
         module('fedramp');
-        inject(function($injector, _$state_, _$rootScope_){
+        inject(function ($injector, _$state_, _$rootScope_) {
             $state = _$state_;
             $rootScope = _$rootScope_;
             $httpBackend = $injector.get('$httpBackend');

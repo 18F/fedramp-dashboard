@@ -10,7 +10,7 @@ describe('The Tile component', function () {
             controller = _$componentController_;
             component = controller('tile', null, {
                 model: {
-                    type: 'Agency'
+                    type: 'agency'
                 },
                 expand: true
             });
@@ -22,7 +22,6 @@ describe('The Tile component', function () {
     });
 
     it('tile template to be populated', function () {
-        expect(component.tileTemplate).toBe('src/templates/components/tile-Agency.html');
+        expect(component.tileTemplate).toBe('src/templates/components/tile-agency.html');
     });
-
 });

@@ -11,16 +11,14 @@ describe('the grid filter component', function () {
     var $scope;
     var dataFactory;
 
-
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
-        inject(function($injector){
+        inject(function ($injector) {
             $location = $injector.get('$location');
         });
 
         dataFactory = new TestDataFactory(inject);
         grid = dataFactory.gridComponent({
-
             items: filteredItems,
             onUpdate: function(){},
             rawItems: [{
@@ -63,14 +61,15 @@ describe('the grid filter component', function () {
             expanded: true,
             opened: true,
             gridController: grid
-        }, {$element: $element});
+        }, {
+            $element: $element
+        });
 
         gridFilter.$onInit();
         grid.addFilter(gridFilter);
         expect(grid.items).toBeDefined();
         expect(grid.items.length).toBe(2);
         expect($element.hasClass('grid-filter-expanded')).toBe(true);
-
     });
 
     it('should clear filters', function () {
@@ -234,11 +233,9 @@ describe('the grid filter component', function () {
         grid.$onInit();
         gridFilter.$onInit();
         expect(grid.items.length).toBe(1);
-
     });
 
     it('should restore state for filter and sort in ascendind and descending', function () {
-
         gridFilter = dataFactory.gridFilterComponent({
             header: 'Products',
             id: 'agenciesFilter',
@@ -275,7 +272,6 @@ describe('the grid filter component', function () {
     });
 
     it('should restore non-primitive value in json based query param', function () {
-
         var option = {
             label: 'Custom action',
             value: {min:0, max:10},

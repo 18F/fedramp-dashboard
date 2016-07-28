@@ -11,11 +11,9 @@
      * @constructor
      * @memberof Services
      */
-    function CsvService($log) {
+    function CsvService ($log) {
 
         var self = this;
-        self.flatten = flatten;
-        self.toCsv = toCsv;
 
         /**
          * Takes an object and converts to a csv string
@@ -26,9 +24,9 @@
          * @returns
          * A csv string representation of an object.
          */
-        function toCsv (data, config) {
+        self.toCsv = function (data, config) {
             return Papa.unparse(data, config);
-        }
+        };
 
         /**
          * Iterates through an array creating an array of flattened objects
@@ -42,7 +40,7 @@
          * @returns
          *  A flatten array of array values
          */
-        function flatten (data) {
+        self.flatten = function (data) {
             let rows = [];
 
             for (let i = 0; i < data.length; i++) {
@@ -50,7 +48,7 @@
             }
 
             return rows;
-        }
+        };
 
         /**
          * Iterates through the properties of an object creating a flat structure

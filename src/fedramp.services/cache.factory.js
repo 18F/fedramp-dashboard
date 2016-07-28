@@ -25,11 +25,11 @@
          * 3. If not in cache, execute apply on function with arguments and then store
          * result in cache using the passed in key.
          */
-        function wrap(key) {
-            return function(func){                        
-                return function(){
+        function wrap (key) {
+            return function (func) {                        
+                return function () {
                     var data = cache.get(key);
-                    if (angular.isDefined(data)){
+                    if (angular.isDefined(data)) {
                         return data;
                     }
                     var result = func.apply(this, arguments);

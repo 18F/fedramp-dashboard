@@ -8,8 +8,6 @@
     StorageAssessorDataFactory.$inject = ['StorageManager', 'AssessorData', 'helperService'];
 
     function StorageAssessorDataFactory (StorageManager, AssessorData, helperService) {
-
-
         /**
          * Provides storage specific functionality that extends the StorageManager
          * @constructor

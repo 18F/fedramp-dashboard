@@ -40,7 +40,7 @@
 
             self.first = function(){
                 var settings = self.all();
-                if(settings.length === 0){
+                if (settings.length === 0) {
                     return null;
                 }
                 return settings[0];

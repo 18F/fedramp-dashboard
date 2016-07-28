@@ -1,5 +1,5 @@
-function TestDataFactory(inject){
-    "use strict";
+function TestDataFactory (inject) {
+    'use strict';
     var self = this;
 
     self.gridComponent = gridComponent;
@@ -12,7 +12,7 @@ function TestDataFactory(inject){
     self.agenciesGridComponent = agenciesGridComponent;
     self.assessorsGridComponent = assessorsGridComponent;
 
-    function gridComponent(properties){
+    function gridComponent (properties) {
         properties = properties || {};
         var gridComponent;
 
@@ -45,7 +45,7 @@ function TestDataFactory(inject){
         return gridComponent;
     }
 
-    function gridFilterComponent(properties, dependencies){
+    function gridFilterComponent (properties, dependencies) {
         var gridFilter;
 
         properties = properties || {};
@@ -73,7 +73,7 @@ function TestDataFactory(inject){
         return gridFilter;
     }
 
-    function gridSearchComponent(properties){
+    function gridSearchComponent (properties) {
         var filter;
 
         properties = properties || {};
@@ -98,7 +98,7 @@ function TestDataFactory(inject){
         return filter;
     }
 
-    function gridClearComponent(properties){
+    function gridClearComponent (properties) {
         var filter;
 
         inject(function (_$componentController_, $injector, $rootScope) {
@@ -115,7 +115,7 @@ function TestDataFactory(inject){
         return filter;
     }
 
-    function gridSortComponent(properties){
+    function gridSortComponent (properties) {
         var filter;
         var config = angular.extend({
             name: 'someSort'
@@ -136,9 +136,9 @@ function TestDataFactory(inject){
         return filter;
     }
 
-    function storageFactory(){
+    function storageFactory () {
         var s = null;
-        inject(function($injector){
+        inject(function ($injector) {
             var Data = $injector.get('Data');
             var StorageData = $injector.get('StorageData');
 

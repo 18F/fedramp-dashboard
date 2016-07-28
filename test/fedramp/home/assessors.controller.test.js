@@ -21,5 +21,4 @@ describe('AssessorsController with no data', function () {
     it('Assessors object defined', function () {
         expect(assessorsController.assessors).toBeDefined();
     });
-
 });
