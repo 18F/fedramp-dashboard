@@ -8,6 +8,9 @@ function TestDataFactory(inject){
     self.gridClearComponent = gridClearComponent;
     self.gridSortComponent = gridSortComponent;
     self.storageFactory = storageFactory;
+    self.productsGridComponent = productsGridComponent;
+    self.agenciesGridComponent = agenciesGridComponent;
+    self.assessorsGridComponent = assessorsGridComponent;
 
     function gridComponent(properties){
         properties = properties || {};
@@ -165,5 +168,65 @@ function TestDataFactory(inject){
         });
 
         return s;
+    }
+
+    function productsGridComponent(properties, dependencies){
+        var gridFilter;
+        properties = properties || {};
+            var config = angular.extend({
+            }, properties);
+            dependencies = dependencies || {};
+
+        inject(function (_$componentController_, $injector, $rootScope) {
+            var $componentController = _$componentController_;
+            var $log = $injector.get('$log');
+
+            gridFilter = $componentController('productsGrid', 
+                angular.extend({
+                $log: $log
+            }, dependencies), config);
+        });
+
+        return gridFilter;
+    }
+
+    function agenciesGridComponent(properties, dependencies){
+        var gridFilter;
+        properties = properties || {};
+            var config = angular.extend({
+            }, properties);
+            dependencies = dependencies || {};
+
+        inject(function (_$componentController_, $injector, $rootScope) {
+            var $componentController = _$componentController_;
+            var $log = $injector.get('$log');
+
+            gridFilter = $componentController('agenciesGrid', 
+                angular.extend({
+                $log: $log
+            }, dependencies), config);
+        });
+
+        return gridFilter;
+    }
+
+    function assessorsGridComponent(properties, dependencies){
+        var gridFilter;
+        properties = properties || {};
+            var config = angular.extend({
+            }, properties);
+            dependencies = dependencies || {};
+
+        inject(function (_$componentController_, $injector, $rootScope) {
+            var $componentController = _$componentController_;
+            var $log = $injector.get('$log');
+
+            gridFilter = $componentController('assessorsGrid', 
+                angular.extend({
+                $log: $log
+            }, dependencies), config);
+        });
+
+        return gridFilter;
     }
 }

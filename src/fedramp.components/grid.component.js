@@ -4,6 +4,13 @@
     angular
         .module('fedramp.components')
         .component('grid', {
+            //templateUrl: 'src/templates/components/grid.html',
+            //transclude: {
+                //'filters': 'filters',
+                //'sorters': 'sorters',
+                //'tiles': 'tiles',
+                //'export': 'export'
+            //},
             controller: Grid,
             controllerAs: 'gridController',
             bindings: {
@@ -14,7 +21,9 @@
                 onUpdate: '&',
 
                 // Determines whether grid will maintain state via query params
-                state: '<'
+                state: '<',
+
+                hideFilters: '@'
             }
         });
 
@@ -46,6 +55,7 @@
         // Default sort to utilize for results
         self.defaultSort = null;
         self.items = [];
+        self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
 
         /**
          * Initializes the component.

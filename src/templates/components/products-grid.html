@@ -1,0 +1,47 @@
+<grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
+    <div class="sidebar" ng-show="!controller.hideFilters">
+        <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
+        <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
+
+        <grid-total></grid-total>
+
+        <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
+        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
+        <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
+    </div>
+    <div class="grid" ng-class="{'grid-with-sidebar': !controller.hideFilters}">
+        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">
+            <div class="fr-grid-layout-row">
+                <div class="fr-grid-cell-name">
+                    <grid-sort name="productName" property="provider,name" header="Name" class="grid-sort" default="true"></grid-sort>
+                </div>
+                <div class="fr-grid-cell-service">
+                    <grid-sort name="serviceModels" property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>
+                </div>
+                <div class="fr-grid-cell-impact">
+                    <grid-sort name="impactLevel" property="impactLevel" header="Impact Level" class="grid-sort"></grid-sort>
+                </div>
+                <div class="fr-grid-cell-icon">
+                    <grid-sort name="designation" property="designation" header="Status" class="grid-sort"></grid-sort>
+                </div>
+                <div class="fr-grid-cell-metric">
+                    <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
+                </div>
+            </div>
+        </div>
+        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>
+        <div class="export">
+            <download-csv content="controller.filteredData" ng-if="controller.filteredData">
+                <button class="usa-button-secondary">
+                    <span>Export to CSV</span>
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                </button>
+            </download-csv>
+        </div>
+    </div>
+    <div class="clear"></div>
+</grid>

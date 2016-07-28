@@ -22,15 +22,12 @@ describe('ProductsController controller with no data', function () {
 
             productsController = $controller('ProductsController', {
                 $log: log,
-                products: [product],
-                $stateParams: {},
-                $location: {}
             });
         });
     });
 
     it('displays the title', function () {
-        expect(productsController.products).toBeDefined();
+        expect(productsController).toBeDefined();
     });
 
 });
