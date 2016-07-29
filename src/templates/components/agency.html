@@ -20,7 +20,7 @@
         </div>
         <div class="col reuse">
             <div class="number">{{controller.model.reuses}}</div>
-            <div class="text">Reuses</div>
+            <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
     <div class="row">
@@ -38,7 +38,7 @@
     <panel header="Agency Description" class="clear">
         <div class="row products">
             <div class="col">
-                <h4>Products</h4>
+                <h4>Client History</h4>
                 <product-list products="controller.model.products"></product-list>
                 <p ng-if="controller.model.products.length === 0">
                     None

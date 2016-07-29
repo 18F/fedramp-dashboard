@@ -15,7 +15,7 @@
         </div>
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.products.length}}</div>
-            <div class="text">Product{{ controller.model.products.length === 1 ? '' : 's'}} Used</div>
+            <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
 
@@ -26,7 +26,7 @@
         <div class="col reuses">
             <a ng-click="controller.view()">
                 <div class="number">{{controller.model.products.length}}</div>
-                <div class="text">Product{{ controller.model.products.length === 1 ? '' : 's'}} Used</div>
+                <div class="text">{{controller.model.useLabel}}</div>
             </a>
         </div>
     </div>

@@ -72,6 +72,13 @@
              * @memberof Models.Agency
              */
             self.assessors = [];
+
+            /**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Agency
+             */
+            self.useLabel = 'Products Used';
         }
 
         return Agency;

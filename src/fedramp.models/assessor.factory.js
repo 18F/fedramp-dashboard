@@ -87,6 +87,13 @@
              * @memberof Models.Assessor
              */
              self.accreditationDate = '';
+
+            /**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.useLabel = 'Assessed';
         }
 
         return Assessor;

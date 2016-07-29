@@ -135,6 +135,20 @@
              * @memberof Models.Product
              */
             self.sponsoringAgency = '';
+
+            /**
+             * Number of authorizations 
+             * @member {number}
+             * @memberof Models.Product
+             */
+            self.authorizations = 0;
+
+            /**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Product
+             */
+             self.useLabel = 'Authorizations';
         }
 
         return Product;

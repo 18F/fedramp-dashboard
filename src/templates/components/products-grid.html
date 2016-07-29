@@ -7,7 +7,7 @@
 
         <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" expanded="true" opened="true" class="grid-filter"></grid-filter>
-        <grid-filter id="reuseRange" header="Reuse Range" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+        <grid-filter id="reuseRange" header="Products Authorized" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
@@ -30,7 +30,7 @@
                     <grid-sort name="designation" property="designation" header="Status" class="grid-sort"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort name="reuses" property="reuses" default="-true" class="grid-sort"></grid-sort>
+                    <grid-sort name="authorizations" property="authorizations" default="-true" class="grid-sort"></grid-sort>
                 </div>
             </div>
         </div>

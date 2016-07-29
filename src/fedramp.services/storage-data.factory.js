@@ -144,7 +144,7 @@
                     item.expectedCompliance = helperService.toDate(d.expectedCompliance);
                     item.expirationDate = helperService.toDate(d.expirationDate);
 
-                    item.reuses = d.atoLetters.length;
+                    item.reuses = d.atoLetters.length ;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
                     if (leveraged.length > 0) {
                         // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
@@ -155,7 +155,9 @@
                             .map(x => x.atoLetters.length)
                             .reduce((p, c) => p + c);
                     }
-
+                    //
+                    // Calculate number of authorizations
+                    item.authorizations = item.reuses + (item.designation !== 'In-Process' ? 1 : 0);
                     items.push(item);
                 }
 
