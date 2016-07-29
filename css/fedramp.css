@@ -4827,12 +4827,6 @@ body {
 .lt-ie9 * {
   filter: none !important; }
 
-@font-face {
-  font-family: "Font Awesome";
-  font-style: normal;
-  font-weight: 400;
-  src: font-source-declaration("Font Awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont", false, eot svg woff2 woff ttf, font-url-prefixer(false)); }
-
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; }
 
