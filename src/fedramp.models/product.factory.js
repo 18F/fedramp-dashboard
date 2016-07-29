@@ -149,6 +149,13 @@
              * @memberof Models.Product
              */
              self.useLabel = 'Authorizations';
+
+            /**
+             * The service description
+             * @member {string}
+             * @memberof Models.Product
+             */
+            self.serviceDescription = '';
         }
 
         return Product;

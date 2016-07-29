@@ -39,7 +39,7 @@
         /**
          * Build a link from the given item
          * @public
-         * @memberof Components.Product
+         * @memberof Components.Agency
          *
          * @param {string} modelType
          *  The item model type

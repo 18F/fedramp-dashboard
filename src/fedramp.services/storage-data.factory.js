@@ -143,6 +143,7 @@
                     item.authorizationDate = helperService.toDate(d.authorizationDate);
                     item.expectedCompliance = helperService.toDate(d.expectedCompliance);
                     item.expirationDate = helperService.toDate(d.expirationDate);
+                    item.serviceDescription = safeTrim(d.csoDescription);
 
                     item.reuses = d.atoLetters.length ;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);

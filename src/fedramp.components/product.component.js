@@ -144,5 +144,20 @@
 
             return message;
         };
+
+        /**
+         * Parses possible markdown, or other encoded text, as HTML
+         * @public
+         * @memberof Components.Product
+         *
+         * @param {string} text
+         *  The text to parse
+         *
+         * @returns
+         *  The text in HTML format
+         */
+        self.markdown = function (text) {
+            return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));
+        };
     }
 })();

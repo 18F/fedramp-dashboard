@@ -94,6 +94,13 @@
              * @memberof Models.Assessor
              */
             self.useLabel = 'Assessed';
+
+            /**
+             * The description provided by the assessor
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.description = '';
         }
 
         return Assessor;
