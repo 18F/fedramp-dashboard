@@ -31,7 +31,7 @@
          * @public
          * @memberof Components
          */
-        function clear(){
+        function clear () {
             self.gridController.clearFilters();
         }
     }

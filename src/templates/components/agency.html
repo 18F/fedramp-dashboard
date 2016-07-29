@@ -34,16 +34,13 @@
             <p>{{controller.model.email}}</p>
         </div>
     </div>
-
-    <panel header="Agency Description" class="clear">
-        <div class="row products">
-            <div class="col">
-                <h4>Client History</h4>
-                <product-list products="controller.model.products"></product-list>
-                <p ng-if="controller.model.products.length === 0">
-                    None
-                </p>
-            </div>
+    <div class="row products">
+        <div class="col">
+            <h4>Products Used</h4>
+            <product-list products="controller.model.products"></product-list>
+            <p ng-if="controller.model.products.length === 0">
+                None
+            </p>
         </div>
-    </panel>
+    </div>
 </div>

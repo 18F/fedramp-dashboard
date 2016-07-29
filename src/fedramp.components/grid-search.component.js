@@ -46,11 +46,11 @@
         self.clear = clear;
         self.restoreState = restoreState;
 
-        function $onInit(){
-            if(!self.id){
+        function $onInit () {
+            if (!self.id) {
                 throw 'Id is required for grid search filter';
             }
-            if(!self.property && !self.filterFunc){
+            if (!self.property && !self.filterFunc) {
                 throw 'If property is not specified, filterFunc must be provided';
             }
             
@@ -73,10 +73,10 @@
          * @param {array} arr
          * Reference to the dataset being filtered
          */
-        function filterFunc(obj, index, arr){
-            if(self.searchTerm){
+        function filterFunc (obj, index, arr) {
+            if (self.searchTerm) {
                 var found = searcher.prop(self.property).contains(obj, self.searchTerm);
-                if(found.length > 0){
+                if (found.length > 0) {
                     return obj;
                 } else {
                     return null;
@@ -94,7 +94,7 @@
          * @public
          * @memberof Components.GridSearch
          */
-        function search(){
+        function search () {
             saveState();
             var filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.filtered = filtered;
@@ -107,8 +107,8 @@
          * @public
          * @memberof Components.GridSearch
          */
-        function saveState(){
-            if(self.searchTerm){
+        function saveState () {
+            if (self.searchTerm) {
                 self.gridController.state[self.id] = self.searchTerm;
             } else {
                 delete self.gridController.state[self.id];
@@ -121,9 +121,9 @@
          * @public
          * @memberof Components.GridSearch
          */
-        function restoreState(){
+        function restoreState () {
             var params = self.gridController.state;
-            if(!(self.id in params)){
+            if (!(self.id in params)) {
                 return null;
             }
             self.searchTerm = params[self.id];
@@ -141,8 +141,8 @@
          * @returns
          * A function that has been wrapped to contain an additonal parameters
          */
-        function wrapFilterFunc(func){
-            return function(obj, index, arr){
+        function wrapFilterFunc (func) {
+            return function (obj, index, arr) {
                 return func(obj, index, arr, self.searchTerm);
             };
         }
@@ -153,7 +153,7 @@
          * @public
          * @memberof Components.GridSearch
          */
-        function clear(){
+        function clear () {
             self.searchTerm = '';
             search();
         }

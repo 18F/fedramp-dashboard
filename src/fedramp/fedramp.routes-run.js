@@ -28,7 +28,6 @@
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
             params = $location.search();
             routeOptions = options;
-            console.log(options);
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {

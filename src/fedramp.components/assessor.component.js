@@ -39,7 +39,7 @@
         /**
          * Build a link from the given item
          * @public
-         * @memberof Components.Product
+         * @memberof Components.Assessor
          *
          * @param {string} modelType
          *  The item model type
@@ -51,6 +51,21 @@
          */
         self.linkify = function (modelType, name) {
             return '#/' + modelType + '/' + helperService.slugify(name) + helperService.queryString();
+        };
+
+        /**
+         * Parses possible markdown, or other encoded text, as HTML
+         * @public
+         * @memberof Components.Assessor
+         *
+         * @param {string} text
+         *  The text to parse
+         *
+         * @returns
+         *  The text in HTML format
+         */
+        self.markdown = function (text) {
+            return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));
         };
     }
 })();
