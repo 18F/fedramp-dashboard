@@ -1,5 +1,5 @@
 <grid class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">
-    <div class="sidebar" ng-show="!controller.hideFilters">
+    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">
         <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
         <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
 
@@ -14,7 +14,7 @@
         <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
     </div>
-    <div class="grid" ng-class="{'grid-with-sidebar': !controller.hideFilters}">
+    <div class="grid full-width-print" ng-class="{'grid-with-sidebar': !controller.hideFilters}">
         <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
@@ -35,7 +35,7 @@
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>
-        <div class="export">
+        <div class="export hidden-print">
             <download-csv content="controller.filteredData" ng-if="controller.filteredData">
                 <button class="usa-button-secondary">
                     <span>Export to CSV</span>
