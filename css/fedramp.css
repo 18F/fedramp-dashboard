@@ -5360,7 +5360,8 @@ grid-total {
     float: left;
     font-weight: bolder;
     clear: left;
-    display: inline-block; }
+    display: inline-block;
+    padding-right: 0.8rem; }
   .information .fedramp dl dd {
     margin-left: 0; }
   .information .fedramp .col {
