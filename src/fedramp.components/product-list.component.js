@@ -82,7 +82,7 @@
                     for(let y = 0; y < provider.products.length; y++){
                         var curProduct = provider.products[y];
                         if(curProduct.name === product){
-                            let productModel = findByName(product);
+                            let productModel = findProductByName(product);
                             if(!products[provider.name]){
                                 products[provider.name] = [];
                             }
