@@ -1,8 +1,25 @@
 product-list {
+    display:block;
+    .product-row {
+        margin-bottom:2rem;
+    }
     .provider {
         font-weight: 600;
     }
     .product {
         padding-left: 2rem;
+        display:table;
+        width: 100%;
+        margin-bottom:0.2rem;
+        .name {
+            display:table-cell;
+            width:70%;
+        }
+        .designation {
+            display:table-cell;
+            width:30%;
+        }
     }
+
+
 }

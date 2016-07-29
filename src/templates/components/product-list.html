@@ -1,16 +1,11 @@
-<ul>
-    <li ng-repeat="provider in controller.groupedProducts track by $index">
-        <div class="provider">{{provider.name}}</div>
-        <div class="product" ng-repeat="product in provider.products">
-            <a ui-sref="fedramp.app.product.information({name:product.slugified})">{{product.name}}</a>
+<div class="product-row" ng-repeat="provider in controller.groupedProducts track by $index">
+    <div class="provider">{{provider.name}}</div>
+    <div class="product" ng-repeat="model in provider.products">
+        <div class="name">
+            <a ui-sref="fedramp.app.product.information({name:model.slugified})">{{model.product.name}}</a>
         </div>
-        <!--<a title="{{product.provider}}" -->
-           <!--ui-sref-opts="{location:true}"-->
-            <!--ui-sref="fedramp.app.provider.information({name: controller.slugify(product.provider)})">-->
-            <!--{{product.provider}} -->
-        <!--</a> - -->
-        <!--<a title="{{product.name}}" ui-sref="fedramp.app.product.information({name: controller.slugify(product.name)})">-->
-            <!--{{product.name}} -->
-        <!--</a>-->
-    </li>
-</ul>
+        <div class="designation">
+            {{model.product.designation}}
+        </div>
+    </div>
+</div>

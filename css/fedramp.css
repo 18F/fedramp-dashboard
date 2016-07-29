@@ -5577,11 +5577,23 @@ panel {
   .break-after-print {
     page-break-after: always; } }
 
-product-list .provider {
-  font-weight: 600; }
-
-product-list .product {
-  padding-left: 2rem; }
+product-list {
+  display: block; }
+  product-list .product-row {
+    margin-bottom: 2rem; }
+  product-list .provider {
+    font-weight: 600; }
+  product-list .product {
+    padding-left: 2rem;
+    display: table;
+    width: 100%;
+    margin-bottom: 0.2rem; }
+    product-list .product .name {
+      display: table-cell;
+      width: 70%; }
+    product-list .product .designation {
+      display: table-cell;
+      width: 30%; }
 
 #topnav .limit {
   clear: both;

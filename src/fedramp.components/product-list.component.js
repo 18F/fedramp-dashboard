@@ -82,12 +82,12 @@
                     for(let y = 0; y < provider.products.length; y++){
                         var curProduct = provider.products[y];
                         if(curProduct.name === product){
+                            let productModel = findByName(product);
                             if(!products[provider.name]){
                                 products[provider.name] = [];
                             }
                             products[provider.name].push({
-                                name: product,
-                                provider: provider.name,
+                                product: productModel,
                                 slugified: helperService.slugify(product)
                             });
                             break;
@@ -97,6 +97,17 @@
                 return arr;
             }, products);
             return products;
+        }
+
+
+        /**
+         * Finds a product model by the product name.
+         * @returns {models.Product}
+         *
+         */
+        function findProductByName(productName){
+            var products = fedrampData.products();
+            return products.find(x => x.name === productName);
         }
     }
 })();
