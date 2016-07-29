@@ -4611,6 +4611,9 @@ a:active {
       height: 100%;
       width: 33.33%;
       margin-right: 0; }
+    .fr-dash-header .fr-large-metrics > div:hover {
+      background-color: #0d2747;
+      cursor: pointer; }
     .fr-dash-header .fr-large-metrics > div:last-child {
       border-right: none; }
     .fr-dash-header .fr-large-metrics .fr-large-number {

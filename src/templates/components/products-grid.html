@@ -5,7 +5,7 @@
 
         <grid-total></grid-total>
 
-        <grid-filter id="designation" property="designation" header="Status" expanded="true" opened="true" class="grid-filter"></grid-filter>
+        <grid-filter id="status" header="Status" filter-func="controller.statusFilter" options-func="controller.statusFilterOptions" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" expanded="true" opened="true" class="grid-filter"></grid-filter>
         <grid-filter id="reuseRange" header="Products Authorized" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
         <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>

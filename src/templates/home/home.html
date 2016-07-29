@@ -4,21 +4,21 @@
             <div class="usa-width-one-whole text-center">Products at a glance</div>
         </div>
         <div class="usa-grid-full text-center fr-large-metrics">
-            <div class="usa-width-one-third">
+            <div class="usa-width-one-third" ng-click="homeController.filterProducts('Ready')">
                 <p class="fr-large-number">
                     <span class="fr-metric-icon icon-ready-light"></span>
                     <strong>{{homeController.totalReady()}}</strong>
                     <span class="fr-metric-label">Ready</span>
                 </p>
             </div>
-            <div class="usa-width-one-third">
+            <div class="usa-width-one-third" ng-click="homeController.filterProducts('In Process')">
                 <p class="fr-large-number">
                     <span class="fr-metric-icon icon-in-process-light"></span>
                     <strong>{{homeController.totalInProcess()}}</strong>
                     <span class="fr-metric-label">In Process</span>
                 </p>
             </div>
-            <div class="usa-width-one-third">
+            <div class="usa-width-one-third" ng-click="homeController.filterProducts('Compliant')">
                 <p class="fr-large-number">
                     <span class="fr-metric-icon icon-compliant-light"></span>
                     <strong>{{homeController.totalAuthorized()}}</strong>

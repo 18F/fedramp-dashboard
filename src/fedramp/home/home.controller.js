@@ -5,13 +5,13 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'fedrampData', 'CsvService', 'Cache'];
+    HomeController.$inject = ['$log', 'fedrampData', 'CsvService', 'Cache', '$location', '$state'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, fedrampData, CsvService, Cache) {
+    function HomeController ($log, fedrampData, CsvService, Cache, $location, $state) {
         var self = this;
 
         /**
@@ -112,5 +112,21 @@
         self.totalReady = Cache.wrap('totalReady')(function(){
             return 0;
         });
+
+
+        /**
+         * Takes user to products grid and applies status filter.
+         * @public
+         * @memberof Controllers.HomeController
+         */
+        self.filterProducts = function(status){
+            $state.go('fedramp.app.home.products', {}, {
+                reload: true,
+                queryParams: {
+                    status: status
+                }
+            });
+        };
+
     }
 })();

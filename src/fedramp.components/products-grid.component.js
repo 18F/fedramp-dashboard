@@ -139,5 +139,58 @@
 
             return null;
         };
+
+        /**
+         * Custom status filter that checks a products designation value as well as the 
+         * existence of a fedramp ready date.
+         *
+         * @member {object}
+         * @memberof Components.ProductsGrid
+         *
+         * @param {object} product
+         *  The product to be compared
+         * @param {integer} i
+         *  The current index within the array of items
+         * @param {array} arr
+         *  The array of items
+         * @param {string} searchTerm
+         *  The search context
+         *
+         * @returns
+         *  An matched item or null
+         */
+        self.statusFilter = function(product, index, arr, selectedOptions){
+            var found = null;
+            selectedOptions.forEach(function(option){
+                if(option.value === product.designation){
+                    found = product;
+                    return found;
+                }
+                // TODO Need fedramp ready column
+                //if(option.value === 'Ready' && product.fedrampReady){
+                //}
+            });
+            return found;
+        };
+
+        /**
+         * List of filters
+         *
+         * @member {object}
+         * @memberof Components.ProductsGrid
+         *
+         * @param {array} products
+         *  Array of items available
+         *
+         * @returns
+         *  An matched item or null
+         */
+        self.statusFilterOptions = function(products) {
+            return [
+                {value: 'Ready', label: 'Ready', selected: false},
+                {value: 'In Process', label: 'In Process', selected: false},
+                {value: 'Compliant', label: 'Authorized', selected: false},
+            ];
+        };
     }
 })();

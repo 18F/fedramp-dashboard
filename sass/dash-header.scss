@@ -26,6 +26,10 @@
 		 	width:33.33%;
 		 	margin-right:0;
 	 	}
+        > div:hover {
+            background-color: #0d2747;
+            cursor: pointer;
+        }
 
 	 	// remove border on last
 	 	> div:last-child {
