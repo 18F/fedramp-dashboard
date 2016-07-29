@@ -1,5 +1,5 @@
 <grid class="grid" raw-items="controller.agencies" on-update="controller.onUpdate(items, state)" state="controller.savedState">
-    <div class="sidebar" ng-show="!controller.hideFilters">
+    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">
         <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
         <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>
         <grid-total></grid-total>
@@ -8,7 +8,7 @@
         <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
     </div>
-    <div class="grid" ng-class="{'grid-with-sidebar': !controller.hideFilters}">
+    <div class="grid full-width-print" ng-class="{'grid-with-sidebar': !controller.hideFilters}">
         <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>
-        <div class="export">
+        <div class="export hidden-print">
             <download-csv content="controller.filteredData" ng-if="controller.filteredData">
                 <button class="usa-button-secondary">
                     <span>Export to CSV</span>
