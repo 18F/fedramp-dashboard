@@ -40,6 +40,9 @@
             background-color:$color-gray-dark;
         }
     }
+    .contact-information {
+        background-color: $color-cool-blue-lightest;
+    }
 }
 
 .comparison-list {
@@ -307,7 +310,6 @@
 		border-bottom:1px solid $color-gray-lightest;
         .contact-information {
             width: 50%;
-            background-color: $color-cool-blue-lightest;
             color: $color-black;
             float: right;
             padding: 2rem;
@@ -404,7 +406,6 @@
     .row {
         clear:both;
         .contact-information {
-            background-color: $color-cool-blue-lightest;
             color: $color-black;
             padding: 2rem;
             margin-bottom:4rem;
@@ -425,5 +426,13 @@
     }
     .service-description {
         margin-top:4em;
+    }
+    .row {
+        clear:both;
+        .contact-information {
+            color: $color-black;
+            padding: 2rem;
+            margin-bottom:4rem;
+        }
     }
 }

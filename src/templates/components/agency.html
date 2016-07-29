@@ -23,21 +23,15 @@
             <div class="text">Reuses</div>
         </div>
     </div>
-    <div class="row system-profile clear">
-        <div class="col contact-information">
-            <h5>Contact Information</h5>
-            <div><strong>POC:</strong></div>
-            <div><strong>E-mail:</strong></div>
-            <div><strong>Website:</strong></div>
-        </div>
-        <div class="col">
-            <h4>FedRAMP Compliant Detail</h4>
+    <div class="row">
+        <div class="contact-information">
+            <h4>Contact Information</h4>
 
-            <h5>Authorization Type</h5>
-            <p></p>
+            <h5>POC</h5>
+            <p>{{controller.model.pointOfContact}}</p>
 
-            <h5>Agency Lead</h5>
-            <p></p>
+            <h5>E-mail</h5>
+            <p>{{controller.model.email}}</p>
         </div>
     </div>
 

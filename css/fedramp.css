@@ -5162,6 +5162,8 @@ grid-total {
       width: 12%; }
     .comparison .close-both .close {
       background-color: #323a45; }
+  .comparison .contact-information {
+    background-color: #dce4ef; }
 
 .comparison-list .title {
   font-size: 1.8rem; }
@@ -5349,7 +5351,6 @@ grid-total {
     border-bottom: 1px solid #f1f1f1; }
     .information .system-profile .contact-information {
       width: 50%;
-      background-color: #dce4ef;
       color: #000000;
       float: right;
       padding: 2rem; }
@@ -5420,7 +5421,6 @@ grid-total {
 .information.assessor .row {
   clear: both; }
   .information.assessor .row .contact-information {
-    background-color: #dce4ef;
     color: #000000;
     padding: 2rem;
     margin-bottom: 4rem; }
@@ -5436,6 +5436,13 @@ grid-total {
 
 .agency .service-description {
   margin-top: 4em; }
+
+.agency .row {
+  clear: both; }
+  .agency .row .contact-information {
+    color: #000000;
+    padding: 2rem;
+    margin-bottom: 4rem; }
 
 /*
 	provide condensed version of web standards variables for use
