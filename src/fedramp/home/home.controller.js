@@ -5,13 +5,13 @@
         .module('fedramp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$log', 'fedrampData', 'CsvService', 'Cache', '$location', '$state'];
+    HomeController.$inject = ['$log', 'fedrampData', 'CsvService', 'Cache', '$state', 'helperService'];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function HomeController ($log, fedrampData, CsvService, Cache, $location, $state) {
+    function HomeController ($log, fedrampData, CsvService, Cache, $state, helperService) {
         var self = this;
 
         /**
@@ -125,6 +125,8 @@
                 queryParams: {
                     status: status
                 }
+            }).then(function(){
+                helperService.scrollTo('products-grid');
             });
         };
 
