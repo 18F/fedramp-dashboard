@@ -1,5 +1,6 @@
-(function(){
-    "use strict";
+(function () {
+    'use strict';
+
     angular
         .module('fedramp.components')
         .component('gridFilter', {
@@ -129,13 +130,12 @@
         self.restoreState = restoreState;
         self.toggleExpand = toggleExpand;
 
-
-        function $onInit(){
-            if(!self.id){
+        function $onInit () {
+            if (!self.id) {
                 throw 'Please add an id attribute';
             }
 
-            if(!self.property && (!self.optionsFunc || !self.filterFunc)){
+            if (!self.property && (!self.optionsFunc || !self.filterFunc)) {
                 throw 'If property is not specified, optionsFunc and filterFunc must be passed in';
             }
 
@@ -150,13 +150,13 @@
 
             // If no options have been loaded, we load default ones
             // Also, if tab is not expanded, then don't load anything
-            if(self.opened && self.options.length === 0){
+            if (self.opened && self.options.length === 0) {
                 self.loadOptions(self.gridController.rawItems);
             }
 
             restoreState();
 
-            if(self.expanded){
+            if (self.expanded) {
                 $element.addClass('grid-filter-expanded');
             }
         }
@@ -171,50 +171,52 @@
          * @memberof Components.GridFilter
          *
          */
-        function restoreState(){
+        function restoreState () {
             var params = self.gridController.state;
-            if(!(self.id in params)){
+            if (!(self.id in params)) {
                 return null;
             }
+
             var values = params[self.id];
             var selected = [];
             self.opened = true;
             self.loadOptions(self.gridController.rawItems);
+
             // Check if loading non-primitive object
             var m = values.match(OBJECT_PARAM_REGEX);
-            if(m){
+            if (m) {
                 values = values.split(OBJECT_PARAM_REGEX)
                     // Remove empty results
                     .filter(Boolean)
                     // Convert to js object
                     .map(x => angular.fromJson(x))
-                    .forEach(function(val){
+                    .forEach(function (val) {
                         selected.push({
                             value: val,
                             selected: true 
                         });
-                        self.options.forEach(function(option){
-                            if(angular.equals(option.value, val)){
+                        self.options.forEach(function (option) {
+                            if (angular.equals(option.value, val)) {
                                 option.selected = true;
                             }
                         });
                     });
             } else {
                 // Handle basic primitive options
-                values.split(',').forEach(function(val){
+                values.split(',').forEach(function (val) {
                     selected.push({
                         value: (val),
                         selected: true
                     });
-                    self.options.forEach(function(option){
-                        if(option.value === val){
+                    self.options.forEach(function (option) {
+                        if (option.value === val) {
                             option.selected = true;
                         }
                     });
                 });
             }
             self.selectedOptionValues = selected;
-            if(self.selectedOptionValues){
+            if (self.selectedOptionValues) {
                 applyFilter();
             }
         }
@@ -224,10 +226,10 @@
          * @public
          * @memberof Components.GridFilter
          */
-        function selectOption(option){
+        function selectOption (option) {
             option.selected = !option.selected;
-            var pos = self.selectedOptionValues.findIndex(x=>angular.equals(x.value,option.value));
-            if(pos == -1){
+            var pos = self.selectedOptionValues.findIndex(x => angular.equals(x.value,option.value));
+            if (pos == -1) {
                 self.selectedOptionValues.push(option);
             } else {
                 self.selectedOptionValues.splice(pos,1);
@@ -244,11 +246,11 @@
          * @public
          * @memberof Components.GridFilter
          */
-        function saveState(){
-            if(self.selectedOptionValues && self.selectedOptionValues.length > 0){
-                var options =  self.selectedOptionValues.map(function(option){
+        function saveState () {
+            if (self.selectedOptionValues && self.selectedOptionValues.length > 0) {
+                var options =  self.selectedOptionValues.map(function (option) {
                     // When non-primitive object, store as json
-                    if(angular.isObject(option.value)){
+                    if (angular.isObject(option.value)) {
                         return ':(' + angular.toJson(option.value) + ')';
                     }
                     // Handle basic primitive value
@@ -267,12 +269,11 @@
          * @public
          * @memberof Components.GridFilter
          */
-        function applyFilter(){
+        function applyFilter () {
             toggleCss();
             self.filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.gridController.doFilter();
         }
-
 
         /**
          * Executes a filter on the current data set.
@@ -288,16 +289,15 @@
          * @return
          *  whether an object was found within the selected options.
          */
-        function filterFunc(obj, index, arr, selectedOptionValues){
-            
+        function filterFunc (obj, index, arr, selectedOptionValues) {
             // When no option is selected, return everything
-            if(self.selectedOptionValues.length === 0){
+            if (self.selectedOptionValues.length === 0) {
                 return obj;
             }
 
-            return self.selectedOptionValues.find(function(option){
+            return self.selectedOptionValues.find(function (option) {
                 let found = new Searcher().prop(self.property).equals(obj, option.value);
-                if(found.length > 0){
+                if (found.length > 0) {
                     return obj;
                 }
                 return null;
@@ -317,10 +317,9 @@
          * @param {array} source
          * Dataset from which to generate available options from.
          */
-        function loadOptions(source){
+        function loadOptions (source) {
             self.options = self.optionsFunc(source);
         }
-
 
         /**
          * Creates a set of options for a particular property to be filtered on.
@@ -344,11 +343,11 @@
          * @returns {array}  
          * An array of options that can be selected to filter. These must be in the form 
          */
-        function optionsFunc(source){
+        function optionsFunc (source) {
             var options = [];
             var cache = {};
-            new Searcher().prop(self.property).criteriaFunc(source, function(obj, value){
-                if(!cache[value]){
+            new Searcher().prop(self.property).criteriaFunc(source, function (obj, value) {
+                if (!cache[value]) {
                     cache[value] = true;
                     options.push({
                         label: value,
@@ -359,11 +358,11 @@
                 }
             });
 
-            options.sort(function(o1, o2){
-                if(o1.label < o2.label){
+            options.sort(function (o1, o2) {
+                if (o1.label < o2.label) {
                     return -1;
                 }
-                if(o1.label > o2.label){
+                if (o1.label > o2.label) {
                     return 1;
                 }
                 return 0;
@@ -371,14 +370,12 @@
             return options;
         }
 
-
-
         /**
          * Clears filter and resets dataset
          * @public
          * @memberof Components.GridFilter
          */
-        function clear(){
+        function clear () {
             self.selectedOptionValues = [];
             self.options.forEach(x=> x.selected = false);
             delete self.gridController.state[self.id];
@@ -393,9 +390,9 @@
          * @public
          * @memberof Components.GridFilter
          */
-        function wrapFilterFunc(func){
-            return function(obj, index, arr){
-                if(self.selectedOptionValues.length === 0){
+        function wrapFilterFunc (func) {
+            return function (obj, index, arr) {
+                if (self.selectedOptionValues.length === 0) {
                     return obj;
                 }
                 return func(obj, index, arr, self.selectedOptionValues);
@@ -408,8 +405,8 @@
          * @public
          * @memberof Components.GridFilter
          */
-        function toggleCss(){
-            if(self.selectedOptionValues.length > 0){
+        function toggleCss () {
+            if (self.selectedOptionValues.length > 0) {
                 $element.addClass(selectedCss);
             } else {
                 $element.removeClass(selectedCss);
@@ -420,8 +417,8 @@
          * Toggles the opening and closing of filter options. If a filter was initially closed,
          * the options are then generated.
          */
-        function toggleExpand(){
-            if(!self.opened && self.options.length === 0){
+        function toggleExpand () {
+            if (!self.opened && self.options.length === 0) {
                 self.loadOptions(self.gridController.rawItems);
             }
             self.opened = !self.opened;

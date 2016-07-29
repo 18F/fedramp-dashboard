@@ -41,7 +41,6 @@
         var filters = [];
         var sorts = [];
 
-
         self.$onInit = $onInit;
         self.addFilter = addFilter;
         self.addSort = addSort;
@@ -49,13 +48,56 @@
         self.clearFilters = clearFilters;
         self.updateSort = updateSort;
         self.stateUpdate = stateUpdate;
-
         self.state = $location.search() || {};
 
         // Default sort to utilize for results
         self.defaultSort = null;
         self.items = [];
         self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
+
+        /**
+         * Generate a description of the applied filters for printing.
+         * @public
+         * @memberof Components.Grid
+         *
+         * @returns
+         *  A human readable description of the filters applied
+         */
+        self.printDescription = function () {
+            let message = '';
+
+            if (filters) {
+                filters.forEach(f => {
+                    let name = '';
+                    if (f.header) {
+                        name = f.header;
+                    } else if (f.property) {
+                        name = f.property;
+                    }
+
+                    let vals = '';
+                    if (f.selectedOptionValues) {
+                        f.selectedOptionValues.forEach(o => {
+                            if (vals.length > 0) {
+                                vals += ', or ';
+                            }
+
+                            vals += o.value;
+                        });
+                    }
+
+                    if (name.length && vals.length) {
+                        if (message.length > 0) {
+                            message += ' and ';
+                        }
+
+                        message += name + ' is ' + vals;
+                    }
+                });
+            }
+
+            return message.length === 0 ? 'No filters applied' : message;
+        };
 
         /**
          * Initializes the component.

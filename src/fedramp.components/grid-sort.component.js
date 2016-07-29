@@ -26,7 +26,7 @@
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
      */
-    function GridSort($log, $parse, $element){
+    function GridSort ($log, $parse, $element) {
         var self = this;
         self.activated = null;
 
@@ -38,11 +38,11 @@
         self.toggleSort = toggleSort;
         self.clear = clear;
 
-        function $onInit(){
-            if(!self.name){
+        function $onInit () {
+            if (!self.name) {
                 throw 'Name must be specified for sort filter';
             }
-            if(self.property){
+            if (self.property) {
                 self.sortFunc = sortFunc;
             }
             restoreState();
@@ -56,11 +56,11 @@
          * @public
          * @memberof Components.GridSort
          */
-        function saveState(){
+        function saveState () {
             // Merge any existing parameters
             var existingParams = 
                 angular.extend(
-                    self.gridController.state,{
+                    self.gridController.state, {
                         'sort': (self.asc ? '' : '-') + self.name
                     });
 
@@ -74,15 +74,15 @@
          * @public
          * @memberof Components.GridSort
          */
-        function restoreState(){
+        function restoreState () {
             var sortParam = self.gridController.state.sort;
-            if(!sortParam){
+            if (!sortParam) {
                 loadDefaultSort();
                 return;
             }
 
             var m = sortParam.match(/(-)?(.*)/);
-            if(m[2] !== self.name){
+            if (m[2] !== self.name) {
                 return;
             }
 
@@ -97,10 +97,10 @@
          * @public
          * @memberof Components.GridSort
          */
-        function loadDefaultSort(){
-            if(self.default){
+        function loadDefaultSort () {
+            if (self.default) {
                 // Parse if default should be in asc/desc
-                self.asc = self.default.split('-').reduce(function(p, c){
+                self.asc = self.default.split('-').reduce(function (p, c) {
                     return false;
                 });
                 self.sort(self.asc);
@@ -116,7 +116,7 @@
          * @param {boolean} doAscending
          * Sort direction to use
          */
-        function sort(doAscending){
+        function sort (doAscending) {
             self.activated = angular.isDefined(doAscending);
             self.asc = doAscending;
             self.gridController.defaultSort = self;
@@ -125,7 +125,6 @@
             // Update state of all sorts
             self.gridController.updateSort();
             saveState();
-
         }
 
         /**
@@ -136,8 +135,8 @@
          * @public
          * @memberof Components.GridSort
          */
-        function toggleSort(){
-            if(!self.activated){
+        function toggleSort () {
+            if (!self.activated) {
                 self.sort(true);
                 return;
             }
@@ -150,19 +149,19 @@
          * @public
          * @memberof Components.GridSort
          */
-        function sortFunc(_a, _b) {
+        function sortFunc (_a, _b) {
             // Enables to sort on multiple properties for a specific grid sort.
             var props = self.property.split(',');
 
-            for(var x = 0; x < props.length; x++){
+            for (var x = 0; x < props.length; x++) {
                 var a = $parse(props[x])(_a);
                 var b = $parse(props[x])(_b);
 
                 // If we're dealing with numbers, delegate to number sort func
-                if(angular.isNumber(a)){
+                if (angular.isNumber(a)) {
                     return numberSortFunc(a, b);
                 }
-                if(angular.isArray(a)){
+                if (angular.isArray(a)) {
                     a = a.join(',');
                     b = b.join(',');
                 }
@@ -170,10 +169,10 @@
                 a = a.toLowerCase();
                 b = b.toLowerCase();
 
-                if(a < b){
+                if (a < b) {
                     return self.asc ? -1 : 1;
                 }
-                if(a > b) {
+                if (a > b) {
                     return self.asc ? 1 : -1;
                 }
             }
@@ -183,8 +182,8 @@
         /**
          * Handles generic numerical sort.
          */
-        function numberSortFunc(a, b){
-            if(self.asc){
+        function numberSortFunc (a, b) {
+            if (self.asc) {
                 return a - b;
             }
             return b - a;
@@ -193,14 +192,14 @@
         /**
          * Determines whether to highlight sort selected option.
          */
-        function highlight(asc){
-            if(!self.activated){
+        function highlight (asc) {
+            if (!self.activated) {
                 return false;
             }
-            if(self !== self.gridController.defaultSort){
+            if (self !== self.gridController.defaultSort) {
                 return false;
             }
-            if(self.asc === asc){
+            if (self.asc === asc) {
                 return true;
             }
             return false;
@@ -212,10 +211,9 @@
          * @public
          * @memberof Components.GridSort
          */ 
-        function clear(){
+        function clear () {
             self.activated = false;
             $element.removeClass('sort-selected');
         }
     }
-
 })();
