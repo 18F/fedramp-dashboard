@@ -82,7 +82,7 @@
          *  A value indicating if the product is in processing
          */
         self.isProcessing = function () {
-            return self.model.designation === 'In-Process';
+            return self.model.designation === 'In Process';
         };
 
         /**
@@ -94,7 +94,7 @@
          *  A value indicating if the product is compliant
          */
         self.isCompliant = function () {
-            let compliant = ['Compliant', 'In PMO Review'];
+            let compliant = ['Compliant'];
             return compliant.includes(self.model.designation);
         };
 
