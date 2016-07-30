@@ -38,18 +38,15 @@ describe('The product component', function () {
         component.model = { designation: 'Ready' };
         expect(component.isProcessing()).toBe(false);
 
-        component.model = { designation: 'In-Process' };
+        component.model = { designation: 'In Process' };
         expect(component.isProcessing()).toBe(true);
     });
 
     it('can determine if the model is compliant', function () {
-        component.model = { designation: 'In-Process' };
+        component.model = { designation: 'In Process' };
         expect(component.isCompliant()).toBe(false);
 
         component.model = { designation: 'Compliant' };
-        expect(component.isCompliant()).toBe(true);
-
-        component.model = { designation: 'In PMO Review' };
         expect(component.isCompliant()).toBe(true);
     });
 
@@ -77,7 +74,7 @@ describe('The product component', function () {
         component.model = { designation: 'Ready' };
         expect(component.percentComplete()).toBe(30);
 
-        component.model = { designation: 'In-Process' };
+        component.model = { designation: 'In Process' };
         expect(component.percentComplete()).toBe(50);
 
         component.model = { designation: 'Compliant' };
