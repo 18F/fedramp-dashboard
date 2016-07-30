@@ -56,7 +56,7 @@
          *  The total authorized cloud service providers
          */
         self.totalAuthorized = Cache.wrap('totalAuthorized')(function () {
-            return fedrampData.products().filter(x => x.designation !== 'In-Process').length;
+            return fedrampData.products().filter(x => x.designation === 'Compliant').length;
         });
 
         /**
@@ -96,7 +96,7 @@
          *  The total number of in-process products
          */
         self.totalInProcess = Cache.wrap('totalInProcess')(function(){
-            return fedrampData.products().filter(x => x.designation === 'In-Process').length;
+            return fedrampData.products().filter(x => x.designation === 'In Process').length;
         });
 
         /**
