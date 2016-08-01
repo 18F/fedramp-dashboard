@@ -2,142 +2,96 @@
 
 // add some style for the "filter results by" label / rule
 .fr-filter-label {
-	height:6.8rem;
-	position:relative;
+	height: 6.8rem;
+	position: relative;
 
 	.fr-filter-label-rule {
-		position:absolute;
-		top:50%;
-		left:0;
-		width:100%;
-		height:2px;
-		background-color:$color-gray-lighter;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background-color: $color-gray-lighter;
 	}
+
 	.fr-filter-label-text {
-		position:relative;
-		display:inline-block;
-		font-size:18px;
-		line-height:6.8rem;
-		color:$color-gray;
-		background-color:$color-gray-lightest;
-		padding:0 12px;
-		font-weight:700;
+		position: relative;
+		display: inline-block;
+		font-size: 18px;
+		line-height: 6.8rem;
+		color: $color-gray;
+		background-color: $color-gray-lightest;
+		padding: 0 12px;
+		font-weight: 700;
 	}
 }
 
 // style block of entity filters
 // don't prefer table display style, but most reliable in this configuration
 .fr-filters {
-	position:relative;
-	display:table;
-	width:96%;
-	max-width:none;
-	height:8.5rem;
-	line-height:8.5rem;
-	margin-left:0;
+	position: relative;
+	display: table;
+	width: 100%;
+	max-width: none;
+	height: 8.5rem;
+	line-height: 8.5rem;
+	margin-left: 0;
 
 	.fr-filters-row {
-		display:table-row;
+		display: table-row;
 
 		.usa-width-one-third {
-			border-right:1px solid $color-white;
-			display:table-cell;
+			border-right: 1px solid $color-white;
+			display: table-cell;
 		}
+
 		.usa-width-one-third, .usa-width-one-third:nth-child(2n) {
-			width:33.33%;
-			margin-right:0;
+			width: 33.33%;
+			margin-right: 0;
 		}
+
 		.usa-width-one-third:last-child {
-			border-right:none;
+			border-right: none;
 		}
+
         .selected {
-            background-color:$color-primary;
-            color:$color-white;
-            outline:none !important;
-            box-shadow:none !important;
+            background-color: $color-primary;
+            color: $color-white;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
-        button:focus
-        {
-            background-color:$color-primary;
-            color:$color-white;
-            outline:none !important;
-            box-shadow:none !important;
+        button:focus {
+            background-color: $color-primary;
+            color: $color-white;
+            outline: none !important;
+            box-shadow: none !important;
         }
 	}
+
 	// undid much of web standards to conform to design
 	button {
-		width:100%;
-		height:8.5rem;
-		border-radius:0;
-		margin:0;
-		padding:0;
-		line-height:inherit;
-		background-color:$color-gray-lighter;
-		color:$color-gray;
+		width: 100%;
+		height: 8.5rem;
+		border-radius: 0;
+		margin: 0;
+		padding: 0;
+		line-height: inherit;
+		background-color: $color-gray-lighter;
+		color: $color-gray;
 		transition: background-color 0.2s, color 0.2s;
 
 		// added span and tighter line height to preserve nice wrapping
 		span {
-			display:block;
-			line-height:1.8rem;
-			font-size:1.8rem
+			display: block;
+			line-height: 1.8rem;
+			font-size: 1.8rem
 		}
 	}
+
 	// filter active / hover state alts
 	button.active, button:hover {
-		background-color:$color-primary;
+		background-color: $color-primary;
 	    color: #fff;
 	}
-	// grid / list view controls
-	.controls {
-		display:block;
-		position:absolute;
-		top:0;
-		left:100%;
-		width:4%;
-		min-width:3.8rem;
-		line-height:4rem;
-		height:8.5rem;
-		border-left:3px solid $color-white;
-		background-color:$color-gray-lighter;
-		cursor:pointer;
-
-		label {
-			height:100%;
-			width:100%;
-			margin-top:0;
-			cursor:pointer;
-			float:right;
-		}
-		div {
-			height:50%;
-			text-align:center;
-			font-size:2.2rem;
-			padding-top:0.4rem;
-		}
-		.list-view, .grid-view {
-			transition:background-color 0.3s, color 0.3s;
-		}
-		.ng-empty, .ng-not-empty:hover {
-			~ .list-view {
-				color:$color-gray;
-				background-color:$color-gray-lighter;
-			}
-			~ .grid-view {
-				color:$color-white;
-				background-color: $color-primary;
-			}
-		}
-		.ng-not-empty, .ng-empty:hover {
-			~ .list-view {
-				color:$color-white;
-				background-color: $color-primary;
-			}
-			~ .grid-view {
-				color:$color-gray;
-				background-color:$color-gray-lighter;
-			}
-		}
-	}	
 }

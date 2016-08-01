@@ -4608,7 +4608,7 @@ download-csv .fa-download {
 .fr-filters {
   position: relative;
   display: table;
-  width: 96%;
+  width: 100%;
   max-width: none;
   height: 8.5rem;
   line-height: 8.5rem;
@@ -4650,43 +4650,6 @@ download-csv .fa-download {
   .fr-filters button.active, .fr-filters button:hover {
     background-color: #0071bc;
     color: #fff; }
-  .fr-filters .controls {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 4%;
-    min-width: 3.8rem;
-    line-height: 4rem;
-    height: 8.5rem;
-    border-left: 3px solid #ffffff;
-    background-color: #d6d7d9;
-    cursor: pointer; }
-    .fr-filters .controls label {
-      height: 100%;
-      width: 100%;
-      margin-top: 0;
-      cursor: pointer;
-      float: right; }
-    .fr-filters .controls div {
-      height: 50%;
-      text-align: center;
-      font-size: 2.2rem;
-      padding-top: 0.4rem; }
-    .fr-filters .controls .list-view, .fr-filters .controls .grid-view {
-      transition: background-color 0.3s, color 0.3s; }
-    .fr-filters .controls .ng-empty ~ .list-view, .fr-filters .controls .ng-not-empty:hover ~ .list-view {
-      color: #5b616b;
-      background-color: #d6d7d9; }
-    .fr-filters .controls .ng-empty ~ .grid-view, .fr-filters .controls .ng-not-empty:hover ~ .grid-view {
-      color: #ffffff;
-      background-color: #0071bc; }
-    .fr-filters .controls .ng-not-empty ~ .list-view, .fr-filters .controls .ng-empty:hover ~ .list-view {
-      color: #ffffff;
-      background-color: #0071bc; }
-    .fr-filters .controls .ng-not-empty ~ .grid-view, .fr-filters .controls .ng-empty:hover ~ .grid-view {
-      color: #5b616b;
-      background-color: #d6d7d9; }
 
 @font-face {
   font-family: "Source Sans Pro";
