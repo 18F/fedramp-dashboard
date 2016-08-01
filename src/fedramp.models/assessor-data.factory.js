@@ -21,7 +21,12 @@
 
             var mapping = {
                 'name': 'name',
-                'Accreditation_Date' : 'accreditationDate'
+                'Accreditation_Date' : 'accreditationDate',
+                'Logo': 'logo',
+                'Description': 'description',
+                'POC_Name': 'pocName',
+                'POC_Email': 'pocEmail',
+                'website': 'website'
             };
 
             /**
@@ -39,6 +44,41 @@
             self.accreditationDate = '';
 
             /**
+             * Assessor logo
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.logo = '';
+
+            /**
+             * Assessor description
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.description = '';
+
+            /**
+             * Assessor point of contact name
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.pocName = '';
+
+            /**
+             * Assessor point of contact email
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.pocEmail = '';
+
+            /**
+             * Assessor website
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.website = '';
+
+            /**
              * Initialize the assessor data object.
              *
              * @param {object} options
@@ -51,6 +91,7 @@
                 if (!options) {
                     return;
                 }
+
                 for (var x in options) {
                     if (!options.hasOwnProperty(x)) {
                         continue;
@@ -64,7 +105,6 @@
                         }
                     }
                 }
-
 
                 return self;
             };
@@ -87,6 +127,5 @@
 
             return self.init(options);
         }
-
     }
 })();

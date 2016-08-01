@@ -923,7 +923,7 @@ var self=this;/**
          * @constructor
          * @memberof Models
          */function AssessorData(options){// Scope `this` to self
-var self=this;var mapping={'name':'name','Accreditation_Date':'accreditationDate'};/**
+var self=this;var mapping={'name':'name','Accreditation_Date':'accreditationDate','Logo':'logo','Description':'description','POC_Name':'pocName','POC_Email':'pocEmail','website':'website'};/**
              * Assessor name
              * @member {string}
              * @memberof Models.AssessorData
@@ -932,6 +932,26 @@ var self=this;var mapping={'name':'name','Accreditation_Date':'accreditationDate
              * @member {Date}
              * @memberof Models.AssessorData
              */self.accreditationDate='';/**
+             * Assessor logo
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.logo='';/**
+             * Assessor description
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.description='';/**
+             * Assessor point of contact name
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.pocName='';/**
+             * Assessor point of contact email
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.pocEmail='';/**
+             * Assessor website
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.website='';/**
              * Initialize the assessor data object.
              *
              * @param {object} options
@@ -1004,7 +1024,7 @@ var self=this;/**
      * @constructor
      * @memberof Models
      */function AtoLetter(options){// Scope `this` to self
-var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'letterExpirationDate','Authorization_Date':'authorizationDate','Authorizing_Letter_Last_Sign_Date':'authorizingLetterSignedDate','Authorizing_Agency':'authorizingAgency','Authorizing_Subagency':'authorizingSubagency','Active':'active','Include_In_Marketplace':'includeInMarketplace','Independent_Assessor':'independentAssessor','Announcement_Date':'compliantDate'};/**
+var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'letterExpirationDate','Authorization_Date':'authorizationDate','Authorizing_Letter_Last_Sign_Date':'authorizingLetterSignedDate','Authorizing_Agency':'authorizingAgency','Authorizing_Subagency':'authorizingSubagency','Agency_POC':'pocName','Agency_POC_email':'pocEmail','Agency_Logo':'logo','Include_In_Marketplace':'includeInMarketplace','Independent_Assessor':'independentAssessor','Announcement_Date':'compliantDate'};/**
          * Letter date
          * @member {date}
          * @memberof Models.AtoLetter
@@ -1029,11 +1049,18 @@ var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'
          * @member {string}
          * @memberof Models.AtoLetter
          */self.authorizingSubagency='';/**
-         * Active status
-         * @deprecated
+         * The agency point of contact name
          * @member {string}
          * @memberof Models.AtoLetter
-         */self.active='';/**
+         */self.pocName='';/**
+         * The agency point of contact email
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.pocEmail='';/**
+         * The agency logo
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.logo='';/**
          * A value indicating if it should be included in the market place
          * @member {date}
          * @memberof Models.AtoLetter
@@ -1058,7 +1085,7 @@ var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'
          * @constructor
          * @memberof Models
          */function Data(options){// Scope `this` to self
-var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','CSP_URL':'cspUrl','Stage':'stage','Independent_Assessor':'independentAssessor','Underlying_CSP_Package_ID':'underlyingCspPackages','FedRAMP_Website_URL':'fedrampWebsite','CSP_Website':'cspWebsite','CSO_Description':'csoDescription','Expected_Compliance_Date':'expectedCompliance','Leveraged_ATO_Letters':'atoLetters','Announcement_Date':'compliantDate'};/**
+var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','CSP_URL':'cspUrl','Stage':'stage','Independent_Assessor':'independentAssessor','Underlying_CSP_Package_ID':'underlyingCspPackages','FedRAMP_Website_URL':'fedrampWebsite','CSP_Website':'cspWebsite','CSO_Description':'csoDescription','Expected_Compliance_Date':'expectedCompliance','Announcement_Date':'compliantDate','CSP_POC_Name':'pocName','CSP_POC_Email':'pocEmail','Leveraged_ATO_Letters':'atoLetters'};/**
              * Cloud service provider name
              * @member {string}
              * @memberof Models.Data
@@ -1139,6 +1166,14 @@ var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_P
              * @member {date}
              * @memberof Models.Data
              */self.compliantDate=null;/**
+             * The product point of contact name
+             * @member {string}
+             * @memberof Models.Data
+             */self.pocName='';/**
+             * The product point of contact email
+             * @member {string}
+             * @memberof Models.Data
+             */self.pocEmail='';/**
              * Leveraged ATO letters
              * @member {array}
              * @memberof Models.Data

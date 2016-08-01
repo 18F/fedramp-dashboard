@@ -10,8 +10,7 @@ describe('ATO letter can map', function () {
             'Letter_Expiration_Date': 'letterExpirationDate',
             'Authorizing_Letter_Last_Sign_Date': 'authorizingLetterSignedDate',
             'Authorizing_Agency': 'authorizingAgency',
-            'Authorizing_Subagency': 'authorizingSubagency',
-            'Active': 'active'
+            'Authorizing_Subagency': 'authorizingSubagency'
         };
     });
 

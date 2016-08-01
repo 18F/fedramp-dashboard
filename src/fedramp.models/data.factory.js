@@ -37,8 +37,10 @@
                 'CSP_Website': 'cspWebsite',
                 'CSO_Description': 'csoDescription',
                 'Expected_Compliance_Date': 'expectedCompliance',
-                'Leveraged_ATO_Letters': 'atoLetters',
-                'Announcement_Date': 'compliantDate'
+                'Announcement_Date': 'compliantDate',
+                'CSP_POC_Name': 'pocName',
+                'CSP_POC_Email': 'pocEmail',
+                'Leveraged_ATO_Letters': 'atoLetters'
             };
 
             /**
@@ -180,6 +182,20 @@
              * @memberof Models.Data
              */
             self.compliantDate = null;
+
+            /**
+             * The product point of contact name
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.pocName = '';
+
+            /**
+             * The product point of contact email
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.pocEmail = '';
 
             /**
              * Leveraged ATO letters

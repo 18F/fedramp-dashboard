@@ -25,7 +25,9 @@
             'Authorizing_Letter_Last_Sign_Date': 'authorizingLetterSignedDate',
             'Authorizing_Agency': 'authorizingAgency',
             'Authorizing_Subagency': 'authorizingSubagency',
-            'Active': 'active',
+            'Agency_POC': 'pocName',
+            'Agency_POC_email': 'pocEmail',
+            'Agency_Logo': 'logo',
             'Include_In_Marketplace': 'includeInMarketplace',
             'Independent_Assessor': 'independentAssessor',
             'Announcement_Date': 'compliantDate'
@@ -74,12 +76,25 @@
         self.authorizingSubagency = '';
 
         /**
-         * Active status
-         * @deprecated
+         * The agency point of contact name
          * @member {string}
          * @memberof Models.AtoLetter
          */
-        self.active = '';
+        self.pocName = '';
+
+        /**
+         * The agency point of contact email
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */
+        self.pocEmail = '';
+
+        /**
+         * The agency logo
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */
+        self.logo = '';
 
         /**
          * A value indicating if it should be included in the market place
