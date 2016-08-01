@@ -5596,7 +5596,8 @@ product-list {
       width: 70%; }
     product-list .product .designation {
       display: table-cell;
-      width: 30%; }
+      width: 30%;
+      text-align: right; }
 
 #topnav .limit {
   clear: both;

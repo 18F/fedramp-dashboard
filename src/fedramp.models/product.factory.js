@@ -156,6 +156,13 @@
              * @memberof Models.Product
              */
             self.serviceDescription = '';
+
+            /**
+             * Products dependent on the current product
+             * @member {array}
+             * @memberof Models.Product
+             */
+            self.dependents = [];
         }
 
         return Product;

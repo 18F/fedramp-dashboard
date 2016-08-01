@@ -145,6 +145,13 @@
                     item.expirationDate = helperService.toDate(d.expirationDate);
                     item.serviceDescription = safeTrim(d.csoDescription);
 
+                    // Find all products that depend on the current product
+                    data.forEach(function(d){
+                        if (d.underlyingCspPackages.includes(item.pkgId)) {
+                            item.dependents.push(d.pkg.trim());
+                        }
+                    });
+
                     item.reuses = d.atoLetters.length ;
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
                     if (leveraged.length > 0) {

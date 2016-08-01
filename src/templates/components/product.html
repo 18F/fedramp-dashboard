@@ -104,6 +104,12 @@
             </ul>
         </div>
     </div>
+    <div class="row products" ng-if="controller.model.dependents.length > 0">
+        <div class="col">
+            <h4>Dependent Products</h4>
+            <product-list products="controller.model.dependents"></product-list>
+        </div>
+    </div>
     <div class="row agencies">
         <div class="col">
             <h4>Agencies using this service</h4>
