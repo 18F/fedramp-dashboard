@@ -14,13 +14,13 @@
             }
         });
 
-    Product.$inject = ['$log', '$state', 'helperService'];
+    Product.$inject = ['$log', '$sce', '$state', 'helperService'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Product ($log, $state, helperService) {
+    function Product ($log, $sce, $state, helperService) {
         var self = this;
 
         /**
@@ -158,6 +158,24 @@
          */
         self.markdown = function (text) {
             return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));
+        };
+
+        /**
+         * Trust a URL
+         * @public
+         * @memberof Components.Product
+         *
+         * @param {string} url
+         *  The external URL
+         *
+         * @returns
+         *  The trusted URL
+         */
+        self.externalLink = function (url) {
+            if (url.indexOf('http') === -1) {
+                url = 'http://' + url;
+            }
+            return $sce.trustAsResourceUrl(url);
         };
     }
 })();

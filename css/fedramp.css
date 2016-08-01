@@ -5386,6 +5386,13 @@ panel {
     panel .panel i {
       display: table-cell;
       padding-right: 1.6rem; }
+  panel .panel-content {
+    border-top: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 2.8rem;
+    margin-right: 2.8rem;
+    margin-bottom: 1rem; }
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
