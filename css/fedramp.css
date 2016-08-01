@@ -4688,7 +4688,7 @@ download-csv .fa-download {
 .fr-filters {
   position: relative;
   display: table;
-  width: 96%;
+  width: 100%;
   max-width: none;
   height: 8.5rem;
   line-height: 8.5rem;
@@ -4730,43 +4730,6 @@ download-csv .fa-download {
   .fr-filters button.active, .fr-filters button:hover {
     background-color: #0071bc;
     color: #fff; }
-  .fr-filters .controls {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 4%;
-    min-width: 3.8rem;
-    line-height: 4rem;
-    height: 8.5rem;
-    border-left: 3px solid #ffffff;
-    background-color: #d6d7d9;
-    cursor: pointer; }
-    .fr-filters .controls label {
-      height: 100%;
-      width: 100%;
-      margin-top: 0;
-      cursor: pointer;
-      float: right; }
-    .fr-filters .controls div {
-      height: 50%;
-      text-align: center;
-      font-size: 2.2rem;
-      padding-top: 0.4rem; }
-    .fr-filters .controls .list-view, .fr-filters .controls .grid-view {
-      transition: background-color 0.3s, color 0.3s; }
-    .fr-filters .controls .ng-empty ~ .list-view, .fr-filters .controls .ng-not-empty:hover ~ .list-view {
-      color: #5b616b;
-      background-color: #d6d7d9; }
-    .fr-filters .controls .ng-empty ~ .grid-view, .fr-filters .controls .ng-not-empty:hover ~ .grid-view {
-      color: #ffffff;
-      background-color: #0071bc; }
-    .fr-filters .controls .ng-not-empty ~ .list-view, .fr-filters .controls .ng-empty:hover ~ .list-view {
-      color: #ffffff;
-      background-color: #0071bc; }
-    .fr-filters .controls .ng-not-empty ~ .grid-view, .fr-filters .controls .ng-empty:hover ~ .grid-view {
-      color: #5b616b;
-      background-color: #d6d7d9; }
 
 @font-face {
   font-family: "Source Sans Pro";
@@ -5300,7 +5263,9 @@ grid-total {
         max-height: 5.3rem; }
     .information .header .title {
       font-weight: 700;
-      font-size: 1.9rem; }
+      font-size: 1.9rem;
+      padding-top: 20px;
+      padding-bottom: 20px; }
     .information .header .reuse, .information .header .comparison-list tile .reuses {
       float: right;
       text-align: center;
@@ -5627,51 +5592,11 @@ product-list {
   clear: both;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0; }
-  #topnav .limit form {
+  padding: 12px 0 20px; }
+  #topnav .limit .usa-search {
     float: right; }
-    #topnav .limit form input {
-      border: 1px solid #DADADA;
-      color: #888;
-      height: 25px;
-      margin-top: 2px;
-      outline: 0 none;
-      padding: 3px 3px 3px 5px;
-      width: 160px;
-      font-size: 12px;
-      line-height: 15px;
-      box-shadow: inset 0 1px 4px #ECECEC;
-      -moz-box-shadow: inset 0 1px 4px #ECECEC;
-      -webkit-box-shadow: inset 0 1px 4px #ECECEC;
-      border-radius: 0;
-      display: inline; }
-    #topnav .limit form input[type="text"] {
-      border: 1px solid #eeeeee;
-      background: #fafafa;
-      font-family: inherit;
-      font-size: 16px;
-      height: 2em;
-      padding: 2%;
-      margin: 16px 0 20px;
-      width: 70%;
-      display: inline; }
-    #topnav .limit form input[type="submit"] {
-      font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-      width: 65px;
-      height: 32px;
-      padding: 0;
-      font-size: 14px;
-      color: #fff;
-      text-align: center;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-      background: #2980b9;
-      border: 0;
-      border-bottom: 2px solid #2475ab;
-      cursor: pointer;
-      -webkit-box-shadow: inset 0 -2px #2475ab;
-      box-shadow: inset 0 -2px #2475ab;
-      position: relative;
-      top: -0.3rem; }
+    #topnav .limit .usa-search input[type="search"] {
+      width: 20rem; }
   #topnav .limit .nav {
     float: right;
     list-style: none;

@@ -55,10 +55,10 @@ describe('The product component', function () {
         expect(component.statusMessage()).toBeDefined();
 
         component.model = { designation: 'Compliant', authorizationDate: null };
-        expect(component.statusMessage()).toBe('Compliant Since ');
+        expect(component.statusMessage()).toBe('Authorized Since ');
 
         component.model = { designation: 'Compliant', authorizationDate: '07/11/2016' };
-        expect(component.statusMessage()).toBe('Compliant Since 07/11/2016');
+        expect(component.statusMessage()).toBe('Authorized Since 07/11/2016');
 
         component.model = { designation: 'Ready', expectedCompliance: null };
         expect(component.statusMessage()).toBe('This provider has not given an Estimated Compliance Date');
