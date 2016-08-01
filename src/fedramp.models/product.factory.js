@@ -109,6 +109,13 @@
             self.expectedCompliance = '';
 
             /**
+             * The compliance date
+             * @member {string}
+             * @memberof Models.Product
+             */
+            self.compliantDate = '';
+
+            /**
              * The expiration date
              * @member {string}
              * @memberof Models.Product
@@ -156,6 +163,20 @@
              * @memberof Models.Product
              */
             self.serviceDescription = '';
+
+            /**
+             * The product point of contact name
+             * @member {string}
+             * @memberof Models.Product
+             */
+            self.pocName = '';
+
+            /**
+             * The product point of contact email
+             * @member {string}
+             * @memberof Models.Product
+             */
+            self.pocEmail = '';
 
             /**
              * Products dependent on the current product

@@ -60,28 +60,6 @@
             self.agencies = [];
 
             /**
-             * The point of contact name
-             * @member {string}
-             * @memberof Models.Assessor
-             */
-            self.pointOfContact = '';
-
-            /**
-             * The point of contact email
-             * @member {string}
-             * @memberof Models.Assessor
-             */
-            self.email = '';
-
-            /**
-             * The agency URL
-             * @member {string}
-             * @memberof Models.Assessor
-             */
-            self.url = '';
-
-
-            /**
              * The date assessor was accredited
              * @member {string}
              * @memberof Models.Assessor
@@ -101,6 +79,41 @@
              * @memberof Models.Assessor
              */
             self.description = '';
+
+            /**
+             * Assessor logo
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.logo = '';
+
+            /**
+             * Assessor description
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.description = '';
+
+            /**
+             * Assessor point of contact name
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.pocName = '';
+
+            /**
+             * Assessor point of contact email
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.pocEmail = '';
+
+            /**
+             * Assessor website
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.website = '';
         }
 
         return Assessor;

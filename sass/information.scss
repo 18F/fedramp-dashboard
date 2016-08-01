@@ -308,6 +308,7 @@
 	    padding-top:0;
         margin-bottom:4rem;
 		border-bottom:1px solid $color-gray-lightest;
+
         .contact-information {
             width: 50%;
             color: $color-black;
@@ -316,6 +317,20 @@
            
             h5 {
                 margin-top: 0;
+            }
+
+            dl {
+                dt {
+                    float: left;
+                    font-weight: bolder;
+                    clear: left;
+                    display: inline-block;
+                    padding-right: 0.8rem;
+                }
+
+                dd {
+                    margin-left: 0;
+                }
             }
         }
     }
@@ -410,6 +425,19 @@
             color: $color-black;
             padding: 2rem;
             margin-bottom:4rem;
+            dl {
+                dt {
+                    float: left;
+                    font-weight: bolder;
+                    clear: left;
+                    display: inline-block;
+                    padding-right: 0.8rem;
+                }
+
+                dd {
+                    margin-left: 0;
+                }
+            }
         }
         h5 {
             margin-top: 0;
@@ -434,6 +462,20 @@
             color: $color-black;
             padding: 2rem;
             margin-bottom:4rem;
+
+            dl {
+                dt {
+                    float: left;
+                    font-weight: bolder;
+                    clear: left;
+                    display: inline-block;
+                    padding-right: 0.8rem;
+                }
+
+                dd {
+                    margin-left: 0;
+                }
+            }
         }
     }
 }

@@ -142,11 +142,15 @@
                     item.sponsoringAgency = d.sponsoringAgency;
                     item.authorizationDate = helperService.toDate(d.authorizationDate);
                     item.expectedCompliance = helperService.toDate(d.expectedCompliance);
+                    item.compliantDate = helperService.toDate(d.compliantDate);
                     item.expirationDate = helperService.toDate(d.expirationDate);
                     item.serviceDescription = safeTrim(d.csoDescription);
+                    item.website = safeTrim(d.cspWebsite);
+                    item.pocName = safeTrim(d.pocName);
+                    item.pocEmail = safeTrim(d.pocEmail);
 
                     // Find all products that depend on the current product
-                    data.forEach(function(d){
+                    data.forEach(d => {
                         if (d.underlyingCspPackages.includes(item.pkgId)) {
                             item.dependents.push(d.pkg.trim());
                         }
@@ -227,6 +231,9 @@
                             names.push(l.authorizingAgency.trim());
                             let item = new Agency();
                             item.name = l.authorizingAgency.trim();
+                            item.pocName = l.pocName.trim();
+                            item.pocEmail = l.pocEmail.trim();
+                            item.logo = l.logo.trim();
                             items.push(item);
                         }
 
@@ -234,6 +241,9 @@
                             names.push(l.authorizingSubagency.trim());
                             let item = new Agency();
                             item.name = l.authorizingSubagency.trim();
+                            item.pocName = l.pocName.trim();
+                            item.pocEmail = l.pocEmail.trim();
+                            item.logo = l.logo.trim();
                             items.push(item);
                         }
                     }
@@ -396,18 +406,25 @@
              * @returns
              * Assessor being populated.
              */
-            function fillFromRawAssessor(assessor){
+            function fillFromRawAssessor (assessor) {
                 for (let x = 0; x < rawAssessors.length; x++) {
                     // Empty {} seem to be returned sometimes
                     if (Object.keys(rawAssessors[x]).length === 0) {
                         continue;
                     }
+
                     var assessorData = new AssessorData(rawAssessors[x]);
                     if (safeTrim(assessorData.name) === safeTrim(assessor.name)) {
                         assessor.accreditationDate = helperService.toDate(assessorData.accreditationDate);
+                        assessor.description = assessorData.description;
+                        assessor.logo = assessorData.logo;
+                        assessor.pocName = assessorData.pocName;
+                        assessor.pocEmail = assessorData.pocEmail;
+                        assessor.website = assessorData.website;
                         break;
                     }
                 }
+
                 return assessor;
             }
 
