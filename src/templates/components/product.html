@@ -94,7 +94,7 @@
             </dl>
         </div>
     </div>
-    <panel ng-if="controller.model.serviceDescription" header="Service Description">
+    <panel ng-if="controller.model.serviceDescription" header="Service Description" expand="false">
         <div ng-bind-html="controller.markdown(controller.model.serviceDescription)" class="row panel-content"></div>
     </panel>
     <div class="row products" ng-if="controller.additionalProducts.length > 0">
