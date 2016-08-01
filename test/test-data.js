@@ -104,5 +104,11 @@ var TestData = {
                 'name': 'ABC',
                 'Accreditation_Date': '2014-12-22T05:00:00.000Z'
             }
-        ]
+        ],
+        DictionaryData: [{
+                "field": "CSP",
+                "description": "Cloud Service Provider, i.e., the company providing the Cloud Service Offering.",
+                "source": "ATO/P-ATO Letter",
+                "type": "Text"
+        }]
 };

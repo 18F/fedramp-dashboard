@@ -107,6 +107,7 @@
                 throw 'Specify an onUpdate function! Otherwise, you don\' get updates.';
             }
             self.items = self.rawItems;
+            self.onUpdate({items: self.items, state: self.state});
         }
 
 

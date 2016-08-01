@@ -191,6 +191,10 @@
                 url: '/:first/versus/:second',
                 templateUrl: 'src/templates/home/assessor-comparison.html',
                 controller: 'AssessorComparisonController as controller'
+            })
+            .state('fedramp.app.dictionary', {
+                url: '/dictionary',
+                template: '<dictionary></dictionary>'
             });
     }
 })();

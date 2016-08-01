@@ -8,6 +8,7 @@
         .module('fedramp.services', ['fedramp.models'])
         // Path to data.json
         .constant('dataUrl', 'https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json')
+        .constant('dictionaryUrl', 'https://raw.githubusercontent.com/18F/fedramp-data/master/dictionary/dictionary.json')
         .run(run);
 
     run.$inject = ['$log'];

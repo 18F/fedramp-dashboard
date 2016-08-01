@@ -1,0 +1,19 @@
+<grid id="dictionary-grid" ng-if="controller.dataDictionary.length > 0" raw-items="controller.dataDictionary" on-update="controller.onUpdate(items, state)" state="controller.state">
+    <div class="information">
+        <div class="fedramp">
+            <h2>Dictionary</h1>
+            <grid-search id="type" placeholder="Search by field name" property="field"></grid-search>
+            <div ng-repeat="term in controller.filteredDictionary | orderBy:'field' track by $index">
+                <h3>{{term.field}}</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{term.description}}</dd>
+                    <dt>Type</dt>
+                    <dd>{{term.type}}</dd>
+                    <dt>Source</dt>
+                    <dd>{{term.source}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</grid>

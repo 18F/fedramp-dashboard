@@ -2,8 +2,9 @@
 describe('DatasourceService', function () {
 	'use strict';
 	var DatasourceService;
-	var $httpBackend;
-    var githubUrl = 'https://raw.githubusercontent.com/18F/fedramp-micropurchase/master/data/data.json';
+    var $httpBackend;
+    var dataUrl;
+    var dictionaryUrl;
 
     // Do that good/bad data factory
     var dataJson = {
@@ -18,9 +19,12 @@ describe('DatasourceService', function () {
         module('fedramp.services');
         inject(function ($injector) {
             DatasourceService = $injector.get('DatasourceService');
+            dataUrl = $injector.get('dataUrl');
+            dictionaryUrl = $injector.get('dictionaryUrl');
 
             // Use $injector to grab services/factories
             $httpBackend = $injector.get('$httpBackend');
+
         });
     });
 
@@ -32,11 +36,25 @@ describe('DatasourceService', function () {
 	describe('pull()', function () {
 		it('Retrieves latest FedRAMP provider information', function () {
             // Mock http request
-			$httpBackend.expectGET(githubUrl).respond(201, dataJson);
+			$httpBackend.expectGET(dataUrl).respond(201, dataJson);
 
             // Perform call
-			DatasourceService.pull(githubUrl).then(function(response){
+			DatasourceService.pull(dataUrl).then(function(response){
 				expect(response).toEqual(dataJson);
+			});
+
+			$httpBackend.flush();
+		});
+	});
+
+	describe('pullDataDictionary()', function () {
+		it('Retrieves latest FedRAMP dictionary data', function () {
+            // Mock http request
+			$httpBackend.expectGET(dictionaryUrl).respond(201, TestData.DictionaryData);
+
+            // Perform call
+			DatasourceService.pull(dictionaryUrl).then(function(response){
+				expect(response).toEqual(TestData.DictionaryData);
 			});
 
 			$httpBackend.flush();

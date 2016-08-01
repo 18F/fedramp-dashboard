@@ -5,13 +5,13 @@
         .module('fedramp.services')
         .service('DataService', DataService);
 
-    DataService.$inject = ['$log', 'StorageData', 'StorageAssessorData', 'StorageSettings', 'Settings', 'Data', 'AssessorData', 'DatasourceService', 'dataUrl'];
+    DataService.$inject = ['$log', 'StorageData', 'StorageAssessorData', 'StorageSettings', 'Settings', 'Data', 'AssessorData', 'DatasourceService', 'dataUrl', 'dictionaryUrl'];
 
     /**
      * @constructor
      * @memberof Services
      */
-    function DataService ($log, StorageData, StorageAssessorData, StorageSettings, Settings, Data, AssessorData, DatasourceService, dataUrl) {
+    function DataService ($log, StorageData, StorageAssessorData, StorageSettings, Settings, Data, AssessorData, DatasourceService, dataUrl, dictionaryUrl) {
         var self = this;
 
         /**
@@ -37,6 +37,22 @@
                 saveSettings(meta);
 
                 return storage;
+            });
+        };
+
+        /**
+         * Issue a GET request to retrieve the data dictionary.
+         */
+        self.pullDataDictionary = function (){
+            return DatasourceService.pull(dictionaryUrl).then(function (dataDictionary) {
+                for (let x = dataDictionary.length - 1; x >= 0; x--) {
+                    var d = dataDictionary[x];
+                    // Remove empty keys
+                    if (Object.keys(d).length === 0){
+                        dataDictionary.splice(x, 1);
+                    }
+                }
+                return dataDictionary;
             });
         };
 

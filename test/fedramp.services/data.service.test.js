@@ -4,6 +4,7 @@ describe('The data service', function () {
 	var DataService;
 	var $httpBackend;
     var githubUrl; 
+    var dictionaryUrl;
     var dataJson  = TestData.DataJsonHttpResponse;
 
     beforeEach(function () {
@@ -12,6 +13,7 @@ describe('The data service', function () {
             DataService = $injector.get('DataService');
             $httpBackend = $injector.get('$httpBackend');
             githubUrl = $injector.get('dataUrl');
+            dictionaryUrl = $injector.get('dictionaryUrl');
         });
     });
 
@@ -27,6 +29,20 @@ describe('The data service', function () {
 
             // Perform call
 			DataService.pull().then(function (response) {
+				expect(response).toBeDefined();
+			});
+
+			$httpBackend.flush();
+		});
+	});
+
+	describe('for pullDataDictionary()', function () {
+		it('can retrieve the latest FedRAMP dictionary information', function () {
+            // Mock http request
+			$httpBackend.expectGET(dictionaryUrl).respond(201, TestData.DictionaryData);
+
+            // Perform call
+			DataService.pullDataDictionary().then(function (response) {
 				expect(response).toBeDefined();
 			});
 
