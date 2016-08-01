@@ -1,0 +1,27 @@
+@import 'variables';
+
+.usa-footer {
+    .usa-footer-primary-section {
+        min-height: 35rem;
+    }
+    
+    .usa-footer-nav {
+        .usa-footer-primary-link {
+            display: inline-block;
+        }
+        
+        li {
+            display: table-row;
+
+            i {
+                display: table-cell;
+                width: 4rem;
+                color: $color-gray-light;
+            }
+
+            p, span, a {
+                display: table-cell;
+            }
+        }
+    }
+}
