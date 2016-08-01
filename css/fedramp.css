@@ -5279,6 +5279,14 @@ grid-total {
       padding: 2rem; }
       .information .system-profile .contact-information h5 {
         margin-top: 0; }
+      .information .system-profile .contact-information dl dt {
+        float: left;
+        font-weight: bolder;
+        clear: left;
+        display: inline-block;
+        padding-right: 0.8rem; }
+      .information .system-profile .contact-information dl dd {
+        margin-left: 0; }
   .information .fedramp dl dt {
     float: left;
     font-weight: bolder;
@@ -5348,6 +5356,14 @@ grid-total {
     color: #000000;
     padding: 2rem;
     margin-bottom: 4rem; }
+    .information.assessor .row .contact-information dl dt {
+      float: left;
+      font-weight: bolder;
+      clear: left;
+      display: inline-block;
+      padding-right: 0.8rem; }
+    .information.assessor .row .contact-information dl dd {
+      margin-left: 0; }
   .information.assessor .row h5 {
     margin-top: 0; }
 
@@ -5367,6 +5383,14 @@ grid-total {
     color: #000000;
     padding: 2rem;
     margin-bottom: 4rem; }
+    .agency .row .contact-information dl dt {
+      float: left;
+      font-weight: bolder;
+      clear: left;
+      display: inline-block;
+      padding-right: 0.8rem; }
+    .agency .row .contact-information dl dd {
+      margin-left: 0; }
 
 /*
 	provide condensed version of web standards variables for use

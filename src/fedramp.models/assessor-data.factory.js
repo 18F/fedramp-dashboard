@@ -20,7 +20,7 @@
             var self = this;
 
             var mapping = {
-                'name': 'name',
+                'Name': 'name',
                 'Accreditation_Date' : 'accreditationDate',
                 'Logo': 'logo',
                 'Description': 'description',

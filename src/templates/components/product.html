@@ -48,9 +48,14 @@
     <div class="row system-profile">
         <div class="col contact-information">
             <h5>Contact Information</h5>
-            <div><strong>POC:</strong></div>
-            <div><strong>E-mail:</strong></div>
-            <div><strong>Website:</strong></div>
+            <dl>
+                <dt ng-if="controller.model.pocName">POC:</dt>
+                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
+                <dt ng-if="controller.model.pocEmail">E-mail:</dt>
+                <dd ng-if="controller.model.pocEmail">{{controller.model.pocEmail}}</dd>
+                <dt ng-if="controller.model.website">Website:</dt>
+                <dd ng-if="controller.model.website">{{controller.model.website}}</dd>
+            </dl>
         </div>
         <div class="col">
             <h4>System Profile</h4>

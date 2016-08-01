@@ -53,6 +53,27 @@
             self.authorized = 0;
 
             /**
+             * The agency point of contact name
+             * @member {string}
+             * @memberof Models.Agency
+             */
+            self.pocName = '';
+
+            /**
+             * The agency point of contact email
+             * @member {string}
+             * @memberof Models.Agency
+             */
+            self.pocEmail = '';
+
+            /**
+             * The agency logo
+             * @member {string}
+             * @memberof Models.Agency
+             */
+            self.logo = '';
+
+            /**
              * Providers associated to the agency
              * @member {array}
              * @memberof Models.Agency

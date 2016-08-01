@@ -37,6 +37,18 @@
         };
 
         /**
+         * Determine if there is contact information present
+         * @public
+         * @memberof Components.Assessor
+         *
+         * @returns
+         *  A value indicating if there is contact information to display
+         */
+        self.hasContactInformation = function () {
+            return self.model.pocName || self.model.pocEmail || self.model.website;
+        };
+
+        /**
          * Build a link from the given item
          * @public
          * @memberof Components.Assessor

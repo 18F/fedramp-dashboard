@@ -35,14 +35,17 @@
         <div class="contact-information">
             <h4>Contact Information</h4>
 
-            <h5>POC</h5>
-            <p>{{controller.model.pointOfContact}}</p>
-
-            <h5>E-mail</h5>
-            <p>{{controller.model.email}}</p>
-
-            <h5>Website</h5>
-            <p>{{controller.model.url}}</p>
+            <dl ng-if="controller.hasContactInformation()">
+                <dt ng-if="controller.model.pocName">POC:</dt>
+                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
+                <dt ng-if="controller.model.pocEmail">E-mail:</dt>
+                <dd ng-if="controller.model.pocEmail">{{controller.model.pocEmail}}</dd>
+                <dt ng-if="controller.model.website">Website:</dt>
+                <dd ng-if="controller.model.website">{{controller.model.website}}</dd>
+            </dl>
+            <p ng-if="!controller.hasContactInformation()">
+                No contact information on record
+            </p>
         </div>
     </div>
     <panel ng-if="controller.model.description" header="Assessor Description">

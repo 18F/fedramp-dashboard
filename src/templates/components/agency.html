@@ -26,12 +26,12 @@
     <div class="row">
         <div class="contact-information">
             <h4>Contact Information</h4>
-
-            <h5>POC</h5>
-            <p>{{controller.model.pointOfContact}}</p>
-
-            <h5>E-mail</h5>
-            <p>{{controller.model.email}}</p>
+            <dl>
+                <dt ng-if="controller.model.pocName">POC:</dt>
+                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
+                <dt ng-if="controller.model.pocEmail">E-mail:</dt>
+                <dd ng-if="controller.model.pocEmail">{{controller.model.pocEmail}}</dd>
+            </dl>
         </div>
     </div>
     <div class="row products">
