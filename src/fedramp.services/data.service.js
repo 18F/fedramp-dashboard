@@ -45,7 +45,8 @@
          */
         function saveProviders (data, assessors) {
             var storage = new StorageData({Assessors: assessors});
-            // Fill up Provider data
+            storage.clear()
+
             for (let i = 0; i < data.length; i++) {
                 let d = new Data(data[i]);
                 storage.update(d.hash(), d);
@@ -58,6 +59,8 @@
          */
         function saveAssessors (assessors) {
             let assessorStorage = new StorageAssessorData();
+            assessorStorage.clear();
+
             for (let i = 0; i < assessors.length; i++) {
                 let d = new AssessorData(assessors[i]);
                 assessorStorage.update(d.hash(), d);
