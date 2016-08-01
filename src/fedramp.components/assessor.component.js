@@ -13,13 +13,13 @@
             }
         });
 
-    Assessor.$inject = ['$log', '$state', 'helperService'];
+    Assessor.$inject = ['$log', '$sce', '$state', 'helperService'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Assessor ($log, $state, helperService) {
+    function Assessor ($log, $sce, $state, helperService) {
         var self = this;
 
         /**
@@ -78,6 +78,24 @@
          */
         self.markdown = function (text) {
             return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));
+        };
+
+        /**
+         * Trust a URL
+         * @public
+         * @memberof Components.Assessor
+         *
+         * @param {string} url
+         *  The external URL
+         *
+         * @returns
+         *  The trusted URL
+         */
+        self.externalLink = function (url) {
+            if (url.indexOf('http') === -1) {
+                url = 'http://' + url;
+            }
+            return $sce.trustAsResourceUrl(url);
         };
     }
 })();

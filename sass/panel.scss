@@ -7,25 +7,36 @@ panel {
         background-color: $color-gray-lightest;
         padding-left: 1em;
         padding-right: 1em;
-        margin-left:2.8rem;
-        margin-right:2.8rem;
-        margin-bottom:1rem;
+        margin-left: 2.8rem;
+        margin-right: 2.8rem;
+        margin-bottom: 1rem;
 
         .header {
-            display:table;
-            width:100%;
-            margin:0;
-            padding-left:2rem;
-            cursor:pointer;
+            display: table;
+            width: 100%;
+            margin: 0;
+            padding-left: 2rem;
+            cursor: pointer;
         }
+
         h4 {
-            display:table-cell;
-            width:96%;
+            display: table-cell;
+            width: 96%;
             margin:0 !important;
         }
+
         i {
-            display:table-cell;
+            display: table-cell;
             padding-right: 1.6rem;
         }
+    }
+
+    .panel-content {
+        border-top: none;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-left: 2.8rem;
+        margin-right: 2.8rem;
+        margin-bottom: 1rem;
     }
 }
