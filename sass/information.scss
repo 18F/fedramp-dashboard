@@ -7,39 +7,43 @@
 	.first, .second {
         display: inline-block;
         width: 48.925%;
-        background-color:$color-white;
-        position:relative;
-        z-index:100;
+        background-color: $color-white;
+        position: relative;
+        z-index: 100;
 	}
+
     .first {
-		float:left;
-        margin-right:2%;
+		float: left;
+        margin-right: 2%;
     }
 
     .second {
 		.usa-grid {
-	        background-color:$color-white;
+	        background-color: $color-white;
 		}
     }
+
 	.second.comparison-list {
-		background:none;
+		background: none;
 	}
 
     .close-both {
-        position:absolute;
-        width:99.8%;
-        top:0;
+        position: absolute;
+        width: 99.8%;
+        top: 0;
 
         .row {
-            position:relative;
+            position: relative;
             z-index: 110;
-            margin:0 auto;
-            width:12%;
+            margin: 0 auto;
+            width: 12%;
         }
+
         .close {
-            background-color:$color-gray-dark;
+            background-color: $color-gray-dark;
         }
     }
+
     .contact-information {
         background-color: $color-cool-blue-lightest;
     }
@@ -47,25 +51,27 @@
 
 .comparison-list {
     .title {
-        font-size:1.8rem;
+        font-size: 1.8rem;
     }
 
     .detail {
-        display:block;
+        display: block;
         float: none !important;
     }
 
     .usa-grid {
-	    padding-right:0;
+	    padding-right: 0;
     }
+
     .fr-filter-label {
-	    height:7.6rem;
+	    height: 7.6rem;
 
 	    .fr-filter-label-text {
-		    line-height:7.6rem;
-			background-color:$color-gray-lightest;
+		    line-height: 7.6rem;
+			background-color: $color-gray-lightest;
 	    }
     }
+
     .message {
         margin-bottom: 2em;
 
@@ -90,74 +96,84 @@
             color: $color-gray-dark;
         }
     }
+
     .tile {
         border-bottom: 1px solid $color-gray-lightest;
         background-color: #fff;
+
         .row.fr-grid-layout-row {
-            border:none;
+            border: none;
         }        
     }
+
     tile {
 	    .fr-grid-layout {
-		    display:block;
-		    min-height:20rem;
+		    display: block;
+		    min-height: 20rem;
 
 		    .fr-grid-layout-row {
-			    position:relative;
-			    display:block;
-			    padding-left:3rem;
-			    height:100%;
+			    position: relative;
+			    display: block;
+			    padding-left: 3rem;
+			    height: 100%;
 		
 			    > div {
-				    border:none;
+				    border: none;
 			    }
+
 				.fr-grid-cell-name {
-					display:block;
-					max-width:66%;
-					width:auto;
-					padding-left:0;
-					padding-top:1.4rem;
-					line-height:1.7rem;
-					margin-bottom:3.5rem;
+					display: block;
+					max-width: 66%;
+					width: auto;
+					padding-left: 0;
+					padding-top: 1.4rem;
+					line-height: 1.7rem;
+					margin-bottom: 3.5rem;
 				}
+
 				.fr-grid-cell-service, .fr-grid-cell-deployment, .fr-grid-cell-impact {
-					display:block;
-					float:left;
-					width:30%;
-					line-height:1.7rem;
-					font-size:1.4rem;
+					display: block;
+					float: left;
+					width: 30%;
+					line-height: 1.7rem;
+					font-size: 1.4rem;
 				} 
+
 			    .fr-grid-cell-icon {
-				    position:absolute;
-				    top:0;
-				    right:10rem;
-					width:11.5rem;
-					height:10.1rem;
+				    position: absolute;
+				    top: 0;
+				    right: 10rem;
+					width: 11.5rem;
+					height: 10.1rem;
 		            text-align: center;
 		            padding-top: 2rem;
 				}
+
 			    .fr-grid-cell-metric {
-				    position:absolute;
-				    top:0;
-				    right:0;
-					width:9.5rem;
-					height:10.1rem;
+				    position: absolute;
+				    top: 0;
+				    right: 0;
+					width: 9.5rem;
+					height: 10.1rem;
 		            text-align: center;
-		            padding-top:2.7rem;
+		            padding-top: 2.7rem;
 		            background-color: $color-primary;
 		            color: $color-white;
-		            font-weight:$font-bold;
+		            font-weight: $font-bold;
+
 		            .text {
 		                font-size: 1.3rem;
-		                font-weight:$font-normal;
+		                font-weight: $font-normal;
 		            }
+
 		            .number {
 		                font-size: 2.6rem;
 		                margin-bottom: -0.8rem;
 		            }
 			    }
+
                 .fr-grid-cell-contact, .fr-grid-cell-service {
-                    padding-left:0px;
+                    padding-left: 0px;
                 }
 		    }
 	    }
@@ -165,24 +181,29 @@
 }
 
 .information {
-	font-size:1.6rem;
+	font-size: 1.6rem;
+
     .row {
         display: block;
         padding: 0.3em 0;
+
         h4 {
             margin-top: 0;
-            font-size:2rem;
+            font-size: 2rem;
         }
+
         h5 {
-	        margin-top:0;
-	        margin-bottom:0;
-	        font-size:1.6rem;
+	        margin-top: 0;
+	        margin-bottom: 0;
+	        font-size: 1.6rem;
         }
+
         p {
-            margin-top:0;
-            margin-bottom:1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
         }
     }
+
     .col {
         display: inline-block;
     }
@@ -206,16 +227,18 @@
             }
         }
     }
+
     .close:hover {
-        background-color:$color-gray-dark;
+        background-color: $color-gray-dark;
     }
 
     .header {
         border-top: none;
         padding-top: 0;
-        margin-left:3rem;
+        margin-left: 3rem;
+
         .logo {
-	        margin-top:2.1rem;
+	        margin-top: 2.1rem;
 
             img {
                 max-width: auto;
@@ -226,6 +249,8 @@
         .title {
             font-weight: $font-bold;
             font-size: 1.9rem;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         .reuse, .comparison-list tile .reuses {
@@ -233,14 +258,14 @@
             text-align: center;
             width: 9.5rem;
             height: 10.1rem;
-            padding-top:2.7rem;
+            padding-top: 2.7rem;
             background-color: $color-primary;
             color: $color-white;
             font-weight: bolder;
 
             .text {
                 font-size: 1.3rem;
-                font-weight:$font-normal;
+                font-weight: $font-normal;
             }
 
             .number {
@@ -258,7 +283,7 @@
 
         .col {
             .text {
-                font-size:1.2rem;
+                font-size: 1.2rem;
             }
         }
         
@@ -266,10 +291,11 @@
             width: 23%;
 
             img {
-	            max-width:4rem;
-	            max-height:4rem;
+	            max-width: 4rem;
+	            max-height: 4rem;
             }
         }
+
         .progress {
             height: 5px;
             background-color: $color-gray-light;
@@ -299,18 +325,19 @@
             font-size: smaller;
         }
     }
+
     .system-profile, .fedramp, .agencies {
-	    padding-left:2.8rem;
+	    padding-left: 2.8rem;
 	}
 
     .system-profile {
-	    margin-top:4rem;
-	    padding-top:0;
-        margin-bottom:4rem;
-		border-bottom:1px solid $color-gray-lightest;
+	    margin-top: 4rem;
+	    padding-top: 0;
+        margin-bottom: 4rem;
+		border-bottom: 1px solid $color-gray-lightest;
 
         .contact-information {
-            width: 50%;
+            width:  50%;
             color: $color-black;
             float: right;
             padding: 2rem;
@@ -349,9 +376,10 @@
                 margin-left: 0;
             }
         }
+
         .col {
-	        display:block;
-			clear:both;
+	        display: block;
+			clear: both;
         }
     }
 
@@ -360,8 +388,8 @@
         background-color: $color-gray-lightest;
         padding-left: 1em;
         padding-right: 1em;
-        margin-left:2.8rem;
-        margin-right:2.8rem;
+        margin-left: 2.8rem;
+        margin-right: 2.8rem;
 
         .col {
             width: 100%;
@@ -381,12 +409,13 @@
     .agencies,
     .assessors {
         border-top: none;
-	    padding-left:2.8rem;
+	    padding-left: 2.8rem;
 		border-bottom: 1px solid $color-gray-lightest;
 
         ul {
             margin-left: -5px;
-            margin-top:0px;
+            margin-top: 0px;
+
             li {
                 list-style: none;
             }
@@ -401,30 +430,33 @@
         color: $color-primary-darker;
         font-weight: bold;
     }
+
     .divider {
         background-color: $color-primary-darker;
-        width:100%;
+        width: 100%;
         height: 6px;
-        margin-top:6rem;
+        margin-top: 6rem;
         padding: 0;
     }
 
     .no-image {
-        border:1px solid $color-gray-light;
+        border: 1px solid $color-gray-light;
         height: 90px;
-        width:90px;
-        display:inline-block;
-        color:$color-gray-light;
+        width: 90px;
+        display: inline-block;
+        color: $color-gray-light;
     }
 }
 
 .information.assessor {
     .row {
-        clear:both;
+        clear: both;
+
         .contact-information {
             color: $color-black;
             padding: 2rem;
-            margin-bottom:4rem;
+            margin-bottom: 4rem;
+
             dl {
                 dt {
                     float: left;
@@ -439,29 +471,34 @@
                 }
             }
         }
+
         h5 {
             margin-top: 0;
         }
     }
+
     .not-accredited {
-        background-color:$color-gray-light;
+        background-color: $color-gray-light;
     }
 }
 
 .agency {
     .system-profile {
-        margin-top:10rem;
-        border-bottom:none;
+        margin-top: 10rem;
+        border-bottom: none;
     }
+
     .service-description {
-        margin-top:4em;
+        margin-top: 4em;
     }
+
     .row {
-        clear:both;
+        clear: both;
+
         .contact-information {
             color: $color-black;
             padding: 2rem;
-            margin-bottom:4rem;
+            margin-bottom: 4rem;
 
             dl {
                 dt {

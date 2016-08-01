@@ -5183,7 +5183,9 @@ grid-total {
         max-height: 5.3rem; }
     .information .header .title {
       font-weight: 700;
-      font-size: 1.9rem; }
+      font-size: 1.9rem;
+      padding-top: 20px;
+      padding-bottom: 20px; }
     .information .header .reuse, .information .header .comparison-list tile .reuses {
       float: right;
       text-align: center;
