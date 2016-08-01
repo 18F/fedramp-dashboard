@@ -133,7 +133,7 @@
             let message = '';
             
             if (self.isCompliant()) {
-                message = 'Compliant Since ' + (self.model.authorizationDate || '');
+                message = 'Authorized Since ' + (self.model.authorizationDate || '');
             } else {
                 if (self.model.expectedCompliance) {
                     message = 'Estimated Compliance Date ' + self.model.expectedCompliance;
