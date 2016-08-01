@@ -1392,10 +1392,9 @@ var assessorStorage=saveAssessors(data.Assessors);// Add Providers
 var storage=saveProviders(data.Providers,assessorStorage.all());// Add Settings
 saveSettings(meta);return storage;});};/**
          * Stores provider information into local storage
-         */function saveProviders(data,assessors){var storage=new StorageData({Assessors:assessors});// Fill up Provider data
-for(var i=0;i<data.length;i++){var d=new Data(data[i]);storage.update(d.hash(),d);}return storage;}/**
+         */function saveProviders(data,assessors){var storage=new StorageData({Assessors:assessors});storage.clear();for(var i=0;i<data.length;i++){var d=new Data(data[i]);storage.update(d.hash(),d);}return storage;}/**
          * Stores assessor information into local storage
-         */function saveAssessors(assessors){var assessorStorage=new StorageAssessorData();for(var i=0;i<assessors.length;i++){var d=new AssessorData(assessors[i]);assessorStorage.update(d.hash(),d);}return assessorStorage;}/**
+         */function saveAssessors(assessors){var assessorStorage=new StorageAssessorData();assessorStorage.clear();for(var i=0;i<assessors.length;i++){var d=new AssessorData(assessors[i]);assessorStorage.update(d.hash(),d);}return assessorStorage;}/**
          * Stores setting information into local storage
          */function saveSettings(meta){var settingStorage=new StorageSettings();var setting=new Settings(meta);setting.refresh();settingStorage.update(setting.hash(),setting);}}})();(function(){'use strict';angular.module('fedramp.services').service('DatasourceService',DatasourceService);DatasourceService.$inject=['$http'];/**
      * @constructor

@@ -45,7 +45,7 @@
          */
         function saveProviders (data, assessors) {
             var storage = new StorageData({Assessors: assessors});
-            storage.clear()
+            storage.clear();
 
             for (let i = 0; i < data.length; i++) {
                 let d = new Data(data[i]);
