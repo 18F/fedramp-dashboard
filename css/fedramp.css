@@ -5310,10 +5310,13 @@ grid-total {
     .information .status .col .text {
       font-size: 1.2rem; }
     .information .status .ready, .information .status .in-process, .information .status .compliant {
-      width: 23%; }
+      width: 23%;
+      opacity: 0.6; }
       .information .status .ready img, .information .status .in-process img, .information .status .compliant img {
         max-width: 4rem;
         max-height: 4rem; }
+    .information .status .active {
+      opacity: 1; }
     .information .status .progress {
       height: 5px;
       background-color: #aeb0b5;

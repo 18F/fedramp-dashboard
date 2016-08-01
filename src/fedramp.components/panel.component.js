@@ -23,6 +23,6 @@
     function Panel () {
         var self = this;
         self.header = self.header || '';
-        self.expand = angular.isDefined(self.expand) || true;
+        self.expand = angular.isDefined(self.expand) ? self.expand : true;
     }
 })();
