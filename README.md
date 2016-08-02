@@ -90,7 +90,7 @@ The following User Stories were created and refined in response to many user sur
 
 ## Maintenance 
 ### Add new Cloud Offering, Agency, or 3PAO
-1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *Make sure the **entity name is unique***
+1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the entity name is unique*
 2. Add image file to the correct directory on the FedRAMP web server.
 3. Ensure the `URL` to the image file is in the new data entry.
 4. Publish new FedRAMP data to `data.gov` feed. 
