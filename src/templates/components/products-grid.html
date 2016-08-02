@@ -44,14 +44,6 @@
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>
-        <div class="export hidden-print">
-            <download-csv content="controller.filteredData" ng-if="controller.filteredData">
-                <button class="usa-button-secondary">
-                    <span>Export to CSV</span>
-                    <i class="fa fa-download" aria-hidden="true"></i>
-                </button>
-            </download-csv>
-        </div>
     </div>
     <div class="clear"></div>
 </grid>
