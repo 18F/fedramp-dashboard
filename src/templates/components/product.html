@@ -92,6 +92,29 @@
             </dl>
         </div>
     </div>
+
+    <div class="row timeline">
+        <div class="text-center">
+            <h4>FedRAMP Authorization Timeline</h4>
+        </div>
+        <div class="timeline-row">
+            <div class="timeline-col" ng-class="{'ready' : controller.model.fedrampReadyDate}">
+                <div>{{controller.model.fedrampReadyDate}}</div>
+                <span>Ready</span>
+            </div>
+            <div class="timeline-col" ng-class="{'inprocess' : controller.model.inProcessDate}">
+                <div>{{controller.model.inProcessDate</div>
+                <span>In-Process</span>
+            </div>
+            <div class="timeline-col" ng-class="{'authorized' : controller.model.authorizationDate}">
+                <div>{{controller.model.authorizationDate}}</div>
+                <span>Authorized</span>
+            </div>
+        </div>
+        <div class="estimated text-center" ng-if="controller.model.expectedCompliance">
+            {{controller.model.expectedCompliance}} Estimated Compliance Date
+        </div>
+    </div>
     <panel ng-if="controller.model.serviceDescription" header="Service Description" expand="false">
         <div ng-bind-html="controller.markdown(controller.model.serviceDescription)"></div>
     </panel>

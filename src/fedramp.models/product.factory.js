@@ -184,6 +184,20 @@
              * @memberof Models.Product
              */
             self.dependents = [];
+
+            /**
+             * Date product became fedramp ready
+             * @member {date}
+             * @memberof Models.Product
+             */
+            self.fedrampReadyDate = null;
+
+            /**
+             * Date product became in-process
+             * @member {date}
+             * @memberof Models.Product
+             */
+            self.inProcessDate = null;
         }
 
         return Product;

@@ -451,6 +451,67 @@
         display: inline-block;
         color: $color-gray-light;
     }
+
+    .timeline {
+        margin-bottom: 4rem;
+        width: 100%;        
+        .timeline-row {
+            display:table;
+            width: 100%;        
+
+            .timeline-col.ready {
+                background-color:$color-gray-light;
+            }
+
+            .timeline-col.inprocess {
+                background-color:$color-gray;
+            }
+
+            .timeline-col.authorized {
+                background-color:$color-cool-blue;
+            }
+
+            .timeline-col.ready, 
+            .timeline-col.inprocess, 
+            .timeline-col.authorized {
+                span {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    visibility: visible;
+                }
+                div {
+                    font-size: 2.2rem;
+                    font-weight:600;
+                    visibility: visible;
+                }
+            }
+
+            .timeline-col {
+                background-color:$color-gray-lighter;
+                height:105px;
+                vertical-align: middle;
+                display:table-cell;
+                width: 33%;
+                text-align:center;
+                border-right: 1px solid #fff;
+                color:#fff;
+                span, div {
+                    visibility: hidden;
+                }
+            }
+            .timeline-col:first-child {
+                border-left: 1px solid #fff;
+            }
+
+        }
+
+        .estimated {
+            background-color: $color-cool-blue-lightest;
+            height:44px;
+            border-top:1px solid #fff;
+            padding-top:12px;
+        }
+    }
 }
 
 .information.assessor {

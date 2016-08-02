@@ -5418,6 +5418,48 @@ grid-total {
     width: 90px;
     display: inline-block;
     color: #aeb0b5; }
+  .information .timeline {
+    margin-bottom: 4rem;
+    width: 100%; }
+    .information .timeline .timeline-row {
+      display: table;
+      width: 100%; }
+      .information .timeline .timeline-row .timeline-col.ready {
+        background-color: #aeb0b5; }
+      .information .timeline .timeline-row .timeline-col.inprocess {
+        background-color: #5b616b; }
+      .information .timeline .timeline-row .timeline-col.authorized {
+        background-color: #205493; }
+      .information .timeline .timeline-row .timeline-col.ready span,
+      .information .timeline .timeline-row .timeline-col.inprocess span,
+      .information .timeline .timeline-row .timeline-col.authorized span {
+        font-size: 1.3rem;
+        font-weight: 600;
+        visibility: visible; }
+      .information .timeline .timeline-row .timeline-col.ready div,
+      .information .timeline .timeline-row .timeline-col.inprocess div,
+      .information .timeline .timeline-row .timeline-col.authorized div {
+        font-size: 2.2rem;
+        font-weight: 600;
+        visibility: visible; }
+      .information .timeline .timeline-row .timeline-col {
+        background-color: #d6d7d9;
+        height: 105px;
+        vertical-align: middle;
+        display: table-cell;
+        width: 33%;
+        text-align: center;
+        border-right: 1px solid #fff;
+        color: #fff; }
+        .information .timeline .timeline-row .timeline-col span, .information .timeline .timeline-row .timeline-col div {
+          visibility: hidden; }
+      .information .timeline .timeline-row .timeline-col:first-child {
+        border-left: 1px solid #fff; }
+    .information .timeline .estimated {
+      background-color: #dce4ef;
+      height: 44px;
+      border-top: 1px solid #fff;
+      padding-top: 12px; }
 
 .information.assessor .row {
   clear: both; }

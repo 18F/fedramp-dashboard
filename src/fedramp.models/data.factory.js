@@ -205,6 +205,13 @@
             self.atoLetters = [];
 
             /**
+             * Date when cso became fedramp ready
+             * @member {date}
+             * @memberof Models.Data
+             */
+            self.fedrampReady = null;
+
+            /**
              * Initialize the provider object.
              *
              * @param {object} options
