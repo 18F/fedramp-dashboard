@@ -96,7 +96,126 @@ The following User Stories were created and refined in response to many user sur
 4. Publish new FedRAMP data to `data.gov` feed. 
 
 ### Adding a new filter to the dashboard
-> Provide `code` example
+A grid consists of the following components:
+- grid
+  - gridFilter
+    - A component that allows 0 or more options to be selected using a property expression or custom option/filter functions
+  - gridSort
+    - A component that filters based on a property expression
+  - gridSearch
+    - A component that allows free text-based searches
+
+    
+The `grid` is the parent component that all child components must require. The gridFilter component maintains state by using the `id` passed into `<grid-filter id="blah"></grid-filter>` and uses that as the key for the value that gets stored in the URL hash.
+
+For instance, `<grid-filter id="blah"></grid-filter>` would render 
+`?blah=<value from selectedOptions>`
+
+The `<grid-filter/>` has two modes of operation
+
+1. Using a `property expression` that defines which property to use to generate a list of available options. For more information regarding property expressions, please see the @example at http://truetandem.github.io/fedramp-dashboard/doc/Services.Searcher.html
+2. Providing custom functions (`optionsFunc` and `filterFunc`) to render available options and apply custom filtering behavior.
+
+
+Assume we have the following data
+```json
+[
+  {
+    "name": "TrueTandem",
+    "employees": [
+        {
+           "name": "Bryan",
+           "favoriteLanguages" : ["go"]
+        },
+        {
+            "name": "John",
+            "favoriteLanguages" : ["go", "js"]
+        }
+    ]
+  },
+  {
+    "name": "18F",
+    "employees": [
+        {
+           "name": "Laura",
+           "favoriteLanguages" : ["ruby"]
+        }
+    ]
+  }  
+]
+```
+
+### 1. Using Property Expressions
+
+#### Render filter containing list of company names (where property name = "name")
+Filter Values = ['TrueTandem', '18F']
+
+```html
+<grid-filter id="companyName" property="name"></grid-filter>
+```
+#### Render filter containing list of favorite languages (where propery name = "favoriteLanguages"
+Filter Values = ['go', 'js', 'ruby']
+
+```html
+<grid-filter id="favoriteLanguages" property="e.favoriteLanguages in employees"></grid-filter>
+```
+
+#### Render filter containing list of employee names (where propery name = "employees.name"
+Filter Values = ['Bryan', 'John', 'Laura']
+
+```html
+<grid-filter id="employeeName" property="e.name in employees"></grid-filter>
+```
+
+### 2. Using Custom Functions
+The gridFilter component also allows an `optionsFunc` and `filterFunc` to be passed in to accomodate custom filter options and behavior.
+
+```html
+<grid-filter id="name" options-func="optionsNameFunc" filter-func="filterByNameFunc"></grid-filter>
+```
+
+The optionsFunc must return an array of options that a user can select. It should be in the following format:
+```javascript
+{
+    value: <object>,
+    label: 'Friendly text label'
+}
+```
+> Note that for values that are **NOT** primitive types, the json representation will be stored in the url. 
+
+```javascript
+// data contains array of currently filtered items.
+function optionsNameFunc(data){
+    return [
+       {
+          value: '12345',
+          label: 'John'
+       },
+       {
+          value: '54321',
+          label: 'Bryan'
+       },
+       {
+          value: '1523',
+          label: 'Laura'
+       }       
+    ];
+}
+```
+
+The `filterFunc` will be passed into the native `Array.prototype.filter` filter. That means that returning the current object will include that value in the filtered dataset. If null is returned, it will be excluded. The only added change is the inclusion of the fourth parameter, `selectedOptions`. This contains an array of options that have been selected by the user.
+
+```javascript
+function filterByNameFunc(company, index, arr, selectedOptions){
+    for (var x = 0; x < selectedOptions.length; x++) {
+        var option = selectedOptions[x];
+        if (option.value === company.name) {
+            return company;
+        }
+    }
+    return null;
+}
+```
 
 ### Maintain static header/footer
 > Provide `code` example
