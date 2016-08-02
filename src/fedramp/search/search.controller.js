@@ -73,7 +73,7 @@
          *  The URL
          *
          * @returns
-         *  The extesion abbreviation
+         *  The extension abbreviation
          */
         self.extension = function (url) {
             if (url) {
@@ -118,23 +118,34 @@
          *  An array of matching items
          */
         function filterByName(items, query) {
-            return items.filter(x => x.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+            let q = query.toLowerCase();
+            return items.filter(x => {
+                if (x.name.toLowerCase().indexOf(query) !== -1) {
+                    return true;
+                }
+
+                if (x.type === 'product' && x.provider.toLowerCase().indexOf(query) !== -1) {
+                    return true;
+                }
+
+                return false;
+            });
         }
         
         (function () {
-            filterByName(fedrampData.providers(), self.query).forEach(x => {
-                self.results.push({
-                    title: x.name,
-                    content: '',
-                    unescapedUrl: self.internalLink('provider', x.name),
-                    publishedAt: null,
-                    siteLinks: []
-                });
-            });
+            // filterByName(fedrampData.providers(), self.query).forEach(x => {
+            //     self.results.push({
+            //         title: x.name,
+            //         content: '',
+            //         unescapedUrl: self.internalLink('provider', x.name),
+            //         publishedAt: null,
+            //         siteLinks: []
+            //     });
+            // });
 
             filterByName(fedrampData.products(), self.query).forEach(x => {
                 self.results.push({
-                    title: x.name,
+                    title: x.provider + ' - ' + x.name,
                     content: '',
                     unescapedUrl: self.internalLink('product', x.name),
                     publishedAt: null,

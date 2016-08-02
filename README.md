@@ -151,17 +151,21 @@ npm run package
 ```
 
 This will generate the following file structure:
+
 ```
 build/
+   css/
    dest/
-   dist/
+   fonts/
+   img/
    lib/
    src/
-   src.min/
 ```
+
 where
+ - `css/` contains the production ready stylesheets
  - `dest/` contains the production ready application code
- - `dist/` consists of a `zip` and `tar.gz` file containing the contents of the `dest` directory
+ - `fonts/` contains the fonts used in the application
+ - `img/` contains the images used in the application
  - `lib/`  contains third-party libraries
  - `src/`  contains the original source files
- - `src.min/` contains the minified/uglified version of all the JavaScript files
