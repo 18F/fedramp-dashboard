@@ -1,93 +1,105 @@
 @import 'variables';
 
 .grid {
-    display:block;
-	max-width:none;
-	width:100%;
+    display: block;
+	max-width: none;
+	width: 100%;
     background-color: $color-gray-lightest;
 
 	.fr-grid-layout {
-		display:table;
-		width:100%;
-		font-size:1.4rem;
-		background-color:$color-white;
-		transition:background-color 0.3s;
+		display: table;
+		width: 100%;
+		font-size: 1.4rem;
+		background-color: $color-white;
+		transition: background-color 0.3s;
 
 		&:hover {
-			background-color:$color-cool-blue-lightest;
+			background-color: $color-cool-blue-lightest;
 		}
+
 		.fr-grid-layout-row {
-			display:table-row;
+			display: table-row;
 			
 			> div {
-				display:table-cell;
-				vertical-align:middle;
+				display: table-cell;
+				vertical-align: middle;
 			}
 		}
 	}
+
 	// handle styling for grid view filters, need padding for positioning
 	.fr-grid-header {
-		font-size:1.4rem;
-		height:4.4rem;
-		line-height:4.4rem;
+		font-size: 1.4rem;
+		height: 4.4rem;
+		line-height: 4.4rem;
 
 		.fr-grid-layout-row {
 			> div {
-				padding-top:2.3rem;
+				padding-top: 2.3rem;
 				vertical-align: top;
 			}
+
 			.fr-grid-cell-name {
-				line-height:4.4rem;
+				line-height: 4.4rem;
 			}
 		}
 	}
 	// background handling for the filtering header
 	.fr-grid-layout.fr-grid-header {
-		height:6.8rem;
-		margin-top:1.6rem;
-		background:$color-gray-lightest;
-		color:$color-gray;
-		white-space:nowrap;
+		height: 6.8rem;
+		margin-top: 1.6rem;
+		background: $color-gray-lightest;
+		color: $color-gray;
+		white-space: nowrap;
 	}
+
 	// padding for text based columns
 	// exxempt icon & metric cols
 	.fr-grid-layout-row {
 		> div {
-			padding-left:2rem;
+			padding-left: 2rem;
 		}
+
 		// name needs some extra padding
 		> div:first-child {
-			padding-left:2.8rem;
+			padding-left: 2.8rem;
 		}
+
 		.fr-grid-cell-icon,
 		.fr-grid-cell-metric {
-		 	padding-left:0;
+		 	padding-left: 0;
 		 }
 	}
 	.fr-grid-cell-name {
-		width:31%;
-		line-height:1;
+		width: 31%;
+		line-height: 1;
 	}
+
 	.fr-grid-cell-service {
-		width:16%;
+		width: 16%;
+
 		> div {
-			float:left;
-			margin-right:1rem;
+			float: left;
+			margin-right: 1rem;
 		}
 	}
+
 	.fr-grid-cell-deployment {
-		width:20%;
+		width: 20%;
 	}
+
 	.fr-grid-cell-impact {
-		width:15%;
+		width: 15%;
 	}
+
 	.fr-grid-cell-icon {
-		width:10%;
-		font-size:1.2rem;
+		width: 10%;
+		font-size: 1.2rem;
 	}
+
 	.fr-grid-cell-metric {
-		width:8%;
-		text-align:center;
+		width: 8%;
+		text-align: center;
 	}
 
     .fr-grid-cell-contact {
@@ -97,7 +109,7 @@
     .agency, 
     .assessor {
         .fr-grid-cell-metric {
-            width:7%;
+            width: 7%;
         }
     }
 

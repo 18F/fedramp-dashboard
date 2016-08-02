@@ -1,47 +1,51 @@
 @import 'variables';
 
 .sidebar {
-    float:left;
-    width:21%;
-	padding:5.2rem 0 3rem 2.4rem;
+    float: left;
+    width: 21%;
+	padding: 5.2rem 0 3rem 2.4rem;
 
 	// each contain a set of content filters
 	.grid-filter {
-		background:none;
-		margin:2.3rem 0;
-		padding:0;
-	    display:block;
+		background: none;
+		margin: 2.3rem 0;
+		padding: 0;
+	    display: block;
 	    cursor: pointer;
-	    line-height:1;
+	    line-height: 1;
 
 	    // filtering options
 	    .option {
-	        display:block;
-	        margin:1.3rem 0;
-	        font-size:1.5rem;
-	        font-weight:$font-normal;
+	        display: block;
+	        margin: 1.3rem 0;
+	        font-size: 1.5rem;
+	        font-weight: $font-normal;
 
 			// check for active filter
 			.fa-check-circle {
 	            color: #0070ba;
-	            margin-left:0.5rem;
+	            margin-left: 0.5rem;
 	        }
 	    }
+
 		// sidebar filter active state
 	    .selected {
-		    font-weight:$font-bold;
+		    font-weight: $font-bold;
 	    }
+
 		// indent filter child items
 	    .options {
-	        padding-left:1.3rem;
-			color:$color-gray;
+	        padding-left: 1.3rem;
+			color: $color-gray;
 	    }
 	}
+
 	.filter-header {
-		font-size:1.6rem;
-		font-weight:$font-bold;
-		transition:color 0.3s;
+		font-size: 1.6rem;
+		font-weight: $font-bold;
+		transition: color 0.3s;
 	}
+
 	// controls a filter with active state
 	.grid-filter-selected {
 		// change header color to blue
@@ -49,22 +53,25 @@
 		    color: $color-primary;
 		}
 	}
+
 	// sidebar search control
 	grid-search {
-		margin:1.7rem 0;
+		margin: 1.7rem 0;
 
 		// input field addition
 		input {
-			font-size:1.4rem;
+			font-size: 1.4rem;
 		}
 	}
+
 	// hide display of total selected
 	.filter-total {
-		display:none;
+		display: none;
 	}
+
 	// controls sidebar filter + detail icons
     .icons {
-        float:right;
+        float: right;
         font-size: 0.8em;
     }
 }

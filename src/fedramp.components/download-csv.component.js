@@ -27,6 +27,10 @@
         self.download = download;
         self.filename = filename;
 
+        // self.$onInit = function () {
+            
+        // };
+
         /**
          * Listens when updates are made to content. Prepares the download
          * url when updates come in.
