@@ -87,7 +87,7 @@
                 <dd>{{ controller.model.sponsoringAgency }}</dd>
                 <dt>Independent Assessor:</dt>
                 <dd>{{ controller.model.independentAssessor }}</dd>
-                <dt ng-if="controller.model.authorizationDate">Authorization Date:</dt>
+                <dt ng-if="controller.model.authorizationDate">{{ controller.model.authorizationType === 'JAB' ? 'JAB Provisional' : 'Agency' }} Authorization Date:</dt>
                 <dd ng-if="controller.model.authorizationDate">{{ controller.model.authorizationDate }}</dd>
             </dl>
         </div>
