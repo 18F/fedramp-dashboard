@@ -4574,7 +4574,10 @@ a:active {
   clear: both; }
   .export download-csv {
     margin: 0 auto;
-    /* display: table; */ }
+    display: table; }
+
+.export.sticky-is-visible {
+  left: initial !important; }
 
 download-csv .fa-download {
   margin-left: 1rem; }

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
   "devDependencies": {
     "angular": "^1.5.7",
+    "angular-sticky-top": "^1.1.1",
     "angular-ui-router": "^0.3.1",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
@@ -52,7 +53,6 @@
     "karma-coveralls": "^1.1.2",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
-    "ngsticky": "^1.7.12",
     "papaparse": "^4.1.2",
     "phantomjs-prebuilt": "^2.1.7",
     "showdown": "^1.4.2",

@@ -13,7 +13,7 @@
         <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
         <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
-        <div class="export hidden-print" sticky offset="30">
+        <div class="export hidden-print" ng-sticky>
             <download-csv content="controller.filteredData" ng-if="controller.filteredData">
                 <button class="usa-button-secondary">
                     <span>Export to CSV</span>

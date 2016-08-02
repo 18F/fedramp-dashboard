@@ -25,7 +25,7 @@ var prodJsPath = [
     '\n        <!-- Added on ' + new Date() + ' -->',
     '        <script src="lib/angular.min.js"></script>',
     '        <script src="lib/angular-ui-router.min.js"></script>',
-    '        <script src="lib/sticky.min.js"></script>',
+    '        <script src="lib/angular-sticky.min.js"></script>',
     '        <script src="lib/papaparse.min.js"></script>',
     '        <script src="lib/uswds.min.js"></script>',
     '        <script src="fedramp.min.js"></script>'
@@ -62,7 +62,7 @@ gulp.task('copy:lib', ['clean'], function(){
             'node_modules/babel-polyfill/dist/*.min.js',
             'node_modules/angular/angular.min.js',
             'node_modules/angular-ui-router/release/*.min.js',
-            'node_modules/ngsticky/dist/*.min.js',
+            'node_modules/angular-sticky-top/*.min.js',
             'node_modules/papaparse/papaparse.min.js',
             'node_modules/showdown/dist/*.min.js',
             'node_modules/uswds/dist/js/*.min.js'

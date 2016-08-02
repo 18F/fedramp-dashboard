@@ -7,7 +7,7 @@
     angular
         .module('fedramp', [
             'ui.router',
-            'sticky',
+            'ngSticky',
             'fedramp.models',
             'fedramp.services',
             'fedramp.components'
