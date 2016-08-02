@@ -54,10 +54,10 @@ describe('The product component', function () {
         component.model = { designation: '', expectedCompliance: null };
         expect(component.statusMessage()).toBeDefined();
 
-        component.model = { designation: 'Compliant', authorizationDate: null };
+        component.model = { designation: 'Compliant', compliantDate: null };
         expect(component.statusMessage()).toBe('Authorized Since ');
 
-        component.model = { designation: 'Compliant', authorizationDate: '07/11/2016' };
+        component.model = { designation: 'Compliant', compliantDate: '07/11/2016' };
         expect(component.statusMessage()).toBe('Authorized Since 07/11/2016');
 
         component.model = { designation: 'Ready', expectedCompliance: null };
