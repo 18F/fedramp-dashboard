@@ -362,6 +362,9 @@
 
                 dd {
                     margin-left: 0;
+                    overflow-x: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
         }
@@ -379,6 +382,9 @@
 
             dd {
                 margin-left: 0;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 
@@ -534,6 +540,9 @@
 
                 dd {
                     margin-left: 0;
+                    overflow-x: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
         }
@@ -577,6 +586,9 @@
 
                 dd {
                     margin-left: 0;
+                    overflow-x: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
         }

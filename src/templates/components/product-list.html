@@ -2,7 +2,7 @@
     <div class="provider">{{provider.name}}</div>
     <div class="product" ng-repeat="model in provider.products">
         <div class="name">
-            <a ui-sref="fedramp.app.product.information({name:model.slugified})">{{model.product.name}}</a>
+            <a ui-sref="fedramp.app.product.information({name:model.slugified})" title="{{model.product.name}}">{{model.product.name}}</a>
         </div>
         <div class="designation">
             {{model.product.designation === 'Compliant' ? 'Authorized' : model.product.designation}}

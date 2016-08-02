@@ -14,13 +14,13 @@
             }
         });
 
-    Tile.$inject = ['$log', '$state', '$stateParams', 'helperService', '$location'];
+    Tile.$inject = ['$log', '$sce', '$state', '$stateParams', 'helperService', '$location'];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Tile ($log, $state, $stateParams, helperService, $location) {
+    function Tile ($log, $sce, $state, $stateParams, helperService, $location) {
         var self = this;
 
         /**
@@ -41,6 +41,24 @@
                 baseUrl = '/' + self.model.type + '/' + helperService.slugify(self.model.name);
             }
             $location.url(baseUrl + helperService.queryString());
+        };
+
+        /**
+         * Trust a URL
+         * @public
+         * @memberof Components.Assessor
+         *
+         * @param {string} url
+         *  The external URL
+         *
+         * @returns
+         *  The trusted URL
+         */
+        self.externalLink = function (url) {
+            if (url.indexOf('http') === -1) {
+                url = 'http://' + url;
+            }
+            return $sce.trustAsResourceUrl(url);
         };
     }
 })();
