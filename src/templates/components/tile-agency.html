@@ -1,24 +1,26 @@
-<!-- TODO: Determine if the US Grid layout should be used -->
 <div ng-if="controller.expand" class="agency expanded fr-grid-layout">
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
-            <a ng-click="controller.view()">
-                <div class="logo" style="background-image:url();"></div>
+            <a ng-click="controller.view()" title="Click to compare">
+                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>
                 <div class="title">
-                    <strong>{{ controller.model.name }}</strong>
+                    <strong>{{::controller.model.name }}</strong>
                 </div>
             </a>
         </div>
-        <div class="col fr-grid-cell-contact">
-            <div class="detail"><strong>Contact Information</strong></div>
-            <!-- TODO Place contact info -->
+        <div class="col contact fr-grid-cell-contact">
+            <dl>
+                <dt ng-if="controller.model.pocName">POC:</dt>
+                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
+                <dt ng-if="controller.model.pocEmail">E-mail:</dt>
+                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email agency">{{controller.model.pocEmail}}</a></dd>
+            </dl>
         </div>
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.products.length}}</div>
             <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
-
 </div>
 
 <div ng-if="!controller.expand" class="agency card">

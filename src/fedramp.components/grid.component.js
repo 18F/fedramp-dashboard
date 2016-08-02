@@ -82,7 +82,7 @@
                                 vals += ', or ';
                             }
 
-                            vals += o.value;
+                            vals += o.label;
                         });
                     }
 
@@ -109,7 +109,6 @@
             self.items = self.rawItems;
             self.onUpdate({items: self.items, state: self.state});
         }
-
 
         /**
          * Iterates through all the results obtained from all child grid filters and

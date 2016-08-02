@@ -1,19 +1,23 @@
-<!-- TODO: Determine if the US Grid layout should be used -->
 <div ng-if="controller.expand" class="assessor expanded fr-grid-layout">
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
-            <a ng-click="controller.view()">
-                <div class="logo" style="background-image:url();"></div>
+            <a ng-click="controller.view()" title="Click to compare">
+                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>
                 <div class="title">
-                    <strong>{{ controller.model.name }}</strong>
+                    <strong>{{::controller.model.name }}</strong>
                 </div>
             </a>
         </div>
-        <div class="col fr-grid-cell-contact">
-            <div class="detail"><strong>Contact Information</strong></div>
-            <!-- TODO Place contact info -->
+        <div class="col contact fr-grid-cell-contact">
+            <dl>
+                <dt ng-if="controller.model.pocName">POC:</dt>
+                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
+                <dt ng-if="controller.model.pocEmail">E-mail:</dt>
+                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>
+                <dt ng-if="controller.model.website">Website:</dt>
+                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>
+            </dl>
         </div>
-
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">{{controller.model.useLabel}}</div>

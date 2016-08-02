@@ -39,9 +39,9 @@
                 <dt ng-if="controller.model.pocName">POC:</dt>
                 <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>
                 <dt ng-if="controller.model.pocEmail">E-mail:</dt>
-                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}">{{controller.model.pocEmail}}</a></dd>
+                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>
                 <dt ng-if="controller.model.website">Website:</dt>
-                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank">{{controller.model.website}}</a></dd>
+                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>
             </dl>
             <p ng-if="!controller.hasContactInformation()">
                 No contact information on record
