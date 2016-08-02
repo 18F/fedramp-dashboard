@@ -3,6 +3,8 @@
 .comparison {
     display: inline-block;
     width: 100%;
+    position:relative;
+    z-index:10;
 
 	.first, .second {
         display: inline-block;

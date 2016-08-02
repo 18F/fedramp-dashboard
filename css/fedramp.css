@@ -5127,7 +5127,9 @@ grid-total {
 */
 .comparison {
   display: inline-block;
-  width: 100%; }
+  width: 100%;
+  position: relative;
+  z-index: 10; }
   .comparison .first, .comparison .second {
     display: inline-block;
     width: 48.925%;
