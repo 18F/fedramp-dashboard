@@ -52,6 +52,7 @@
     "karma-coveralls": "^1.1.2",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
+    "ngsticky": "^1.7.12",
     "papaparse": "^4.1.2",
     "phantomjs-prebuilt": "^2.1.7",
     "showdown": "^1.4.2",
