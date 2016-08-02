@@ -1,38 +1,45 @@
 @import 'variables';
 
 grid-sort {
-    display:inline-block;
-    width:3rem;
-    height:4.4rem;
-    background-color:$color-gray-lighter;
-    transition:background-color 0.3s;
+    display: inline-block;
+    width: 3rem;
+    height: 4.4rem;
+    background-color: $color-gray-lighter;
+    transition: background-color 0.3s;
 }
+
 grid-sort:hover {
     color: $color-primary;
 }
+
 .sort-selected {
     color: $color-primary;
 }
+
 .grid-sort-selected {
-//     color:#0070ba;
+//     color: #0070ba;
 }
+
 .grid-sort-header {
     font-size: 1.4rem !important;
-    font-weight:$font-normal;
-    cursor:pointer;
+    font-weight: $font-normal;
+    cursor: pointer;
 }
+
 .grid-sort-arrows {
-    position:relative;
-    display:inline-block;
-    width:3rem;
-	text-align:center;
-	cursor:pointer;
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+	text-align: center;
+	cursor: pointer;
+
 	i {
 	    transition:color 0.3s;
 	}
+
     .fa-caret-up, .fa-caret-down {
 	    color: #fff;
-        position:relative;
+        position: relative;
     }
 }
 

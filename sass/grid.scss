@@ -2,24 +2,28 @@
 
 .grid {
     .detail {
-        display:none;
+        display: none;
     }
+
     .grid-with-sidebar {
         float: right;
         width: 77.4%;
+
 		.grid-sort-arrows {
 		    .fa-caret-up, .fa-caret-down {
 			    color: $color-primary;
 		    }
 		}
 	}
+
     tile.expanded {
         display: inline-block;
         width: 100%;
     }
 
-    min-height:100rem;
+    min-height: 100rem;
 }
+
 .grid-with-sidebar grid-sort {
-	background:none;
+	background: none;
 }

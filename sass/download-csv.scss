@@ -1,14 +1,19 @@
 @import 'variables';
 
 .export {
-    margin-top:2rem;
-    text-align:center;
-    clear:both;
+    margin-top: 2rem;
+    text-align: center;
+    clear: both;
 
     download-csv {
         margin: 0 auto;
-        display:table;
+        display: table;
     }
+
+}
+
+.export.sticky-is-visible {
+    left: initial !important;
 }
 
 download-csv {
