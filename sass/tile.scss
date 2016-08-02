@@ -2,10 +2,11 @@
 
 tile:nth-child(2n) {
     .card {
-		float:right;
-		margin-right:0;
+		float: right;
+		margin-right: 0;
 	}
 }
+
 .tile {
 	.fr-grid-layout-row {
 		> div {
@@ -13,28 +14,32 @@ tile:nth-child(2n) {
 			border-right: 1px solid $color-gray-lightest;
 		}
 	}
+
     .row {
         display: block;
         width: 100%;
         clear: both;
     }
+
     .expanded {
         .row {
             height: 9.5rem;
             border-bottom: 1px solid $color-gray-lightest;
         }
     }
+
     .card {
-        height:25rem;
-        width:48.925%;
-        margin-right:2%;
+        height: 25rem;
+        width: 48.925%;
+        margin-right: 2%;
         float: left;
-        background-color:$color-white;
+        background-color: $color-white;
     }
+
     .no-logo {
-        border:1px solid $color-gray-lightest;
+        border: 1px solid $color-gray-lightest;
         height: 50px;
-        width:60px;
+        width: 60px;
     }
 }
 
@@ -97,6 +102,7 @@ tile:nth-child(2n) {
         }
 
         .title {
+            padding-top: 20px;
             /* padding-left: 0.34em; */
         }
 
@@ -113,6 +119,8 @@ tile:nth-child(2n) {
             dd {
                 float: left;
                 margin-left: 1em;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
@@ -129,15 +137,16 @@ tile:nth-child(2n) {
 
     .name {
         .logo {
-	        height:4.2rem;
-	        width:15rem;
-	        background-size:contain;
-	        background-position:left center;
-	        background-repeat:no-repeat;
-			margin:0 0 0.5rem;
+	        height: 4.2rem;
+	        width: 15rem;
+	        background-size: contain;
+	        background-position: left center;
+	        background-repeat: no-repeat;
+			margin: 0 0 0.5rem;
         }
 
         .title {
+            padding-top: 20px;
             text-overflow: ellipsis;
         }
     }
@@ -152,7 +161,7 @@ tile:nth-child(2n) {
 
         .text {
             font-size: 1.3rem;
-            font-weight:$font-normal;
+            font-weight: $font-normal;
         }
 
         .number {
@@ -164,13 +173,14 @@ tile:nth-child(2n) {
 
 // establishing generic card styling for use across all entities
 .card {
-	padding-left:4.8rem;
-	margin-bottom:2.7rem;
+	padding-left: 4.8rem;
+	margin-bottom: 2.7rem;
 
 	.header {
 		.name {
-			display:inline-block;
-			margin-top:2.3rem;
+			display: inline-block;
+			margin-top: 2.3rem;
+
             .logo {
                 img {
                     max-width: 100%;
@@ -178,28 +188,32 @@ tile:nth-child(2n) {
                 }
             }
 		}
+
 		.reuses {
-			float:right;
-			width:9.5rem;
-			height:10.1rem;
+			float: right;
+			width: 9.5rem;
+			height: 10.1rem;
             background-color: $color-primary;
             color: $color-white;
-            text-align:center;
-            padding-top:2.7rem;
+            text-align: center;
+            padding-top: 2.7rem;
+
             a {
-	            color:$color-white;
+	            color: $color-white;
             }
+
             .text {
                 font-size: 1.3rem;
-                font-weight:$font-normal;
+                font-weight: $font-normal;
             }
 
             .number {
                 margin-bottom: -0.8rem;
                 font-size: 2.6rem;
-				font-weight:$font-bold;
+				font-weight: $font-bold;
             }
 		}
+
 		.status {
             float: right;
             text-align: center;
@@ -207,9 +221,9 @@ tile:nth-child(2n) {
             height: 6em;
 
 			img {
-				max-width:4.5rem;
-				margin-right:1rem;
-				margin-top:2.3rem;
+				max-width: 4.5rem;
+				margin-right: 1rem;
+				margin-top: 2.3rem;
 			}
 
             span {
@@ -217,13 +231,14 @@ tile:nth-child(2n) {
             }
 		}
 	}
-    .content {
 
+    .content {
         .col {
             width: 100%;
         }
 
         .title {
+            padding-top: 20px;
             /* padding-left: 0.34em; */
         }
 
@@ -240,6 +255,8 @@ tile:nth-child(2n) {
             dd {
                 float: left;
                 margin-left: 1em;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
@@ -250,27 +267,51 @@ tile:nth-child(2n) {
 .assessor.expanded {
     .name {
         .logo {
-	        height:4.2rem;
-	        width:15rem;
-	        background-size:contain;
-	        background-position:left center;
-	        background-repeat:no-repeat;
-			margin:0 0 0.5rem;
+	        height: 4.2rem;
+	        width: 15rem;
+	        background-size: contain;
+	        background-position: left center;
+	        background-repeat: no-repeat;
+			margin: 0 0 0.5rem;
         }
+
         .title {
             text-overflow: ellipsis;
+            padding-top: 20px;
         }
     }
+
     .status {
         text-align: center;
+
         img {
             max-width: 4.5rem;
             max-height: auto;
         }
+
         span {
             display: block;
         }
     }
+
+    .contact {
+        dl {
+            dt {
+                float: left;
+                font-weight: bolder;
+                clear: left;
+                display: inline-block;
+                padding-right: 0.8rem;
+            }
+
+            dd {
+                margin-left: 0;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
     .reuses {
         text-align: center;
         background-color: $color-primary;
@@ -278,13 +319,15 @@ tile:nth-child(2n) {
         font-weight: bolder;
         border-right: none;
         border-bottom: 1px solid $color-white;
+
         .text {
             font-size: 1.3rem;
-            font-weight:$font-normal;
-            //padding:0 2rem;
-            display:inline-block;
+            font-weight: $font-normal;
+            //padding: 0 2rem;
+            display: inline-block;
             width: 9rem;
         }
+
         .number {
             font-size: 2.6rem;
             margin-bottom: -0.8rem;
@@ -301,7 +344,6 @@ tile:nth-child(2n) {
     }
 
     .header {
-
         .reuses {
             float: right;
             text-align: center;
@@ -316,7 +358,7 @@ tile:nth-child(2n) {
 
             .text {
 	            font-size: 1.3rem;
-	            font-weight:$font-normal;
+	            font-weight: $font-normal;
             }
 
             .number {
@@ -346,10 +388,13 @@ tile:nth-child(2n) {
             dd {
                 float: left;
                 margin-left: 1em;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
 }
+
 .assessor.card {
     .row {
     }
@@ -375,7 +420,7 @@ tile:nth-child(2n) {
 
             .text {
 	            font-size: 1.3rem;
-	            font-weight:$font-normal;
+	            font-weight: $font-normal;
             }
 
             .number {
@@ -407,6 +452,8 @@ tile:nth-child(2n) {
             dd {
                 float: left;
                 margin-left: 1em;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
