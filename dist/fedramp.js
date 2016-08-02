@@ -747,7 +747,7 @@ sortedProductKeys=sortedProductKeys.map(function(v){return{name:v,products:produ
          *
          * @returns
          *  Status message
-         */self.statusMessage=function(){var message='';if(self.isCompliant()){message='Authorized Since '+(self.model.authorizationDate||'');}else{if(self.model.expectedCompliance){message='Estimated Compliance Date '+self.model.expectedCompliance;}else{message='This provider has not given an Estimated Compliance Date';}}return message;};/**
+         */self.statusMessage=function(){var message='';if(self.isCompliant()){message='Authorized Since '+(self.model.compliantDate||'');}else{if(self.model.expectedCompliance){message='Estimated Compliance Date '+self.model.expectedCompliance;}else{message='This provider has not given an Estimated Compliance Date';}}return message;};/**
          * Parses possible markdown, or other encoded text, as HTML
          * @public
          * @memberof Components.Product
