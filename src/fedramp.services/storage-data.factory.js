@@ -17,7 +17,7 @@
         function StorageData (options) {
             StorageManager.call(this);
             var self = this;
-            var rawAssessors = (options && options['Assessors'] ? options.Assessors : []);
+            var rawAssessors = (options && options.Assessors ? options.Assessors : []);
             self.storageContainer = 'data';
 
             /**
@@ -150,14 +150,16 @@
                     item.pocEmail = safeTrim(d.pocEmail);
 
                     // Find all products that depend on the current product
+                    // jshint ignore:start
                     data.forEach(d => {
                         if (d.underlyingCspPackages.includes(item.pkgId)) {
                             item.dependents.push(d.pkg.trim());
                         }
                     });
+                    // jshint ignore:end
 
                     item.reuses = d.atoLetters.length ;
-                    let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false);
+                    let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false); // jshint ignore:line
                     if (leveraged.length > 0) {
                         // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
                         item.reuses += leveraged.length;
@@ -167,7 +169,7 @@
                             .map(x => x.atoLetters.length)
                             .reduce((p, c) => p + c);
                     }
-                    //
+
                     // Calculate number of authorizations
                     item.authorizations = item.reuses + (item.designation !== 'In-Process' ? 1 : 0);
                     items.push(item);
