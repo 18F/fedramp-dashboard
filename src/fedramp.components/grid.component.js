@@ -4,13 +4,6 @@
     angular
         .module('fedramp.components')
         .component('grid', {
-            //templateUrl: 'src/templates/components/grid.html',
-            //transclude: {
-                //'filters': 'filters',
-                //'sorters': 'sorters',
-                //'tiles': 'tiles',
-                //'export': 'export'
-            //},
             controller: Grid,
             controllerAs: 'gridController',
             bindings: {
@@ -54,6 +47,7 @@
         self.defaultSort = null;
         self.items = [];
         self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
+        self.toggleFilters = false;
 
         /**
          * Generate a description of the applied filters for printing.

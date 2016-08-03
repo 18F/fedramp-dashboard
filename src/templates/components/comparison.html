@@ -1,18 +1,6 @@
 <div class="usa-content">
     <div class="comparison">
-        <!-- 
-            This is passed in by using <first></first> 
-        -->
-        <div class="first full-width-print" ng-transclude="first"></div>
-
-        <!-- 
-            This is passed in by using <second></second> 
-        -->
-        <div class="second full-width-print break-before-print" ng-transclude="second"></div>
-
-        <!--
-            Close both 
-        -->
+        <!-- Close both -->
         <div class="information close-both hidden-print">
             <div class="row close" ui-sref="{{controller.onCloseBoth}}" ui-sref-opts="{removeParams:false}">
                 <a>
@@ -24,5 +12,11 @@
                 </a>
             </div>
         </div>
+
+        <!-- This is passed in by using <first></first> -->
+        <div class="first full-width-print" ng-transclude="first"></div>
+
+        <!-- This is passed in by using <second></second> -->
+        <div class="second full-width-print break-before-print" ng-transclude="second"></div>
     </div>
 </div>

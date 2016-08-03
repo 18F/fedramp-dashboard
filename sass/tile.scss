@@ -8,17 +8,6 @@ tile:nth-child(2n) {
 }
 
 .tile {
-    .mobile-visible {
-        display: none;
-        visibility: hidden;
-    }
-
-    @media only screen and (max-width: 500px) {
-        .mobile-visible {
-            display: inline-block;
-            visibility: visible;
-        }
-    }
 
 	.fr-grid-layout-row {
         @media only screen and (max-width: 500px) {

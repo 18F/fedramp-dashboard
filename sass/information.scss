@@ -12,6 +12,10 @@
         background-color: $color-white;
         position: relative;
         z-index: 100;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+        }
 	}
 
     .first {
@@ -39,10 +43,19 @@
             z-index: 110;
             margin: 0 auto;
             width: 12%;
+
+            @media only screen and (max-width: 500px) {
+                width: 100%;
+            }
         }
 
         .close {
             background-color: $color-gray-dark;
+        }
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+            position: static;
         }
     }
 

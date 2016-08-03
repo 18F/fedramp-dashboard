@@ -6,7 +6,20 @@
 	padding: 5.2rem 0 3rem 2.4rem;
 
     @media only screen and (max-width: 500px) {
-        display: none;
+        float: none;
+        display: block;
+        width: 100%;
+        padding: 0;
+
+        .filters-toggle {
+            color: $color-gray;
+            font-size: 1.7rem;
+            font-weight: bolder;
+            padding-top: 3rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid $color-gray-lighter;
+            display: block;
+        }
     }
 
 	// each contain a set of content filters
