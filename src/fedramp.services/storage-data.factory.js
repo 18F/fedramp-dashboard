@@ -145,6 +145,7 @@
                     item.compliantDate = helperService.toDate(d.compliantDate);
                     item.expirationDate = helperService.toDate(d.expirationDate);
                     item.fedrampReadyDate = helperService.toDate(d.fedrampReadyDate);
+                    item.inProcessDate = helperService.toDate(d.inProcessDate);
                     item.serviceDescription = safeTrim(d.csoDescription);
                     item.website = safeTrim(d.cspWebsite);
                     item.pocName = safeTrim(d.pocName);
