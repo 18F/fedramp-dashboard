@@ -172,7 +172,7 @@
                     }
 
                     // Calculate number of authorizations
-                    item.authorizations = item.reuses + (item.designation !== 'In-Process' ? 1 : 0);
+                    item.authorizations = item.reuses + (!['In Process', 'FedRAMP Ready'].includes(item.designation) ? 1 : 0);
                     items.push(item);
                 }
 
