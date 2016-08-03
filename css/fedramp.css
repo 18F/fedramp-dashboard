@@ -4844,7 +4844,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 2rem; }
     @media only screen and (max-width: 736px) {
       .grid .fr-grid-layout-row > div {
-        padding-top: 1rem;
         padding-left: 3rem;
         padding-right: 3rem; } }
   .grid .fr-grid-layout-row > div:first-child {
@@ -4877,7 +4876,9 @@ h1, h2, h3, h4, h5, h6 {
       .grid .fr-grid-cell-service {
         width: 100%;
         padding-left: 3rem;
-        padding-right: 3rem; } }
+        padding-right: 3rem; }
+        .grid .fr-grid-cell-service .mobile-visible {
+          display: inline-block; } }
     .grid .fr-grid-cell-service > div {
       float: left;
       margin-right: 1rem; }
@@ -4887,12 +4888,16 @@ h1, h2, h3, h4, h5, h6 {
       .grid .fr-grid-cell-deployment {
         width: 100%;
         padding-left: 3rem;
-        padding-right: 3rem; } }
+        padding-right: 3rem; }
+        .grid .fr-grid-cell-deployment .mobile-visible {
+          display: inline-block; } }
   .grid .fr-grid-cell-impact {
     width: 15%; }
     @media only screen and (max-width: 736px) {
       .grid .fr-grid-cell-impact {
-        width: 100%; } }
+        width: 100%; }
+        .grid .fr-grid-cell-impact .mobile-visible {
+          display: inline-block; } }
   .grid .fr-grid-cell-icon {
     width: 10%;
     font-size: 1.2rem; }
@@ -4900,7 +4905,8 @@ h1, h2, h3, h4, h5, h6 {
       .grid .fr-grid-cell-icon {
         float: left;
         width: 49%;
-        padding-top: 3rem !important; } }
+        padding-top: 3rem !important;
+        margin-top: 2rem; } }
   .grid .fr-grid-cell-metric {
     width: 8%;
     text-align: center; }
@@ -4908,7 +4914,8 @@ h1, h2, h3, h4, h5, h6 {
       .grid .fr-grid-cell-metric {
         float: right;
         width: 49%;
-        padding: 3rem 0 !important; } }
+        padding: 3rem 0 !important;
+        margin-top: 2rem; } }
   .grid .fr-grid-cell-contact {
     width: 33%; }
     @media only screen and (max-width: 736px) {

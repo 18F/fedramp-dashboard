@@ -79,7 +79,6 @@
             padding-left: 2rem;
 
             @media only screen and (max-width: 736px) {
-                padding-top: 1rem;
                 padding-left: 3rem;
                 padding-right: 3rem;
             }
@@ -128,6 +127,10 @@
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
+
+            .mobile-visible {
+                display: inline-block;
+            }
         }
 
         > div {
@@ -143,6 +146,10 @@
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
+
+            .mobile-visible {
+                display: inline-block;
+            }
         }
     }
 
@@ -151,6 +158,10 @@
 
         @media only screen and (max-width: 736px) {
             width: 100%;
+
+            .mobile-visible {
+                display: inline-block;
+            }
         }
     }
 
@@ -162,6 +173,7 @@
             float: left;
             width: 49%;
             padding-top: 3rem !important;
+            margin-top: 2rem;
         }
     }
 
@@ -173,6 +185,7 @@
             float: right;
             width: 49%;
             padding: 3rem 0 !important;
+            margin-top: 2rem;
         }
     }
 
