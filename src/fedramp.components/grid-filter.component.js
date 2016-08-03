@@ -204,6 +204,7 @@
             } else {
                 // Handle basic primitive options
                 values.split(',').forEach(function (val) {
+                    console.log(val);
                     selected.push({
                         value: (val),
                         selected: true
@@ -215,6 +216,16 @@
                     });
                 });
             }
+
+            // Ensure label is set for options
+            selected.forEach(x => {
+                self.options.forEach(o => {
+                    if(angular.equals(o.value, x.value)){
+                        x.label = o.label;
+                    }
+                });
+            });
+
             self.selectedOptionValues = selected;
             if (self.selectedOptionValues) {
                 applyFilter();
