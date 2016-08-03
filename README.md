@@ -218,7 +218,100 @@ function filterByNameFunc(company, index, arr, selectedOptions){
 ```
 
 ### Maintain static header/footer
-> Provide `code` example
+
+#### Search
+
+The topmost portion of the header consists of the search form. The this area is contained in
+[the main template](src/templates/fedramp.html) within the element
+
+```html
+<div id="topnav" class="hidden-print"><!-- Search related elements ---></div>
+```
+
+The actual [search template](src/templates/components/search.html) contains
+the grid along with the form elements. The contents were based on the original template found on
+the [www.fedramp.gov](https://www.fedramp.gov) site, but then adapted to follow the
+[U.S. Web Design Standards](https://standards.usa.gov/search-bar/).
+
+While the [search component](src/fedramp.components/search.component.js) is the backing to the
+form the actual search logic takes place within the
+[search controller](src/fedramp/search/search.controller.js). The controller handles the external
+and internal queries, the displaying of results, and any exception handling and informational
+messages.
+
+To adjust the styles applied within the search please make all changes in
+[search.scss](sass/search.scss).
+
+#### Header
+
+The remaining sections of the header can be referenced in
+[the main template](src/templates/fedramp.html) within the element
+
+```html
+<div id="header" class="clearfix"><!-- Header related elements ---></div>
+```
+
+Two main sections of importance:
+
+  1. The site title/logo
+  2. The site navigation
+
+The logo is currently referencing ![FedRAMP Logo](https://fedramp.sites.usa.gov/files/2015/02/logo3.png)
+and redirects the user to [www.fedramp.gov](https://www.fedramp.gov) if clicked.
+
+The navigation is created with multiple layers of unordered lists for each subsequent
+submenu. An example of this format which would be nested
+
+```html
+<ul class="catnav clearfix sf-js-enabled">
+    <!-- Other menu items --->
+    <li id="menu-item-8272" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-8272"><a href="#" class="sf-with-ul">Marketplace</a>
+        <ul class="sub-menu" style="display: none;">
+            <li id="menu-item-10722" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-782 current_page_item menu-item-10722 first-child"><a href="https://www.fedramp.gov/marketplace/compliant-systems/">FedRAMP Compliant Systems</a></li>
+            <li id="menu-item-10712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10712"><a href="https://www.fedramp.gov/marketplace/in-process-systems/">FedRAMP In-Process Systems</a></li>
+            <li id="menu-item-10702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10702"><a href="https://www.fedramp.gov/marketplace/fedramp-ready-systems/">FedRAMP Ready Systems</a></li>
+            <li id="menu-item-4082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4082 last-child"><a href="https://www.fedramp.gov/marketplace/accredited-3paos/">Accredited 3PAOs</a></li>
+        </ul>
+    </li>
+    <!-- Other menu items --->
+</ul>
+```
+
+To adjust the styles applied within the header please make all changes in
+[header.scss](sass/header.scss).
+
+#### Footer
+
+The footer section can be referenced in
+[the main template](src/templates/fedramp.html) within the element
+
+```html
+<footer class="usa-footer ..." role="contentinfo"><!-- Footer elements ---></footer>
+```
+
+The footer has been divided into three (3) sections:
+
+  1. Contact Information
+  2. Twitter
+  3. Subscribe to Updates
+
+The contact information and subscription sections are basic HTML and can be
+modified directly. However, the Twitter section required customization
+found in the [Twitter component](src/fedramp.components/twitter.component.js).
+This piece was separated due to how AngularJS does not render certain
+potentially unsafe elements found within views. In order to circumvent this
+we load the necessary JavaScript dynamically
+
+```javascript
+let script = document.createElement('script');
+script.async = 'async';
+script.src = 'https://platform.twitter.com/widgets.js';
+script.charset = 'utf-8';
+document.body.appendChild(script);
+```
+
+To adjust the styles applied within the footer please make all changes in
+[footer.scss](sass/footer.scss).
 
 ## Getting to know the code
 
