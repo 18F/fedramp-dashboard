@@ -5904,6 +5904,11 @@ tile:nth-child(2n) .card {
   text-decoration: none;
   cursor: pointer; }
 
+.contact a, .contact a:hover, .contact a:visited {
+  color: #0071bc;
+  text-decoration: none;
+  cursor: pointer; }
+
 .provider.card .col {
   width: 33.33333%; }
 

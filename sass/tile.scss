@@ -65,6 +65,13 @@ tile:nth-child(2n) {
     cursor: pointer;
 }
 
+.contact {
+    a, a:hover, a:visited {
+        color: $color-primary;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
 .provider.card {
     .row {
     }
