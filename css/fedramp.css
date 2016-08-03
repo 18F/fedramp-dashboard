@@ -6040,21 +6040,25 @@ tile:nth-child(2n) .card {
       float: left;
       margin-left: 1em; }
 
-.product.expanded .name .logo,
-.agency.expanded .name .logo,
-.assessor.expanded .name .logo {
-  height: 4.2rem;
-  width: 15rem;
-  background-size: contain;
-  background-position: left center;
-  background-repeat: no-repeat;
-  margin: 0 0 0.5rem; }
-
-.product.expanded .name .title,
-.agency.expanded .name .title,
-.assessor.expanded .name .title {
-  text-overflow: ellipsis;
-  padding-top: 20px; }
+.product.expanded .name,
+.agency.expanded .name,
+.assessor.expanded .name {
+  padding-top: 16px;
+  padding-bottom: 16px; }
+  .product.expanded .name .logo,
+  .agency.expanded .name .logo,
+  .assessor.expanded .name .logo {
+    height: 4.2rem;
+    width: 15rem;
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    margin: 0 0 0.5rem; }
+  .product.expanded .name .title,
+  .agency.expanded .name .title,
+  .assessor.expanded .name .title {
+    text-overflow: ellipsis;
+    padding-top: 5px; }
 
 .product.expanded .status,
 .agency.expanded .status,
