@@ -110,7 +110,7 @@
          *  The total number of fedramp ready products
          */
         self.totalReady = Cache.wrap('totalReady')(function(){
-            return 0;
+            return fedrampData.products().filter(x => x.designation === 'FedRAMP Ready').length;
         });
 
 
