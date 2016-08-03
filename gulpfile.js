@@ -29,6 +29,7 @@ var prodJsPath = [
     '        <script src="lib/angular-sticky.min.js"></script>',
     '        <script src="lib/papaparse.min.js"></script>',
     '        <script src="lib/uswds.min.js"></script>',
+    '        <script src="lib/showdown.min.js"></script>',
     '        <script src="fedramp.min.js"></script>'
 ];
 

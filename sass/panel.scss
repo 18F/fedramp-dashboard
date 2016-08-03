@@ -1,7 +1,13 @@
 @import 'variables';
 panel {
     display:block;
-
+    .row.panel {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .panel:hover {
+        background-color: $color-gray-lighter;
+    }
     .panel {
         border-top: none;
         background-color: $color-gray-lightest;
@@ -10,6 +16,7 @@ panel {
         margin-left: 2.8rem;
         margin-right: 2.8rem;
         margin-bottom: 1rem;
+
 
         .header {
             display: table;

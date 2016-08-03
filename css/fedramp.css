@@ -5528,6 +5528,11 @@ grid-total {
 */
 panel {
   display: block; }
+  panel .row.panel {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  panel .panel:hover {
+    background-color: #d6d7d9; }
   panel .panel {
     border-top: none;
     background-color: #f1f1f1;
