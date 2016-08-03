@@ -10,7 +10,7 @@ tile:nth-child(2n) {
 .tile {
 
 	.fr-grid-layout-row {
-        @media only screen and (max-width: 500px) {
+        @media only screen and (max-width: 736px) {
             padding-top: 3rem;
         }
 
@@ -18,7 +18,7 @@ tile:nth-child(2n) {
 			border-bottom: 1px solid $color-gray-lightest;
 			border-right: 1px solid $color-gray-lightest;
 
-            @media only screen and (max-width: 500px) {
+            @media only screen and (max-width: 736px) {
                 border: none;
             }
 		}
@@ -35,7 +35,7 @@ tile:nth-child(2n) {
             height: 9.5rem;
             border-bottom: 1px solid $color-gray-lightest;
 
-            @media only screen and (max-width: 500px) {
+            @media only screen and (max-width: 736px) {
                 height: auto;
                 border-bottom: none;
             }
