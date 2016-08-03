@@ -70,7 +70,7 @@
          *  A value indicating if the product ready
          */
         self.isReady = function () {
-            return self.model.designation === 'Ready';
+            return ['Ready', 'FedRAMP Ready'].includes(self.model.designation) || self.model.fedrampReadyDate;
         };
 
         /**

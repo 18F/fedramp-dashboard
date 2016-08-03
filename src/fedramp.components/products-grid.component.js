@@ -187,7 +187,7 @@
          */
         self.statusFilterOptions = function(products) {
             return [
-                {value: 'Ready', label: 'Ready', selected: false},
+                {value: 'FedRAMP Ready', label: 'Ready', selected: false},
                 {value: 'In Process', label: 'In Process', selected: false},
                 {value: 'Compliant', label: 'Authorized', selected: false},
             ];

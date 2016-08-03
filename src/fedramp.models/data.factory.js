@@ -38,6 +38,7 @@
                 'CSO_Description': 'csoDescription',
                 'Expected_Compliance_Date': 'expectedCompliance',
                 'Announcement_Date': 'compliantDate',
+                'Fedramp_Ready_Date': 'fedrampReadyDate',
                 'CSP_POC_Name': 'pocName',
                 'CSP_POC_Email': 'pocEmail',
                 'Leveraged_ATO_Letters': 'atoLetters'
@@ -182,6 +183,13 @@
              * @memberof Models.Data
              */
             self.compliantDate = null;
+
+            /**
+             * Date of FedRAMP Ready
+             * @member {date}
+             * @memberof Models.Data
+             */
+            self.fedrampReadyDate = null;
 
             /**
              * The product point of contact name
