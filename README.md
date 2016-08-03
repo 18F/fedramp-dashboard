@@ -225,7 +225,7 @@ The topmost portion of the header consists of the search form. The this area is 
 [the main template](src/templates/fedramp.html) within the element
 
 ```html
-<div id="topnav" class="hidden-print"><!-- Search related elements ---></div>
+<div id="topnav" class="hidden-print"><!-- Search related elements --></div>
 ```
 
 The actual [search template](src/templates/components/search.html) contains
@@ -248,7 +248,7 @@ The remaining sections of the header can be referenced in
 [the main template](src/templates/fedramp.html) within the element
 
 ```html
-<div id="header" class="clearfix"><!-- Header related elements ---></div>
+<div id="header" class="clearfix"><!-- Header related elements --></div>
 ```
 
 Two main sections of importance:
@@ -264,7 +264,7 @@ submenu. An example of this format which would be nested
 
 ```html
 <ul class="catnav clearfix sf-js-enabled">
-    <!-- Other menu items --->
+    <!-- Other menu items -->
     <li id="menu-item-8272" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-8272"><a href="#" class="sf-with-ul">Marketplace</a>
         <ul class="sub-menu" style="display: none;">
             <li id="menu-item-10722" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-782 current_page_item menu-item-10722 first-child"><a href="https://www.fedramp.gov/marketplace/compliant-systems/">FedRAMP Compliant Systems</a></li>
@@ -273,7 +273,7 @@ submenu. An example of this format which would be nested
             <li id="menu-item-4082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4082 last-child"><a href="https://www.fedramp.gov/marketplace/accredited-3paos/">Accredited 3PAOs</a></li>
         </ul>
     </li>
-    <!-- Other menu items --->
+    <!-- Other menu items -->
 </ul>
 ```
 
@@ -286,7 +286,7 @@ The footer section can be referenced in
 [the main template](src/templates/fedramp.html) within the element
 
 ```html
-<footer class="usa-footer ..." role="contentinfo"><!-- Footer elements ---></footer>
+<footer class="usa-footer ..." role="contentinfo"><!-- Footer elements --></footer>
 ```
 
 The footer has been divided into three (3) sections:
