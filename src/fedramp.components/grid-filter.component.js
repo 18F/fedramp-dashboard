@@ -204,7 +204,6 @@
             } else {
                 // Handle basic primitive options
                 values.split(',').forEach(function (val) {
-                    console.log(val);
                     selected.push({
                         value: (val),
                         selected: true
