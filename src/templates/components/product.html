@@ -28,7 +28,7 @@
             <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />
             <div class="text">FedRAMP Ready</div>
         </div>                                 
-        <div class="col in-process" ng-class="{'active': controller.Processing()}">
+        <div class="col in-process" ng-class="{'active': controller.isProcessing()}">
             <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
             <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />
             <div class="text">FedRAMP In Process</div>
