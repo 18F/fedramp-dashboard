@@ -30,7 +30,7 @@ describe('The product component', function () {
         component.model = { designation: 'Compliant' };
         expect(component.isReady()).toBe(false);
 
-        component.model = { designation: 'Ready' };
+        component.model = { designation: 'FedRAMP Ready' };
         expect(component.isReady()).toBe(true);
     });
 

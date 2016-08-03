@@ -720,7 +720,7 @@ sortedProductKeys=sortedProductKeys.map(function(v){return{name:v,products:produ
          *
          * @returns
          *  A value indicating if the product ready
-         */self.isReady=function(){return['Ready','FedRAMP Ready'].includes(self.model.designation)||self.model.fedrampReadyDate;};/**
+         */self.isReady=function(){return['Ready','FedRAMP Ready'].includes(self.model.designation)||!!self.model.fedrampReadyDate;};/**
          * Is the products status considered 'In Process'
          * @public
          * @memberof Components.Product
