@@ -6,26 +6,38 @@
 
  	// white text above large metrics
  	.fr-dash-label {
-	 	color:$color-white;
-	 	line-height:4.4rem;
-	 	font-size:1.8rem;
-	 	background-color:#0d2747;
-	 	max-width:none;
+	 	color: $color-white;
+	 	line-height: 4.4rem;
+	 	font-size: 1.8rem;
+	 	background-color: #0d2747;
+	 	max-width: none;
  	}
 
  	// large metrics row
  	.fr-large-metrics {
-	 	height:29.4rem;
-	 	color:$color-primary-alt;
-	 	text-align:center;
+	 	height: 29.4rem;
+	 	color: $color-primary-alt;
+	 	text-align: center;
+
+        @media only screen and (max-width: 500px) {
+            height: auto;
+        }
 
 	 	> div {
 	 		// these are grid'd, but need to modify width / margin to show proper borders
-		 	border-right:2px solid #0d2747;
-		 	height:100%;
-		 	width:33.33%;
-		 	margin-right:0;
+		 	border-right: 2px solid #0d2747;
+		 	height: 100%;
+		 	width: 33.33%;
+		 	margin-right: 0;
+
+            @media only screen and (max-width: 500px) {
+                border-bottom: 2px solid #0d2747;
+                height: auto;
+                width: 100%;
+                padding: 3rem 0;
+            }
 	 	}
+
         > div:hover {
             background-color: #0d2747;
             cursor: pointer;
@@ -33,45 +45,58 @@
 
 	 	// remove border on last
 	 	> div:last-child {
-		 	border-right:none;
+		 	border-right: none;
+
+            @media only screen and (max-width: 500px) {
+                border-bottom: none;
+            }
 	 	}
+
 	 	.fr-large-number {
-	 		font-size:2.8rem;
-	 		margin-top:12rem;
+	 		font-size: 2.8rem;
+	 		margin-top: 12rem;
+
 	 		strong {
-		 		font-size:9.5rem;
+		 		font-size: 9.5rem;
 	 		}
 		}
+
 		// large size metric icons
 		.fr-metric-icon {
-			position:absolute;
-			top:-8rem;
-			left:0;
-			width:100%;
-			height:8rem;
-			background-size:contain;
-			background-position:center center;
+			position: absolute;
+			top: -8rem;
+			left: 0;
+			width: 100%;
+			height: 8rem;
+			background-size: contain;
+			background-position: center center;
 		}
  	}
 
  	// clean up spacing / line height for large numbers
  	.fr-large-number {
- 		position:relative;
-	 	margin:0;
-	 	line-height:1;
+ 		position: relative;
+	 	margin: 0;
+	 	line-height: 1;
  	}
+
  	// white colors for dashboard metrics, numbers only
  	.fr-large-number strong {
-	 	color:$color-white;
+	 	color: $color-white;
  	}
+
  	// apply this class to a span or other to provide a 400 font weight
  	.fr-light-font {
-	 	font-weight:$font-normal;
+	 	font-weight: $font-normal;
  	}
+
  	// label text for metric font sized shared
  	.fr-metric-label {
-	 	display:block;
-	 	font-size:1.8rem;
-	 	padding-top:0.4rem;
+	 	display: block;
+	 	font-size: 1.8rem;
+	 	padding-top: 0.4rem;
  	}
+
+    @media only screen and (max-width: 500px) {
+    }
 }
