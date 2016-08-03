@@ -47,7 +47,8 @@ gulp.task('clean', function(){
 gulp.task('copy:src', ['clean'], function(){
     'use strict';
     console.log('Copying over all of the source files');
-    return gulp.src(['src/**/*'])
+    return gulp
+        .src(['src/**/*'])
         .pipe(gulp.dest('build/src'));
 });
 
