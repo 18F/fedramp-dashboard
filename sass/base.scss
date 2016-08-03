@@ -3,7 +3,7 @@
 ui-view {
 	// add background gray for entire UI
 	.usa-content {
-		background-color:$color-gray-lightest;
+		background-color: $color-gray-lightest;
 	}
 }
 
@@ -28,24 +28,26 @@ p {
 input {
     max-width: none !important;
 }
+
 .clear {
-    clear:both;
-    float:none;
+    clear: both;
+    float: none;
 }
+
 a,
 a:visited,
 a:active
 {
-    text-decoration:none;
-    color:$color-primary;
+    text-decoration: none;
+    color: $color-primary;
 }
 
 .no-select {
     -webkit-user-select: none;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+     -khtml-user-select: none; /* webkit (konqueror) browsers */
+       -moz-user-select: none; /* mozilla browsers */
+        -ms-user-select: none; /* IE10+ */
 }
 
 .mobile-visible {
@@ -63,4 +65,8 @@ a:active
         display: none;
         visibility: hidden;
     }
+}
+
+:focus {
+    outline: none;
 }

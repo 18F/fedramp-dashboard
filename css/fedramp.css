@@ -4501,10 +4501,10 @@ a:active {
   -webkit-user-select: none;
   -webkit-user-select: none;
   /* webkit (safari, chrome) browsers */
-  -moz-user-select: none;
-  /* mozilla browsers */
   -khtml-user-select: none;
   /* webkit (konqueror) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
   -ms-user-select: none;
   /* IE10+ */ }
 
@@ -4519,6 +4519,9 @@ a:active {
   .mobile-hidden {
     display: none;
     visibility: hidden; } }
+
+:focus {
+  outline: none; }
 
 /*
 	provide condensed version of web standards variables for use

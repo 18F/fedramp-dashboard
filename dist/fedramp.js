@@ -2287,40 +2287,7 @@ if(navigator.msSaveBlob&&downloadBlob){navigator.msSaveBlob(downloadBlob,self.fi
          *
          * @returns
          *  The matched item or null
-         */self.reuseRangeFilter=function(provider,index,arr,selectedOptions){return selectedOptions.find(function(option){if(provider.reuses>=option.value.min&&provider.reuses<=option.value.max){return provider;}});};}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
-     * @constructor
-     * @memberof Controllers
-     */function SitemapController($log,fedrampData,helperService){var self=this;/**
-         * All providers in the system
-         *
-         * @member {array}
-         * @memberof Controllers.SitemapController
-         */self.providers=fedrampData.providers();/**
-         * All products in the system
-         *
-         * @member {array}
-         * @memberof Controllers.SitemapController
-         */self.products=fedrampData.products();/**
-         * All agencies in the system
-         *
-         * @member {array}
-         * @memberof Controllers.SitemapController
-         */self.agencies=fedrampData.agencies();/**
-         * All assessors in the system
-         *
-         * @member {array}
-         * @memberof Controllers.SitemapController
-         */self.assessors=fedrampData.assessors();/**
-         * The current date
-         *
-         * @member {string}
-         * @memberof Controllers.SitemapController
-         */self.today=helperService.today();/**
-         * Helper to slugify a string for a URL
-         *
-         * @member {function}
-         * @memberof Controllers.SitemapController
-         */self.slugify=helperService.slugify;}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
+         */self.reuseRangeFilter=function(provider,index,arr,selectedOptions){return selectedOptions.find(function(option){if(provider.reuses>=option.value.min&&provider.reuses<=option.value.max){return provider;}});};}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
      * @constructor
      * @memberof Controllers
      */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
@@ -2417,4 +2384,37 @@ $http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp
 //     ],
 //     "related": []
 // }
-if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();
+if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
+     * @constructor
+     * @memberof Controllers
+     */function SitemapController($log,fedrampData,helperService){var self=this;/**
+         * All providers in the system
+         *
+         * @member {array}
+         * @memberof Controllers.SitemapController
+         */self.providers=fedrampData.providers();/**
+         * All products in the system
+         *
+         * @member {array}
+         * @memberof Controllers.SitemapController
+         */self.products=fedrampData.products();/**
+         * All agencies in the system
+         *
+         * @member {array}
+         * @memberof Controllers.SitemapController
+         */self.agencies=fedrampData.agencies();/**
+         * All assessors in the system
+         *
+         * @member {array}
+         * @memberof Controllers.SitemapController
+         */self.assessors=fedrampData.assessors();/**
+         * The current date
+         *
+         * @member {string}
+         * @memberof Controllers.SitemapController
+         */self.today=helperService.today();/**
+         * Helper to slugify a string for a URL
+         *
+         * @member {function}
+         * @memberof Controllers.SitemapController
+         */self.slugify=helperService.slugify;}})();
