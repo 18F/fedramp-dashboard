@@ -5954,7 +5954,8 @@ tile:nth-child(2n) .card {
     float: left;
     margin-left: 1em;
     overflow-x: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 .provider.expanded .col {
   vertical-align: top;
@@ -6039,7 +6040,8 @@ tile:nth-child(2n) .card {
       float: left;
       margin-left: 1em;
       overflow-x: hidden;
-      text-overflow: ellipsis; }
+      text-overflow: ellipsis;
+      white-space: nowrap; }
 
 .product.expanded .name .logo,
 .agency.expanded .name .logo,
@@ -6085,7 +6087,8 @@ tile:nth-child(2n) .card {
 .assessor.expanded .contact dl dd {
   margin-left: 0;
   overflow-x: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .product.expanded .reuses,
 .agency.expanded .reuses,
@@ -6144,7 +6147,8 @@ tile:nth-child(2n) .card {
     float: left;
     margin-left: 1em;
     overflow-x: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 .assessor.card .col {
   width: 100%; }
@@ -6186,4 +6190,5 @@ tile:nth-child(2n) .card {
     float: left;
     margin-left: 1em;
     overflow-x: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    white-space: nowrap; }
