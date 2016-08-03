@@ -5845,7 +5845,6 @@ tile:nth-child(2n) .card {
 .tile a,
 .tile a:hover,
 .tile a:visited {
-  color: #000000;
   text-decoration: none;
   cursor: pointer; }
 
