@@ -2,114 +2,197 @@
 
 .grid {
     display: block;
-	max-width: none;
-	width: 100%;
+    max-width: none;
+    width: 100%;
     background-color: $color-gray-lightest;
 
-	.fr-grid-layout {
-		display: table;
-		width: 100%;
-		font-size: 1.4rem;
-		background-color: $color-white;
-		transition: background-color 0.3s;
+    .fr-grid-layout {
+        display: table;
+        width: 100%;
+        font-size: 1.4rem;
+        background-color: $color-white;
+        transition: background-color 0.3s;
 
-		&:hover {
-			background-color: $color-cool-blue-lightest;
-		}
+        @media only screen and (max-width: 500px) {
+            display: block;
+            margin-top: 2rem;
+        }
 
-		.fr-grid-layout-row {
-			display: table-row;
-			
-			> div {
-				display: table-cell;
-				vertical-align: middle;
-			}
-		}
-	}
+        &:hover {
+            background-color: $color-cool-blue-lightest;
+        }
 
-	// handle styling for grid view filters, need padding for positioning
-	.fr-grid-header {
-		font-size: 1.4rem;
-		height: 4.4rem;
-		line-height: 4.4rem;
+        .fr-grid-layout-row {
+            display: table-row;
 
-		.fr-grid-layout-row {
-			> div {
-				padding-top: 2.3rem;
-				vertical-align: top;
-			}
+            @media only screen and (max-width: 500px) {
+                display: inline-block;
+                height: auto !important;
+            }
+            
+            > div {
+                display: table-cell;
+                vertical-align: middle;
 
-			.fr-grid-cell-name {
-				line-height: 4.4rem;
-			}
-		}
-	}
-	// background handling for the filtering header
-	.fr-grid-layout.fr-grid-header {
-		height: 6.8rem;
-		margin-top: 1.6rem;
-		background: $color-gray-lightest;
-		color: $color-gray;
-		white-space: nowrap;
-	}
+                @media only screen and (max-width: 500px) {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 
-	// padding for text based columns
-	// exxempt icon & metric cols
-	.fr-grid-layout-row {
-		> div {
-			padding-left: 2rem;
-		}
+    // handle styling for grid view filters, need padding for positioning
+    .fr-grid-header {
+        font-size: 1.4rem;
+        height: 4.4rem;
+        line-height: 4.4rem;
 
-		// name needs some extra padding
-		> div:first-child {
-			padding-left: 2.8rem;
-		}
+        @media only screen and (max-width: 500px) {
+            display: none;
+        }
 
-		.fr-grid-cell-icon,
-		.fr-grid-cell-metric {
-		 	padding-left: 0;
-		 }
-	}
-	.fr-grid-cell-name {
-		width: 31%;
-		line-height: 1;
-	}
+        .fr-grid-layout-row {
+            > div {
+                padding-top: 2.3rem;
+                vertical-align: top;
+            }
 
-	.fr-grid-cell-service {
-		width: 16%;
+            .fr-grid-cell-name {
+                line-height: 4.4rem;
+            }
+        }
+    }
 
-		> div {
-			float: left;
-			margin-right: 1rem;
-		}
-	}
+    // background handling for the filtering header
+    .fr-grid-layout.fr-grid-header {
+        height: 6.8rem;
+        margin-top: 1.6rem;
+        background: $color-gray-lightest;
+        color: $color-gray;
+        white-space: nowrap;
+    }
 
-	.fr-grid-cell-deployment {
-		width: 20%;
-	}
+    // padding for text based columns
+    // exxempt icon & metric cols
+    .fr-grid-layout-row {
+        > div {
+            padding-left: 2rem;
 
-	.fr-grid-cell-impact {
-		width: 15%;
-	}
+            @media only screen and (max-width: 500px) {
+                padding-top: 1rem;
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
 
-	.fr-grid-cell-icon {
-		width: 10%;
-		font-size: 1.2rem;
-	}
+        // name needs some extra padding
+        > div:first-child {
+            padding-left: 2.8rem;
 
-	.fr-grid-cell-metric {
-		width: 8%;
-		text-align: center;
-	}
+            @media only screen and (max-width: 500px) {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        .fr-grid-cell-icon,
+        .fr-grid-cell-metric {
+            padding-left: 0;
+
+            @media only screen and (max-width: 500px) {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+    }
+
+    .fr-grid-cell-name {
+        width: 31%;
+        line-height: 1;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+
+            .title {
+                font-size: larger;
+            }
+        }
+    }
+
+    .fr-grid-cell-service {
+        width: 16%;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        > div {
+            float: left;
+            margin-right: 1rem;
+        }
+    }
+
+    .fr-grid-cell-deployment {
+        width: 20%;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    .fr-grid-cell-impact {
+        width: 15%;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+        }
+    }
+
+    .fr-grid-cell-icon {
+        width: 10%;
+        font-size: 1.2rem;
+
+        @media only screen and (max-width: 500px) {
+            float: left;
+            width: 49%;
+            padding-top: 3rem !important;
+        }
+    }
+
+    .fr-grid-cell-metric {
+        width: 8%;
+        text-align: center;
+
+        @media only screen and (max-width: 500px) {
+            float: right;
+            width: 49%;
+            padding: 3rem 0 !important;
+        }
+    }
 
     .fr-grid-cell-contact {
         width: 33%;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+        }
     }
 
     .agency, 
     .assessor {
         .fr-grid-cell-metric {
             width: 7%;
+
+            @media only screen and (max-width: 500px) {
+                width: 100%;
+                padding: 3rem 0 !important;
+            }
         }
     }
 

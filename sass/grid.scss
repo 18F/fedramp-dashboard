@@ -1,13 +1,22 @@
 @import 'variables';
 
 .grid {
-    .detail {
-        display: none;
-    }
-
     .grid-with-sidebar {
         float: right;
         width: 77.4%;
+
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+        }
+
+        grid-sort {
+            background: none;
+
+            @media only screen and (max-width: 500px) {
+                display: none;
+                visibility: hidden;
+            }
+        }
 
 		.grid-sort-arrows {
 		    .fa-caret-up, .fa-caret-down {
@@ -22,8 +31,4 @@
     }
 
     min-height: 100rem;
-}
-
-.grid-with-sidebar grid-sort {
-	background: none;
 }

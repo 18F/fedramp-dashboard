@@ -5,6 +5,10 @@
 	height: 6.8rem;
 	position: relative;
 
+    @media only screen and (max-width: 500px) {
+        display: none;
+    }
+
 	.fr-filter-label-rule {
 		position: absolute;
 		top: 50%;
