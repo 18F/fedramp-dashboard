@@ -47,3 +47,20 @@ a:active
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
 }
+
+.mobile-visible {
+    display: none;
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+    .mobile-visible {
+        display: block;
+        visibility: visible;
+    }
+
+    .mobile-hidden {
+        display: none;
+        visibility: hidden;
+    }
+}
