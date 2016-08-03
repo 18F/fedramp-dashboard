@@ -41,7 +41,8 @@
                 'Fedramp_Ready_Date': 'fedrampReadyDate',
                 'CSP_POC_Name': 'pocName',
                 'CSP_POC_Email': 'pocEmail',
-                'Leveraged_ATO_Letters': 'atoLetters'
+                'Leveraged_ATO_Letters': 'atoLetters',
+                'FedRAMP_In-Process_Date': 'inProcessDate'
             };
 
             /**
@@ -218,6 +219,13 @@
              * @memberof Models.Data
              */
             self.fedrampReady = null;
+
+            /**
+             * Date when cso became in-process
+             * @member {date}
+             * @memberof Models.Data
+             */
+            self.inProcessDate = null;
 
             /**
              * Initialize the provider object.
