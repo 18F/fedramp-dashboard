@@ -20,6 +20,29 @@ The team frequently interacted with user constituencies from FedRAMP, OMB, 18f, 
 
 Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/about/ "FedRAMP").
 
+## Table of contents
+
+ - [Project Management](#project-management)
+ - [Application](#application)
+ - [Features](#features)
+   - [Header](#header)
+   - [Cloud Service Providers](#cloud-service-providers)
+   - [Agencies](#agencies)
+   - [3PAOs](#3paos)
+   - [Analysis Tools](#analysis-tools)
+ - [Maintenance](#maintenance)
+    - [Add new Cloud Offering, Agency, or 3PAO](#add-new-cloud-offering-agency-or-3pao)
+    - [Adding a new filter to the dashboard](#adding-a-new-filter-to-the-dashboard)
+    - [Maintain static header/footer](#maintain-static-headerfooter)
+        - [Search](#search)
+        - [Header](#header-1)
+        - [Footer](#footer)
+ - [Getting to know the code](#getting-to-know-the-code)
+    - [Clone all things](#clone-all-things)
+    - [Checking dependencies](#checking-dependencies)
+    - [Running a local server](#running-a-local-server)
+    - [Executing tests and coverage reports](#executing-tests-and-coverage-reports)
+    - [Packaging Application](#packaging-application)
 
 ## Project Management
 The project team utilized Taiga, a free online open source project management tool, to administer User Stories, Tasks, and Sprints.  All public projects in Taiga are free and openly accessible, providing full public visibility into the FedRAMP Dashboard Product Backlog and sprint activities.
