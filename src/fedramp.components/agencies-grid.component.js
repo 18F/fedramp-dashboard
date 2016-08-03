@@ -54,11 +54,15 @@
             };
         }(self.onUpdate);
 
-
         /**
          * Flag to hide filters
          */
         self.hideFilters = angular.isDefined($attrs.hideFilters) ? $attrs.hideFilters : false; 
+
+        /**
+         * Flag to toggle filters on mobile
+         */
+        self.toggleFilters = false;
 
         /**
          * Determine the options available for filtering the reuse metric

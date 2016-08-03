@@ -37,6 +37,10 @@
                 width: auto;
                 margin-bottom: 0;
 
+                @media only screen and (max-width: 500px) {
+                    display: none;
+                }
+
                 a {
                     line-height: 40px;
                     border-right: 1px solid #eee;
