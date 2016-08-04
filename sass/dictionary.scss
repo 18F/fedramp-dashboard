@@ -1,0 +1,74 @@
+@import 'variables';
+
+.dictionary {
+    .back {
+        background-color: $color-primary;
+        height: 46px;
+        width: 100%;
+        padding-top:11px;
+        color: #fff;
+        padding: 0;
+        padding-top: 11px;
+        margin: 0;
+        h4 {
+            cursor:pointer;
+            color: #fff;
+            i {
+                padding-top:2px;
+                position:relative;
+                font-size: 0.7em;
+                top:-2px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    h4,h2,h3, dl {
+        color: $color-base;
+    }
+    h4 {
+        margin:0;
+        padding:0;
+    }
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        background-color: $color-gray-lightest;
+        height: 100px;
+        padding-top: 30px;
+    }
+
+    .search {
+        background-color: $color-gray-lightest;
+        height: 80px;
+        input {
+            margin: 0;
+        }
+        grid-search {
+            display:block;
+        }
+    }
+
+    .term {
+        border-bottom: 2px solid $color-gray-lightest;
+    }
+
+    dl {
+        dt {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        dd {
+            margin: 0 0 20px 2px;
+            padding: 0;
+            font-size: 1.5rem;
+        }
+    }
+
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}

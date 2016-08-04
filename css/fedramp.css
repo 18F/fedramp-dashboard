@@ -4690,6 +4690,71 @@ a:active {
 	@date		2016-07-12
 	@version	0.9.5	web standards version extracted from
 */
+.dictionary .back {
+  background-color: #0071bc;
+  height: 46px;
+  width: 100%;
+  padding-top: 11px;
+  color: #fff;
+  padding: 0;
+  padding-top: 11px;
+  margin: 0; }
+  .dictionary .back h4 {
+    cursor: pointer;
+    color: #fff; }
+    .dictionary .back h4 i {
+      padding-top: 2px;
+      position: relative;
+      font-size: 0.7em;
+      top: -2px;
+      margin-right: 8px; }
+
+.dictionary h4, .dictionary h2, .dictionary h3, .dictionary dl {
+  color: #212121; }
+
+.dictionary h4 {
+  margin: 0;
+  padding: 0; }
+
+.dictionary h2 {
+  margin: 0;
+  padding: 0; }
+
+.dictionary .header {
+  background-color: #f1f1f1;
+  height: 100px;
+  padding-top: 30px; }
+
+.dictionary .search {
+  background-color: #f1f1f1;
+  height: 80px; }
+  .dictionary .search input {
+    margin: 0; }
+  .dictionary .search grid-search {
+    display: block; }
+
+.dictionary .term {
+  border-bottom: 2px solid #f1f1f1; }
+
+.dictionary dl dt {
+  font-weight: bold;
+  font-size: 1.5rem; }
+
+.dictionary dl dd {
+  margin: 0 0 20px 2px;
+  padding: 0;
+  font-size: 1.5rem; }
+
+.dictionary .content {
+  max-width: 960px;
+  margin: 0 auto; }
+
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 .export {
   margin-top: 2rem;
   text-align: center;
