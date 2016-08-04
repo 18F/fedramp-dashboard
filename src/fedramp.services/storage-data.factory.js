@@ -267,7 +267,7 @@
                         } else {
                             let idx;
                             for (idx = 0; idx < items.length; idx++) {
-                                if (items[idx].name === l.authorizingAgency.trim()) {
+                                if (items[idx].name === l.authorizingSubagency.trim()) {
                                     break;
                                 }
                             }
