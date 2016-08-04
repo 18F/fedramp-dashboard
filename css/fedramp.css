@@ -4607,9 +4607,9 @@ a:active {
   display: none;
   visibility: hidden; }
 
-@media only screen and (max-width: 736px) {
+@media only screen and (max-width: 850px) {
   .mobile-visible {
-    display: block;
+    display: block !important;
     visibility: visible; }
   .mobile-hidden {
     display: none;
@@ -4636,7 +4636,7 @@ a:active {
     height: 29.4rem;
     color: #02bfe7;
     text-align: center; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .fr-dash-header .fr-large-metrics {
         height: auto; } }
     .fr-dash-header .fr-large-metrics > div {
@@ -4644,7 +4644,7 @@ a:active {
       height: 100%;
       width: 33.33%;
       margin-right: 0; }
-      @media only screen and (max-width: 736px) {
+      @media only screen and (max-width: 850px) {
         .fr-dash-header .fr-large-metrics > div {
           border-bottom: 2px solid #0d2747;
           height: auto;
@@ -4655,7 +4655,7 @@ a:active {
       cursor: pointer; }
     .fr-dash-header .fr-large-metrics > div:last-child {
       border-right: none; }
-      @media only screen and (max-width: 736px) {
+      @media only screen and (max-width: 850px) {
         .fr-dash-header .fr-large-metrics > div:last-child {
           border-bottom: none; } }
     .fr-dash-header .fr-large-metrics .fr-large-number {
@@ -4778,7 +4778,7 @@ download-csv .fa-download {
 .fr-filter-label {
   height: 6.8rem;
   position: relative; }
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 850px) {
     .fr-filter-label {
       display: none; } }
   .fr-filter-label .fr-filter-label-rule {
@@ -4964,7 +4964,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.4rem;
     background-color: #ffffff;
     transition: background-color 0.3s; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-layout {
         display: block;
         margin-top: 2rem; } }
@@ -4972,21 +4972,21 @@ h1, h2, h3, h4, h5, h6 {
       background-color: #dce4ef; }
     .grid .fr-grid-layout .fr-grid-layout-row {
       display: table-row; }
-      @media only screen and (max-width: 736px) {
+      @media only screen and (max-width: 850px) {
         .grid .fr-grid-layout .fr-grid-layout-row {
           display: inline-block;
           height: auto !important; } }
       .grid .fr-grid-layout .fr-grid-layout-row > div {
         display: table-cell;
         vertical-align: middle; }
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
           .grid .fr-grid-layout .fr-grid-layout-row > div {
             display: inline-block; } }
   .grid .fr-grid-header {
     font-size: 1.4rem;
     height: 4.4rem;
     line-height: 4.4rem; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-header {
         display: none; } }
     .grid .fr-grid-header .fr-grid-layout-row > div {
@@ -5002,20 +5002,20 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap; }
   .grid .fr-grid-layout-row > div {
     padding-left: 2rem; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-layout-row > div {
         padding-left: 3rem;
         padding-right: 3rem; } }
   .grid .fr-grid-layout-row > div:first-child {
     padding-left: 2.8rem; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-layout-row > div:first-child {
         padding-left: 3rem;
         padding-right: 3rem; } }
   .grid .fr-grid-layout-row .fr-grid-cell-icon,
   .grid .fr-grid-layout-row .fr-grid-cell-metric {
     padding-left: 0; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-layout-row .fr-grid-cell-icon,
       .grid .fr-grid-layout-row .fr-grid-cell-metric {
         padding-left: 3rem;
@@ -5023,7 +5023,7 @@ h1, h2, h3, h4, h5, h6 {
   .grid .fr-grid-cell-name {
     width: 31%;
     line-height: 1; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-name {
         width: 100%;
         padding-left: 3rem;
@@ -5032,7 +5032,7 @@ h1, h2, h3, h4, h5, h6 {
           font-size: larger; } }
   .grid .fr-grid-cell-service {
     width: 16%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-service {
         width: 100%;
         padding-left: 3rem;
@@ -5044,7 +5044,7 @@ h1, h2, h3, h4, h5, h6 {
       margin-right: 1rem; }
   .grid .fr-grid-cell-deployment {
     width: 20%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-deployment {
         width: 100%;
         padding-left: 3rem;
@@ -5053,7 +5053,7 @@ h1, h2, h3, h4, h5, h6 {
           display: inline-block; } }
   .grid .fr-grid-cell-impact {
     width: 15%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-impact {
         width: 100%; }
         .grid .fr-grid-cell-impact .mobile-visible {
@@ -5061,7 +5061,7 @@ h1, h2, h3, h4, h5, h6 {
   .grid .fr-grid-cell-icon {
     width: 10%;
     font-size: 1.2rem; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-icon {
         float: left;
         width: 49%;
@@ -5070,7 +5070,7 @@ h1, h2, h3, h4, h5, h6 {
   .grid .fr-grid-cell-metric {
     width: 8%;
     text-align: center; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-metric {
         float: right;
         width: 49%;
@@ -5078,13 +5078,13 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 2rem; } }
   .grid .fr-grid-cell-contact {
     width: 33%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .fr-grid-cell-contact {
         width: 100%; } }
   .grid .agency .fr-grid-cell-metric,
   .grid .assessor .fr-grid-cell-metric {
     width: 7%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .agency .fr-grid-cell-metric,
       .grid .assessor .fr-grid-cell-metric {
         width: 100%;
@@ -5157,12 +5157,12 @@ grid-total {
   .grid .grid-with-sidebar {
     float: right;
     width: 77.4%; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .grid .grid-with-sidebar {
         width: 100%; } }
     .grid .grid-with-sidebar grid-sort {
       background: none; }
-      @media only screen and (max-width: 736px) {
+      @media only screen and (max-width: 850px) {
         .grid .grid-with-sidebar grid-sort {
           display: none;
           visibility: hidden; } }
@@ -5193,32 +5193,105 @@ grid-total {
     font-weight: normal;
     font-family: Calibri,Arial,sans-serif;
     text-transform: uppercase; }
+    #header #catnav #navigate {
+      line-height: 40px;
+      border: 0 !important;
+      color: #274784;
+      text-decoration: none;
+      padding: 0 15px; }
     #header #catnav ul {
+      overflow: hidden;
       margin: 0 auto;
       float: none;
       clear: both;
       padding: 0;
-      list-style: none; }
-      #header #catnav ul li {
-        float: left;
-        width: auto;
-        margin-bottom: 0; }
-        @media only screen and (max-width: 736px) {
-          #header #catnav ul li {
-            display: none; } }
-        #header #catnav ul li a {
-          line-height: 40px;
-          border-right: 1px solid #eee;
-          border: 0 !important;
-          color: #274784;
-          position: relative;
-          display: block;
-          z-index: 100;
-          padding: 0 15px; }
-      #header #catnav ul li::before {
-        content: ''; }
-    #header #catnav .select-menu-catnav {
-      display: none; }
+      list-style: none;
+      background: #fafafa; }
+      @media only screen and (max-width: 850px) {
+        #header #catnav ul {
+          margin: 0;
+          width: 100%; } }
+    #header #catnav li {
+      width: auto;
+      margin-bottom: 0;
+      display: inline-block; }
+      @media only screen and (max-width: 850px) {
+        #header #catnav li {
+          display: block; } }
+    #header #catnav li::before {
+      content: ''; }
+    #header #catnav li a {
+      line-height: 40px;
+      border-right: 1px solid #eee;
+      border: 0 !important;
+      color: #274784;
+      position: relative;
+      display: block;
+      z-index: 100;
+      padding: 0 15px;
+      text-decoration: none; }
+    #header #catnav .dropdown-content {
+      display: none;
+      position: absolute;
+      width: 320px;
+      max-width: 320px;
+      color: black;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); }
+      @media only screen and (max-width: 850px) {
+        #header #catnav .dropdown-content {
+          width: 100%;
+          max-width: 100%;
+          position: static; } }
+    #header #catnav .dropdown-content .right {
+      display: none;
+      position: absolute;
+      margin-left: 320px;
+      margin-top: -40px;
+      width: 320px;
+      max-width: 320px;
+      color: black;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); }
+    #header #catnav .dropdown-content a {
+      text-decoration: none;
+      display: block;
+      text-align: left; }
+    #header #catnav .dropdown-content a:hover {
+      background-color: #f1f1f1; }
+    #header #catnav .dropdown:hover .dropdown-content,
+    #header #catnav .dropdown:hover .dropdown-content li {
+      display: block;
+      z-index: 999;
+      overflow: visible; }
+      #header #catnav .dropdown:hover .dropdown-content .dropdown:hover .dropdown-content,
+      #header #catnav .dropdown:hover .dropdown-content .dropdown:hover .dropdown-content li,
+      #header #catnav .dropdown:hover .dropdown-content li .dropdown:hover .dropdown-content,
+      #header #catnav .dropdown:hover .dropdown-content li .dropdown:hover .dropdown-content li {
+        display: block;
+        z-index: 999; }
+      #header #catnav .dropdown:hover .dropdown-content .dropdown-content,
+      #header #catnav .dropdown:hover .dropdown-content li .dropdown-content {
+        display: none;
+        position: absolute;
+        width: 320px;
+        max-width: 320px;
+        width: 100%;
+        color: black;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); }
+        @media only screen and (max-width: 850px) {
+          #header #catnav .dropdown:hover .dropdown-content .dropdown-content,
+          #header #catnav .dropdown:hover .dropdown-content li .dropdown-content {
+            position: static; } }
+      @media only screen and (min-width: 851px) {
+        #header #catnav .dropdown:hover .dropdown-content .dropdown-content .right,
+        #header #catnav .dropdown:hover .dropdown-content li .dropdown-content .right {
+          display: none;
+          position: absolute;
+          margin-left: 320px;
+          margin-top: -40px;
+          width: 320px;
+          max-width: 320px;
+          color: black;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); } }
 
 .icon, .icon-cloud-compliant, .icon-cloud-in-process, .icon-compliant, .icon-compliant.active, .icon-in-process, .icon-in-process.active, .icon-ready, .icon-ready.active, .icon-cloud, .icon-cloud.active, .icon-reuse, .icon-reuse.active, .icon-ready-light, .icon-in-process-light, .icon-compliant-light {
   width: 50px;
@@ -5326,7 +5399,7 @@ grid-total {
     background-color: #ffffff;
     position: relative;
     z-index: 100; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .comparison .first, .comparison .second {
         width: 100%; } }
   .comparison .first {
@@ -5345,12 +5418,12 @@ grid-total {
       z-index: 110;
       margin: 0 auto;
       width: 12%; }
-      @media only screen and (max-width: 736px) {
+      @media only screen and (max-width: 850px) {
         .comparison .close-both .row {
           width: 100%; } }
     .comparison .close-both .close {
       background-color: #323a45; }
-    @media only screen and (max-width: 736px) {
+    @media only screen and (max-width: 850px) {
       .comparison .close-both {
         width: 100%;
         position: static; } }
@@ -5971,7 +6044,7 @@ product-list {
   float: left;
   width: 21%;
   padding: 5.2rem 0 3rem 2.4rem; }
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 850px) {
     .sidebar {
       float: none;
       display: block;
@@ -6031,14 +6104,14 @@ tile:nth-child(2n) .card {
   float: right;
   margin-right: 0; }
 
-@media only screen and (max-width: 736px) {
+@media only screen and (max-width: 850px) {
   .tile .fr-grid-layout-row {
     padding-top: 3rem; } }
 
 .tile .fr-grid-layout-row > div {
   border-bottom: 1px solid #f1f1f1;
   border-right: 1px solid #f1f1f1; }
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 850px) {
     .tile .fr-grid-layout-row > div {
       border: none; } }
 
@@ -6050,7 +6123,7 @@ tile:nth-child(2n) .card {
 .tile .expanded .row {
   height: 9.5rem;
   border-bottom: 1px solid #f1f1f1; }
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 850px) {
     .tile .expanded .row {
       height: auto;
       border-bottom: none; } }

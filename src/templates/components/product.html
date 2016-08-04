@@ -98,7 +98,7 @@
             <h4>FedRAMP Authorization Timeline</h4>
         </div>
         <div class="timeline-row">
-            <div class="timeline-col" ng-class="{'ready' : controller.model.fedrampReadyDate}">
+            <div class="timeline-col" ng-class="{'ready' : controller.model.fedrampReadyDate}" ng-show="{{controller.model.fedrampReadyDate}}">
                 <div>{{controller.model.fedrampReadyDate}}</div>
                 <span>Ready</span>
             </div>

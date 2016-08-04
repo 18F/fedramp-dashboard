@@ -13,7 +13,7 @@
         background-color: $color-white;
         transition: background-color 0.3s;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             display: block;
             margin-top: 2rem;
         }
@@ -25,7 +25,7 @@
         .fr-grid-layout-row {
             display: table-row;
 
-            @media only screen and (max-width: 736px) {
+            @media only screen and (max-width: 850px) {
                 display: inline-block;
                 height: auto !important;
             }
@@ -34,7 +34,7 @@
                 display: table-cell;
                 vertical-align: middle;
 
-                @media only screen and (max-width: 736px) {
+                @media only screen and (max-width: 850px) {
                     display: inline-block;
                 }
             }
@@ -47,7 +47,7 @@
         height: 4.4rem;
         line-height: 4.4rem;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             display: none;
         }
 
@@ -78,7 +78,7 @@
         > div {
             padding-left: 2rem;
 
-            @media only screen and (max-width: 736px) {
+            @media only screen and (max-width: 850px) {
                 padding-left: 3rem;
                 padding-right: 3rem;
             }
@@ -88,7 +88,7 @@
         > div:first-child {
             padding-left: 2.8rem;
 
-            @media only screen and (max-width: 736px) {
+            @media only screen and (max-width: 850px) {
                 padding-left: 3rem;
                 padding-right: 3rem;
             }
@@ -98,7 +98,7 @@
         .fr-grid-cell-metric {
             padding-left: 0;
 
-            @media only screen and (max-width: 736px) {
+            @media only screen and (max-width: 850px) {
                 padding-left: 3rem;
                 padding-right: 3rem;
             }
@@ -109,7 +109,7 @@
         width: 31%;
         line-height: 1;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
@@ -123,7 +123,7 @@
     .fr-grid-cell-service {
         width: 16%;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
@@ -142,7 +142,7 @@
     .fr-grid-cell-deployment {
         width: 20%;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
@@ -156,7 +156,7 @@
     .fr-grid-cell-impact {
         width: 15%;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             width: 100%;
 
             .mobile-visible {
@@ -169,7 +169,7 @@
         width: 10%;
         font-size: 1.2rem;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             float: left;
             width: 49%;
             padding-top: 3rem !important;
@@ -181,7 +181,7 @@
         width: 8%;
         text-align: center;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             float: right;
             width: 49%;
             padding: 3rem 0 !important;
@@ -192,7 +192,7 @@
     .fr-grid-cell-contact {
         width: 33%;
 
-        @media only screen and (max-width: 736px) {
+        @media only screen and (max-width: 850px) {
             width: 100%;
         }
     }
@@ -202,7 +202,7 @@
         .fr-grid-cell-metric {
             width: 7%;
 
-            @media only screen and (max-width: 736px) {
+            @media only screen and (max-width: 850px) {
                 width: 100%;
                 padding: 3rem 0 !important;
             }
