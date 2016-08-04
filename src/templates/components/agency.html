@@ -9,6 +9,10 @@
         </a>
     </div>
     <div class="row header">
+        <div class="col reuse mobile-hidden">
+            <div class="number">{{controller.model.products.length}}</div>
+            <div class="text">{{controller.model.useLabel}}</div>
+        </div>
         <div class="col">
             <div class="logo">
                 <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />
@@ -17,10 +21,6 @@
             <div class="title">
                 <strong>{{ controller.model.name }}</strong>
             </div>
-        </div>
-        <div class="col reuse mobile-hidden">
-            <div class="number">{{controller.model.products.length}}</div>
-            <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
     <div class="row">
