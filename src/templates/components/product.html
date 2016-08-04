@@ -81,12 +81,12 @@
 
             <h4>FedRAMP Authorized Detail</h4>
             <dl>
-                <dt>Authorization Type:</dt>
-                <dd>{{ controller.model.authorizationType }}</dd>
-                <dt>Agency Lead:</dt>
-                <dd>{{ controller.model.sponsoringAgency }}</dd>
-                <dt>Independent Assessor:</dt>
-                <dd>{{ controller.model.independentAssessor }}</dd>
+                <dt ng-if="controller.model.authorizationType">Authorization Type:</dt>
+                <dd ng-if="controller.model.authorizationType">{{ controller.model.authorizationType }}</dd>
+                <dt ng-if="controller.model.sponsoringAgency">Agency Lead:</dt>
+                <dd ng-if="controller.model.sponsoringAgency">{{ controller.model.sponsoringAgency }}</dd>
+                <dt ng-if="controller.model.independentAssessor">Independent Assessor:</dt>
+                <dd ng-if="controller.model.independentAssessor">{{ controller.model.independentAssessor }}</dd>
                 <dt ng-if="controller.model.authorizationDate">{{ controller.model.authorizationType === 'JAB' ? 'JAB Provisional' : 'Agency' }} Authorization Date:</dt>
                 <dd ng-if="controller.model.authorizationDate">{{ controller.model.authorizationDate }}</dd>
             </dl>
