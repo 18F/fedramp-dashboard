@@ -31,21 +31,42 @@
      * filtering logic.
      *
      * @example
+     * // Using property expression
      * <grid-search property="product.name in products" placeholder="Search by Product Name"></grid-search>
      *
+     * // Using custom filter function
      * <grid-search filter-func="myCustomFilterFunc" placeholder="Search by Product Name or Provider Name"></grid-search>
      * @constructor
      * @memberof Components
      */
     function GridSearch (Searcher) {
-        var self = this;
+        /**
+         * Reference to current GridSearch
+         */
+        var self = this;        
+
+        /**
+         * Used to traverse an object to search for values on a given property
+         */
         var searcher = new Searcher();
-        self.filtered = [];
+
+        // Exposed functions
         self.$onInit = $onInit;
         self.search = search;
         self.clear = clear;
         self.restoreState = restoreState;
 
+        /**
+         * Contains array of filtered items
+         * @member {array}
+         * @memberof Components.GridSearch
+         */
+        self.filtered = [];
+
+        /**
+         * Initializes the component and validates the existence of specific attributes
+         * @memberof Components.GridSearch
+         */
         function $onInit () {
             if (!self.id) {
                 throw 'Id is required for grid search filter';
@@ -96,8 +117,7 @@
          */
         function search () {
             saveState();
-            var filtered = self.gridController.rawItems.filter(self.filterFunc);
-            self.filtered = filtered;
+            self.filtered = self.gridController.rawItems.filter(self.filterFunc);
             self.gridController.doFilter();
         }
 

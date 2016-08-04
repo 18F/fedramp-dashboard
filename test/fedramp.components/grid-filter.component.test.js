@@ -50,28 +50,6 @@ describe('the grid filter component', function () {
         grid.$onInit();
     });
 
-    it('should add a new filter and add expanded class', function () {
-        var $element = angular.element('<div></div>');
-        gridFilter = dataFactory.gridFilterComponent({
-            property: 'agaency in agencies',
-            id: 'agencies',
-            header: 'Agencies',
-            option: null,
-            initialValues: null,
-            expanded: true,
-            opened: true,
-            gridController: grid
-        }, {
-            $element: $element
-        });
-
-        gridFilter.$onInit();
-        grid.addFilter(gridFilter);
-        expect(grid.items).toBeDefined();
-        expect(grid.items.length).toBe(2);
-        expect($element.hasClass('grid-filter-expanded')).toBe(true);
-    });
-
     it('should clear filters', function () {
         gridFilter = dataFactory.gridFilterComponent({
             property: 'agencies',
@@ -227,11 +205,12 @@ describe('the grid filter component', function () {
             property: 'a in agencies',
             gridController: grid
         });
+        grid.$onInit();
         grid.state = {
             'agenciesFilter': 'DoD'
         };
-        grid.$onInit();
         gridFilter.$onInit();
+        grid.doFilter();
         expect(grid.items.length).toBe(1);
     });
 
@@ -249,22 +228,19 @@ describe('the grid filter component', function () {
             name: 'name',
             gridController: grid
         });
-
+        grid.$onInit();
         grid.state = {
             'agenciesFilter': 'DoD',
             'sort': '-name'
         };
-
-        grid.$onInit();
         gridFilter.$onInit();
         gridSort.$onInit();
         expect(grid.items[0].name).toBe('Amazon');
 
+        grid.$onInit();
         grid.state = {
             'sort': '-name'
         };
-
-        grid.$onInit();
         gridFilter.$onInit();
         gridSort.$onInit();
         expect(grid.items[0].name).toBe('Google');

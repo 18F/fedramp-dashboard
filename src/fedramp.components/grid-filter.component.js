@@ -13,7 +13,7 @@
                 gridController: '^grid'
             },
             bindings: {
-                // The property on a list to manage
+                // The property on a list to manage. Specify a property expression here.
                 property: '@',
 
                 // User friendly text to describe filter
@@ -26,9 +26,6 @@
                 // Load any initial selected values. For instance, to restore filter state. In the form
                 // {value: <value>, label: <label>, selected: <boolean>}
                 selectedOptionValues: '<',
-
-                // Whether to render expanded template vs the dropdown
-                expanded: '<',
 
                 // Whether to initially render expanded mode with panels opened
                 opened: '<',
@@ -44,7 +41,7 @@
             }
         });
 
-    GridFilter.$inject = ['$location', '$parse', '$element', '$httpParamSerializer', 'Searcher'];
+    GridFilter.$inject = ['$location', '$element', '$httpParamSerializer', 'Searcher'];
 
     /**
      * A generic filtering component that utilizes a property expression to extract all available options for a given
@@ -80,7 +77,7 @@
      *
      * @example 
      * // Example HTML
-     * <grid-filter property="name" header="Name" options="" expanded="true" opened="true"></grid-filter>
+     * <grid-filter property="name" header="Name" options="" opened="true"></grid-filter>
      *
      * // Example of custom filterFunc
      *
@@ -104,10 +101,11 @@
      * @constructor
      * @memberof Components
      */
-    function GridFilter ($location, $parse, $element, $httpParamSerializer, Searcher) {
+    function GridFilter ($location, $element, $httpParamSerializer, Searcher) {
         var self = this;
         var selectedCss = 'grid-filter-selected';
         var OBJECT_PARAM_REGEX = /\:\((.+?)\),{0,}/;
+        var PARAM_DELIMITER = ';';
 
         // Options available to filter based on property
         self.options = [];
@@ -155,10 +153,6 @@
             }
 
             restoreState();
-
-            if (self.expanded) {
-                $element.addClass('grid-filter-expanded');
-            }
         }
 
         /**
@@ -203,7 +197,7 @@
                     });
             } else {
                 // Handle basic primitive options
-                values.split(',').forEach(function (val) {
+                values.split(PARAM_DELIMITER).forEach(function (val) {
                     selected.push({
                         value: (val),
                         selected: true
@@ -265,7 +259,7 @@
                     }
                     // Handle basic primitive value
                     return option.value;
-                }).join(',');
+                }).join(PARAM_DELIMITER);
                 self.gridController.state[self.id] = options;
             } else {
                 delete self.gridController.state[self.id];
@@ -315,11 +309,7 @@
         }
 
         /**
-         * Loads a distinct list of values found in the specified property attribute.
-         * If the property value is a basic string, an array of strings will be set for the options.
-         *
-         * If the property is an array, each instance of the array will be iterated to extract the contents to
-         * generate an array containing unique values. This is done by using a set.
+         * Loads an array of available options
          *
          * @public
          * @memberof Components.GridFilter
@@ -332,9 +322,11 @@
         }
 
         /**
-         * Creates a set of options for a particular property to be filtered on.
+         * Creates a set of options for a particular property to be filtered on. If an optionsFunc
+         * is NOT passed in, utilizes the property expression passed into `property` to automatically
+         * traverse the dataset for available options. 
          *
-         * Override this method to add custom options.
+         * You can also override this method to add custom options.
          *
          * @example
          * //Sample dataset to return if overriding
@@ -351,7 +343,7 @@
          * The dataset to generate options from.
          *
          * @returns {array}  
-         * An array of options that can be selected to filter. These must be in the form 
+         * An array of options that can be selected to filter. 
          */
         function optionsFunc (source) {
             var options = [];

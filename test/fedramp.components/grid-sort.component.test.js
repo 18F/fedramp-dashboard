@@ -116,10 +116,10 @@ describe('the grid sort component', function () {
         nameGridSort.activated = false;
         expect(nameGridSort.highlight(true)).toBe(false);
 
-        grid.defaultSort = null;
+        grid.activeSort = null;
         nameGridSort.activated = true;
         expect(nameGridSort.highlight(true)).toBe(false);
-        grid.defaultSort = nameGridSort;
+        grid.activeSort = nameGridSort;
         expect(nameGridSort.highlight(true)).toBe(true);
 
         expect(grid.doFilter).not.toThrow();

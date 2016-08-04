@@ -161,6 +161,8 @@
                     // jshint ignore:end
 
                     item.reuses = d.atoLetters.length ;
+                    // Calculate number of authorizations
+                    item.authorizations = item.reuses + (!['In Process', 'FedRAMP Ready'].includes(item.designation) ? 1 : 0);
                     let leveraged = data.filter(x => x ? x.underlyingCspPackages.includes(d.pkgId) : false); // jshint ignore:line
                     if (leveraged.length > 0) {
                         // Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
@@ -172,8 +174,6 @@
                             .reduce((p, c) => p + c);
                     }
 
-                    // Calculate number of authorizations
-                    item.authorizations = item.reuses + (!['In Process', 'FedRAMP Ready'].includes(item.designation) ? 1 : 0);
                     items.push(item);
                 }
 

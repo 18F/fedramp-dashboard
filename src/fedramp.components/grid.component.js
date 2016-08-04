@@ -13,41 +13,71 @@
                 // Callback function called when grid update occurs
                 onUpdate: '&',
 
-                // Determines whether grid will maintain state via query params
-                state: '<',
+                // Flag that hides filters
+                hideFilters: '@',
 
-                hideFilters: '@'
+                // Flag whether to save/restore state
+                saveState: '<'
             }
         });
 
-    Grid.$inject = ['$log', '$stateParams', '$location'];
+    Grid.$inject = ['$log', '$location'];
 
     /**
      * @constructor
      * @memberof Components
-     * @example <grid items="items" raw-items="agencies"></grid>
+     * @example <grid raw-items="dataToFilter" on-update="onUpdate(items, state)"></grid>
      */
-    function Grid ($log, $stateParams, $location) {
+    function Grid ($log, $location) {
+        /**
+         * Reference to current Grid
+         */
         var self = this;
 
-        // Maintains a list of filters
+        /**
+         * Maintains list of added filters. A filter can be a {@link Components.GridFilter} or
+         * {@link Components.GridSearch}
+         * @member {array}
+         * @memberof Components.Grid
+         */
         var filters = [];
+
+        /**
+         * Maintains list of added sorters
+         * @member {array}
+         * @memberof Components.Grid
+         */
         var sorts = [];
 
+        // Exposed functions
         self.$onInit = $onInit;
         self.addFilter = addFilter;
         self.addSort = addSort;
         self.doFilter = doFilter;
         self.clearFilters = clearFilters;
         self.updateSort = updateSort;
-        self.stateUpdate = stateUpdate;
-        self.state = $location.search() || {};
+        self.doUpdate = doUpdate;
 
-        // Default sort to utilize for results
-        self.defaultSort = null;
+        /**
+         * Stores saved values to be stored in URL
+         * @member {object}
+         * @memberof Components.Grid
+         */
+        self.state = {};
+
+        /**
+         * Currently applied sort on dataset
+         * @member {Components.GridSort}
+         * @memberof Components.Grid
+         */
+        self.activeSort = null;
+
+        /**
+         * Contains array of currently filtered items
+         * @member {array}
+         * @memberof Components.Grid
+         */
         self.items = [];
-        self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
-        self.toggleFilters = false;
 
         /**
          * Generate a description of the applied filters for printing.
@@ -100,8 +130,14 @@
             if(!self.onUpdate){
                 throw 'Specify an onUpdate function! Otherwise, you don\' get updates.';
             }
+            self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
+            self.saveState = angular.isDefined(self.saveState) ? self.saveState : true;
+
+            if (self.saveState) {
+                self.state = $location.search() || {};
+            }
             self.items = self.rawItems;
-            self.onUpdate({items: self.items, state: self.state});
+            self.doUpdate();
         }
 
         /**
@@ -142,15 +178,13 @@
             });
 
             // Apply default sort if one exists
-            if(self.defaultSort){
-                combinedFilterResults.sort(self.defaultSort.sortFunc);
+            if(self.activeSort){
+                combinedFilterResults.sort(self.activeSort.sortFunc);
             }
 
             self.items = combinedFilterResults;
 
-            // Pass updated dataset
-            $location.search(self.state);
-            self.onUpdate({items: combinedFilterResults, state: self.state});
+            self.doUpdate();
         }
 
         /**
@@ -197,7 +231,7 @@
          */
         function updateSort(){
             sorts.forEach(function(sort){
-                if(!angular.equals(sort, self.defaultSort)){
+                if(!angular.equals(sort, self.activeSort)){
                     sort.clear();
                 }
             });
@@ -213,10 +247,11 @@
          * @param {object} state
          * Object containing key/value data to add to the state
          */
-        function stateUpdate(state){
-            state = angular.extend(self.state, state);
-            $location.search(state);
-            self.onUpdate({items: self.items, state: state});
+        function doUpdate(){
+            if (self.saveState) {
+                $location.search(self.state);
+            }
+            self.onUpdate({items: self.items, state: self.state});
         }
     }
 

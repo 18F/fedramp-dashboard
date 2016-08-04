@@ -47,7 +47,7 @@
             }
             restoreState();
             self.gridController.addSort(self);
-            self.gridController.stateUpdate();
+                //self.gridController.stateUpdate();
         }
 
         /**
@@ -65,7 +65,10 @@
                     });
 
             // Update url
-            self.gridController.stateUpdate(existingParams);
+            if (self.gridController.saveState) {
+                self.gridController.state.sort = (self.asc ? '' : '-') + self.name;
+            }
+            self.gridController.doUpdate();
         }
 
         /**
@@ -119,7 +122,7 @@
         function sort (doAscending) {
             self.activated = angular.isDefined(doAscending);
             self.asc = doAscending;
-            self.gridController.defaultSort = self;
+            self.gridController.activeSort = self;
             self.gridController.items.sort(self.sortFunc);
             $element.addClass('sort-selected');
             // Update state of all sorts
@@ -196,7 +199,7 @@
             if (!self.activated) {
                 return false;
             }
-            if (self !== self.gridController.defaultSort) {
+            if (self !== self.gridController.activeSort) {
                 return false;
             }
             if (self.asc === asc) {
