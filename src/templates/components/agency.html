@@ -18,7 +18,13 @@
                 <strong>{{ controller.model.name }}</strong>
             </div>
         </div>
-        <div class="col reuse">
+        <div class="col reuse mobile-hidden">
+            <div class="number">{{controller.model.products.length}}</div>
+            <div class="text">{{controller.model.useLabel}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col reuse mobile-visible">
             <div class="number">{{controller.model.products.length}}</div>
             <div class="text">{{controller.model.useLabel}}</div>
         </div>
