@@ -51,7 +51,7 @@ a:active
 }
 
 .mobile-visible {
-    display: none;
+    display: none !important;
     visibility: hidden;
 }
 
@@ -62,7 +62,7 @@ a:active
     }
 
     .mobile-hidden {
-        display: none;
+        display: none !important;
         visibility: hidden;
     }
 }

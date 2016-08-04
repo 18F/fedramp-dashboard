@@ -4509,7 +4509,7 @@ a:active {
   /* IE10+ */ }
 
 .mobile-visible {
-  display: none;
+  display: none !important;
   visibility: hidden; }
 
 @media only screen and (max-width: 850px) {
@@ -4517,7 +4517,7 @@ a:active {
     display: block !important;
     visibility: visible; }
   .mobile-hidden {
-    display: none;
+    display: none !important;
     visibility: hidden; } }
 
 :focus {
@@ -5543,6 +5543,22 @@ grid-total {
         overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap; }
+  .information .reuse.mobile-visible {
+    text-align: center;
+    width: 100%;
+    height: 10.1rem;
+    padding-top: 2.7rem;
+    background-color: #0071bc;
+    color: #ffffff;
+    font-weight: bolder;
+    margin-top: -0.6em;
+    margin-bottom: -0.6em; }
+    .information .reuse.mobile-visible .text {
+      font-size: 1.3rem;
+      font-weight: 400; }
+    .information .reuse.mobile-visible .number {
+      font-size: 2.6rem;
+      margin-bottom: -0.8rem; }
   .information .fedramp dl dt {
     float: left;
     font-weight: bolder;
@@ -5602,6 +5618,9 @@ grid-total {
     height: 6px;
     margin-top: 6rem;
     padding: 0; }
+    @media only screen and (max-width: 850px) {
+      .information .divider {
+        margin-top: 0; } }
   .information .no-image {
     border: 1px solid #aeb0b5;
     height: 90px;

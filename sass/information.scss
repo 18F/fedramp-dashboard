@@ -386,6 +386,28 @@
         }
     }
 
+    .reuse.mobile-visible {
+        text-align: center;
+        width: 100%;
+        height: 10.1rem;
+        padding-top: 2.7rem;
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: bolder;
+        margin-top: -0.6em;
+        margin-bottom: -0.6em;
+
+        .text {
+            font-size: 1.3rem;
+            font-weight: $font-normal;
+        }
+
+        .number {
+            font-size: 2.6rem;
+            margin-bottom: -0.8rem;
+        }
+    }
+
     .fedramp {
         dl {
             dt {
@@ -464,6 +486,10 @@
         height: 6px;
         margin-top: 6rem;
         padding: 0;
+
+        @media only screen and (max-width: 850px) {
+            margin-top: 0;
+        }
     }
 
     .no-image {
