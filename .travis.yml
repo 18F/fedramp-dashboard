@@ -8,7 +8,7 @@ after_script:
 before_deploy: "npm run package"
 deploy:
   provider: s3
-  bucket: fedramp-dashboard-demo
+  bucket: marketplace.fedramp.gov
   region: us-east-1
   skip_cleanup: true
   local_dir: "build/dest"
