@@ -8,11 +8,11 @@
 
 The purpose of the FedRAMP Dashboard project is to create a publicly available, web-based responsive dashboard providing greater visibility and up to date status for vendors going through the FedRAMP authorization process.   
 
-The dashboard will provide many benefits to the FedRAMP user community including increased transparency and monitoring, improved decision-making and prioritization abilities, and reduced effort in compliance activities, among others. 
+The dashboard will provide many benefits to the FedRAMP user community including increased transparency and monitoring, improved decision-making and prioritization abilities, and reduced effort in compliance activities, among others.
 
 The FedRAMP Dashboard project team employed a user-centered design approach leveraging key principles from the [U.S. Digital Services Playbook](https://playbook.cio.gov/#plays_index_anchor):
 
-1. Understand what people need 
+1. Understand what people need
 2. Address the whole experience, from start to finish
 3. Make it simple and intuitive
 
@@ -65,19 +65,19 @@ GitHub commits can be traced back to their corresponding Taiga tasks through com
 ```
 
 ## Application
-The FedRAMP Dashboard is written entirely in client-side code: `HTML`, `CSS`, and `JavaScript`, and populated by a FedRAMP-managed `json` data feed .  The code is hosted in a [public code repository on GitHub](https://github.com/truetandem/fedramp-dashboard) and is [licensed](https://github.com/truetandem/fedramp-dashboard/blob/master/LICENSE) under the Creative Commons, CC0 1.0 Universal Public domain dedication.  
+The FedRAMP Dashboard is written entirely in client-side code: `HTML`, `CSS`, and `JavaScript`, and populated by a FedRAMP-managed `json` data feed, which is currently hosted at [18F/fedramp-data](https://github.com/18f/fedramp-data).  The code is hosted in a [public code repository on GitHub](https://github.com/truetandem/fedramp-dashboard) and is [licensed](https://github.com/truetandem/fedramp-dashboard/blob/master/LICENSE) under the Creative Commons, CC0 1.0 Universal Public domain dedication.  The application makes use of the [AngularJS](https://angularjs.org/) JavaScript framework.
 
 A GitHub Pages “gh-pages” branch was created in the GitHub repository to generate a website associated with the project for hosting the work-in-progress FedRAMP Dashboard page and related content.  The page facilitates rapid deployment for continuous integration, user testing, and feature demonstrations.   
 
  - Visit the [FedRAMP Dashboard test site](https://truetandem.github.io/fedramp-dashboard/)
- - View the raw FedRAMP `json` [data feed](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json) 
+ - View the raw FedRAMP `json` [data feed](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json)
  - Run the dashboard [Unit Tests](https://truetandem.github.io/fedramp-dashboard/test)
  - View the online [System Documentation](https://truetandem.github.io/fedramp-dashboard/doc)
 
 For information on contributing to the FedRAMP Dashboard codebase, please visit [CONTRIBUTING.md](https://github.com/truetandem/fedramp-dashboard/blob/master/CONTRIBUTING.md)
 
 ## Features
-The following User Stories were created and refined in response to many user surveys, interviews, and usability testing sessions, and became the base requirements for the FedRAMP Dashboard.  Click on the User Story number to see the story details, otherwise the title and brief description are provided here. 
+The following User Stories were created and refined in response to many user surveys, interviews, and usability testing sessions, and became the base requirements for the FedRAMP Dashboard.  Click on the User Story number to see the story details, otherwise the title and brief description are provided here.
 
 #### Header
 >[User Story 52](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/52): **Total Authorizations** - The high-level metrics at the top of the dashboard, counts for FedRAMP Ready, In-Process, and Authorized.  
@@ -85,7 +85,7 @@ The following User Stories were created and refined in response to many user sur
 #### Cloud Service Providers
 >[User Story 19](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/19): **Provider check status** - View the cloud service offering/product current Authorization status both on the Products listing and the Product detail.  Products that are "Authorized" are represented by the double check-mark icon in the product listing view.
 
->[User Story 23](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/23): **Monitor CSP Authorizations** - See which agencies are using a product from the Product details view. The Agency names are listed out and created as hyperlinks to the Agency detail view. 
+>[User Story 23](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/23): **Monitor CSP Authorizations** - See which agencies are using a product from the Product details view. The Agency names are listed out and created as hyperlinks to the Agency detail view.
 
 >[User Story 53](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/53): **Total Reuse (Authorizations)** - See how many time a product has been authorized for use by an agency, and see which agencies are using the product.  The count is visible in the product listing and the details page.
 
@@ -96,12 +96,12 @@ The following User Stories were created and refined in response to many user sur
 #### Agencies
 >[User Story 16](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/16): **Identify agency performance** - For each Agency, show the number of cloud products they are using.  The count is shown next to the Agency name on the Agency listing page and the services that make up the count are list in the Agency detail view.
 
->[User Story 18](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/18): **Visual representation of Agency** - In the Agency listing view, the Agency name, icon, point of contact, and number of products used is shown.  In the Agency detail page the same information is provided, but also the products used are listed out and are hyper-linked to their respective product detail page. 
+>[User Story 18](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/18): **Visual representation of Agency** - In the Agency listing view, the Agency name, icon, point of contact, and number of products used is shown.  In the Agency detail page the same information is provided, but also the products used are listed out and are hyper-linked to their respective product detail page.
 
 >[User Story 22](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/22): **Review which agencies use a service** - In the cloud product details page, the listing of agencies who use that particular cloud product is provided, and the agencies listed are hyper-linked to their respective agency detail page.
 
 #### 3PAOs
->[User Story 64](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/64): **View 3PAOs** - The 3PAO details view provides a description of the assessor's services to help potential customers (agencies) determine if they are a good fit to do their assessment. 
+>[User Story 64](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/64): **View 3PAOs** - The 3PAO details view provides a description of the assessor's services to help potential customers (agencies) determine if they are a good fit to do their assessment.
 
 >[User Story 66](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/66): **What work has a 3PAO done** - The 3PAO details view provides a listing of the cloud providers and their corresponding products in which the 3PAO has performed assessments. The services listed are hyper-linked to their respective product detail page.
 
@@ -112,17 +112,27 @@ The following User Stories were created and refined in response to many user sur
 
 >[User Story 21](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/21): **Compare 2 CSP providers** - Click an item in the dashboard list view (works for Products, Agencies, and 3PAOs).  When the item details page shows, the list of remaining items is shown to the right of the details.  Select a second item and the details page for that item appears next to the original selection.  Close one, to find another to compare, or close both to the return to the initial filtered list view.
 
->[User Story 100](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/100): **Filter dashboard (by category)** - The filter area appears to the left of the main content listing area and is context-sensitive based on the current item type being viewed (Products, Agencies, 3PAOs).  The filters are aggregate, so as a filter is selected, the next filter will only apply to the currently filtered result set and the result set count appears in the upper portion of the filter area.  A check mark represents a current selected filter.  Filters are cleared one at a time by re-clicking a current filter, or all at once using the "Clear Filters" action at the top of the filter section. 
+>[User Story 100](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/100): **Filter dashboard (by category)** - The filter area appears to the left of the main content listing area and is context-sensitive based on the current item type being viewed (Products, Agencies, 3PAOs).  The filters are aggregate, so as a filter is selected, the next filter will only apply to the currently filtered result set and the result set count appears in the upper portion of the filter area.  A check mark represents a current selected filter.  Filters are cleared one at a time by re-clicking a current filter, or all at once using the "Clear Filters" action at the top of the filter section.
 
->[User Story 144](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/144): **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality. 
+>[User Story 144](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/144): **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality.
 
-## Maintenance 
+## Maintenance
+### Deployment
+The application is deployed to an Amazon Web Services Simple Storage Service (S3) bucket, outside of the FedRAMP.gov Sites website.
+
+The updates to the application are deployed following GitHub commits to the [18F/fedramp-dashboard](https://github.com/18F/fedramp-dashboard) repository `master` branch, via Travis Continuous Integration build script.
+
+The configuration for this deployment can be found in the `deploy` section of the `.travis.yml` file in the repository.
+
+Currently, the script relies on the `npm run package` command to build the distribution, following a successful execution of the testing suite.
+
+
 ### Add new Cloud Offering, Agency, or 3PAO
 1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the entity name is unique*
-2. Ensure logo images follow the guidelines provided in the **Logo Guidelines** section below 
+2. Ensure logo images follow the guidelines provided in the **Logo Guidelines** section below
 3. Add logo image file to the correct directory on the FedRAMP web server.
 4. Ensure the `URL` to the image file is in the new data entry.  *NOTE: use https*
-5. Publish new FedRAMP data to `data.gov` feed. 
+5. Publish new FedRAMP data to `data.gov` feed.
 
 ### Logo Guidelines
 To ensure consistency with logo images for Providers, Agencies, and Assessors appearing in the FedRAMP dashboard, please leverage the following guidelines.
@@ -137,7 +147,7 @@ To ensure consistency with logo images for Providers, Agencies, and Assessors ap
 150px max width x 150 px max height
 
 #### Orientation and Crop
-Limit open space around logo and align edges of logo to bottom left corner. 
+Limit open space around logo and align edges of logo to bottom left corner.
 
 ![logo guidelines graphic](https://cloud.githubusercontent.com/assets/12962390/17411346/22a43d28-5a46-11e6-9f85-c284d96249df.png)
 
@@ -151,10 +161,10 @@ A grid consists of the following components:
   - gridSearch
     - A component that allows free text-based searches
 
-    
+
 The `grid` is the parent component that all child components must require. The gridFilter component maintains state by using the `id` passed into `<grid-filter id="blah"></grid-filter>` and uses that as the key for the value that gets stored in the URL hash.
 
-For instance, `<grid-filter id="blah"></grid-filter>` would render 
+For instance, `<grid-filter id="blah"></grid-filter>` would render
 `?blah=<value from selectedOptions>`
 
 The `<grid-filter/>` has two modes of operation
@@ -227,7 +237,7 @@ The optionsFunc must return an array of options that a user can select. It shoul
     label: 'Friendly text label'
 }
 ```
-> Note that for values that are **NOT** primitive types, the json representation will be stored in the url. 
+> Note that for values that are **NOT** primitive types, the json representation will be stored in the url.
 
 ```javascript
 // data contains array of currently filtered items.
