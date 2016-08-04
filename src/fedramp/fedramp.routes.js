@@ -88,32 +88,6 @@
                 controller: 'HomeController as homeController'
             })
 
-            // Provider States
-            .state('fedramp.app.home.providers', {
-                url: '/providers',
-                templateUrl: 'src/templates/home/providers.html',
-                controller: 'ProvidersController as controller',
-                resolve: {
-                    providers: ['fedrampData', function (fedrampData) {
-                        return fedrampData.providers();
-                    }]
-                }
-            })
-            .state('fedramp.app.provider', {
-                url: '/provider',
-                templateUrl: 'src/templates/home/provider.html'
-            })
-            .state('fedramp.app.provider.information', {
-                url: '/:name',
-                templateUrl: 'src/templates/home/provider-information.html',
-                controller: 'ProviderInformationController as controller'
-            })
-            .state('fedramp.app.provider.comparison', {
-                url: '/:first/versus/:second',
-                templateUrl: 'src/templates/home/provider-comparison.html',
-                controller: 'ProviderComparisonController as controller'
-            })
-
             // Product States
             .state('fedramp.app.home.products', {
                 url: '/products',
