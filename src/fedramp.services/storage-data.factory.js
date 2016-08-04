@@ -17,7 +17,7 @@
         function StorageData (options) {
             StorageManager.call(this);
             var self = this;
-            var rawAssessors = (options && options.Assessors ? options.Assessors : []);
+            var rawAssessors = (options && options.Assessors ? cleanAssessors(options.Assessors) : []);
             self.storageContainer = 'data';
 
             /**
@@ -381,7 +381,22 @@
 
                     item.reuses = item.products.length;
                 });
-
+                
+                // Fill up assessors that haven't been matched with assessors in provider array
+                rawAssessors.forEach(raw => {
+                    let found = false;
+                    items.forEach(item => {
+                        if (raw.name.trim() === item.name.trim()) {
+                            found = true;
+                        }
+                    });
+                    if (!found) {
+                        let assessor = new Assessor();
+                        assessor.name = raw.name;
+                        assessor = fillFromRawAssessor(assessor);
+                        items.push(assessor);
+                    }
+                });
                 return items;
             };
 
@@ -412,11 +427,6 @@
              */
             function fillFromRawAssessor (assessor) {
                 for (let x = 0; x < rawAssessors.length; x++) {
-                    // Empty {} seem to be returned sometimes
-                    if (Object.keys(rawAssessors[x]).length === 0) {
-                        continue;
-                    }
-
                     var assessorData = new AssessorData(rawAssessors[x]);
                     if (safeTrim(assessorData.name) === safeTrim(assessor.name)) {
                         assessor.accreditationDate = helperService.toDate(assessorData.accreditationDate);
@@ -430,6 +440,21 @@
                 }
 
                 return assessor;
+            }
+
+            /**
+             * Removes empty objects `{}` from raw assessor data list
+             *
+             * @returns
+             * Array of assessors without empty objects
+             */
+            function cleanAssessors(assessors) {
+                for (let x = assessors.length - 1; x >= 0; x--) {
+                    if (Object.keys(assessors[x]).length === 0) {
+                        assessors.splice(x, 1);
+                    }
+                }
+                return assessors;
             }
 
             return self.init(options);

@@ -188,6 +188,6 @@ describe('StorageData manager', function () {
         var storage = new StorageData({Assessors: TestData.AssessorData});
         storage.clear();
         storage.update(data.hash(), data);
-        expect(storage.assessors().length).toBe(2);
+        expect(storage.assessors().length).toBe(3);
     });
 });
