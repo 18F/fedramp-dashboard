@@ -5461,7 +5461,8 @@ grid-total {
     padding-top: 0;
     margin-left: 3rem; }
     .information .header .logo {
-      margin-top: 2.1rem; }
+      margin-top: 2.1rem;
+      height: 5.3rem; }
       .information .header .logo img {
         max-width: auto;
         max-height: 5.3rem; }
