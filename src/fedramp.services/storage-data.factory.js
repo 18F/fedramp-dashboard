@@ -212,6 +212,10 @@
                 let names = [];
                 let items = [];
                 let data = self.all();
+
+                // NOTE: There is currently only one field for agency logo's. This
+                // maps to the authorizing agency so we need to backfill sponsoring
+                // agency information.
                 
                 // Top level
                 for (let i = 0; i < data.length; i++) {
@@ -239,6 +243,17 @@
                             item.pocEmail = l.pocEmail.trim();
                             item.logo = l.logo.trim();
                             items.push(item);
+                        } else {
+                            let idx;
+                            for (idx = 0; idx < items.length; idx++) {
+                                if (items[idx].name === l.authorizingAgency.trim()) {
+                                    break;
+                                }
+                            }
+
+                            items[idx].pocName = l.pocName.trim();
+                            items[idx].pocEmail = l.pocEmail.trim();
+                            items[idx].logo = l.logo.trim();
                         }
 
                         if (validAgency(l.authorizingSubagency) && include(l.authorizingSubagency, names)) {
@@ -249,6 +264,17 @@
                             item.pocEmail = l.pocEmail.trim();
                             item.logo = l.logo.trim();
                             items.push(item);
+                        } else {
+                            let idx;
+                            for (idx = 0; idx < items.length; idx++) {
+                                if (items[idx].name === l.authorizingAgency.trim()) {
+                                    break;
+                                }
+                            }
+
+                            items[idx].pocName = l.pocName.trim();
+                            items[idx].pocEmail = l.pocEmail.trim();
+                            items[idx].logo = l.logo.trim();
                         }
                     }
                 }
