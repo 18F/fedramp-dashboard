@@ -32,6 +32,11 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
    - [Analysis Tools](#analysis-tools)
  - [Maintenance](#maintenance)
     - [Add new Cloud Offering, Agency, or 3PAO](#add-new-cloud-offering-agency-or-3pao)
+    - [Logo Guidelines](#logo-guidelines)
+        - [File Type](#file-type)
+        - [Target File Size](#target-file-size)
+        - [Pixel Dimension if PNG](#pixel-dimension-if-png)
+        - [Orientation and Crop](#orientation-and-crop)
     - [Adding a new filter to the dashboard](#adding-a-new-filter-to-the-dashboard)
     - [Maintain static header/footer](#maintain-static-headerfooter)
         - [Search](#search)
@@ -114,9 +119,27 @@ The following User Stories were created and refined in response to many user sur
 ## Maintenance 
 ### Add new Cloud Offering, Agency, or 3PAO
 1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the entity name is unique*
-2. Add image file to the correct directory on the FedRAMP web server.
-3. Ensure the `URL` to the image file is in the new data entry.
-4. Publish new FedRAMP data to `data.gov` feed. 
+2. Ensure logo images follow the guidelines provided in the **Logo Guidelines** section below 
+3. Add logo image file to the correct directory on the FedRAMP web server.
+4. Ensure the `URL` to the image file is in the new data entry.  *NOTE: use https*
+5. Publish new FedRAMP data to `data.gov` feed. 
+
+### Logo Guidelines
+To ensure consistency with logo images for Providers, Agencies, and Assessors appearing in the FedRAMP dashboard, please leverage the following guidelines.
+
+#### File Type
+`SVG` or `PNG` (with transparent background)
+
+#### Target File Size
+50k or smaller
+
+#### Pixel Dimension if PNG
+150px max width x 150 px max height
+
+#### Orientation and Crop
+Limit open space around logo and align edges of logo to bottom left corner. 
+
+![logo guidelines graphic](https://cloud.githubusercontent.com/assets/12962390/17411346/22a43d28-5a46-11e6-9f85-c284d96249df.png)
 
 ### Adding a new filter to the dashboard
 A grid consists of the following components:
