@@ -116,6 +116,9 @@ The following User Stories were created and refined in response to many user sur
 
 >[User Story 144](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/144): **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality.
 
+>[User Story 274](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/274): **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column. 
+
+
 ## Maintenance
 ### Deployment
 The application is deployed to an Amazon Web Services Simple Storage Service (S3) bucket, outside of the FedRAMP.gov Sites website.
