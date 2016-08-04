@@ -5621,12 +5621,6 @@ grid-total {
     @media only screen and (max-width: 850px) {
       .information .divider {
         margin-top: 0; } }
-  .information .no-image {
-    border: 1px solid #aeb0b5;
-    height: 90px;
-    width: 90px;
-    display: inline-block;
-    color: #aeb0b5; }
   .information .timeline {
     margin-bottom: 4rem;
     width: 100%; }
