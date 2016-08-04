@@ -251,9 +251,11 @@
                                 }
                             }
 
-                            items[idx].pocName = l.pocName.trim();
-                            items[idx].pocEmail = l.pocEmail.trim();
-                            items[idx].logo = l.logo.trim();
+                            if (items[idx]) {
+                                items[idx].pocName = l.pocName.trim();
+                                items[idx].pocEmail = l.pocEmail.trim();
+                                items[idx].logo = l.logo.trim();
+                            }
                         }
 
                         if (validAgency(l.authorizingSubagency) && include(l.authorizingSubagency, names)) {
@@ -272,9 +274,11 @@
                                 }
                             }
 
-                            items[idx].pocName = l.pocName.trim();
-                            items[idx].pocEmail = l.pocEmail.trim();
-                            items[idx].logo = l.logo.trim();
+                            if (items[idx]) {
+                                items[idx].pocName = l.pocName.trim();
+                                items[idx].pocEmail = l.pocEmail.trim();
+                                items[idx].logo = l.logo.trim();
+                            }
                         }
                     }
                 }
