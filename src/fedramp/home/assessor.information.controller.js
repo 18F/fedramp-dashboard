@@ -39,19 +39,6 @@
             helperService.navigateTo('/assessors' + helperService.queryString());
         };
 
-        /**
-         * Event reciever for when the grid is updated.
-         * @public
-         * @member {object}
-         * @memberof Controllers.AssessorInformationController
-         *
-         * @param {array} items
-         *  Array of items with filtering and sorting applied.
-         */
-        self.onUpdate = function(items){
-            self.filteredData = items;
-        };
-
         helperService.scrollTo('scrollToContent');
     }
 })();

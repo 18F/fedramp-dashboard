@@ -29,25 +29,6 @@
         self.expandTiles = true;
         
         /**
-         * The download URL
-         * @member {string}
-         * @memberof Controllers.HomeController
-         */
-        self.downloadUrl = '#';
-
-        /**
-         * Filters and transforms data for download
-         * @public
-         * @memberof Controllers.HomeController
-         */
-        self.download = function () {
-            // IE 11 and Edge
-            if (navigator.msSaveBlob && downloadBlob) {
-                navigator.msSaveBlob(downloadBlob, self.filename());
-            }
-        };
-
-        /**
          * Total authorized cloud service providers
          * @public
          * @memberof Controllers.HomeController
@@ -59,33 +40,6 @@
             return fedrampData.products().filter(x => x.designation === 'Compliant').length;
         });
 
-        /**
-         * The cost savings at a fixed rate per re-use
-         * @public
-         * @memberof Controllers.HomeController
-         *
-         * @returns
-         *  The total cost savings
-         */
-        self.totalCostSavings = function () {
-            return Number(250000 * self.leveragedAtos()).toLocaleString('en');
-        };
-
-        /**
-         * The total leveraged ATO letters from authorized cloud service providers
-         * @public
-         * @memberof Controllers.HomeController
-         *
-         * @returns
-         *  The total leveraged ATO letters
-         */
-        self.leveragedAtos = function () {
-            let products = fedrampData.products();
-            if (products.length) {
-                return products.map(x => x.reuses).reduce((p, c) => p + c);
-            }
-            return 0;
-        };
 
         /**
          * The total number of products that are In-Process
@@ -101,7 +55,6 @@
 
         /**
          * The total number of products that are Ready
-         * TODO: Need to validate how this will be calculated
          *
          * @public
          * @memberof Controllers.HomeController

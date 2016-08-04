@@ -5,11 +5,11 @@
         .module('fedramp')
         .controller('AgenciesController', AgenciesController);
 
-    AgenciesController.$inject = ['$log', 'agencies'];
+    AgenciesController.$inject = [];
 
     /**
      * @constructor
      * @memberof Controllers
      */
-    function AgenciesController ($log, agencies) {}
+    function AgenciesController () {}
 })();

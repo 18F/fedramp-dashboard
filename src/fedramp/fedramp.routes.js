@@ -118,12 +118,7 @@
             .state('fedramp.app.home.products', {
                 url: '/products',
                 templateUrl: 'src/templates/home/products.html',
-                controller: 'ProductsController as controller',
-                resolve: {
-                    products: ['fedrampData', function (fedrampData) {
-                        return fedrampData.products();
-                    }]
-                }
+                controller: 'ProductsController as controller'
             })
             .state('fedramp.app.product', {
                 url: '/product',
@@ -145,12 +140,7 @@
             .state('fedramp.app.home.agencies', {
                 url: '/agencies',
                 templateUrl: 'src/templates/home/agencies.html',
-                controller: 'AgenciesController as controller',
-                resolve: {
-                    agencies: ['fedrampData', function (fedrampData) {
-                        return fedrampData.agencies();
-                    }]
-                }
+                controller: 'AgenciesController as controller'
             })
             .state('fedramp.app.agency', {
                 url: '/agency',
@@ -171,12 +161,7 @@
             .state('fedramp.app.home.assessors', {
                 url: '/assessors',
                 templateUrl: 'src/templates/home/assessors.html',
-                controller: 'AssessorsController as controller',
-                resolve: {
-                    assessors: ['fedrampData', function (fedrampData) {
-                        return fedrampData.assessors();
-                    }]
-                }
+                controller: 'AssessorsController as controller'
             })
             .state('fedramp.app.assessor', {
                 url: '/assessor',

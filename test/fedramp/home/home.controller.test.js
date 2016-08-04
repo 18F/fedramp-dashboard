@@ -30,16 +30,6 @@ describe('Home controller with data', function () {
     it('has a total authorized CSPs of 1', function () {
         expect(homeController.totalAuthorized()).toBe(1);
     });
-
-    it('has a total cost savings of $500,000', function () {
-        // We remove the comma b/c PhantomJS does not insert one during locale
-        // conversion. However, in most common browsers it does.
-        expect(homeController.totalCostSavings().replace(',', '')).toBe('500000');
-    });
-
-    it('has a total re-uses of 2', function () {
-        expect(homeController.leveragedAtos()).toBe(2);
-    });
 });
 
 describe('Home controller with no data', function () {
@@ -66,14 +56,6 @@ describe('Home controller with no data', function () {
 
     it('total authorized cloud service providers is zero', function () {
         expect(homeController.totalAuthorized()).toBe(0);
-    });
-
-    it('total cost savings is zero', function () {
-        expect(homeController.totalCostSavings()).toBe('0');
-    });
-
-    it('ATO re-uses is zero', function () {
-        expect(homeController.leveragedAtos()).toBe(0);
     });
 
     it('Total ready should be zero', function () {
