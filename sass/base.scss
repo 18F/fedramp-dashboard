@@ -55,9 +55,9 @@ a:active
     visibility: hidden;
 }
 
-@media only screen and (max-width: 736px) {
+@media only screen and (max-width: 850px) {
     .mobile-visible {
-        display: block;
+        display: block !important;
         visibility: visible;
     }
 

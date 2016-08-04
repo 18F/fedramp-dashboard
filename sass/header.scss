@@ -24,42 +24,130 @@
         font-weight: normal;
         font-family: Calibri,Arial,sans-serif;
         text-transform: uppercase;
-    
+
+        #navigate {
+            line-height: 40px;
+            border: 0 !important;
+            color: #274784;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
         ul {
+            overflow: hidden;
             margin: 0 auto;
             float: none;
             clear: both;
             padding: 0;
             list-style: none;
+            background: #fafafa;
 
-            li {
-                float: left;
-                width: auto;
-                margin-bottom: 0;
-
-                @media only screen and (max-width: 736px) {
-                    display: none;
-                }
-
-                a {
-                    line-height: 40px;
-                    border-right: 1px solid #eee;
-                    border: 0 !important;
-                    color: #274784;
-                    position: relative;
-                    display: block;
-                    z-index: 100;
-                    padding: 0 15px;
-                }
-            }
-
-            li::before {
-                content: '';
+            @media only screen and (max-width: 850px) {
+                margin: 0;
+                width: 100%;
             }
         }
 
-        .select-menu-catnav {
+        li {
+            width: auto;
+            margin-bottom: 0;
+            display: inline-block;
+
+            @media only screen and (max-width: 850px) {
+                display: block;
+            }
+        }
+
+        li::before {
+            content: '';
+        }
+
+        li a {
+            line-height: 40px;
+            border-right: 1px solid #eee;
+            border: 0 !important;
+            color: #274784;
+            position: relative;
+            display: block;
+            z-index: 100;
+            padding: 0 15px;
+            text-decoration: none;
+        }
+
+        .dropdown-content {
             display: none;
+            position: absolute;
+            width: 320px;
+            max-width: 320px;
+            color: black;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+            @media only screen and (max-width: 850px) {
+                width: 100%;
+                max-width: 100%;
+                position: static;
+            }
+        }
+
+        .dropdown-content .right {
+            display: none;
+            position: absolute;
+            margin-left: 320px;
+            margin-top: -40px;
+            width: 320px;
+            max-width: 320px;
+            color: black;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:hover .dropdown-content li {
+            display: block;
+            z-index: 999;
+            overflow: visible;
+
+            .dropdown:hover .dropdown-content,
+            .dropdown:hover .dropdown-content li {
+                display: block;
+                z-index: 999;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                width: 320px;
+                max-width: 320px;
+                width: 100%;
+                color: black;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+                @media only screen and (max-width: 850px) {
+                    position: static;
+                }
+            }
+
+            @media only screen and (min-width: 851px) {
+                .dropdown-content .right {
+                    display: none;
+                    position: absolute;
+                    margin-left: 320px;
+                    margin-top: -40px;
+                    width: 320px;
+                    max-width: 320px;
+                    color: black;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                }
+            }
         }
     }
 }
