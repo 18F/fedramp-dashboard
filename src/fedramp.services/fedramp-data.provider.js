@@ -60,6 +60,10 @@
                  */
                 self.load = load;
 
+                self.all = function () {
+                    return [];
+                };
+
                 /**
                  * Takes the contents of a storage factory object and adds its properties and methods
                  * to this current object.
