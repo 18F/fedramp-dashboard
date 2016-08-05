@@ -1809,10 +1809,10 @@ item.serviceModels=item.serviceModels?item.serviceModels.map(function(x){return 
 // jshint ignore:start
 data.forEach(function(d){if(d.underlyingCspPackages.includes(item.pkgId)){item.dependents.push(d.pkg.trim());}});// jshint ignore:end
 item.reuses=d.atoLetters.length;// Calculate number of authorizations
-item.authorizations=item.reuses+(!['In Process','FedRAMP Ready'].includes(item.designation)?1:0);var leveraged=data.filter(function(x){return x?x.underlyingCspPackages.includes(d.pkgId):false;});// jshint ignore:line
+var leveraged=data.filter(function(x){return x?x.underlyingCspPackages.includes(d.pkgId):false;});// jshint ignore:line
 if(leveraged.length>0){// Add the unleveraged ATOs that use this CSP (if not and underlying CSP will be 0)
 item.reuses+=leveraged.length;// Add leveraged ATO of CSP dependencies
-item.reuses+=leveraged.map(function(x){return x.atoLetters.length;}).reduce(function(p,c){return p+c;});}items.push(item);};for(var i=0;i<data.length;i++){var _ret2=_loop(i);if(_ret2==='continue')continue;}items.forEach(function(item){data.forEach(function(d){if(d.pkg.trim()===item.name){if(validAgency(d.sponsoringAgency)&&include(d.sponsoringAgency,item.agencies)){item.agencies.push(d.sponsoringAgency.trim());}d.atoLetters.forEach(function(a){if(validAgency(a.authorizingAgency)&&include(a.authorizingAgency,item.agencies)){item.agencies.push(a.authorizingAgency.trim());}if(validAgency(a.authorizingSubagency)&&include(a.authorizingSubagency,item.agencies)){item.agencies.push(a.authorizingSubagency.trim());}});}});});return items;};/**
+item.reuses+=leveraged.map(function(x){return x.atoLetters.length;}).reduce(function(p,c){return p+c;});}item.authorizations=item.reuses+(!['In Process','FedRAMP Ready'].includes(item.designation)?1:0);items.push(item);};for(var i=0;i<data.length;i++){var _ret2=_loop(i);if(_ret2==='continue')continue;}items.forEach(function(item){data.forEach(function(d){if(d.pkg.trim()===item.name){if(validAgency(d.sponsoringAgency)&&include(d.sponsoringAgency,item.agencies)){item.agencies.push(d.sponsoringAgency.trim());}d.atoLetters.forEach(function(a){if(validAgency(a.authorizingAgency)&&include(a.authorizingAgency,item.agencies)){item.agencies.push(a.authorizingAgency.trim());}if(validAgency(a.authorizingSubagency)&&include(a.authorizingSubagency,item.agencies)){item.agencies.push(a.authorizingSubagency.trim());}});}});});return items;};/**
              * Extracts unique agencies
              * @public
              * @memberof Services.StorageData
