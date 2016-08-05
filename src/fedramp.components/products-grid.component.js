@@ -103,7 +103,7 @@
          */
         self.reuseRangeFilter = function (product, index, arr, selectedOptions) {
             return selectedOptions.find(function (option) {
-                if (product.reuses >= option.value.min && product.reuses <= option.value.max) {
+                if (product.authorizations >= option.value.min && product.authorizations <= option.value.max) {
                     return product;
                 }
             });

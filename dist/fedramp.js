@@ -871,7 +871,7 @@ sortedProductKeys=sortedProductKeys.map(function(v){return{name:v,products:produ
          *
          * @returns
          *  The matched item or null
-         */self.reuseRangeFilter=function(product,index,arr,selectedOptions){return selectedOptions.find(function(option){if(product.reuses>=option.value.min&&product.reuses<=option.value.max){return product;}});};/**
+         */self.reuseRangeFilter=function(product,index,arr,selectedOptions){return selectedOptions.find(function(option){if(product.authorizations>=option.value.min&&product.authorizations<=option.value.max){return product;}});};/**
          * Custom search function used in filtering the grid.
          * @public
          * @member {object}
