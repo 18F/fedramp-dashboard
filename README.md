@@ -303,33 +303,44 @@ To adjust the styles applied within the search please make all changes in
 
 #### Header
 
-The remaining sections of the header can be referenced in
-[the main template](src/templates/fedramp.html) within the element
-
-```html
-<div id="header" class="clearfix"><!-- Header related elements --></div>
-```
 
 Two main sections of importance:
 
   1. The site title/logo
   2. The site navigation
 
-The logo is currently referencing ![FedRAMP Logo](https://fedramp.sites.usa.gov/files/2015/02/logo3.png)
-and redirects the user to [www.fedramp.gov](https://www.fedramp.gov) if clicked.
+The site logo can be found in [the main template](src/templates/fedramp.html)
+and is currently referencing ![FedRAMP Logo](https://fedramp.sites.usa.gov/files/2015/02/logo3.png)
+which redirects the user to [www.fedramp.gov](https://www.fedramp.gov) if clicked.
 
-The navigation is created with multiple layers of unordered lists for each subsequent
+```html
+<div id="header" class="clearfix">
+    <div id="head-content" class="clearfix">
+        <!-- SITE-TITLE/LOGO -->
+        <div id="sitetitle">
+            <a href="https://www.fedramp.gov" title="FedRAMP"><img src="https://fedramp.sites.usa.gov/files/2015/02/logo3.png" alt="FedRAMP"></a>
+        </div>
+
+        <!-- SECONDARY NAVIGATION -->
+        <navigation />
+    </div>
+</div>
+```
+
+The [navigation component](src/templates/components/navigation.html) template
+is created with multiple layers of unordered lists for each subsequent
 submenu. An example of this format which would be nested
 
 ```html
-<ul class="catnav clearfix sf-js-enabled">
+<div id="catnav" class="hidden-print">
     <!-- Other menu items -->
-    <li id="menu-item-8272" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-8272"><a href="#" class="sf-with-ul">Marketplace</a>
-        <ul class="sub-menu" style="display: none;">
-            <li id="menu-item-10722" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-782 current_page_item menu-item-10722 first-child"><a href="https://www.fedramp.gov/marketplace/compliant-systems/">FedRAMP Compliant Systems</a></li>
-            <li id="menu-item-10712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10712"><a href="https://www.fedramp.gov/marketplace/in-process-systems/">FedRAMP In-Process Systems</a></li>
-            <li id="menu-item-10702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10702"><a href="https://www.fedramp.gov/marketplace/fedramp-ready-systems/">FedRAMP Ready Systems</a></li>
-            <li id="menu-item-4082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4082 last-child"><a href="https://www.fedramp.gov/marketplace/accredited-3paos/">Accredited 3PAOs</a></li>
+    <li class="dropdown">
+        <a href="#" title="Marketplace">Marketplace</a>
+        <ul class="dropdown-content down">
+            <li><a href="https://www.fedramp.gov/marketplace/compliant-systems/" title="FedRAMP Compliant Systems">FedRAMP Compliant Systems</a></li>
+            <li><a href="https://www.fedramp.gov/marketplace/in-process-systems/" title="FedRAMP In-Process Systems">FedRAMP In-Process Systems</a></li>
+            <li><a href="https://www.fedramp.gov/marketplace/fedramp-ready-systems/" title="FedRAMP Ready Systems">FedRAMP Ready Systems</a></li>
+            <li><a href="https://www.fedramp.gov/marketplace/accredited-3paos/" title="Accredited 3PAOs">Accredited 3PAOs</a></li>
         </ul>
     </li>
     <!-- Other menu items -->
