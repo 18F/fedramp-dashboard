@@ -22,13 +22,6 @@
         self.title = 'FedRAMP';
 
         /**
-         * Display the tiles in an expanded format
-         * @member {boolean}
-         * @memberof Controllers.HomeController
-         **/
-        self.expandTiles = true;
-        
-        /**
          * Total authorized cloud service providers
          * @public
          * @memberof Controllers.HomeController
@@ -40,7 +33,6 @@
             return fedrampData.products().filter(x => x.designation === 'Compliant').length;
         });
 
-
         /**
          * The total number of products that are In-Process
          * @public
@@ -49,7 +41,7 @@
          * @returns
          *  The total number of in-process products
          */
-        self.totalInProcess = Cache.wrap('totalInProcess')(function(){
+        self.totalInProcess = Cache.wrap('totalInProcess')(function () {
             return fedrampData.products().filter(x => x.designation === 'In Process').length;
         });
 
@@ -62,26 +54,24 @@
          * @returns
          *  The total number of fedramp ready products
          */
-        self.totalReady = Cache.wrap('totalReady')(function(){
+        self.totalReady = Cache.wrap('totalReady')(function () {
             return fedrampData.products().filter(x => x.designation === 'FedRAMP Ready').length;
         });
-
 
         /**
          * Takes user to products grid and applies status filter.
          * @public
          * @memberof Controllers.HomeController
          */
-        self.filterProducts = function(status){
+        self.filterProducts = function (status) {
             $state.go('fedramp.app.home.products', {}, {
                 reload: true,
                 queryParams: {
                     status: status
                 }
-            }).then(function(){
+            }).then(function () {
                 helperService.scrollTo('products-grid');
             });
         };
-
     }
 })();

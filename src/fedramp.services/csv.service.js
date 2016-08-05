@@ -12,8 +12,8 @@
      * @memberof Services
      */
     function CsvService ($log, fedrampData, helperService) {
-
         var self = this;
+
         self.raw = fedrampData.all();
 
         /**

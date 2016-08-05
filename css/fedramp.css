@@ -6142,13 +6142,6 @@ tile:nth-child(2n) .card {
       height: auto;
       border-bottom: none; } }
 
-.tile .card {
-  height: 25rem;
-  width: 48.925%;
-  margin-right: 2%;
-  float: left;
-  background-color: #ffffff; }
-
 .tile .no-logo {
   border: 1px solid #f1f1f1;
   height: 50px;
@@ -6165,51 +6158,6 @@ tile:nth-child(2n) .card {
   color: #0071bc;
   text-decoration: none;
   cursor: pointer; }
-
-.provider.card .col {
-  width: 33.33333%; }
-
-.provider.card .header {
-  height: 6em; }
-  .provider.card .header .name .logo {
-    padding: 0.34em 0; }
-    .provider.card .header .name .logo img {
-      max-width: 100%;
-      max-height: 3em; }
-  .provider.card .header .reuses {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .provider.card .header .reuses .text {
-      font-size: smaller; }
-    .provider.card .header .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: -0.8rem; }
-
-.provider.card .content .col {
-  width: 100%; }
-
-.provider.card .content .title {
-  padding-top: 20px;
-  /* padding-left: 0.34em; */ }
-
-.provider.card .content dl {
-  font-size: smaller; }
-  .provider.card .content dl dt {
-    clear: left;
-    font-weight: bold;
-    display: inline-block;
-    float: left; }
-  .provider.card .content dl dd {
-    float: left;
-    margin-left: 1em; }
 
 .provider.expanded .col {
   vertical-align: top;
@@ -6240,59 +6188,6 @@ tile:nth-child(2n) .card {
   .provider.expanded .reuses .number {
     font-size: 2.6rem;
     margin-bottom: -0.8rem; }
-
-.card {
-  padding-left: 4.8rem;
-  margin-bottom: 2.7rem; }
-  .card .header .name {
-    display: inline-block;
-    margin-top: 2.3rem; }
-    .card .header .name .logo img {
-      max-width: 100%;
-      max-height: 3em; }
-  .card .header .reuses {
-    float: right;
-    width: 9.5rem;
-    height: 10.1rem;
-    background-color: #0071bc;
-    color: #ffffff;
-    text-align: center;
-    padding-top: 2.7rem; }
-    .card .header .reuses a {
-      color: #ffffff; }
-    .card .header .reuses .text {
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .card .header .reuses .number {
-      margin-bottom: -0.8rem;
-      font-size: 2.6rem;
-      font-weight: 700; }
-  .card .header .status {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em; }
-    .card .header .status img {
-      max-width: 4.5rem;
-      margin-right: 1rem;
-      margin-top: 2.3rem; }
-    .card .header .status span {
-      display: block; }
-  .card .content .col {
-    width: 100%; }
-  .card .content .title {
-    padding-top: 20px;
-    /* padding-left: 0.34em; */ }
-  .card .content dl {
-    font-size: smaller; }
-    .card .content dl dt {
-      clear: left;
-      font-weight: bold;
-      display: inline-block;
-      float: left; }
-    .card .content dl dd {
-      float: left;
-      margin-left: 1em; }
 
 .product.expanded .name,
 .agency.expanded .name,
@@ -6363,78 +6258,3 @@ tile:nth-child(2n) .card {
   .assessor.expanded .reuses .number {
     font-size: 2.6rem;
     margin-bottom: -0.8rem; }
-
-.agency.card .col {
-  width: 100%; }
-
-.agency.card .header .reuses {
-  float: right;
-  text-align: center;
-  width: 6em;
-  height: 6em;
-  padding-top: 1.5em;
-  background-color: #0071bc;
-  color: #ffffff;
-  font-weight: bolder;
-  border-right: none;
-  border-bottom: 1px solid #ffffff; }
-  .agency.card .header .reuses .text {
-    font-size: 1.3rem;
-    font-weight: 400; }
-  .agency.card .header .reuses .number {
-    font-size: 2.6rem;
-    margin-bottom: -0.8rem; }
-
-.agency.card .content .col {
-  width: 100%; }
-
-.agency.card .content dl {
-  font-size: smaller; }
-  .agency.card .content dl dt {
-    clear: left;
-    font-weight: bold;
-    display: inline-block;
-    float: left; }
-  .agency.card .content dl dd {
-    float: left;
-    margin-left: 1em; }
-
-.assessor.card .col {
-  width: 100%; }
-
-.assessor.card .header {
-  height: 6em; }
-  .assessor.card .header .reuses {
-    float: right;
-    text-align: center;
-    width: 6em;
-    height: 6em;
-    padding-top: 1.5em;
-    background-color: #0071bc;
-    color: #ffffff;
-    font-weight: bolder;
-    border-right: none;
-    border-bottom: 1px solid #ffffff; }
-    .assessor.card .header .reuses .text {
-      font-size: 1.3rem;
-      font-weight: 400; }
-    .assessor.card .header .reuses .number {
-      font-size: 2.6rem;
-      margin-bottom: -0.8rem; }
-
-.assessor.card .content .col {
-  width: 100%; }
-
-.assessor.card .content .title {
-  /* padding-left: 0.34em; */ }
-
-.assessor.card .content dl {
-  font-size: smaller; }
-  .assessor.card .content dl dt {
-    clear: left;
-    font-weight: bold;
-    display: inline-block;
-    float: left; }
-  .assessor.card .content dl dd {
-    float: left;
-    margin-left: 1em; }

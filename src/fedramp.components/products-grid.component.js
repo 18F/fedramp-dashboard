@@ -8,7 +8,6 @@
             controller: ProductsGrid,
             controllerAs: 'controller',
             bindings: {
-                expandTiles: '<',
                 rawItems: '<?',
                 onUpdate: '&?'
             }
@@ -171,9 +170,6 @@
                     found = product;
                     return found;
                 }
-                // TODO Need fedramp ready column
-                //if(option.value === 'Ready' && product.fedrampReady){
-                //}
             });
             return found;
         };

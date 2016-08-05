@@ -1,4 +1,4 @@
-<div ng-if="controller.expand" class="assessor expanded fr-grid-layout">
+<div class="assessor expanded fr-grid-layout">
     <div class="row fr-grid-layout-row">
         <div class="col name fr-grid-cell-name">
             <a ng-click="controller.view()" title="Click to compare">
@@ -21,24 +21,6 @@
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{controller.model.reuses}}</div>
             <div class="text">{{controller.model.useLabel}}</div>
-        </div>
-    </div>
-</div>
-
-<div ng-if="!controller.expand" class="assessor card">
-    <div class="row header">
-        <div class="col reuses">
-            <a ng-click="controller.view()">
-                <div class="number">{{controller.model.reuses}}</div>
-                <div class="text">{{controller.model.useLabel}}</div>
-            </a>
-        </div>
-    </div>
-    <div class="row content">
-        <div class="col">
-            <div class="title">
-                <strong>{{ controller.model.name }}</strong>
-            </div>
         </div>
     </div>
 </div>

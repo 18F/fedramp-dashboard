@@ -6,7 +6,7 @@
         .provider('fedrampData', FedrampDataProvider);
 
     /**
-     * Singlegon used to store the contents of a storagedata object after it's been pulled.
+     * Singleton used to store the contents of a storagedata object after it's been pulled.
      *
      * The idea is to store the initial data load into this service so that
      * any other angular service/factory/directive/component can inject without having to re-query. Currently,
@@ -60,6 +60,10 @@
                  */
                 self.load = load;
 
+                /**
+                 * Used for testing so there is something there initially. This will be
+                 * overidden every time in production.
+                 */
                 self.all = function () {
                     return [];
                 };

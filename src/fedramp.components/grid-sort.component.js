@@ -28,10 +28,9 @@
      */
     function GridSort ($log, $parse, $element) {
         var self = this;
+
         self.activated = null;
-
         self.asc = true;
-
         self.$onInit = $onInit;
         self.sort = sort;
         self.highlight = highlight;
@@ -47,7 +46,6 @@
             }
             restoreState();
             self.gridController.addSort(self);
-                //self.gridController.stateUpdate();
         }
 
         /**
@@ -125,6 +123,7 @@
             self.gridController.activeSort = self;
             self.gridController.items.sort(self.sortFunc);
             $element.addClass('sort-selected');
+
             // Update state of all sorts
             self.gridController.updateSort();
             saveState();
@@ -164,10 +163,12 @@
                 if (angular.isNumber(a)) {
                     return numberSortFunc(a, b);
                 }
+
                 if (angular.isArray(a)) {
                     a = a.join(',');
                     b = b.join(',');
                 }
+
                 // Normalize everything and make it all lowercase for fair comparison
                 a = a.toLowerCase();
                 b = b.toLowerCase();
@@ -179,6 +180,7 @@
                     return self.asc ? 1 : -1;
                 }
             }
+
             return 0;
         }
 

@@ -29,6 +29,7 @@
                 'Original_Authorization_Date': 'authorizationDate',
                 'Original_Expiration_Date': 'expirationDate',
                 'Sponsoring_Agency': 'sponsoringAgency',
+                'Sponsoring_Agency_Logo': 'sponsoringAgencyLogo',
                 'CSP_URL': 'cspUrl',
                 'Stage': 'stage',
                 'Independent_Assessor': 'independentAssessor',
@@ -121,6 +122,13 @@
              * @memberof Models.Data
              */
             self.sponsoringAgency = '';
+
+            /**
+            * The sponsoring agency logo
+            * @member {string}
+            * @memberof Models.Data
+            */
+            self.sponsoringAgencyLogo = '';
 
             /**
              * The CSP URL

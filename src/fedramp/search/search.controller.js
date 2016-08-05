@@ -117,7 +117,7 @@
          * @returns
          *  An array of matching items
          */
-        function filterByName(items, query) {
+        function filterByName (items, query) {
             let q = query.toLowerCase();
             return items.filter(x => {
                 if (x.name.toLowerCase().indexOf(query) !== -1) {
@@ -133,16 +133,6 @@
         }
         
         (function () {
-            // filterByName(fedrampData.providers(), self.query).forEach(x => {
-            //     self.results.push({
-            //         title: x.name,
-            //         content: '',
-            //         unescapedUrl: self.internalLink('provider', x.name),
-            //         publishedAt: null,
-            //         siteLinks: []
-            //     });
-            // });
-
             filterByName(fedrampData.products(), self.query).forEach(x => {
                 self.results.push({
                     title: x.provider + ' - ' + x.name,

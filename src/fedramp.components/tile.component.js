@@ -8,7 +8,6 @@
             controller: Tile,
             controllerAs: 'controller',
             bindings: {
-                expand: '<',
                 model: '<',
                 state: '<'
             }

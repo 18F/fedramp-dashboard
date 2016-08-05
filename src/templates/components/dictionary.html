@@ -7,23 +7,22 @@
     <div class="header">
         <h2 class="content"> Term Dictionary </h2>
     </div>
-
     <grid id="dictionary-grid" ng-if="controller.dataDictionary.length > 0" raw-items="controller.dataDictionary" on-update="controller.onUpdate(items, state)" save-state="false">
-    <div class="search">
-        <grid-search class="content" id="type" placeholder="Search by field name" property="field"></grid-search>
-    </div>
-    <div class="term" ng-repeat="term in controller.filteredDictionary | orderBy:'field' track by $index">
-        <div class="content">
-            <h3>{{term.field}}</h3>
-            <dl>
-                <dt>Description</dt>
-                <dd>{{term.description}}</dd>
-                <dt>Type</dt>
-                <dd>{{term.type}}</dd>
-                <dt>Source</dt>
-                <dd>{{term.source}}</dd>
-            </dl>
+        <div class="search">
+            <grid-search class="content" id="type" placeholder="Search by field name" property="field"></grid-search>
         </div>
-    </div>
+        <div class="term" ng-repeat="term in controller.filteredDictionary | orderBy:'field' track by $index">
+            <div class="content">
+                <h3>{{term.field}}</h3>
+                <dl>
+                    <dt>Description</dt>
+                    <dd>{{term.description}}</dd>
+                    <dt>Type</dt>
+                    <dd>{{term.type}}</dd>
+                    <dt>Source</dt>
+                    <dd>{{term.source}}</dd>
+                </dl>
+            </div>
+        </div>
     </grid>
 </div>
