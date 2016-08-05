@@ -20,8 +20,9 @@
      * @constructor
      * @memberof Components
      */
-    function AgenciesGrid($log, fedrampData, $attrs){
+    function AgenciesGrid ($log, fedrampData, $attrs) {
         var self = this;
+
         /**
          * The filtered data
          * @member {array}
@@ -30,7 +31,7 @@
         self.filteredData = [];
 
         /**
-         * The products
+         * The agencies
          * @member {array}
          * @memberof Components.AgenciesGrid
          */
@@ -45,10 +46,10 @@
          * @param {array} items
          *  Array of items with filtering and sorting applied.
          */
-        self.onUpdate = function(func){            
-            return function(items, state){
+        self.onUpdate = function (func) {
+            return function (items, state) {
                 self.filteredData = items;
-                if(func){
+                if (func) {
                     func({items: items});
                 }
             };
@@ -57,7 +58,7 @@
         /**
          * Flag to hide filters
          */
-        self.hideFilters = angular.isDefined($attrs.hideFilters) ? $attrs.hideFilters : false; 
+        self.hideFilters = angular.isDefined($attrs.hideFilters) ? $attrs.hideFilters : false;
 
         /**
          * Flag to toggle filters on mobile
@@ -78,7 +79,7 @@
          */
         self.reuseRangeOptions = function (agencies) {
             return [
-                {value: {min: 0, max:5}, label: '0 - 5', selected: false}, 
+                {value: {min: 0, max:5}, label: '0 - 5', selected: false},
                 {value: {min: 6, max:10}, label: '5 - 10', selected:false},
                 {value: {min: 11, max:1000}, label: '> 10', selected:false}];
         };

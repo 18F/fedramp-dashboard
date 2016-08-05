@@ -21,7 +21,8 @@ describe('The assessors-grid component', function () {
             {
                 rawItems: [
                     {
-                        'name': 'App Engine'
+                        'name': 'App Engine',
+                        'accreditationDate': '01/01/1973'
                     },
                     
                     {
@@ -34,7 +35,7 @@ describe('The assessors-grid component', function () {
 
     it('it initializes assessors', function () {
         expect(component.assessors).toBeDefined();
-        expect(component.assessors.length).toBe(2);
+        expect(component.assessors.length).toBe(1);
     });
 
     it('it initializes hideFilters', function () {

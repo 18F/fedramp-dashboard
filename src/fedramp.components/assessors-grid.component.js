@@ -20,8 +20,9 @@
      * @constructor
      * @memberof Components
      */
-    function AssessorGrid($log, fedrampData, $attrs){
+    function AssessorGrid ($log, fedrampData, $attrs) {
         var self = this;
+
         /**
          * The filtered data
          * @member {array}
@@ -30,11 +31,11 @@
         self.filteredData = [];
 
         /**
-         * The products
+         * The assessors
          * @member {array}
          * @memberof Components.AssessorsGrid
          */
-        self.assessors = self.rawItems || fedrampData.assessors();
+        self.assessors = gridFilter(self.rawItems || fedrampData.assessors());
 
         /**
          * Event reciever for when the grid is updated.
@@ -45,10 +46,10 @@
          * @param {array} items
          *  Array of items with filtering and sorting applied.
          */
-        self.onUpdate = function(func){            
-            return function(items, state){
+        self.onUpdate = function (func) {
+            return function (items, state) {
                 self.filteredData = items;
-                if(func){
+                if (func) {
                     func({items: items});
                 }
             };
@@ -57,7 +58,7 @@
         /**
          * Flag to hide filters
          */
-        self.hideFilters = angular.isDefined($attrs.hideFilters) ? $attrs.hideFilters : false; 
+        self.hideFilters = angular.isDefined($attrs.hideFilters) ? $attrs.hideFilters : false;
 
         /**
          * Flag to toggle filters on mobile
@@ -78,7 +79,7 @@
          */
         self.reuseRangeOptions = function (assessors) {
             return [
-                {value: {min: 0, max:5}, label: '0 - 5', selected: false}, 
+                {value: {min: 0, max:5}, label: '0 - 5', selected: false},
                 {value: {min: 6, max:10}, label: '5 - 10', selected:false},
                 {value: {min: 11, max:1000}, label: '> 10', selected:false}];
         };
@@ -111,24 +112,21 @@
 
         /**
          * Filter the data set by the accredited vendors
-         * @public
+         * @private
          * @member {object}
          * @memberof Controllers.AssessorsController
          *
-         * @param {object} assessor
-         *  The assessor to compare
-         * @param {integer} index
-         *  The current index within the array of items
-         * @param {array} arr
-         *  Array of items
-         * @param {array} selectedOptions
-         *  Array of selected options
+         * @param {object} assessors
+         *  The items to compare
          *
          * @returns
-         *  The matched item or null
+         *  A pre-filtered array of items to use in the grid
          */
-        self.accreditatedFilter = function (assessor, index, arr, selectedOptions) {
-            return assessor && assessor.accreditationDate;
-        };
+        function gridFilter (assessors) {
+            if (!assessors || assessors.length === 0) {
+                return [];
+            }
+            return assessors.filter(x => x.accreditationDate);
+        }
     }
 })();

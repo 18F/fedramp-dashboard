@@ -164,10 +164,10 @@
          * @returns
          *  An matched item or null
          */
-        self.statusFilter = function(product, index, arr, selectedOptions){
+        self.statusFilter = function (product, index, arr, selectedOptions) {
             var found = null;
-            selectedOptions.forEach(function(option){
-                if(option.value === product.designation){
+            selectedOptions.forEach(function (option) {
+                if (option.value === product.designation) {
                     found = product;
                     return found;
                 }
@@ -190,7 +190,7 @@
          * @returns
          *  An matched item or null
          */
-        self.statusFilterOptions = function(products) {
+        self.statusFilterOptions = function (products) {
             return [
                 {value: 'FedRAMP Ready', label: 'Ready', selected: false},
                 {value: 'In Process', label: 'In Process', selected: false},
