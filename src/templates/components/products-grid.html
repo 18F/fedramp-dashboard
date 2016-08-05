@@ -7,14 +7,14 @@
             <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>
             <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>
             <grid-total></grid-total>
-            <grid-filter id="status" header="Status" filter-func="controller.statusFilter" options-func="controller.statusFilterOptions" expanded="true" opened="true" class="grid-filter"></grid-filter>
-            <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" expanded="true" opened="true" class="grid-filter"></grid-filter>
-            <grid-filter id="reuseRange" header="Products Authorized" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
-            <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
-            <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>
-            <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>
-            <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
-            <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
+            <grid-filter id="status" header="Status" filter-func="controller.statusFilter" options-func="controller.statusFilterOptions" opened="true" class="grid-filter"></grid-filter>
+            <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" opened="true" class="grid-filter"></grid-filter>
+            <grid-filter id="reuseRange" header="Products Authorized" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>
+            <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" opened="false" class="grid-filter"></grid-filter>
+            <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" opened="false" class="grid-filter"></grid-filter>
+            <grid-filter id="agencies" property="a in agencies" header="Agencies" opened="false" class="grid-filter"></grid-filter>
+            <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" opened="false" class="grid-filter"></grid-filter>
+            <grid-filter id="providers" property="provider" header="Providers" opened="false" class="grid-filter"></grid-filter>
             <div class="export hidden-print mobile-hidden" ng-sticky>
                 <download-csv content="controller.filteredData" ng-if="controller.filteredData" />
             </div>
