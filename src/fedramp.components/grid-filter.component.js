@@ -379,7 +379,7 @@
          */
         function clear () {
             self.selectedOptionValues = [];
-            self.options.forEach(x=> x.selected = false);
+            self.options.forEach(x => x.selected = false);
             delete self.gridController.state[self.id];
             applyFilter();
         }

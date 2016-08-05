@@ -8,7 +8,6 @@
             controller: AgenciesGrid,
             controllerAs: 'controller',
             bindings: {
-                expandTiles: '<',
                 rawItems: '<?',
                 onUpdate: '&?'
             }

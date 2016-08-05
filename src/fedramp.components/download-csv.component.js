@@ -31,14 +31,14 @@
          * Listens when updates are made to content. Prepares the download
          * url when updates come in.
          */
-        function $onChanges(changes){
+        function $onChanges (changes) {
             prepareDownload();
         }
 
         /**
          * Generates the appropriate csv content and blob and sets it on the downloadUrl
          */
-        function prepareDownload(){
+        function prepareDownload () {
             self.disabled = false;
 
             let csv = CsvService.toCsv(CsvService.flatten(self.content));

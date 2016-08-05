@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url ng-repeat="item in controller.providers track by $index">
-      <loc>https://truetandem.github.io/fedramp-dashboard/provider/{{controller.slugify(item.name)}}</loc>
-      <lastmod>{{controller.today}}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url ng-repeat="item in controller.products track by $index">
-      <loc>https://truetandem.github.io/fedramp-dashboard/product/{{controller.slugify(item.name)}}</loc>
-      <lastmod>{{controller.today}}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url ng-repeat="item in controller.agencies track by $index">
-      <loc>https://truetandem.github.io/fedramp-dashboard/agency/{{controller.slugify(item.name)}}</loc>
-      <lastmod>{{controller.today}}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url ng-repeat="item in controller.assessors track by $index">
-      <loc>https://truetandem.github.io/fedramp-dashboard/assessor/{{controller.slugify(item.name)}}</loc>
-      <lastmod>{{controller.today}}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-   </url>
+    <url ng-repeat="item in controller.products track by $index">
+        <loc>https://truetandem.github.io/fedramp-dashboard/product/{{controller.slugify(item.name)}}</loc>
+        <lastmod>{{controller.today}}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url ng-repeat="item in controller.agencies track by $index">
+        <loc>https://truetandem.github.io/fedramp-dashboard/agency/{{controller.slugify(item.name)}}</loc>
+        <lastmod>{{controller.today}}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url ng-repeat="item in controller.assessors track by $index">
+        <loc>https://truetandem.github.io/fedramp-dashboard/assessor/{{controller.slugify(item.name)}}</loc>
+        <lastmod>{{controller.today}}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset> 

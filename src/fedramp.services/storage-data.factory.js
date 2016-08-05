@@ -225,6 +225,7 @@
                         names.push(d.sponsoringAgency.trim());
                         let item = new Agency();
                         item.name = d.sponsoringAgency.trim();
+                        item.logo = d.sponsoringAgencyLogo.trim();
                         items.push(item);
                     }
                 }

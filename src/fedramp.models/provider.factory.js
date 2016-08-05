@@ -13,7 +13,7 @@
          * @constructor
          * @memberof Models
          */
-        function Provider (options) {
+        function Provider () {
             // Scope `this` to self
             var self = this;
 

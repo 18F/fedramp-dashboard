@@ -21,6 +21,5 @@
      */
     function ProductStatus () {
         var self = this;
-
     }
 })();

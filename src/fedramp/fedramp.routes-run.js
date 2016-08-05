@@ -11,7 +11,7 @@
      * Gets executed once when the application is first bootstrapped. Sets up event listeners
      * for ui-router state changes.
      */
-    function runRoute($rootScope, $location, helperService){
+    function runRoute ($rootScope, $location, helperService) {
         // Params for a route
         var params = {};
 
@@ -34,7 +34,7 @@
             // Enable routes to pass a underlying queryParams object that we can populate
             // since ui-router doesn't allow arbitary query params from being passed
             // with $state.go()
-            if(routeOptions && routeOptions.queryParams){
+            if (routeOptions && routeOptions.queryParams) {
                 $location.search(routeOptions.queryParams);
                 return;
             }
@@ -43,9 +43,9 @@
             // match would be all information and comparison pages. When we do match, we automatically load
             // the query params that were saved in the $stateChangeStart event.
             var match = fromState.name.match(STATE_REGEX);
-            if(match) {
+            if (match) {
                 // We check if the removeParams: <boolean> was defined for a particular route change.
-                if(!routeOptions.removeParams){
+                if (!routeOptions.removeParams) {
                     $location.search(params);
                 } else {
                     $location.search({});
@@ -53,5 +53,4 @@
             }
         });
     }
-
 })();

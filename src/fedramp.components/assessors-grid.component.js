@@ -8,7 +8,6 @@
             controller: AssessorGrid,
             controllerAs: 'controller',
             bindings: {
-                expandTiles: '<',
                 rawItems: '<?',
                 onUpdate: '&?'
             }

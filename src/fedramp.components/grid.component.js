@@ -126,8 +126,8 @@
         /**
          * Initializes the component.
          */
-        function $onInit(){
-            if(!self.onUpdate){
+        function $onInit () {
+            if (!self.onUpdate) {
                 throw 'Specify an onUpdate function! Otherwise, you don\' get updates.';
             }
             self.hideFilters = angular.isDefined(self.hideFilters) ? self.hideFilters : false;
@@ -158,11 +158,11 @@
          * @public
          * @memberof Components.Grid
          */
-        function doFilter(){
+        function doFilter () {
             var combinedFilterResults = [];
 
             // Iterate through each filter and retrieve the data it has individually filtered
-            filters.forEach(function(filter){
+            filters.forEach(function (filter) {
                 combinedFilterResults = combinedFilterResults.concat(filter.filtered);
             });
 
@@ -171,19 +171,17 @@
 
             var filtered = null;
             // Iterate through each filter to extract what it has found
-            filters.forEach(function(filter){
-
+            filters.forEach(function (filter) {
                 // Filter the data!
                 combinedFilterResults = combinedFilterResults.filter(filter.filterFunc);
             });
 
             // Apply default sort if one exists
-            if(self.activeSort){
+            if (self.activeSort) {
                 combinedFilterResults.sort(self.activeSort.sortFunc);
             }
 
             self.items = combinedFilterResults;
-
             self.doUpdate();
         }
 
@@ -192,8 +190,8 @@
          * @public
          * @memberof Components.Grid
          */
-        function clearFilters(){
-            filters.forEach(function(filter){
+        function clearFilters () {
+            filters.forEach(function (filter) {
                 filter.clear();
             });
         }
@@ -207,7 +205,7 @@
          * @param {Components.GridFilter} filter
          * Instance of a GridFilter component
          */
-        function addFilter(filter){
+        function addFilter (filter) {
             filters.push(filter);
         }
 
@@ -219,7 +217,7 @@
          * @param {Components.GridSort} sort
          * Instance of a GridSort component
          */
-        function addSort(sort){
+        function addSort (sort) {
             sorts.push(sort);
         }
 
@@ -229,9 +227,9 @@
          * @public
          * @memberof Components.Grid
          */
-        function updateSort(){
+        function updateSort () {
             sorts.forEach(function(sort){
-                if(!angular.equals(sort, self.activeSort)){
+                if (!angular.equals(sort, self.activeSort)) {
                     sort.clear();
                 }
             });
@@ -247,12 +245,11 @@
          * @param {object} state
          * Object containing key/value data to add to the state
          */
-        function doUpdate(){
+        function doUpdate () {
             if (self.saveState) {
                 $location.search(self.state);
             }
             self.onUpdate({items: self.items, state: self.state});
         }
     }
-
 })();

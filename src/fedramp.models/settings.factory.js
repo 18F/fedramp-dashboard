@@ -54,7 +54,6 @@
             return self;
         };
 
-
         /**
          * Refreshes the date to current date
          * @public
@@ -88,7 +87,6 @@
         self.needsRefresh = function () {
             return self.lastRefresh !== today(new Date());
         };
-
 
         self.hash = function(){
             return self.lastRefresh;

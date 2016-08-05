@@ -56,7 +56,6 @@
                      * You'll notice that in the DataService.pull() promise, we load the fedrampData object and then return that 
                      * object. So here, we're telling ui-router that for STATE BASED controllers that inject the fedrampData 
                      * resolve (not the service), to simply point it to our service. 
-                     *                    
                      *
                      */
                     fedrampData: ['DataService', 'fedrampData', function (DataService, fedrampData) {
@@ -91,8 +90,7 @@
             // Product States
             .state('fedramp.app.home.products', {
                 url: '/products',
-                templateUrl: 'src/templates/home/products.html',
-                controller: 'ProductsController as controller'
+                template: '<products-grid></products-grid>'
             })
             .state('fedramp.app.product', {
                 url: '/product',
@@ -109,12 +107,10 @@
                 controller: 'ProductComparisonController as controller'
             })
 
-
             // Agency States
             .state('fedramp.app.home.agencies', {
                 url: '/agencies',
-                templateUrl: 'src/templates/home/agencies.html',
-                controller: 'AgenciesController as controller'
+                template: '<agencies-grid></agencies-grid>'
             })
             .state('fedramp.app.agency', {
                 url: '/agency',
@@ -134,8 +130,7 @@
             // Assessor States
             .state('fedramp.app.home.assessors', {
                 url: '/assessors',
-                templateUrl: 'src/templates/home/assessors.html',
-                controller: 'AssessorsController as controller'
+                template: '<assessors-grid></assessors-grid>'
             })
             .state('fedramp.app.assessor', {
                 url: '/assessor',

@@ -18,6 +18,7 @@
      */
     function DictionaryController (DataService) {
         var self = this;
+
         // Original list of dictionary items
         self.dataDictionary = [];
 
@@ -31,10 +32,10 @@
         /**
          * Initializes component and queries for data dictionary.
          */
-        function $onInit() {
+        function $onInit () {
             DataService
                 .pullDataDictionary()
-                .then(function(dataDictionary){
+                .then(function (dataDictionary) {
                     self.dataDictionary = dataDictionary;
                 });
         }
@@ -42,9 +43,8 @@
         /**
          * When grid is filtered, updates array to render updated items
          */
-        function onUpdate(items){
+        function onUpdate (items) {
             self.filteredDictionary = items;
         }
     }
-
 })();
