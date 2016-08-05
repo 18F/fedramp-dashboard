@@ -303,7 +303,6 @@ To adjust the styles applied within the search please make all changes in
 
 #### Header
 
-
 Two main sections of importance:
 
   1. The site title/logo
