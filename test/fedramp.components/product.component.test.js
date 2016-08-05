@@ -61,10 +61,10 @@ describe('The product component', function () {
         expect(component.statusMessage()).toBe('FedRAMP Authorized Since 07/11/2016');
 
         component.model = { designation: 'Ready', expectedCompliance: null };
-        expect(component.statusMessage()).toBe('This provider has not given an Estimated Compliance Date');
+        expect(component.statusMessage()).toBe('This provider has not given an Estimated Authorization Date');
 
         component.model = { designation: 'Ready', expectedCompliance: '01/01/2024' };
-        expect(component.statusMessage()).toBe('Estimated Compliance Date 01/01/2024');
+        expect(component.statusMessage()).toBe('Estimated Authorization Date 01/01/2024');
     });
 
     it('can update the status percentage', function () {
