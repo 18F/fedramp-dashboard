@@ -108,5 +108,27 @@
                 }
             });
         };
+
+        /**
+         * Filter the data set by the accredited vendors
+         * @public
+         * @member {object}
+         * @memberof Controllers.AssessorsController
+         *
+         * @param {object} assessor
+         *  The assessor to compare
+         * @param {integer} index
+         *  The current index within the array of items
+         * @param {array} arr
+         *  Array of items
+         * @param {array} selectedOptions
+         *  Array of selected options
+         *
+         * @returns
+         *  The matched item or null
+         */
+        self.accreditatedFilter = function (assessor, index, arr, selectedOptions) {
+            return assessor && assessor.accreditationDate;
+        };
     }
 })();
