@@ -1,4 +1,9 @@
 <div id="search">
+    <div class="back">
+        <h4 class="content usa-grid-full" ui-sref="fedramp.app.home.products()">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to marketplace dashboard
+        </h4>
+    </div>
     <div class="article usa-grid-full" ng-repeat="article in controller.results track by $index">
         <h4 class="article-title">
             <span class="article-ext-type">{{controller.extension(article.unescapedUrl)}}</span>

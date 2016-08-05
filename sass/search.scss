@@ -1,3 +1,5 @@
+@import 'variables';
+
 #topnav {
     .limit {
         clear: both;
@@ -95,6 +97,32 @@
 }
 
 #search {
+    .back {
+        background-color: $color-primary;
+        height: 46px;
+        width: 100%;
+        color: #fff;
+        padding-top: 11px;
+        margin: 0;
+
+        h4 {
+            cursor:pointer;
+            color: #fff;
+
+            i {
+                padding-top: 2px;
+                position: relative;
+                font-size: 0.7em;
+                top: -2px;
+                margin-right: 8px;
+            }
+        }
+
+        .content {
+            margin: 0 auto;
+        }
+    }
+
     .article {
         .article-title {}
         .article-ext-type {}

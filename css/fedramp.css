@@ -5875,6 +5875,12 @@ product-list {
       width: 30%;
       text-align: right; }
 
+/*
+	provide condensed version of web standards variables for use
+
+	@date		2016-07-12
+	@version	0.9.5	web standards version extracted from
+*/
 #topnav .limit {
   clear: both;
   max-width: 960px;
@@ -5942,6 +5948,25 @@ product-list {
           background-image: url(images/twitter.png); }
   #topnav .limit li::before {
     content: ''; }
+
+#search .back {
+  background-color: #0071bc;
+  height: 46px;
+  width: 100%;
+  color: #fff;
+  padding-top: 11px;
+  margin: 0; }
+  #search .back h4 {
+    cursor: pointer;
+    color: #fff; }
+    #search .back h4 i {
+      padding-top: 2px;
+      position: relative;
+      font-size: 0.7em;
+      top: -2px;
+      margin-right: 8px; }
+  #search .back .content {
+    margin: 0 auto; }
 
 .clearfix:after {
   clear: both;
