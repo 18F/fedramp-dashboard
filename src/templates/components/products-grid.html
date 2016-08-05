@@ -16,12 +16,7 @@
             <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>
             <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>
             <div class="export hidden-print mobile-hidden" ng-sticky>
-                <download-csv content="controller.filteredData" ng-if="controller.filteredData">
-                    <button class="usa-button-secondary">
-                        <span>Export to CSV</span>
-                        <i class="fa fa-download" aria-hidden="true"></i>
-                    </button>
-                </download-csv>
+                <download-csv content="controller.filteredData" ng-if="controller.filteredData" />
             </div>
         </div>
     </div>

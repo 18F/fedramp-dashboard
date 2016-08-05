@@ -5,15 +5,16 @@
         .module('fedramp.services')
         .service('CsvService', CsvService);
 
-    CsvService.$inject = ['$log'];
+    CsvService.$inject = ['$log', 'fedrampData', 'helperService'];
 
     /**
      * @constructor
      * @memberof Services
      */
-    function CsvService ($log) {
+    function CsvService ($log, fedrampData, helperService) {
 
         var self = this;
+        self.raw = fedrampData.all();
 
         /**
          * Takes an object and converts to a csv string
@@ -43,12 +44,148 @@
         self.flatten = function (data) {
             let rows = [];
 
-            for (let i = 0; i < data.length; i++) {
-                rows.push(flattenObject(data[i]));
-            }
+            // {
+            //     CloudServiceProvider: '',
+            //     CloudServiceOffering: '',
+            //     Type: '',
+            //     LeveragedATO: '',
+            //     AuthorizationDate: '',
+            //     Agency: '',
+            //     Subagency: '',
+            //     IndependentAssessor: ''
+            // }
+
+            data.forEach(x => {
+                switch (x.type) {
+                case 'product':
+                    rows = rows.concat(productFilter(x.pkgId));
+                    break;
+
+                case 'agency':
+                    rows = rows.concat(agencyFilter(x.name));
+                    break;
+
+                case 'assessor':
+                    rows = rows.concat(assessorFilter(x.name));
+                    break;
+                }
+            });
 
             return rows;
         };
+
+        function productFilter (pkgId) {
+            let rows = [];
+
+            let products = self.raw.filter(x => x.pkgId === pkgId);
+            if (products && products.length !== 0) {
+                let p = products[0];
+
+                // Populate the parent
+                rows.push(flattenObject({
+                    CloudServiceProvider: p.name,
+                    CloudServiceOffering: p.pkg,
+                    Type: p.path,
+                    LeveragedATO: 'No',
+                    AuthorizationDate: helperService.toDate(p.authorizationDate),
+                    Agency: p.sponsoringAgency,
+                    Subagency: '',
+                    IndependentAssessor: p.independentAssessor
+                }));
+
+                // Populate any leveraged ATOs
+                p.atoLetters.forEach(x => {
+                    rows.push(flattenObject({
+                        CloudServiceProvider: p.name,
+                        CloudServiceOffering: p.pkg,
+                        Type: p.path,
+                        LeveragedATO: 'Yes',
+                        AuthorizationDate: helperService.toDate(x.compliantDate),
+                        Agency: x.authorizingAgency,
+                        Subagency: x.authorizingSubagency,
+                        IndependentAssessor: x.independentAssessor
+                    }));
+                });
+            }
+
+            return rows;
+        }
+
+        function agencyFilter (name) {
+            let rows = [];
+
+            self.raw.forEach(p => {
+                if (p.sponsoringAgency.trim() === name) {
+                    // Populate the parent
+                    rows.push(flattenObject({
+                        CloudServiceProvider: p.name,
+                        CloudServiceOffering: p.pkg,
+                        Type: p.path,
+                        LeveragedATO: 'No',
+                        AuthorizationDate: helperService.toDate(p.authorizationDate),
+                        Agency: p.sponsoringAgency,
+                        Subagency: '',
+                        IndependentAssessor: p.independentAssessor
+                    }));
+                }
+
+                // Populate any leveraged ATOs
+                p.atoLetters.forEach(x => {
+                    if (x.authorizingAgency.trim() === name || x.authorizingSubagency.trim() === name) {
+                        rows.push(flattenObject({
+                            CloudServiceProvider: p.name,
+                            CloudServiceOffering: p.pkg,
+                            Type: p.path,
+                            LeveragedATO: 'Yes',
+                            AuthorizationDate: helperService.toDate(x.compliantDate),
+                            Agency: x.authorizingAgency,
+                            Subagency: x.authorizingSubagency,
+                            IndependentAssessor: x.independentAssessor
+                        }));
+                    }
+                });
+            });
+
+            return rows;
+        }
+
+        function assessorFilter (name) {
+            let rows = [];
+
+            self.raw.forEach(p => {
+                if (p.independentAssessor.trim() === name) {
+                    // Populate the parent
+                    rows.push(flattenObject({
+                        CloudServiceProvider: p.name,
+                        CloudServiceOffering: p.pkg,
+                        Type: p.path,
+                        LeveragedATO: 'No',
+                        AuthorizationDate: helperService.toDate(p.authorizationDate),
+                        Agency: p.sponsoringAgency,
+                        Subagency: '',
+                        IndependentAssessor: p.independentAssessor
+                    }));
+                }
+
+                // Populate any leveraged ATOs
+                p.atoLetters.forEach(x => {
+                    if (x.independentAssessor.trim() === name) {
+                        rows.push(flattenObject({
+                            CloudServiceProvider: p.name,
+                            CloudServiceOffering: p.pkg,
+                            Type: p.path,
+                            LeveragedATO: 'Yes',
+                            AuthorizationDate: helperService.toDate(x.compliantDate),
+                            Agency: x.authorizingAgency,
+                            Subagency: x.authorizingSubagency,
+                            IndependentAssessor: x.independentAssessor
+                        }));
+                    }
+                });
+            });
+
+            return rows;
+        }
 
         /**
          * Iterates through the properties of an object creating a flat structure

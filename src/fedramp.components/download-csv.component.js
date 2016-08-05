@@ -4,8 +4,7 @@
     angular
         .module('fedramp.components')
         .component('downloadCsv', {
-            transclude: true,
-            template: '<a href="{{controller.downloadUrl}}" download="{{controller.filename()}}" ng-click="controller.download()"><ng-transclude/></a>',
+            templateUrl: 'src/templates/components/download-csv.html',
             controller: DownloadCsv,
             controllerAs: 'controller',
             bindings: {
@@ -26,10 +25,7 @@
         self.$onChanges = $onChanges;
         self.download = download;
         self.filename = filename;
-
-        // self.$onInit = function () {
-            
-        // };
+        self.disabled = false;
 
         /**
          * Listens when updates are made to content. Prepares the download
@@ -43,10 +39,15 @@
          * Generates the appropriate csv content and blob and sets it on the downloadUrl
          */
         function prepareDownload(){
-            var csv = CsvService.toCsv(CsvService.flatten(self.content));
+            self.disabled = false;
+
+            let csv = CsvService.toCsv(CsvService.flatten(self.content));
             if (csv) {
-                var downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
+                let downloadBlob = new Blob([csv], {type: 'text/csv;charset=utf-8;' });
                 self.downloadUrl = window.URL.createObjectURL(downloadBlob);
+            } else {
+                // Disable button if there is no data
+                self.disabled = true;
             }
         }
 
