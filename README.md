@@ -131,10 +131,10 @@ Currently, the script relies on the `npm run package` command to build the distr
 
 
 ### Add new Cloud Offering, Agency, or 3PAO
-1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the entity name is unique*
+1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the* **entity name** *and* **package id** *are unique*
 2. Ensure logo images follow the guidelines provided in the **Logo Guidelines** section below
 3. Add logo image file to the correct directory on the FedRAMP web server.
-4. Ensure the `URL` to the image file is in the new data entry.  *NOTE: use https*
+4. Ensure the `URL` to the image file is in the new data entry.  *NOTE: use* **https**
 5. Publish new FedRAMP data to `data.gov` feed.
 
 ### Logo Guidelines
