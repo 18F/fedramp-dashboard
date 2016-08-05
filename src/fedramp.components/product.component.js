@@ -94,8 +94,7 @@
          *  A value indicating if the product is compliant
          */
         self.isCompliant = function () {
-            let compliant = ['Compliant'];
-            return compliant.includes(self.model.designation);
+            return self.model.designation === 'Compliant';
         };
 
         /**
@@ -109,12 +108,12 @@
         self.percentComplete = function () {
             let percent = 0;
 
-            if (self.isReady()) {
-                percent = 30;
+            if (self.isCompliant()) {
+                percent = 100;
             } else if (self.isProcessing()) {
                 percent = 50;
-            } else if (self.isCompliant()) {
-                percent = 100;
+            } else if (self.isReady()) {
+                percent = 30;
             }
 
             return percent;
