@@ -83,6 +83,10 @@
                 mm = '0' + mm;
             } 
 
+            if (isNaN(mm) || isNaN(dd) || isNaN(yyyy)) {
+                return '';
+            }
+            
             return mm + '/' + dd + '/' + yyyy;
         };
 

@@ -55,7 +55,7 @@ describe('The product component', function () {
         expect(component.statusMessage()).toBeDefined();
 
         component.model = { designation: 'Compliant', compliantDate: null };
-        expect(component.statusMessage()).toBe('FedRAMP Authorized Since ');
+        expect(component.statusMessage()).toBe('FedRAMP Authorized');
 
         component.model = { designation: 'Compliant', compliantDate: '07/11/2016' };
         expect(component.statusMessage()).toBe('FedRAMP Authorized Since 07/11/2016');

@@ -133,7 +133,11 @@
             let message = '';
             
             if (self.isCompliant()) {
-                message = 'FedRAMP Authorized Since ' + (self.model.compliantDate || '');
+                if (self.model.compliantDate) {
+                    message = 'FedRAMP Authorized Since ' + (self.model.compliantDate || '');
+                } else {
+                    message = 'FedRAMP Authorized';
+                }
             } else {
                 if (self.model.expectedCompliance) {
                     message = 'Estimated Compliance Date ' + self.model.expectedCompliance;

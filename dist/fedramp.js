@@ -5,13 +5,13 @@ $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-exten
 $compileProvider.debugInfoEnabled(false);// Enables caching within application for single user session. Goes away
 // after user refreshes
 fedrampDataProvider.defaults.cache=true;}]).run(run);run.$inject=['$log','$rootScope'];function run($log,$rootScope){$log.debug('fedramp module initializing');$rootScope.$on("$stateChangeError",$log.debug.bind($log));}})();/**
- * @namespace Models
- */(function(){'use strict';angular.module('fedramp.models',[]).run(run);run.$inject=['$log'];function run($log){$log.debug('fedramp.model module initializing');}})();/**
  * @namespace Components
  */(function(){'use strict';angular.module('fedramp.components',['fedramp.models','fedramp.services']).run(run);run.$inject=['$log'];function run($log){$log.debug('fedramp.components module initializing');}})();/**
+ * @namespace Models
+ */(function(){'use strict';angular.module('fedramp.models',[]).run(run);run.$inject=['$log'];function run($log){$log.debug('fedramp.model module initializing');}})();/**
  * @namespace Services
  */(function(){'use strict';angular.module('fedramp.services',['fedramp.models'])// Path to data.json
-.constant('dataUrl','https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json').constant('dictionaryUrl','https://raw.githubusercontent.com/18F/fedramp-data/master/dictionary/dictionary.json').run(run);run.$inject=['$log'];function run($log){$log.debug('fedramp.services module initializing');}})();angular.module('fedramp').run(['$templateCache',function($templateCache){$templateCache.put('src/templates/base.html','<ui-view />\n');$templateCache.put('src/templates/fedramp.html','<div id="topnav" class="hidden-print">\n    <div class="limit clearfix">\n        <!-- SEARCH FORM -->\n        <search />\n\n        <!-- PRIMARY NAVIGATION -->\n        <ul class="nav sf-js-enabled">\n            <li id="menu-item-11972" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11972 first-child last-child">\n                <a href="https://www.fedramp.gov/contact-us/">Contact Us</a>\n            </li>\n        </ul>\n        <select title="Top navigation menu" class="select-menu">\n            <option value="#" selected>Navigate to ...</option>\n            <option value="https://www.fedramp.gov/contact-us/">&nbsp;Contact Us</option>\n        </select>\n\n        <!-- SOCIAL MEDIA ICONS -->\n        <div class="sub-icons">\n            <ul class="clearfix">\n                <li class="first-child">\n                    <a class="subicon rss" title="Subscribe via RSS Feed" href="https://www.fedramp.gov/feed/">RSS Feed</a>\n                </li>\n                <li class="last-child">\n                    <a class="subicon twitter" rel="external" title="Follow @FedRAMP on Twitter" href="http://www.twitter.com/FedRAMP" target="_blank">Twitter</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n<div id="header" class="clearfix">\n    <div id="head-content" class="clearfix">\n        <!-- SITE-TITLE/LOGO -->\n        <div id="sitetitle">\n            <a href="https://www.fedramp.gov" title="FedRAMP"><img src="https://fedramp.sites.usa.gov/files/2015/02/logo3.png" alt="FedRAMP"></a>\n        </div>\n        \n        <!-- SECONDARY NAVIGATION -->\n        <navigation />\n    </div>\n</div>\n\n<a id="scrollToContent"></a>\n<ui-view></ui-view>\n\n<footer class="usa-footer usa-footer-big usa-sans limit hidden-print" role="contentinfo">\n    <div class="usa-grid usa-footer-return-to-top hidden">\n        <a href="#">Return to top</a>\n    </div>\n    <div class="usa-footer-primary-section">\n        <div class="usa-grid-full">\n            <nav class="usa-footer-nav usa-width-one-whole">\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Contact Information</h3>\n                    </li>\n                    <li>\n                        <i class="fa fa-user" aria-hidden="true"></i>\n                        <span>FedRAMP PMO</span>\n                    </li>\n                    <li>\n                        <i class="fa fa-envelope" aria-hidden="true"></i>\n                        <a href="mailto:info@fedramp.gov">Email</a>\n                    </li>\n                    <li>\n                        <i class="fa fa-globe" aria-hidden="true"></i>\n                        <p>General Services Administration<br />\n                        1800 F Street, Washington, DC 20006</p>\n                    </li>\n                </ul>\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Follow @FedRAMP on Twitter</h3>\n                    </li>\n                    <li>\n                        <twitter>\n                            <a class="twitter-timeline" href="https://twitter.com/FedRAMP" data-tweet-limit="1">Tweets by @FedRAMP</a>\n                        </twitter>\n                    </li>\n                </ul>\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Subscribe to Updates</h3>\n                    </li>\n                    <li><a href="https://public.govdelivery.com/accounts/USGSA/subscriber/topics?qsp=USGSA_2224">Add your email to FedRAMP\'s subscriber list.</a></li>\n                </ul>\n            </nav>\n        </div>\n    </div>\n</footer>\n');$templateCache.put('src/templates/search/search.html','<div id="search">\n    <div class="article usa-grid-full" ng-repeat="article in controller.results track by $index">\n        <h4 class="article-title">\n            <span class="article-ext-type">{{controller.extension(article.unescapedUrl)}}</span>\n            <a ng-href="{{article.unescapedUrl}}" title="{{article.title}}">{{article.title}}</a>\n        </h4>\n        <div class="article-url">{{article.unescapedUrl}}</div>\n        <span class="article-description" ng-bind-html="controller.markdown(article.content)"></span>\n        <ul class="article-site-links">\n            <li ng-repeat="link in article.siteLinks"></li>\n        </ul>\n    </div>\n    <div id="internal-only" class="text-center" ng-if="controller.results.length > 0">\n        <p>\n            For more results please go to <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>\n        </p>\n    </div>\n    <div id="no-results" class="text-center" ng-if="controller.results.length === 0">\n        <p>\n            There was a problem retrieving your search results. Please try the\n            search at <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>\n        </p>\n    </div>\n</div>\n');$templateCache.put('src/templates/sitemap/sitemap.html','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n   <url ng-repeat="item in controller.providers track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/provider/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.products track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/product/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.agencies track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/agency/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.assessors track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/assessor/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n</urlset> \n');$templateCache.put('src/templates/home/agencies.html','<agencies-grid expand-tiles="homeController.expandTiles"></agencies-grid>\n');$templateCache.put('src/templates/home/agency-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n\n<comparison on-close-both="fedramp.app.home.agencies">\n    <first>\n        <agency model="controller.first" on-close="controller.closeFirst"></agency>\n    </first>\n    <second>\n        <agency model="controller.second" on-close="controller.closeSecond"></agency>\n    </second>\n</comparison>\n\n<!--<div class="usa-content">-->\n    <!--<div class="comparison">-->\n        <!--<div class="first">-->\n            <!--<agency model="controller.first" on-close="controller.closeFirst" />-->\n        <!--</div>-->\n        <!--<div class="second">-->\n            <!--<agency model="controller.second" on-close="controller.closeSecond" />-->\n        <!--</div>-->\n    <!--</div>-->\n<!--</div>-->\n');$templateCache.put('src/templates/home/agency-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <agency model="controller.item" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <agencies-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></agencies-grid>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/agency.html','<ui-view />\n');$templateCache.put('src/templates/home/assessor-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n<comparison on-close-both="fedramp.app.home.assessors">\n    <first>\n        <assessor model="controller.first" on-close="controller.closeFirst"></assessor>\n    </first>\n    <second>\n        <assessor model="controller.second" on-close="controller.closeSecond"></assessor>\n    </second>\n</comparison>\n\n<!--<div class="usa-content">-->\n    <!--<div class="comparison">-->\n        <!--<div class="first">-->\n            <!--<assessor model="controller.first" on-close="controller.closeFirst" />-->\n        <!--</div>-->\n        <!--<div class="second">-->\n            <!--<assessor model="controller.second" on-close="controller.closeSecond" />-->\n        <!--</div>-->\n    <!--</div>-->\n<!--</div>-->\n');$templateCache.put('src/templates/home/assessor-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <assessor model="controller.item" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <assessors-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></assessors-grid>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/assessor.html','<ui-view />\n');$templateCache.put('src/templates/home/assessors.html','<assessors-grid expand-tiles="homeController.expandTiles"></assessors-grid>\n');$templateCache.put('src/templates/home/home.html','<div class="usa-content hidden-print">\n    <div class="fr-dash-header usa-color-primary-darkest">\n        <div class="usa-grid-full text-center fr-dash-label">\n            <div class="usa-width-one-whole text-center">Products at a glance</div>\n        </div>\n        <div class="usa-grid-full text-center fr-large-metrics">\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'FedRAMP Ready\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-ready-light"></span>\n                    <strong>{{homeController.totalReady()}}</strong>\n                    <span class="fr-metric-label">Ready</span>\n                </p>\n            </div>\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'In Process\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-in-process-light"></span>\n                    <strong>{{homeController.totalInProcess()}}</strong>\n                    <span class="fr-metric-label">In Process</span>\n                </p>\n            </div>\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'Compliant\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-compliant-light"></span>\n                    <strong>{{homeController.totalAuthorized()}}</strong>\n                    <span class="fr-metric-label">Authorized</span>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class="text-center fr-filter-label">\n        <span class="fr-filter-label-rule"></span>\n        <span class="fr-filter-label-text">Show me</span>\n    </div>\n    <div class="fr-filters usa-grid-full">\n        <div class="fr-filters-row">\n            <div class="usa-width-one-third">\n                <button id="filterByCSO"\n                        type="radio"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">\n                    <span>Products</span>\n                </button>\n            </div>\n            <div class="usa-width-one-third">\n                <button id="filterByAgency"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">\n                    <span>Agencies</span>\n                </button>\n            </div>\n            <div class="usa-width-one-third">\n                <button id="filterBy3PAO"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">\n                    <span>Assessors</span>\n                </button>\n            </div>\n         </div>\n    </div>\n</div>\n<ui-view/>\n');$templateCache.put('src/templates/home/product-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n\n<comparison on-close-both="fedramp.app.home.products">\n    <first>\n        <product model="controller.first" products="controller.items" on-close="controller.closeFirst"></product>\n    </first>\n    <second>\n        <product model="controller.second" products="controller.items" on-close="controller.closeSecond"></product>\n    </second>\n</comparison>\n');$templateCache.put('src/templates/home/product-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <product model="controller.item" products="controller.items" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <products-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></products-grid>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/product.html','<ui-view />\n');$templateCache.put('src/templates/home/products.html','<products-grid expand-tiles="homeController.expandTiles"></products-grid>\n');$templateCache.put('src/templates/components/agencies-grid.html','<grid class="grid" raw-items="controller.agencies" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="productsUsed" header="Products Used" expanded="true" opened="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>\n            <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="name" property="name" header="Name" class="grid-sort" default="true"></grid-sort>          \n                </div>\n                <div class="fr-grid-cell-contact">\n                    <span>Contact Information</span>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="products" property="products.length" class="grid-sort"></grid-sort>    \n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/agency.html','<div class="information agency">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                <div ng-if="!controller.model.logo" class="no-image"></div>\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="contact-information">\n            <h4>Contact Information</h4>\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email agency">{{controller.model.pocEmail}}</a></dd>\n            </dl>\n        </div>\n    </div>\n    <div class="row products">\n        <div class="col">\n            <h4>Products Used</h4>\n            <product-list products="controller.model.products"></product-list>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/assessor.html','<div class="information assessor">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                <div ng-if="!controller.model.logo" class="no-image"></div>\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row text-center" ng-if="controller.model.accreditationDate">\n        <div class="divider"></div>\n        <div class="accredited">Accredited Since {{controller.model.accreditationDate}}</div>\n    </div>\n    <div class="row text-center" ng-if="!controller.model.accreditationDate">\n        <div class="divider not-accredited"></div>\n        <div>Accreditation Date not available</div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="contact-information">\n            <h4>Contact Information</h4>\n\n            <dl ng-if="controller.hasContactInformation()">\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>\n            </dl>\n            <p ng-if="!controller.hasContactInformation()">\n                No contact information on record\n            </p>\n        </div>\n    </div>\n    <panel ng-if="controller.model.description" header="Assessor Description" expand="false">\n        <div ng-bind-html="controller.markdown(controller.model.description)"></div>\n    </panel>\n    <div class="row products">\n        <div class="col">\n            <h4>Client History</h4>\n            <product-list products="controller.model.products"></product-list>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/assessors-grid.html','<grid class="grid" raw-items="controller.assessors" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="searchName" property="name" placeholder="Search by name"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="assessmentsCompleted" header="Assessments Completed" expanded="true" opened="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="assessorName" property="name" class="grid-sort" header="Name" default="true"></grid-sort>    \n                </div>\n                <div class="fr-grid-cell-contact">\n                    <span>Contact Information</span>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="reuses" property="reuses" class="grid-sort"></grid-sort>    \n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/comparison.html','<div class="usa-content">\n    <div class="comparison">\n        <!-- Close both -->\n        <div class="information close-both hidden-print">\n            <div class="row close" ui-sref="{{controller.onCloseBoth}}" ui-sref-opts="{removeParams:false}">\n                <a>\n                    <div class="col">\n                        <i class="fa fa-times"></i>\n                        <br>\n                        Close Both\n                    </div>\n                </a>\n            </div>\n        </div>\n\n        <!-- This is passed in by using <first></first> -->\n        <div class="first full-width-print" ng-transclude="first"></div>\n\n        <!-- This is passed in by using <second></second> -->\n        <div class="second full-width-print break-before-print" ng-transclude="second"></div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/dictionary.html','<div class="dictionary">\n    <div class="back">\n        <h4 class="content" ui-sref="fedramp.app.home.products()">\n            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to marketplace dashboard\n        </h4>\n    </div>\n    <div class="header">\n        <h2 class="content"> Term Dictionary </h2>\n    </div>\n\n    <grid id="dictionary-grid" ng-if="controller.dataDictionary.length > 0" raw-items="controller.dataDictionary" on-update="controller.onUpdate(items, state)" save-state="false">\n    <div class="search">\n        <grid-search class="content" id="type" placeholder="Search by field name" property="field"></grid-search>\n    </div>\n    <div class="term" ng-repeat="term in controller.filteredDictionary | orderBy:\'field\' track by $index">\n        <div class="content">\n            <h3>{{term.field}}</h3>\n            <dl>\n                <dt>Description</dt>\n                <dd>{{term.description}}</dd>\n                <dt>Type</dt>\n                <dd>{{term.type}}</dd>\n                <dt>Source</dt>\n                <dd>{{term.source}}</dd>\n            </dl>\n        </div>\n    </div>\n    </grid>\n</div>\n');$templateCache.put('src/templates/components/grid-filter-print.html','<div class="visible-print-block">{{controller.gridController.printDescription()}}</div>\n');$templateCache.put('src/templates/components/grid-filter.html','<div class="no-select">\n    <div ng-click="controller.toggleExpand()">\n        <span class="filter-header">{{::controller.header}}</span>\n        <span class="icons">\n            <i class="fa fa-plus" aria-hidden="true" ng-if="!controller.opened"></i>\n            <i class="fa fa-minus" aria-hidden="true" ng-if="controller.opened"></i>\n        </span>\n    </div>\n    <div class="options" ng-if="controller.opened">\n        <div ng-repeat="option in controller.options track by $index" ng-click="controller.selectOption(option)">\n            <span class="option" ng-class="{\'selected\': option.selected}">{{::option.label}} <i class="fa fa-check-circle" aria-hidden="true" ng-if="option.selected"></i> </span>\n        </div>\n    </div>\n</div>\n\n');$templateCache.put('src/templates/components/grid-search.html','<input type="text" placeholder="{{::controller.placeholder}}" ng-model="controller.searchTerm" ng-model-options="{ debounce: 150}" ng-change="controller.search()"/>\n');$templateCache.put('src/templates/components/grid-sort.html','<span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header no-select">{{::controller.header}}</span>\n<div ng-click="controller.toggleSort()" class="grid-sort-arrows no-select">\n    <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>\n    <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{\'grid-sort-selected\': controller.highlight(true)}" aria-hidden="true"></i>\n    <i class="fa fa-caret-down"  ng-if="controller.activated && !controller.asc" ng-class="{\'grid-sort-selected\': controller.highlight(false)}" aria-hidden="true"></i>\n    <!--<i class="fa fa-caret-down" ng-class="{\'grid-sort-selected\': controller.highlight(false)}" aria-hidden="true"></i>-->\n</div>\n');$templateCache.put('src/templates/components/navigation.html','<div id="catnav" class="hidden-print">\n    <div id="navigate" class="mobile-visible" ng-click="controller.toggleMobile = !controller.toggleMobile">Navigate to...</div>\n    <ul ng-class="{\'mobile-hidden\': !controller.toggleMobile}">\n        <li><a href="https://www.fedramp.gov/" title="Home">Home</a></li>\n        <li class="dropdown">\n            <a href="#" title="About Us" title="About Us">About Us</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/about-us/about/" title="Program Overview">Program Overview</a></li>\n                <li><a href="https://www.fedramp.gov/about-us/team-bios/" title="Team Bios">Team Bios</a></li>\n                <li><a href="https://www.fedramp.gov/about-us/governance/" title="Governance">Governance</a></li>\n                <li class="dropdown">\n                    <a href="#" title="FedRAMP Forward">FedRAMP Forward</a>\n                    <ul class="dropdown-content right">\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-first-four-years-last-nine-months/" title="FedRAMP: First Four Years &amp; Last Nine Months">FedRAMP: First Four Years &amp; Last Nine Months</a></li>\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-forward-a-look-back-at-the-last-six-months/" title="FedRAMP Forward (Part 1)">FedRAMP Forward (Part 1)</a></li>\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-forward-part-2/" title="FedRAMP Forward (Part 2)">FedRAMP Forward (Part 2)</a></li>\n                    </ul>\n                </li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Participate">Participate</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/participate/fedramp-accelerated-process/" title="FedRAMP Accelerated Process">FedRAMP Accelerated Process</a></li>\n                <li><a href="https://www.fedramp.gov/participate/agencies/" title="Federal Agencies">Federal Agencies</a></li>\n                <li><a href="https://www.fedramp.gov/participate/csps/" title="Cloud Service Providers">Cloud Service Providers</a></li>\n                <li class="dropdown">\n                    <a href="https://www.fedramp.gov/participate/3paos/" title="Independent Assessors">Independent Assessors</a>\n                    <ul class="dropdown-content right">\n                        <li><a href="https://www.fedramp.gov/participate/3paos/a2la-accreditation/" title="A2LA Accreditation">A2LA Accreditation</a></li>\n                    </ul>\n                </li>\n                <li><a href="https://www.fedramp.gov/provide-public-comment/" title="Provide Public Comment">Provide Public Comment</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Marketplace">Marketplace</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/marketplace/compliant-systems/" title="FedRAMP Compliant Systems">FedRAMP Compliant Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/in-process-systems/" title="FedRAMP In-Process Systems">FedRAMP In-Process Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/fedramp-ready-systems/" title="FedRAMP Ready Systems">FedRAMP Ready Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/accredited-3paos/" title="Accredited 3PAOs">Accredited 3PAOs</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Resources">Resources</a>\n            <ul class="dropdown-content down">\n                <li><a href="index.html#/dictionary" title="Term Dictionary">Term Dictionary</a></li>\n                <li><a href="https://www.fedramp.gov/resources/documents-2016/" title="Documents">Documents</a></li>\n                <li><a href="https://www.fedramp.gov/resources/templates-2016/" title="Templates">Templates</a></li>\n                <li><a href="https://www.fedramp.gov/resources/nist-publications/" title="NIST Publications">NIST Publications</a></li>\n                <li><a href="https://www.fedramp.gov/resources/faqs/" title="FAQs">FAQs</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Training">Training</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/resources/training/" title="FedRAMP Training">FedRAMP Training</a></li>\n                <li><a href="https://www.fedramp.gov/resources/fedramp-webcasts/" title="FedRAMP Webcasts">FedRAMP Webcasts</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Newsroom">Newsroom</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/category/newsroom/" title="Newsroom">Newsroom</a></li>\n                <li><a href="https://www.fedramp.gov/events/" title="Events">Events</a></li>\n            </ul>\n        </li>\n    </ul>\n</div>\n');$templateCache.put('src/templates/components/panel.html','<div class="row panel">\n    <div class="header" ng-click="controller.expand = !controller.expand">\n        <h4>{{controller.header}}</h4>\n        <i ng-if="!controller.expand" class="fa fa-plus"></i>\n        <i ng-if="controller.expand" class="fa fa-minus"></i>\n    </div>\n</div>\n<div ng-if="controller.expand" class="row panel-content">\n    <ng-transclude></ng-transclude>\n</div>\n');$templateCache.put('src/templates/components/product-list.html','<div class="product-row" ng-repeat="provider in controller.groupedProducts track by $index">\n    <div class="provider">{{provider.name}}</div>\n    <div class="product" ng-repeat="model in provider.products">\n        <div class="name">\n            <a ui-sref="fedramp.app.product.information({name:model.slugified})" title="{{model.product.name}}">{{model.product.name}}</a>\n        </div>\n        <div class="designation">\n            {{model.product.designation === \'Compliant\' ? \'Authorized\' : model.product.designation}}\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/product-status.html','<img ng-if="::controller.status === \'Compliant\'" src="img/fedramp-process-compliant-blue.png" alt="Authorized" />\n<img ng-if="::controller.status === \'In Process\'" src="img/fedramp-process-in-process-blue.png" alt="In-Process" />\n<img ng-if="::controller.status === \'FedRAMP Ready\'" src="img/fedramp-process-ready-blue.png" alt="Ready" />\n<img ng-if="::controller.status === \'Ready\'" src="img/fedramp-process-ready-blue.png" alt="Ready" />\n<span ng-if="::controller.status === \'Compliant\'">FedRAMP Authorized</span>\n<span ng-if="::controller.status === \'In Process\'"> FedRAMP In Process</span>\n<span ng-if="::controller.status === \'FedRAMP Ready\'">FedRAMP Ready</span>\n<span ng-if="::controller.status === \'Ready\'">FedRAMP Ready</span>\n');$templateCache.put('src/templates/components/product.html','<div class="information product">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.provider }} - {{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row status">\n        <div class="col ready" ng-class="{\'active\': controller.isReady()}">\n            <img ng-if="controller.isReady()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />\n            <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />\n            <div class="text">FedRAMP Ready</div>\n        </div>                                 \n        <div class="col in-process" ng-class="{\'active\': controller.isProcessing()}">\n            <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />\n            <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />\n            <div class="text">FedRAMP In Process</div>\n        </div>                                 \n        <div class="col compliant" ng-class="{\'active\': controller.isCompliant()}">\n            <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Authorized" />\n            <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Authorized" />\n            <div class="text">FedRAMP Authorized</div>\n        </div>\n        <div class="col progress">\n            <div class="percent percent-{{controller.percentComplete()}}"></div>\n        </div>\n        <div class="col message">\n            {{ controller.statusMessage() }}\n        </div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row system-profile">\n        <div class="col contact-information">\n            <h5>Contact Information</h5>\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email the provider">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit the provider website">{{controller.model.website}}</a></dd>\n            </dl>\n        </div>\n        <div class="col">\n            <h4>System Profile</h4>\n\n            <h5>Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span></h5>\n            <p>{{controller.model.serviceModels.join(\', \')}}</p>\n\n            <h5>Deployment Model</h5>\n            <p>{{controller.model.deploymentModel}}</p>\n\n            <h5>Impact Level</h5>\n            <p>{{controller.model.impactLevel}}</p>\n        </div>\n    </div>\n    <div class="row fedramp">\n        <div class="col">\n            <h4>Package ID</h4>\n            <p>\n                {{controller.model.pkgId}}\n                <br />\n                <a href="https://www.fedramp.gov/files/2015/03/FedRAMP-Package-Request-Form_V4_06192014.pdf" title="Download a copy of the package access request form">Package Access Request Form</a>\n            </p>\n\n            <h4>FedRAMP Authorized Detail</h4>\n            <dl>\n                <dt ng-if="controller.model.authorizationType">Authorization Type:</dt>\n                <dd ng-if="controller.model.authorizationType">{{ controller.model.authorizationType }}</dd>\n                <dt ng-if="controller.model.sponsoringAgency">Agency Lead:</dt>\n                <dd ng-if="controller.model.sponsoringAgency">{{ controller.model.sponsoringAgency }}</dd>\n                <dt ng-if="controller.model.independentAssessor">Independent Assessor:</dt>\n                <dd ng-if="controller.model.independentAssessor">{{ controller.model.independentAssessor }}</dd>\n                <dt ng-if="controller.model.authorizationDate">{{ controller.model.authorizationType === \'JAB\' ? \'JAB Provisional\' : \'Agency\' }} Authorization Date:</dt>\n                <dd ng-if="controller.model.authorizationDate">{{ controller.model.authorizationDate }}</dd>\n            </dl>\n        </div>\n    </div>\n\n    <div class="row timeline">\n        <div class="text-center">\n            <h4>FedRAMP Authorization Timeline</h4>\n        </div>\n        <div class="timeline-row">\n            <div class="timeline-col" ng-class="{\'ready\' : controller.model.fedrampReadyDate}" ng-show="{{controller.model.fedrampReadyDate}}">\n                <div>{{controller.model.fedrampReadyDate}}</div>\n                <span>Ready</span>\n            </div>\n            <div class="timeline-col" ng-class="{\'inprocess\' : controller.model.inProcessDate}">\n                <div>{{controller.model.inProcessDate}}</div>\n                <span>In-Process</span>\n            </div>\n            <div class="timeline-col" ng-class="{\'authorized\' : controller.model.compliantDate}">\n                <div>{{controller.model.compliantDate}}</div>\n                <span>Authorized</span>\n            </div>\n        </div>\n        <div class="estimated text-center" ng-if="controller.model.expectedCompliance">\n            {{controller.model.expectedCompliance}} Estimated Compliance Date\n        </div>\n    </div>\n    <panel ng-if="controller.model.serviceDescription" header="Service Description" expand="false">\n        <div ng-bind-html="controller.markdown(controller.model.serviceDescription)"></div>\n    </panel>\n    <div class="row products" ng-if="controller.additionalProducts.length > 0">\n        <div class="col">\n            <h4>Additional products from this provider</h4>\n            <ul>\n                <li ng-repeat="product in controller.additionalProducts | orderBy:\'+name\' track by $index">\n                    <a title="{{product.name}}" ng-href="{{controller.linkify(\'product\', product.name)}}">\n                        {{product.name}}\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n    <div class="row products" ng-if="controller.model.dependents.length > 0">\n        <div class="col">\n            <h4>Dependent Products</h4>\n            <product-list products="controller.model.dependents"></product-list>\n        </div>\n    </div>\n    <div class="row agencies">\n        <div class="col">\n            <h4>Agencies using this service</h4>\n            <ul ng-if="controller.model.agencies.length > 0">\n                <li ng-repeat="agency in controller.model.agencies | orderBy:\'+\' track by $index">\n                    <a title="{{agency}}" ng-href="{{controller.linkify(\'agency\', agency)}}">\n                        {{agency}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.agencies.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/products-grid.html','<grid id="products-grid" class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="status" header="Status" filter-func="controller.statusFilter" options-func="controller.statusFilterOptions" expanded="true" opened="true" class="grid-filter"></grid-filter>\n            <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" expanded="true" opened="true" class="grid-filter"></grid-filter>\n            <grid-filter id="reuseRange" header="Products Authorized" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="productName" property="provider,name" header="Name" class="grid-sort" default="true"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-service">\n                    <grid-sort name="serviceModels" property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-impact">\n                    <grid-sort name="impactLevel" property="impactLevel" header="Impact Level" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-icon">\n                    <grid-sort name="designation" property="designation" header="Status" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="authorizations" property="authorizations" default="-true" class="grid-sort"></grid-sort>\n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/provider.html','<div class="information provider">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n            </div>\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n        <div class="col reuse">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n    <div class="row system-profile">\n        <div class="col contact-information">\n            <h5>Contact Information</h5>\n            <div><strong>POC:</strong></div>\n            <div><strong>E-mail:</strong></div>\n            <div><strong>Website:</strong></div>\n        </div>\n        <div class="col">\n            <h4>System Profile</h4>\n\n            <h5>Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span></h5>\n            <p>{{controller.model.serviceModels.join(\', \')}}</p>\n\n            <h5>Deployment Model<span ng-show="controller.model.deploymentModels.length > 1">s</span></h5>\n            <p>{{controller.model.deploymentModels.join(\', \')}}</p>\n        </div>\n    </div>\n    <div class="row products">\n        <div class="col">\n            <h4>Products provided</h4>\n            <ul ng-if="controller.model.products.length > 0">\n                <li ng-repeat="product in controller.model.products | orderBy:\'+name\' track by $index">\n                    <a title="{{product.name}}" ng-href="{{controller.linkify(\'product\', product.name)}}">\n                        {{product.name}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n    <div class="row agencies">\n        <div class="col">\n            <h4>Agencies</h4>\n            <ul ng-if="controller.model.agencies.length > 0">\n                <li ng-repeat="agency in controller.model.agencies | orderBy:\'+\' track by $index">\n                    <a title="{{agency}}" ng-href="{{controller.linkify(\'agency\', agency)}}">\n                        {{agency}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.agencies.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/search.html','<div class="usa-grid limit">\n    <div class="usa-width-one-whole">\n        <form id="search_form" class="usa-search" method="get" ng-submit="controller.search($event)" accept-charset="UTF-8" action="http://search.usa.gov/search">\n            <input type="hidden" name="utf8" value="✓" />\n            <input type="hidden" name="affiliate" id="affiliate" value="fedramp" />\n            <input type="hidden" name="format" id="format" value="{{controller.format}}" />\n            <label class="usa-sr-only" for="search-field">Search</label>\n            <input type="search" name="query" id="search-field" title="Search query" ng-model="controller.query" class="usagov-search-autocomplete ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" />\n            <button type="submit">\n                <span class="usa-search-submit-text">Search</span>\n            </button>\n        </form>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-agency.html','<div ng-if="controller.expand" class="agency expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col contact fr-grid-cell-contact">\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email agency">{{controller.model.pocEmail}}</a></dd>\n            </dl>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="agency card">\n    <div class="row header">\n        <div class="col reuses">\n            <a ng-click="controller.view()">\n                <div class="number">{{controller.model.products.length}}</div>\n                <div class="text">{{controller.model.useLabel}}</div>\n            </a>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-assessor.html','<div ng-if="controller.expand" class="assessor expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col contact fr-grid-cell-contact">\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>\n            </dl>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="assessor card">\n    <div class="row header">\n        <div class="col reuses">\n            <a ng-click="controller.view()">\n                <div class="number">{{controller.model.reuses}}</div>\n                <div class="text">{{controller.model.useLabel}}</div>\n            </a>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-product.html','<div ng-if="controller.expand" class="product expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col service-model fr-grid-cell-service">\n            <div class="mobile-visible"><strong>Service Model:</strong></div>\n            <div ng-repeat="service in ::controller.model.serviceModels">{{ ::service }}</div>\n        </div>\n        <div class="col impact-level fr-grid-cell-impact">\n            <div class="mobile-visible"><strong>Impact Level:</strong></div>\n            <span>{{ ::controller.model.impactLevel }}</span>\n        </div>\n        <div class="col status fr-grid-cell-icon">\n            <product-status status="::controller.model.designation"></product-status>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{::controller.model.authorizations}}</div>\n            <div class="text">{{::controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="product card">\n    <div class="row header">\n        <div class="col name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo">\n                    <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                </div>\n            </a>\n        </div>\n        <div class="col reuses">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col status">\n            <product-status status="controller.model.designation"></product-status>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n            <dl>\n                <dt>Service Model:</dt>\n                <dd>{{ controller.model.serviceModels.join(\', \') }}</dd>\n                <dt>Impact Level:</dt>\n                <dd>{{ controller.model.impactLevel }}</dd>\n            </dl>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-provider.html','<div ng-if="controller.expand" class="provider expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()">\n                <div class="logo" style="background-image:url({{controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{ controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col service-model fr-grid-cell-service">\n            <div ng-repeat="model in controller.model.serviceModels">{{ model }}</div>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="provider card">\n    <div class="row header">\n        <div class="col name">\n            <a ng-click="controller.view()">\n                <div class="logo">\n                    <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                </div>\n            </a>\n        </div>\n        <div class="col reuses">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n            <dl>\n                <dt>Service Model:</dt>\n                <dd>{{ controller.model.serviceModels.join(\', \') }}</dd>\n            </dl>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile.html','<div class="tile" ng-include src="::controller.tileTemplate"></div> \n');}]);(function(){'use strict';angular.module('fedramp').run(runRoute);runRoute.$inject=['$rootScope','$location','helperService'];/**
+.constant('dataUrl','https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json').constant('dictionaryUrl','https://raw.githubusercontent.com/18F/fedramp-data/master/dictionary/dictionary.json').run(run);run.$inject=['$log'];function run($log){$log.debug('fedramp.services module initializing');}})();angular.module('fedramp').run(['$templateCache',function($templateCache){$templateCache.put('src/templates/base.html','<ui-view />\n');$templateCache.put('src/templates/fedramp.html','<div id="topnav" class="hidden-print">\n    <div class="limit clearfix">\n        <!-- SEARCH FORM -->\n        <search />\n\n        <!-- PRIMARY NAVIGATION -->\n        <ul class="nav sf-js-enabled">\n            <li id="menu-item-11972" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11972 first-child last-child">\n                <a href="https://www.fedramp.gov/contact-us/">Contact Us</a>\n            </li>\n        </ul>\n        <select title="Top navigation menu" class="select-menu">\n            <option value="#" selected>Navigate to ...</option>\n            <option value="https://www.fedramp.gov/contact-us/">&nbsp;Contact Us</option>\n        </select>\n\n        <!-- SOCIAL MEDIA ICONS -->\n        <div class="sub-icons">\n            <ul class="clearfix">\n                <li class="first-child">\n                    <a class="subicon rss" title="Subscribe via RSS Feed" href="https://www.fedramp.gov/feed/">RSS Feed</a>\n                </li>\n                <li class="last-child">\n                    <a class="subicon twitter" rel="external" title="Follow @FedRAMP on Twitter" href="http://www.twitter.com/FedRAMP" target="_blank">Twitter</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n<div id="header" class="clearfix">\n    <div id="head-content" class="clearfix">\n        <!-- SITE-TITLE/LOGO -->\n        <div id="sitetitle">\n            <a href="https://www.fedramp.gov" title="FedRAMP"><img src="https://fedramp.sites.usa.gov/files/2015/02/logo3.png" alt="FedRAMP"></a>\n        </div>\n        \n        <!-- SECONDARY NAVIGATION -->\n        <navigation />\n    </div>\n</div>\n\n<a id="scrollToContent"></a>\n<ui-view></ui-view>\n\n<footer class="usa-footer usa-footer-big usa-sans limit hidden-print" role="contentinfo">\n    <div class="usa-grid usa-footer-return-to-top hidden">\n        <a href="#">Return to top</a>\n    </div>\n    <div class="usa-footer-primary-section">\n        <div class="usa-grid-full">\n            <nav class="usa-footer-nav usa-width-one-whole">\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Contact Information</h3>\n                    </li>\n                    <li>\n                        <i class="fa fa-user" aria-hidden="true"></i>\n                        <span>FedRAMP PMO</span>\n                    </li>\n                    <li>\n                        <i class="fa fa-envelope" aria-hidden="true"></i>\n                        <a href="mailto:info@fedramp.gov">Email</a>\n                    </li>\n                    <li>\n                        <i class="fa fa-globe" aria-hidden="true"></i>\n                        <p>General Services Administration<br />\n                        1800 F Street, Washington, DC 20006</p>\n                    </li>\n                </ul>\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Follow @FedRAMP on Twitter</h3>\n                    </li>\n                    <li>\n                        <twitter>\n                            <a class="twitter-timeline" href="https://twitter.com/FedRAMP" data-tweet-limit="1">Tweets by @FedRAMP</a>\n                        </twitter>\n                    </li>\n                </ul>\n                <ul class="usa-unstyled-list usa-width-one-third usa-footer-primary-content">\n                    <li class="usa-footer-primary-link">\n                        <h3>Subscribe to Updates</h3>\n                    </li>\n                    <li><a href="https://public.govdelivery.com/accounts/USGSA/subscriber/topics?qsp=USGSA_2224">Add your email to FedRAMP\'s subscriber list.</a></li>\n                </ul>\n            </nav>\n        </div>\n    </div>\n</footer>\n');$templateCache.put('src/templates/components/agencies-grid.html','<grid class="grid" raw-items="controller.agencies" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="searchName" property="name" placeholder="Search by Agency Name"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="productsUsed" header="Products Used" expanded="true" opened="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="assessors" property="a in assessors" header="Assessors" opened="false" expanded="true" class="grid-filter"></grid-filter>\n            <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="name" property="name" header="Name" class="grid-sort" default="true"></grid-sort>          \n                </div>\n                <div class="fr-grid-cell-contact">\n                    <span>Contact Information</span>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="products" property="products.length" class="grid-sort"></grid-sort>    \n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/agency.html','<div class="information agency">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                <div ng-if="!controller.model.logo" class="no-image"></div>\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="contact-information">\n            <h4>Contact Information</h4>\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email agency">{{controller.model.pocEmail}}</a></dd>\n            </dl>\n        </div>\n    </div>\n    <div class="row products">\n        <div class="col">\n            <h4>Products Used</h4>\n            <product-list products="controller.model.products"></product-list>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/assessor.html','<div class="information assessor">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                <div ng-if="!controller.model.logo" class="no-image"></div>\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row text-center" ng-if="controller.model.accreditationDate">\n        <div class="divider"></div>\n        <div class="accredited">Accredited Since {{controller.model.accreditationDate}}</div>\n    </div>\n    <div class="row text-center" ng-if="!controller.model.accreditationDate">\n        <div class="divider not-accredited"></div>\n        <div>Accreditation Date not available</div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row">\n        <div class="contact-information">\n            <h4>Contact Information</h4>\n\n            <dl ng-if="controller.hasContactInformation()">\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>\n            </dl>\n            <p ng-if="!controller.hasContactInformation()">\n                No contact information on record\n            </p>\n        </div>\n    </div>\n    <panel ng-if="controller.model.description" header="Assessor Description" expand="false">\n        <div ng-bind-html="controller.markdown(controller.model.description)"></div>\n    </panel>\n    <div class="row products">\n        <div class="col">\n            <h4>Client History</h4>\n            <product-list products="controller.model.products"></product-list>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/assessors-grid.html','<grid class="grid" raw-items="controller.assessors" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="searchName" property="name" placeholder="Search by name"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="assessmentsCompleted" header="Assessments Completed" expanded="true" opened="true" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="products" property="p in products" header="Products" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="p in providers" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="assessorName" property="name" class="grid-sort" header="Name" default="true"></grid-sort>    \n                </div>\n                <div class="fr-grid-cell-contact">\n                    <span>Contact Information</span>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="reuses" property="reuses" class="grid-sort"></grid-sort>    \n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/comparison.html','<div class="usa-content">\n    <div class="comparison">\n        <!-- Close both -->\n        <div class="information close-both hidden-print">\n            <div class="row close" ui-sref="{{controller.onCloseBoth}}" ui-sref-opts="{removeParams:false}">\n                <a>\n                    <div class="col">\n                        <i class="fa fa-times"></i>\n                        <br>\n                        Close Both\n                    </div>\n                </a>\n            </div>\n        </div>\n\n        <!-- This is passed in by using <first></first> -->\n        <div class="first full-width-print" ng-transclude="first"></div>\n\n        <!-- This is passed in by using <second></second> -->\n        <div class="second full-width-print break-before-print" ng-transclude="second"></div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/dictionary.html','<div class="dictionary">\n    <div class="back">\n        <h4 class="content" ui-sref="fedramp.app.home.products()">\n            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to marketplace dashboard\n        </h4>\n    </div>\n    <div class="header">\n        <h2 class="content"> Term Dictionary </h2>\n    </div>\n\n    <grid id="dictionary-grid" ng-if="controller.dataDictionary.length > 0" raw-items="controller.dataDictionary" on-update="controller.onUpdate(items, state)" save-state="false">\n    <div class="search">\n        <grid-search class="content" id="type" placeholder="Search by field name" property="field"></grid-search>\n    </div>\n    <div class="term" ng-repeat="term in controller.filteredDictionary | orderBy:\'field\' track by $index">\n        <div class="content">\n            <h3>{{term.field}}</h3>\n            <dl>\n                <dt>Description</dt>\n                <dd>{{term.description}}</dd>\n                <dt>Type</dt>\n                <dd>{{term.type}}</dd>\n                <dt>Source</dt>\n                <dd>{{term.source}}</dd>\n            </dl>\n        </div>\n    </div>\n    </grid>\n</div>\n');$templateCache.put('src/templates/components/grid-filter-print.html','<div class="visible-print-block">{{controller.gridController.printDescription()}}</div>\n');$templateCache.put('src/templates/components/grid-filter.html','<div class="no-select">\n    <div ng-click="controller.toggleExpand()">\n        <span class="filter-header">{{::controller.header}}</span>\n        <span class="icons">\n            <i class="fa fa-plus" aria-hidden="true" ng-if="!controller.opened"></i>\n            <i class="fa fa-minus" aria-hidden="true" ng-if="controller.opened"></i>\n        </span>\n    </div>\n    <div class="options" ng-if="controller.opened">\n        <div ng-repeat="option in controller.options track by $index" ng-click="controller.selectOption(option)">\n            <span class="option" ng-class="{\'selected\': option.selected}">{{::option.label}} <i class="fa fa-check-circle" aria-hidden="true" ng-if="option.selected"></i> </span>\n        </div>\n    </div>\n</div>\n\n');$templateCache.put('src/templates/components/grid-search.html','<input type="text" placeholder="{{::controller.placeholder}}" ng-model="controller.searchTerm" ng-model-options="{ debounce: 150}" ng-change="controller.search()"/>\n');$templateCache.put('src/templates/components/grid-sort.html','<span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header no-select">{{::controller.header}}</span>\n<div ng-click="controller.toggleSort()" class="grid-sort-arrows no-select">\n    <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>\n    <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{\'grid-sort-selected\': controller.highlight(true)}" aria-hidden="true"></i>\n    <i class="fa fa-caret-down"  ng-if="controller.activated && !controller.asc" ng-class="{\'grid-sort-selected\': controller.highlight(false)}" aria-hidden="true"></i>\n    <!--<i class="fa fa-caret-down" ng-class="{\'grid-sort-selected\': controller.highlight(false)}" aria-hidden="true"></i>-->\n</div>\n');$templateCache.put('src/templates/components/navigation.html','<div id="catnav" class="hidden-print">\n    <div id="navigate" class="mobile-visible" ng-click="controller.toggleMobile = !controller.toggleMobile">Navigate to...</div>\n    <ul ng-class="{\'mobile-hidden\': !controller.toggleMobile}">\n        <li><a href="https://www.fedramp.gov/" title="Home">Home</a></li>\n        <li class="dropdown">\n            <a href="#" title="About Us" title="About Us">About Us</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/about-us/about/" title="Program Overview">Program Overview</a></li>\n                <li><a href="https://www.fedramp.gov/about-us/team-bios/" title="Team Bios">Team Bios</a></li>\n                <li><a href="https://www.fedramp.gov/about-us/governance/" title="Governance">Governance</a></li>\n                <li class="dropdown">\n                    <a href="#" title="FedRAMP Forward">FedRAMP Forward</a>\n                    <ul class="dropdown-content right">\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-first-four-years-last-nine-months/" title="FedRAMP: First Four Years &amp; Last Nine Months">FedRAMP: First Four Years &amp; Last Nine Months</a></li>\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-forward-a-look-back-at-the-last-six-months/" title="FedRAMP Forward (Part 1)">FedRAMP Forward (Part 1)</a></li>\n                        <li><a href="https://www.fedramp.gov/about-us/fedramp-forward-part-2/" title="FedRAMP Forward (Part 2)">FedRAMP Forward (Part 2)</a></li>\n                    </ul>\n                </li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Participate">Participate</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/participate/fedramp-accelerated-process/" title="FedRAMP Accelerated Process">FedRAMP Accelerated Process</a></li>\n                <li><a href="https://www.fedramp.gov/participate/agencies/" title="Federal Agencies">Federal Agencies</a></li>\n                <li><a href="https://www.fedramp.gov/participate/csps/" title="Cloud Service Providers">Cloud Service Providers</a></li>\n                <li class="dropdown">\n                    <a href="https://www.fedramp.gov/participate/3paos/" title="Independent Assessors">Independent Assessors</a>\n                    <ul class="dropdown-content right">\n                        <li><a href="https://www.fedramp.gov/participate/3paos/a2la-accreditation/" title="A2LA Accreditation">A2LA Accreditation</a></li>\n                    </ul>\n                </li>\n                <li><a href="https://www.fedramp.gov/provide-public-comment/" title="Provide Public Comment">Provide Public Comment</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Marketplace">Marketplace</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/marketplace/compliant-systems/" title="FedRAMP Compliant Systems">FedRAMP Compliant Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/in-process-systems/" title="FedRAMP In-Process Systems">FedRAMP In-Process Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/fedramp-ready-systems/" title="FedRAMP Ready Systems">FedRAMP Ready Systems</a></li>\n                <li><a href="https://www.fedramp.gov/marketplace/accredited-3paos/" title="Accredited 3PAOs">Accredited 3PAOs</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Resources">Resources</a>\n            <ul class="dropdown-content down">\n                <li><a href="index.html#/dictionary" title="Term Dictionary">Term Dictionary</a></li>\n                <li><a href="https://www.fedramp.gov/resources/documents-2016/" title="Documents">Documents</a></li>\n                <li><a href="https://www.fedramp.gov/resources/templates-2016/" title="Templates">Templates</a></li>\n                <li><a href="https://www.fedramp.gov/resources/nist-publications/" title="NIST Publications">NIST Publications</a></li>\n                <li><a href="https://www.fedramp.gov/resources/faqs/" title="FAQs">FAQs</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Training">Training</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/resources/training/" title="FedRAMP Training">FedRAMP Training</a></li>\n                <li><a href="https://www.fedramp.gov/resources/fedramp-webcasts/" title="FedRAMP Webcasts">FedRAMP Webcasts</a></li>\n            </ul>\n        </li>\n        <li class="dropdown">\n            <a href="#" title="Newsroom">Newsroom</a>\n            <ul class="dropdown-content down">\n                <li><a href="https://www.fedramp.gov/category/newsroom/" title="Newsroom">Newsroom</a></li>\n                <li><a href="https://www.fedramp.gov/events/" title="Events">Events</a></li>\n            </ul>\n        </li>\n    </ul>\n</div>\n');$templateCache.put('src/templates/components/panel.html','<div class="row panel">\n    <div class="header" ng-click="controller.expand = !controller.expand">\n        <h4>{{controller.header}}</h4>\n        <i ng-if="!controller.expand" class="fa fa-plus"></i>\n        <i ng-if="controller.expand" class="fa fa-minus"></i>\n    </div>\n</div>\n<div ng-if="controller.expand" class="row panel-content">\n    <ng-transclude></ng-transclude>\n</div>\n');$templateCache.put('src/templates/components/product-list.html','<div class="product-row" ng-repeat="provider in controller.groupedProducts track by $index">\n    <div class="provider">{{provider.name}}</div>\n    <div class="product" ng-repeat="model in provider.products">\n        <div class="name">\n            <a ui-sref="fedramp.app.product.information({name:model.slugified})" title="{{model.product.name}}">{{model.product.name}}</a>\n        </div>\n        <div class="designation">\n            {{model.product.designation === \'Compliant\' ? \'Authorized\' : model.product.designation}}\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/product-status.html','<img ng-if="::controller.status === \'Compliant\'" src="img/fedramp-process-compliant-blue.png" alt="Authorized" />\n<img ng-if="::controller.status === \'In Process\'" src="img/fedramp-process-in-process-blue.png" alt="In-Process" />\n<img ng-if="::controller.status === \'FedRAMP Ready\'" src="img/fedramp-process-ready-blue.png" alt="Ready" />\n<img ng-if="::controller.status === \'Ready\'" src="img/fedramp-process-ready-blue.png" alt="Ready" />\n<span ng-if="::controller.status === \'Compliant\'">FedRAMP Authorized</span>\n<span ng-if="::controller.status === \'In Process\'"> FedRAMP In Process</span>\n<span ng-if="::controller.status === \'FedRAMP Ready\'">FedRAMP Ready</span>\n<span ng-if="::controller.status === \'Ready\'">FedRAMP Ready</span>\n');$templateCache.put('src/templates/components/product.html','<div class="information product">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col reuse mobile-hidden">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n            </div>\n        </div>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.provider }} - {{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n    <div class="row status">\n        <div class="col ready" ng-class="{\'active\': controller.isReady()}">\n            <img ng-if="controller.isReady()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />\n            <img ng-if="!controller.isReady()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />\n            <div class="text">FedRAMP Ready</div>\n        </div>                                 \n        <div class="col in-process" ng-class="{\'active\': controller.isProcessing()}">\n            <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />\n            <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />\n            <div class="text">FedRAMP In Process</div>\n        </div>                                 \n        <div class="col compliant" ng-class="{\'active\': controller.isCompliant()}">\n            <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Authorized" />\n            <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Authorized" />\n            <div class="text">FedRAMP Authorized</div>\n        </div>\n        <div class="col progress">\n            <div class="percent percent-{{controller.percentComplete()}}"></div>\n        </div>\n        <div class="col message">\n            {{ controller.statusMessage() }}\n        </div>\n    </div>\n    <div class="row">\n        <div class="col reuse mobile-visible">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n    <div class="row system-profile">\n        <div class="col contact-information">\n            <h5>Contact Information</h5>\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email the provider">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit the provider website">{{controller.model.website}}</a></dd>\n            </dl>\n        </div>\n        <div class="col">\n            <h4>System Profile</h4>\n\n            <h5>Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span></h5>\n            <p>{{controller.model.serviceModels.join(\', \')}}</p>\n\n            <h5>Deployment Model</h5>\n            <p>{{controller.model.deploymentModel}}</p>\n\n            <h5>Impact Level</h5>\n            <p>{{controller.model.impactLevel}}</p>\n        </div>\n    </div>\n    <div class="row fedramp">\n        <div class="col">\n            <h4>Package ID</h4>\n            <p>\n                {{controller.model.pkgId}}\n                <br />\n                <a href="https://www.fedramp.gov/files/2015/03/FedRAMP-Package-Request-Form_V4_06192014.pdf" title="Download a copy of the package access request form">Package Access Request Form</a>\n            </p>\n\n            <h4>FedRAMP Authorized Detail</h4>\n            <dl>\n                <dt ng-if="controller.model.authorizationType">Authorization Type:</dt>\n                <dd ng-if="controller.model.authorizationType">{{ controller.model.authorizationType }}</dd>\n                <dt ng-if="controller.model.sponsoringAgency">Agency Lead:</dt>\n                <dd ng-if="controller.model.sponsoringAgency">{{ controller.model.sponsoringAgency }}</dd>\n                <dt ng-if="controller.model.independentAssessor">Independent Assessor:</dt>\n                <dd ng-if="controller.model.independentAssessor">{{ controller.model.independentAssessor }}</dd>\n                <dt ng-if="controller.model.authorizationDate">{{ controller.model.authorizationType === \'JAB\' ? \'JAB Provisional\' : \'Agency\' }} Authorization Date:</dt>\n                <dd ng-if="controller.model.authorizationDate">{{ controller.model.authorizationDate }}</dd>\n            </dl>\n        </div>\n    </div>\n    <div class="row timeline">\n        <div class="text-center">\n            <h4>FedRAMP Authorization Timeline</h4>\n        </div>\n        <div class="timeline-row">\n            <div class="timeline-col" ng-class="{\'ready\' : controller.model.fedrampReadyDate}" ng-show="{{controller.model.fedrampReadyDate}}">\n                <div>{{controller.model.fedrampReadyDate}}</div>\n                <span>Ready</span>\n            </div>\n            <div class="timeline-col" ng-class="{\'inprocess\' : controller.model.inProcessDate}">\n                <div>{{controller.model.inProcessDate}}</div>\n                <span>In-Process</span>\n            </div>\n            <div class="timeline-col" ng-class="{\'authorized\' : controller.model.compliantDate}">\n                <div>{{controller.model.compliantDate}}</div>\n                <span>Authorized</span>\n            </div>\n        </div>\n        <div class="estimated text-center" ng-if="controller.model.expectedCompliance">\n            {{controller.model.expectedCompliance}} Estimated Compliance Date\n        </div>\n    </div>\n    <panel ng-if="controller.model.serviceDescription" header="Service Description" expand="false">\n        <div ng-bind-html="controller.markdown(controller.model.serviceDescription)"></div>\n    </panel>\n    <div class="row products" ng-if="controller.additionalProducts.length > 0">\n        <div class="col">\n            <h4>Additional products from this provider</h4>\n            <ul>\n                <li ng-repeat="product in controller.additionalProducts | orderBy:\'+name\' track by $index">\n                    <a title="{{product.name}}" ng-href="{{controller.linkify(\'product\', product.name)}}">\n                        {{product.name}}\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n    <div class="row products" ng-if="controller.model.dependents.length > 0">\n        <div class="col">\n            <h4>Dependent Products</h4>\n            <product-list products="controller.model.dependents"></product-list>\n        </div>\n    </div>\n    <div class="row agencies">\n        <div class="col">\n            <h4>Agencies using this service</h4>\n            <ul ng-if="controller.model.agencies.length > 0">\n                <li ng-repeat="agency in controller.model.agencies | orderBy:\'+\' track by $index">\n                    <a title="{{agency}}" ng-href="{{controller.linkify(\'agency\', agency)}}">\n                        {{agency}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.agencies.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/products-grid.html','<grid id="products-grid" class="grid" raw-items="controller.products" on-update="controller.onUpdate(items, state)" state="controller.savedState">\n    <div class="sidebar hidden-print" ng-show="!controller.hideFilters">\n        <div class="filters-toggle mobile-visible text-center">\n            <span ng-click="controller.toggleFilters = !controller.toggleFilters">Filter results <i class="fa" aria-hidden="true" ng-class="{\'fa-plus\': !controller.toggleFilters, \'fa-minus\': controller.toggleFilters}"></i></span>\n        </div>\n        <div class="filters" ng-class="{\'mobile-hidden\': !controller.toggleFilters}">\n            <grid-filter-clear class="clear-filters"><i class="fa fa-times" aria-hidden="true"></i> Clear All</grid-filter-clear>\n            <grid-search id="productNameSearch" placeholder="Search by Provider or Product" filter-func="controller.productNameSearchFilterFunc"></grid-search>\n            <grid-total></grid-total>\n            <grid-filter id="status" header="Status" filter-func="controller.statusFilter" options-func="controller.statusFilterOptions" expanded="true" opened="true" class="grid-filter"></grid-filter>\n            <grid-filter id="authorizationType" property="authorizationType" header="Authorization Type" expanded="true" opened="true" class="grid-filter"></grid-filter>\n            <grid-filter id="reuseRange" header="Products Authorized" expanded="true" opened="false" options-func="controller.reuseRangeOptions" filter-func="controller.reuseRangeFilter" class="grid-filter"></grid-filter>\n            <grid-filter id="serviceModels" property="s in serviceModels" header="Service Models" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="deploymentModels" property="deploymentModel" header="Deployment Models" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="agencies" property="a in agencies" header="Agencies" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="impactLevel" property="impactLevel" header="Impact Level" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <grid-filter id="providers" property="provider" header="Providers" expanded="true" opened="false" class="grid-filter"></grid-filter>\n            <div class="export hidden-print mobile-hidden" ng-sticky>\n                <download-csv content="controller.filteredData" ng-if="controller.filteredData">\n                    <button class="usa-button-secondary">\n                        <span>Export to CSV</span>\n                        <i class="fa fa-download" aria-hidden="true"></i>\n                    </button>\n                </download-csv>\n            </div>\n        </div>\n    </div>\n    <div class="grid full-width-print" ng-class="{\'grid-with-sidebar\': !controller.hideFilters}">\n        <grid-filter-print></grid-filter-print>\n        <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">\n            <div class="fr-grid-layout-row">\n                <div class="fr-grid-cell-name">\n                    <grid-sort name="productName" property="provider,name" header="Name" class="grid-sort" default="true"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-service">\n                    <grid-sort name="serviceModels" property="serviceModels" header="Service Models" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-impact">\n                    <grid-sort name="impactLevel" property="impactLevel" header="Impact Level" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-icon">\n                    <grid-sort name="designation" property="designation" header="Status" class="grid-sort"></grid-sort>\n                </div>\n                <div class="fr-grid-cell-metric">\n                    <grid-sort name="authorizations" property="authorizations" default="-true" class="grid-sort"></grid-sort>\n                </div>\n            </div>\n        </div>\n        <tile ng-repeat="item in controller.filteredData" expand="controller.expandTiles" model="item"></tile>\n    </div>\n    <div class="clear"></div>\n</grid>\n');$templateCache.put('src/templates/components/provider.html','<div class="information provider">\n    <div class="row close hidden-print">\n        <a ng-click="controller.close()">\n            <div class="col">\n                <i class="fa fa-times"></i>\n                <br />\n                Close\n            </div>\n        </a>\n    </div>\n    <div class="row header">\n        <div class="col">\n            <div class="logo">\n                <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n            </div>\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n        <div class="col reuse">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n    <div class="row system-profile">\n        <div class="col contact-information">\n            <h5>Contact Information</h5>\n            <div><strong>POC:</strong></div>\n            <div><strong>E-mail:</strong></div>\n            <div><strong>Website:</strong></div>\n        </div>\n        <div class="col">\n            <h4>System Profile</h4>\n\n            <h5>Service Model<span ng-show="controller.model.serviceModels.length > 1">s</span></h5>\n            <p>{{controller.model.serviceModels.join(\', \')}}</p>\n\n            <h5>Deployment Model<span ng-show="controller.model.deploymentModels.length > 1">s</span></h5>\n            <p>{{controller.model.deploymentModels.join(\', \')}}</p>\n        </div>\n    </div>\n    <div class="row products">\n        <div class="col">\n            <h4>Products provided</h4>\n            <ul ng-if="controller.model.products.length > 0">\n                <li ng-repeat="product in controller.model.products | orderBy:\'+name\' track by $index">\n                    <a title="{{product.name}}" ng-href="{{controller.linkify(\'product\', product.name)}}">\n                        {{product.name}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.products.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n    <div class="row agencies">\n        <div class="col">\n            <h4>Agencies</h4>\n            <ul ng-if="controller.model.agencies.length > 0">\n                <li ng-repeat="agency in controller.model.agencies | orderBy:\'+\' track by $index">\n                    <a title="{{agency}}" ng-href="{{controller.linkify(\'agency\', agency)}}">\n                        {{agency}}\n                    </a>\n                </li>\n            </ul>\n            <p ng-if="controller.model.agencies.length === 0">\n                None\n            </p>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/search.html','<div class="usa-grid limit">\n    <div class="usa-width-one-whole">\n        <form id="search_form" class="usa-search" method="get" ng-submit="controller.search($event)" accept-charset="UTF-8" action="http://search.usa.gov/search">\n            <input type="hidden" name="utf8" value="✓" />\n            <input type="hidden" name="affiliate" id="affiliate" value="fedramp" />\n            <input type="hidden" name="format" id="format" value="{{controller.format}}" />\n            <label class="usa-sr-only" for="search-field">Search</label>\n            <input type="search" name="query" id="search-field" title="Search query" ng-model="controller.query" class="usagov-search-autocomplete ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" />\n            <button type="submit">\n                <span class="usa-search-submit-text">Search</span>\n            </button>\n        </form>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-agency.html','<div ng-if="controller.expand" class="agency expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col contact fr-grid-cell-contact">\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email agency">{{controller.model.pocEmail}}</a></dd>\n            </dl>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.products.length}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="agency card">\n    <div class="row header">\n        <div class="col reuses">\n            <a ng-click="controller.view()">\n                <div class="number">{{controller.model.products.length}}</div>\n                <div class="text">{{controller.model.useLabel}}</div>\n            </a>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-assessor.html','<div ng-if="controller.expand" class="assessor expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col contact fr-grid-cell-contact">\n            <dl>\n                <dt ng-if="controller.model.pocName">POC:</dt>\n                <dd ng-if="controller.model.pocName">{{controller.model.pocName}}</dd>\n                <dt ng-if="controller.model.pocEmail">E-mail:</dt>\n                <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>\n                <dt ng-if="controller.model.website">Website:</dt>\n                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>\n            </dl>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="assessor card">\n    <div class="row header">\n        <div class="col reuses">\n            <a ng-click="controller.view()">\n                <div class="number">{{controller.model.reuses}}</div>\n                <div class="text">{{controller.model.useLabel}}</div>\n            </a>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-product.html','<div ng-if="controller.expand" class="product expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo" style="background-image:url({{::controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{::controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col service-model fr-grid-cell-service">\n            <div class="mobile-visible"><strong>Service Model:</strong></div>\n            <div ng-repeat="service in ::controller.model.serviceModels">{{ ::service }}</div>\n        </div>\n        <div class="col impact-level fr-grid-cell-impact">\n            <div class="mobile-visible"><strong>Impact Level:</strong></div>\n            <span>{{ ::controller.model.impactLevel }}</span>\n        </div>\n        <div class="col status fr-grid-cell-icon">\n            <product-status status="::controller.model.designation"></product-status>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{::controller.model.authorizations}}</div>\n            <div class="text">{{::controller.model.useLabel}}</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="product card">\n    <div class="row header">\n        <div class="col name">\n            <a ng-click="controller.view()" title="Click to compare">\n                <div class="logo">\n                    <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                </div>\n            </a>\n        </div>\n        <div class="col reuses">\n            <div class="number">{{controller.model.authorizations}}</div>\n            <div class="text">{{controller.model.useLabel}}</div>\n        </div>\n        <div class="col status">\n            <product-status status="controller.model.designation"></product-status>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n            <dl>\n                <dt>Service Model:</dt>\n                <dd>{{ controller.model.serviceModels.join(\', \') }}</dd>\n                <dt>Impact Level:</dt>\n                <dd>{{ controller.model.impactLevel }}</dd>\n            </dl>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile-provider.html','<div ng-if="controller.expand" class="provider expanded fr-grid-layout">\n    <div class="row fr-grid-layout-row">\n        <div class="col name fr-grid-cell-name">\n            <a ng-click="controller.view()">\n                <div class="logo" style="background-image:url({{controller.model.logo}});"></div>\n                <div class="title">\n                    <strong>{{ controller.model.name }}</strong>\n                </div>\n            </a>\n        </div>\n        <div class="col service-model fr-grid-cell-service">\n            <div ng-repeat="model in controller.model.serviceModels">{{ model }}</div>\n        </div>\n        <div class="col reuses fr-grid-cell-metric">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n</div>\n\n<div ng-if="!controller.expand" class="provider card">\n    <div class="row header">\n        <div class="col name">\n            <a ng-click="controller.view()">\n                <div class="logo">\n                    <img ng-if="controller.model.logo" ng-src="{{controller.model.logo}}" alt="Logo for {{controller.model.logo}}" />\n                </div>\n            </a>\n        </div>\n        <div class="col reuses">\n            <div class="number">{{controller.model.reuses}}</div>\n            <div class="text">Reuses</div>\n        </div>\n    </div>\n    <div class="row content">\n        <div class="col">\n            <div class="title">\n                <strong>{{ controller.model.name }}</strong>\n            </div>\n            <dl>\n                <dt>Service Model:</dt>\n                <dd>{{ controller.model.serviceModels.join(\', \') }}</dd>\n            </dl>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/components/tile.html','<div class="tile" ng-include src="::controller.tileTemplate"></div> \n');$templateCache.put('src/templates/search/search.html','<div id="search">\n    <div class="article usa-grid-full" ng-repeat="article in controller.results track by $index">\n        <h4 class="article-title">\n            <span class="article-ext-type">{{controller.extension(article.unescapedUrl)}}</span>\n            <a ng-href="{{article.unescapedUrl}}" title="{{article.title}}">{{article.title}}</a>\n        </h4>\n        <div class="article-url">{{article.unescapedUrl}}</div>\n        <span class="article-description" ng-bind-html="controller.markdown(article.content)"></span>\n        <ul class="article-site-links">\n            <li ng-repeat="link in article.siteLinks"></li>\n        </ul>\n    </div>\n    <div id="internal-only" class="text-center" ng-if="controller.results.length > 0">\n        <p>\n            For more results please go to <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>\n        </p>\n    </div>\n    <div id="no-results" class="text-center" ng-if="controller.results.length === 0">\n        <p>\n            There was a problem retrieving your search results. Please try the\n            search at <a ng-href="{{controller.externalLink}}" title="Search on USA.gov">search.usa.gov</a>\n        </p>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/agencies.html','<agencies-grid expand-tiles="homeController.expandTiles"></agencies-grid>\n');$templateCache.put('src/templates/home/agency-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n\n<comparison on-close-both="fedramp.app.home.agencies">\n    <first>\n        <agency model="controller.first" on-close="controller.closeFirst"></agency>\n    </first>\n    <second>\n        <agency model="controller.second" on-close="controller.closeSecond"></agency>\n    </second>\n</comparison>\n\n<!--<div class="usa-content">-->\n    <!--<div class="comparison">-->\n        <!--<div class="first">-->\n            <!--<agency model="controller.first" on-close="controller.closeFirst" />-->\n        <!--</div>-->\n        <!--<div class="second">-->\n            <!--<agency model="controller.second" on-close="controller.closeSecond" />-->\n        <!--</div>-->\n    <!--</div>-->\n<!--</div>-->\n');$templateCache.put('src/templates/home/agency-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <agency model="controller.item" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <agencies-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></agencies-grid>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/agency.html','<ui-view />\n');$templateCache.put('src/templates/home/assessor-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n<comparison on-close-both="fedramp.app.home.assessors">\n    <first>\n        <assessor model="controller.first" on-close="controller.closeFirst"></assessor>\n    </first>\n    <second>\n        <assessor model="controller.second" on-close="controller.closeSecond"></assessor>\n    </second>\n</comparison>\n\n<!--<div class="usa-content">-->\n    <!--<div class="comparison">-->\n        <!--<div class="first">-->\n            <!--<assessor model="controller.first" on-close="controller.closeFirst" />-->\n        <!--</div>-->\n        <!--<div class="second">-->\n            <!--<assessor model="controller.second" on-close="controller.closeSecond" />-->\n        <!--</div>-->\n    <!--</div>-->\n<!--</div>-->\n');$templateCache.put('src/templates/home/assessor-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <assessor model="controller.item" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <assessors-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></assessors-grid>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/assessor.html','<ui-view />\n');$templateCache.put('src/templates/home/assessors.html','<assessors-grid expand-tiles="homeController.expandTiles"></assessors-grid>\n');$templateCache.put('src/templates/home/home.html','<div class="usa-content hidden-print">\n    <div class="fr-dash-header usa-color-primary-darkest">\n        <div class="usa-grid-full text-center fr-dash-label">\n            <div class="usa-width-one-whole text-center">Products at a glance</div>\n        </div>\n        <div class="usa-grid-full text-center fr-large-metrics">\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'FedRAMP Ready\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-ready-light"></span>\n                    <strong>{{homeController.totalReady()}}</strong>\n                    <span class="fr-metric-label">Ready</span>\n                </p>\n            </div>\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'In Process\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-in-process-light"></span>\n                    <strong>{{homeController.totalInProcess()}}</strong>\n                    <span class="fr-metric-label">In Process</span>\n                </p>\n            </div>\n            <div class="usa-width-one-third" ng-click="homeController.filterProducts(\'Compliant\')">\n                <p class="fr-large-number">\n                    <span class="fr-metric-icon icon-compliant-light"></span>\n                    <strong>{{homeController.totalAuthorized()}}</strong>\n                    <span class="fr-metric-label">Authorized</span>\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class="text-center fr-filter-label">\n        <span class="fr-filter-label-rule"></span>\n        <span class="fr-filter-label-text">Show me</span>\n    </div>\n    <div class="fr-filters usa-grid-full">\n        <div class="fr-filters-row">\n            <div class="usa-width-one-third">\n                <button id="filterByCSO"\n                        type="radio"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">\n                    <span>Products</span>\n                </button>\n            </div>\n            <div class="usa-width-one-third">\n                <button id="filterByAgency"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">\n                    <span>Agencies</span>\n                </button>\n            </div>\n            <div class="usa-width-one-third">\n                <button id="filterBy3PAO"\n                        ui-sref-active="selected"\n                        ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">\n                    <span>Assessors</span>\n                </button>\n            </div>\n         </div>\n    </div>\n</div>\n<ui-view/>\n');$templateCache.put('src/templates/home/product-comparison.html','<!--\n    For updates to the way this is displayed, go to templates/comparison.html\n-->\n\n<comparison on-close-both="fedramp.app.home.products">\n    <first>\n        <product model="controller.first" products="controller.items" on-close="controller.closeFirst"></product>\n    </first>\n    <second>\n        <product model="controller.second" products="controller.items" on-close="controller.closeSecond"></product>\n    </second>\n</comparison>\n');$templateCache.put('src/templates/home/product-information.html','<div class="usa-content">\n    <div class="comparison">\n        <div class="first full-width-print">\n            <product model="controller.item" products="controller.items" on-close="controller.close" />\n        </div>\n        <div class="second comparison-list hidden-print">\n            <div ng-show="controller.items.length > 0">\n                <div class="text-center fr-filter-label">\n                    <span class="fr-filter-label-rule"></span>\n                    <span class="fr-filter-label-text">Select another to compare</span>\n                </div>\n                <products-grid raw-items="controller.items" expand-tiles="true" hide-filters="true"></products-grid>\n            </div>\n        </div>\n    </div>\n</div>\n');$templateCache.put('src/templates/home/product.html','<ui-view />\n');$templateCache.put('src/templates/home/products.html','<products-grid expand-tiles="homeController.expandTiles"></products-grid>\n');$templateCache.put('src/templates/sitemap/sitemap.html','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n   <url ng-repeat="item in controller.providers track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/provider/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.products track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/product/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.agencies track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/agency/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n   <url ng-repeat="item in controller.assessors track by $index">\n      <loc>https://truetandem.github.io/fedramp-dashboard/assessor/{{controller.slugify(item.name)}}</loc>\n      <lastmod>{{controller.today}}</lastmod>\n      <changefreq>daily</changefreq>\n      <priority>0.8</priority>\n   </url>\n</urlset> \n');}]);(function(){'use strict';angular.module('fedramp').run(runRoute);runRoute.$inject=['$rootScope','$location','helperService'];/**
      * Gets executed once when the application is first bootstrapped. Sets up event listeners
      * for ui-router state changes.
      */function runRoute($rootScope,$location,helperService){// Params for a route
@@ -73,546 +73,7 @@ $stateProvider.state('fedramp',{abstract:true,templateUrl:'src/templates/base.ht
 fedrampData.load(storage);return fedrampData;});}]}}).state('fedramp.sitemap',{url:'/sitemap.xml',templateUrl:'src/templates/sitemap/sitemap.html',controller:'SitemapController as controller'}).state('fedramp.app',{abstract:true,templateUrl:'src/templates/fedramp.html'}).state('fedramp.app.search',{url:'/search/:query',templateUrl:'src/templates/search/search.html',controller:'SearchController as controller'}).state('fedramp.app.home',{templateUrl:'src/templates/home/home.html',controller:'HomeController as homeController'})// Product States
 .state('fedramp.app.home.products',{url:'/products',templateUrl:'src/templates/home/products.html',controller:'ProductsController as controller'}).state('fedramp.app.product',{url:'/product',templateUrl:'src/templates/home/product.html'}).state('fedramp.app.product.information',{url:'/:name',templateUrl:'src/templates/home/product-information.html',controller:'ProductInformationController as controller'}).state('fedramp.app.product.comparison',{url:'/:first/versus/:second',templateUrl:'src/templates/home/product-comparison.html',controller:'ProductComparisonController as controller'})// Agency States
 .state('fedramp.app.home.agencies',{url:'/agencies',templateUrl:'src/templates/home/agencies.html',controller:'AgenciesController as controller'}).state('fedramp.app.agency',{url:'/agency',templateUrl:'src/templates/home/agency.html'}).state('fedramp.app.agency.information',{url:'/:name',templateUrl:'src/templates/home/agency-information.html',controller:'AgencyInformationController as controller'}).state('fedramp.app.agency.comparison',{url:'/:first/versus/:second',templateUrl:'src/templates/home/agency-comparison.html',controller:'AgencyComparisonController as controller'})// Assessor States
-.state('fedramp.app.home.assessors',{url:'/assessors',templateUrl:'src/templates/home/assessors.html',controller:'AssessorsController as controller'}).state('fedramp.app.assessor',{url:'/assessor',templateUrl:'src/templates/home/assessor.html'}).state('fedramp.app.assessor.information',{url:'/:name',templateUrl:'src/templates/home/assessor-information.html',controller:'AssessorInformationController as controller'}).state('fedramp.app.assessor.comparison',{url:'/:first/versus/:second',templateUrl:'src/templates/home/assessor-comparison.html',controller:'AssessorComparisonController as controller'}).state('fedramp.app.dictionary',{url:'/dictionary',template:'<dictionary></dictionary>'});}})();(function(){'use strict';angular.module('fedramp.models').factory('Agency',AgencyFactory);AgencyFactory.$inject=[];function AgencyFactory(){/**
-         * The agency
-         * @constructor
-         * @memberof Models
-         */function Agency(options){// Scope `this` to self
-var self=this;/**
-             * The model type
-             * @member {string}
-             * @memberof Models.Agency
-             */self.type='agency';/**
-             * The agency name
-             * @member {string}
-             * @memberof Models.Agency
-             */self.name='';/**
-             * The number of times the agency was used
-             * @member {integer}
-             * @memberof Models.Agency
-             */self.reuses=0;/**
-             * The number of times the agency was a sponsoring entity
-             * @member {integer}
-             * @memberof Models.Agency
-             */self.sponsored=0;/**
-             * The number of times the agency was an authorizing entity
-             * @member {integer}
-             * @memberof Models.Agency
-             */self.authorized=0;/**
-             * The agency point of contact name
-             * @member {string}
-             * @memberof Models.Agency
-             */self.pocName='';/**
-             * The agency point of contact email
-             * @member {string}
-             * @memberof Models.Agency
-             */self.pocEmail='';/**
-             * The agency logo
-             * @member {string}
-             * @memberof Models.Agency
-             */self.logo='';/**
-             * Providers associated to the agency
-             * @member {array}
-             * @memberof Models.Agency
-             */self.providers=[];/**
-             * Products associated to the agency
-             * @member {array}
-             * @memberof Models.Agency
-             */self.products=[];/**
-             * Assessors associated to the agency
-             * @member {array}
-             * @memberof Models.Agency
-             */self.assessors=[];/**
-             * Text used to describe primary metric label
-             * @member {string}
-             * @memberof Models.Agency
-             */self.useLabel='Products Used';}return Agency;}})();(function(){'use strict';angular.module('fedramp.models').factory('AssessorData',AssessorDataFactory);AssessorDataFactory.$inject=[];function AssessorDataFactory(){return AssessorData;/**
-         * The raw assessors data model with opinionated transformations
-         * @constructor
-         * @memberof Models
-         */function AssessorData(options){// Scope `this` to self
-var self=this;var mapping={'Name':'name','Accreditation_Date':'accreditationDate','Logo':'logo','Description':'description','POC_Name':'pocName','POC_Email':'pocEmail','website':'website'};/**
-             * Assessor name
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.name='';/**
-             * Assessor accreditation date
-             * @member {Date}
-             * @memberof Models.AssessorData
-             */self.accreditationDate='';/**
-             * Assessor logo
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.logo='';/**
-             * Assessor description
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.description='';/**
-             * Assessor point of contact name
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.pocName='';/**
-             * Assessor point of contact email
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.pocEmail='';/**
-             * Assessor website
-             * @member {string}
-             * @memberof Models.AssessorData
-             */self.website='';/**
-             * Initialize the assessor data object.
-             *
-             * @param {object} options
-             *  A dictionary of options to configure the assessor
-             *
-             * @returns
-             *  The provider
-             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}else{if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};/**
-             * Get a unique hash or identifier for the provider.
-             * @public
-             * @memberof Models.Data
-             *
-             * @returns
-             *  The hash
-             */self.hash=function(){var id=''+self.name+self.accreditationDate;if(id.length===0){return null;}return id;};return self.init(options);}}})();(function(){'use strict';angular.module('fedramp.models').factory('Assessor',AssessorFactory);AssessorFactory.$inject=[];function AssessorFactory(){/**
-         * The independent assessor
-         * @constructor
-         * @memberof Models
-         */function Assessor(options){// Scope `this` to self
-var self=this;/**
-             * The model type
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.type='assessor';/**
-             * The agency name
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.name='';/**
-             * The number of times the assessor was used
-             * @member {integer}
-             * @memberof Models.Assessor
-             */self.reuses=0;/**
-             * Providers associated to the assessor
-             * @member {array}
-             * @memberof Models.Assessor
-             */self.providers=[];/**
-             * Products associated to the assessor
-             * @member {array}
-             * @memberof Models.Assessor
-             */self.products=[];/**
-             * Agencies associated to the assessor
-             * @member {array}
-             * @memberof Models.Assessor
-             */self.agencies=[];/**
-             * The date assessor was accredited
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.accreditationDate='';/**
-             * Text used to describe primary metric label
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.useLabel='Assessed';/**
-             * The description provided by the assessor
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.description='';/**
-             * Assessor logo
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.logo='';/**
-             * Assessor description
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.description='';/**
-             * Assessor point of contact name
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.pocName='';/**
-             * Assessor point of contact email
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.pocEmail='';/**
-             * Assessor website
-             * @member {string}
-             * @memberof Models.Assessor
-             */self.website='';}return Assessor;}})();(function(){'use strict';angular.module('fedramp.models').factory('AtoLetter',AtoLetterFactory);function AtoLetterFactory(){return AtoLetter;}/**
-     * Leveraged ATO letter.
-     * @constructor
-     * @memberof Models
-     */function AtoLetter(options){// Scope `this` to self
-var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'letterExpirationDate','Authorization_Date':'authorizationDate','Authorizing_Letter_Last_Sign_Date':'authorizingLetterSignedDate','Authorizing_Agency':'authorizingAgency','Authorizing_Subagency':'authorizingSubagency','Agency_POC':'pocName','Agency_POC_email':'pocEmail','Agency_Logo':'logo','Include_In_Marketplace':'includeInMarketplace','Independent_Assessor':'independentAssessor','Announcement_Date':'compliantDate'};/**
-         * Letter date
-         * @member {date}
-         * @memberof Models.AtoLetter
-         */self.letterDate=null;/**
-         * Letter expiration date
-         * @member {date}
-         * @memberof Models.AtoLetter
-         */self.letterExpirationDate=null;/**
-         * The authorization date
-         * @member {date}
-         * @memberof Models.AtoLetter
-         */self.authorizationDate=null;/**
-         * Authorizing letter signed date
-         * @member {date}
-         * @memberof Models.AtoLetter
-         */self.authorizingLetterSignedDate=null;/**
-         * Authorizing agency
-         * @member {string}
-         * @memberof Models.AtoLetter
-         */self.authorizingAgency='';/**
-         * Authorizing subagency
-         * @member {string}
-         * @memberof Models.AtoLetter
-         */self.authorizingSubagency='';/**
-         * The agency point of contact name
-         * @member {string}
-         * @memberof Models.AtoLetter
-         */self.pocName='';/**
-         * The agency point of contact email
-         * @member {string}
-         * @memberof Models.AtoLetter
-         */self.pocEmail='';/**
-         * The agency logo
-         * @member {string}
-         * @memberof Models.AtoLetter
-         */self.logo='';/**
-         * A value indicating if it should be included in the market place
-         * @member {date}
-         * @memberof Models.AtoLetter
-         */self.includeInMarketplace='';/**
-         * The independent assessor
-         * @member {string}
-         * @memberof Models.Provider
-         */self.independentAssessor='';/**
-         * Date of announcement when compliant
-         * @member {date}
-         * @memberof Models.Data
-         */self.compliantDate=null;/**
-         * Initialize the ATO letter object.
-         *
-         * @param {object} options
-         *  A dictionary of options to configure the ATO letter
-         *
-         * @returns
-         *  The ATO letter
-         */self.init=function(options){if(!options){return self;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}else{if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};return self.init(options);}})();(function(){'use strict';angular.module('fedramp.models').factory('Data',DataFactory);DataFactory.$inject=['AtoLetter'];function DataFactory(AtoLetter){/**
-         * The raw data model with opinionated transformations
-         * @constructor
-         * @memberof Models
-         */function Data(options){// Scope `this` to self
-var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','CSP_URL':'cspUrl','Stage':'stage','Independent_Assessor':'independentAssessor','Underlying_CSP_Package_ID':'underlyingCspPackages','FedRAMP_Website_URL':'fedrampWebsite','CSP_Website':'cspWebsite','CSO_Description':'csoDescription','Expected_Compliance_Date':'expectedCompliance','Announcement_Date':'compliantDate','Fedramp_Ready_Date':'fedrampReadyDate','CSP_POC_Name':'pocName','CSP_POC_Email':'pocEmail','Leveraged_ATO_Letters':'atoLetters','FedRAMP_In-Process_Date':'inProcessDate'};/**
-             * Cloud service provider name
-             * @member {string}
-             * @memberof Models.Data
-             */self.name='';/**
-             * Package name
-             * @member {string}
-             * @memberof Models.Data
-             */self.pkg='';/**
-             * Package identifier
-             * @member {string}
-             * @memberof Models.Data
-             */self.pkgId='';/**
-             * Path
-             * @member {string}
-             * @memberof Models.Data
-             */self.path='';/**
-             * Designation
-             * @member {string}
-             * @memberof Models.Data
-             */self.designation='';/**
-             * Service model
-             * @member {array}
-             * @memberof Models.Data
-             */self.serviceModel=[];/**
-             * Deployment model
-             * @member {string}
-             * @memberof Models.Data
-             */self.deploymentModel='';/**
-             * Impact level
-             * @member {string}
-             * @memberof Models.Data
-             */self.impactLevel='';/**
-             * Authorization date
-             * @member {date}
-             * @memberof Models.Data
-             */self.authorizationDate=null;/**
-             * Expiration date
-             * @member {date}
-             * @memberof Models.Data
-             */self.expirationDate=null;/**
-             * Sponsoring agency
-             * @member {string}
-             * @memberof Models.Data
-             */self.sponsoringAgency='';/**
-             * The CSP URL
-             * @member {string}
-             * @memberof Models.Data
-             */self.cspUrl='';/**
-             * Stage in validation process
-             * @member {string}
-             * @memberof Models.Data
-             */self.stage='';/**
-             * The independent assessor
-             * @member {string}
-             * @memberof Models.Data
-             */self.independentAssessor='';/**
-             * Underlying CSP packages
-             * @member {array}
-             * @memberof Models.Data
-             */self.underlyingCspPackages=[];/**
-             * The FedRAMP website
-             * @member {string}
-             * @memberof Models.Data
-             */self.fedrampWebsite='';/**
-             * The CSP website
-             * @member {string}
-             * @memberof Models.Data
-             */self.cspWebsite='';/**
-             * The CSO package services description
-             * @member {string}
-             * @memberof Models.Data
-             */self.csoDescription='';/**
-             * Date of expected compliance
-             * @member {date}
-             * @memberof Models.Data
-             */self.expectedCompliance=null;/**
-             * Date of announcement when compliant
-             * @member {date}
-             * @memberof Models.Data
-             */self.compliantDate=null;/**
-             * Date of FedRAMP Ready
-             * @member {date}
-             * @memberof Models.Data
-             */self.fedrampReadyDate=null;/**
-             * The product point of contact name
-             * @member {string}
-             * @memberof Models.Data
-             */self.pocName='';/**
-             * The product point of contact email
-             * @member {string}
-             * @memberof Models.Data
-             */self.pocEmail='';/**
-             * Leveraged ATO letters
-             * @member {array}
-             * @memberof Models.Data
-             */self.atoLetters=[];/**
-             * Date when cso became fedramp ready
-             * @member {date}
-             * @memberof Models.Data
-             */self.fedrampReady=null;/**
-             * Date when cso became in-process
-             * @member {date}
-             * @memberof Models.Data
-             */self.inProcessDate=null;/**
-             * Initialize the provider object.
-             *
-             * @param {object} options
-             *  A dictionary of options to configure the provider
-             *
-             * @returns
-             *  The provider
-             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];var letter=null;if(key){if(key==='atoLetters'){for(var i=0;i<options[x].length;i++){self[key].push(new AtoLetter(options[x][i]));}}else{self[key]=options[x];}}else{if(self.hasOwnProperty(x)){if(x==='atoLetters'){for(var _i=0;_i<options[x].length;_i++){self[x].push(new AtoLetter(options[x][_i]));}}else{self[x]=options[x];}}}}return self;};/**
-             * Get a unique hash or identifier for the provider.
-             * @public
-             * @memberof Models.Data
-             *
-             * @returns
-             *  The hash
-             */self.hash=function(){var id=''+self.name+self.pkg+self.pkgId+self.sponsoringAgency;if(id.length===0){return null;}return id;};return self.init(options);}return Data;}})();(function(){'use strict';angular.module('fedramp.models').factory('Product',ProductFactory);ProductFactory.$inject=[];function ProductFactory(){/**
-         * The product (CSO)
-         * @constructor
-         * @memberof Models
-         */function Product(){// Scope `this` to self
-var self=this;/**
-             * The model type
-             * @member {string}
-             * @memberof Models.Product
-             */self.type='product';/**
-             * The product name
-             * @member {string}
-             * @memberof Models.Product
-             */self.name='';/**
-             * The package identifier
-             * @member {string}
-             * @memberof Models.Product
-             */self.pkgId='';/**
-             * The number of times the product was used
-             * @member {integer}
-             * @memberof Models.Product
-             */self.reuses=0;/**
-             * The provider name
-             * @member {string}
-             * @memberof Models.Product
-             */self.provider='';/**
-             * Agencies associated to the product
-             * @member {array}
-             * @memberof Models.Product
-             */self.agencies=[];/**
-             * The deployment model
-             * @member {string}
-             * @memberof Models.Product
-             */self.deploymentModel='';/**
-             * The designation or status
-             * @member {string}
-             * @memberof Models.Product
-             */self.designation='';/**
-             * Service models
-             * @member {array}
-             * @memberof Models.Product
-             */self.serviceModels=[];/**
-             * The impact level
-             * @member {string}
-             * @memberof Models.Product
-             */self.impactLevel='';/**
-             * The logo URL
-             * @member {string}
-             * @memberof Models.Product
-             */self.logo='';/**
-             * The authorization date
-             * @member {string}
-             * @memberof Models.Product
-             */self.authorizationDate='';/**
-             * The expected compliance date
-             * @member {string}
-             * @memberof Models.Product
-             */self.expectedCompliance='';/**
-             * The compliance date
-             * @member {string}
-             * @memberof Models.Product
-             */self.compliantDate='';/**
-             * The expiration date
-             * @member {string}
-             * @memberof Models.Product
-             */self.expirationDate='';/**
-             * The independent assessor name
-             * @member {string}
-             * @memberof Models.Product
-             */self.independentAssessor='';/**
-             * The authorization type
-             * @member {string}
-             * @memberof Models.Product
-             */self.authorizationType='';/**
-             * The sponsoring agency name
-             * @member {string}
-             * @memberof Models.Product
-             */self.sponsoringAgency='';/**
-             * Number of authorizations 
-             * @member {number}
-             * @memberof Models.Product
-             */self.authorizations=0;/**
-             * Text used to describe primary metric label
-             * @member {string}
-             * @memberof Models.Product
-             */self.useLabel='Authorizations';/**
-             * The service description
-             * @member {string}
-             * @memberof Models.Product
-             */self.serviceDescription='';/**
-             * The product point of contact name
-             * @member {string}
-             * @memberof Models.Product
-             */self.pocName='';/**
-             * The product point of contact email
-             * @member {string}
-             * @memberof Models.Product
-             */self.pocEmail='';/**
-             * Products dependent on the current product
-             * @member {array}
-             * @memberof Models.Product
-             */self.dependents=[];/**
-             * Date product became fedramp ready
-             * @member {date}
-             * @memberof Models.Product
-             */self.fedrampReadyDate=null;/**
-             * Date product became in-process
-             * @member {date}
-             * @memberof Models.Product
-             */self.inProcessDate=null;}return Product;}})();(function(){'use strict';angular.module('fedramp.models').factory('Provider',ProviderFactory);ProviderFactory.$inject=[];function ProviderFactory(){/**
-         * The cloud service provider.
-         * @constructor
-         * @memberof Models
-         */function Provider(options){// Scope `this` to self
-var self=this;/**
-             * The model type
-             * @member {string}
-             * @memberof Models.Provider
-             */self.type='provider';/**
-             * The provider name
-             * @member {string}
-             * @memberof Models.Provider
-             */self.name='';/**
-             * The number of times the provider was used
-             * @member {integer}
-             * @memberof Models.Provider
-             */self.reuses=0;/**
-             * Products associated to the provider
-             * @member {array}
-             * @memberof Models.Provider
-             */self.products=[];/**
-             * Deployment models associated to the provider
-             * @member {array}
-             * @memberof Models.Provider
-             */self.deploymentModels=[];/**
-             * Service models associated to the provider
-             * @member {array}
-             * @memberof Models.Provider
-             */self.serviceModels=[];/**
-             * Statuses/designatinos associated to the provider
-             * @member {array}
-             * @memberof Models.Provider
-             */self.designations=[];/**
-             * Agencies associated to the provider
-             * @member {array}
-             * @memberof Models.Provider
-             */self.agencies=[];/**
-             * The logo URL
-             * @member {string}
-             * @memberof Models.Provider
-             */self.logo='';}return Provider;}})();(function(){'use strict';angular.module('fedramp.services').factory('Settings',SettingsFactory);function SettingsFactory(){return Settings;}/**
-     * Application settings for the FedRAMP dashboard.
-     * @constructor
-     * @memberof Models
-     */function Settings(options){// Scope `this` to self
-var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'};/**
-         * The last refresh date
-         * @member {string}
-         * @memberof Models.Settings
-         */self.lastRefresh=null;/**
-         * Initialize the Settings object.
-         *
-         * @param {object} options
-         *  A dictionary of options to configure the Settings object.
-         *
-         * @returns
-         *  The Settings object
-         */self.init=function(options){if(options){for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}}}return self;};/**
-         * Refreshes the date to current date
-         * @public
-         * @memberof Models.Settings
-         *
-         * @returns
-         *  The last refresh date
-         */self.refresh=function(){self.lastRefresh=today(new Date(self.lastRefresh));return self.lastRefresh;};/**
-         * Clears last refresh
-         * @public
-         * @memberof Models.Settings
-         */self.clearRefresh=function(){self.lastRefresh=null;};/**
-         * Determine if the data requires a refresh.
-         * @public
-         * @memberof Models.Settings
-         *
-         * @returns
-         *  A boolean value
-         */self.needsRefresh=function(){return self.lastRefresh!==today(new Date());};self.hash=function(){return self.lastRefresh;};/**
-         * Creates a formatted date string
-         * @private
-         * @memberof Models.Settings
-         *
-         * @returns
-         *  Today's date formatting as mm/dd/YYYY
-         */function today(date){var d=date;var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;}return self.init(options);}})();(function(){'use strict';angular.module('fedramp.components').component('agenciesGrid',{templateUrl:'src/templates/components/agencies-grid.html',controller:AgenciesGrid,controllerAs:'controller',bindings:{expandTiles:'<',rawItems:'<?',onUpdate:'&?'}});AgenciesGrid.$inject=['$log','fedrampData','$attrs'];/**
+.state('fedramp.app.home.assessors',{url:'/assessors',templateUrl:'src/templates/home/assessors.html',controller:'AssessorsController as controller'}).state('fedramp.app.assessor',{url:'/assessor',templateUrl:'src/templates/home/assessor.html'}).state('fedramp.app.assessor.information',{url:'/:name',templateUrl:'src/templates/home/assessor-information.html',controller:'AssessorInformationController as controller'}).state('fedramp.app.assessor.comparison',{url:'/:first/versus/:second',templateUrl:'src/templates/home/assessor-comparison.html',controller:'AssessorComparisonController as controller'}).state('fedramp.app.dictionary',{url:'/dictionary',template:'<dictionary></dictionary>'});}})();(function(){'use strict';angular.module('fedramp.components').component('agenciesGrid',{templateUrl:'src/templates/components/agencies-grid.html',controller:AgenciesGrid,controllerAs:'controller',bindings:{expandTiles:'<',rawItems:'<?',onUpdate:'&?'}});AgenciesGrid.$inject=['$log','fedrampData','$attrs'];/**
      * @constructor
      * @memberof Components
      */function AgenciesGrid($log,fedrampData,$attrs){var self=this;/**
@@ -1331,7 +792,7 @@ sortedProductKeys=sortedProductKeys.map(function(v){return{name:v,products:produ
          *
          * @returns
          *  Status message
-         */self.statusMessage=function(){var message='';if(self.isCompliant()){message='FedRAMP Authorized Since '+(self.model.compliantDate||'');}else{if(self.model.expectedCompliance){message='Estimated Compliance Date '+self.model.expectedCompliance;}else{message='This provider has not given an Estimated Compliance Date';}}return message;};/**
+         */self.statusMessage=function(){var message='';if(self.isCompliant()){if(self.model.compliantDate){message='FedRAMP Authorized Since '+(self.model.compliantDate||'');}else{message='FedRAMP Authorized';}}else{if(self.model.expectedCompliance){message='Estimated Compliance Date '+self.model.expectedCompliance;}else{message='This provider has not given an Estimated Compliance Date';}}return message;};/**
          * Parses possible markdown, or other encoded text, as HTML
          * @public
          * @memberof Components.Product
@@ -1494,7 +955,546 @@ if(!searchTerm){return product;}searchTerm=searchTerm.toLowerCase();var productN
          */self.externalLink=function(url){if(url.indexOf('http')===-1){url='http://'+url;}return $sce.trustAsResourceUrl(url);};}})();(function(){'use strict';angular.module('fedramp.components').component('twitter',{template:'<ng-transclude />',transclude:true,controller:Twitter});Twitter.$inject=['$log','$sce','$element'];/**
      * @constructor
      * @memberof Components
-     */function Twitter($log,$sce,$element){var script=document.createElement('script');script.async='async';script.src='https://platform.twitter.com/widgets.js';script.charset='utf-8';document.body.appendChild(script);}})();(function(){'use strict';angular.module('fedramp.services').factory('Cache',CacheFactory);CacheFactory.$inject=['$cacheFactory'];/**
+     */function Twitter($log,$sce,$element){var script=document.createElement('script');script.async='async';script.src='https://platform.twitter.com/widgets.js';script.charset='utf-8';document.body.appendChild(script);}})();(function(){'use strict';angular.module('fedramp.models').factory('Agency',AgencyFactory);AgencyFactory.$inject=[];function AgencyFactory(){/**
+         * The agency
+         * @constructor
+         * @memberof Models
+         */function Agency(options){// Scope `this` to self
+var self=this;/**
+             * The model type
+             * @member {string}
+             * @memberof Models.Agency
+             */self.type='agency';/**
+             * The agency name
+             * @member {string}
+             * @memberof Models.Agency
+             */self.name='';/**
+             * The number of times the agency was used
+             * @member {integer}
+             * @memberof Models.Agency
+             */self.reuses=0;/**
+             * The number of times the agency was a sponsoring entity
+             * @member {integer}
+             * @memberof Models.Agency
+             */self.sponsored=0;/**
+             * The number of times the agency was an authorizing entity
+             * @member {integer}
+             * @memberof Models.Agency
+             */self.authorized=0;/**
+             * The agency point of contact name
+             * @member {string}
+             * @memberof Models.Agency
+             */self.pocName='';/**
+             * The agency point of contact email
+             * @member {string}
+             * @memberof Models.Agency
+             */self.pocEmail='';/**
+             * The agency logo
+             * @member {string}
+             * @memberof Models.Agency
+             */self.logo='';/**
+             * Providers associated to the agency
+             * @member {array}
+             * @memberof Models.Agency
+             */self.providers=[];/**
+             * Products associated to the agency
+             * @member {array}
+             * @memberof Models.Agency
+             */self.products=[];/**
+             * Assessors associated to the agency
+             * @member {array}
+             * @memberof Models.Agency
+             */self.assessors=[];/**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Agency
+             */self.useLabel='Products Used';}return Agency;}})();(function(){'use strict';angular.module('fedramp.models').factory('AssessorData',AssessorDataFactory);AssessorDataFactory.$inject=[];function AssessorDataFactory(){return AssessorData;/**
+         * The raw assessors data model with opinionated transformations
+         * @constructor
+         * @memberof Models
+         */function AssessorData(options){// Scope `this` to self
+var self=this;var mapping={'Name':'name','Accreditation_Date':'accreditationDate','Logo':'logo','Description':'description','POC_Name':'pocName','POC_Email':'pocEmail','website':'website'};/**
+             * Assessor name
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.name='';/**
+             * Assessor accreditation date
+             * @member {Date}
+             * @memberof Models.AssessorData
+             */self.accreditationDate='';/**
+             * Assessor logo
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.logo='';/**
+             * Assessor description
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.description='';/**
+             * Assessor point of contact name
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.pocName='';/**
+             * Assessor point of contact email
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.pocEmail='';/**
+             * Assessor website
+             * @member {string}
+             * @memberof Models.AssessorData
+             */self.website='';/**
+             * Initialize the assessor data object.
+             *
+             * @param {object} options
+             *  A dictionary of options to configure the assessor
+             *
+             * @returns
+             *  The provider
+             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}else{if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};/**
+             * Get a unique hash or identifier for the provider.
+             * @public
+             * @memberof Models.Data
+             *
+             * @returns
+             *  The hash
+             */self.hash=function(){var id=''+self.name+self.accreditationDate;if(id.length===0){return null;}return id;};return self.init(options);}}})();(function(){'use strict';angular.module('fedramp.models').factory('Assessor',AssessorFactory);AssessorFactory.$inject=[];function AssessorFactory(){/**
+         * The independent assessor
+         * @constructor
+         * @memberof Models
+         */function Assessor(options){// Scope `this` to self
+var self=this;/**
+             * The model type
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.type='assessor';/**
+             * The agency name
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.name='';/**
+             * The number of times the assessor was used
+             * @member {integer}
+             * @memberof Models.Assessor
+             */self.reuses=0;/**
+             * Providers associated to the assessor
+             * @member {array}
+             * @memberof Models.Assessor
+             */self.providers=[];/**
+             * Products associated to the assessor
+             * @member {array}
+             * @memberof Models.Assessor
+             */self.products=[];/**
+             * Agencies associated to the assessor
+             * @member {array}
+             * @memberof Models.Assessor
+             */self.agencies=[];/**
+             * The date assessor was accredited
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.accreditationDate='';/**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.useLabel='Assessed';/**
+             * The description provided by the assessor
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.description='';/**
+             * Assessor logo
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.logo='';/**
+             * Assessor description
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.description='';/**
+             * Assessor point of contact name
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.pocName='';/**
+             * Assessor point of contact email
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.pocEmail='';/**
+             * Assessor website
+             * @member {string}
+             * @memberof Models.Assessor
+             */self.website='';}return Assessor;}})();(function(){'use strict';angular.module('fedramp.models').factory('AtoLetter',AtoLetterFactory);function AtoLetterFactory(){return AtoLetter;}/**
+     * Leveraged ATO letter.
+     * @constructor
+     * @memberof Models
+     */function AtoLetter(options){// Scope `this` to self
+var self=this;var mapping={'Letter_Date':'letterDate','Letter_Expiration_Date':'letterExpirationDate','Authorization_Date':'authorizationDate','Authorizing_Letter_Last_Sign_Date':'authorizingLetterSignedDate','Authorizing_Agency':'authorizingAgency','Authorizing_Subagency':'authorizingSubagency','Agency_POC':'pocName','Agency_POC_email':'pocEmail','Agency_Logo':'logo','Include_In_Marketplace':'includeInMarketplace','Independent_Assessor':'independentAssessor','Announcement_Date':'compliantDate'};/**
+         * Letter date
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */self.letterDate=null;/**
+         * Letter expiration date
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */self.letterExpirationDate=null;/**
+         * The authorization date
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */self.authorizationDate=null;/**
+         * Authorizing letter signed date
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */self.authorizingLetterSignedDate=null;/**
+         * Authorizing agency
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.authorizingAgency='';/**
+         * Authorizing subagency
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.authorizingSubagency='';/**
+         * The agency point of contact name
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.pocName='';/**
+         * The agency point of contact email
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.pocEmail='';/**
+         * The agency logo
+         * @member {string}
+         * @memberof Models.AtoLetter
+         */self.logo='';/**
+         * A value indicating if it should be included in the market place
+         * @member {date}
+         * @memberof Models.AtoLetter
+         */self.includeInMarketplace='';/**
+         * The independent assessor
+         * @member {string}
+         * @memberof Models.Provider
+         */self.independentAssessor='';/**
+         * Date of announcement when compliant
+         * @member {date}
+         * @memberof Models.Data
+         */self.compliantDate=null;/**
+         * Initialize the ATO letter object.
+         *
+         * @param {object} options
+         *  A dictionary of options to configure the ATO letter
+         *
+         * @returns
+         *  The ATO letter
+         */self.init=function(options){if(!options){return self;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}else{if(self.hasOwnProperty(x)){self[x]=options[x];}}}return self;};return self.init(options);}})();(function(){'use strict';angular.module('fedramp.models').factory('Data',DataFactory);DataFactory.$inject=['AtoLetter'];function DataFactory(AtoLetter){/**
+         * The raw data model with opinionated transformations
+         * @constructor
+         * @memberof Models
+         */function Data(options){// Scope `this` to self
+var self=this;var mapping={'Cloud_Service_Provider_Name':'name','Cloud_Service_Provider_Package':'pkg','Path':'path','Designation':'designation','Package_ID':'pkgId','Service_Model':'serviceModel','Deployment_Model':'deploymentModel','Impact_Level':'impactLevel','Original_Authorization_Date':'authorizationDate','Original_Expiration_Date':'expirationDate','Sponsoring_Agency':'sponsoringAgency','CSP_URL':'cspUrl','Stage':'stage','Independent_Assessor':'independentAssessor','Underlying_CSP_Package_ID':'underlyingCspPackages','FedRAMP_Website_URL':'fedrampWebsite','CSP_Website':'cspWebsite','CSO_Description':'csoDescription','Expected_Compliance_Date':'expectedCompliance','Announcement_Date':'compliantDate','Fedramp_Ready_Date':'fedrampReadyDate','CSP_POC_Name':'pocName','CSP_POC_Email':'pocEmail','Leveraged_ATO_Letters':'atoLetters','FedRAMP_In-Process_Date':'inProcessDate'};/**
+             * Cloud service provider name
+             * @member {string}
+             * @memberof Models.Data
+             */self.name='';/**
+             * Package name
+             * @member {string}
+             * @memberof Models.Data
+             */self.pkg='';/**
+             * Package identifier
+             * @member {string}
+             * @memberof Models.Data
+             */self.pkgId='';/**
+             * Path
+             * @member {string}
+             * @memberof Models.Data
+             */self.path='';/**
+             * Designation
+             * @member {string}
+             * @memberof Models.Data
+             */self.designation='';/**
+             * Service model
+             * @member {array}
+             * @memberof Models.Data
+             */self.serviceModel=[];/**
+             * Deployment model
+             * @member {string}
+             * @memberof Models.Data
+             */self.deploymentModel='';/**
+             * Impact level
+             * @member {string}
+             * @memberof Models.Data
+             */self.impactLevel='';/**
+             * Authorization date
+             * @member {date}
+             * @memberof Models.Data
+             */self.authorizationDate=null;/**
+             * Expiration date
+             * @member {date}
+             * @memberof Models.Data
+             */self.expirationDate=null;/**
+             * Sponsoring agency
+             * @member {string}
+             * @memberof Models.Data
+             */self.sponsoringAgency='';/**
+             * The CSP URL
+             * @member {string}
+             * @memberof Models.Data
+             */self.cspUrl='';/**
+             * Stage in validation process
+             * @member {string}
+             * @memberof Models.Data
+             */self.stage='';/**
+             * The independent assessor
+             * @member {string}
+             * @memberof Models.Data
+             */self.independentAssessor='';/**
+             * Underlying CSP packages
+             * @member {array}
+             * @memberof Models.Data
+             */self.underlyingCspPackages=[];/**
+             * The FedRAMP website
+             * @member {string}
+             * @memberof Models.Data
+             */self.fedrampWebsite='';/**
+             * The CSP website
+             * @member {string}
+             * @memberof Models.Data
+             */self.cspWebsite='';/**
+             * The CSO package services description
+             * @member {string}
+             * @memberof Models.Data
+             */self.csoDescription='';/**
+             * Date of expected compliance
+             * @member {date}
+             * @memberof Models.Data
+             */self.expectedCompliance=null;/**
+             * Date of announcement when compliant
+             * @member {date}
+             * @memberof Models.Data
+             */self.compliantDate=null;/**
+             * Date of FedRAMP Ready
+             * @member {date}
+             * @memberof Models.Data
+             */self.fedrampReadyDate=null;/**
+             * The product point of contact name
+             * @member {string}
+             * @memberof Models.Data
+             */self.pocName='';/**
+             * The product point of contact email
+             * @member {string}
+             * @memberof Models.Data
+             */self.pocEmail='';/**
+             * Leveraged ATO letters
+             * @member {array}
+             * @memberof Models.Data
+             */self.atoLetters=[];/**
+             * Date when cso became fedramp ready
+             * @member {date}
+             * @memberof Models.Data
+             */self.fedrampReady=null;/**
+             * Date when cso became in-process
+             * @member {date}
+             * @memberof Models.Data
+             */self.inProcessDate=null;/**
+             * Initialize the provider object.
+             *
+             * @param {object} options
+             *  A dictionary of options to configure the provider
+             *
+             * @returns
+             *  The provider
+             */self.init=function(options){if(!options){return;}for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];var letter=null;if(key){if(key==='atoLetters'){for(var i=0;i<options[x].length;i++){self[key].push(new AtoLetter(options[x][i]));}}else{self[key]=options[x];}}else{if(self.hasOwnProperty(x)){if(x==='atoLetters'){for(var _i=0;_i<options[x].length;_i++){self[x].push(new AtoLetter(options[x][_i]));}}else{self[x]=options[x];}}}}return self;};/**
+             * Get a unique hash or identifier for the provider.
+             * @public
+             * @memberof Models.Data
+             *
+             * @returns
+             *  The hash
+             */self.hash=function(){var id=''+self.name+self.pkg+self.pkgId+self.sponsoringAgency;if(id.length===0){return null;}return id;};return self.init(options);}return Data;}})();(function(){'use strict';angular.module('fedramp.models').factory('Product',ProductFactory);ProductFactory.$inject=[];function ProductFactory(){/**
+         * The product (CSO)
+         * @constructor
+         * @memberof Models
+         */function Product(){// Scope `this` to self
+var self=this;/**
+             * The model type
+             * @member {string}
+             * @memberof Models.Product
+             */self.type='product';/**
+             * The product name
+             * @member {string}
+             * @memberof Models.Product
+             */self.name='';/**
+             * The package identifier
+             * @member {string}
+             * @memberof Models.Product
+             */self.pkgId='';/**
+             * The number of times the product was used
+             * @member {integer}
+             * @memberof Models.Product
+             */self.reuses=0;/**
+             * The provider name
+             * @member {string}
+             * @memberof Models.Product
+             */self.provider='';/**
+             * Agencies associated to the product
+             * @member {array}
+             * @memberof Models.Product
+             */self.agencies=[];/**
+             * The deployment model
+             * @member {string}
+             * @memberof Models.Product
+             */self.deploymentModel='';/**
+             * The designation or status
+             * @member {string}
+             * @memberof Models.Product
+             */self.designation='';/**
+             * Service models
+             * @member {array}
+             * @memberof Models.Product
+             */self.serviceModels=[];/**
+             * The impact level
+             * @member {string}
+             * @memberof Models.Product
+             */self.impactLevel='';/**
+             * The logo URL
+             * @member {string}
+             * @memberof Models.Product
+             */self.logo='';/**
+             * The authorization date
+             * @member {string}
+             * @memberof Models.Product
+             */self.authorizationDate='';/**
+             * The expected compliance date
+             * @member {string}
+             * @memberof Models.Product
+             */self.expectedCompliance='';/**
+             * The compliance date
+             * @member {string}
+             * @memberof Models.Product
+             */self.compliantDate='';/**
+             * The expiration date
+             * @member {string}
+             * @memberof Models.Product
+             */self.expirationDate='';/**
+             * The independent assessor name
+             * @member {string}
+             * @memberof Models.Product
+             */self.independentAssessor='';/**
+             * The authorization type
+             * @member {string}
+             * @memberof Models.Product
+             */self.authorizationType='';/**
+             * The sponsoring agency name
+             * @member {string}
+             * @memberof Models.Product
+             */self.sponsoringAgency='';/**
+             * Number of authorizations 
+             * @member {number}
+             * @memberof Models.Product
+             */self.authorizations=0;/**
+             * Text used to describe primary metric label
+             * @member {string}
+             * @memberof Models.Product
+             */self.useLabel='Authorizations';/**
+             * The service description
+             * @member {string}
+             * @memberof Models.Product
+             */self.serviceDescription='';/**
+             * The product point of contact name
+             * @member {string}
+             * @memberof Models.Product
+             */self.pocName='';/**
+             * The product point of contact email
+             * @member {string}
+             * @memberof Models.Product
+             */self.pocEmail='';/**
+             * Products dependent on the current product
+             * @member {array}
+             * @memberof Models.Product
+             */self.dependents=[];/**
+             * Date product became fedramp ready
+             * @member {date}
+             * @memberof Models.Product
+             */self.fedrampReadyDate=null;/**
+             * Date product became in-process
+             * @member {date}
+             * @memberof Models.Product
+             */self.inProcessDate=null;}return Product;}})();(function(){'use strict';angular.module('fedramp.models').factory('Provider',ProviderFactory);ProviderFactory.$inject=[];function ProviderFactory(){/**
+         * The cloud service provider.
+         * @constructor
+         * @memberof Models
+         */function Provider(options){// Scope `this` to self
+var self=this;/**
+             * The model type
+             * @member {string}
+             * @memberof Models.Provider
+             */self.type='provider';/**
+             * The provider name
+             * @member {string}
+             * @memberof Models.Provider
+             */self.name='';/**
+             * The number of times the provider was used
+             * @member {integer}
+             * @memberof Models.Provider
+             */self.reuses=0;/**
+             * Products associated to the provider
+             * @member {array}
+             * @memberof Models.Provider
+             */self.products=[];/**
+             * Deployment models associated to the provider
+             * @member {array}
+             * @memberof Models.Provider
+             */self.deploymentModels=[];/**
+             * Service models associated to the provider
+             * @member {array}
+             * @memberof Models.Provider
+             */self.serviceModels=[];/**
+             * Statuses/designatinos associated to the provider
+             * @member {array}
+             * @memberof Models.Provider
+             */self.designations=[];/**
+             * Agencies associated to the provider
+             * @member {array}
+             * @memberof Models.Provider
+             */self.agencies=[];/**
+             * The logo URL
+             * @member {string}
+             * @memberof Models.Provider
+             */self.logo='';}return Provider;}})();(function(){'use strict';angular.module('fedramp.services').factory('Settings',SettingsFactory);function SettingsFactory(){return Settings;}/**
+     * Application settings for the FedRAMP dashboard.
+     * @constructor
+     * @memberof Models
+     */function Settings(options){// Scope `this` to self
+var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'};/**
+         * The last refresh date
+         * @member {string}
+         * @memberof Models.Settings
+         */self.lastRefresh=null;/**
+         * Initialize the Settings object.
+         *
+         * @param {object} options
+         *  A dictionary of options to configure the Settings object.
+         *
+         * @returns
+         *  The Settings object
+         */self.init=function(options){if(options){for(var x in options){if(!options.hasOwnProperty(x)){continue;}var key=mapping[x];if(key){self[key]=options[x];}}}return self;};/**
+         * Refreshes the date to current date
+         * @public
+         * @memberof Models.Settings
+         *
+         * @returns
+         *  The last refresh date
+         */self.refresh=function(){self.lastRefresh=today(new Date(self.lastRefresh));return self.lastRefresh;};/**
+         * Clears last refresh
+         * @public
+         * @memberof Models.Settings
+         */self.clearRefresh=function(){self.lastRefresh=null;};/**
+         * Determine if the data requires a refresh.
+         * @public
+         * @memberof Models.Settings
+         *
+         * @returns
+         *  A boolean value
+         */self.needsRefresh=function(){return self.lastRefresh!==today(new Date());};self.hash=function(){return self.lastRefresh;};/**
+         * Creates a formatted date string
+         * @private
+         * @memberof Models.Settings
+         *
+         * @returns
+         *  Today's date formatting as mm/dd/YYYY
+         */function today(date){var d=date;var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;}return self.init(options);}})();(function(){'use strict';angular.module('fedramp.services').factory('Cache',CacheFactory);CacheFactory.$inject=['$cacheFactory'];/**
      * @constructor
      * @memberof Services
      */function CacheFactory($cacheFactory){var cache=$cacheFactory('fedramp');cache.wrap=wrap;return cache;/*
@@ -1653,7 +1653,7 @@ if(provider.defaults.cache){self.products=Cache.wrap('products')(storage.product
          *
          * @returns
          *  Today's date formatting as mm/dd/YYYY
-         */self.toDate=function(str){if(!str||str==='N/A'){return'';}var d=new Date(str);var dd=d.getUTCDate();var mm=d.getUTCMonth()+1;var yyyy=d.getUTCFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return mm+'/'+dd+'/'+yyyy;};/**
+         */self.toDate=function(str){if(!str||str==='N/A'){return'';}var d=new Date(str);var dd=d.getUTCDate();var mm=d.getUTCMonth()+1;var yyyy=d.getUTCFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}if(isNaN(mm)||isNaN(dd)||isNaN(yyyy)){return'';}return mm+'/'+dd+'/'+yyyy;};/**
          * Scrolls to an anchor
          * @public
          * @memberof Services.HelperService

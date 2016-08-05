@@ -19,6 +19,7 @@ describe('The helper service', function () {
         expect(service.toDate('2013-08-23T00:00:00.000Z')).toBe('08/23/2013');
         expect(service.toDate('2013-08-23')).toBe('08/23/2013');
         expect(service.toDate('08/23/2013')).toBe('08/23/2013');
+        expect(service.toDate('Check on')).toBe('');
         expect(service.toDate(null)).toBe('');
     });
 
