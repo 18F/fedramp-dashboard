@@ -5696,11 +5696,8 @@ grid-total {
     background-color: #205493;
     width: 100%;
     height: 6px;
-    margin-top: 6rem;
+    margin-top: 0;
     padding: 0; }
-    @media only screen and (max-width: 850px) {
-      .information .divider {
-        margin-top: 0; } }
   .information .timeline {
     margin-bottom: 4rem;
     width: 100%; }
@@ -5746,6 +5743,10 @@ grid-total {
 
 .information.assessor .row {
   clear: both; }
+  .information.assessor .row .remediation {
+    width: 100%; }
+    .information.assessor .row .remediation .usa-alert {
+      margin-top: 0; }
   .information.assessor .row .contact-information {
     color: #000000;
     padding: 2rem;
@@ -5763,6 +5764,17 @@ grid-total {
       white-space: nowrap; }
   .information.assessor .row h5 {
     margin-top: 0; }
+
+.information.assessor .gutter {
+  padding-left: 2.8rem;
+  padding-right: 2.8rem; }
+
+.information.assessor .provides-services {
+  font-weight: bolder; }
+  .information.assessor .provides-services .offered {
+    color: #2e8540; }
+  .information.assessor .provides-services .not-offered {
+    color: #cd2026; }
 
 .information.assessor .not-accredited {
   background-color: #aeb0b5; }
