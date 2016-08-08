@@ -26,7 +26,7 @@
                 'Description': 'description',
                 'POC_Name': 'pocName',
                 'POC_Email': 'pocEmail',
-                'Website': 'website',
+                'website': 'website',
                 'Remediation': 'remediation',
                 'Founded': 'founded',
                 'Primary_Office_Locations': 'primaryOfficeLocations',
