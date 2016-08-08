@@ -13,12 +13,22 @@
         return Searcher;
 
         /**
-         * Searcher is a factory that allows objects to be traversed and searched
-         * for. The idea is that you can specify a property expression to look through
-         * when you execute a search. 
+         * Searcher is a factory that allows a property expression to be used to search
+         * through an objects properties. A property expression is a string that contains a 
+         * path using dot notation that leads to a specific property in an object. Some examples include:
+         *
+         * <code>
+         *  <div>'name'</div>
+         *  <div>'agency.name'</div>
+         *  <div>'a in agencies'</div>
+         *  <div>'a.name in products'</div>
+         * </code>
+         *
+         * It utilizes the angular
+         * [$parse]{@link https://docs.angularjs.org/api/ng/service/$parse} service to facilitate some of this functionality.
          *
          * @example
-         * Given the following object being searched:
+         * // Given the following object being searched:
          *
          * {
          *      name: 'John Doe',
@@ -62,12 +72,27 @@
 
         /**
          * Handles searching for information within an object using a property expression.
+         *
+         * @constructor
+         * @memberof Services
+         * @param {string} expression
+         * Property path to search in
          */
         function PropertyExpression (expression) {
             var self = this;
 
             /**
              * Allows a function to be passed in to perform a manual comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             *  Object being searched. An object can be a single object or array
+             * @param {function} func
+             *  Function that will be executed after each result is iterated. If this function returns
+             *  a value, it will be added to the results array.
+             * @returns
+             * Array of matched results
              */
             self.criteriaFunc = function (data, func) {
                 var results = [];
@@ -83,6 +108,15 @@
             /**
              * Iterates through an objects properties using the specified property expression
              * and performs a contains comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {string} searchTerm
+             * The text value to find
+             * @returns
+             * Array of matched results
              */
             self.contains = function (data, searchTerm) {
                 var results = [];
@@ -101,6 +135,15 @@
             /**
              * Iterates through an objects properties using the specifed property expression 
              * and performs an equals comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {string} searchTerm
+             * The text value to find
+             * @returns
+             * Array of matched results
              */
             self.equals = function (data, searchTerm) {
                 var results = [];
@@ -116,6 +159,17 @@
 
             /**
              * Performs a date range comparison
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {date} start
+             * Start date
+             * @param {date} end
+             * End date
+             * @returns
+             * Array of matched results
              */
             self.withinDateRange = function (data, start, end) {
                 var results = [];
@@ -136,8 +190,11 @@
 
             /**
              * Helper function iterates through all objects making the property expression.
+             *
+             * @private
+             * @memberof Services.PropertyExpression
              */
-            function eachResult(data, func){
+            function eachResult(data, func) {
                 if (!angular.isArray(data)) {
                     data = [data];
                 }
@@ -150,13 +207,38 @@
         }
 
         /**
-         * Traverses an object based on the property expression
+         * Traverses an object based on the property expression. Given a property expression, this will
+         * recursively evaluate each property within the expression until all properties have been evaluated.
+         *
+         *
+         * @constructor
+         * @memberof Services
+         * @param {object} data 
+         * Object being traversed
+         * @param {string} propExpression
+         * A string containing a property expression to evaluate
          */
         function Walker (data, propExpression) {
             var self = this;
+            /**
+             * The current key in an expression to evaluate
+             */
             var targetKey = null;
+
+            /**
+             * The keys in a property expression that must be processed
+             */
             var targetProps = null;
+
+            /**
+             * Determines which object is a primitive type
+             */
             var isPrimitive = true;
+
+            /**
+             * Flag to indicate whether to retrieve a value from an array using its number
+             * based index or an objects key within an array
+             */
             var useIndex = false;
             
             self.walk = function (func) {
@@ -164,8 +246,33 @@
             };
 
             /**
-             * Recursively walks an object to reach the property expression
+             * Recursively walks an object to reach the property expression.
+             *
+             * Continuing from our example in the parseKeys() method below, assume we start with the following 
+             * expression:
+             *
+             * <code> 
+             * 'd.name in pets.dogs'</br>
+             * targetKey => 'name'</br>
+             * targetProps => ['pets', 'dogs']</br>
+             * </br>
+             *
+             * This method will evaluate each property in the targetProps array against the current obj (on first iteration)
+             * or against the preceding expression evaluation until all have been processed. 
+             * 
+             * Once at the end, 
+             * we evalute the targetKey against the last targetProp. So in this case, we would end up evaluation the 
+             * `name` property in an object within a dogs array.
+             * </code>
+             *
+             * @public
+             * @memberof Services.Walker
+             * @param {object} obj
+             * Object to traverse
+             * @param {props} props
+             * Array of split property expressions.              
              */
+
             function find (obj, props, q) {
                 props = angular.copy(props);
 
@@ -193,6 +300,40 @@
                 }
             }
 
+            /**
+             * Parses the property expression to determine the following:
+             * @private
+             * @memberof Services.Walker
+             *
+             * - if an array must be traversed
+             * - if the expression is searching a primitive value
+             * - if an array is being traversed, then should we pull from the array index (e.g. obj[0])
+             *   or pull from an object within an array (e.g. obj.name)
+             *
+             * @example
+             *
+             * Given the following property expression
+             *
+             * 'd in dogs'
+             *
+             * This will be processed by the ARRAY_FILTER_REGEX. Since this contains `in`, an array is being traversed.
+             * This will be split into a targetKey and targetProps. The targetKey in this case will be `d` and the targetProps
+             * will contain an array split on the "." character to yield ['dogs']. Since only `d` was specified, we're only
+             * targeting the index of the array.
+             *
+             * targetKey => 'd'
+             * targetProps => ['dogs']
+             *
+             * However, given this expression
+             *
+             * 'd.name in pets.dogs'
+             *
+             * This would result in the following when constructed
+             *
+             * targetKey => 'name'
+             * targetProps => ['pets', 'dogs']
+             *
+             */
             function parseKeys () {
                 var m = propExpression.match(ARRAY_FILTER_REGEX);
                 if (m) {

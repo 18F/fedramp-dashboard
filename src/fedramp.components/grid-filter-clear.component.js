@@ -18,6 +18,9 @@
     GridFilterClear.$inject = [];
 
     /**
+     * Wraps a block of HTML with a handler to clear the filters for a grid.
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
+     *
      * @constructor
      * @memberof Components
      */

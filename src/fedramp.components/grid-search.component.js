@@ -30,6 +30,8 @@
      * If no property is specified, a custom filterFunc can be passed in to include custom
      * filtering logic.
      *
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
+     *
      * @example
      * // Using property expression
      * <grid-search property="product.name in products" placeholder="Search by Product Name"></grid-search>

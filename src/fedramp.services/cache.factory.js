@@ -20,8 +20,8 @@
         /*
          * Wraps a function with additional behavior that does the following:
          * 
-         * 1. Checks if the result of the function call is in cache
-         * 2. If result is in cache, returns.
+         * 1. Checks if the result of the function call is in cache using the key
+         * 2. If result is in cache, returns that cached object.
          * 3. If not in cache, execute apply on function with arguments and then store
          * result in cache using the passed in key.
          */

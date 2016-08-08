@@ -286,13 +286,24 @@ if(navigator.msSaveBlob&&downloadBlob){navigator.msSaveBlob(downloadBlob,self.fi
          * @returns
          *  A file name in the format "fedramp-YYYY-mm-dd.csv"
          */function filename(date){if(!date){date=new Date();}var dd=date.getDate();var mm=date.getMonth()+1;var yyyy=date.getFullYear();if(dd<10){dd='0'+dd;}if(mm<10){mm='0'+mm;}return'fedramp-'+yyyy+'-'+mm+'-'+dd+'.csv';}}})();(function(){'use strict';angular.module('fedramp.components').component('gridFilterClear',{transclude:true,template:'<ng-transclude class="no-select" ng-click="controller.clear()"></ng-transclude>',controller:GridFilterClear,controllerAs:'controller',require:{gridController:'^grid'},bindings:{}});GridFilterClear.$inject=[];/**
+     * Wraps a block of HTML with a handler to clear the filters for a grid.
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
+     *
      * @constructor
      * @memberof Components
      */function GridFilterClear(){var self=this;self.clear=clear;/**
          * Calls clear on grid component to clear out all filters
          * @public
          * @memberof Components
-         */function clear(){self.gridController.clearFilters();}}})();(function(){'use strict';angular.module('fedramp.components').component('gridFilterPrint',{controller:GridFilterPrint,controllerAs:'controller',templateUrl:'src/templates/components/grid-filter-print.html',require:{gridController:'^grid'}});GridFilterPrint.$inject=[];function GridFilterPrint(){var self=this;}})();(function(){'use strict';angular.module('fedramp.components').component('gridFilter',{controller:GridFilter,controllerAs:'controller',templateUrl:'src/templates/components/grid-filter.html',require:{// We require that this component live inside of <grid></grid> so it can
+         */function clear(){self.gridController.clearFilters();}}})();(function(){'use strict';angular.module('fedramp.components').component('gridFilterPrint',{controller:GridFilterPrint,controllerAs:'controller',templateUrl:'src/templates/components/grid-filter-print.html',require:{gridController:'^grid'}});GridFilterPrint.$inject=[];/**
+     * Displays a human-friendly textual representation of the currently applied filters. This
+     * is used when rendering the grid in print mode.
+     *
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
+     *
+     * @constructor
+     * @memberof Components
+     */function GridFilterPrint(){var self=this;}})();(function(){'use strict';angular.module('fedramp.components').component('gridFilter',{controller:GridFilter,controllerAs:'controller',templateUrl:'src/templates/components/grid-filter.html',require:{// We require that this component live inside of <grid></grid> so it can
 // communicate and share information
 gridController:'^grid'},bindings:{// The property on a list to manage. Specify a property expression here.
 property:'@',// User friendly text to describe filter
@@ -309,6 +320,7 @@ id:'@'}});GridFilter.$inject=['$location','$element','$httpParamSerializer','Sea
      * property. 
      *
      * If a property expression is not provided, a custom filterFunc and optionsFunc must be provided
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
      *
      * @example
      * // Given the following object being searched:
@@ -477,6 +489,8 @@ placeholder:'@',id:'@',filterFunc:'<'}});GridSearch.$inject=['Searcher'];/**
      * If no property is specified, a custom filterFunc can be passed in to include custom
      * filtering logic.
      *
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
+     *
      * @example
      * // Using property expression
      * <grid-search property="product.name in products" placeholder="Search by Product Name"></grid-search>
@@ -542,7 +556,8 @@ self.$onInit=$onInit;self.search=search;self.clear=clear;self.restoreState=resto
          *
          * @public
          * @memberof Components.GridSearch
-         */function clear(){self.searchTerm='';search();}}})();(function(){'use strict';angular.module('fedramp.components').component('gridSort',{templateUrl:'src/templates/components/grid-sort.html',require:{gridController:'^grid'},controller:GridSort,controllerAs:'controller',bindings:{name:'@',property:'@',caseSensitive:'@',header:'@',default:'@'}});GridSort.$inject=['$log','$parse','$element'];/**
+         */function clear(){self.searchTerm='';search();}}})();(function(){'use strict';angular.module('fedramp.components').component('gridSort',{templateUrl:'src/templates/components/grid-sort.html',require:{gridController:'^grid'},controller:GridSort,controllerAs:'controller',bindings:{name:'@',property:'@',caseSensitive:'@',header:'@',default:'@'}});GridSort.$inject=['$log','$parse','$element'];/** 
+     * Used to sort items within a grid. Requires to be nested within a [Grid]{@link Components.Grid} component.
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
@@ -599,13 +614,16 @@ a=a.toLowerCase();b=b.toLowerCase();if(a<b){return self.asc?-1:1;}if(a>b){return
          * @memberof Components.GridSort
          */function clear(){self.activated=false;$element.removeClass('sort-selected');}}})();(function(){'use strict';angular.module('fedramp.components')/**
          * Simply renders the total number of items within a filtered dataset. 
+         * Requires to be nested within a [Grid]{@link Components.Grid} component.
          *
          * @example
          * <grid-total></grid-total>
          *
          * @constructor
-         * @memberof Components
-         */.component('gridTotal',{template:'<span class="count">{{controller.gridController.items.length}}</span> results',controllerAs:'controller',require:{gridController:'^grid'}});})();(function(){'use strict';angular.module('fedramp.components').component('grid',{controller:Grid,controllerAs:'gridController',bindings:{// Contains original unfiltered dataset
+         * @memberof Components 
+         */.component('gridTotal',{template:'<span class="count">{{controller.gridController.items.length}}</span> results',controllerAs:'controller',require:{/**
+                 * Requires [Components.Grid]{@link Components.Grid}
+                 */gridController:'^grid'}});})();(function(){'use strict';angular.module('fedramp.components').component('grid',{controller:Grid,controllerAs:'gridController',bindings:{// Contains original unfiltered dataset
 rawItems:'<',// Callback function called when grid update occurs
 onUpdate:'&',// Flag that hides filters
 hideFilters:'@',// Flag whether to save/restore state
@@ -1509,8 +1527,8 @@ var self=this;var mapping={'Created_At':'lastRefresh','Produced_By':'producedBy'
      */function CacheFactory($cacheFactory){var cache=$cacheFactory('fedramp');cache.wrap=wrap;return cache;/*
          * Wraps a function with additional behavior that does the following:
          * 
-         * 1. Checks if the result of the function call is in cache
-         * 2. If result is in cache, returns.
+         * 1. Checks if the result of the function call is in cache using the key
+         * 2. If result is in cache, returns that cached object.
          * 3. If not in cache, execute apply on function with arguments and then store
          * result in cache using the passed in key.
          */function wrap(key){return function(func){return function(){var data=cache.get(key);if(angular.isDefined(data)){return data;}var result=func.apply(this,arguments);cache.put(key,result);return result;};};}}})();(function(){'use strict';angular.module('fedramp.services').service('CsvService',CsvService);CsvService.$inject=['$log','fedrampData','helperService'];/**
@@ -1704,12 +1722,22 @@ setTimeout(function(){var el=document.getElementById(anchor);if(!el){return;}var
          * @returns
          *  The query string
          */self.queryString=function(){var query='';var search=$location.search();for(var n in search){if(query.length>0){query+='&';}query+=n+'='+encodeURIComponent(search[n]);}if(query.length>0){query='?'+query;}return query;};}})();(function(){'use strict';angular.module('fedramp.services').factory('Searcher',SearcherFactory);SearcherFactory.$inject=['$log','$parse'];function SearcherFactory($log,$parse){var ARRAY_FILTER_REGEX=/^(.*)\sin\s(.+)$/;return Searcher;/**
-         * Searcher is a factory that allows objects to be traversed and searched
-         * for. The idea is that you can specify a property expression to look through
-         * when you execute a search. 
+         * Searcher is a factory that allows a property expression to be used to search
+         * through an objects properties. A property expression is a string that contains a 
+         * path using dot notation that leads to a specific property in an object. Some examples include:
+         *
+         * <code>
+         *  <div>'name'</div>
+         *  <div>'agency.name'</div>
+         *  <div>'a in agencies'</div>
+         *  <div>'a.name in products'</div>
+         * </code>
+         *
+         * It utilizes the angular
+         * [$parse]{@link https://docs.angularjs.org/api/ng/service/$parse} service to facilitate some of this functionality.
          *
          * @example
-         * Given the following object being searched:
+         * // Given the following object being searched:
          *
          * {
          *      name: 'John Doe',
@@ -1743,24 +1771,146 @@ setTimeout(function(){var el=document.getElementById(anchor);if(!el){return;}var
              * Executes search by defined property expression
              */self.prop=function(expression){return new PropertyExpression(expression);};}/**
          * Handles searching for information within an object using a property expression.
+         *
+         * @constructor
+         * @memberof Services
+         * @param {string} expression
+         * Property path to search in
          */function PropertyExpression(expression){var self=this;/**
              * Allows a function to be passed in to perform a manual comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             *  Object being searched. An object can be a single object or array
+             * @param {function} func
+             *  Function that will be executed after each result is iterated. If this function returns
+             *  a value, it will be added to the results array.
+             * @returns
+             * Array of matched results
              */self.criteriaFunc=function(data,func){var results=[];eachResult(data,function(currentObject,value){var add=func.call(self,currentObject,value);if(add){results.push(add);}});return results;};/**
              * Iterates through an objects properties using the specified property expression
              * and performs a contains comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {string} searchTerm
+             * The text value to find
+             * @returns
+             * Array of matched results
              */self.contains=function(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString().toLowerCase().indexOf(searchTerm.toString().toLowerCase())!==-1){results.push(currentObject);return true;}return false;});return results;};/**
              * Iterates through an objects properties using the specifed property expression 
              * and performs an equals comparison.
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {string} searchTerm
+             * The text value to find
+             * @returns
+             * Array of matched results
              */self.equals=function(data,searchTerm){var results=[];eachResult(data,function(currentObject,value){if(value.toString()===searchTerm.toString()){results.push(currentObject);return true;}return false;});return results;};/**
              * Performs a date range comparison
+             *
+             * @public
+             * @memberof Services.PropertyExpression
+             * @param {object} data
+             * Object being searched. An object can be a single object or array
+             * @param {date} start
+             * Start date
+             * @param {date} end
+             * End date
+             * @returns
+             * Array of matched results
              */self.withinDateRange=function(data,start,end){var results=[];var startDate=new Date(start);var endDate=new Date(end);eachResult(data,function(currentObject,value){var valueDate=new Date(value);if(valueDate>=startDate&&valueDate<=endDate){results.push(currentObject);return true;}return false;});return results;};/**
              * Helper function iterates through all objects making the property expression.
+             *
+             * @private
+             * @memberof Services.PropertyExpression
              */function eachResult(data,func){if(!angular.isArray(data)){data=[data];}data.forEach(function(currentObject){new Walker(currentObject,expression).walk(function(obj){return func.call(self,currentObject,obj);});});}}/**
-         * Traverses an object based on the property expression
-         */function Walker(data,propExpression){var self=this;var targetKey=null;var targetProps=null;var isPrimitive=true;var useIndex=false;self.walk=function(func){find(data,targetProps,func);};/**
-             * Recursively walks an object to reach the property expression
+         * Traverses an object based on the property expression. Given a property expression, this will
+         * recursively evaluate each property within the expression until all properties have been evaluated.
+         *
+         *
+         * @constructor
+         * @memberof Services
+         * @param {object} data 
+         * Object being traversed
+         * @param {string} propExpression
+         * A string containing a property expression to evaluate
+         */function Walker(data,propExpression){var self=this;/**
+             * The current key in an expression to evaluate
+             */var targetKey=null;/**
+             * The keys in a property expression that must be processed
+             */var targetProps=null;/**
+             * Determines which object is a primitive type
+             */var isPrimitive=true;/**
+             * Flag to indicate whether to retrieve a value from an array using its number
+             * based index or an objects key within an array
+             */var useIndex=false;self.walk=function(func){find(data,targetProps,func);};/**
+             * Recursively walks an object to reach the property expression.
+             *
+             * Continuing from our example in the parseKeys() method below, assume we start with the following 
+             * expression:
+             *
+             * <code> 
+             * 'd.name in pets.dogs'</br>
+             * targetKey => 'name'</br>
+             * targetProps => ['pets', 'dogs']</br>
+             * </br>
+             *
+             * This method will evaluate each property in the targetProps array against the current obj (on first iteration)
+             * or against the preceding expression evaluation until all have been processed. 
+             * 
+             * Once at the end, 
+             * we evalute the targetKey against the last targetProp. So in this case, we would end up evaluation the 
+             * `name` property in an object within a dogs array.
+             * </code>
+             *
+             * @public
+             * @memberof Services.Walker
+             * @param {object} obj
+             * Object to traverse
+             * @param {props} props
+             * Array of split property expressions.              
              */function find(obj,props,q){props=angular.copy(props);if(!props){return q.call(self,$parse(targetKey)(obj));}if(props.length===0){if(isPrimitive||useIndex){//return match(obj, q);
-return q.call(self,obj);}return q.call(self,$parse(targetKey)(obj));}var curProp=props.shift();var value=$parse(curProp)(obj);if(angular.isArray(value)){for(var x=0;x<value.length;x++){var found=find(value[x],props,q);if(found){return;}}}}function parseKeys(){var m=propExpression.match(ARRAY_FILTER_REGEX);if(m){targetKey=m[1].split('.').splice(1).join('.');targetProps=m[2].split('.');isPrimitive=false;useIndex=targetKey==='';}else{targetKey=propExpression;}}parseKeys();}}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageAssessorData',StorageAssessorDataFactory);StorageAssessorDataFactory.$inject=['StorageManager','AssessorData','helperService'];function StorageAssessorDataFactory(StorageManager,AssessorData,helperService){/**
+return q.call(self,obj);}return q.call(self,$parse(targetKey)(obj));}var curProp=props.shift();var value=$parse(curProp)(obj);if(angular.isArray(value)){for(var x=0;x<value.length;x++){var found=find(value[x],props,q);if(found){return;}}}}/**
+             * Parses the property expression to determine the following:
+             * @private
+             * @memberof Services.Walker
+             *
+             * - if an array must be traversed
+             * - if the expression is searching a primitive value
+             * - if an array is being traversed, then should we pull from the array index (e.g. obj[0])
+             *   or pull from an object within an array (e.g. obj.name)
+             *
+             * @example
+             *
+             * Given the following property expression
+             *
+             * 'd in dogs'
+             *
+             * This will be processed by the ARRAY_FILTER_REGEX. Since this contains `in`, an array is being traversed.
+             * This will be split into a targetKey and targetProps. The targetKey in this case will be `d` and the targetProps
+             * will contain an array split on the "." character to yield ['dogs']. Since only `d` was specified, we're only
+             * targeting the index of the array.
+             *
+             * targetKey => 'd'
+             * targetProps => ['dogs']
+             *
+             * However, given this expression
+             *
+             * 'd.name in pets.dogs'
+             *
+             * This would result in the following when constructed
+             *
+             * targetKey => 'name'
+             * targetProps => ['pets', 'dogs']
+             *
+             */function parseKeys(){var m=propExpression.match(ARRAY_FILTER_REGEX);if(m){targetKey=m[1].split('.').splice(1).join('.');targetProps=m[2].split('.');isPrimitive=false;useIndex=targetKey==='';}else{targetKey=propExpression;}}parseKeys();}}})();(function(){'use strict';angular.module('fedramp.services').factory('StorageAssessorData',StorageAssessorDataFactory);StorageAssessorDataFactory.$inject=['StorageManager','AssessorData','helperService'];function StorageAssessorDataFactory(StorageManager,AssessorData,helperService){/**
          * Provides storage specific functionality that extends the StorageManager
          * @constructor
          * @memberof Services
@@ -1954,7 +2104,95 @@ self.storageContainer='default';/**
              *
              * @returns
              *  The item
-             */self.transform=function(raw){var s=new Settings();s.lastRefresh=raw.lastRefresh;s.producedBy=raw.producedBy;return s;};self.first=function(){var settings=self.all();if(settings.length===0){return null;}return settings[0];};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('AgencyComparisonController',AgencyComparisonController);AgencyComparisonController.$inject=['$log','$state','$stateParams','fedrampData','helperService'];/**
+             */self.transform=function(raw){var s=new Settings();s.lastRefresh=raw.lastRefresh;s.producedBy=raw.producedBy;return s;};self.first=function(){var settings=self.all();if(settings.length===0){return null;}return settings[0];};return self.init(options);}StorageSettings.prototype=Object.create(StorageManager.prototype);StorageSettings.prototype.constructor=StorageSettings;return StorageSettings;}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
+     * @constructor
+     * @memberof Controllers
+     */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
+         * Flag if there was an error receiving a response
+         *
+         * @member {boolean}
+         * @memberof Controllers.SearchController
+         */self.error=false;/**
+         * The search query
+         *
+         * @member {string}
+         * @memberof Controllers.SearchController
+         */self.query=$stateParams.query;/**
+         * The search results.
+         *
+         * @member {array}
+         * @memberof Controllers.SearchController
+         */self.results=[];/**
+         * The external search link.
+         *
+         * @member {string}
+         * @memberof Controllers.SearchController
+         */self.externalLink='https://search.usa.gov/search?utf8=✓&affiliate=fedramp&format=html&output=embed&commit=Search&query='+self.query;/**
+         * Get the absolute URL of an internal link
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} path
+         * @param {string} name
+         *
+         * @returns
+         *  The absolute URL
+         */self.internalLink=function(path,name){var loc=window.location;return loc.protocol+'//'+loc.host+loc.pathname+'#/'+path+'/'+helperService.slugify(name);};/**
+         * Determines what extension (if any) the URI is referencing
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} url
+         *  The URL
+         *
+         * @returns
+         *  The extension abbreviation
+         */self.extension=function(url){if(url){var m=url.match(/(.*)[\/\\]([^\/\\]+)\.(\w+)$/);if(m&&m.length>=3){return'['+m[3].toUpperCase()+']';}}return'';};/**
+         * Parses possible markdown, or other encoded text, as HTML
+         *
+         * @public
+         * @memberof Controllers.SearchController
+         *
+         * @param {string} text
+         *  The text to parse
+         *
+         * @returns
+         *  The text in HTML format
+         */self.markdown=function(text){text=text.replace('','**').replace('','**');text=text.replace('–','-');return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));};/**
+         * Filters arrays of objects by their name
+         *
+         * @private
+         * @memberof Controllers.SearchController
+         *
+         * @param {array} items
+         *  The array of items to iterate
+         * @param {string} query
+         *  The filter query
+         *
+         * @returns
+         *  An array of matching items
+         */function filterByName(items,query){var q=query.toLowerCase();return items.filter(function(x){if(x.name.toLowerCase().indexOf(query)!==-1){return true;}if(x.type==='product'&&x.provider.toLowerCase().indexOf(query)!==-1){return true;}return false;});}(function(){filterByName(fedrampData.products(),self.query).forEach(function(x){self.results.push({title:x.provider+' - '+x.name,content:'',unescapedUrl:self.internalLink('product',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.agencies(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('agency',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.assessors(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('assessor',x.name),publishedAt:null,siteLinks:[]});});// Attempt to query using the form parameters but returning as JSON.
+// This will have issues in development due to CORS.
+$http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp',format:'json',commit:'Search',query:self.query}}).then(function(response){// Sample response:
+//
+// {
+//     "total": 35,
+//     "startrecord": 1,
+//     "endrecord": 20,
+//     "results": [
+//         {
+//             "title": "www.\ue000fedramp.gov\ue001",
+//             "content": "\ue000Test\ue001 Cases \u2013 If the system is a PaaS or SaaS that is leveraging another system, the Control Summary Worksheet should indicate which controls will be tested and ...",
+//             "unescapedUrl": "https://www.fedramp.gov/files/2015/08/FedRAMP-SAP-Detailed-Review-Checklist-Template-v2-0.xlsx",
+//             "publishedAt": null,
+//             "sitelinks": []
+//         }
+//     ],
+//     "related": []
+// }
+if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('AgencyComparisonController',AgencyComparisonController);AgencyComparisonController.$inject=['$log','$state','$stateParams','fedrampData','helperService'];/**
      * @constructor
      * @memberof Controllers
      */function AgencyComparisonController($log,$state,$stateParams,fedrampData,helperService){var self=this;/**
@@ -2110,95 +2348,7 @@ self.storageContainer='default';/**
          * @public
          * @member {object}
          * @memberof Controllers.ProductInformationController
-         */self.close=function(){helperService.navigateTo('/products'+helperService.queryString());};helperService.scrollTo('scrollToContent');}})();(function(){'use strict';angular.module('fedramp').controller('SearchController',SearchController);SearchController.$inject=['$log','$sce','$http','$stateParams','fedrampData','helperService'];/**
-     * @constructor
-     * @memberof Controllers
-     */function SearchController($log,$sce,$http,$stateParams,fedrampData,helperService){var self=this;/**
-         * Flag if there was an error receiving a response
-         *
-         * @member {boolean}
-         * @memberof Controllers.SearchController
-         */self.error=false;/**
-         * The search query
-         *
-         * @member {string}
-         * @memberof Controllers.SearchController
-         */self.query=$stateParams.query;/**
-         * The search results.
-         *
-         * @member {array}
-         * @memberof Controllers.SearchController
-         */self.results=[];/**
-         * The external search link.
-         *
-         * @member {string}
-         * @memberof Controllers.SearchController
-         */self.externalLink='https://search.usa.gov/search?utf8=✓&affiliate=fedramp&format=html&output=embed&commit=Search&query='+self.query;/**
-         * Get the absolute URL of an internal link
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} path
-         * @param {string} name
-         *
-         * @returns
-         *  The absolute URL
-         */self.internalLink=function(path,name){var loc=window.location;return loc.protocol+'//'+loc.host+loc.pathname+'#/'+path+'/'+helperService.slugify(name);};/**
-         * Determines what extension (if any) the URI is referencing
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} url
-         *  The URL
-         *
-         * @returns
-         *  The extension abbreviation
-         */self.extension=function(url){if(url){var m=url.match(/(.*)[\/\\]([^\/\\]+)\.(\w+)$/);if(m&&m.length>=3){return'['+m[3].toUpperCase()+']';}}return'';};/**
-         * Parses possible markdown, or other encoded text, as HTML
-         *
-         * @public
-         * @memberof Controllers.SearchController
-         *
-         * @param {string} text
-         *  The text to parse
-         *
-         * @returns
-         *  The text in HTML format
-         */self.markdown=function(text){text=text.replace('','**').replace('','**');text=text.replace('–','-');return $sce.trustAsHtml(new showdown.Converter().makeHtml(text));};/**
-         * Filters arrays of objects by their name
-         *
-         * @private
-         * @memberof Controllers.SearchController
-         *
-         * @param {array} items
-         *  The array of items to iterate
-         * @param {string} query
-         *  The filter query
-         *
-         * @returns
-         *  An array of matching items
-         */function filterByName(items,query){var q=query.toLowerCase();return items.filter(function(x){if(x.name.toLowerCase().indexOf(query)!==-1){return true;}if(x.type==='product'&&x.provider.toLowerCase().indexOf(query)!==-1){return true;}return false;});}(function(){filterByName(fedrampData.products(),self.query).forEach(function(x){self.results.push({title:x.provider+' - '+x.name,content:'',unescapedUrl:self.internalLink('product',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.agencies(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('agency',x.name),publishedAt:null,siteLinks:[]});});filterByName(fedrampData.assessors(),self.query).forEach(function(x){self.results.push({title:x.name,content:'',unescapedUrl:self.internalLink('assessor',x.name),publishedAt:null,siteLinks:[]});});// Attempt to query using the form parameters but returning as JSON.
-// This will have issues in development due to CORS.
-$http.get('https://search.usa.gov/search',{params:{utf8:'✓',affiliate:'fedramp',format:'json',commit:'Search',query:self.query}}).then(function(response){// Sample response:
-//
-// {
-//     "total": 35,
-//     "startrecord": 1,
-//     "endrecord": 20,
-//     "results": [
-//         {
-//             "title": "www.\ue000fedramp.gov\ue001",
-//             "content": "\ue000Test\ue001 Cases \u2013 If the system is a PaaS or SaaS that is leveraging another system, the Control Summary Worksheet should indicate which controls will be tested and ...",
-//             "unescapedUrl": "https://www.fedramp.gov/files/2015/08/FedRAMP-SAP-Detailed-Review-Checklist-Template-v2-0.xlsx",
-//             "publishedAt": null,
-//             "sitelinks": []
-//         }
-//     ],
-//     "related": []
-// }
-if(response&&response.data){if(response.data.results){self.results=response.data.results;}}},function(response){self.error=true;});})();}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
+         */self.close=function(){helperService.navigateTo('/products'+helperService.queryString());};helperService.scrollTo('scrollToContent');}})();(function(){'use strict';angular.module('fedramp').controller('SitemapController',SitemapController);SitemapController.$inject=['$log','fedrampData','helperService'];/**
      * @constructor
      * @memberof Controllers
      */function SitemapController($log,fedrampData,helperService){var self=this;/**

@@ -48,6 +48,7 @@
      * property. 
      *
      * If a property expression is not provided, a custom filterFunc and optionsFunc must be provided
+     * Requires to be nested within a [Grid]{@link Components.Grid} component.
      *
      * @example
      * // Given the following object being searched:

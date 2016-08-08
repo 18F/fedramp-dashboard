@@ -21,7 +21,8 @@
     
     GridSort.$inject = ['$log', '$parse', '$element'];
 
-    /**
+    /** 
+     * Used to sort items within a grid. Requires to be nested within a [Grid]{@link Components.Grid} component.
      * @constructor
      * @memberof Components
      * @example <grid-sort property="provider" header="Provider"></grid-sort>
