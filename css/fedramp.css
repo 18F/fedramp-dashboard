@@ -5810,6 +5810,11 @@ grid-total {
       text-overflow: ellipsis;
       white-space: nowrap; }
 
+menu {
+  display: block;
+  padding: 0;
+  margin: 0; }
+
 /*
 	provide condensed version of web standards variables for use
 
