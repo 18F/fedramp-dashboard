@@ -19,7 +19,7 @@
         $stateProvider
             .state('fedramp', {
                 abstract: true,
-                templateUrl: 'src/templates/base.html',
+                template: '<ui-view></ui-view>',
                 resolve: {
                     /**
                      * JF - Note a few changes. 
@@ -94,7 +94,7 @@
             })
             .state('fedramp.app.product', {
                 url: '/product',
-                templateUrl: 'src/templates/home/product.html'
+                template: '<menu></menu><ui-view></ui-view>'
             })
             .state('fedramp.app.product.information', {
                 url: '/:name',
@@ -114,7 +114,7 @@
             })
             .state('fedramp.app.agency', {
                 url: '/agency',
-                templateUrl: 'src/templates/home/agency.html',
+                template: '<menu></menu><ui-view></ui-view>'
             })
             .state('fedramp.app.agency.information', {
                 url: '/:name',
@@ -134,7 +134,7 @@
             })
             .state('fedramp.app.assessor', {
                 url: '/assessor',
-                templateUrl: 'src/templates/home/assessor.html'
+                template: '<menu></menu><ui-view></ui-view>'
             })
             .state('fedramp.app.assessor.information', {
                 url: '/:name',
