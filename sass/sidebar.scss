@@ -9,16 +9,21 @@
         float: none;
         display: block;
         width: 100%;
-        padding: 0;
+        padding: 0 2rem;
 
         .filters-toggle {
             color: $color-gray;
             font-size: 1.7rem;
-            font-weight: bolder;
-            padding-top: 3rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid $color-gray-lighter;
-            display: block;
+            font-weight: $font-bold;
+            // filter results text - make this full width, have a cursor
+            span {
+	            display:block;
+	            padding-top:2rem;
+				cursor:pointer;
+				.fa {
+					margin-left:2rem;
+				}
+            }
         }
     }
 

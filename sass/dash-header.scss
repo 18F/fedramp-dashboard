@@ -19,7 +19,7 @@
 	 	color: $color-primary-alt;
 	 	text-align: center;
 
-        @media only screen and (max-width: 850px) {
+        @media only screen and (max-width: 767px) {
             height: auto;
         }
 
@@ -30,7 +30,7 @@
 		 	width: 33.33%;
 		 	margin-right: 0;
 
-            @media only screen and (max-width: 850px) {
+            @media only screen and (max-width: 767px) {
                 border-bottom: 2px solid #0d2747;
                 height: auto;
                 width: 100%;
@@ -47,7 +47,7 @@
 	 	> div:last-child {
 		 	border-right: none;
 
-            @media only screen and (max-width: 850px) {
+            @media only screen and (max-width: 767px) {
                 border-bottom: none;
             }
 	 	}
