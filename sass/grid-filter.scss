@@ -129,7 +129,7 @@
             padding-right: 3rem;
 
             .mobile-visible {
-                display: inline-block;
+                display: inline-block !important;
             }
         }
 
@@ -160,8 +160,13 @@
             width: 100%;
 
             .mobile-visible {
-                display: inline-block;
+                display: inline-block !important;
             }
+        }
+
+        > div {
+            float: left;
+            margin-right: 1rem;
         }
     }
 
