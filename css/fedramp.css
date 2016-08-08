@@ -5154,6 +5154,9 @@ grid-total {
 */
 .grid {
   min-height: 100rem; }
+  .grid .empty-results {
+    margin-top: 3rem;
+    margin-left: 3rem; }
   .grid .grid-with-sidebar {
     float: right;
     width: 77.4%; }

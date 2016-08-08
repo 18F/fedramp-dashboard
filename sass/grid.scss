@@ -1,6 +1,11 @@
 @import 'variables';
 
 .grid {
+    .empty-results {
+        margin-top: 3rem;
+        margin-left: 3rem;
+    }
+
     .grid-with-sidebar {
         float: right;
         width: 77.4%;
