@@ -114,6 +114,62 @@
              * @memberof Models.Assessor
              */
             self.website = '';
+
+            /**
+             * Is the assessor currently in remediation?
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.remediation = '';
+
+            /**
+             * The year the company was founded
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.founded = '';
+
+            /**
+             * Primary office locateions
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.primaryOfficeLocations = '';
+
+            /**
+             * FedRAMP assessed products
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.fedrampAssessed = '';
+
+            /**
+             * Does the assessor provide consulting services to FedRAMP?
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.provideConsultingServices = '';
+
+            /**
+             * Description of consulting services
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.descriptionOfConsultingServices = '';
+
+            /**
+             * Customers receiving consulting services
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.consultingServicesTo = '';
+
+            /**
+             * Additional cyber frameworks
+             * @member {string}
+             * @memberof Models.Assessor
+             */
+            self.additionalCyberFrameworks = '';
         }
 
         return Assessor;
