@@ -41,6 +41,16 @@
             <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
+    <div class="row" ng-if="controller.model.remediation === 'Y'">
+        <div class="col remediation">
+            <div class="usa-alert usa-alert-error" role="alert">
+                <div class="usa-alert-body">
+                    <h3 class="usa-alert-heading">In Remediation</h3>
+                    <p class="usa-alert-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="contact-information">
             <h4>Contact Information</h4>

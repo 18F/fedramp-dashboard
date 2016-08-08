@@ -484,31 +484,28 @@
         background-color: $color-primary-darker;
         width: 100%;
         height: 6px;
-        margin-top: 6rem;
+        margin-top: 0;
         padding: 0;
-
-        @media only screen and (max-width: 850px) {
-            margin-top: 0;
-        }
     }
 
     .timeline {
         margin-bottom: 4rem;
         width: 100%;        
+
         .timeline-row {
             display:table;
             width: 100%;        
 
             .timeline-col.ready {
-                background-color:$color-gray-light;
+                background-color: $color-gray-light;
             }
 
             .timeline-col.inprocess {
-                background-color:$color-gray;
+                background-color: $color-gray;
             }
 
             .timeline-col.authorized {
-                background-color:$color-cool-blue;
+                background-color: $color-cool-blue;
             }
 
             .timeline-col.ready, 
@@ -521,24 +518,26 @@
                 }
                 div {
                     font-size: 2.2rem;
-                    font-weight:600;
+                    font-weight: 600;
                     visibility: visible;
                 }
             }
 
             .timeline-col {
                 background-color: #e9ecf2;
-                height:105px;
+                height: 105px;
                 vertical-align: middle;
-                display:table-cell;
+                display: table-cell;
                 width: 33%;
-                text-align:center;
+                text-align: center;
                 border-right: 1px solid #fff;
-                color:#fff;
+                color: #fff;
+
                 span, div {
                     visibility: hidden;
                 }
             }
+
             .timeline-col:first-child {
                 border-left: 1px solid #fff;
             }
@@ -557,6 +556,14 @@
 .information.assessor {
     .row {
         clear: both;
+
+        .remediation {
+            width: 100%;
+
+            .usa-alert {
+                margin-top: 0;
+            }
+        }
 
         .contact-information {
             color: $color-black;
