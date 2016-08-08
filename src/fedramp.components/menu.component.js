@@ -3,12 +3,6 @@
 
     angular
         .module('fedramp.components')
-        /**
-         * @example
-         *
-         * @constructor
-         * @memberof Components 
-         */
         .component('menu', {
             templateUrl: 'src/templates/components/menu.html',
             controller: MenuController,
