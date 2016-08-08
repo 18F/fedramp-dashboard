@@ -1,3 +1,10 @@
+<!--
+     Need to determine where to put the following information:
+       - fedrampAssessed (markdown)
+       - provideConsultingServices (y/n)
+       - consultingServicesTo (markdown)
+-->
+
 <div class="information assessor">
     <div class="row close hidden-print">
         <a ng-click="controller.close()">
@@ -41,6 +48,16 @@
             <div class="text">{{controller.model.useLabel}}</div>
         </div>
     </div>
+    <div class="row" ng-if="controller.model.remediation === 'Y'">
+        <div class="col remediation">
+            <div class="usa-alert usa-alert-error" role="alert">
+                <div class="usa-alert-body">
+                    <h3 class="usa-alert-heading">In Remediation</h3>
+                    <p class="usa-alert-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="contact-information">
             <h4>Contact Information</h4>
@@ -52,15 +69,43 @@
                 <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>
                 <dt ng-if="controller.model.website">Website:</dt>
                 <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>
+                <dt ng-if="controller.model.founded">Founded:</dt>
+                <dd ng-if="controller.model.founded">{{controller.model.founded}}</dd>
             </dl>
             <p ng-if="!controller.hasContactInformation()">
                 No contact information on record
             </p>
+
+            <div ng-if="controller.model.primaryOfficeLocations" ng-bind-html="controller.markdown(controller.model.primaryOfficeLocations)"></div>
         </div>
     </div>
     <panel ng-if="controller.model.description" header="Assessor Description" expand="false">
         <div ng-bind-html="controller.markdown(controller.model.description)"></div>
     </panel>
+    <div class="row gutter">
+        <div class="col provides-services">
+            <span ng-if="controller.model.provideConsultingServices === 'Y'" class="offered">
+                <i class="fa fa-check"></i>
+                Consulting Services Offered
+            </span>
+            <span ng-if="controller.model.provideConsultingServices !== 'Y'" class="not-offered">
+                <i class="fa fa-times"></i>
+                No Consulting Services Offered
+            </span>
+        </div>
+    </div>
+    <div class="row gutter" ng-if="controller.model.descriptionOfConsultingServices">
+        <div class="col">
+            <h4>Consulting Services</h4>
+            <div class="col" ng-bind-html="controller.markdown(controller.model.descriptionOfConsultingServices)"></div>
+        </div>
+    </div>
+    <div class="row gutter" ng-if="controller.model.consultingServicesTo">
+        <div class="col">
+            <h4>CSPs providing consulting services to</h4>
+            <div class="col" ng-bind-html="controller.markdown(controller.model.consultingServicesTo)"></div>
+        </div>
+    </div>
     <div class="row products">
         <div class="col">
             <h4>Client History</h4>
@@ -68,6 +113,12 @@
             <p ng-if="controller.model.products.length === 0">
                 None
             </p>
+        </div>
+    </div>
+    <div class="row gutter" ng-if="controller.model.additionalCyberFrameworks">
+        <div class="col">
+            <h4>Additional Cyber Frameworks</h4>
+            <div ng-bind-html="controller.markdown(controller.model.additionalCyberFrameworks)"></div>
         </div>
     </div>
 </div>

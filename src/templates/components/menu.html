@@ -1,0 +1,26 @@
+<div class="fr-filters usa-grid-full">
+    <div class="fr-filters-row">
+        <div class="usa-width-one-third">
+            <button id="filterByCSO"
+                    type="radio"
+                    ng-class="{'selected':controller.includes('**.product.**') || controller.includes('**.products')}"
+                    ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">
+                <span>Products</span>
+            </button>
+        </div>
+        <div class="usa-width-one-third">
+            <button id="filterByAgency"
+                    ng-class="{'selected':controller.includes('**.agency.**') || controller.includes('**.agencies')}"
+                    ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">
+                <span>Agencies</span>
+            </button>
+        </div>
+        <div class="usa-width-one-third">
+            <button id="filterBy3PAO"
+                    ng-class="{'selected':controller.includes('**.assessor.**') || controller.includes('**.assessors')}"
+                    ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">
+                <span>Assessors</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -47,7 +47,7 @@
                 let names = [];
                 let items = [];
                 let data = self.all();
-                
+
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
                     if (!include(d.name, names)) {
@@ -61,10 +61,10 @@
                     item.logo = d.cspUrl;
                     items.push(item);
                 }
-                
+
                 items.forEach(item => {
                     item.products = self.products().filter(x => x.provider === item.name);
-                    
+
                     item.products.forEach(prod => {
                         prod.name = prod.name.trim();
                         item.reuses += prod.reuses;
@@ -90,6 +90,14 @@
 
                             if (validAgency(prod.sponsoringAgency) && include(prod.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(prod.sponsoringAgency.trim());
+                            }
+
+                            if (validAgency(prod.authorizingAgency) && include(prod.authorizingAgency, item.agencies)) {
+                                item.agencies.push(prod.authorizingAgency.trim());
+                            }
+
+                            if (validAgency(prod.authorizingSubagency) && include(prod.authorizingSubagency, item.agencies)) {
+                                item.agencies.push(prod.authorizingSubagency.trim());
                             }
 
                             prod.agencies.forEach(a => {
@@ -119,7 +127,7 @@
                 let names = [];
                 let items = [];
                 let data = self.all();
-                
+
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
                     if (!include(d.pkg, names)) {
@@ -140,6 +148,8 @@
                     item.independentAssessor = d.independentAssessor;
                     item.authorizationType = d.path;
                     item.sponsoringAgency = d.sponsoringAgency;
+                    item.authorizingAgency = d.authorizingAgency;
+                    item.authorizingSubagency = d.authorizingSubagency;
                     item.authorizationDate = helperService.toDate(d.authorizationDate);
                     item.expectedCompliance = helperService.toDate(d.expectedCompliance);
                     item.compliantDate = helperService.toDate(d.compliantDate);
@@ -183,6 +193,14 @@
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
 
+                            if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, item.agencies)) {
+                                item.agencies.push(d.authorizingAgency.trim());
+                            }
+
+                            if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, item.agencies)) {
+                                item.agencies.push(d.authorizingSubagency.trim());
+                            }
+
                             d.atoLetters.forEach(a => {
                                 if (validAgency(a.authorizingAgency) && include(a.authorizingAgency, item.agencies)) {
                                     item.agencies.push(a.authorizingAgency.trim());
@@ -215,7 +233,7 @@
                 // NOTE: There is currently only one field for agency logo's. This
                 // maps to the authorizing agency so we need to backfill sponsoring
                 // agency information.
-                
+
                 // Top level
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
@@ -224,6 +242,22 @@
                         names.push(d.sponsoringAgency.trim());
                         let item = new Agency();
                         item.name = d.sponsoringAgency.trim();
+                        item.logo = d.sponsoringAgencyLogo.trim();
+                        items.push(item);
+                    }
+
+                    if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, names)) {
+                        names.push(d.authorizingAgency.trim());
+                        let item = new Agency();
+                        item.name = d.authorizingAgency.trim();
+                        item.logo = d.sponsoringAgencyLogo.trim();
+                        items.push(item);
+                    }
+
+                    if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, names)) {
+                        names.push(d.authorizingSubagency.trim());
+                        let item = new Agency();
+                        item.name = d.authorizingSubagency.trim();
                         item.logo = d.sponsoringAgencyLogo.trim();
                         items.push(item);
                     }
@@ -296,7 +330,7 @@
                                 if (include(d.name, item.providers)) {
                                     item.providers.push(d.name.trim());
                                 }
-                                
+
                                 if (include(a.independentAssessor, item.assessors)) {
                                     item.assessors.push(a.independentAssessor.trim());
                                 }
@@ -304,6 +338,21 @@
 
                         if (safeTrim(d.sponsoringAgency) === item.name) {
                             item.sponsored++;
+                            if (include(d.pkg, item.products)) {
+                                item.products.push(d.pkg.trim());
+                            }
+
+                            if (include(d.name, item.providers)) {
+                                item.providers.push(d.name.trim());
+                            }
+
+                            if (include(d.independentAssessor, item.assessors)) {
+                                item.assessors.push(d.independentAssessor.trim());
+                            }
+                        }
+
+                        if (safeTrim(d.authorizingAgency) === item.name || safeTrim(d.authorizingSubagency) === item.name) {
+                            item.authorized++;
                             if (include(d.pkg, item.products)) {
                                 item.products.push(d.pkg.trim());
                             }
@@ -336,7 +385,7 @@
                 let names = [];
                 let items = [];
                 let data = self.all();
-                
+
                 // Top level
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
@@ -386,6 +435,14 @@
                             if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
                                 item.agencies.push(d.sponsoringAgency.trim());
                             }
+
+                            if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, item.agencies)) {
+                                item.agencies.push(d.authorizingAgency.trim());
+                            }
+
+                            if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, item.agencies)) {
+                                item.agencies.push(d.authorizingSubagency.trim());
+                            }
                         }
 
                         d.atoLetters.forEach(a => {
@@ -411,7 +468,7 @@
 
                     item.reuses = item.products.length;
                 });
-                
+
                 // Fill up assessors that haven't been matched with assessors in provider array
                 rawAssessors.forEach(raw => {
                     let found = false;
@@ -445,8 +502,8 @@
                 return false;
             }
 
-            function validAgency(agency) {
-                return include(agency, ['JAB Authorization', 'CSP Supplied']);
+            function validAgency (agency) {
+                return agency && include(agency, ['JAB Authorization', 'CSP Supplied']);
             }
 
             /**
@@ -465,6 +522,14 @@
                         assessor.pocName = assessorData.pocName;
                         assessor.pocEmail = assessorData.pocEmail;
                         assessor.website = assessorData.website;
+                        assessor.remediation = assessorData.remediation;
+                        assessor.founded = assessorData.founded;
+                        assessor.primaryOfficeLocations = assessorData.primaryOfficeLocations;
+                        assessor.fedrampAssessed = assessorData.fedrampAssessed;
+                        assessor.provideConsultingServices = assessorData.provideConsultingServices;
+                        assessor.descriptionOfConsultingServices = assessorData.descriptionOfConsultingServices;
+                        assessor.consultingServicesTo = assessorData.consultingServicesTo;
+                        assessor.additionalCyberFrameworks = assessorData.additionalCyberFrameworks;
                         break;
                     }
                 }
@@ -478,7 +543,7 @@
              * @returns
              * Array of assessors without empty objects
              */
-            function cleanAssessors(assessors) {
+            function cleanAssessors (assessors) {
                 for (let x = assessors.length - 1; x >= 0; x--) {
                     if (Object.keys(assessors[x]).length === 0) {
                         assessors.splice(x, 1);

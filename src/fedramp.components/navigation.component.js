@@ -14,12 +14,13 @@
     /**
      * @constructor
      * @memberof Components
+     * @example <navigation />
      */
     function Navigation () {
         var self = this;
 
         /**
-         *
+         * Toggle the mobile layout
          *
          * @member {boolean}
          * @memberof Components.Navigation
