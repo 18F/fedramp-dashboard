@@ -593,6 +593,23 @@
         }
     }
 
+    .gutter {
+        padding-left: 2.8rem;
+        padding-right: 2.8rem;
+    }
+    
+    .provides-services {
+        font-weight: bolder;
+        
+        .offered {
+            color: $color-green;
+        }
+
+        .not-offered {
+            color: $color-secondary-dark;
+        }
+    }
+
     .not-accredited {
         background-color: $color-gray-light;
     }
