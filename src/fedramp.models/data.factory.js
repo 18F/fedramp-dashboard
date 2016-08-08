@@ -30,6 +30,8 @@
                 'Original_Expiration_Date': 'expirationDate',
                 'Sponsoring_Agency': 'sponsoringAgency',
                 'Sponsoring_Agency_Logo': 'sponsoringAgencyLogo',
+                'Authorizing_Agency': 'authorizingAgency',
+                'Authorizing_Subagency': 'authorizingSubagency',
                 'CSP_URL': 'cspUrl',
                 'Stage': 'stage',
                 'Independent_Assessor': 'independentAssessor',
@@ -129,6 +131,20 @@
             * @memberof Models.Data
             */
             self.sponsoringAgencyLogo = '';
+
+            /**
+            * Authorizing agency
+            * @member {string}
+            * @memberof Models.Data
+            */
+            self.authorizingAgency = '';
+
+            /**
+            * Authorizing subagency
+            * @member {string}
+            * @memberof Models.Data
+            */
+            self.authorizingSubagency = '';
 
             /**
              * The CSP URL

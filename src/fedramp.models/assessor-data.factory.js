@@ -26,7 +26,15 @@
                 'Description': 'description',
                 'POC_Name': 'pocName',
                 'POC_Email': 'pocEmail',
-                'website': 'website'
+                'Website': 'website',
+                'Remediation': 'remediation',
+                'Founded': 'founded',
+                'Primary_Office_Locations': 'primaryOfficeLocations',
+                'FedRAMP_Assessed': 'fedrampAssessed',
+                'Provide_Consulting_Services': 'provideConsultingServices',
+                'Description_of_Consulting_Services': 'descriptionOfConsultingServices',
+                'Consulting_Services_To': 'consultingServicesTo',
+                'Additional_Cyber_Frameworks': 'additionalCyberFrameworks'
             };
 
             /**
@@ -77,6 +85,62 @@
              * @memberof Models.AssessorData
              */
             self.website = '';
+
+            /**
+             * Is the assessor currently in remediation?
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.remediation = '';
+
+            /**
+             * The year the company was founded
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.founded = '';
+
+            /**
+             * Primary office locateions
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.primaryOfficeLocations = '';
+
+            /**
+             * FedRAMP assessed products
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.fedrampAssessed = '';
+
+            /**
+             * Does the assessor provide consulting services to FedRAMP?
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.provideConsultingServices = '';
+
+            /**
+             * Description of consulting services
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.descriptionOfConsultingServices = '';
+
+            /**
+             * Customers receiving consulting services
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.consultingServicesTo = '';
+
+            /**
+             * Additional cyber frameworks
+             * @member {string}
+             * @memberof Models.AssessorData
+             */
+            self.additionalCyberFrameworks = '';
 
             /**
              * Initialize the assessor data object.
