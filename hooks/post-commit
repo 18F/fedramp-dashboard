@@ -1,20 +1,22 @@
 #!/bin/sh
 
+#
+# NOTE: If things go bad it may be necessary to forcefully
+#       push changes to the `gh-pages` branch. To do this
+#       swap the subtree commands.
+#
+
 if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]
 then
     git checkout gh-pages
     git merge -X theirs master
 
     npm run build
-    git add -f dist
-    git add -f css
-    git add -f fonts
-    git add -f img
-
     npm run-script docgen
-    git add -f doc
 
+    git add -f dist
     git commit -m 'Updated GitHub pages and documentation'
-    git push -f origin gh-pages
+    git subtree push --prefix dist origin gh-pages
+    # git push origin `git subtree split --prefix dist gh-pages`:gh-pages --force
     git checkout master
 fi
