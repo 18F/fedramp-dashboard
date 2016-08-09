@@ -85,7 +85,7 @@ describe('the grid component', function () {
             gridController: grid
         });
         var ageFilter = dataFactory.gridFilterComponent({
-            header: '',
+            header: null,
             gridController: grid
         });
 
@@ -105,7 +105,7 @@ describe('the grid component', function () {
         ];
         ageFilter.selectedOptionValues = [{value: 50, label: 50}];
 
-        expect(grid.printDescription()).toBe('Age is 50 and Developer Name is John Doe, or Jack Sparrow');
+        expect(grid.printDescription()).toBe('name is 50 and Developer Name is John Doe, or Jack Sparrow');
 
     });
 });
