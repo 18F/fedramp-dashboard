@@ -38,10 +38,10 @@ jspm_packages
 
 # Build artifacts
 .projectile
-build/
-doc/
-dist/
-lib/
-css/
-fonts/
-img/
+/build/
+/doc/
+/dist/
+/lib/
+/css/
+/fonts/
+/img/

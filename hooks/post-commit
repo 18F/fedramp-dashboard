@@ -8,6 +8,7 @@ then
     git add -f dist
     git add -f css
     git add -f fonts
+    git add -f img
     npm run-script docgen
     git add -f doc
     git commit -m 'Updated GitHub pages and documentation'
