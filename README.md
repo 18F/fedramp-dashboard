@@ -37,6 +37,7 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
         - [Target File Size](#target-file-size)
         - [Pixel Dimension if PNG](#pixel-dimension-if-png)
         - [Orientation and Crop](#orientation-and-crop)
+    - [Local Storage Services](#local-storage-services)
     - [Adding a new filter to the dashboard](#adding-a-new-filter-to-the-dashboard)
     - [Maintain static header/footer](#maintain-static-headerfooter)
         - [Search](#search)
@@ -155,6 +156,21 @@ To ensure consistency with logo images for Providers, Agencies, and Assessors ap
 Limit open space around logo and align edges of logo to bottom left corner.
 
 ![logo guidelines graphic](https://cloud.githubusercontent.com/assets/12962390/17411346/22a43d28-5a46-11e6-9f85-c284d96249df.png)
+
+### Local Storage Services
+This application uses HTML5 Local Storage to store the daily `data.json` pulls from the [fedramp-data](https://github.com/18F/fedramp-data) github repository. There are four primary data services
+that manage this information. These include:
+
+- [storage-manager.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageManager.html)
+- [storage-data.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageData.html)
+- [storage-assessor-data.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageAssessorData.html)
+- [storage-settings.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageSettings.html)
+
+`storage-manager.factory.js` is an object that abstracts access to the underlying local storage datastore by providing a consistent interface to read and write information. Conceptually, data is stored into `containers` or `buckets` with an associated
+`storageContainer` name that uniquely identifies that particular container. The `storageContainer` is the key and the associated array of information is the value. `storage-data.factory`, `storage-assessor-data.factory` and `storage-settings.factory` all extend the `storage-manager.factory` factory to separately store information specific to providers, assessors and system settings.
+
+When information is stored in local storage, it is not cleared until the following day when the next `data.json` file is updated. As a result, access to the site after the initial pull will not require additional `http` requests. The `storage-settings.factory` object is responsible for determining when to clear out the cache and request for updated information.
+
 
 ### Adding a new filter to the dashboard
 A grid consists of the following components:
