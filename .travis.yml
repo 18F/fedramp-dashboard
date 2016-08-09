@@ -4,13 +4,13 @@ node_js:
   - node
 script:
   - npm run build
-  - ls dist/test
+  - ls -R build
+  - ls -R dist
   - npm test
 after_script:
   - npm install -g pa11y-crawl
   - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
-  - npm run package
-#before_deploy: "npm run package"
+before_deploy: "npm run package"
 deploy:
   provider: s3
   bucket: marketplace.fedramp.gov
