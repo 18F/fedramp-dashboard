@@ -28,4 +28,13 @@ describe('The helper service', function () {
         expect(service.slugify('Test With')).toBe('test-with');
         expect(service.slugify('TestWith')).toBe('testwith');
     });
+
+    it('can generate a query string', inject(function ($injector) {
+        var $location = $injector.get('$location');
+        $location.search({name: 'GS_Cloud', count: 2});
+
+        var q = service.queryString();
+        expect(q).toBe('?name=GS_Cloud&count=2');
+    }));
+
 });
