@@ -46,36 +46,6 @@ An example of the workflow:
  8. After any conflicts have been resolved update the GitHub repository
     ```git push origin master```
 
-### Tooling
-
-#### Linters
-
-For Ninjas (Vim) just install ```syntastic``` and everything should be handled.
-For Pirates (Emacs) just install ```flycheck``` and everything should be handled.
-
-For command-line alternatives there are the following:
-
- - For JavaScript, [JSHint](http://jshint.com) which may be installed with ```npm install -g jshint```
- - For HTML, [html-lint](https://github.com/curtisj44/HTML-Lint) which may be installed with ```npm install -g html-lint```
-
-#### SASS
-
-```
-Placeholder
-```
-
-#### Testing
-
-The testing framework will be written in [Jasmine](http://jasmine.github.io). Various runners may be used:
-
- - The in-browser runner
- - [Karma](https://karma-runner.github.io) is a command-line test runner
-
-For code coverage we can leverage the following:
-
- - For in-browser coverage analysis we use [BlanketJS](http://blanketjs.org)
- - [Karma Coverage](https://github.com/karma-runner/karma-coverage) is a plug-in which may be used in tandem with the Karma test runner
-
 ## Public domain
 
 This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through
