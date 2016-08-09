@@ -475,10 +475,10 @@ To generate the JSDoc, execute the following:
 npm run docgen
 ```
 
-The script specifically executes the following under the hood
+The script specifically executes the following:
 
 ```
-./node_modules/.bin/jsdoc ./src/ -r -d ./doc --read README.md
+./node_modules/.bin/jsdoc ./src/ -r -d ./doc --readme README.md
 ```
 
 ### Tooling
