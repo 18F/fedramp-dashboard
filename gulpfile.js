@@ -264,7 +264,7 @@ gulp.task('sass', function () {
         .src([
             'node_modules/font-awesome/**/*.scss',
             'node_modules/uswds/src/stylesheets/**/*.scss',
-            'sass/**/*.scss'
+            'src/sass/**/*.scss'
         ])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concat('fedramp.css'))
