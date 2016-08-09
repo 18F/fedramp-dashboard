@@ -12,34 +12,16 @@
             <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <link href="../lib/jasmine-2.4.1/jasmine_favicon.png" rel="shortcut icon" type="image/png">
-        <link href="../lib/jasmine-2.4.1/jasmine.css" rel="stylesheet" >
+        <link href="jasmine_favicon.png" rel="shortcut icon" type="image/png">
+        <link href="jasmine.css" rel="stylesheet" >
 
-        <script src="../lib/jasmine-2.4.1/jasmine.js"></script>
-        <script src="../lib/jasmine-2.4.1/jasmine-html.js"></script>
-        <script src="../lib/jasmine-2.4.1/boot.js"></script>	
-        <script src="../lib/mock-ajax.js"></script>
-
-        <!-- Jasmine 2.4.1 and Blanketjs Integration -->
-        <script src="../lib/polyfill.min.js"></script>
-        <script src="../lib/blanket.min.js"></script>
-        <script src="../lib/jasmine-blanket.js"></script>
-        <script src="../lib/angular.min.js"></script>
-        <script src="../lib/angular-ui-router.min.js"></script>
-        <script src="../lib/angular-aria.min.js"></script>
-        <script src="../lib/angular-sticky.min.js"></script>
-        <script src="../lib/papaparse.min.js"></script>
-        <script src="../lib/showdown.min.js"></script>
-        <script src="../lib/uswds.min.js"></script>
-
-        <script src="../lib/test/angular-mocks.js"></script>
+        <!-- Add a data-cover attribute to any source script tags you want covered: -->
+        <script src="../dist/fedramp.test.js"></script>	
+        <script data-cover src="../dist/fedramp.js"></script>	
 
         <!-- Stores test data to reuse -->
         <script src="test-data.js"></script>
         <script src="test-data-factory.js"></script>
-
-        <!-- Add a data-cover attribute to any source script tags you want covered: -->
-        <script data-cover src="../dist/fedramp.js"></script>	
 
         <!-- Tests to run -->
         <script src="fedramp.models/ato-letter.factory.test.js"></script>	
