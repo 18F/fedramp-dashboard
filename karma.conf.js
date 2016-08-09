@@ -17,22 +17,18 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'lib/angular.min.js',
-            'lib/angular-ui-router.min.js',
-            'lib/**/*.js',
+            'dist/fedramp.test.js',
+            'dist/fedramp.js',
             'test/test-data.js',
             'test/test-data-factory.js',
-            'dist/fedramp.js',
-            'test/**/*.js',
+            'test/**/*.js'
         ],
 
 
         // list of files to exclude
         exclude: [
-            'lib/jasmine-2.4.1/**/*.js',
             'test/blanket.min.js',
-            'test/jasmin-blanket.js',
-            'test/mock-ajax.js'
+            'test/jasmine-blanket.js'
         ],
 
 
