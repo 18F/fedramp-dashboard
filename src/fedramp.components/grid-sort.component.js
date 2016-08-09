@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('gridSort', {
-            templateUrl: 'src/templates/components/grid-sort.html',
+            templateUrl: 'templates/components/grid-sort.html',
             require: {
                 gridController: '^grid'
             },

@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('tile', {
-            templateUrl: 'src/templates/components/tile.html',
+            templateUrl: 'templates/components/tile.html',
             controller: Tile,
             controllerAs: 'controller',
             bindings: {
@@ -25,7 +25,7 @@
         /**
          * The tile template for the model type.
          */
-        self.tileTemplate = 'src/templates/components/tile-' + self.model.type + '.html';
+        self.tileTemplate = 'templates/components/tile-' + self.model.type + '.html';
 
         /**
          * Redirect to the appropriate view

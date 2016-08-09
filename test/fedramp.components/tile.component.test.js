@@ -22,7 +22,7 @@ describe('The Tile component', function () {
     });
 
     it('tile template to be populated', function () {
-        expect(component.tileTemplate).toBe('src/templates/components/tile-agency.html');
+        expect(component.tileTemplate).toBe('templates/components/tile-agency.html');
     });
 
     it('can create external link for a URL', function () {

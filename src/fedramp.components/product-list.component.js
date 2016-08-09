@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('productList', {
-            templateUrl: 'src/templates/components/product-list.html',
+            templateUrl: 'templates/components/product-list.html',
             controller: ProductList,
             controllerAs: 'controller',
             bindings: {

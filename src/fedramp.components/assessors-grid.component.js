@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('assessorsGrid', {
-            templateUrl: 'src/templates/components/assessors-grid.html',
+            templateUrl: 'templates/components/assessors-grid.html',
             controller: AssessorGrid,
             controllerAs: 'controller',
             bindings: {

@@ -2,7 +2,7 @@
 // Generated on Sun Jun 12 2016 12:12:53 GMT-0400 (EDT)
 
 module.exports = function(config) {
-    "use strict";
+    'use strict';
 
     config.set({
 
@@ -17,25 +17,25 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'dist/fedramp.test.js',
-            'dist/fedramp.js',
-            'test/test-data.js',
-            'test/test-data-factory.js',
-            'test/**/*.js'
+            'dist/test/fedramp.test.js',
+            'dist/test/fedramp.js',
+            'dist/test/test-data.js',
+            'dist/test/test-data-factory.js',
+            'dist/test/**/*.js'
         ],
 
 
         // list of files to exclude
         exclude: [
-            'test/blanket.min.js',
-            'test/jasmine-blanket.js'
+            'dist/test/blanket.min.js',
+            'dist/test/jasmine-blanket.js'
         ],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'dist/fedramp.js': ['coverage']
+            'dist/test/fedramp.js': ['coverage']
         },
 
 
@@ -46,7 +46,7 @@ module.exports = function(config) {
 
         coverageReporter: {
             type: 'lcov',
-            dir: 'coverage/'
+            dir: 'dist/coverage/'
         },
 
         // web server port

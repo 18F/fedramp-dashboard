@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
-    "start": "./node_modules/.bin/http-server",
-    "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./doc --readme README.md",
+    "start": "./node_modules/.bin/http-server dist",
+    "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./dist/doc --readme README.md",
     "build": "./node_modules/.bin/gulp",
     "package": "./node_modules/.bin/gulp package",
     "watch": "./node_modules/.bin/gulp watch",

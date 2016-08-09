@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('search', {
-            templateUrl: 'src/templates/components/search.html',
+            templateUrl: 'templates/components/search.html',
             controller: Search,
             controllerAs: 'controller'
         });

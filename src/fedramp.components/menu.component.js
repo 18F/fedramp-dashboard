@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('menu', {
-            templateUrl: 'src/templates/components/menu.html',
+            templateUrl: 'templates/components/menu.html',
             controller: MenuController,
             controllerAs: 'controller'
         });

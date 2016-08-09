@@ -25,12 +25,16 @@ gulp.task('clean:all', function () {
     return del(['build', 'fonts', 'img', 'css', 'dist']);
 });
 
+/**
+ * Removes artifacts not necessary for a release
+ */
 gulp.task('clean:release', ['mangle'], function () {
     'use strict';
     console.log('Removing development files');
     return del([
-        'dist/fedramp.js',
-        'dist/fedramp.test.js'
+        'dist/coverage/',
+        'dist/doc/',
+        'dist/test/'
     ]);
 });
 
@@ -48,7 +52,7 @@ gulp.task('sass', function () {
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(cleanCSS())
         .pipe(concat('fedramp.css'))
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest('dist/css'));
 });
 
 /**
@@ -91,9 +95,10 @@ gulp.task('copy:test', ['clean:all'], function () {
     console.log('Copying over all of the lib files');
     return gulp
         .src([
+            'test/**/*',
             'node_modules/jasmine-core/lib/jasmine-core/jasmine.css'
         ])
-        .pipe(gulp.dest('test'));
+        .pipe(gulp.dest('dist/test'));
 });
 
 /**
@@ -107,7 +112,7 @@ gulp.task('copy:fonts', ['clean:all'], function () {
             'node_modules/uswds/dist/fonts/**/*',
             'node_modules/font-awesome/fonts/**/*'
         ])
-        .pipe(gulp.dest('fonts'));
+        .pipe(gulp.dest('dist/fonts'));
 });
 
 /**
@@ -121,7 +126,7 @@ gulp.task('copy:images', ['clean:all'], function () {
             'node_modules/uswds/dist/img/**/*',
             'src/img/**/*'
         ])
-        .pipe(gulp.dest('img'));
+        .pipe(gulp.dest('dist/img'));
 });
 
 /**
@@ -150,7 +155,10 @@ gulp.task('templates:cache', ['copy'], function () {
     'use strict';
     console.log('Caching angular templates');
     return gulp
-        .src(['build/**/*.html'])
+        .src([
+            '!build/src/index.html',
+            'build/src/**/*.html'
+        ])
         .pipe(templateCache({
             module: 'fedramp',
             filename: 'fedramp.templates.js'
@@ -250,8 +258,24 @@ gulp.task('mangle:concat-libs', ['mangle:uglify'], function () {
 gulp.task('mangle:copy', ['mangle:concat-libs'], function () {
     'use strict';
     return gulp
-        .src('build/fedramp*.js')
-        .pipe(gulp.dest('dist'));
+        .src([
+            'build/fedramp.min.js',
+            'build/src/index.html'
+        ])
+        .pipe(gulp.dest('dist/'));
+});
+
+/**
+ * Copy compiled and minified source to dist/test/
+ */
+gulp.task('mangle:copy-test', ['mangle:concat-libs'], function () {
+    'use strict';
+    return gulp
+        .src([
+            'build/fedramp.js',
+            'build/fedramp.test.js'
+        ])
+        .pipe(gulp.dest('dist/test/'));
 });
 
 /**
@@ -267,7 +291,7 @@ gulp.task('watch:dog', [], function () {
 });
 
 // Creates sub-tasks
-gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy']);
+gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy', 'mangle:copy-test']);
 gulp.task('templates', ['templates:cache']);
 gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:images', 'copy:lint']);
 

@@ -6,7 +6,7 @@
         .component('gridFilter', {
             controller: GridFilter,
             controllerAs: 'controller',
-            templateUrl: 'src/templates/components/grid-filter.html',
+            templateUrl: 'templates/components/grid-filter.html',
             require: {
                 // We require that this component live inside of <grid></grid> so it can
                 // communicate and share information

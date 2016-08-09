@@ -8,7 +8,7 @@
         .module('fedramp.components')
         .component('gridFilterPrint', {
             controllerAs: 'controller',
-            templateUrl: 'src/templates/components/grid-filter-print.html',
+            templateUrl: 'templates/components/grid-filter-print.html',
             require: {
                 gridController: '^grid'
             }

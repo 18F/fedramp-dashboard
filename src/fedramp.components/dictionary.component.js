@@ -5,7 +5,7 @@
         .module('fedramp.components')
         .component('dictionary', {
             transclude: true,
-            templateUrl: 'src/templates/components/dictionary.html',
+            templateUrl: 'templates/components/dictionary.html',
             controller: DictionaryController,
             controllerAs: 'controller'
         });

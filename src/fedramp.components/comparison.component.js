@@ -8,7 +8,7 @@
                 'first': 'first',
                 'second': 'second'
             },
-            templateUrl: 'src/templates/components/comparison.html',
+            templateUrl: 'templates/components/comparison.html',
             controller: Comparison,
             controllerAs: 'controller',
             bindings: {

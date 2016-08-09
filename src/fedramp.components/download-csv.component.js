@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('downloadCsv', {
-            templateUrl: 'src/templates/components/download-csv.html',
+            templateUrl: 'templates/components/download-csv.html',
             controller: DownloadCsv,
             controllerAs: 'controller',
             bindings: {

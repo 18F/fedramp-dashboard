@@ -4,7 +4,7 @@
         .module('fedramp.components')
         .component('panel', {
             transclude: true,
-            templateUrl: 'src/templates/components/panel.html',
+            templateUrl: 'templates/components/panel.html',
             controller: Panel,
             controllerAs: 'controller',
             bindings: {

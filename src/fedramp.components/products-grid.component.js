@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('productsGrid', {
-            templateUrl: 'src/templates/components/products-grid.html',
+            templateUrl: 'templates/components/products-grid.html',
             controller: ProductsGrid,
             controllerAs: 'controller',
             bindings: {

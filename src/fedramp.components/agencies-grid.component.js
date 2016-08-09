@@ -4,7 +4,7 @@
     angular
         .module('fedramp.components')
         .component('agenciesGrid', {
-            templateUrl: 'src/templates/components/agencies-grid.html',
+            templateUrl: 'templates/components/agencies-grid.html',
             controller: AgenciesGrid,
             controllerAs: 'controller',
             bindings: {
