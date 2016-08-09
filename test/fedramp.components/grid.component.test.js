@@ -84,12 +84,28 @@ describe('the grid component', function () {
             header: 'Developer Name',
             gridController: grid
         });
+        var ageFilter = dataFactory.gridFilterComponent({
+            header: '',
+            gridController: grid
+        });
+
+        ageFilter.$onInit();
         gridFilter.$onInit();
+
         var message = grid.printDescription();
         expect(message).toBe('No filters applied');
 
-        gridFilter.selectedOptionValues = [{value: 'John Doe', label: 'John Doe'}];
-        expect(grid.printDescription()).toBe('Developer Name is John Doe');
+        gridFilter.selectedOptionValues = [
+            {
+                value: 'John Doe', label: 'John Doe'
+            },
+            {
+                value: 'JP', label: 'Jack Sparrow'
+            }
+        ];
+        ageFilter.selectedOptionValues = [{value: 50, label: 50}];
+
+        expect(grid.printDescription()).toBe('Age is 50 and Developer Name is John Doe, or Jack Sparrow');
 
     });
 });
