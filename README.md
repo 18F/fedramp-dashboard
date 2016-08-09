@@ -48,6 +48,7 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
     - [Running a local server](#running-a-local-server)
     - [Executing tests and coverage reports](#executing-tests-and-coverage-reports)
     - [Packaging Application](#packaging-application)
+    - [Generating Documentation](#generating-documentation)
     - [Tooling](#tooling)
 
 ## Project Management
@@ -464,6 +465,21 @@ where
  - `img/` contains the images used in the application
  - `lib/`  contains third-party libraries
  - `src/`  contains the original source files
+
+### Generating Documentation
+This project utilizes JSDoc 3 to generate and render Javascript documentation artifacts. An npm script `docgen` is included that triggers the generation of these artifacts and then stores them in the `doc/` directory. 
+
+To generate the JSDoc, execute the following:
+
+```
+npm run docgen
+```
+
+The script specifically executes the following under the hood
+
+```
+./node_modules/.bin/jsdoc ./src/ -r -d ./doc --read README.md
+```
 
 ### Tooling
 
