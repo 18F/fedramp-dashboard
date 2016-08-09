@@ -82,7 +82,7 @@ describe('The product component', function () {
     });
 
     it('can create link for a model type', function () {
-        expect(component.linkify('product', 'Acme Anvils'), '#/product/acme_anvils');
+        expect(component.linkify('product', 'Acme Anvils')).toBe('#/product/acme-anvils');
     });
 
     it('can transform markdown', function () {
@@ -90,7 +90,7 @@ describe('The product component', function () {
     });
 
     it('can create external link for a URL', function () {
-        expect(component.externalLink('www.google.com'), 'http://www.google.com');
-        expect(component.externalLink('https://www.google.com'), 'https://www.google.com');
+        expect(component.externalLink('www.google.com').toString()).toBe('http://www.google.com');
+        expect(component.externalLink('https://www.google.com').toString()).toBe('https://www.google.com');
     });
 });

@@ -26,7 +26,7 @@ describe('The Tile component', function () {
     });
 
     it('can create external link for a URL', function () {
-        expect(component.externalLink('www.google.com'), 'http://www.google.com');
-        expect(component.externalLink('https://www.google.com'), 'https://www.google.com');
+        expect(component.externalLink('www.google.com').toString()).toBe('http://www.google.com');
+        expect(component.externalLink('https://www.google.com').toString()).toBe('https://www.google.com');
     });
 });
