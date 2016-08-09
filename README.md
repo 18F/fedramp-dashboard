@@ -434,7 +434,7 @@ The individual test results will be seen in the output, and the coverage
 results may be viewed after running ```npm start``` at
 [http://localhost:8080/coverage](http://localhost:8080/coverage)
 
-In-browser test results and coverage can be assessed at
+In-browser test results and coverage can be accessed at
 [https://truetandem.github.io/fedramp-dashboard/test](https://truetandem.github.io/fedramp-dashboard/test)
 
 ### Packaging Application
