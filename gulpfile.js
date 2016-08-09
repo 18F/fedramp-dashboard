@@ -22,7 +22,7 @@ var concatOutputFilename = 'fedramp.js';
 gulp.task('clean', function () {
     'use strict';
     console.log('Blowing away the build artifacts');
-    return del(['build', 'fonts', 'css', 'dist']);
+    return del(['build', 'fonts', 'img', 'css', 'dist']);
 });
 
 /**
@@ -99,6 +99,20 @@ gulp.task('copy:fonts', ['clean'], function () {
             'node_modules/font-awesome/fonts/**/*'
         ])
         .pipe(gulp.dest('fonts'));
+});
+
+/**
+ * Copies over all image resources
+ */
+gulp.task('copy:images', ['clean'], function () {
+    'use strict';
+    console.log('Copying over all of the image files');
+    return gulp
+        .src([
+            'node_modules/uswds/dist/img/**/*',
+            'src/img/**/*'
+        ])
+        .pipe(gulp.dest('img'));
 });
 
 /**
@@ -246,7 +260,7 @@ gulp.task('watch:dog', [], function () {
 // Creates sub-tasks
 gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy']);
 gulp.task('templates', ['templates:cache']);
-gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:lint']);
+gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:images', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
 gulp.task('default', ['clean', 'sass', 'copy', 'templates', 'mangle']);
