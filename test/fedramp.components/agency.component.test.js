@@ -25,4 +25,8 @@ describe('The agency component', function () {
         component.onClose = null;
         expect(component.close).not.toThrow();
     });
+
+    it('can create link for a model type', function () {
+        expect(component.linkify('product', 'Acme Anvils'), '#/product/acme_anvils');
+    });
 });

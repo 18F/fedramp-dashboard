@@ -24,4 +24,9 @@ describe('The Tile component', function () {
     it('tile template to be populated', function () {
         expect(component.tileTemplate).toBe('src/templates/components/tile-agency.html');
     });
+
+    it('can create external link for a URL', function () {
+        expect(component.externalLink('www.google.com'), 'http://www.google.com');
+        expect(component.externalLink('https://www.google.com'), 'https://www.google.com');
+    });
 });

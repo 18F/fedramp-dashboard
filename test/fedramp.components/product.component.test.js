@@ -80,4 +80,17 @@ describe('The product component', function () {
         component.model = { designation: 'Compliant' };
         expect(component.percentComplete()).toBe(100);
     });
+
+    it('can create link for a model type', function () {
+        expect(component.linkify('product', 'Acme Anvils'), '#/product/acme_anvils');
+    });
+
+    it('can transform markdown', function () {
+        expect('' + component.markdown('**Test** Cases - If the system is')).toBe('<p><strong>Test</strong> Cases - If the system is</p>');
+    });
+
+    it('can create external link for a URL', function () {
+        expect(component.externalLink('www.google.com'), 'http://www.google.com');
+        expect(component.externalLink('https://www.google.com'), 'https://www.google.com');
+    });
 });

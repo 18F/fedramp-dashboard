@@ -45,7 +45,7 @@
          *  A value indicating if there is contact information to display
          */
         self.hasContactInformation = function () {
-            return self.model.pocName || self.model.pocEmail || self.model.website;
+            return !!(self.model.pocName || self.model.pocEmail || self.model.website);
         };
 
         /**
