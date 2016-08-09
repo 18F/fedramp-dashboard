@@ -4,6 +4,10 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]
 then
     git checkout gh-pages
     git merge -X theirs master
+    npm run package
+    git add -f dist
+    git add -f css
+    git add -f fonts
     npm run-script docgen
     git add -f doc
     git commit -m 'Updated GitHub pages and documentation'

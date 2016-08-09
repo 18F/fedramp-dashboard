@@ -71,37 +71,7 @@ gulp.task('copy:lib', ['clean'], function(){
             'node_modules/showdown/dist/*.min.js',
             'node_modules/uswds/dist/js/*.min.js'
         ])
-        .pipe(gulp.dest('lib'))
-        .pipe(gulp.dest('build/lib'))
-        .pipe(gulp.dest('build/dest/lib'));
-});
-
-/**
- * Copies over all css resources
- */
-gulp.task('copy:css', ['clean'], function(){
-    'use strict';
-    console.log('Copying over all of the css files');
-    return gulp
-        .src([
-            'css/**/*'
-        ])
-        .pipe(gulp.dest('build/css'))
-        .pipe(gulp.dest('build/dest/css'));
-});
-
-/**
- * Copies over all css resources
- */
-gulp.task('copy:img', ['clean'], function(){
-    'use strict';
-    console.log('Copying over all of the image files');
-    return gulp
-        .src([
-            'img/**/*'
-        ])
-        .pipe(gulp.dest('build/img'))
-        .pipe(gulp.dest('build/dest/img'));
+        .pipe(gulp.dest('lib'));
 });
 
 /**
@@ -112,10 +82,10 @@ gulp.task('copy:fonts', ['clean'], function(){
     console.log('Copying over all of the font files');
     return gulp
         .src([
-            'fonts/**/*'
+            'node_modules/uswds/dist/fonts/**/*',
+            'node_modules/font-awesome/fonts/**/*'
         ])
-        .pipe(gulp.dest('build/fonts'))
-        .pipe(gulp.dest('build/dest/fonts'));
+        .pipe(gulp.dest('fonts'));
 });
 
 /**
@@ -275,7 +245,7 @@ gulp.task('sass', function () {
 gulp.task('archive', ['archive:zip', 'archive:gzip']);
 gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:uglify', 'mangle:copy']);
 gulp.task('templates', ['templates:cache']);
-gulp.task('copy', ['copy:src', 'copy:lib', 'copy:img', 'copy:css', 'copy:fonts', 'copy:lint']);
+gulp.task('copy', ['copy:src', 'copy:lib', 'copy:fonts', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
 gulp.task('default', ['clean', 'sass', 'copy', 'templates', 'mangle']);
