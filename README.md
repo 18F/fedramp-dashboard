@@ -48,6 +48,7 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
     - [Running a local server](#running-a-local-server)
     - [Executing tests and coverage reports](#executing-tests-and-coverage-reports)
     - [Packaging Application](#packaging-application)
+    - [Tooling](#tooling)
 
 ## Project Management
 The project team utilized Taiga, a free online open source project management tool, to administer User Stories, Tasks, and Sprints.  All public projects in Taiga are free and openly accessible, providing full public visibility into the FedRAMP Dashboard Product Backlog and sprint activities.
@@ -433,6 +434,9 @@ The individual test results will be seen in the output, and the coverage
 results may be viewed after running ```npm start``` at
 [http://localhost:8080/coverage](http://localhost:8080/coverage)
 
+In-browser test results and coverage can be assessed at
+[https://truetandem.github.io/fedramp-dashboard/test](https://truetandem.github.io/fedramp-dashboard/test)
+
 ### Packaging Application
 
 To package up the application, use the command:
@@ -460,3 +464,28 @@ where
  - `img/` contains the images used in the application
  - `lib/`  contains third-party libraries
  - `src/`  contains the original source files
+
+### Tooling
+
+#### Linters
+
+For Ninjas (Vim) just install ```syntastic``` and everything should be handled.
+For Pirates (Emacs) just install ```flycheck``` and everything should be handled.
+
+For command-line alternatives there are the following:
+
+ - For JavaScript, [JSHint](http://jshint.com) which may be installed with ```npm install -g jshint```
+ - For HTML, [html-lint](https://github.com/curtisj44/HTML-Lint) which may be installed with ```npm install -g html-lint```
+
+#### Testing
+
+The testing framework will be written in [Jasmine](http://jasmine.github.io). Various runners may be used:
+
+ - The in-browser runner
+ - [Karma](https://karma-runner.github.io) is a command-line test runner
+
+For code coverage we can leverage the following:
+
+ - For in-browser coverage analysis we use [BlanketJS](http://blanketjs.org)
+ - [Karma Coverage](https://github.com/karma-runner/karma-coverage) is a plug-in which may be used in tandem with the Karma test runner
+
