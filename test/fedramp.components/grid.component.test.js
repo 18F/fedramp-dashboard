@@ -78,4 +78,18 @@ describe('the grid component', function () {
 
         expect(gridFilter.$onInit).toThrow();
     });
+
+    it('it should render friendly text for applied filters', function () {
+        gridFilter = dataFactory.gridFilterComponent({
+            header: 'Developer Name',
+            gridController: grid
+        });
+        gridFilter.$onInit();
+        var message = grid.printDescription();
+        expect(message).toBe('No filters applied');
+
+        gridFilter.selectedOptionValues = [{value: 'John Doe', label: 'John Doe'}];
+        expect(grid.printDescription()).toBe('Developer Name is John Doe');
+
+    });
 });

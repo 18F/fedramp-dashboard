@@ -95,4 +95,19 @@ describe('The product-grid component', function () {
         filtered = component.productNameSearchFilterFunc(product, 0, [product], '');
         expect(filtered).toBe(product);
     }));
+
+    it('it can filter by status', inject(function (Product) {
+        var product = new Product();
+        product.name = 'App Engine';
+        product.provider = 'Google';
+        product.designation = 'Compliant';
+
+        var selectedOptions = component.statusFilterOptions(null);
+        expect(selectedOptions).toBeDefined();
+        var filtered = component.statusFilter(product, 0, [product], selectedOptions);
+        expect(filtered).toBeDefined();
+        expect(filtered.name).toBe(product.name);
+
+    }));
+
 });

@@ -274,5 +274,33 @@ describe('the grid filter component', function () {
         gridFilter.restoreState();
         expect(grid.state.agenciesFilter).toBeDefined();
         expect(grid.state.agenciesFilter).toEqual(':(' + angular.toJson(option.value) + ')');
+        gridFilter.clear();
+        gridFilter.applyFilter();
+    });
+
+    it('should toggle the expand', function () {
+        var option = {
+            label: 'Custom action',
+            value: {min:0, max:10},
+            selected: true
+        };
+        gridFilter = dataFactory.gridFilterComponent({
+            header: 'Products',
+            id: 'agenciesFilter',
+            expanded: true,
+            opened: false,
+            optionsFunc: function(){
+                return [
+                    option
+                ];
+            },
+            filterFunc: function(obj){
+                return obj;
+            },
+            gridController: grid
+        });
+        expect(gridFilter.options.length).toBe(0);
+        gridFilter.toggleExpand();
+        expect(gridFilter.options.length).toBe(1);
     });
 });

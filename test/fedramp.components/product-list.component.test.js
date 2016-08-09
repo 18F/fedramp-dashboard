@@ -14,6 +14,7 @@ describe('The product-list component', function () {
             var StorageData = $injector.get('StorageData');
             var data = new Data({
                 'Cloud_Service_Provider_Name': 'test',
+                'Cloud_Service_Provider_Package': 'Content Delivery Services',
                 'Designation': 'Compliant',
                 'Service_Model': [
                     'IaaS'
@@ -39,7 +40,7 @@ describe('The product-list component', function () {
             component = controller('productList', {
                 fedrampData: storage
             }, {
-                products: ['Google']
+                products: ['Google', 'Content Delivery Services']
             });
         });
     });
@@ -47,5 +48,16 @@ describe('The product-list component', function () {
     it('it stores onCloseBoth', function () {
         expect(component.$onInit).not.toThrow();
         expect(component.products).toBeDefined();
+    });
+
+    it('it finds a product by name', function () {
+        var notFound = component.findProductByName('blah');
+        expect(notFound).toBeUndefined();
+
+        var cso = 'Content Delivery Services';
+        var found = component.findProductByName(cso);
+        expect(found).not.toBeNull();
+        expect(found.name).toBe(cso);
+
     });
 });

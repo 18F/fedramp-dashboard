@@ -26,6 +26,7 @@
         self.productList = [];
         self.$onInit = $onInit;
         self.createList = createList;
+        self.findProductByName = findProductByName;
 
         function $onInit () {
             createList();
