@@ -11,6 +11,7 @@ var gzip          = require('gulp-gzip');
 var templateCache = require('gulp-angular-templatecache');
 var jshint        = require('gulp-jshint');
 var sass          = require('gulp-sass');
+var cleanCSS      = require('gulp-clean-css');
 
 // Filename for final minified javascript file
 var concatOutputFilename = 'fedramp.js';
@@ -36,6 +37,7 @@ gulp.task('sass', function () {
             'src/sass/**/*.scss'
         ])
         .pipe(sass.sync().on('error', sass.logError))
+        .pipe(cleanCSS())
         .pipe(concat('fedramp.css'))
         .pipe(gulp.dest('css'));
 });
