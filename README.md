@@ -401,6 +401,16 @@ this has been installed we execute a single command:
 npm install
 ```
 
+### Building the application
+
+Compiling all of the assets can be done simply using the command:
+
+```
+npm run build
+```
+
+This will compile JavaScript, SASS, and place all files where they need to be. Both versions of JavaScript files (minified and not) are preserved.
+
 ### Running a local server
 
 To run a local server we issue the command:

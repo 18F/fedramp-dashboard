@@ -19,10 +19,19 @@ var concatOutputFilename = 'fedramp.js';
 /**
  * Deletes the build/ directory to ensure a clean start
  */
-gulp.task('clean', function () {
+gulp.task('clean:all', function () {
     'use strict';
     console.log('Blowing away the build artifacts');
     return del(['build', 'fonts', 'img', 'css', 'dist']);
+});
+
+gulp.task('clean:release', ['mangle'], function () {
+    'use strict';
+    console.log('Removing development files');
+    return del([
+        'dist/fedramp.js',
+        'dist/fedramp.test.js'
+    ]);
 });
 
 /**
@@ -45,7 +54,7 @@ gulp.task('sass', function () {
 /**
  * Copies all source files over to build/src.
  */
-gulp.task('copy:src', ['clean'], function () {
+gulp.task('copy:src', ['clean:all'], function () {
     'use strict';
     console.log('Copying over all of the source files');
     return gulp
@@ -56,7 +65,7 @@ gulp.task('copy:src', ['clean'], function () {
 /**
  * Copies the necessary production libs
  */
-gulp.task('copy:lib', ['clean'], function () {
+gulp.task('copy:lib', ['clean:all'], function () {
     'use strict';
     console.log('Copying over all of the lib files');
     return gulp
@@ -77,7 +86,7 @@ gulp.task('copy:lib', ['clean'], function () {
         .pipe(gulp.dest('build/lib'));
 });
 
-gulp.task('copy:test', ['clean'], function () {
+gulp.task('copy:test', ['clean:all'], function () {
     'use strict';
     console.log('Copying over all of the lib files');
     return gulp
@@ -90,7 +99,7 @@ gulp.task('copy:test', ['clean'], function () {
 /**
  * Copies over all font resources
  */
-gulp.task('copy:fonts', ['clean'], function () {
+gulp.task('copy:fonts', ['clean:all'], function () {
     'use strict';
     console.log('Copying over all of the font files');
     return gulp
@@ -104,7 +113,7 @@ gulp.task('copy:fonts', ['clean'], function () {
 /**
  * Copies over all image resources
  */
-gulp.task('copy:images', ['clean'], function () {
+gulp.task('copy:images', ['clean:all'], function () {
     'use strict';
     console.log('Copying over all of the image files');
     return gulp
@@ -263,8 +272,8 @@ gulp.task('templates', ['templates:cache']);
 gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:images', 'copy:lint']);
 
 // Default is the 'main' task that gets executed when you simply run `gulp`
-gulp.task('default', ['clean', 'sass', 'copy', 'templates', 'mangle']);
-gulp.task('package', ['clean', 'sass', 'copy', 'templates', 'mangle']);
+gulp.task('default', ['clean:all', 'sass', 'copy', 'templates', 'mangle']);
+gulp.task('package', ['clean:all', 'sass', 'copy', 'templates', 'mangle', 'clean:release']);
 gulp.task('watch', ['watch:dog']);
 
 
