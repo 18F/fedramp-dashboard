@@ -15,8 +15,8 @@ then
 
     git add -f dist
     git commit -m 'Updated GitHub pages and documentation'
-    git subtree push --prefix dist origin gh-pages
-    # git push origin `git subtree split --prefix dist gh-pages`:gh-pages --force
+    # git subtree push --prefix dist origin gh-pages
+    git push origin `git subtree split --prefix dist working`:gh-pages --force
     git checkout master
-    git branch -d working
+    git branch -D working
 fi
