@@ -74,6 +74,10 @@
             text-decoration: none;
         }
 
+        li a.active {
+            color: #268CBF;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
