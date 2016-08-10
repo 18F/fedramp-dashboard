@@ -8,7 +8,7 @@ Before submitting a new issue, please consider the following:
  - General questions should go to the [Gitter channel](https://gitter.im/truetandem/fedramp-dashboard) instead of the issue tracker.
 
 To help us get a better understanding of the issue you are submitting, please use the following
-[outline](blob/master/.github/ISSUE_TEMPLATE.md).
+[outline](.github/ISSUE_TEMPLATE.md).
 
 ## Contributing code
 
