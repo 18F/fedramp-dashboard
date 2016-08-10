@@ -9,13 +9,13 @@
             controller: Twitter
         });
 
-    Twitter.$inject = ['$log', '$sce', '$element'];
+    Twitter.$inject = [];
 
     /**
      * @constructor
      * @memberof Components
      */
-    function Twitter ($log, $sce, $element) {
+    function Twitter () {
         let script = document.createElement('script');
         script.async = 'async';
         script.src = 'https://platform.twitter.com/widgets.js';

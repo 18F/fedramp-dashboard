@@ -174,12 +174,12 @@ When information is stored in local storage, it is not cleared until the followi
 
 ### Adding a new filter to the dashboard
 A grid consists of the following components:
-- grid
-  - gridFilter
+- [grid](http://truetandem.github.io/fedramp-dashboard/doc/Components.Grid.html)
+  - [gridFilter](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridFilter.html)
     - A component that allows 0 or more options to be selected using a property expression or custom option/filter functions
-  - gridSort
+  - [gridSort](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridSort.html)
     - A component that filters based on a property expression
-  - gridSearch
+  - [gridSearch](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridSearch.html)
     - A component that allows free text-based searches
 
 
