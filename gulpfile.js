@@ -260,7 +260,8 @@ gulp.task('mangle:copy', ['mangle:concat-libs'], function () {
     return gulp
         .src([
             'build/fedramp.min.js',
-            'build/src/index.html'
+            'build/src/index.html',
+            'build/src/robots.txt'
         ])
         .pipe(gulp.dest('dist/'));
 });
