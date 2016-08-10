@@ -2,15 +2,13 @@
 
 ## Reporting Issues
 
-When filing an issue, make sure to answer these five questions:
+Before submitting a new issue, please consider the following:
 
- 1. What browser and version are you using?
- 2. What operating system?
- 3. What did you do?
- 4. What did you expect to see?
- 5. What did you see instead?
+ - Search this repository for open or closed issues that may relate to your pull request.
+ - General questions should go to the [Gitter channel](https://gitter.im/truetandem/fedramp-dashboard) instead of the issue tracker.
 
-General questions should go to the [Gitter channel](https://gitter.im/truetandem/fedramp-dashboard) instead of the issue tracker.
+To help us get a better understanding of the issue you are submitting, please use the following
+[outline](blob/master/.github/ISSUE_TEMPLATE.md).
 
 ## Contributing code
 

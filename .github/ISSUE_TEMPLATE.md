@@ -1,20 +1,21 @@
-**Description**
+**What did you do?**
 
-*Include a high-level description of the feature or error here, including steps
-for recreating it, if applicable. Include any benefits, challenges, or
-considerations. This can be short and sweet.*
+*Including steps for recreating it, if applicable.*
 
-**Ask**
+**What did you expect to see?**
 
 *Describe the desired behavior and what would deem this issue, bug, or feature
 complete.*
 
-**To do**
-- [ ] Steps
-- [ ] To
-- [ ] Complete/fix
+**What did you see instead?**
 
-**Additional info**
+*Include a high-level description of the feature or error here*
+
+**Additional Information**
 
 *Include any images, steps to recreate, notes, emojis, or anything else that
 seems pertinent.*
+
+ - What browser and version are you using?
+ - What operating system?
+
