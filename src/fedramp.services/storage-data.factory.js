@@ -240,34 +240,85 @@
                 for (let i = 0; i < data.length; i++) {
                     let d = data[i];
 
-                    if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, names)) {
-                        names.push(d.sponsoringAgency.trim());
-                        let item = new Agency();
-                        item.name = d.sponsoringAgency.trim();
-                        item.logo = d.sponsoringAgencyLogo.trim();
-                        item.pocName = safeTrim(d.agencyPocName);
-                        item.pocEmail = safeTrim(d.agencyPocEmail);
-                        items.push(item);
+                    if (validAgency(d.sponsoringAgency)) {
+                        if (include(d.sponsoringAgency, names)) {
+                            names.push(d.sponsoringAgency.trim());
+                            let item = new Agency();
+                            item.name = d.sponsoringAgency.trim();
+                            item.logo = d.sponsoringAgencyLogo.trim();
+                            item.pocName = safeTrim(d.agencyPocName);
+                            item.pocEmail = safeTrim(d.agencyPocEmail);
+                            items.push(item);
+                        } else {
+                            let idx;
+                            for (idx = 0; idx < items.length; idx++) {
+                                if (items[idx].name === d.sponsoringAgency.trim()) {
+                                    break;
+                                }
+                            }
+
+                            if (items[idx]) {
+                                items[idx].pocName = d.agencyPocName.trim();
+                                items[idx].pocEmail = d.agencyPocEmail.trim();
+                                if (d.sponsoringAgencyLogo.trim()) {
+                                    items[idx].logo = d.sponsoringAgencyLogo.trim();
+                                }
+                            }
+                        }
                     }
 
-                    if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, names)) {
-                        names.push(d.authorizingAgency.trim());
-                        let item = new Agency();
-                        item.name = d.authorizingAgency.trim();
-                        item.logo = d.sponsoringAgencyLogo.trim();
-                        item.pocName = safeTrim(d.agencyPocName);
-                        item.pocEmail = safeTrim(d.agencyPocEmail);
-                        items.push(item);
+                    if (validAgency(d.authorizingAgency)) {
+                        if (include(d.authorizingAgency, names)) {
+                            names.push(d.authorizingAgency.trim());
+                            let item = new Agency();
+                            item.name = d.authorizingAgency.trim();
+                            item.logo = d.sponsoringAgencyLogo.trim();
+                            item.pocName = safeTrim(d.agencyPocName);
+                            item.pocEmail = safeTrim(d.agencyPocEmail);
+                            items.push(item);
+                        } else {
+                            let idx;
+                            for (idx = 0; idx < items.length; idx++) {
+                                if (items[idx].name === d.authorizingAgency.trim()) {
+                                    break;
+                                }
+                            }
+
+                            if (items[idx]) {
+                                items[idx].pocName = d.agencyPocName.trim();
+                                items[idx].pocEmail = d.agencyPocEmail.trim();
+                                if (d.sponsoringAgencyLogo.trim()) {
+                                    items[idx].logo = d.sponsoringAgencyLogo.trim();
+                                }
+                            }
+                        }
                     }
 
-                    if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, names)) {
-                        names.push(d.authorizingSubagency.trim());
-                        let item = new Agency();
-                        item.name = d.authorizingSubagency.trim();
-                        item.logo = d.sponsoringAgencyLogo.trim();
-                        item.pocName = safeTrim(d.agencyPocName);
-                        item.pocEmail = safeTrim(d.agencyPocEmail);
-                        items.push(item);
+                    if (validAgency(d.authorizingSubagency)) {
+                        if (include(d.authorizingSubagency, names)) {
+                            names.push(d.authorizingSubagency.trim());
+                            let item = new Agency();
+                            item.name = d.authorizingSubagency.trim();
+                            item.logo = d.sponsoringAgencyLogo.trim();
+                            item.pocName = safeTrim(d.agencyPocName);
+                            item.pocEmail = safeTrim(d.agencyPocEmail);
+                            items.push(item);
+                        } else {
+                            let idx;
+                            for (idx = 0; idx < items.length; idx++) {
+                                if (items[idx].name === d.authorizingSubagency.trim()) {
+                                    break;
+                                }
+                            }
+
+                            if (items[idx]) {
+                                items[idx].pocName = d.agencyPocName.trim();
+                                items[idx].pocEmail = d.agencyPocEmail.trim();
+                                if (d.sponsoringAgencyLogo.trim()) {
+                                    items[idx].logo = d.sponsoringAgencyLogo.trim();
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -296,7 +347,9 @@
                             if (items[idx]) {
                                 items[idx].pocName = l.pocName.trim();
                                 items[idx].pocEmail = l.pocEmail.trim();
-                                items[idx].logo = l.logo.trim();
+                                if (l.logo.trim()) {
+                                    items[idx].logo = l.logo.trim();
+                                }
                             }
                         }
 
@@ -319,7 +372,9 @@
                             if (items[idx]) {
                                 items[idx].pocName = l.pocName.trim();
                                 items[idx].pocEmail = l.pocEmail.trim();
-                                items[idx].logo = l.logo.trim();
+                                if (l.logo.trim()) {
+                                    items[idx].logo = l.logo.trim();
+                                }
                             }
                         }
                     }

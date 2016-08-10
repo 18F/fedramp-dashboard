@@ -47,7 +47,7 @@
                 'Leveraged_ATO_Letters': 'atoLetters',
                 'FedRAMP_In-Process_Date': 'inProcessDate',
                 'Agency_POC': 'agencyPocName',
-                'Agency_POC_email': 'agencyPocName'
+                'Agency_POC_email': 'agencyPocEmail'
             };
 
             /**
@@ -238,6 +238,13 @@
              * @memberof Models.Data
              */
             self.agencyPocName = '';
+
+            /**
+             * The product agency point of contact email
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.agencyPocEmail = '';
 
             /**
              * The product agency point of contact email
