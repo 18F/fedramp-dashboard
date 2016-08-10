@@ -136,6 +136,7 @@
         self.saveSettings = function (meta) {
             let settingStorage = new StorageSettings();
             var setting = new Settings(meta);
+            settingStorage.clear();
             setting.refresh();
             settingStorage.update(setting.hash(), setting);
         };
