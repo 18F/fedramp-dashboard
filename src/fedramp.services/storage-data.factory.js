@@ -160,6 +160,8 @@
                     item.website = safeTrim(d.cspWebsite);
                     item.pocName = safeTrim(d.pocName);
                     item.pocEmail = safeTrim(d.pocEmail);
+                    item.agencyPocName = safeTrim(d.agencyPocName);
+                    item.agencyPocEmail = safeTrim(d.agencyPocEmail);
 
                     // Find all products that depend on the current product
                     // jshint ignore:start
@@ -243,6 +245,8 @@
                         let item = new Agency();
                         item.name = d.sponsoringAgency.trim();
                         item.logo = d.sponsoringAgencyLogo.trim();
+                        item.pocName = safeTrim(d.agencyPocName);
+                        item.pocEmail = safeTrim(d.agencyPocEmail);
                         items.push(item);
                     }
 
@@ -251,6 +255,8 @@
                         let item = new Agency();
                         item.name = d.authorizingAgency.trim();
                         item.logo = d.sponsoringAgencyLogo.trim();
+                        item.pocName = safeTrim(d.agencyPocName);
+                        item.pocEmail = safeTrim(d.agencyPocEmail);
                         items.push(item);
                     }
 
@@ -259,6 +265,8 @@
                         let item = new Agency();
                         item.name = d.authorizingSubagency.trim();
                         item.logo = d.sponsoringAgencyLogo.trim();
+                        item.pocName = safeTrim(d.agencyPocName);
+                        item.pocEmail = safeTrim(d.agencyPocEmail);
                         items.push(item);
                     }
                 }

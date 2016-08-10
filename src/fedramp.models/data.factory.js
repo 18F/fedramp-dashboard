@@ -45,7 +45,9 @@
                 'CSP_POC_Name': 'pocName',
                 'CSP_POC_Email': 'pocEmail',
                 'Leveraged_ATO_Letters': 'atoLetters',
-                'FedRAMP_In-Process_Date': 'inProcessDate'
+                'FedRAMP_In-Process_Date': 'inProcessDate',
+                'Agency_POC': 'agencyPocName',
+                'Agency_POC_email': 'agencyPocName'
             };
 
             /**
@@ -230,6 +232,20 @@
              */
             self.pocEmail = '';
 
+            /**
+             * The product agency point of contact name
+             * @member {string}
+             * @memberof Models.Data
+             */
+            self.agencyPocName = '';
+
+            /**
+             * The product agency point of contact email
+             * @member {string}
+             * @memberof Models.Data
+             */
+
+            self.agencyPocEmail = '';
             /**
              * Leveraged ATO letters
              * @member {array}
