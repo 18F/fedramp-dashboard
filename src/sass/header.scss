@@ -8,6 +8,12 @@
         font-size: 14px;
         font-weight: bold;
 
+        @media only screen and (max-width: 850px) {
+            clear: both;
+            min-width: 20rem;
+            padding-right: 3rem;
+        }
+
         ul {
             overflow: hidden;
             margin: 0 auto;
@@ -29,7 +35,7 @@
             display: inline-block;
 
             @media only screen and (max-width: 850px) {
-                display: block;
+                display: inline-block;
             }
         }
 
@@ -56,15 +62,19 @@
     }
 }
 
+.limit {
+    clear: both;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
 #header {
     clear: both;
     margin: 20px auto 0;
 
     #sitetitle {
-        max-width: 960px;
         margin: 0 auto;
         text-align: left;
-        padding-left: 7rem;
         
         img {
             max-width: 100%;
@@ -104,6 +114,7 @@
             padding: 0;
             list-style: none;
             background: #fafafa;
+            display: block;
 
             @media only screen and (max-width: 850px) {
                 margin: 0;
