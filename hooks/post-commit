@@ -8,8 +8,7 @@
 
 if [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]
 then
-    git checkout gh-pages
-    git merge -X theirs master
+    git checkout -b working
 
     npm run build
     npm run-script docgen
@@ -19,4 +18,5 @@ then
     git subtree push --prefix dist origin gh-pages
     # git push origin `git subtree split --prefix dist gh-pages`:gh-pages --force
     git checkout master
+    git branch -d working
 fi
