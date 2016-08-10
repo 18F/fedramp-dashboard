@@ -1,5 +1,10 @@
 @import 'variables';
 
+search {
+    display: inline-block;
+    float: right;
+}
+
 #topnav {
     .limit {
         clear: both;
