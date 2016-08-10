@@ -10,6 +10,7 @@
         });
 
     MenuController.$inject = ['$state'];
+
     /**
      * Renders the main filter menu and highlights the current state or parent state.
      * @constructor
@@ -23,7 +24,5 @@
          * state.
          */
         self.includes = $state.includes;
-
     }
-
 })();
