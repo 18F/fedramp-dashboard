@@ -1,98 +1,60 @@
 @import 'variables';
 
+search {
+    display: inline-block;
+    float: right;
+    margin-top: 0.75rem;
+}
+
 #topnav {
-    .limit {
-        clear: both;
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 12px 0 20px;
-        
-        .usa-search {
-            float: right;
-            input[type="search"] {
-                width: 20rem;
-            }
-        }
+    padding: 12px 0 20px;
 
-        .nav {
-            float: right;
+    .usa-search {
+        float: right;
+
+        input[type="search"] {
+            width: 20rem;
+        }
+    }
+
+    .nav {
+        float: right;
+        list-style: none;
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+        display: inline;
+        text-transform: uppercase;
+        font-size: 12pt;
+        font-weight: bold;
+        font-family: Helvetica,Arial,sans-serif;
+
+        li {
             list-style: none;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
+            float: left;
+            width: auto;
             display: inline;
-            text-transform: uppercase;
-            font-size: 12pt;
-            font-weight: bold;
-            font-family: Helvetica,Arial,sans-serif;
 
-            li {
-                list-style: none;
-                float: left;
-                width: auto;
-                display: inline;
-
-                a {
-                    color: #274784;
-                    font-size: 12px;
-                    position: relative;
-                    display: block;
-                    z-index: 100;
-                    padding: 0 10px;
-                    line-height: 40px;
-                    text-decoration: none;
-                }
-            }
-        }
-
-        .select-menu {
-            display: none;
-            visibility: hidden;
-        }
-
-        .sub-icons {
-            float: right;
-            margin: 0;
-            padding: 0;
-
-            ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: inline;
-                
-                li {
-                    list-style-type: none;
-                    text-align: center;
-                    display: inline;
-                    float: left;
-
-                    a {
-                        padding: 0;
-                        margin: 0;
-                        display: block;
-                        width: 40px;
-                        height: 40px;
-                        text-indent: -9999px;
-                        background-position: 0px 0px;
-                        background-repeat: no-repeat;
-                        opacity: 0.7;
-                    }
-
-                    .subicon.rss {
-                        background-image: url(images/rss.png);
-                    }
-
-                    .subicon.twitter {
-                        background-image: url(images/twitter.png);
-                    }
-                }
+            a {
+                color: #274784;
+                font-size: 12px;
+                position: relative;
+                display: block;
+                z-index: 100;
+                padding: 0 10px;
+                line-height: 40px;
+                text-decoration: none;
             }
         }
 
         li::before {
             content: '';
         }
+    }
+
+    .select-menu {
+        display: none;
+        visibility: hidden;
     }
 }
 
