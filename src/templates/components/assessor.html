@@ -82,19 +82,7 @@
     <panel ng-if="controller.model.description" header="Assessor Description" expand="false">
         <div ng-bind-html="controller.markdown(controller.model.description)"></div>
     </panel>
-    <div class="row gutter">
-        <div class="col provides-services">
-            <span ng-if="controller.model.provideConsultingServices === 'Y'" class="offered">
-                <i class="fa fa-check"></i>
-                Consulting Services Offered
-            </span>
-            <span ng-if="controller.model.provideConsultingServices !== 'Y'" class="not-offered">
-                <i class="fa fa-times"></i>
-                No Consulting Services Offered
-            </span>
-        </div>
-    </div>
-    <div class="row gutter" ng-if="controller.model.descriptionOfConsultingServices">
+    <div class="row gutter" ng-if="controller.model.provideConsultingServices === 'Y' && controller.model.descriptionOfConsultingServices">
         <div class="col">
             <h4>Consulting Services</h4>
             <div class="col" ng-bind-html="controller.markdown(controller.model.descriptionOfConsultingServices)"></div>
