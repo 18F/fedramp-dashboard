@@ -467,24 +467,21 @@ npm run package
 This will generate the following file structure:
 
 ```
-build/
+dist/
    css/
-   dest/
    fonts/
    img/
-   lib/
-   src/
+   fedramp.min.js
+   index.html
 ```
 
 where
  - `css/` contains the production ready stylesheets
- - `dest/` contains the production ready application code
  - `fonts/` contains the fonts used in the application
  - `img/` contains the images used in the application
- - `lib/`  contains third-party libraries
- - `src/`  contains the original source files
 
 ### Generating Documentation
+
 This project utilizes JSDoc 3 to generate and render Javascript documentation artifacts. An npm script `docgen` is included that triggers the generation of these artifacts and then stores them in the `doc/` directory. 
 
 To generate the JSDoc, execute the following:
