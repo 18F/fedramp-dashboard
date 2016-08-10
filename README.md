@@ -454,6 +454,8 @@ results may be viewed after running ```npm start``` at
 In-browser test results and coverage can be accessed at
 [https://truetandem.github.io/fedramp-dashboard/test](https://truetandem.github.io/fedramp-dashboard/test)
 
+> Note the **dist/coverage/** directory and associated files are not created until the test have been ran.
+
 ### Packaging Application
 
 To package up the application, use the command:
