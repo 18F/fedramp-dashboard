@@ -60,4 +60,15 @@ describe('The product-list component', function () {
         expect(found.name).toBe(cso);
 
     });
+
+    it('it can sort product keys', function () {
+        var data = ['Google', 'Amazon', 'Amazon', 'Akamai'];
+        expect(data[0]).toBe('Google');
+        data.sort(component.sortProductKeys);
+        expect(data[0]).toBe('Akamai');
+
+        data = ['amazon', 'google'];
+        data.sort(component.sortProductKeys);
+        expect(data[0]).toBe('amazon');
+    });
 });
