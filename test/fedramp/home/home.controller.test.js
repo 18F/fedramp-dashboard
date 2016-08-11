@@ -45,6 +45,14 @@ describe('Home controller with data', function () {
         expect(homeController.totalAuthorized()).toBe(1);
     });
 
+    it('can count total in process', function () {
+        expect(homeController.totalInProcess()).toBe(0);
+    });
+
+    it('can count total ready', function () {
+        expect(homeController.totalReady()).toBe(0);
+    });
+
     it('should redirect with filters applied', function () {
         $httpBackend.whenGET(githubUrl).respond(TestData.DataJsonHttpResponse);
         homeController.filterProducts('In Process');

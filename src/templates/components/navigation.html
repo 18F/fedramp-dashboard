@@ -21,11 +21,11 @@
         <li class="dropdown">
             <a href="#" title="Participate">Participate</a>
             <ul class="dropdown-content down">
-                <li><a href="https://www.fedramp.gov/participate/fedramp-accelerated-process/" title="FedRAMP Accelerated Process">FedRAMP Accelerated Process</a></li>
+                <li><a href="https://www.fedramp.gov/participate/fedramp-accelerated-process/" title="FedRAMP Accelerated">FedRAMP Accelerated</a></li>
                 <li><a href="https://www.fedramp.gov/participate/agencies/" title="Federal Agencies">Federal Agencies</a></li>
                 <li><a href="https://www.fedramp.gov/participate/csps/" title="Cloud Service Providers">Cloud Service Providers</a></li>
                 <li class="dropdown">
-                    <a href="https://www.fedramp.gov/participate/3paos/" title="Independent Assessors">Independent Assessors</a>
+                    <a href="https://www.fedramp.gov/participate/3paos/" title="Assessors">Assessors</a>
                     <ul class="dropdown-content right">
                         <li><a href="https://www.fedramp.gov/participate/3paos/a2la-accreditation/" title="A2LA Accreditation">A2LA Accreditation</a></li>
                     </ul>
@@ -45,24 +45,24 @@
                     <a href="javascript:;"
                        ng-click="controller.filterProducts('Compliant')"
                        ng-class="{'active': controller.includes('**.products', 'Compliant')}"
-                       title="FedRAMP Compliant Systems">
-                        <span>FedRAMP Compliant Systems</span>
+                       title="FedRAMP Authorized Products">
+                        <span>FedRAMP Authorized Products</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript:;"
                        ng-click="controller.filterProducts('In Process')"
                        ng-class="{'active': controller.includes('**.products', 'In Process')}"
-                       title="FedRAMP In-Process Systems">
-                        <span>FedRAMP In-Process Systems</span>
+                       title="FedRAMP In-Process Products">
+                        <span>FedRAMP In-Process Products</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript:;"
                        ng-click="controller.filterProducts('FedRAMP Ready')"
                        ng-class="{'active': controller.includes('**.products', 'FedRAMP Ready')}"
-                       title="FedRAMP Ready Systems">
-                        <span>FedRAMP Ready Systems</span>
+                       title="FedRAMP Ready Products">
+                        <span>FedRAMP Ready Products</span>
                     </a>
                 </li>
                 <li>
@@ -75,8 +75,8 @@
                 <li>
                     <a ui-sref="fedramp.app.home.assessors"
                        ng-class="{'active': controller.includes('**.assessors')}"
-                       title="Accredited 3PAOs">
-                        <span>Accredited 3PAOs</span>
+                       title="Accredited Assessors">
+                        <span>Accredited Assessors</span>
                     </a>
                 </li>
                 <li>
