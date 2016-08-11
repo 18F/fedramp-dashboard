@@ -75,7 +75,7 @@
     #sitetitle {
         margin: 0 auto;
         text-align: left;
-        
+
         img {
             max-width: 100%;
             height: auto;
@@ -155,6 +155,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
+            text-transform: none;
             width: 320px;
             max-width: 320px;
             color: black;
