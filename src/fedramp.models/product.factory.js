@@ -144,7 +144,7 @@
             self.sponsoringAgency = '';
 
             /**
-             * Number of authorizations 
+             * Number of authorizations
              * @member {number}
              * @memberof Models.Product
              */
@@ -155,7 +155,7 @@
              * @member {string}
              * @memberof Models.Product
              */
-             self.useLabel = 'Authorizations';
+            self.useLabel = 'Authorizations';
 
             /**
              * The service description

@@ -1,10 +1,10 @@
 @import 'variables';
 
 ui-view {
-	// add background gray for entire UI
-	.usa-content {
-		background-color: $color-gray-lightest;
-	}
+    // add background gray for entire UI
+    .usa-content {
+        background-color: $color-gray-lightest;
+    }
 }
 
 .text-center {
@@ -36,8 +36,7 @@ input {
 
 a,
 a:visited,
-a:active
-{
+a:active {
     text-decoration: none;
     color: $color-primary;
 }
@@ -45,9 +44,9 @@ a:active
 .no-select {
     -webkit-user-select: none;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-     -khtml-user-select: none; /* webkit (konqueror) browsers */
-       -moz-user-select: none; /* mozilla browsers */
-        -ms-user-select: none; /* IE10+ */
+    -khtml-user-select: none;  /* webkit (konqueror) browsers */
+    -moz-user-select: none;    /* mozilla browsers */
+    -ms-user-select: none;     /* IE10+ */
 }
 
 .mobile-visible {

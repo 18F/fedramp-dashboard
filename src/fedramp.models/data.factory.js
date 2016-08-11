@@ -128,24 +128,24 @@
             self.sponsoringAgency = '';
 
             /**
-            * The sponsoring agency logo
-            * @member {string}
-            * @memberof Models.Data
-            */
+             * The sponsoring agency logo
+             * @member {string}
+             * @memberof Models.Data
+             */
             self.sponsoringAgencyLogo = '';
 
             /**
-            * Authorizing agency
-            * @member {string}
-            * @memberof Models.Data
-            */
+             * Authorizing agency
+             * @member {string}
+             * @memberof Models.Data
+             */
             self.authorizingAgency = '';
 
             /**
-            * Authorizing subagency
-            * @member {string}
-            * @memberof Models.Data
-            */
+             * Authorizing subagency
+             * @member {string}
+             * @memberof Models.Data
+             */
             self.authorizingSubagency = '';
 
             /**

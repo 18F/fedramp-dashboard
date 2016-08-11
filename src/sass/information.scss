@@ -118,7 +118,7 @@
 
         .row.fr-grid-layout-row {
             border: none;
-        }        
+        }
     }
 
     tile {
@@ -131,7 +131,7 @@
 			    display: block;
 			    padding-left: 3rem;
 			    height: 100%;
-		
+
 			    > div {
 				    border: none;
 			    }
@@ -152,7 +152,7 @@
 					width: 30%;
 					line-height: 1.7rem;
 					font-size: 1.4rem;
-				} 
+				}
 
 			    .fr-grid-cell-icon {
 				    position: absolute;
@@ -222,7 +222,7 @@
     .col {
         display: inline-block;
     }
-    
+
     .close {
         background-color: $color-gray;
         cursor: pointer;
@@ -302,7 +302,7 @@
                 font-size: 1.2rem;
             }
         }
-        
+
         .ready, .in-process, .compliant {
             width: 23%;
             opacity: 0.6;
@@ -321,7 +321,7 @@
             height: 5px;
             background-color: $color-gray-light;
             width: 100%;
-            
+
             .percent {
                 height: 5px;
                 background-color: $color-primary-darker;
@@ -362,7 +362,7 @@
             color: $color-black;
             float: right;
             padding: 2rem;
-           
+
             h5 {
                 margin-top: 0;
             }
@@ -446,7 +446,7 @@
             h4 {
                 display: inline;
             }
-            
+
             i {
                 float: right;
             }
@@ -490,11 +490,11 @@
 
     .timeline {
         margin-bottom: 4rem;
-        width: 100%;        
+        width: 100%;
 
         .timeline-row {
             display:table;
-            width: 100%;        
+            width: 100%;
 
             .timeline-col.ready {
                 background-color: $color-gray-light;
@@ -508,8 +508,8 @@
                 background-color: $color-cool-blue;
             }
 
-            .timeline-col.ready, 
-            .timeline-col.inprocess, 
+            .timeline-col.ready,
+            .timeline-col.inprocess,
             .timeline-col.authorized {
                 span {
                     font-size: 1.3rem;
@@ -597,10 +597,10 @@
         padding-left: 2.8rem;
         padding-right: 2.8rem;
     }
-    
+
     .provides-services {
         font-weight: bolder;
-        
+
         .offered {
             color: $color-green;
         }

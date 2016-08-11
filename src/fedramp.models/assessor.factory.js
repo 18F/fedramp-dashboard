@@ -64,7 +64,7 @@
              * @member {string}
              * @memberof Models.Assessor
              */
-             self.accreditationDate = '';
+            self.accreditationDate = '';
 
             /**
              * Text used to describe primary metric label

@@ -45,7 +45,7 @@
 
     /**
      * A generic filtering component that utilizes a property expression to extract all available options for a given
-     * property. 
+     * property.
      *
      * If a property expression is not provided, a custom filterFunc and optionsFunc must be provided
      * Requires to be nested within a [Grid]{@link Components.Grid} component.
@@ -60,7 +60,7 @@
      *      products: [{
      *          name: 'Prod',
      *          related: [{
-     *              relatedItemName: 'Some related item'   
+     *              relatedItemName: 'Some related item'
      *          }]
      *      }]
      *
@@ -76,7 +76,7 @@
      * 'nickname' => would search in nickname
      * If a property expression is not provided, a filterFunc and optionsFunc must be provided.
      *
-     * @example 
+     * @example
      * // Example HTML
      * <grid-filter property="name" header="Name" options="" opened="true"></grid-filter>
      *
@@ -180,15 +180,16 @@
             // Check if loading non-primitive object
             var m = values.match(OBJECT_PARAM_REGEX);
             if (m) {
-                values = values.split(OBJECT_PARAM_REGEX)
-                    // Remove empty results
+                // Split the values, remove empty values, convert to an array
+                // of Javascript objects, and then loop through each item.
+                values = values
+                    .split(OBJECT_PARAM_REGEX)
                     .filter(Boolean)
-                    // Convert to js object
                     .map(x => angular.fromJson(x))
                     .forEach(function (val) {
                         selected.push({
                             value: val,
-                            selected: true 
+                            selected: true
                         });
                         self.options.forEach(function (option) {
                             if (angular.equals(option.value, val)) {
@@ -245,7 +246,7 @@
         }
 
         /**
-         * Stores all selected values to the grid state. Primitive values get stored as a comma-separated list 
+         * Stores all selected values to the grid state. Primitive values get stored as a comma-separated list
          * of strings. Non-primitive values (objects) get stored as a json string.
          *
          * @public
@@ -325,7 +326,7 @@
         /**
          * Creates a set of options for a particular property to be filtered on. If an optionsFunc
          * is NOT passed in, utilizes the property expression passed into `property` to automatically
-         * traverse the dataset for available options. 
+         * traverse the dataset for available options.
          *
          * You can also override this method to add custom options.
          *
@@ -340,11 +341,11 @@
          * @public
          * @memberof Components.GridFilter
          *
-         * @param {array} source 
+         * @param {array} source
          * The dataset to generate options from.
          *
-         * @returns {array}  
-         * An array of options that can be selected to filter. 
+         * @returns {array}
+         * An array of options that can be selected to filter.
          */
         function optionsFunc (source) {
             var options = [];
@@ -354,7 +355,7 @@
                     cache[value] = true;
                     options.push({
                         label: value,
-                        value: value, 
+                        value: value,
                         selected: false
                     });
                     return value;

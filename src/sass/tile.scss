@@ -58,7 +58,9 @@ tile:nth-child(2n) {
 }
 
 .contact {
-    a, a:hover, a:visited {
+    a,
+    a:hover,
+    a:visited {
         color: $color-primary;
         text-decoration: none;
         cursor: pointer;
@@ -66,9 +68,6 @@ tile:nth-child(2n) {
 }
 
 .provider.expanded {
-    .row {
-    }
-
     .col {
         vertical-align: top;
         padding-top: 0.34em;

@@ -117,17 +117,16 @@
 
                 if (dd < 10) {
                     dd = '0' + dd;
-            } 
+                }
 
-            if (mm < 10) {
-                mm = '0' + mm;
-            } 
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
 
-            return mm + '/' + dd + '/' + yyyy;
+                return mm + '/' + dd + '/' + yyyy;
+            }
+
+            return self.init(options);
         }
-
-        return self.init(options);
     }
-    }
-
 })();

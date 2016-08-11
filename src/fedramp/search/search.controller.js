@@ -21,7 +21,7 @@
          * @memberof Controllers.SearchController
          */
         self.error = false;
-        
+
         /**
          * The search query
          *
@@ -29,7 +29,7 @@
          * @memberof Controllers.SearchController
          */
         self.query = $stateParams.query;
-        
+
         /**
          * The search results.
          *
@@ -131,7 +131,7 @@
                 return false;
             });
         }
-        
+
         (function () {
             filterByName(fedrampData.products(), self.query).forEach(x => {
                 self.results.push({
@@ -199,8 +199,7 @@
                             self.results = response.data.results;
                         }
                     }
-                },
-                function (response) {
+                }, function (response) {
                     self.error = true;
                 });
         })();
