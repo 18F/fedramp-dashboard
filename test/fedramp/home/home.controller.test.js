@@ -5,20 +5,34 @@ describe('Home controller with data', function () {
     var Data;
     var homeController;
     var storage;
+    var githubUrl;
+    var $httpBackend;
+    var $rootScope;
+    var $state;
+    var $location;
+    var helperService;
 
     beforeEach(function () {
         module('fedramp', 'fedramp.services');
-        inject(function ($controller, $injector) {
+        inject(function ($controller, $injector, _$rootScope_) {
             StorageData = $injector.get('StorageData');
             Data = $injector.get('Data');
+            $rootScope = _$rootScope_;
+            $httpBackend = $injector.get('$httpBackend');
+            $state = $injector.get('$state');
+            $location = $injector.get('$location');
+            helperService = $injector.get('helperService');
+            githubUrl = $injector.get('dataUrl');
 
             var data = new Data(TestData.Letters[0]);
             storage = new StorageData();
             storage.clear();
             storage.update(data.hash(), data);
-            
-            homeController = $controller('HomeController', { 
-                fedrampData: storage
+
+            homeController = $controller('HomeController', {
+                fedrampData: storage,
+                $state: $state,
+                helperService: helperService
             });
         });
     });
@@ -29,6 +43,17 @@ describe('Home controller with data', function () {
 
     it('has a total authorized CSPs of 1', function () {
         expect(homeController.totalAuthorized()).toBe(1);
+    });
+
+    it('should redirect with filters applied', function () {
+        $httpBackend.whenGET(githubUrl).respond(TestData.DataJsonHttpResponse);
+        homeController.filterProducts('In Process');
+        $rootScope.$digest();
+        $httpBackend.flush();
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+
+        expect($state.current.name).toEqual('fedramp.app.home.products');
     });
 });
 
@@ -48,7 +73,7 @@ describe('Home controller with no data', function () {
             storage = new StorageData();
             storage.clear();
 
-            homeController = $controller('HomeController', { 
+            homeController = $controller('HomeController', {
                 fedrampData: storage
             });
         });

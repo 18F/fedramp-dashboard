@@ -73,4 +73,19 @@ describe('StorageSettings manager', function () {
         storage.clear();
         expect(storage.all().length).toBe(0);
     });
+
+    it('can clear refresh', function () {
+        var settings = new Settings();
+
+        var storage = new StorageSettings();
+        storage.clear();
+        storage.update(hash, settings);
+        expect(storage.all().length).toBe(1);
+
+        var r = settings.refresh();
+        expect(settings.lastRefresh).toBe(r);
+        settings.clearRefresh();
+        expect(settings.lastRefresh).toBe(null);
+
+    });
 });
