@@ -7,10 +7,16 @@ describe('The product component', function () {
 
     beforeEach(function () {
         module('fedramp', 'fedramp.components');
-        inject(function (_$componentController_) {
+        inject(function (_$componentController_, $injector) {
+            var Product = $injector.get('Product');
+            var p = new Product();
+            p.provider = 'ACME';
+
             i = 0;
             controller = _$componentController_;
             component = controller('product', null, {
+                model: p,
+                products: [p],
                 onClose: function () { i = 1; }
             });
         });

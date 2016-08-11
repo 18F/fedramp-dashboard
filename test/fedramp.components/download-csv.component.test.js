@@ -70,8 +70,8 @@ describe('The download csv component', function () {
         filename = component.filename(null);
         expect(filename).toBeDefined();
 
-        var d = new Date(2016, 5, 27, 0, 0, 0, 0);
-        expect(component.filename(d)).toBe('fedramp-2016-06-27.csv');
+        var d = new Date(2016, 5, 7, 0, 0, 0, 0);
+        expect(component.filename(d)).toBe('fedramp-2016-06-07.csv');
     });
 
     it('can prepare download', function () {

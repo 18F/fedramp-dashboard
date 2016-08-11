@@ -15,10 +15,10 @@ describe('The helper service', function () {
     });
 
     it('can convert date to mm/dd/YYYY', function () {
-        expect(service.toDate('2013-08-23T04:00:00.000Z')).toBe('08/23/2013');
-        expect(service.toDate('2013-08-23T00:00:00.000Z')).toBe('08/23/2013');
-        expect(service.toDate('2013-08-23')).toBe('08/23/2013');
-        expect(service.toDate('08/23/2013')).toBe('08/23/2013');
+        expect(service.toDate('2013-08-03T04:00:00.000Z')).toBe('08/03/2013');
+        expect(service.toDate('2013-08-03T00:00:00.000Z')).toBe('08/03/2013');
+        expect(service.toDate('2013-08-03')).toBe('08/03/2013');
+        expect(service.toDate('08/03/2013')).toBe('08/03/2013');
         expect(service.toDate('Check on')).toBe('');
         expect(service.toDate(null)).toBe('');
     });

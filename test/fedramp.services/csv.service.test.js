@@ -3,6 +3,8 @@ describe('The CSV service', function(){
 
     var CsvService;
     var product;
+    var agency;
+    var assessor;
     var fedrampDataWithoutAtoLetters;
     var exportData;
 
@@ -21,6 +23,8 @@ describe('The CSV service', function(){
             CsvService = $injector.get('CsvService');
             var Data = $injector.get('Data');
             var Product = $injector.get('Product');
+            var Agency = $injector.get('Agency');
+            var Assessor = $injector.get('Assessor');
 
             exportData = new Data({
                 'Cloud_Service_Provider_Package': 'TT',
@@ -64,11 +68,25 @@ describe('The CSV service', function(){
 
             product = new Product();
             product.pkgId = '123';
+
+            agency = new Agency();
+            agency.name = 'Department of Health and Human Services';
+
+            assessor = new Assessor();
+            assessor.name = 'DoD';
         });
     });
 
     it('can convert an array of objects to a flattened CSV friendly structure', function () {
         var flatten = CsvService.flatten([product]);
+        expect(flatten).not.toBeNull();
+        expect(flatten.length).toEqual(3);
+
+        flatten = CsvService.flatten([agency]);
+        expect(flatten).not.toBeNull();
+        expect(flatten.length).toEqual(2);
+
+        flatten = CsvService.flatten([assessor]);
         expect(flatten).not.toBeNull();
         expect(flatten.length).toEqual(3);
     });
