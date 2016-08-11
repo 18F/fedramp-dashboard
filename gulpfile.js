@@ -12,6 +12,7 @@ var templateCache = require('gulp-angular-templatecache');
 var jshint        = require('gulp-jshint');
 var sass          = require('gulp-sass');
 var cleanCSS      = require('gulp-clean-css');
+var karma         = require('karma');
 
 // Filename for final minified javascript file
 var concatOutputFilename = 'fedramp.js';
@@ -279,16 +280,26 @@ gulp.task('mangle:copy-test', ['mangle:concat-libs'], function () {
         .pipe(gulp.dest('dist/test/'));
 });
 
+gulp.task('test', ['default'], function (done) {
+    'use strict';
+    new karma.Server(
+        {
+            configFile: __dirname + '/karma.conf.js',
+            singleRun: true
+        }, done)
+        .start();
+});
+
 /**
  * Watch specific files to trigger builds during development
  */
 gulp.task('watch:dog', [], function () {
     'use strict';
     console.log('Watch dog, ARF ARF!!!');
-    gulp.watch('src/**/*.js', ['default']);
-    gulp.watch('src/**/*.html', ['default']);
-    gulp.watch('src/**/*.scss', ['default']);
-    gulp.watch('test/**/*.js', ['default']);
+    gulp.watch('src/**/*.js', ['default', 'test']);
+    gulp.watch('src/**/*.html', ['default', 'test']);
+    gulp.watch('src/**/*.scss', ['default', 'test']);
+    gulp.watch('test/**/*.js', ['default', 'test']);
 });
 
 // Creates sub-tasks
@@ -300,5 +311,3 @@ gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:imag
 gulp.task('default', ['clean:all', 'sass', 'copy', 'templates', 'mangle']);
 gulp.task('package', ['clean:all', 'sass', 'copy', 'templates', 'mangle', 'clean:release']);
 gulp.task('watch', ['watch:dog']);
-
-
