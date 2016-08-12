@@ -68,16 +68,16 @@ GitHub commits can be traced back to their corresponding Taiga tasks through com
 ```
 
 ## Application
-The FedRAMP Dashboard is written entirely in client-side code: `HTML`, `CSS`, and `JavaScript`, and populated by a FedRAMP-managed `json` data feed, which is currently hosted at [18F/fedramp-data](https://github.com/18f/fedramp-data).  The code is hosted in a [public code repository on GitHub](https://github.com/truetandem/fedramp-dashboard) and is [licensed](https://github.com/truetandem/fedramp-dashboard/blob/master/LICENSE) under the Creative Commons, CC0 1.0 Universal Public domain dedication.  The application makes use of the [AngularJS](https://angularjs.org/) JavaScript framework.
+The FedRAMP Dashboard is written entirely in client-side code: `HTML`, `CSS`, and `JavaScript`, and populated by a FedRAMP-managed `json` data feed, which is currently hosted at [18F/fedramp-data](https://github.com/18f/fedramp-data).  The code is hosted in a [public code repository on GitHub](https://github.com/18F/fedramp-dashboard) and is [licensed](https://github.com/18F/fedramp-dashboard/blob/master/LICENSE) under the Creative Commons, CC0 1.0 Universal Public domain dedication.  The application makes use of the [AngularJS](https://angularjs.org/) JavaScript framework.
 
 A GitHub Pages “gh-pages” branch was created in the GitHub repository to generate a website associated with the project for hosting the work-in-progress FedRAMP Dashboard page and related content.  The page facilitates rapid deployment for continuous integration, user testing, and feature demonstrations.   
 
- - Visit the [FedRAMP Dashboard test site](https://truetandem.github.io/fedramp-dashboard/)
+ - Visit the [FedRAMP Dashboard test site](https://18F.github.io/fedramp-dashboard/)
  - View the raw FedRAMP `json` [data feed](https://raw.githubusercontent.com/18F/fedramp-data/master/data/data.json)
- - Run the dashboard [Unit Tests](https://truetandem.github.io/fedramp-dashboard/test)
- - View the online [System Documentation](https://truetandem.github.io/fedramp-dashboard/doc)
+ - Run the dashboard [Unit Tests](https://18F.github.io/fedramp-dashboard/test)
+ - View the online [System Documentation](https://18F.github.io/fedramp-dashboard/doc)
 
-For information on contributing to the FedRAMP Dashboard codebase, please visit [CONTRIBUTING.md](https://github.com/truetandem/fedramp-dashboard/blob/master/CONTRIBUTING.md)
+For information on contributing to the FedRAMP Dashboard codebase, please visit [CONTRIBUTING.md](https://github.com/18F/fedramp-dashboard/blob/master/CONTRIBUTING.md)
 
 ## Features
 The following User Stories were created and refined in response to many user surveys, interviews, and usability testing sessions, and became the base requirements for the FedRAMP Dashboard.  Click on the User Story number to see the story details, otherwise the title and brief description are provided here.
@@ -121,7 +121,7 @@ The following User Stories were created and refined in response to many user sur
 
 >[User Story 144](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/144): **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality.
 
->[User Story 274](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/274): **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column. 
+>[User Story 274](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/274): **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column.
 
 
 ## Maintenance
@@ -163,10 +163,10 @@ Limit open space around logo and align edges of logo to bottom left corner.
 This application uses HTML5 Local Storage to store the daily `data.json` pulls from the [fedramp-data](https://github.com/18F/fedramp-data) github repository. There are four primary data services
 that manage this information. These include:
 
-- [storage-manager.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageManager.html)
-- [storage-data.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageData.html)
-- [storage-assessor-data.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageAssessorData.html)
-- [storage-settings.factory.js](http://truetandem.github.io/fedramp-dashboard/doc/Services.StorageSettings.html)
+- [storage-manager.factory.js](http://18F.github.io/fedramp-dashboard/doc/Services.StorageManager.html)
+- [storage-data.factory.js](http://18F.github.io/fedramp-dashboard/doc/Services.StorageData.html)
+- [storage-assessor-data.factory.js](http://18F.github.io/fedramp-dashboard/doc/Services.StorageAssessorData.html)
+- [storage-settings.factory.js](http://18F.github.io/fedramp-dashboard/doc/Services.StorageSettings.html)
 
 `storage-manager.factory.js` is an object that abstracts access to the underlying local storage datastore by providing a consistent interface to read and write information. Conceptually, data is stored into `containers` or `buckets` with an associated
 `storageContainer` name that uniquely identifies that particular container. The `storageContainer` is the key and the associated array of information is the value. `storage-data.factory`, `storage-assessor-data.factory` and `storage-settings.factory` all extend the `storage-manager.factory` factory to separately store information specific to providers, assessors and system settings.
@@ -176,12 +176,12 @@ When information is stored in local storage, it is not cleared until the followi
 
 ### Adding a new filter to the dashboard
 A grid consists of the following components:
-- [grid](http://truetandem.github.io/fedramp-dashboard/doc/Components.Grid.html)
-  - [gridFilter](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridFilter.html)
+- [grid](http://18F.github.io/fedramp-dashboard/doc/Components.Grid.html)
+  - [gridFilter](http://18F.github.io/fedramp-dashboard/doc/Components.GridFilter.html)
     - A component that allows 0 or more options to be selected using a property expression or custom option/filter functions
-  - [gridSort](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridSort.html)
+  - [gridSort](http://18F.github.io/fedramp-dashboard/doc/Components.GridSort.html)
     - A component that filters based on a property expression
-  - [gridSearch](http://truetandem.github.io/fedramp-dashboard/doc/Components.GridSearch.html)
+  - [gridSearch](http://18F.github.io/fedramp-dashboard/doc/Components.GridSearch.html)
     - A component that allows free text-based searches
 
 
@@ -409,7 +409,7 @@ To adjust the styles applied within the footer please make all changes in
 First you are going to want to clone the repository
 
 ```
-git clone https://github.com/truetandem/fedramp-dashboard.git
+git clone https://github.com/18F/fedramp-dashboard.git
 ```
 
 ### Checking dependencies
@@ -454,7 +454,7 @@ results may be viewed after running ```npm start``` at
 [http://localhost:8080/coverage](http://localhost:8080/coverage)
 
 In-browser test results and coverage can be accessed at
-[https://truetandem.github.io/fedramp-dashboard/test](https://truetandem.github.io/fedramp-dashboard/test)
+[https://18F.github.io/fedramp-dashboard/test](https://18F.github.io/fedramp-dashboard/test)
 
 > Note the **dist/coverage/** directory and associated files are not created until the test have been ran.
 
@@ -484,7 +484,7 @@ where
 
 ### Generating Documentation
 
-This project utilizes JSDoc 3 to generate and render Javascript documentation artifacts. An npm script `docgen` is included that triggers the generation of these artifacts and then stores them in the `doc/` directory. 
+This project utilizes JSDoc 3 to generate and render Javascript documentation artifacts. An npm script `docgen` is included that triggers the generation of these artifacts and then stores them in the `doc/` directory.
 
 To generate the JSDoc, execute the following:
 
@@ -521,4 +521,3 @@ For code coverage we can leverage the following:
 
  - For in-browser coverage analysis we use [BlanketJS](http://blanketjs.org)
  - [Karma Coverage](https://github.com/karma-runner/karma-coverage) is a plug-in which may be used in tandem with the Karma test runner
-
