@@ -1,7 +1,6 @@
 language: node_js
 node_js:
 - '6'
-- node
 after_sucess:
 - npm install -g pa11y-crawl
 - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
