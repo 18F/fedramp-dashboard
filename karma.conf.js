@@ -31,7 +31,7 @@ module.exports = function(config) {
             'build/lib/papaparse.min.js',
             'build/lib/showdown.min.js',
             'build/lib/uswds.min.js',
-            'dist/test/fedramp.test.js',
+            // 'dist/test/fedramp.test.js',
             'dist/test/fedramp.js',
             'dist/test/test-data.js',
             'dist/test/test-data-factory.js',
