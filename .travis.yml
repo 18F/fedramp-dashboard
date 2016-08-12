@@ -1,24 +1,30 @@
 language: node_js
 node_js:
-  - '6'
-  - node
+- '6'
+- node
 script:
-  - npm run build
+- npm run build
 after_success:
-  - npm test
-  - npm install -g pa11y-crawl
-  - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
-before_deploy: "npm run package"
+- npm test
+- npm install -g pa11y-crawl
+- pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
+before_deploy:
+- export PATH=$HOME:$PATH
+- travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+- tar xzvf $HOME/cf.tgz -C $HOME
+- mkdir -p ${HOME}/Godeps/_workspace
+- export GOPATH=${HOME}/Godeps/_workspace
+- go get github.com/concourse/autopilot
+- cf install-plugin -f $GOPATH/bin/autopilot
+- npm run package
+env:
+  global:
+  - CF_USERNAME=18f-acq_deployer
+  - secure: O5oA2xfrFDBc+UkM8AXo3vC7/iyT2L2LeVzJnRVhU8/ESkMvwQhiLtZ9MwQH34NpUli64s21LF52gcFENbcEE0QNtW8QQHBSje0S4LDiv4UGOBL96Zkk3G0KS0pgxqlDHnFFS4yE/07MIeCL8TawkBfzNM4tIO5IOOin1cqaGC1vV1YXRSvm9acjuL7KgD6KtVGL0m8cBGImUoHKxgmmILLdnbaJC2dOyFAI4dyplnIJIo1c6FO7vm1y23584fR8VHIvwDKPfh30oFuLbzKcQIqJP2kp1Pl63VgKtZTtadR49BxqFBWd/E0AO5HMnMMiZTgs7HDIpjUtAk9ONBPhMFwN2TqhknpCv44d/QQ29R69l5DIVHozkxqBvORWAKttkXg9yDrL4VtOpyIqWiUlMzqVee2S29/akNZTF4D5XsKrSgN2KUvSW7PEEVetSJjrlkU3EaSx5hOqc/FAP4KwNKGRA2sWMDtJTOAlQUDrmoNvrjaWuwPSl5tcpRzdKx7a4dlFvfU2foPAwW0MJDBWauSog9tn9cIbGa/GeA7MP7/gMpmHMav5cHcEslc0uHLU3mpAPQKowvSziPqjjIQ/XZHZ/8P4VurwTAj6577y1p7yw0ISzQQ8yGY4cCt4W5HlpZjkE+mWVUlnqBM8mc9WHvm3ZDh9sPF/mgcTyzE9+3s=
 deploy:
-  provider: s3
-  bucket: marketplace.fedramp.gov
-  region: us-east-1
+  provider: script
+  script: "./bin/deploy.sh"
   skip_cleanup: true
-  local_dir: "dist"
-  access_key_id:
-    secure: "v3VOOTCyASwhseMEe9f4XaayEfjdhp917TBK+Xz6keAtJTe+zVirk+SPPQLOa3t7IZqhFDsZJM1rcCVwvKE7NMu5cijSoXgfjtTmgspP9rG+vxAzQZLUjY/OJxtWLYfkpmwLf6ZCAIPEaCGIN7d5JVzPxI0mf4K6OdNbuebeJZwK/jh69LEPVF9uTk3Oh9y8IaXJapphJh3GYaQsFhxUTU4cd/jU6batuytTSvHwiQ9AQPOH/DI/PIFdDim4G00E7P6AQO/rj5xfyohw/AFupGsnE+IoLWoBB8ynbmj7/u+HFYYGmWpDLyTqHoc2a3lOhII7qePtAZRRem6GeHZO1adN0mFds21SI4eEtd3SAnTwdp648XsL3hA3rWgRn/tUk6Km546uW7Rw/TdSG3VBK8qwCvCuKZQslG7kHNveSys5M3ecbapQnNmhs1w5hkuwi4MVNjNOpcKSvKDTXCIpZtVZ/a3RdUkO+MN6F8R1SPycMw8UhQt2b4/otiFL4JVG7WneMsXbZXg0q9kFrhIg75KS6pKkMfsqJ9B5yHnlLVLUKRirSpFGKWQFXtgc1ZRO4pi6lnqAY+636zSA87A4BtNRMFDJomIOIdVlc5ggnam5iYX9RUWxA2wwrj7v3Q4LMbvVxmdmSkP5V2IHduRJDAuR12tlGTSstfR4RrqGpUw="
-  secret_access_key:
-    secure: "CgjJOS1ix/w6zHJDHnRzLsKKM03iR29iq77z4CSiZJUTCkWoMldyo8bK+hXvB5p2xd6AE2oG3Ob+gXiZEknuZVXsr8MbGcoAHtDQIzAmGHktfk33SdYhN9NQol7BfiKP/2RWrVq9c5PJAJP7IW8iF5ZlJq3PG+3CKDY2ofu9Tr8O817okPoDcCwS8b0j+1PiRJljNa+kwn6UGSK0TTbWEV+ieJfBWW/aqrl8Zql32KRN7J9hqDS4cX3Cg2gyZGrtrz5tZpfmxV97cJ9zf+thdw9yUo7GBVdfWYejeWSElX3zD3gAUEUyDZK3Agj04fclo4oUKzdf/ZqzYIpXIqyWvpvymxQpa1ybpTrDuiD6i2jJxA4Wgl2/1j/ODa5ML/kXo4e+UswfPYgoVCC4WIjhn6FbvG2kNXhS1tAzMM8tx+zVWeglWx4EKsq+GKek3SDUzvDhll7jQsNzFWHEBuLZgdrXblxhb/IEFlxADoyqAmv5xU7khS0QTFxnEJHXYHJFZaoeiZwdb2WZjea8X6JMvLI+PYt7SqwsiO3zarTsUrnap9rL0PshJHuVBo8eACa3bD2lxoX0KgGNozn6cByUpdTisc1nwh1rXr5/tiLSFrBHQuP4aq+ZR5L2OrBxSz2wXlm+MiZlLCIPmSnxQzVuSpCq/JSJAy2HL8l9ZtWpK+c="
   on:
     branch: master
     repo: 18F/fedramp-dashboard
