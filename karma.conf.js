@@ -28,7 +28,7 @@ module.exports = function(config) {
             'node_modules/angular-mocks/angular-mocks.js',
             'node_modules/papaparse/papaparse.min.js',
             'node_modules/showdown/dist/*.min.js',
-            'node_modules/uswds/dist/js/*.min.js'
+            'node_modules/uswds/dist/js/*.min.js',
             'dist/test/fedramp.test.js',
             'dist/test/fedramp.js',
             'dist/test/test-data.js',
