@@ -2,12 +2,7 @@ language: node_js
 node_js:
 - '6'
 - node
-install:
-- npm install
-before_script:
-- npm run build
-script:
-- npm test
+after_sucess:
 - npm install -g pa11y-crawl
 - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
 before_deploy:
