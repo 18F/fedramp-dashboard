@@ -270,7 +270,7 @@ gulp.task('mangle:copy', ['mangle:concat-libs'], function () {
 /**
  * Copy compiled and minified source to dist/test/
  */
-gulp.task('mangle:copy-test', ['mangle:concat-libs'], function () {
+gulp.task('mangle:copy-test', ['mangle:concat-libs','mangle:concat-test'], function () {
     'use strict';
     return gulp
         .src([
