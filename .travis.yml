@@ -4,7 +4,6 @@ node_js:
 - node
 script:
 - npm run build
-after_success:
 - npm test
 - npm install -g pa11y-crawl
 - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
