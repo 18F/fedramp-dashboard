@@ -13,7 +13,9 @@ The dashboard will provide many benefits to the FedRAMP user community including
 The FedRAMP Dashboard project team employed a user-centered design approach leveraging key principles from the [U.S. Digital Services Playbook](https://playbook.cio.gov/#plays_index_anchor):
 
 1. Understand what people need
+
 2. Address the whole experience, from start to finish
+
 3. Make it simple and intuitive
 
 The team frequently interacted with user constituencies from FedRAMP, OMB, 18f, Federal Agencies, and Cloud Service Providers to understand the varying needs of each group and to derive the dashboard requirements from those needs.  
