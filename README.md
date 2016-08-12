@@ -108,6 +108,8 @@ The following User Stories were created and refined in response to many user sur
 
 >[User Story 66](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/66): **What work has a 3PAO done** - The 3PAO details view provides a listing of the cloud providers and their corresponding products in which the 3PAO has performed assessments. The services listed are hyper-linked to their respective product detail page.
 
+>[User Story 286](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/286): **3PAO Consulting Details** - The 3PAO details view provides a list of consulting services the 3PAO provides customers, as well as a list of customers (agencies and providers) for whom the assessor has provided consulting services.
+
 #### Analysis Tools
 >[User Story 14](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/14): **Search dashboard** - The dashboard can be quickly filtered by entering the name of a Provider, Agency, or 3PAO.  The search box is in the filter area and is context-sensitive depending on which view you are in (Provider, Agency, or 3PAO).
 
