@@ -2,12 +2,6 @@ language: node_js
 node_js:
 - '6'
 - node
-script:
-- npm run build
-after_success:
-- npm test
-- npm install -g pa11y-crawl
-- pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
@@ -29,3 +23,6 @@ deploy:
   on:
     branch: master
     repo: 18F/fedramp-dashboard
+after_script:
+- npm install -g pa11y-crawl
+- pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080
