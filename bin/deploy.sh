@@ -11,7 +11,7 @@ fi
 
 if [ $SPACE = 'prod' ]; then
 NAME="fedramp-dashboard"
-MANIFEST="manifest.yml"
+MANIFEST="../manifest.yml"
 # elif [ $SPACE = 'staging' ]; then
 #   NAME="fedramp-staging"
 #   MANIFEST="manifest-staging.yml"

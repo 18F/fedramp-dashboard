@@ -18,7 +18,7 @@ env:
   - secure: O5oA2xfrFDBc+UkM8AXo3vC7/iyT2L2LeVzJnRVhU8/ESkMvwQhiLtZ9MwQH34NpUli64s21LF52gcFENbcEE0QNtW8QQHBSje0S4LDiv4UGOBL96Zkk3G0KS0pgxqlDHnFFS4yE/07MIeCL8TawkBfzNM4tIO5IOOin1cqaGC1vV1YXRSvm9acjuL7KgD6KtVGL0m8cBGImUoHKxgmmILLdnbaJC2dOyFAI4dyplnIJIo1c6FO7vm1y23584fR8VHIvwDKPfh30oFuLbzKcQIqJP2kp1Pl63VgKtZTtadR49BxqFBWd/E0AO5HMnMMiZTgs7HDIpjUtAk9ONBPhMFwN2TqhknpCv44d/QQ29R69l5DIVHozkxqBvORWAKttkXg9yDrL4VtOpyIqWiUlMzqVee2S29/akNZTF4D5XsKrSgN2KUvSW7PEEVetSJjrlkU3EaSx5hOqc/FAP4KwNKGRA2sWMDtJTOAlQUDrmoNvrjaWuwPSl5tcpRzdKx7a4dlFvfU2foPAwW0MJDBWauSog9tn9cIbGa/GeA7MP7/gMpmHMav5cHcEslc0uHLU3mpAPQKowvSziPqjjIQ/XZHZ/8P4VurwTAj6577y1p7yw0ISzQQ8yGY4cCt4W5HlpZjkE+mWVUlnqBM8mc9WHvm3ZDh9sPF/mgcTyzE9+3s=
 deploy:
   provider: script
-  script: "./bin/deploy.sh prod"
+  script: "../bin/deploy.sh prod"
   skip_cleanup: true
   on:
     branch: master
