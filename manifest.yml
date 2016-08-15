@@ -1,0 +1,9 @@
+---
+applications:
+- name: fedramp-dashboard
+  memory: 64M
+  instances: 2
+  path: "dist"
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  env:
+    FORCE_HTTPS: true
