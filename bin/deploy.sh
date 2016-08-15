@@ -1,6 +1,6 @@
 set -e
 
-API="https://fr.api.cloud.gov"
+API="https://api.fr.cloud.gov"
 ORG="gsa-fedrampdashboard"
 SPACE=$1
 
