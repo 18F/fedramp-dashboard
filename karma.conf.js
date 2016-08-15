@@ -17,7 +17,21 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'dist/test/fedramp.test.js',
+            'build/lib/jasmine.js',
+            'build/lib/jasmine-html.js',
+            'build/lib/boot.js',
+            'build/lib/polyfill.min.js',
+            'test/blanket.min.js',
+            'test/jasmine-blanket.js',
+            'build/lib/angular.min.js',
+            'build/lib/angular-ui-router.min.js',
+            'build/lib/angular-aria.min.js',
+            'build/lib/angular-sticky.min.js',
+            'build/lib/angular-mocks.js',
+            'build/lib/papaparse.min.js',
+            'build/lib/showdown.min.js',
+            'build/lib/uswds.min.js',
+            // 'dist/test/fedramp.test.js',
             'dist/test/fedramp.js',
             'dist/test/test-data.js',
             'dist/test/test-data-factory.js',
