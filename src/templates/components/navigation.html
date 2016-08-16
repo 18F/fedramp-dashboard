@@ -66,6 +66,13 @@
                     </a>
                 </li>
                 <li>
+                    <a ui-sref="fedramp.app.home.products"
+                       ng-class="{'active': controller.includes('fedramp.**')}"
+                       title="All Products">
+                        <span>All Products</span>
+                    </a>
+                </li>
+                <li>
                     <a ui-sref="fedramp.app.home.agencies"
                        ng-class="{'active': controller.includes('**.agencies')}"
                        title="All Agencies">
@@ -106,10 +113,7 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a href="#" title="Blog">Blog</a>
-            <ul class="dropdown-content down">
-                <li><a href="https://www.fedramp.gov/focus-on-fedramp/" title="Blog">Blog</a></li>
-            </ul>
+            <a href="https://www.fedramp.gov/focus-on-fedramp/" title="Blog">Blog</a>
         </li>
     </ul>
 </div>
