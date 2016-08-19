@@ -31,12 +31,12 @@
             <img ng-if="controller.isReady() && !controller.isProcessing() && !controller.isCompliant()" ng-src="img/fedramp-process-ready-blue.png" alt="Ready" />
             <img ng-if="!controller.isReady() || controller.isProcessing() || controller.isCompliant()" ng-src="img/fedramp-process-ready-grey.png" alt="Not Ready" />
             <div class="text">FedRAMP Ready</div>
-        </div>                                 
+        </div>
         <div class="col in-process" ng-class="{'active': controller.isProcessing()}">
             <img ng-if="controller.isProcessing()" ng-src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
             <img ng-if="!controller.isProcessing()" ng-src="img/fedramp-process-in-process-grey.png" alt="Not In-Process" />
             <div class="text">FedRAMP In Process</div>
-        </div>                                 
+        </div>
         <div class="col compliant" ng-class="{'active': controller.isCompliant()}">
             <img ng-if="controller.isCompliant()" ng-src="img/fedramp-process-compliant-blue.png" alt="Authorized" />
             <img ng-if="!controller.isCompliant()" ng-src="img/fedramp-process-compliant-grey.png" alt="Not Authorized" />
@@ -93,7 +93,6 @@
             <dl>
                 <dt ng-if="controller.model.authorizationType">Authorization Type:</dt>
                 <dd ng-if="controller.model.authorizationType">{{ controller.model.authorizationType }}</dd>
-                <dt ng-if="controller.model.sponsoringAgency">Agency Lead:</dt>
                 <dd ng-if="controller.model.sponsoringAgency">{{ controller.model.sponsoringAgency }}</dd>
                 <dt ng-if="controller.model.independentAssessor">Independent Assessor:</dt>
                 <dd ng-if="controller.model.independentAssessor">{{ controller.model.independentAssessor }}</dd>
