@@ -1,7 +1,7 @@
 ---
 name: FedRAMP Dashboard
 uniqueID: MB18FIX019962
-version: <application version>
+version: 1.0.0
 # descriptions:
 # https://18f.gsa.gov/dashboard/
 phase: alpha
@@ -53,7 +53,6 @@ leveraged-authorizations:
 - https://www.fedramp.gov/marketplace/compliant-systems/amazon-web-services-aws-eastwest-us-public-cloud/
 purpose: https://github.com/18F/fedramp-dashboard/blob/master/README.md
 components:
-- <link to item under https://18f.gsa.gov/dashboard/>
 - https://github.com/18F/fedramp-dashboard
 
 # these will be the same unless your architecture is especially complex
