@@ -16,7 +16,7 @@ type: "app"
 owner_type: "project"
 
 # Name of the main project repo if this is a sub-repo; name of the working group/guild repo if this is a working group/guild subproject
-parent: ""
+parent: "Fedramp-dashboard"
 
 # Maturity stage of the project (required)
 # values: discovery, alpha, beta, live, sunset, transfer, end
@@ -75,7 +75,8 @@ stack:
 
 
 # Brief description of the project's outcomes
-impact: "To better display the "
+impact: "To provide greater visibility and up to date status for vendors going through the FedRAMP authorization process, and for agencies planning to use authorized cloud services."
+"
 
 # Services used to supply project status information
 # Items:
