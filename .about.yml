@@ -67,9 +67,15 @@ stack:
 - Angularjs
 - Nodejs
 - Gulp
+- USWDS
+- Karma
+- Jasmine
+- Showdown
+- jsdoc
+
 
 # Brief description of the project's outcomes
-impact: ""
+impact: "To better display the "
 
 # Services used to supply project status information
 # Items:
@@ -102,7 +108,9 @@ services:
 #     name: Name of the license from the Software Package Data Exchange (SPDX): https://spdx.org/licenses/
 #     url: URL for the text of the license
 licenses:
-  placeholder_label:
+  dashboard:
+    name: CC0-1.0
+    url: https://github.com/18F/team_api/blob/master/LICENSE.md
 
 # Tag to use when blogging about this project
 blogTag:
@@ -114,11 +122,13 @@ blogTag:
 #   text: Anchor text for the link
 #   category: Type of the link
 links:
--
+- url: https://marketplace.fedramp.gov
+  text: FedRAMP Marketplace
 
 # URIs for points-of-contact
 # Items:
 # - url: URL for the link
 #   text: Anchor text for the link
 contact:
--
+- url: mailto:laura.gerhardt@gsa.gov
+  text: Laura Gerhardt
