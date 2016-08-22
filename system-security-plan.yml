@@ -16,7 +16,7 @@ integrity: low
 availability: low
 security-baseline: open data
 
-system-type: <major|minor|general support>
+system-type: minor
 level-of-identity-assurance: 0
 staff:
   authorizing-official:
