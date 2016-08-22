@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/18F/fedramp-dashboard/badge.svg?branch=master)](https://coveralls.io/github/truetandem/fedramp-dashboard?branch=master)
 [![Code Climate](https://codeclimate.com/github/18F/fedramp-dashboard/badges/gpa.svg)](https://codeclimate.com/github/truetandem/fedramp-dashboard)
 [![Accessibility](https://continua11y.18f.gov/18F/fedramp-dashboard.svg?branch=master)](https://continua11y.18f.gov/truetandem/fedramp-dashboard)
+[![Dependency Status](https://gemnasium.com/18F/fedramp-dashboard.svg)](https://gemnasium.com/18F/fedramp-dashboard)
 
 The purpose of the FedRAMP Dashboard project is to create a publicly available, web-based responsive dashboard providing greater visibility and up to date status for vendors going through the FedRAMP authorization process.   
 
