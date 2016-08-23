@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>The Federal Risk And Management Program Dashboard</title> 
+        <title>The Federal Risk And Management Program Dashboard</title>
 
         <!-- Icons -->
         <link href="img/favicons/favicon.ico"     rel="shortcut icon"                type="image/ico">
@@ -24,9 +24,19 @@
         <link rel="stylesheet" href="css/fedramp.css" />
     </head>
     <body ng-app="fedramp" ng-strict-di>
+      <div class="usa-disclaimer">
+    <div class="usa-disclaimer-official">
+      <img src="./img/favicons/favicon-40.png" alt="U.S. flag">
+      <p>An official website of the United States government</p>
+    </div>
+    <p class="usa-disclaimer-stage">
+      This site is currently in alpha.
+      <a href="https://18f.gsa.gov/dashboard/stages/#alpha">Learn more.</a>
+    </p>
+  </div>
         <div ui-view></div>
 
         <!-- Include scripts at the bottom for performance gains in some browsers -->
-        <script src="fedramp.min.js"></script>	
+        <script src="fedramp.min.js"></script>
     </body>
 </html>
