@@ -15,12 +15,18 @@ env:
   - CF_USERNAME=gsa-fedrampdashboard_deployer
   - secure: "oJpKxxvifAidgtG4GTy/L51CmbebDNghCkOi+7U2p5UxCNaHkMfL0v1IE/5uCPbw5Y5YyDD8ojmmK6avFOy22yNW+G7myajYNSYEDTiVZP9j1STqo5+hBPV72YGnKy3jlvCIIFyy75Xfr7TjwjQHWajzrRDc1KfU/f2ISqvRt76p5VChp8K2YPP44QQfXJC8aXRrUKDUnAarZjFZSsvsa6+4C7Iol6PjZvvFTYUI3v8sg+aARxVQYZ6o6P65IO2CBxIT6ctPaLWamQvfXrX2wh3d/rW/JZYeRGUW586JP6J/iyMpXETRjxSh1nhHJEbO2H36ENfNbHcAxB/hZb9VT7FJeQaxr/m7ptJWt9TihUC2NzbVCAurvq9YoTxJOjgz4RMzUNCtAuAlFcPEqGwaPy8Y86YFA8VWoipaPyPjwqTAP2h/3NzF4VvcXAgD08CR5t6dLVuKg43KvZsGGCMYiG8qcPw3KsQfktGVh50dT5IHJT6f45HHP9VmM4YO2DUNOsZyOtfWLhK+B5amnxH7bB4hKkEo8Hlo42naIoqq4MTUS8TFgDixraY+XtfyJ/cADNoocErN4WZPvXlc8MkQg6Lf9p3MAUoCbxqhQHiZ8YkoyZ+5/9X6FIzAKgRzhYOaB5EWlIo9Z6aS/EbpSH6CJcC/Zrh8owP2gqfgdX4iPws="
 deploy:
-  provider: script
-  script: "./bin/deploy.sh prod"
-  skip_cleanup: true
-  on:
-    branch: master
-    repo: 18F/fedramp-dashboard
+  - provider: script
+    script: "./bin/deploy.sh develop"
+    skip_cleanup: true
+    on:
+      branch: develop
+      repo: 18F/fedramp-dashboard
+  - provider: script
+    script: "./bin/deploy.sh prod"
+    skip_cleanup: true
+    on:
+      branch: master
+      repo: 18F/fedramp-dashboard
 after_script:
 - npm install -g pa11y-crawl
 - pa11y-crawl --run "./node_modules/.bin/http-server dist" --ci http://localhost:8080

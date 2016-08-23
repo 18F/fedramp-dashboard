@@ -12,9 +12,9 @@ fi
 if [ $SPACE = 'prod' ]; then
 NAME="fedramp-dashboard"
 MANIFEST="manifest.yml"
-# elif [ $SPACE = 'staging' ]; then
-#   NAME="fedramp-staging"
-#   MANIFEST="manifest-staging.yml"
+elif [ $SPACE = 'develop' ]; then
+  NAME="fedramp-develop"
+  MANIFEST="manifest-staging.yml"
 else
 echo "Unknown space: $SPACE"
 exit
