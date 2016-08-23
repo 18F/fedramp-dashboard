@@ -1,0 +1,166 @@
+---
+# .about.yml project metadata
+#
+# Short name that acts as the project identifier (required)
+name: "FedRAMP Dashboard"
+
+# Full proper name of the project (required)
+full_name: "FedRAMP Dashboard"
+
+# The type of content in the repo
+# values: app, docs, policy
+type: "app"
+
+# Describes whether a project team, working group/guild, etc. owns the repo (required)
+# values: guild, working-group, project
+owner_type: "project"
+
+# Name of the main project repo if this is a sub-repo; name of the working group/guild repo if this is a working group/guild subproject
+parent: "Fedramp-dashboard"
+
+# Maturity stage of the project (required)
+# values: discovery, alpha, beta, live, sunset, transfer, end
+stage: "alpha"
+
+# Description of the project
+description: "The purpose of the FedRAMP Dashboard project is to create a publicly available, web-based responsive dashboard providing greater visibility and up to date status for vendors going through the FedRAMP authorization process."
+
+# Tags that describe the project or aspects of the project
+tags:
+-
+
+# Should this repo have automated tests? If so, set to `true`. (required)
+# values: true, false
+testable: true
+
+# Team members contributing to the project (required)
+# Items:
+# - github: GitHub user name
+#   id: Internal team identifier/user name
+#   role: Team member's role; leads should be designated as 'lead'
+team:
+- github: jposi
+  id: Jessie Posilkin
+  role: Product Lead
+- github: lauraGgit
+  id: Laura Gerhardt
+  role: Tech Lead
+
+# Partners for whom the project is developed
+partners:
+- FedRAMP
+
+# Organizations or individuals who have adopted the project for their own use
+# Items:
+# - id: The name of the organization or individual
+#   url: A URL to the user's version of the project
+users:
+-
+
+# Brief descriptions of significant project developments
+milestones:
+- BPA task order awarded
+- Period of performance completed
+
+# Technologies used to build the project
+stack:
+- Angularjs
+- Nodejs
+- Gulp
+- USWDS
+- Karma
+- Jasmine
+- Showdown
+- jsdoc
+
+
+# Brief description of the project's outcomes
+impact: "To provide greater visibility and up to date status for vendors going through the FedRAMP authorization process, and for agencies planning to use authorized cloud services."
+"
+
+# Services used to supply project status information
+# Items:
+# - name: Name of the service
+#   category: Type of the service
+#   url: URL for detailed information
+#   badge: URL for the status badge
+services:
+- name: Travis CI
+  category: testing
+  url: https://travis-ci.org
+  badge: https://travis-ci.org/truetandem/fedramp-dashboard.svg?branch=master
+- name: Coveralls
+  category: code coverage
+  url: https://coveralls.io
+  badge: https://coveralls.io/repos/github/truetandem/fedramp-dashboard/badge.svg?branch=master
+- name: Code Climate
+  category: linter
+  url: https://codeclimate.com
+  badge: https://codeclimate.com/github/18f/fedramp-dashboard/badges/gpa.svg
+- name: continua11y
+  category: 508 compliance
+  url: https://continua11y.18f.gov
+  badge: https://continua11y.18f.gov/truetandem/fedramp-dashboard.svg?branch=master
+
+
+# Licenses that apply to the project and/or its components (required)
+# Items by property name pattern:
+#   .*:
+#     name: Name of the license from the Software Package Data Exchange (SPDX): https://spdx.org/licenses/
+#     url: URL for the text of the license
+licenses:
+  dashboard:
+    name: CC0-1.0
+    url: https://github.com/18F/team_api/blob/master/LICENSE.md
+  angularJS:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  coveralls:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  gulp:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  karma:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  papaparse:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  showdown:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  polyfill:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+ angular-ui-router:
+   name: MIT
+   url: https://opensource.org/licenses/MIT
+  angular-sticky:
+     name: MIT
+     url: https://opensource.org/licenses/MIT
+  united-states-web-design-standards:
+    name: CC0-1.0
+    url: https://github.com/18F/web-design-standards/blob/staging/LICENSE.md
+
+
+# Tag to use when blogging about this project
+blogTag:
+- ""
+
+# Links to project artifacts
+# Items:
+# - url: URL for the link
+#   text: Anchor text for the link
+#   category: Type of the link
+links:
+- url: https://marketplace.fedramp.gov
+  text: FedRAMP Marketplace
+
+# URIs for points-of-contact
+# Items:
+# - url: URL for the link
+#   text: Anchor text for the link
+contact:
+- url: mailto:laura.gerhardt@gsa.gov
+  text: Laura Gerhardt
