@@ -33,6 +33,7 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
    - [Agencies](#agencies)
    - [3PAOs](#3paos)
    - [Analysis Tools](#analysis-tools)
+   - [Data](#data)
  - [Maintenance](#maintenance)
     - [Add new Cloud Offering, Agency, or 3PAO](#add-new-cloud-offering-agency-or-3pao)
     - [Logo Guidelines](#logo-guidelines)
@@ -126,6 +127,8 @@ The following User Stories were created and refined in response to many user sur
 
 >[User Story 274](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/274): **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column.
 
+#### Data
+FedRAMP and the dashboard leverages the GitHub API to make its data accessible via api. The url for the bulk data is on the [18f/FedRAMP-data repository](https://api.github.com/repos/18F/fedramp-data/contents/data/data.json).
 
 ## Maintenance
 ### Deployment
