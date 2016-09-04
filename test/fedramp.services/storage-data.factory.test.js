@@ -175,6 +175,26 @@ describe('StorageData manager', function () {
         expect(storage.products().length).toBe(1);
     });
 
+    it('can return products with dependents', function () {
+        var data = TestData.Dependents.map(function(data) {
+            return new Data(data);
+        });
+        var storage = new StorageData();
+        storage.clear();
+        data.forEach(function(item) {
+            storage.update(item.hash(), item);
+        });
+
+        var pkgId = 'F1510137547'; // i.e., Datapipe
+        var agency = 'National Science Foundation';
+
+        var product = storage.products().find(function(item) {
+            return item.pkgId === pkgId;
+        });
+
+        expect(product.agencies.indexOf(agency) !== -1).toBe(true);
+    });
+
     it('can return agencies', function () {
         var data = new Data(TestData.Letters[0]);
         var storage = new StorageData();

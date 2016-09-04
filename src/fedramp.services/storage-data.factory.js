@@ -188,32 +188,46 @@
                     items.push(item);
                 }
 
+                // Don't repeat yourself.
+                let addAgencies = (d, item) => {
+                    if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
+                        item.agencies.push(d.sponsoringAgency.trim());
+                    }
+
+                    if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, item.agencies)) {
+                        item.agencies.push(d.authorizingAgency.trim());
+                    }
+
+                    if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, item.agencies)) {
+                        item.agencies.push(d.authorizingSubagency.trim());
+                    }
+
+                    d.atoLetters.forEach(a => {
+                        if (validAgency(a.authorizingAgency) && include(a.authorizingAgency, item.agencies)) {
+                            item.agencies.push(a.authorizingAgency.trim());
+                        }
+
+                        if (validAgency(a.authorizingSubagency) && include(a.authorizingSubagency, item.agencies)) {
+                            item.agencies.push(a.authorizingSubagency.trim());
+                        }
+                    });
+                };
+
                 items.forEach(item => {
                     data.forEach(d => {
                         if (d.pkg.trim() === item.name) {
-                            if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
-                                item.agencies.push(d.sponsoringAgency.trim());
-                            }
-
-                            if (validAgency(d.authorizingAgency) && include(d.authorizingAgency, item.agencies)) {
-                                item.agencies.push(d.authorizingAgency.trim());
-                            }
-
-                            if (validAgency(d.authorizingSubagency) && include(d.authorizingSubagency, item.agencies)) {
-                                item.agencies.push(d.authorizingSubagency.trim());
-                            }
-
-                            d.atoLetters.forEach(a => {
-                                if (validAgency(a.authorizingAgency) && include(a.authorizingAgency, item.agencies)) {
-                                    item.agencies.push(a.authorizingAgency.trim());
-                                }
-
-                                if (validAgency(a.authorizingSubagency) && include(a.authorizingSubagency, item.agencies)) {
-                                    item.agencies.push(a.authorizingSubagency.trim());
-                                }
-                            });
+                            addAgencies(d, item);
                         }
                     });
+
+                    // Add agencies that use dependent products.
+                    if(item.hasOwnProperty('dependents')) {
+                        item.dependents.forEach(name => {
+                            let d = data.find(item => { return item.pkg.trim() === name; });
+
+                            addAgencies(d, item);
+                        });
+                    }
                 });
 
                 return items;
