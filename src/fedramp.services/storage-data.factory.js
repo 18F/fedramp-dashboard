@@ -188,7 +188,6 @@
                     items.push(item);
                 }
 
-                // Don't repeat yourself.
                 let addAgencies = (d, item) => {
                     if (validAgency(d.sponsoringAgency) && include(d.sponsoringAgency, item.agencies)) {
                         item.agencies.push(d.sponsoringAgency.trim());
@@ -394,41 +393,10 @@
                     }
                 }
 
-                items.forEach(item => {
-                    data.forEach(d => {
-                        d.atoLetters
-                            .filter(x => safeTrim(x.authorizingAgency) === item.name || safeTrim(x.authorizingSubagency) === item.name)
-                            .forEach(a => {
-                                item.authorized++;
-                                if (include(d.pkg, item.products)) {
-                                    item.products.push(d.pkg.trim());
-                                }
-
-                                if (include(d.name, item.providers)) {
-                                    item.providers.push(d.name.trim());
-                                }
-
-                                if (include(a.independentAssessor, item.assessors)) {
-                                    item.assessors.push(a.independentAssessor.trim());
-                                }
-                            });
-
-                        if (safeTrim(d.sponsoringAgency) === item.name) {
-                            item.sponsored++;
-                            if (include(d.pkg, item.products)) {
-                                item.products.push(d.pkg.trim());
-                            }
-
-                            if (include(d.name, item.providers)) {
-                                item.providers.push(d.name.trim());
-                            }
-
-                            if (include(d.independentAssessor, item.assessors)) {
-                                item.assessors.push(d.independentAssessor.trim());
-                            }
-                        }
-
-                        if (safeTrim(d.authorizingAgency) === item.name || safeTrim(d.authorizingSubagency) === item.name) {
+                let addProducts = (d, item) => {
+                    d.atoLetters
+                        .filter(x => safeTrim(x.authorizingAgency) === item.name || safeTrim(x.authorizingSubagency) === item.name)
+                        .forEach(a => {
                             item.authorized++;
                             if (include(d.pkg, item.products)) {
                                 item.products.push(d.pkg.trim());
@@ -438,9 +406,68 @@
                                 item.providers.push(d.name.trim());
                             }
 
-                            if (include(d.independentAssessor, item.assessors)) {
-                                item.assessors.push(d.independentAssessor.trim());
+                            if (include(a.independentAssessor, item.assessors)) {
+                                item.assessors.push(a.independentAssessor.trim());
                             }
+                        });
+
+                    if (safeTrim(d.sponsoringAgency) === item.name) {
+                        item.sponsored++;
+                        if (include(d.pkg, item.products)) {
+                            item.products.push(d.pkg.trim());
+                        }
+
+                        if (include(d.name, item.providers)) {
+                            item.providers.push(d.name.trim());
+                        }
+
+                        if (include(d.independentAssessor, item.assessors)) {
+                            item.assessors.push(d.independentAssessor.trim());
+                        }
+                    }
+
+                    if (safeTrim(d.authorizingAgency) === item.name || safeTrim(d.authorizingSubagency) === item.name) {
+                        item.authorized++;
+                        if (include(d.pkg, item.products)) {
+                            item.products.push(d.pkg.trim());
+                        }
+
+                        if (include(d.name, item.providers)) {
+                            item.providers.push(d.name.trim());
+                        }
+
+                        if (include(d.independentAssessor, item.assessors)) {
+                            item.assessors.push(d.independentAssessor.trim());
+                        }
+                    }
+                };
+
+                items.forEach(item => {
+                    // Add all primary products.
+                    data.forEach(d => {
+                        addProducts(d, item);
+                    });
+
+                    // For each primary product, add its underlying products to the list.
+                    item.products.forEach(name => {
+                        let product = data.find(item => { return item.pkg.trim() === name; });
+
+                        if (product.hasOwnProperty('underlyingCspPackages')) {
+                            product.underlyingCspPackages.forEach(function (pkgId) {
+                                let underlying = data.find(item => { return item.pkgId.trim() === pkgId; });
+
+                                if (include(underlying.pkg, item.products)) {
+                                    item.products.push(underlying.pkg.trim());
+                                }
+
+                                if (include(underlying.name, item.providers)) {
+                                    item.providers.push(underlying.name.trim());
+                                }
+
+                                if (include(underlying.independentAssessor, item.assessors)) {
+                                    item.assessors.push(underlying.independentAssessor.trim());
+                                }
+                            });
                         }
                     });
 
