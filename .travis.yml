@@ -7,7 +7,7 @@ before_deploy:
 - tar xzvf $HOME/cf.tgz -C $HOME
 - mkdir -p ${HOME}/Godeps/_workspace
 - export GOPATH=${HOME}/Godeps/_workspace
-- go get github.com/concourse/autopilot
+- go get github.com/contraband/autopilot
 - cf install-plugin -f $GOPATH/bin/autopilot
 - npm run package
 env:
