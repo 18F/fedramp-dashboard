@@ -11,11 +11,11 @@ references:
 - name: Repository's Github
   path: https://github.com/18F/fedramp-dashboard
   type: URL
-- name: Flake8, Python Linting Tool
-  path: http://flake8.pycqa.org/en/latest/
+- name: JSHint, Python Linting Tool
+  path: http://jshint.com/
   type: URL
-- name: Bandit, Static Security Analysis
-  path: https://wiki.openstack.org/wiki/Security/Projects/Bandit
+- name: Code Climate, Static Analysis
+  path: https://codeclimate.com/github/18F/fedramp-dashboard
   type: URL
 - name: OWASP's ZAP
   path: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
@@ -137,13 +137,11 @@ satisfies:
     - text: >
         In addition to cloud.gov controls, the application layer is scanned with
         both static and dynamic tooling.  Before being merged into "master", all
-        custom code is automatically analyzed by "flake8" (a linting tool to
-        catch syntactic errors), "bandit" (a security-focused static analysis
-        tool), and a handful of custom, security-centric unit tests. Code which
-        does not meet these standards is generally not merged. We also employ
-        Gemnasium to track our dependencies, Code Climate to warn of potentially
-        concerning style, and Quantified Code to warn about security and style
-        issues.
+        custom code is automatically analyzed by "jshint" (a linting tool to
+        catch syntactic errors) and a handful of custom, security-centric unit
+        tests. Code which does not meet these standards is generally not merged.
+        We also employ Gemnasium to track our dependencies and Code Climate to
+        warn of potentially concerning style.
 
         For static analysis, we've addressed all critical issues raised by
         evaluating the application with OWASP ZAP and Nessus.
@@ -161,13 +159,12 @@ satisfies:
   narrative:
     - text: >
         In addition to cloud.gov controls, the application layer is scanned with
-        static analysis tooling. Before being merged into "master" all custom
-        code has "flake8" (a linting tool to catch syntactic errors), "bandit"
-        (a security-focused static analysis tool), and a handful of custom,
-        security-centric unit tests ran. Code which does not meet these
-        standards is generally not merged. We also employ Gemnasium to track our
-        dependencies, Code Climate to warn of potentially concerning style, and
-        Quantified Code to warn about security and style issues.
+        both static and dynamic tooling.  Before being merged into "master", all
+        custom code is automatically analyzed by "jshint" (a linting tool to
+        catch syntactic errors) and a handful of custom, security-centric unit
+        tests. Code which does not meet these standards is generally not merged.
+        We also employ Gemnasium to track our dependencies and Code Climate to
+        warn of potentially concerning style.
   references:
     - verification_key: flake8
     - verification_key: bandit
