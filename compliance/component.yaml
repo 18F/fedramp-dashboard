@@ -5,17 +5,23 @@ references:
 - name: Amazon Web Services' S3 Authorized URLs
   path: http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html
   type: URL
-- name: New Relic Application Monitoring
-  path: https://newrelic.com/application-monitoring
+- name: New Relic Browser Monitoring
+  path: https://newrelic.com/browser-monitoring
   type: URL
 - name: Repository's Github
   path: https://github.com/18F/fedramp-dashboard
   type: URL
-- name: JSHint, Python Linting Tool
+- name: JSHint, Node.js Linting Tool
   path: http://jshint.com/
   type: URL
 - name: Code Climate, Static Analysis
   path: https://codeclimate.com/github/18F/fedramp-dashboard
+  type: URL
+- name: Coveralls, Code Coverage
+  path: https://coveralls.io/
+  type: URL
+- name: Gemnasium, Dependency Analysis
+  path: https://gemnasium.com/
   type: URL
 - name: OWASP's ZAP
   path: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
@@ -51,7 +57,8 @@ satisfies:
   narrative:
     - text: >
         Cloud.gov logs requests, failures, warnings, etc. emitted by the
-        application.
+        application. We also utilize New Relic's Browser monitoring to provide
+        additional data.
   covered_by:
     - verification_key: new-relic
 - standard_key: NIST-800-53
@@ -146,11 +153,10 @@ satisfies:
         For static analysis, we've addressed all critical issues raised by
         evaluating the application with OWASP ZAP and Nessus.
   references:
-    - verification_key: flake8
-    - verification_key: bandit
+    - verification_key: jshint
     - verification_key: gemnasium
     - verification_key: code-climate
-    - verification_key: quantified-code
+    - verification_key: coveralls
     - verification_key: owasp-zap
     - verification_key: nessus
 - standard_key: NIST-800-53
@@ -161,16 +167,14 @@ satisfies:
         In addition to cloud.gov controls, the application layer is scanned with
         both static and dynamic tooling.  Before being merged into "master", all
         custom code is automatically analyzed by "jshint" (a linting tool to
-        catch syntactic errors) and a handful of custom, security-centric unit
-        tests. Code which does not meet these standards is generally not merged.
-        We also employ Gemnasium to track our dependencies and Code Climate to
-        warn of potentially concerning style.
+        catch syntactic errors) and a handful of custom, unit tests. Code which
+        does not meet these standards is generally not merged. We also employ
+        Gemnasium to track our dependencies, Code Climate to warn of potentially
+        concerning style, and Coveralls to provide code coverage statistics.
   references:
-    - verification_key: flake8
-    - verification_key: bandit
     - verification_key: gemnasium
     - verification_key: code-climate
-    - verification_key: quantified-code
+    - verification_key: coveralls
 - standard_key: NIST-800-53
   control_key: SA-22 (1)   # Unsupported System Components
                            # Alternative Sources for Continued Support
