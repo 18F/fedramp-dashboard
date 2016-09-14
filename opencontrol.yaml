@@ -4,9 +4,20 @@ metadata:
   description: "The purpose of the FedRAMP Dashboard project is to create a publicly available, web-based responsive dashboard providing greater visibility and up to date status for vendors going through the FedRAMP authorization process."
   maintainers:
     - laura.gerhardt@gsa.gov
-components: # A list of paths to components written in the opencontrol format for more information view: https://github.com/opencontrol/schemas
-  - ./your_app_component
+components:
+  - ./compliance
+certifications:
+  # paths
+standards:
+  # paths
 dependencies:
-  systems:
-    - url: github.com/18F/cg-compliance
+  certifications:
+    # LATO
+    - url: https://github.com/18F/GSA-Certifications
       revision: master
+  systems:
+    # Cloud.gov
+    - url: https://github.com/18F/cg-compliance
+      revision: master
+  standards:
+    # data
