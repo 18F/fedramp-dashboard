@@ -1,0 +1,172 @@
+ref,subject,description,sprint,sprint_estimated_start,sprint_estimated_finish,owner,owner_full_name,assigned_to,assigned_to_full_name,status,severity,priority,type,is_closed,attachments,external_reference,tags,watchers,voters,created_date,modified_date,finished_date
+69,Integrate CI with continua11y,"18F would like the project to integrate with [continua11y](https://github.com/18F/continua11y). Possible TravisCI modification
+
+```
+after_script:
+- npm install -g pa11y-crawl
+- pa11y-crawl --ci http://localhost:PORT
+```",,,,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/2']",,[],0,2016-06-22 18:32:35.298574+00:00,2016-06-23 13:04:32.151748+00:00,2016-06-23 13:04:14.449381+00:00
+93,Integrate with CodeClimate,"To identify potential issues in advance the use of code climate should be utilized.
+
+ - Create the ```.codeclimate.yml``` to exclude external libraries.
+ - Register at [https://codeclimate.com/github/truetandem/fedramp-dashboard](https://codeclimate.com/github/truetandem/fedramp-dashboard)",,,,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/3']",,[],0,2016-06-23 12:15:09.907016+00:00,2016-06-23 12:42:41.713910+00:00,2016-06-23 12:37:54.227046+00:00
+97,Acceptance of Sprint 0,"Per the user stories completed as documented in this [google doc](https://docs.google.com/document/d/1Jb-mLb4T8ovXKriwqUg4t3htZSAqCE0XKvjn98kIePk/edit#) and on [Taiga](https://tree.taiga.io/project/truetandem-fedramp-dashboard/taskboard/sprint-0-planning-sprint-1), 18F and FedRAMP accept the work of TrueTandem in Sprint 0.
+
+Great work - excited to see what happens in Sprint 1!",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,pjsumm,Paul Summers,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/4']",,[],0,2016-06-24 16:10:55.434831+00:00,2016-06-28 14:04:13.632584+00:00,2016-06-28 14:04:13.644079+00:00
+99,Deployment to S3,"It was discussed to possibly leverage S3 to host the static files. This would be beneficial since the Sites hosting is done through WordPress and it would allow various environments (staging, production, etc.) to be configured.",,,,truetandem,"TrueTandem, LLC",,,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/5']",,[],0,2016-06-28 20:21:22.209358+00:00,2016-07-12 15:53:17.262701+00:00,2016-07-12 15:53:17.268847+00:00
+124,Total Authorization Count by Package ID not name,"In reviewing the 
+https://github.com/truetandem/fedramp-dashboard/blob/master/src/fedramp/home/home.controller.js#L322
+
+I think that line 322 would probably be ` if (p.pkgId && !counted.includes(p.pkgId)) {` as companies such as Microsoft, have multiple products although the same provider name.
+
+I also believe that provider.length probably is sufficient to get this as the `groupby` function in the .gs script is by package id, but you might want to retain this to confirm.
+
+Below is the full function for reference.
+```
+        self.totalAuthorized = function () {
+            var totalAuthorized = 0;
+
+            var counted = [];
+            for (var i = 0; i < providers.length; i++) {
+                var p = providers[i];
+                if (p.name && !counted.includes(p.name)) {
+                    counted.push(p.name);
+                    totalAuthorized++;
+                }
+            }
+
+            return totalAuthorized;
+        };
+```
+",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/9']",,[],0,2016-07-01 19:10:32.943520+00:00,2016-07-12 15:43:13.962722+00:00,2016-07-12 15:43:13.968785+00:00
+138,Loading Font Files from CSS,"https://github.com/truetandem/fedramp-dashboard/blob/master/index.html#L15
+Please make sure that once you move over to the uswds.css that you are loading your fonts as they do from the core_fonts `@font-face { /* … */ }` declarations as shown below:
+
+https://github.com/18F/web-design-standards/blob/fd9018f2338c9ab1399769149c4205cbac30c519/src/stylesheets/core/_fonts.scss",,,,lauraggit,Laura Gehardt,joeignition,Joe Wilson,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/10']",,[],0,2016-07-08 12:40:50.128670+00:00,2016-07-19 18:38:51.839190+00:00,2016-07-19 18:38:51.848995+00:00
+139,Blanket.js coverage,"I am seeing in the jasmine test runner that Blanket.js is putting the coverage of fedramp.js at 72% while Coveralls is stating closer to 90%. It looks like blanket is a bit more strict on whether the code hits object properties, but I was curious about the difference to your knowledge in the coverage calculations.
+ http://truetandem.github.io/fedramp-dashboard/test/",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/11']",,[],0,2016-07-08 18:27:52.348467+00:00,2016-07-12 15:42:28.136025+00:00,2016-07-12 15:42:28.143810+00:00
+140,Moving component template html files into own directory ,"This is just a suggestion, but it seems like for clarity, it might sense to move the component templates in the `[src/fedramp.components](https://github.com/truetandem/fedramp-dashboard/tree/master/src/fedramp.components)` into their own subdirectory for easier navigation of this  directory.",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/12']",,[],0,2016-07-08 18:30:16.979154+00:00,2016-07-19 18:38:48.979270+00:00,2016-07-19 18:38:48.985939+00:00
+141,Sprint 2 acceptance,"18F accepts the work done by True Tandem, with a note of the following issues that require resolution/conversation next week:
+[GitHub#12](https://github.com/truetandem/fedramp-dashboard/issues/12) 
+[GitHub#11](https://github.com/truetandem/fedramp-dashboard/issues/11) 
+[GitHub#10](https://github.com/truetandem/fedramp-dashboard/issues/10) 
+
+",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,pjsumm,Paul Summers,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/13']",,[],0,2016-07-08 18:37:09.972779+00:00,2016-07-12 15:28:38.278795+00:00,2016-07-12 15:24:38.235181+00:00
+174,A test fails when running locally,"Hey Team-
+
+Minor issue when I was getting things set up, on following the directions (`npm install` && `npm test`), I get a error on one of the tests:
+
+```bash
+PhantomJS 2.1.1 (Mac OS X 0.0.0) The helper service can convert date to mm/dd/YYYY FAILED
+	Expected '08/22/2013' to be '08/23/2013'.
+	/Users/anthonygarvan/Documents/Projects/fedramp-dashboard/test/fedramp.services/helper.service.test.js:18:64
+```
+
+I'm on node 4.1.0 and npm 2.14.4.  ",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/14']",,[],0,2016-07-18 20:31:37.218377+00:00,2016-08-03 18:44:54.245558+00:00,2016-07-19 18:38:59.092640+00:00
+175,CSS Issue on Landing Page,"Looks like there is an issue with the CSS on the landing page. Search box should not be above the rest of the header, but to the right of it.
+
+<img width=""1068"" alt=""screen shot 2016-07-18 at 3 33 07 pm"" src=""https://cloud.githubusercontent.com/assets/2559082/16929385/3b247530-4cfd-11e6-8129-799ae21b9430.png"">
+",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,floresj,John Flores,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/15']",,[75501],0,2016-07-18 20:36:29.239540+00:00,2016-08-03 18:46:51.313948+00:00,2016-08-03 18:44:39.127469+00:00
+176,Remove jquery from project,"It looks like you have evolved from using jquery to angular, but jquery is still present in your package.json and you are still fetching it on page load. Unless you are in fact using it in some place I couldn't find, you should remove those artifacts.",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/16']",,[],0,2016-07-18 20:46:52.477155+00:00,2016-08-03 18:45:10.979171+00:00,2016-07-19 18:39:04.023321+00:00
+259,Multiple `Export to CSV` buttons,"This is very low priority but when we have a filtered list, this seems a bit redundant.
+
+![image](https://cloud.githubusercontent.com/assets/5840989/17330739/f8b09446-5895-11e6-8ae1-74525f37844a.png)
+",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/17']",,[],0,2016-08-02 13:46:29.752571+00:00,2016-08-02 18:02:25.452687+00:00,2016-08-02 18:02:25.459700+00:00
+269,Use U.S. Web Design Standards favicon,Please use the favicon from https://standards.usa.gov/,,,,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/18']",,[],0,2016-08-03 14:51:07.901843+00:00,2016-08-03 18:44:12.232772+00:00,2016-08-03 18:44:12.239211+00:00
+270,"In Print Dashboard when Status is chosen from top visual headers, print says status is undefinded","Given I have selected a status from the top filters,
+When I select the print,
+Then I would like to see that the status in the print view reflects the filter I chose. 
+
+![image](https://cloud.githubusercontent.com/assets/5840989/17369900/1cf449ce-5968-11e6-93a1-1f5ba012ca05.png)
+",,,,lauraggit,Laura Gehardt,floresj,John Flores,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/19']",,[],0,2016-08-03 14:51:40.696018+00:00,2016-08-03 18:45:42.321226+00:00,2016-08-03 18:45:42.327146+00:00
+271,Ready and In-Progress CSPs should have authorizations == 0,"I think this might have already gotten addressed in the Taiga punch list, but I didn't find it.",,,,lauraggit,Laura Gehardt,floresj,John Flores,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/20']",,[],0,2016-08-03 15:46:50.175592+00:00,2016-08-03 18:45:44.475245+00:00,2016-08-03 18:45:44.482316+00:00
+277,Deployment procedure for documenation,"Laura, we need your assistance with the documentation.  Can you provide a brief write-up for the deployment procedure? ",,,,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/23']",,[],0,2016-08-04 14:39:27.994863+00:00,2016-08-04 21:41:09.630644+00:00,2016-08-04 21:41:09.642548+00:00
+279,Placeholder Issue for README.MD graphic,"![logoguidelinesinfo](https://cloud.githubusercontent.com/assets/12962390/17411346/22a43d28-5a46-11e6-9f85-c284d96249df.png)
+",,,,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/24']",,[],0,2016-08-04 17:20:13.840903+00:00,2016-08-04 21:41:00.187138+00:00,2016-08-04 21:40:55.089446+00:00
+292,508 Compliance Errors,"- [ ] Code Sniffer is giving the error for the Contact Information header in the footer, saying “The heading structure is not logically nested. This h3 element appears to be the primary document heading, so should be an h1 element.” Let’s discuss in our standup.
+
+- [ ] The other 508 errors seem to arise from the Twitter embed. Please swap out the Twitter iFrame with current User timeline as listed in the following docs:
+https://dev.twitter.com/web/embedded-timelines/user
+https://dev.twitter.com/web/embedded-timelines
+",,,,lauraggit,Laura Gehardt,floresj,John Flores,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/26']",,[],0,2016-08-08 22:06:50.869827+00:00,2016-08-09 17:10:59.636192+00:00,2016-08-09 17:10:59.642918+00:00
+293,Documentation - PWS Compliance,"## README.md
+
+- [ ] Include a bit more documentation about how to perform maintenance on the local storage services.
+
+- [ ] Include the link back to the tests `http://truetandem.github.io/fedramp-dashboard/test/` given that is has an easier to read reporter than just the one in `npm test` https://github.com/truetandem/fedramp-dashboard/blob/gh-pages/README.md#executing-tests-and-coverage-reports 
+
+- [ ] Add documentation for the `npm run docgen` function
+
+## Contributing.md
+- [ ] In lieu of the “Reporting Issues,” create an Issue Template. https://github.com/blog/2111-issue-and-pull-request-templates
+- [ ] `###Tooling Section` looks like it should be moved into the readme.
+",,,,lauraggit,Laura Gehardt,floresj,John Flores,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/27']",,[],0,2016-08-08 22:09:21.998178+00:00,2016-08-09 19:02:48.600261+00:00,2016-08-09 19:02:48.608176+00:00
+294,Increasing Test Coverage - Recommended,"While we did not explicitly state in the QASP, we would prefer that you expand your test coverage so that the `lcov` report generated at `http://localhost:8080/coverage/` so that the test suite will cover 90% of statements of code.  The current metric that Coveralls uses is `lines`.
+
+As of earlier today (commit `a775309`), tests hit 1596/1812 statements (88.08%).  We recognize that you have achieved the 90% in terms of lines (471/476).
+
+Moving to 90% statement coverage will help us ensure that future enhancements will be less likely to break our test suite.",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/28']",,[],0,2016-08-08 22:14:33.847382+00:00,2016-08-09 20:24:27.020106+00:00,2016-08-09 20:24:27.026188+00:00
+295,Update Gulp Task - Recommended ,"To improve load performance of the production site we recommend that you alter a number of the tasks performed in the `npm run package` gulp script.
+
+- [ ] Minify CSS for the `build/dest`
+- [ ] Bundle the js libs into the minified fedramp.min.js in `build/dest`. This would make it so you wouldn't need the separate `lib`, `build/lib`, or `build/dest/lib` directories and would then only require the site to load 1 js file.
+- [ ] Change the copy `fonts`, `img` task to just copy these directories from the `node_modules/uswds/dist` directories.  Then remove the directories from the committed repository.
+- [ ] When the `npm run package` is run do not copy unminified `fedramp.js` to `build/dest` ",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/29']",,[],0,2016-08-08 22:19:08.711684+00:00,2016-08-09 17:11:02.334417+00:00,2016-08-09 17:11:02.344496+00:00
+296, Streamline Repository Directory Organization - Recommended,"Some of the directory organization could be streamlined to make the `src => build/dest` pipeline more fluid. Many of these tasks would be contingent on reworking the Gulp tasks outlined in #29.
+
+- [ ] Add `dist` to git ignore.* It looks like `lib`, `dist`, `css` are artifacts of the test suite and the gulp build process, and should be added to the .gitignore, as they do not need to be committed.
+
+- [ ] Move `sass` in to `src`* to make it clear that that is compiled in the build process. 
+Move the index.html into `src` as well. This would likely require an update to the Gulp script.
+
+
+",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/30']",,[],0,2016-08-08 22:22:23.985674+00:00,2016-08-09 20:23:56.833659+00:00,2016-08-09 20:23:56.840425+00:00
+297,Use Git Subtree to build gh-pages branch - Nice to Have,"Consider just pushing just the `build/dest` directory built via the `npm run package` to the gh-pages by using git subtree.
+
+This would to allow us to have a development environment on `gh-pages` that more closely reflects the `build/dest` that the production environment runs on.
+
+For documentation on this please see:
+https://makingsoftware.wordpress.com/2013/02/16/using-git-subtrees-for-repository-separation/
+
+https://gist.github.com/cobyism/4730490
+",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/31']",,[],0,2016-08-08 22:24:49.948233+00:00,2016-08-09 20:23:33.410993+00:00,2016-08-09 20:23:33.417683+00:00
+298,Separate Router Test Assertions into separate tests - Nice to Have,"In the test [fedramp.routes.test.js]
+(https://github.com/truetandem/fedramp-dashboard/blob/master/test/fedramp/fedramp.routes.test.js), it would be helpful if it were re-written several tests with individual assertions  for each route to be able to better ascertain where any router issues occur if they arise.",,,,lauraggit,Laura Gehardt,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/32']",,[],0,2016-08-08 22:27:07.222972+00:00,2016-08-09 18:09:38.660933+00:00,2016-08-09 18:09:38.667835+00:00
+299,Match styling to fedramp.gov,"**Description**
+
+Match styling of header of marketplace.fedramp.gov to headers of fedramp.marketplace.gov to keep consistency between pages.
+
+**Ask**
+
+Add:
+
+- [ ] Add Social Media Icons
+- [ ] Add ""contact us"" link
+- [ ] Shift navigation bar to be inline with FedRAMP logo as it is on fedramp.gov
+
+**Additional info**
+Here's an image of the fedramp.gov site:
+<img width=""1097"" alt=""screen shot 2016-08-09 at 5 00 04 pm"" src=""https://cloud.githubusercontent.com/assets/3505071/17533605/8683c690-5e53-11e6-8689-3e64cadb3894.png"">
+
+",,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,bmallred,Bryan Allred,Closed,Normal,Normal,Bug,True,0,"['github', 'https://github.com/truetandem/fedramp-dashboard/issues/33']",,[],0,2016-08-09 21:06:16.968440+00:00,2016-08-10 18:09:35.214259+00:00,2016-08-10 18:09:35.221123+00:00
+300,set up new relic monitoring,https://pages.18f.gov/before-you-ship/infrastructure/monitoring/,,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/43']",,[],0,2016-08-16 21:22:29.827660+00:00,2016-08-16 21:22:29.827822+00:00,
+301,perform security scans,https://pages.18f.gov/before-you-ship/security/scanning/,,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/44']",,[],0,2016-08-16 21:24:29.304041+00:00,2016-08-16 21:24:29.304147+00:00,
+302,create system security plan,https://pages.18f.gov/before-you-ship/ato/ssp/#template,,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/45']",,[],0,2016-08-16 21:25:00.723264+00:00,2016-08-16 21:25:00.723480+00:00,
+303,set up compliance masonry,https://github.com/18F/cg-compliance#starting-ato-documentation-for-cloudgov-applications,,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/46']",,[],0,2016-08-16 21:26:37.543857+00:00,2016-08-16 21:26:37.544016+00:00,
+304,create .about.yml,https://github.com/18F/about_yml,,,,github-c443f57802f34442b3ae95851e9e6a31,GitHub,,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/47']",,[],0,2016-08-16 22:50:55.857100+00:00,2016-08-16 22:50:55.857199+00:00,
+305,Break Taiga webhooks,"**What did you do?**
+
+Received email notices about new issues posted to 18F owned repository via Taiga web hooks.
+
+*Including steps for recreating it, if applicable.*
+
+Post issue at 18F/fedramp-dashboard
+Drink coffee
+Check issues on https://tree.taiga.io/project/truetandem-fedramp-dashboard/issues?page=1
+
+**What did you expect to see?**
+
+*Describe the desired behavior and what would deem this issue, bug, or feature
+complete.*
+
+Issues do not get posted on Taiga",,,,truetandem,"TrueTandem, LLC",,,New,Normal,Normal,Bug,False,0,"['github', 'https://github.com/18F/fedramp-dashboard/issues/49']",,[],0,2016-08-17 12:31:29.452534+00:00,2016-08-17 12:31:29.452627+00:00,

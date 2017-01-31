@@ -20,34 +20,34 @@ system-type: minor
 level-of-identity-assurance: 0
 staff:
   authorizing-official:
-    name: Aaron Snow
-    title: 18F Executive Director
-    org: General Services Administration
-    unit: 18F
-    email: 18F@gsa.gov
-  system-owner:
     name: Noah Kunin
-    title: 18F Infrastructure Director
+    title: TTS Infrastructure Director
     org: General Services Administration
-    unit: 18F
+    unit: TTS
     email: devops@gsa.gov
   system-management:
-    name: Noah Kunin
-    title: 18F Infrastructure Director
+    name: Laura Gerhardt
+    title: Technical Lead
     org: General Services Administration
-    unit: 18F
-    email: devops@gsa.gov
+    unit: TTS Acquisition
+    email: laura.gerhardt@gsa.gov
   system-security-officer:
     name: Noah Kunin
-    title: 18F Infrastructure Director
+    title: TTS Infrastructure Director
     org: General Services Administration
-    unit: 18F
+    unit: TTS
     email: devops@gsa.gov
+  system-owner:
+    name: Laura Gerhardt
+    title: Technical Lead
+    org: General Services Administration
+    unit: TTS
+    email: laura.gerhardt@gsa.gov
   technical-lead:
     name: Laura Gerhardt
     title: Technical Lead
     org: General Services Administration
-    unit: 18F
+    unit: TTS Acquisition
     email: laura.gerhardt@gsa.gov
 leveraged-authorizations:
 - https://www.fedramp.gov/marketplace/compliant-systems/amazon-web-services-aws-eastwest-us-public-cloud/
@@ -56,12 +56,11 @@ components:
 - https://github.com/18F/fedramp-dashboard
 
 # these will be the same unless your architecture is especially complex
-system-diagram: <link>
-network-diagram: <link>
+system-diagram: https://github.com/18F/fedramp-dashboard/blob/master/FedRAMP_Dashboard_System_Diagram.pdf
+network-diagram: https://github.com/18F/fedramp-dashboard/blob/master/FedRAMP_Dashboard_System_Diagram.pdf
 
 environments:
-- Cloud Foundry
-- Amazon Web Services East
+- Cloud.gov
 user-types:
   developer:
     functions:

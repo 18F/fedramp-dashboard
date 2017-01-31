@@ -1,6 +1,5 @@
 # FedRAMP Dashboard
 
-[![Gitter](https://badges.gitter.im/truetandem/fedramp-dashboard.svg)](https://gitter.im/truetandem/fedramp-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/18F/fedramp-dashboard.svg?branch=master)](https://travis-ci.org/18F/fedramp-dashboard)
 [![Coverage Status](https://coveralls.io/repos/github/18F/fedramp-dashboard/badge.svg?branch=master)](https://coveralls.io/github/18F/fedramp-dashboard?branch=master)
 [![Code Climate](https://codeclimate.com/github/18F/fedramp-dashboard/badges/gpa.svg)](https://codeclimate.com/github/18F/fedramp-dashboard)
@@ -50,6 +49,7 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
  - [Getting to know the code](#getting-to-know-the-code)
     - [Clone all things](#clone-all-things)
     - [Checking dependencies](#checking-dependencies)
+        - [Runtime dependencies](#runtime-dependencies)
     - [Running a local server](#running-a-local-server)
     - [Executing tests and coverage reports](#executing-tests-and-coverage-reports)
     - [Packaging Application](#packaging-application)
@@ -57,19 +57,20 @@ Read more about the FedRAMP program [here](https://www.fedramp.gov/about-us/abou
     - [Tooling](#tooling)
 
 ## Project Management
-The project team utilized Taiga, a free online open source project management tool, to administer User Stories, Tasks, and Sprints.  All public projects in Taiga are free and openly accessible, providing full public visibility into the FedRAMP Dashboard Product Backlog and sprint activities.
+To view the project team's User Stories, Tasks, and Sprints, please see the following achieved conversations.
 
-Visit the FedRAMP Dashboard Taiga project [here](https://tree.taiga.io/project/truetandem-fedramp-dashboard) or download the project materials locally:
+ - [User Stories](/project-management/userstories.csv)
+ - [Tasks](/project-management/tasks.csv)
+ - [Issues](/project-management/issues.csv)
 
- - [User Stories](https://api.taiga.io/api/v1/userstories/csv?uuid=926a76483f8144adacd750da0f95ebe8)
- - [Tasks](https://api.taiga.io/api/v1/tasks/csv?uuid=b0b63151452144f594a1d03631dcb447)
- - [Issues](https://api.taiga.io/api/v1/issues/csv?uuid=3116edcad252441d98f87c217490766b)
+The project team's chat conversation is archived [here](/project-management/archived-fedramp-gitter-conversation.md).
 
-GitHub commits can be traced back to their corresponding Taiga tasks through commit comments.  Commits directly related to a Taiga task will be prefixed with the task ID:
+GitHub commits can be traced back to their corresponding referenced tasks through commit comments.  Commits directly related to a project management ask will be prefixed with the task ID:
 
 ```
 [TG-xxx] Commit description
 ```
+
 
 ## Application
 The FedRAMP Dashboard is written entirely in client-side code: `HTML`, `CSS`, and `JavaScript`, and populated by a FedRAMP-managed `json` data feed, which is currently hosted at [18F/fedramp-data](https://github.com/18f/fedramp-data).  The code is hosted in a [public code repository on GitHub](https://github.com/18F/fedramp-dashboard) and is [licensed](https://github.com/18F/fedramp-dashboard/blob/master/LICENSE) under the Creative Commons, CC0 1.0 Universal Public domain dedication.  The application makes use of the [AngularJS](https://angularjs.org/) JavaScript framework.
@@ -87,48 +88,52 @@ For information on contributing to the FedRAMP Dashboard codebase, please visit 
 The following User Stories were created and refined in response to many user surveys, interviews, and usability testing sessions, and became the base requirements for the FedRAMP Dashboard.  Click on the User Story number to see the story details, otherwise the title and brief description are provided here.
 
 #### Header
->[User Story 52](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/52): **Total Authorizations** - The high-level metrics at the top of the dashboard, counts for FedRAMP Ready, In-Process, and Authorized.  
+>User Story 52: **Total Authorizations** - The high-level metrics at the top of the dashboard, counts for FedRAMP Ready, In-Process, and Authorized.  
 
 #### Cloud Service Providers
->[User Story 19](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/19): **Provider check status** - View the cloud service offering/product current Authorization status both on the Products listing and the Product detail.  Products that are "Authorized" are represented by the double check-mark icon in the product listing view.
+>User Story 19: **Provider check status** - View the cloud service offering/product current Authorization status both on the Products listing and the Product detail.  Products that are "Authorized" are represented by the double check-mark icon in the product listing view.
 
->[User Story 23](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/23): **Monitor CSP Authorizations** - See which agencies are using a product from the Product details view. The Agency names are listed out and created as hyperlinks to the Agency detail view.
+>User Story 23: **Monitor CSP Authorizations** - See which agencies are using a product from the Product details view. The Agency names are listed out and created as hyperlinks to the Agency detail view.
 
->[User Story 53](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/53): **Total Reuse (Authorizations)** - See how many time a product has been authorized for use by an agency, and see which agencies are using the product.  The count is visible in the product listing and the details page.
+>User Story 53: **Total Reuse (Authorizations)** - See how many time a product has been authorized for use by an agency, and see which agencies are using the product.  The count is visible in the product listing and the details page.
 
->[User Story 145](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/145): **In-process Time-line** - Visual representation of where a cloud product is in the FedRAMP authorization process.  The time-line is represented as a series of blocks in the Product detail page, color-coded to show each step in the process (when available).  Time-line data is not always available, in which case the time-line is left off the product details.
+>User Story 145: **In-process Time-line** - Visual representation of where a cloud product is in the FedRAMP authorization process.  The time-line is represented as a series of blocks in the Product detail page, color-coded to show each step in the process (when available).  Time-line data is not always available, in which case the time-line is left off the product details.
 
->[User Story 147](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/147): **View Authorization Dates** - With-in the product time-line, users can see the date when the product passed through each gateway.  The time-line gateways are FedRAMP Ready, In-Process, and Authorized.
+>User Story 147: **View Authorization Dates** - With-in the product time-line, users can see the date when the product passed through each gateway.  The time-line gateways are FedRAMP Ready, In-Process, and Authorized.
 
 #### Agencies
->[User Story 16](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/16): **Identify agency performance** - For each Agency, show the number of cloud products they are using.  The count is shown next to the Agency name on the Agency listing page and the services that make up the count are list in the Agency detail view.
+>User Story 16: **Identify agency performance** - For each Agency, show the number of cloud products they are using.  The count is shown next to the Agency name on the Agency listing page and the services that make up the count are list in the Agency detail view.
 
->[User Story 18](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/18): **Visual representation of Agency** - In the Agency listing view, the Agency name, icon, point of contact, and number of products used is shown.  In the Agency detail page the same information is provided, but also the products used are listed out and are hyper-linked to their respective product detail page.
+>User Story 18: **Visual representation of Agency** - In the Agency listing view, the Agency name, icon, point of contact, and number of products used is shown.  In the Agency detail page the same information is provided, but also the products used are listed out and are hyper-linked to their respective product detail page.
 
->[User Story 22](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/22): **Review which agencies use a service** - In the cloud product details page, the listing of agencies who use that particular cloud product is provided, and the agencies listed are hyper-linked to their respective agency detail page.
+>User Story 22: **Review which agencies use a service** - In the cloud product details page, the listing of agencies who use that particular cloud product is provided, and the agencies listed are hyper-linked to their respective agency detail page.
 
 #### 3PAOs
->[User Story 64](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/64): **View 3PAOs** - The 3PAO details view provides a description of the assessor's services to help potential customers (agencies) determine if they are a good fit to do their assessment.
+>User Story 64: **View 3PAOs** - The 3PAO details view provides a description of the assessor's services to help potential customers (agencies) determine if they are a good fit to do their assessment.
 
->[User Story 66](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/66): **What work has a 3PAO done** - The 3PAO details view provides a listing of the cloud providers and their corresponding products in which the 3PAO has performed assessments. The services listed are hyper-linked to their respective product detail page.
+>User Story 66: **What work has a 3PAO done** - The 3PAO details view provides a listing of the cloud providers and their corresponding products in which the 3PAO has performed assessments. The services listed are hyper-linked to their respective product detail page.
 
->[User Story 286](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/286): **3PAO Consulting Details** - The 3PAO details view provides a list of consulting services the 3PAO provides customers, as well as a list of customers (agencies and providers) for whom the assessor has provided consulting services.
+>User Story 286: **3PAO Consulting Details** - The 3PAO details view provides a list of consulting services the 3PAO provides customers, as well as a list of customers (agencies and providers) for whom the assessor has provided consulting services.
 
 #### Analysis Tools
->[User Story 14](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/14): **Search dashboard** - The dashboard can be quickly filtered by entering the name of a Provider, Agency, or 3PAO.  The search box is in the filter area and is context-sensitive depending on which view you are in (Provider, Agency, or 3PAO).
+>User Story 14: **Search dashboard** - The dashboard can be quickly filtered by entering the name of a Provider, Agency, or 3PAO.  The search box is in the filter area and is context-sensitive depending on which view you are in (Provider, Agency, or 3PAO).
 
->[User Story 17](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/17): **Pull data for reports** - Dashboard users can download the dashboard data into a CSV file for local use. The data is filtered to match the dashboard filter settings at the time of the download.
+>User Story 17: **Pull data for reports** - Dashboard users can download the dashboard data into a CSV file for local use. The data is filtered to match the dashboard filter settings at the time of the download.
 
->[User Story 21](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/21): **Compare 2 CSP providers** - Click an item in the dashboard list view (works for Products, Agencies, and 3PAOs).  When the item details page shows, the list of remaining items is shown to the right of the details.  Select a second item and the details page for that item appears next to the original selection.  Close one, to find another to compare, or close both to the return to the initial filtered list view.
+>User Story 21: **Compare 2 CSP providers** - Click an item in the dashboard list view (works for Products, Agencies, and 3PAOs).  When the item details page shows, the list of remaining items is shown to the right of the details.  Select a second item and the details page for that item appears next to the original selection.  Close one, to find another to compare, or close both to the return to the initial filtered list view.
 
->[User Story 100](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/100): **Filter dashboard (by category)** - The filter area appears to the left of the main content listing area and is context-sensitive based on the current item type being viewed (Products, Agencies, 3PAOs).  The filters are aggregate, so as a filter is selected, the next filter will only apply to the currently filtered result set and the result set count appears in the upper portion of the filter area.  A check mark represents a current selected filter.  Filters are cleared one at a time by re-clicking a current filter, or all at once using the "Clear Filters" action at the top of the filter section.
+>User Story 100: **Filter dashboard (by category)** - The filter area appears to the left of the main content listing area and is context-sensitive based on the current item type being viewed (Products, Agencies, 3PAOs).  The filters are aggregate, so as a filter is selected, the next filter will only apply to the currently filtered result set and the result set count appears in the upper portion of the filter area.  A check mark represents a current selected filter.  Filters are cleared one at a time by re-clicking a current filter, or all at once using the "Clear Filters" action at the top of the filter section.
 
->[User Story 144](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/144): **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality.
+>User Story 144: **Print Dashboard** - A printer-friendly formatted output has been created so the dashboard can be easily printed using the browser's native print functionality.
 
->[User Story 274](https://tree.taiga.io/project/truetandem-fedramp-dashboard/us/274): **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column.
+>User Story 274: **Data Dictionary** - A page listing terms used in the dashboard and columns used in the dashboard source data, along with a brief description of the term/column.
 
 #### Data
+Authorized FedRAMP PMO staff modify a Google Sheet within the GSA Google Apps suite to update any data entries. A Google Script in the GSA Google Apps runs on a daily basis to export fields defined in the [Schema.json found on the FedRAMP Data repository](https://github.com/18F/fedramp-data/blob/master/schema.json) to a [JSON file](https://github.com/18F/fedramp-data/blob/master/data/data.json) in the [same repository](https://github.com/18F/fedramp-data/).  On client load of the application in a web browser, the application calls GitHub via AJAX to ingest the data JSON and build the dashboard.
+
 FedRAMP and the dashboard leverages the GitHub API to make its data accessible via api. The url for the bulk data is on the [18f/FedRAMP-data repository](https://api.github.com/repos/18F/fedramp-data/contents/data/data.json).
+
+
 
 ## Maintenance
 ### Deployment
@@ -427,6 +432,25 @@ this has been installed we execute a single command:
 npm install
 ```
 
+
+#### Runtime Dependencies
+
+ The following libraries are incorporated into the bundle.js when the build is compiled. These are not included as part of the `dependencies` on the `package.json`, because cloud.gov's npm does not need to individually install them upon deployment.
+
+ - "angular": "^1.5.7",
+ - "angular-aria": "^1.5.8",
+ - "angular-mocks": "^1.5.8",
+ - "angular-sticky-top": "^1.1.1",
+ - "angular-ui-router": "^0.3.1",
+ - "babel-polyfill": "^6.9.1",
+ - "babel-preset-es2015": "^6.9.0",
+ - "del": "^2.2.1",
+ - "font-awesome": "^4.6.3",
+ - "http-server": "^0.9.0",
+ - "papaparse": "^4.1.2",
+ - "showdown": "^1.4.2",
+ - "uswds": "^0.9.4"
+
 ### Building the application
 
 Compiling all of the assets can be done simply using the command:
@@ -526,4 +550,4 @@ The testing framework will be written in [Jasmine](http://jasmine.github.io). Va
 For code coverage we can leverage the following:
 
  - For in-browser coverage analysis we use [BlanketJS](http://blanketjs.org)
- - [Karma Coverage](https://github.com/karma-runner/karma-coverage) is a plug-in which may be used in tandem with the Karma test runner
+ - [Karma Coverage](https://github.com/karma-runner/karma-coverage) is a plug-in which may be used in tandem with the Karma test runner.
