@@ -1,6 +1,6 @@
 ---
 applications:
-- name: fedramp-dashboard-dev
+- name: fedramp-develop
   memory: 64M
   instances: 1
   path: "dist"

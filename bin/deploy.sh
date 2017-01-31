@@ -13,7 +13,7 @@ if [ $SPACE = 'prod' ]; then
 NAME="fedramp-dashboard"
 MANIFEST="manifest.yml"
 elif [ $SPACE = 'develop' ]; then
-  NAME="fedramp-dashboard-dev"
+  NAME="fedramp-develop"
   MANIFEST="manifest-staging.yml"
 else
 echo "Unknown space: $SPACE"
