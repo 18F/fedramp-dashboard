@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '6'
+# Fixes issues on dependeny Karma>Chokidar>fsevents. See more here: https://github.com/travis-ci/travis-ci/issues/4653
+before_install:
+- npm update -g npm
 before_deploy:
 - export PATH=$HOME:$PATH
 - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
