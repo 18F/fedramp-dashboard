@@ -335,7 +335,7 @@ Two main sections of importance:
   2. The site navigation
 
 The site logo can be found in [the main template](src/templates/fedramp.html)
-and is currently referencing ![FedRAMP Logo](https://fedramp.sites.usa.gov/files/2015/02/logo3.png)
+and is currently referencing ![FedRAMP Logo](https://s3.amazonaws.com/sitesusa/wp-content/uploads/sites/482/2015/02/logo3.png)
 which redirects the user to [www.fedramp.gov](https://www.fedramp.gov) if clicked.
 
 ```html
