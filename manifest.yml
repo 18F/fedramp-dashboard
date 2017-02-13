@@ -6,7 +6,6 @@ applications:
   path: "dist"
   domains:
   - app.cloud.gov
-  - fr.cloud.gov
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
   env:
     FORCE_HTTPS: true
