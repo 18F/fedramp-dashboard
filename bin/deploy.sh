@@ -10,11 +10,15 @@ exit
 fi
 
 if [ $SPACE = 'prod' ]; then
-NAME="fedramp-dashboard"
-MANIFEST="manifest.yml"
+  NAME="fedramp-dashboard"
+  MANIFEST="manifest.yml"
+  CF_USERNAME=$CF_USERNAME_PROD
+  CF_PASSWORD=$CF_PASSWORD_PROD
 elif [ $SPACE = 'develop' ]; then
   NAME="fedramp-develop"
   MANIFEST="manifest-staging.yml"
+  CF_USERNAME=$CF_USERNAME_DEV
+  CF_PASSWORD=$CF_PASSWORD_DEV
 else
 echo "Unknown space: $SPACE"
 exit
