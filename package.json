@@ -9,7 +9,8 @@
     "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./dist/doc --readme README.md",
     "build": "./node_modules/.bin/gulp",
     "package": "./node_modules/.bin/gulp package",
-    "watch": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "federalist": "npm run package"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
     "url": "https://github.com/truetandem/fedramp-dashboard/issues"
   },
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
-  "devDependencies": {
+  "dependencies": {
     "angular": "1.5.7",
     "angular-aria": "1.5.8",
     "angular-mocks": "1.5.8",
