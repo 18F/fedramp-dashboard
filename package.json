@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/truetandem/fedramp-dashboard#readme",
   "dependencies": {
-    "angular": "1.5.7",
+    "angular": "1.7.8",
     "angular-aria": "1.5.8",
     "angular-mocks": "1.5.8",
     "angular-sticky-top": "1.1.1",
