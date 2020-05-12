@@ -1,9 +1,0 @@
----
-applications:
-- name: fedramp-develop
-  memory: 64M
-  instances: 1
-  path: "dist"
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
-  env:
-    FORCE_HTTPS: true
