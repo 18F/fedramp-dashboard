@@ -132,14 +132,7 @@ FedRAMP and the dashboard leverages the GitHub API to make its data accessible v
 
 ## Maintenance
 ### Deployment
-The application is deployed to an Amazon Web Services Simple Storage Service (S3) bucket, outside of the FedRAMP.gov Sites website.
-
-The updates to the application are deployed following GitHub commits to the [18F/fedramp-dashboard](https://github.com/18F/fedramp-dashboard) repository `master` branch, via Travis Continuous Integration build script.
-
-The configuration for this deployment can be found in the `deploy` section of the `.travis.yml` file in the repository.
-
-Currently, the script relies on the `npm run package` command to build the distribution, following a successful execution of the testing suite.
-
+The application is deployed to [Federalist](https://federalist.18f.gov) off the `federalist` branch.
 
 ### Add new Cloud Offering, Agency, or 3PAO
 1. Add the new entity (provider, offering, agency, 3PAO) to the FedRAMP data source. *NOTE: Make sure the* **entity name** *and* **package id** *are unique*
