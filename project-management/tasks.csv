@@ -1,0 +1,646 @@
+ref,subject,description,user_story,sprint,sprint_estimated_start,sprint_estimated_finish,owner,owner_full_name,assigned_to,assigned_to_full_name,status,is_iocaine,is_closed,us_order,taskboard_order,attachments,external_reference,tags,watchers,voters,created_date,modified_date,finished_date
+1,Create agenda for sprint planning,Set agenda for sprint planning,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",pjsumm,Paul Summers,Closed,False,True,1,6,1,,,[],0,2016-06-14 14:03:20.935165+00:00,2016-06-14 20:03:57.103072+00:00,2016-06-14 20:03:57.111982+00:00
+2,Create GitHub repository,GitHub repository found at https://github.com/truetandem/fedramp-dashboard,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",truetandem,"TrueTandem, LLC",Closed,False,True,1,9,0,,,[],0,2016-06-14 14:03:53.286348+00:00,2016-06-14 14:13:25.948581+00:00,2016-06-14 14:13:25.964620+00:00
+3,Create Taiga project,Project management at https://tree.taiga.io/project/truetandem-fedramp-dashboard,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-06-14 14:04:07.604290+00:00,2016-06-14 14:14:48.464222+00:00,2016-06-14 14:14:48.472292+00:00
+4,Create Gitter channel,Gitter channel at https://gitter.im/truetandem/fedramp-dashboard,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,17,0,,,[],0,2016-06-14 14:05:24.889706+00:00,2016-06-14 14:15:13.919638+00:00,2016-06-14 14:15:13.929486+00:00
+5,Update contributions file with tooling,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,18,0,,,[],0,2016-06-14 14:06:53.434116+00:00,2016-06-14 16:01:49.050627+00:00,2016-06-14 16:01:49.056482+00:00
+6,Update contributions file with code standards,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,19,0,,,[],0,2016-06-14 14:07:08.068584+00:00,2016-06-14 16:01:52.843187+00:00,2016-06-14 16:01:52.853645+00:00
+7,Update contributions file with documentation standards,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,20,0,,,[],0,2016-06-14 14:10:58.951047+00:00,2016-06-14 16:01:55.326942+00:00,2016-06-14 16:01:55.334159+00:00
+8,Update contributions file with branch/feature management,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,21,0,,,[],0,2016-06-14 14:11:24.747144+00:00,2016-06-14 16:01:59.812387+00:00,2016-06-14 16:01:59.818175+00:00
+9,Setup git-hooks,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,truetandem,"TrueTandem, LLC",bmallred,Bryan Allred,Closed,False,True,1,15,0,,,[],0,2016-06-14 14:11:59.477118+00:00,2016-06-14 17:27:23.730935+00:00,2016-06-14 17:25:50.069848+00:00
+10,Basic project directory structure,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,16,0,,,[],0,2016-06-14 17:30:51.447454+00:00,2016-06-14 17:55:41.874893+00:00,2016-06-14 17:54:13.944687+00:00
+27,Dashboard Examples,.,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,14,8,,,[],0,2016-06-14 19:39:38.114956+00:00,2016-06-20 13:55:30.351257+00:00,2016-06-20 13:55:30.364127+00:00
+33,Conduct User Interview,,28,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,0,0,,omb,[],0,2016-06-16 12:37:02.827603+00:00,2016-06-24 16:51:50.974174+00:00,2016-06-24 16:51:50.985361+00:00
+34,Conduct User Interview,,29,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,0,0,,agencies,[],0,2016-06-16 12:37:22.428132+00:00,2016-06-24 16:51:54.809384+00:00,2016-06-24 16:51:54.823585+00:00
+35,Conduct user interview,,30,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,0,0,,csp,[],0,2016-06-16 12:37:40.862266+00:00,2016-06-24 16:51:48.692979+00:00,2016-06-24 16:51:48.699554+00:00
+36,Prepare questions for user interviews,,28,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,1,0,,omb,[],0,2016-06-16 12:38:32.579326+00:00,2016-06-20 14:02:40.832022+00:00,2016-06-17 12:44:52.056850+00:00
+37,Prepare questions for user interviews,,29,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,1,0,,agencies,[],0,2016-06-16 12:38:40.897970+00:00,2016-06-20 14:02:42.309677+00:00,2016-06-17 12:44:57.540567+00:00
+38,Prepare questions for user interviews,,30,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,1,0,,csp,[],0,2016-06-16 12:38:55.963223+00:00,2016-06-20 14:02:43.907705+00:00,2016-06-17 12:45:01.518255+00:00
+39,Create javascript data pull test driver,,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,bmallred,Bryan Allred,Closed,False,True,1,4,0,,data,[],0,2016-06-16 12:39:33.953178+00:00,2016-06-17 12:40:17.920865+00:00,2016-06-16 13:05:45.379516+00:00
+40,test data output types,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,bmallred,Bryan Allred,Closed,False,True,1,22,0,,data,[],0,2016-06-16 12:40:02.717897+00:00,2016-06-20 19:14:36.447539+00:00,2016-06-16 20:36:57.101765+00:00
+41,Develop persona cards,,28,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,2,0,,omb,[],0,2016-06-16 12:40:35.729976+00:00,2016-06-20 14:02:57.206035+00:00,2016-06-17 12:44:54.767821+00:00
+42,Develop persona cards,,29,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,2,0,,agencies,[],0,2016-06-16 12:40:42.196557+00:00,2016-06-20 14:02:55.728924+00:00,2016-06-17 12:44:59.698516+00:00
+43,Develop persona cards,,30,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Closed,False,True,1,2,0,,csp,[],0,2016-06-16 12:40:55.241039+00:00,2016-06-20 14:02:54.086212+00:00,2016-06-17 12:45:03.478774+00:00
+44,Review Dashboard examples with customers,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,12,0,,,[],0,2016-06-16 12:41:27.616018+00:00,2016-06-20 13:55:33.269648+00:00,2016-06-20 13:55:33.283313+00:00
+45,Prepare Sprint 0 Backlog,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,13,0,,,[],0,2016-06-16 12:42:25.066872+00:00,2016-06-16 20:30:43.326653+00:00,2016-06-16 20:30:43.338480+00:00
+46,Backlog Grooming,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,4,0,,grooming,[],0,2016-06-16 12:42:47.096430+00:00,2016-06-28 13:36:58.041070+00:00,2016-06-28 13:36:58.047965+00:00
+47,Design research,Perform research on potential visual design elements to use in the dashboard.,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,0,0,,design,[123268],0,2016-06-16 12:53:35.420318+00:00,2016-07-06 04:26:33.492891+00:00,2016-07-06 04:26:33.500638+00:00
+48,Research data storage options,,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,floresj,John Flores,Closed,False,True,1,0,0,,data,[],0,2016-06-16 13:00:24.029583+00:00,2016-06-17 19:25:58.575615+00:00,2016-06-17 19:25:58.585466+00:00
+49,Refine data columns,,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,floresj,John Flores,Closed,False,True,1,2,0,,data,[],0,2016-06-16 13:04:03.956639+00:00,2016-06-17 19:31:29.749638+00:00,2016-06-17 19:31:29.760593+00:00
+50,Setup continuous integration framework,,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-06-16 13:05:31.176674+00:00,2016-06-16 20:36:01.147317+00:00,2016-06-16 20:02:47.793729+00:00
+51,Design Question Set #1,"Hi Matt,
+
+The dev/design team met today to discuss our notes from yesterday’s planning meeting and a few questions shook out and we’d like your guidance.
+
+Questions: 
+1.)	We heard that OMB performs a quarterly report.  We were curious if this is a formatted report that FedRAMP provides (and should be accessible from the dashboard), or is it just a data dump of the spreadsheets?
+2.)	Looking at design ideas, we are thinking that at the top of the dashboard we would provide 2-4 high-level metrics
+a.	Since Reuse is the most important number, we were thinking total number of reuses would be one metric
+b.	We also considered maybe an Hours saved metric? (use a Calculation per reuse)
+c.	Are there 1 or 2 more top-level imperative metrics you would like to see at the top
+3.)	Would you like users to be able to bookmark a filtered page so they can return to the dashboard at a later time and see their updated filtered view?
+4.)	Can we program assuming HTML 5 compliant browsers??  (more of a Laura question, perhaps)  
+5.)	Would it be valuable to highlight the most recent CSP certification?
+
+Thanks!
+Paul
+
+- - - - - - - - - - - - - - - - - - - 
+17 June 2016
+ANSWERS:
+1.) Yes, this is a formatted report.  Matt to provide an example
+2.) 1. OMB - Total number of authorizations (number of CSPs); 2. OMB - Reuses; 3. OMB - Cost Savings
+3.) this would be a nice to have... wait and see what the user interviews say
+4.) (from Laura) i think it would be at this point out of scope to req backward compatibility, but assume later releases of ie (9/10)
+5.) wait and see what the user interviews say",,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,11,0,,"questions,grooming,design",[],0,2016-06-16 20:30:22.090677+00:00,2016-06-20 15:58:27.505578+00:00,2016-06-20 15:53:25.189669+00:00
+55,Visual design element sketching,Start to build multiple styles of key metrics while adheres to US Web Design Standards.,,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,1,0,,design,[123268],0,2016-06-20 13:59:55.371748+00:00,2016-07-06 04:26:35.190279+00:00,2016-07-06 04:26:35.201661+00:00
+57,Update initial metrics for validation,"The metrics should be updated along with a description on the site with how they were derived.
+
+ - Total authorized: Sum of original authorization + leveraged ATOs
+ - Total re-use: Sum of leveraged ATOs
+ - Total cost savings: Total re-use * 250,000",32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-06-20 14:23:05.045584+00:00,2016-06-20 14:43:24.641415+00:00,2016-06-20 14:43:21.806169+00:00
+58,Refactor dashboard in to composable units,Break apart dependencies so each each unit may be composed alone.,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-20 14:24:42.548993+00:00,2016-06-20 18:47:19.232300+00:00,2016-06-20 18:43:46.896625+00:00
+59,Refactor application settings and storage,,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-06-20 14:25:08.936719+00:00,2016-06-20 18:31:56.086637+00:00,2016-06-20 18:31:56.092771+00:00
+60,Right hand menu,"Looking at the current FedRAMP site, each page has a standard menu to the right of the content area with two items: “Key Items” and “Subscribe to updates”.  Will the dashboard page also contain that right-hand menu?",,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,5,0,,"design,questions",[123268],0,2016-06-20 15:54:45.523121+00:00,2016-07-06 04:27:55.741404+00:00,2016-07-06 04:27:55.750288+00:00
+61,Page integration,"Since there is already a master page in place on the current FedRAMP website, when the TrueTandem team provides the dashboard content to the current site’s web admin are they effectively looking for a div tag containing the dashboard contents?  …. Or is the dashboard going to be a full stand-alone page?",,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,7,0,,"design,questions","[66542, 123268]",0,2016-06-20 15:55:43.691253+00:00,2016-07-06 04:27:54.335206+00:00,2016-07-06 04:27:54.341914+00:00
+62,Verify top metric calculations,"Can you please help us verify these calculations and our logic behind them?
+
+1.) Total Authorized: 86 (Sum of all authorized CSPs, derived by the count of providers returned in the JSON file) 
+
+2.) Leveraged (Reused) ATOs: 128 (Sum of leveraged ATOs; for Each CSP, each authorization letter where Leverage ATO-YN = Y) 
+
+3.) Cost Savings: $32,000,000 (Leveraged ATOs * $250,000)",,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,8,0,,"questions,data",[66542],0,2016-06-20 18:02:41.938608+00:00,2016-07-06 04:27:52.190741+00:00,2016-07-06 04:27:52.198574+00:00
+63,Add missing 'Active' property to Provider,,32,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-20 19:06:52.049031+00:00,2016-06-20 19:08:34.897438+00:00,2016-06-20 19:08:23.666637+00:00
+67,Contacts for User Interviews,"We need x2 contacts for each user constituency:
+CSPs
+OMB
+FedRAMP
+Agencies",,Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,10,0,,,[],0,2016-06-21 14:14:28.280349+00:00,2016-07-06 04:27:50.587012+00:00,2016-07-06 04:27:50.593136+00:00
+70,Wireframe sketches,"Preliminary wireframe sketches, may change once all user interviews are done.
+
+Pages/states to include in wireframes:
+
+Initial dashboard landing
+Filter view/functionality
+Individual Product/CSP/Agency/ view
+",56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,2,0,,,[144326],0,2016-06-22 19:43:12.652519+00:00,2016-06-30 14:05:58.738405+00:00,2016-06-27 13:30:34.383812+00:00
+71,Provide algorithm to derive re-use relationships,"From the result set of the authorized CSP's (see #82), 
+
+ - the sum of leveraged ATO letters
+ - in addition to, the sum of leveraged ATO letters for each associated **Underlying CSP Package ID**
+
+An example of the data received *after* the **Leveraged ATO** (see #82) filter has been applied:
+
+```
+{
+  'Cloud_Service_Provider_Name': 'Akamai',
+  'Cloud_Service_Provider_Package': 'Content Delivery Services',
+  'Path': 'JAB',
+  'Designation': 'Compliant',
+  'Package_ID': 'F1206061353',
+  'Service_Model': [
+    'IaaS'
+  ],
+  'Deployment_Model': 'Public Cloud',
+  'Impact_Level': 'Moderate',
+  'Original_Authorization_Date': '2013-08-23T04:00:00.000Z',
+  'Sponsoring_Agency': 'JAB Authorization',
+  'Underlying_CSP_Package_ID': [
+    'F999999999999',
+    'F000000000000'
+  ],
+  'Leveraged_ATO_Letter': [
+    {
+      'Letter_Date': '2013-09-24T04:00:00.000Z',
+      'Letter_Expiration_Date': '2016-09-24T04:00:00.000Z',
+      'Authorizing_Agency': 'Department of Homeland Security',
+      'Authorizing_Subagency': 'Department of Homeland Security',
+      'Active': 'Active'
+    },
+    {
+      'Letter_Expiration_Date': '2015-11-19T05:00:00.000Z',
+      'Authorizing_Letter_Last_Sign_Date': '2014-03-06T05:00:00.000Z',
+      'Authorizing_Agency': 'Department of the Treasury',
+      'Authorizing_Subagency': 'Department of the Treasury',
+      'Active': 'Inactive'
+    }
+  ]
+}
+```",53,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[66542],0,2016-06-22 19:43:25.951062+00:00,2016-06-28 19:43:32.795652+00:00,2016-06-23 14:37:56.867282+00:00
+72,Refine elements and build Style Tiles,2-3 style tiles showing different overall themes/styles for the dashboard.,56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,3,3,,,[],0,2016-06-22 19:44:01.801973+00:00,2016-06-30 14:06:42.032723+00:00,2016-06-28 17:33:41.968907+00:00
+73,Get confirmation for algorithm from FedRAMP and 18F,,53,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,1,0,,,"[66542, 75501]",0,2016-06-22 19:44:38.309399+00:00,2016-06-28 16:50:03.486034+00:00,2016-06-28 16:50:03.493418+00:00
+77,Get approval of wireframe from FedRAMP,,56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,,,Closed,False,True,1,0,0,,,[144326],0,2016-06-22 19:45:52.651205+00:00,2016-06-30 14:06:09.877546+00:00,2016-06-27 13:31:01.236022+00:00
+79,Get approval of style tiles from FedRAMP and 18F,,56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,,,Closed,False,True,1,1,0,,,[],0,2016-06-22 19:46:17.843239+00:00,2016-06-30 20:01:26.825897+00:00,2016-06-28 17:33:44.572523+00:00
+80,Apply algorithms for total re-use,,53,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-06-22 19:46:43.479051+00:00,2016-06-28 19:43:24.710040+00:00,2016-06-24 20:19:25.275745+00:00
+81,Display results of total re-use calculations,,53,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-06-22 19:47:07.723659+00:00,2016-06-24 20:19:31.127246+00:00,2016-06-24 20:19:31.134577+00:00
+82,Provide algorithm to derive authorized CSPs,"The **total** of cloud service providers with
+
+ - a property of **Leveraged ATO** equal to **No** or **TBD**
+ - and, a property of **Active** equal to **Active**
+
+An example of the data received *after* the **Leveraged ATO** filter has been applied:
+
+```
+{
+  'Cloud_Service_Provider_Name': 'Akamai',
+  'Cloud_Service_Provider_Package': 'Content Delivery Services',
+  'Path': 'JAB',
+  'Designation': 'Compliant',
+  'Package_ID': 'F1206061353',
+  'Service_Model': [
+    'IaaS'
+  ],
+  'Deployment_Model': 'Public Cloud',
+  'Impact_Level': 'Moderate',
+  'Original_Authorization_Date': '2013-08-23T04:00:00.000Z',
+  'Sponsoring_Agency': 'JAB Authorization',
+  'Active': 'Active',
+  'Leveraged_ATO_Letter': []
+}
+```
+
+Calculations will not include any of the following:
+
+ - cloud service providers with the property of **Leveraged ATO** equal to **Prv**",52,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[66542],0,2016-06-22 19:48:52.208902+00:00,2016-06-28 16:50:06.609006+00:00,2016-06-23 14:22:30.889216+00:00
+83,Get validation of for algorithm from FedRAMP,,52,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-06-22 19:49:51.316587+00:00,2016-06-28 16:50:04.130085+00:00,2016-06-28 16:50:04.145525+00:00
+84,Apply algorithm to derive total authorized CSPs,,52,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,3,0,,,[],0,2016-06-22 19:50:26.141379+00:00,2016-06-28 16:50:10.457115+00:00,2016-06-24 20:15:44.475230+00:00
+85,Display results from total authorized CSPs algorithm,,52,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-06-22 19:51:20.295762+00:00,2016-06-24 20:15:30.842956+00:00,2016-06-24 20:15:30.849653+00:00
+86,Ensure wireframes mesh with personas and user interview feedback,,56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,joeignition,Joe Wilson,Closed,False,True,1,6,0,,,[],0,2016-06-22 19:51:49.633927+00:00,2016-07-05 18:56:10.584424+00:00,2016-07-05 18:56:10.592236+00:00
+87,Create download button,,17,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-22 19:58:52.621618+00:00,2016-06-27 19:42:15.507361+00:00,2016-06-27 13:48:30.480871+00:00
+88,Determine filters (sorting options),Determine what filters user would like to search dashboard by.,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,7,0,,,[],0,2016-06-22 19:59:09.912171+00:00,2016-07-06 13:02:07.240442+00:00,2016-07-06 13:02:07.254610+00:00
+89,Attach event listener to trigger data collection and filter,,17,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-06-22 19:59:23.895573+00:00,2016-06-27 19:42:16.046966+00:00,2016-06-27 14:20:40.684915+00:00
+90,Filter the data with currently applied values,,17,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-06-22 19:59:50.056578+00:00,2016-06-27 19:42:16.939856+00:00,2016-06-27 16:32:45.726637+00:00
+91,Generate a filename which includes the date in YYYY-mm-dd format,,17,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,4,0,,,[],0,2016-06-22 20:00:22.419979+00:00,2016-06-27 19:42:16.510220+00:00,2016-06-27 14:36:28.231686+00:00
+92,Transform JSON to CSV format,"Flatten JSON object array so any properties containing objects will be flattened to something of this effect:
+
+```
+{
+ ""Name"": ""blah"",
+ ""Clothes"": [
+ {
+  ""Type"": ""shirt"",
+  ""Color"": ""gray""
+ },
+ {
+  ""Type"": ""hat"",
+  ""Color"": ""brown""
+ }]
+}
+```
+
+would be transformed to:
+
+```
+{
+ ""Name"": ""blah"",
+ ""Clothes.Type"": ""shirt"",
+ ""Clothes.Color"": ""gray""
+},
+{
+ ""Name"": ""blah"",
+ ""Clothes.Type"": ""hat"",
+ ""Clothes.Color"": ""brown""
+}
+```
+
+Arrays can be handled as such:
+
+```
+{
+ ""Name"": ""blah"",
+ ""Array"": [""one"", ""two""]
+}
+```
+
+Translates to
+
+```
+{
+ ""Name"": ""blah"",
+ ""Array"": ""one & two""
+}
+```
+
+```
+Cloud_Service_Provider_Name: ""Akamai"",
+   Service_Model: [
+     ""IaaS"",
+     ""Saas""
+   ],
+   Active: ""Active"",
+   Leveraged_ATO_Letters: [
+       {
+            Letter_Date: ""2013-09-24T04:00:00.000Z"",
+       },
+       {
+            Letter_Date: ""2016-09-25T04:00:00.000Z"",
+       }
+   ]
+}
+```
+```
+|Cloud Service Provider | Service Model | Active | Leveraged ATO Letters.Letter Date |
+|-----------------------|---------------|--------|-----------------------------------|
+| Akaami                | IaaS & Saas   | Active | 2013-09-24T04:00:00.000Z          |
+| Akaami                | IaaS & Saas   | Active | 2016-09-25T04:00:00.000Z          |
+```
+
+## Remove after showing!
+```
+Cloud_Service_Provider_Name: ""Akamai"",
+   Service_Model: [
+     ""IaaS"",
+     ""Saas"",
+     ""PasS & SaaS""
+   ],
+   Active: ""Active"",
+   Leveraged_ATO_Letters: [
+       {
+            Letter_Date: ""2013-09-24T04:00:00.000Z"",
+       },
+       {
+            Letter_Date: ""2016-09-25T04:00:00.000Z"",
+       }
+   ]
+}
+```
+```
+|Cloud Service Provider | Service Model             | Active | Leveraged ATO Letters.Letter Date |
+|-----------------------|------------------------------------|-----------------------------------|
+| Akaami                | IaaS & Saas & PaaS & Saas | Active | 2013-09-24T04:00:00.000Z          |
+| Akaami                | IaaS & Saas & PaaS & Saas | Active | 2016-09-25T04:00:00.000Z          |
+```",17,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,0,0,,,[66542],0,2016-06-22 20:00:50.907283+00:00,2016-06-27 20:53:23.901866+00:00,2016-06-27 20:53:23.908847+00:00
+94,Update mapping and processing for data.json,The data schema and file name have changed per planning discussions. Need to sync w/ current state,,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-23 19:36:21.009335+00:00,2016-06-27 12:26:51.268861+00:00,2016-06-24 19:31:00.083314+00:00
+95,Structure front-end code using AngularJS,,,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,2,0,,,[],0,2016-06-23 19:37:02.730245+00:00,2016-06-28 20:44:18.136080+00:00,2016-06-24 19:18:26.464073+00:00
+96,Add steps for running locally to README,Series of steps listed in the README file (excluding any prompt!),,Sprint 1 - Development Sprint,2016-06-23,2016-06-30,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-06-24 15:35:53.369816+00:00,2016-06-27 12:26:51.746565+00:00,2016-06-24 20:07:34.112608+00:00
+101,Full dashboard static layout,,56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,5,9,,,[],0,2016-06-29 15:23:55.754681+00:00,2016-07-05 18:56:23.839578+00:00,2016-07-01 17:19:47.314184+00:00
+102,Build array of unique CSP names,Build an array of strings containing case-insensitive unique values among an array of providers based on the ```name``` property.,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,8,0,,,[],0,2016-06-29 16:25:32.484432+00:00,2016-07-05 12:23:10.286170+00:00,2016-07-05 12:21:16.067643+00:00
+103,Build array of unique CSO names,Build an array of strings containing case-insensitive unique values among an array of providers based on the ```pkg``` property.,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,10,0,,,[],0,2016-06-29 16:25:53.349610+00:00,2016-07-05 12:23:07.674835+00:00,2016-07-05 12:21:21.716177+00:00
+104,Build array of unique agency names,"Build an array of strings containing case-insensitive unique values among an array of providers based on the properties
+
+ - ```sponsoringAgency```
+ - ```sponsoringSubagency```
+ - each associated Leveraged ATO Letter's ```authorizingAgency```
+ - each associated Leveraged ATO Letter's ```authorizingSubagency```",15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,9,0,,,[],0,2016-06-29 16:26:12.660988+00:00,2016-07-05 12:23:04.983662+00:00,2016-07-05 12:21:27.071605+00:00
+105,Build array of unique 3PAO names,"Build an array of strings containing case-insensitive unique values among an array of providers based on the properties:
+
+ - ```independentAssessor```
+ - each associated Leveraged ATO Letter's ```independentAssessor```",15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,11,0,,,[],0,2016-06-29 16:26:34.981424+00:00,2016-07-05 12:23:03.336327+00:00,2016-07-05 12:21:31.459898+00:00
+108,Render Bing results,Results from dashboard should be on top and the rest below,14,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-06-29 16:44:48.767482+00:00,2016-08-09 20:02:05.441770+00:00,2016-07-08 16:07:29.575988+00:00
+109,Sorting logic,"Sort by:
+
+ - designation
+ - status
+ - service model
+ - impact level",15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-06-29 16:46:21.456679+00:00,2016-07-07 13:03:17.092524+00:00,2016-07-07 13:03:17.098875+00:00
+110,Filtering logic for additional data points,"Filter by:
+
+ - designation
+ - status
+ - service model
+ - impact level",15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,4,0,,,[],0,2016-06-29 16:48:18.013064+00:00,2016-07-12 20:46:03.611064+00:00,2016-07-08 20:03:08.833193+00:00
+111,Render filtering/sorting based on additional data points,,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,2,0,,,[],0,2016-06-29 16:49:27.488773+00:00,2016-07-12 20:46:05.107326+00:00,2016-07-08 20:03:10.511941+00:00
+112,Investigate leveraging data tables for sorting and filtering,,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[66542],0,2016-06-29 16:50:30.539994+00:00,2016-07-05 11:56:45.290425+00:00,2016-07-05 11:56:45.297080+00:00
+113,Identify item status,Using the providers property of ```designation```,19,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-29 16:53:46.767849+00:00,2016-08-09 20:02:05.874244+00:00,2016-07-11 16:07:52.211152+00:00
+114,Add images/iconography for item status,Break the EPS apart into SVGs and/or PNGs,19,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,1,,,[],0,2016-06-29 16:54:23.383257+00:00,2016-07-11 16:08:30.804183+00:00,2016-07-11 16:08:30.810784+00:00
+115,Create route for comparison between CSPs,,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,6,0,,,[],0,2016-06-29 17:01:03.360906+00:00,2016-07-05 18:56:26.997928+00:00,2016-07-05 18:56:27.005262+00:00
+116,Create view for comparison between CSPs,This will be the 2 column layout depicted in the wireframes,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-06-29 17:01:46.621791+00:00,2016-07-05 22:02:37.478637+00:00,2016-07-05 22:02:37.484489+00:00
+117,Display data points for each CSP being comparison,,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-06-29 17:02:28.240484+00:00,2016-07-05 22:02:38.875188+00:00,2016-07-05 22:02:38.880485+00:00
+118,Create route for one CSP selected,,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-06-29 17:05:40.774887+00:00,2016-07-05 18:56:25.594458+00:00,2016-07-05 18:56:25.600298+00:00
+119,Create view for one CSP selected,This is a two column layout depicted in the wireframe where the left side is the selected item and the right side lists available items for comparison,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-06-29 17:07:01.047996+00:00,2016-07-05 22:02:36.100953+00:00,2016-07-05 22:02:36.107032+00:00
+120,Create transition to render selected CSP,,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,5,0,,,[],0,2016-06-29 17:08:44.808986+00:00,2016-07-05 20:33:51.948434+00:00,2016-07-05 20:33:51.954730+00:00
+121,Create transition to render comparison,,21,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,4,0,,,[],0,2016-06-29 17:09:06.130325+00:00,2016-07-05 20:33:56.007730+00:00,2016-07-05 20:33:56.013419+00:00
+122,Apply initial wire frames to dashboard for user feedback,,,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-06-29 17:11:14.979201+00:00,2016-06-30 17:41:09.774613+00:00,2016-06-30 17:36:41.667446+00:00
+123,Refine Style Tile based on feedback,"Tile 1 (last choice)
+Likes
+I like the table - it is easiest to do an immediate sort
+I like the gray background and white tiles
+Dislikes
+Visually I like the circles at the top, but it doesn't actually represent anything, so not likely appropriate
+I do not like that the middle tiles do not go to the edge
+The reuses shouldn't be called out as positive or negative
+I do like the images for FedRAMP compliant (I assume would apply for Ready and In Process too)
+Tile 2: (best overall)
+Likes
+I like the images at the top with bold color for the background
+I like the filter buttons being large
+I like the structure of the middle area the best - its not as easy to immediately filter as Tile 1 - but visually I like better
+I like that the middle area goes to the edges
+Dislikes
+Same as above for the reuses
+Tile 3: (second best)
+Likes
+I like the bold color at the top
+I do like the three images being used in the middle area - shows some sort of timeline / progress (however, with the information layered below it it does make the middle area harder to immediately filter since there are two lines for each entry)
+Dislikes​
+I dont like the grey on white - not as bold
+I dont like the numbers on the top without some sort of image
+
+They are all sufficiently consistent with the USWDS.
+- I prefer the title block from Tile 2
+- And the indicator callouts from tile 2
+- I think the ""excel"" table might be the easiest to read, but I prefer the wider width of tile 2
+- I really like the ""compliant"" check.",56,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,4,1,,,[],0,2016-06-30 17:11:52.257007+00:00,2016-06-30 20:01:33.259864+00:00,2016-06-30 17:57:20.144256+00:00
+125,Create Project Roadmap,,,Sprint 2 - Development Sprint,2016-06-30,2016-07-07,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,1,0,,,[123268],0,2016-07-06 04:23:47.562630+00:00,2016-07-06 04:24:56.664680+00:00,2016-07-06 04:24:56.676550+00:00
+126,Create sitemap,,14,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-06 13:01:02.914852+00:00,2016-07-06 13:01:06.921216+00:00,2016-07-06 13:01:06.930313+00:00
+127,Design filter options,Comp 2 filter options base on feedback from call.,,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,3,4,,,"[66542, 144326]",0,2016-07-06 20:01:28.990802+00:00,2016-07-08 13:16:43.200168+00:00,2016-07-06 20:02:25.750914+00:00
+128,Style Prototype,Style the prototype using the static comps as a guide.,,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,joeignition,Joe Wilson,Closed,False,True,1,0,0,,,[],0,2016-07-06 20:03:12.838061+00:00,2016-07-13 20:45:37.998601+00:00,2016-07-13 20:45:38.005790+00:00
+129,Create prototype for sidebar navigation,Quick prototype to get the feel of filtering using a sidebar,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,5,0,,,[],0,2016-07-07 13:01:46.002996+00:00,2016-07-12 20:46:02.789961+00:00,2016-07-12 16:31:59.109400+00:00
+130,Create prototype for column-esque filtering,Quick prototype for filters over the columns in the expanded tiles,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,6,0,,,[],0,2016-07-07 13:02:57.773736+00:00,2016-07-12 20:46:01.901270+00:00,2016-07-12 18:58:15.800484+00:00
+131,Apply design comps for filtering,The design concepts for filtering should be applied,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,3,0,,,[],0,2016-07-07 13:05:01.038336+00:00,2016-07-12 20:46:04.471655+00:00,2016-07-12 16:31:56.688420+00:00
+132,Add search box to page header,,14,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-07 13:05:44.847161+00:00,2016-07-07 17:00:01.474744+00:00,2016-07-07 17:00:01.484778+00:00
+133,Adjust individual reuse algorithms per model type,,15,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,12,0,,,[],0,2016-07-07 13:07:08.340077+00:00,2016-07-13 12:25:46.551149+00:00,2016-07-07 13:07:40.395650+00:00
+134,Add item status (active/deactive) in details and comparison,,19,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-07 13:08:25.749395+00:00,2016-08-09 20:02:06.315417+00:00,2016-07-11 19:09:30.744470+00:00
+135,Apply design comps to status indication,,19,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-07 13:08:41.205230+00:00,2016-07-12 16:17:43.110281+00:00,2016-07-12 16:17:43.120378+00:00
+136,Apply design comps to header and search,,14,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-07 13:08:57.832699+00:00,2016-08-09 20:02:04.943153+00:00,2016-07-08 16:17:23.234613+00:00
+137,Bring in USA Standards SAAS,Add gulp tasks,,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-07 13:10:08.761278+00:00,2016-07-08 19:46:30.884984+00:00,2016-07-07 15:11:38.608217+00:00
+149,Design FedRAMP Compliant Process timeline.,Comp of a way to visually show the Authorization Dates timeline,,Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,2,3,,,[],0,2016-07-12 15:49:10.986573+00:00,2016-07-13 14:39:48.590447+00:00,2016-07-12 15:49:20.572265+00:00
+151,Design alternate timeline options,Refine and expand on timeline design based on feedback.,145,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,0,7,,,[144326],0,2016-07-13 15:11:41.233029+00:00,2016-07-15 18:27:30.504382+00:00,2016-07-15 18:26:10.442341+00:00
+152,Rework date section of timeline,Refinements of these visual dates based on feedback,147,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,1,0,,,[],0,2016-07-13 15:12:23.513827+00:00,2016-07-15 18:27:43.247853+00:00,2016-07-15 18:27:43.254675+00:00
+153,Determine which date corresponds to the desired element,,147,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[66542],0,2016-07-13 17:57:30.182956+00:00,2016-08-03 15:16:30.273878+00:00,2016-08-02 18:59:59.782239+00:00
+154,Conditionally display dates only if value is present,,147,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-07-13 17:58:31.677710+00:00,2016-08-09 20:02:12.059293+00:00,2016-07-19 14:38:38.332389+00:00
+155,CSP filters,"Column-based:
+ - Name
+ - Service models
+ - Deployment models
+
+Sidebar:
+ - Designations
+ - Reuse range
+ - Service models
+ - Products
+ - Deployment models",100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Ready for test,False,True,1,5,0,,,[],0,2016-07-13 18:03:14.790107+00:00,2016-08-09 20:02:09.004706+00:00,2016-07-14 20:44:30.474083+00:00
+156,CSO filters,"Column-based:
+ - Name
+ - Service models
+ - Deployment model
+ - Impact level
+ - Status
+
+Sidebar:
+ - Name
+ - Status
+ - Reuse range
+ - Service models
+ - Deployment models
+ - Provider",100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-13 18:03:21.316707+00:00,2016-07-19 18:05:41.064640+00:00,2016-07-18 19:26:01.048178+00:00
+157,3PAO filters,"Column-based:
+ - Name
+
+Sidebar:
+ - Name
+ - Agencies
+ - Products
+ - Providers
+ - Reuse range",100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Ready for test,False,True,1,6,0,,,[],0,2016-07-13 18:03:26.349873+00:00,2016-08-09 20:02:08.559609+00:00,2016-07-14 20:13:11.366170+00:00
+158,Agency filters,"Column-based:
+ - Name
+
+Sidebar:
+ - Name
+ - Assessor
+ - Reuse range
+ - Products
+ - Providers",100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Ready for test,False,True,1,7,0,,,[],0,2016-07-13 18:03:32.247506+00:00,2016-08-09 20:02:09.537137+00:00,2016-07-14 20:55:14.924577+00:00
+159,Ensure there is a section for agencies associated with a product,,22,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-07-13 18:13:44.191238+00:00,2016-08-09 20:02:06.755887+00:00,2016-07-13 18:44:43.351076+00:00
+160,Ensure there is a section for the agencies associated with a provider,,22,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-13 18:14:25.792987+00:00,2016-08-09 20:02:07.195895+00:00,2016-07-13 18:44:43.733091+00:00
+161,Populate relations between a product and agencies,,22,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-07-13 18:15:05.809980+00:00,2016-07-13 18:56:31.663656+00:00,2016-07-13 18:45:32.778364+00:00
+162,Populate relations between a provider and agencies,,22,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-13 18:15:21.856303+00:00,2016-08-09 20:02:07.595221+00:00,2016-07-13 18:55:19.680626+00:00
+163,Sort arrays of agencies alphabetically,,22,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-13 18:15:56.052266+00:00,2016-08-09 20:02:08.116760+00:00,2016-07-13 19:12:02.061159+00:00
+164,Investigate IE issues,Current issues involve AngularJS issues as well as CORS security issues pulling data from GitHub,,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,5,0,,,[],0,2016-07-14 13:21:32.662722+00:00,2016-07-14 15:34:51.582995+00:00,2016-07-14 15:34:51.589131+00:00
+165,Comp Agency and 3PAO details,,,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,1,2,,,[],0,2016-07-15 18:28:18.864554+00:00,2016-07-15 18:28:36.756196+00:00,2016-07-15 18:28:36.763675+00:00
+166,Add filtering to left side,Remove column-based filtering and apply sidebar if not already there,100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-07-18 17:46:30.847963+00:00,2016-08-09 20:02:11.209735+00:00,2016-07-18 19:12:46.575186+00:00
+167,Remove deployment model column from grid,,,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-07-18 17:47:29.321648+00:00,2016-08-09 20:02:10.014260+00:00,2016-07-18 18:29:37.240837+00:00
+168,Initial sort by name instead of reuse,For products sort by provider then product name,100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,2,0,,,[],0,2016-07-18 17:48:15.269837+00:00,2016-07-19 18:05:39.907107+00:00,2016-07-19 15:30:11.706038+00:00
+169,Remove provider name from product name in first column title,"So ""Adobe - Awesome Service"" becomes ""Awesome Service""",,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-07-18 17:51:12.803785+00:00,2016-08-09 20:02:10.818603+00:00,2016-07-18 18:47:25.136395+00:00
+170,Make clickable area on tile focused on item name,,,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,4,0,,,[],0,2016-07-18 17:51:41.016273+00:00,2016-08-09 20:02:10.410846+00:00,2016-07-18 18:41:52.342431+00:00
+171,Add number filtered by category type in sidebar,,100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,4,0,,,[],0,2016-07-18 17:58:09.440013+00:00,2016-08-09 20:02:11.629478+00:00,2016-07-18 19:21:33.039243+00:00
+172,Add button to clear all filters in the sidebar,,100,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-18 17:58:29.744001+00:00,2016-07-19 18:05:42.482353+00:00,2016-07-18 18:46:25.574990+00:00
+173,Comp up Clear All buttons & Left filter active state,"Comps for Clear all on comparison, clear all for left filter, and left filter top level active state.",,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,0,2,,,[],0,2016-07-18 18:02:49.017248+00:00,2016-07-19 17:50:51.180544+00:00,2016-07-18 20:45:49.850560+00:00
+178,Make list items in details clickable,,,Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,6,0,,,[],0,2016-07-19 15:30:19.256422+00:00,2016-07-19 15:42:58.975474+00:00,2016-07-19 15:42:41.054371+00:00
+179,Remove agencies list from Assessor detail page,,64,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-20 16:52:02.170439+00:00,2016-07-25 11:02:39.246162+00:00,2016-07-20 20:32:17.367168+00:00
+180,Consolidate Product/Provider list on Assessor detail page,"Remove **Providers** list and rearrange **Products** to be displayed in the following list format
+
+```
+Products
+- {Provider} - {Product}
+- {Provider} - {Product}
+```",64,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-20 16:52:42.848361+00:00,2016-07-28 13:51:54.455214+00:00,2016-07-25 11:01:56.485585+00:00
+181,Remove Assessors list in Agency detail page,,18,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-20 16:58:36.964777+00:00,2016-07-25 11:02:41.809523+00:00,2016-07-20 20:32:18.290325+00:00
+182,Consolidate Provider/Product list on Agency detail page,"Remove **Providers** list and rearrange **Products** to be displayed in the following list format
+
+```
+Products
+- {Provider} - {Product}
+- {Provider} - {Product}
+```",18,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-20 16:59:44.200970+00:00,2016-07-28 13:51:52.906267+00:00,2016-07-25 11:02:12.724259+00:00
+183,Modify Uses column in Agency grid to display total # of Products,Swap to use the total number of products being used by each instance of an Agency.,147,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-20 17:01:07.998439+00:00,2016-07-28 13:51:51.441082+00:00,2016-07-20 19:34:40.852017+00:00
+184,Comp top level metrics,"Comp for new top level metrics. Total Ready, In Process, and Authorized numbers",,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,6,1,,,[],0,2016-07-20 17:01:47.755108+00:00,2016-07-21 18:42:45.896629+00:00,2016-07-20 18:13:34.591519+00:00
+185,Allow total # of products to be sortable,,16,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-20 17:02:50.422079+00:00,2016-07-28 13:51:52.172075+00:00,2016-07-20 19:34:39.916719+00:00
+186,Add Agency filter to Products grid,Users want to see what products are being used by selected agencies.,,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,2,0,,,[],0,2016-07-20 17:07:27.143008+00:00,2016-07-28 21:14:33.043217+00:00,2016-07-20 18:01:32.122911+00:00
+187,Rename menu headers,"Rename current headers to the following:
+Cloud Service Products => Products
+3rd Party Assessors => Assessors",,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,5,0,,,[],0,2016-07-20 17:09:12.523310+00:00,2016-07-28 21:14:29.998269+00:00,2016-07-20 17:36:02.952189+00:00
+188,Remove secondary metric bar directly above grids,,,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,3,0,,,[],0,2016-07-20 17:11:25.049312+00:00,2016-07-28 21:14:32.140408+00:00,2016-07-20 21:19:56.946930+00:00
+189,Add total # of results,"Since the secondary metric bar is gone, we'll want to keep this total.",,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-20 17:13:02.309339+00:00,2016-07-28 21:14:31.590944+00:00,2016-07-20 21:19:58.359422+00:00
+190,Swap word 'Compliant' to 'Authorized' everywhere,,,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-20 17:14:31.237070+00:00,2016-07-28 21:14:37.061619+00:00,2016-07-28 21:14:37.071485+00:00
+191,Update main metric totals,"Must now include totals for
+- Ready
+- In process
+- Authorized",,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,7,1,,,"[75501, 123268]",0,2016-07-20 17:58:16.279793+00:00,2016-07-29 12:36:12.694686+00:00,2016-07-29 12:35:26.216021+00:00
+193,"Add ""Close All"" button style when comparing 2 items","Add this button and reduce button heights.
+
+Make it look like this
+https://tree.taiga.io/project/truetandem-fedramp-dashboard/task/173",,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,4,0,,,[],0,2016-07-20 19:40:55.328439+00:00,2016-07-28 21:14:30.597402+00:00,2016-07-21 16:50:10.852166+00:00
+194,Update datasource url to point to new data.json,,,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,8,0,,,[],0,2016-07-21 19:21:26.657344+00:00,2016-07-25 16:07:28.667317+00:00,2016-07-25 13:23:42.507093+00:00
+196,Incorporate new assessor information from {data.Assessors},The latest updates now include Providers:[] and Assessors:[] arrays. We need to incorporate the new assessor metadata into our core Assessor model object.,66,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-25 12:03:17.475988+00:00,2016-07-28 13:51:55.166478+00:00,2016-07-25 16:09:12.703963+00:00
+197,"Agency list - remove extra lines, add contact info column and contact info, add agency logo, reduce large gap between blue ""products used squares, align ""product used"" sort icon with that column.",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,34,0,,,[],0,2016-07-25 16:18:03.705775+00:00,2016-08-01 15:05:36.340730+00:00,2016-08-01 15:05:36.347878+00:00
+198,Products list - need logo size consistency. Goal is to have no white space on left of logo so it aligns with text and roughly similar size of logos themselves. Make sure there is only one logo per company (ex: Microsoft),,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,33,0,,,[],0,2016-07-25 17:09:55.732833+00:00,2016-08-01 15:05:38.272925+00:00,2016-08-01 15:05:38.280303+00:00
+199,Export to CSV button - make button red from comp and center below list with more margin.,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,3,0,,,[],0,2016-07-25 17:10:02.987805+00:00,2016-07-25 18:52:45.083223+00:00,2016-07-25 17:30:42.501716+00:00
+200,"Assessors list - Make Assessor name font size the same as Products and Agencies, Match width of Blue box metric to Products and Agencies, add contact info column and contact info, add 3PAO logo,",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,32,0,,,[],0,2016-07-25 17:37:24.830562+00:00,2016-08-01 15:05:46.961426+00:00,2016-08-01 15:05:46.969966+00:00
+201,"Assessors detail - add logo, add accredited date style, add contact info style and include address, remove underlines from links, reduce margin between link items below headlines (ex. Product list)",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,30,0,,,[],0,2016-07-25 17:37:33.685397+00:00,2016-08-01 15:05:52.439030+00:00,2016-08-01 15:05:52.445412+00:00
+202,"Agency detail - add logo, adjust margins to align with comp, add agency description",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,29,0,,,[],0,2016-07-25 17:37:40.200320+00:00,2016-08-01 15:05:57.482545+00:00,2016-08-01 15:05:57.494766+00:00
+203,Hover state for close buttons on detail - shift bg color darker grey,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,35,0,,,[],0,2016-07-25 17:37:48.320912+00:00,2016-07-25 18:52:38.717449+00:00,2016-07-25 18:52:32.384371+00:00
+204,"One product open screen - tighten up list of remaining products, height is off, labels are missing, grey line is in wrong location.",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,37,0,,,[],0,2016-07-25 17:37:57.640976+00:00,2016-08-01 12:56:10.080606+00:00,2016-08-01 12:56:10.093709+00:00
+205,"Suggest .svg (recommended) or transparent .png files for all provider, agency, and 3PAO logos. For logo consistency they should be left aligned (no white space to the left).","Suggestion has been made in the documentation, starting to resize some of the existing logos.",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,11,0,,,[],0,2016-07-25 17:38:07.084486+00:00,2016-08-04 18:34:12.978602+00:00,2016-08-04 18:34:12.987107+00:00
+206,"Align ""search"" button with search input in header",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,38,0,,,[],0,2016-07-25 17:38:18.745437+00:00,2016-07-29 20:05:05.733094+00:00,2016-07-25 20:50:16.885776+00:00
+207,"Hover states for left filter items, sort headers, clear all above filters,",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,joeignition,Joe Wilson,Closed,False,True,1,40,0,,,[],0,2016-07-25 17:38:26.411884+00:00,2016-07-29 20:05:25.368276+00:00,2016-07-25 20:09:58.347481+00:00
+208,Top Metrics - make these clickable links that will scroll user down to data filtered based on that click. Ex. In Process click would scroll down to show all products with In Process status,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,21,0,,,[],0,2016-07-25 17:38:36.502347+00:00,2016-08-01 20:57:52.089033+00:00,2016-07-29 23:29:06.522219+00:00
+209,Agency and Assessor tile view - change products used and resuses text on blue block to white (it is black now). Style these to match Product tile view,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,joeignition,Joe Wilson,Closed,False,True,1,42,0,,,[75501],0,2016-07-25 17:38:44.432257+00:00,2016-07-29 20:05:36.143284+00:00,2016-07-25 20:31:36.835740+00:00
+211,Remove blue glow on top level filter active style,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,44,0,,,[],0,2016-07-25 17:38:58.558388+00:00,2016-07-25 18:52:51.505640+00:00,2016-07-25 18:40:30.028415+00:00
+212,Suggest making left hand filters fixed only when you scroll past them. Ex scrolling down until they are at the top of the browser then remaining fixed there so they are always available to user. Suggest same functionality for single product open too.,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,45,0,,,[75501],0,2016-07-25 17:39:13.981375+00:00,2016-07-27 19:33:02.165887+00:00,2016-07-27 19:32:48.109042+00:00
+214,Incorporate markdown into description fields,,,Sprint 5 - Development Sprint,2016-07-21,2016-07-28,floresj,John Flores,pjsumm,Paul Summers,Closed,False,True,1,1,0,,,[123268],0,2016-07-28 14:50:19.294040+00:00,2016-07-29 12:36:53.249015+00:00,2016-07-29 12:36:53.260677+00:00
+215,Contains instructions for deploying the code,,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,pjsumm,Paul Summers,Closed,False,True,1,5,0,,documentation,[123268],0,2016-07-28 18:19:10.892625+00:00,2016-08-04 22:28:04.210115+00:00,2016-08-04 22:24:58.703009+00:00
+216,"Contains instructions for adding new CSPs/CSOs, Agencies, and 3PAOs to appear in the dashboard","Added simple instructions to the README for a checklist when adding new entities to the dashboard (CSPs/CSOs, Agencies, and 3PAOs)",195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,pjsumm,Paul Summers,Closed,False,True,1,3,0,,documentation,[],0,2016-07-28 18:19:19.056810+00:00,2016-08-04 22:27:18.711058+00:00,2016-08-02 18:03:40.366807+00:00
+219,Contains instructions for adding new filters,,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,2,0,,documentation,[],0,2016-07-28 18:19:43.856725+00:00,2016-08-04 22:26:49.929357+00:00,2016-08-02 20:21:33.401208+00:00
+221,"Make main dashboard area printable (Product, Agency and Assessor main grids)","- Keep fedramp logo
+- Hide high-level metrics
+- Hide High-level menu
+- Hide footer
+- Hide filter main filter buttons (Products, Agencies, Assessors) and grid/list button
+- Hide left menu filter
+- Hide export button
+- Include simple header at the top
+- Include which filters were applied (human friendly)
+
+TODO
+- Figure out how to handle sorting columns",144,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Ready for test,False,True,1,0,0,,,[],0,2016-07-28 18:22:02.088991+00:00,2016-08-09 20:02:12.521761+00:00,2016-07-29 19:39:21.648406+00:00
+222,Make Detail/List view printable,"To be applied to all three views
+
+Things to hide
+- Keep fedramp logo
+- High-level menu
+- List of tiles
+- Hide footer
+- Hide close buttons",144,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-28 18:22:39.624233+00:00,2016-08-03 15:02:17.068224+00:00,2016-07-29 10:10:25.436181+00:00
+223,Make Detail/Detail view printable,"Things to hide
+- Put page break in between two detail containers
+- Keep fedramp logo
+- High-level menu
+- Hide footer
+- Hide close buttons",144,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-07-28 18:23:02.018120+00:00,2016-08-03 15:02:18.652659+00:00,2016-07-29 10:10:15.743967+00:00
+225,Change reuses to Authorizations,Add 1 if not in-process,23,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,0,0,,,[],0,2016-07-28 18:45:25.858116+00:00,2016-08-01 12:18:51.738782+00:00,2016-07-29 16:07:14.840982+00:00
+226,Add 'Dependent Products Section' to Products detail,"Product
+-> Dependent product 1
+-> Dependent product 2
+-> Dependent product n",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,48,0,,,[],0,2016-07-28 18:46:51.530228+00:00,2016-08-10 17:17:28.220136+00:00,2016-08-01 12:18:54.580109+00:00
+227,Validate/Verify data,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,,,Closed,False,True,1,0,0,,,[],0,2016-07-28 18:48:57.600509+00:00,2016-08-10 17:16:55.683589+00:00,2016-08-10 17:16:55.689412+00:00
+228,Visually render definition of terms e.g. authorizations,,23,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-28 18:52:31.427214+00:00,2016-08-03 15:10:31.977790+00:00,2016-08-01 18:25:13.264907+00:00
+229,Pull request to add CSO_Description for Products,Double check to render markdown,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,9,0,,,[75501],0,2016-07-28 18:55:16.629504+00:00,2016-08-03 15:16:49.820590+00:00,2016-08-01 13:52:43.902299+00:00
+230,Update css to place more spacing in between product detail <dd/><dt/>,,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,11,0,,,[],0,2016-07-28 18:56:36.882457+00:00,2016-08-02 21:48:45.377066+00:00,2016-07-29 11:39:21.326647+00:00
+231,Add POC fields to product model (Pull-request and ensure stuff is rendered),,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,8,0,,,[75501],0,2016-07-28 18:58:07.002367+00:00,2016-08-03 15:16:47.170956+00:00,2016-08-01 13:52:47.512951+00:00
+232,Ensure all Agencies are being rendered in Product detail,,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,7,0,,,[],0,2016-07-28 18:58:56.192891+00:00,2016-08-03 15:16:51.095086+00:00,2016-07-29 09:25:35.793494+00:00
+233,Add Authorization Type filter to Products Grid,"Allow user to filter by path
+- Jab
+- CSP
+- Agency
+
+May need to alter model to include these paths for filtering",,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-07-28 19:01:21.068154+00:00,2016-08-03 15:16:57.106886+00:00,2016-07-29 09:38:44.062707+00:00
+234,Switch reuses to 'Assessed' in Assessor grid and add logo,,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,3,0,,,[],0,2016-07-28 19:02:18.566401+00:00,2016-08-03 15:16:54.774978+00:00,2016-07-29 09:38:40.662122+00:00
+235,Modify Agency detail to mimic Assessor,"Remove
+FedRAMP Compliant Detail
+
+Authorization Type
+Agency Lead
+
+Make it look like assessor minus the website value",,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,2,0,,,[],0,2016-07-28 19:04:24.635832+00:00,2016-08-03 15:16:55.893454+00:00,2016-07-29 11:22:27.529951+00:00
+236,Add designation to Product list in Agency,Figure out best way to render stuff,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,4,0,,,[],0,2016-07-28 19:08:30.555877+00:00,2016-08-03 15:16:53.771398+00:00,2016-07-29 13:05:29.301416+00:00
+237,Figure out Export approach,"Remove unnecessary columns like ***$$hash*** and ***type***.
+
+More importantly there was talk about needing to include additional rows for each value of the associated metric. For example, right now if there is a single product displayed and it has 7 authorizations we display one row in the downloaded file. The question is should we be displaying 7 rows?",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,46,0,,,[],0,2016-07-28 19:11:14.327120+00:00,2016-08-10 17:17:08.235950+00:00,2016-08-05 19:11:49.308515+00:00
+238,Handle 'In PMO Review' removal in calculations/ui logic,,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,floresj,John Flores,Closed,False,True,1,6,0,,,[],0,2016-07-28 19:21:12.424343+00:00,2016-08-03 15:16:52.287346+00:00,2016-07-30 00:04:04.615922+00:00
+239,Enhance source code @examples and documentation,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,bmallred,Bryan Allred,Closed,False,True,1,1,0,,,[],0,2016-07-28 19:25:10.867445+00:00,2016-08-10 19:18:14.092045+00:00,2016-08-10 19:18:14.097905+00:00
+240,Markdown in descriptions,Incorporate markdown into description fields,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,pjsumm,Paul Summers,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-07-29 12:38:23.267554+00:00,2016-08-09 20:02:12.937412+00:00,2016-07-29 20:04:04.969180+00:00
+241,Pull and render data dictionary,,,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,bmallred,Bryan Allred,floresj,John Flores,Closed,False,True,1,10,0,,,[],0,2016-07-29 20:20:39.795057+00:00,2016-08-03 15:16:48.577033+00:00,2016-08-01 18:22:22.069559+00:00
+242,Margin/padding around product name,These margin/padding are a bit tight. Recommend 20px above and below,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,36,2,,,[],0,2016-08-01 14:42:32.039327+00:00,2016-08-09 20:02:14.833940+00:00,2016-08-01 17:57:30.464561+00:00
+243,Tablet Issues,"1. Sorting filters are overlapping starting around 800px
+2. Products open - long emails and urls break contact box. Possible solutions: clean URLs (no http: etc)/ contact block stacks and runs full width from 800px down.
+3. Product name overlapping status icon/text: More padding above name? (another task may resolve this)",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,4,2,,,[],0,2016-08-01 14:45:45.375787+00:00,2016-08-05 19:12:18.592025+00:00,2016-08-04 18:39:07.456032+00:00
+244,"Change ""Compliant"" by date text to ""Authorized"" by",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,39,1,,,[],0,2016-08-01 14:53:47.607404+00:00,2016-08-09 20:02:16.006270+00:00,2016-08-01 18:03:45.308005+00:00
+245,Contact info - links clickable,Can we make the url and email clickable?,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,41,1,,,[],0,2016-08-01 14:54:46.523276+00:00,2016-08-09 20:02:16.799169+00:00,2016-08-01 18:31:40.019287+00:00
+246,Mobile solution - tbd - default to tile view for mobile?,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,10,2,,,[],0,2016-08-01 14:57:06.129633+00:00,2016-08-05 19:12:21.163524+00:00,2016-08-03 20:00:55.393705+00:00
+247,"Keep filters (top 3 filters, Products, etc.) available when single product is open?",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,43,0,,,[],0,2016-08-01 14:57:16.296291+00:00,2016-08-10 17:17:14.308616+00:00,2016-08-08 20:16:39.511923+00:00
+248,"Change all ""Compliant"" text to ""Authorized""","Compliant text found:
+
+Agency Detail - Products used",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,47,1,,,[66542],0,2016-08-01 14:57:25.776100+00:00,2016-08-01 18:39:17.720975+00:00,2016-08-01 18:39:17.728011+00:00
+249,"Change ""Filter results by"" text to ""Show me""",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,25,0,,,[],0,2016-08-01 14:57:34.911168+00:00,2016-08-01 20:57:48.952584+00:00,2016-08-01 19:04:08.846443+00:00
+250,"Align ""search"" box link with search input",Do we want to correct this and use the code from the web standards?,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,24,0,,,[],0,2016-08-01 15:14:19.618588+00:00,2016-08-09 20:02:13.376307+00:00,2016-08-01 17:36:17.760454+00:00
+251,"Remove toggle (list vs tile) - default to list on desktop and tablet, tile on mobile",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,26,0,,,[],0,2016-08-01 15:15:33.957269+00:00,2016-08-09 20:02:14.108743+00:00,2016-08-01 17:47:58.658230+00:00
+252,Authorization Timeline ,I believe we are waiting for the data on this. Don't want to forget about it though.,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,2,3,,,[],0,2016-08-01 15:18:05.737691+00:00,2016-08-08 19:44:46.836498+00:00,2016-08-02 18:56:58.798815+00:00
+253,Product detail view - Status Icon Opacity,Lower opacity of inactive status icons/text to .4 to make it more clear with status a product is.,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,31,1,,,[],0,2016-08-01 15:20:39.550253+00:00,2016-08-09 20:02:18.695837+00:00,2016-08-01 19:57:03.980155+00:00
+254,Export csv button - space below,Can we put a big margin below the Export to CSV button (the one at the bottom of the full list of Products). This will make it more visible now and when the footer is put into place.,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,27,0,,,[],0,2016-08-01 15:33:41.131270+00:00,2016-08-01 19:27:24.219004+00:00,2016-08-01 19:26:59.054477+00:00
+255,Feature Overview,Draft the system feature overview for the system guide and to facilitate user testing,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,0,0,,documentation,[],0,2016-08-01 16:19:43.469114+00:00,2016-08-04 22:26:07.531998+00:00,2016-08-02 17:07:01.994788+00:00
+256,Service Description - initial state,Can the initial state of this be closed?,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,28,0,,,[],0,2016-08-01 18:46:05.105993+00:00,2016-08-09 20:02:17.975733+00:00,2016-08-01 19:33:10.254018+00:00
+258,Data Review,"Product Screen Issues:
+- Expiration Date:  It's still on the dashboard.  Are we removing this completely from the dashboard?  Including the data file? 
+- Listing both the Agency and Subagency 
+    - In the data, there are seven Leverage=Y records under Akamai.  DHS, GSA/OCSIT, Treasury, Treasury/IRS, Defense/DISA, Interior, Energy.
+    - Under the “Agencies using this service” banner, DoD and DISA are listed separately even though this is only one authorization.  I think it might be confusing to list both DoD and DISA for a single authorization.
+    - How should Agency/Subagency (where Subagency is not blank) be listed here?  Right now, we list agency and subagency at the same level for a single authorization:
+      - Department of Defense
+      - Defense Information Systems Agency      
+	I think it would be clearer to display this as:
+	- Department of Defense / Defense Information Systems Agency  or
+	- Department of Defense -> Defense Information Systems Agency
+
+- Agency POC:  No information is being displayed.
+    - **Resolved**
+   
+- Services Description:  No information being displayed.
+   - **Resolved**
+- “Compliant Since…” date near the top of the window – the dashboard appears to be using the Authorization Date here.  It should use the Announcement date.  A product can be authorized for use by an Agency (source: Agency ATO letter) before it becomes FedRAMP Authorized (source: FedRAMP PMO).
+- Dependent Products Listing – Compliant  -- Should we use ""Authorized"" here?  For example, in Amazon GC, the word “Compliant” is next to the Dependent Product instead of “Authorized.”
+- Not Listing Both AT&T Products – The dashboard is showing AT&T SaaS but not AT&T Government Cloud (which is Leverage = N and a JAB).
+    - **""Cloud_Service_Provider_Package"": ""Government Cloud"", has multiple entries in data.json**
+- AT&T Storage as a Service (SaaS):  The dashboard is listing Salesforce-Government Cloud under AT&T SaaS as a dependent product where it should list AT&T-Government Cloud as a dependent product.  Could be caused by both products (i.e., CSOs) being called Government Cloud.
+    - **""Cloud_Service_Provider_Package"": ""Government Cloud"" has multiple entries in data.json**,
+- Autonomic Resources-ARC-P has both a moderate and a high row in the Auth Log where Leverage = N (both are JAB).  Do not see them both listed in the dashboard.   On the current website, Autonomic-ARC-P is only listed as High.  But for AWS-GovCloud, both the High and Moderate are listed separately on the FedRAMP website.  Should we mark as Inactive ARC-P at the moderate level? 
+    - **""Cloud_Service_Provider_Package"": ""ARC-P"", has multiple entries in data.json**
+- We changed name of the field “Underlying CSPs” to “Dependent CSPs” to be consistent with dashboard in the Auth Log.  I suggest that you update the JSON.
+    - **Don't see dependent csps field in data.json** 
+  - Compound Service Models are displayed in the Dashboard as “PaaS, SaaS” (Dashboard) vs. ""PaaS & SaaS” (in the Auth Log)  – does it matter?  Should we change the data in the Auth Log to be “PaaS, SaaS”?  
+    - **These come back in an array. Data team needs to determine whether to use & or commas for delimiter** 
+- HP Helion – the Authorization Count in the dashboard is 5 but it should be 3.  It appears the dashboard is counting ALL of the authorizations for HP (as HP Fortify On Demand has 2 authorizations).
+    - **Currently, it says 3**
+- Micropact – has 8 authorizations.  In almost every case, the dashboard has been listing both the Agency and Subagency but not here.  The Office of the Secretary in Interior is not listed as a separate agency.   May not be an issue but worth a check.  A similar problem was seen with Microsoft O365 – all of the subagencies are listed as separate agencies but the “Office of the Inspector General” in HHS is not present in the list of agencies.
+    - **Department of the Interior is listed. **
+    - **Office of the Inspector General is not in data.json**
+ - Microsoft GFS – should include Microsoft Azure as a dependent product.
+    - **Azure Government** is present
+    - **Azure Public and Government Community Cloud Solution** is present
+- Oracle – Oracle Service Cloud DoD – should show DoD as an Agency using this service.  Right now, is showing “none.”  Check the value of the “Agency” field for this record.  This could have a data issue from our side.  We've updated that record so that both the Authorizing Agency and Sponsoring Agency is DoD.  That should solve it.
+    - **All three oracle products list DoD** 
+- SecureKey – there is a ™ after the CSO name, i.e., Briidge.net Exchange™.  The TM shows up as a question mark on the Dashboard.
+    - **data.json has question mark** 
+- VMware – Similar issue.  There are two question marks in the VMWare CSO name on the dashboard.  In the original data, these question marks are a ® and a ™ in that order.
+    - **data.json has question mark** 
+
+
+- For Dept. of Commerce, the abbreviated listing shows 9 products used.  The detailed screen shows 13.  The detailed screen appears to be counting all authorizations not distinct products.
+    - **Resolved** 
+
+-----------
+Other Issues (to discuss with Matt G but are of general interest):
+- Who will populate the “Estimated Compliance Date” for Agency “In Process”?  Or for JAB?  We expect to get this date from Agencies.
+- However, if a package is delayed in getting through an Agency Review by the FedRAMP PMO (e.g., package is incomplete), then the FedRAMP PMO should update the “Estimated Compliance Date” working with the Agency.
+- For the above scenario (In Process but delayed getting through FedRAMP), the ATO Letter Authorization Date is recorded and shows as the Authorization Date but this may different from the “Estimated Compliance Date” shown at the top of the window (which I’m assuming is the FedRAMP Authorization Date).  Should we change the field name on the Dashboard Screen from “Authorization Date” to “ATO Authorization Date” to distinguish it from the date a package becomes FedRAMP Authorized?",,Sprint 6 - Development Sprint,2016-07-28,2016-08-04,floresj,John Flores,,,Closed,False,True,1,5,0,,,[],0,2016-08-01 19:51:51.655191+00:00,2016-08-02 21:05:45.677258+00:00,2016-08-02 21:05:45.683662+00:00
+260,Add section for maintaining static header/footer,The dashboard is hosted on a separate static page than the rest of the fedramp.gov website.  Need to emulate the menu and footer of the site so it looks like part of the website.  Need instructions on how to maintain these static headers and footers moving forward.,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,bmallred,Bryan Allred,Closed,False,True,1,1,0,,documentation,[],0,2016-08-02 18:03:24.143489+00:00,2016-08-04 22:26:22.938973+00:00,2016-08-03 12:44:48.092943+00:00
+261,Contact info on Agencies and 3PAO list view,The contact info column is blank on Agencies and 3PAO dashboards,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,22,1,,,[],0,2016-08-02 18:08:22.019762+00:00,2016-08-09 20:02:19.524193+00:00,2016-08-02 18:58:51.078347+00:00
+262,Assessors and 3PAO list view - email/website link color + hover state,Can we use the US web design standard link color and hover state on these?,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,5,1,,,[],0,2016-08-03 13:19:50.445245+00:00,2016-08-03 18:40:44.375998+00:00,2016-08-03 18:40:44.383743+00:00
+263,Overall product padding,"When name runs to 2 lines logo shifts up to touch border line and second line of name touches bottom border.
+
+Can we keep a consistent padding on top and bottom here? Something equivalent to 16-20px would be great, it is much easier on the eyes.
+
+Can we also reduce the padding-top on product names from 20px to 5px? I think it makes more sense here to have the name closer to the logo.",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,15,2,,,[],0,2016-08-03 13:56:06.904500+00:00,2016-08-03 20:17:25.686408+00:00,2016-08-03 20:17:16.143496+00:00
+264,Authorization Timeline - inactive block color,Can we change the color of the inactive blocks to #e9ecf2,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,18,2,,,[],0,2016-08-03 14:15:56.967575+00:00,2016-08-03 16:00:34.761826+00:00,2016-08-03 16:00:34.771025+00:00
+265,Active status icons should be full opacity,"Looks like some active status icons are still getting the lower opacity.
+
+When active can we make them full opacity so they stand out more.
+
+Example: 
+http://truetandem.github.io/fedramp-dashboard/#/product/netfinity?sort=productName&productNameSearch=arde
+
+Edit: looks like this is only an issue with In Process icons.",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,23,1,,,[],0,2016-08-03 14:21:35.136604+00:00,2016-08-03 18:01:38.404179+00:00,2016-08-03 18:01:38.410056+00:00
+266,Service Description accordion style - match US Web Design Standards,Can we match the style of the accordion? Looks like our height is a bit short and hover state is missing.,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Closed,False,True,1,19,1,,,[],0,2016-08-03 14:29:06.701785+00:00,2016-08-03 17:52:33.829100+00:00,2016-08-03 17:52:33.836955+00:00
+267,Filter links - blue outline on click,"There is a jagged blue outline around filters on click. Can we remove completely?
+
+Edit: this is also on individual filters.
+
+Edit: also on ""clear all"" and list sorting options.",192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,8,4,,,[],0,2016-08-03 14:33:05.133029+00:00,2016-08-05 19:12:28.709745+00:00,2016-08-03 20:12:25.456017+00:00
+268,Remove blue border on dashboard metrics on click,Can we remove this blue border on the metric links?,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,9,1,,,[],0,2016-08-03 14:43:46.855768+00:00,2016-08-05 19:12:26.993318+00:00,2016-08-03 20:11:53.393603+00:00
+272,Dictionary comp,,274,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,0,1,,,[],0,2016-08-03 17:35:03.198957+00:00,2016-08-04 18:34:08.401960+00:00,2016-08-04 18:34:08.408119+00:00
+273,Implement dropdown menus,The WordPress site currently utilizes libraries which appear to not work with this application's libraries. The plan of attack was to implement a simple pure CSS approach.,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,7,0,,,[],0,2016-08-04 09:49:24.955137+00:00,2016-08-05 19:12:31.504393+00:00,2016-08-04 16:38:36.107194+00:00
+275,Navigation between dictionary to dashboard,,274,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,floresj,John Flores,Closed,False,True,1,1,0,,,[],0,2016-08-04 13:13:10.161556+00:00,2016-08-05 19:12:43.279958+00:00,2016-08-04 17:03:54.746264+00:00
+276,Authorization timeline - display when no FedRAMP Ready date,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Closed,False,True,1,20,2,,,[],0,2016-08-04 13:34:29.614309+00:00,2016-08-09 20:02:20.434024+00:00,2016-08-04 16:51:16.479838+00:00
+278,Ensure assessors without assessments are rendered,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,17,0,,,[],0,2016-08-04 17:13:15.802234+00:00,2016-08-04 17:13:28.129075+00:00,2016-08-04 17:13:28.134932+00:00
+280,"Logo guidelines for adding logos for products, agencies, and assessors",,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,pjsumm,Paul Summers,Closed,False,True,1,4,0,,documentation,[],0,2016-08-04 17:42:47.610391+00:00,2016-08-04 22:27:49.453767+00:00,2016-08-04 17:42:57.086310+00:00
+281,Update document based on government feedback,,195,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,floresj,John Flores,Closed,False,True,1,6,0,,documentation,[],0,2016-08-04 22:25:41.258694+00:00,2016-08-09 19:01:00.553421+00:00,2016-08-09 19:01:00.564923+00:00
+282,NaN in dates,https://truetandem.github.io/fedramp-dashboard/#/product/oracle-service-cloud-dod?sort=productName&productNameSearch=oracle,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,12,0,,,[66542],0,2016-08-05 13:55:23.821970+00:00,2016-08-09 20:02:21.138471+00:00,2016-08-05 14:33:28.670358+00:00
+283,Both Ready and Authorized are highlighted in status,https://truetandem.github.io/fedramp-dashboard/#/product/cloudseed?sort=productName,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,16,0,,,[],0,2016-08-05 13:59:59.968521+00:00,2016-08-09 20:02:23.240055+00:00,2016-08-05 15:01:01.360489+00:00
+284,"Change ""compliance"" to ""authorize""",,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,13,0,,,[],0,2016-08-05 14:00:35.433262+00:00,2016-08-09 20:02:21.847414+00:00,2016-08-05 14:36:29.015808+00:00
+285,Filter the assessors list to display only accredited vendors,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,14,0,,,[],0,2016-08-05 14:00:56.767150+00:00,2016-08-09 20:02:22.547630+00:00,2016-08-05 14:42:55.060329+00:00
+287,Create pull request to fedramp-data,https://github.com/18F/fedramp-data/pull/33,286,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,3,0,,,[],0,2016-08-08 16:17:51.106183+00:00,2016-08-08 16:17:51.145401+00:00,2016-08-08 16:17:51.148618+00:00
+288,Design updates for additional assessor data,,286,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,Jay.Neighbours,Jay Neighbours,Closed,False,True,1,1,1,,,[66542],0,2016-08-08 16:18:48.852564+00:00,2016-08-08 19:18:35.127282+00:00,2016-08-08 19:18:35.133498+00:00
+289,Digest new data from JSON stream,,286,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,0,0,,,[],0,2016-08-08 16:19:18.926182+00:00,2016-08-09 20:02:23.877239+00:00,2016-08-08 16:56:48.835446+00:00
+290,Display new data on assessor details,,286,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,bmallred,Bryan Allred,bmallred,Bryan Allred,Closed,False,True,1,2,0,,,[],0,2016-08-08 16:19:31.182393+00:00,2016-08-10 17:17:03.671382+00:00,2016-08-08 19:23:50.101118+00:00
+291,Add main filter menu to comparison/information detail pages,,192,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,floresj,John Flores,floresj,John Flores,Closed,False,True,1,6,0,,,[],0,2016-08-08 19:31:01.424907+00:00,2016-08-08 19:44:37.709381+00:00,2016-08-08 19:44:37.719675+00:00

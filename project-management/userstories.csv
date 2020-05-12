@@ -1,0 +1,177 @@
+ref,subject,description,sprint,sprint_estimated_start,sprint_estimated_finish,owner,owner_full_name,assigned_to,assigned_to_full_name,status,is_closed,back-points,design-points,front-points,ux-points,total-points,backlog_order,sprint_order,kanban_order,created_date,modified_date,finish_date,client_requirement,team_requirement,attachments,generated_from_issue,external_reference,tasks,tags,watchers,voters
+14,Search dashboard,"As a User I want to search for a specific provider by name.
+
+Acceptance Criteria:  
+ - Filter items by a specific provider name and display only matching items",Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Done,True,,3.0,2.0,,5.0,1,1,1,2016-06-14 17:34:49.276369+00:00,2016-08-03 15:07:35.296782+00:00,2016-07-08 16:17:23.315252+00:00,True,True,0,,,"108,126,132,136","csp,fedramp employee,agencies,omb",[],4
+15,Filter dashboard,"As a user I want to filter/sort providers by designation, status, service model, impact level.
+
+Acceptance Criteria:  
+ - Allow for filtering of items based on identified data points
+ - Allow for sorting of items based on identified data points",Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Done,True,,10.0,10.0,,20.0,0,0,3,2016-06-14 17:35:10.256736+00:00,2016-08-03 15:07:59.511945+00:00,2016-07-12 18:58:15.927992+00:00,True,True,0,,,"88,102,103,104,105,109,110,111,112,129,130,131,133","fedramp employee,omb,agencies,csp",[96889],4
+16,Identify agency performance,"As a FedRAMP employee I want to use the total number of cloud products an agency uses on the dashboard so that I can easily identify agencies who are doing well at leveraging the FedRAMP process and those who are not.
+
+Acceptance
+ - track agencies by the number of total cloud products they use
+ - make sure all CFO agencies are represented in the dashboard
+ - users can sort on the number of cloud products",Sprint 5 - Development Sprint,2016-07-21,2016-07-28,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Done,True,,8.0,,,8.0,3,3,5,2016-06-14 17:36:45.532751+00:00,2016-08-03 15:08:59.390404+00:00,2016-07-20 19:34:40.905608+00:00,True,False,0,,,185,"fedramp employee,omb",[],2
+17,Pull data for reports,"As a FedRAMP dashboard user I want to easily pull data from the dashboard so that I can import that into into other reporting tools.
+
+Acceptance Criteria
+ - provide a download button from the dashboard to provide the data
+ - have the file save locally
+ - output the JSON data into CSV format
+ - default filename for the download to be include date",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Done,True,,,8.0,,8.0,3,3,6,2016-06-14 17:37:11.770140+00:00,2016-08-03 14:58:43.553772+00:00,2016-06-27 20:53:23.983427+00:00,True,True,0,,,"87,89,90,91,92","fedramp employee,omb,csp,agencies",[66542],1
+18,Visual representation of Agency,"As an Agency I want to see a visual representation of my agency and associated data so that I can see the list of services that are already in use inside my agency, or similar agencies.
+
+Acceptance:
+  - list of services that are used within the agency 
+  - Services contain provider name and associated cloud service
+  - No need for assessors listed in detail
+  - Users can easily see the list of services",Sprint 5 - Development Sprint,2016-07-21,2016-07-28,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Done,True,,3.0,,5.0,8.0,1,2,10,2016-06-14 17:38:27.129943+00:00,2016-08-03 15:10:30.018563+00:00,2016-07-25 11:02:12.790108+00:00,True,False,0,,,"181,182",agencies,[],2
+19,Provider check status,"As a CSP I want to quickly check my current status, progress, and estimated time to completion for my ATO so that I and others interested in utilizing my services understand where I am in the FedRAMP authorization process.
+
+Acceptance Criteria:  
+ - The provider status displays the “double checkmark” icon when appropriate
+ - The provider status is textually displayed
+ - The provider progress is displayed
+ - The estimated time to ATO completion is available where applicable",Sprint 3 - Development Sprint,2016-07-07,2016-07-14,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Done,True,,8.0,5.0,,13.0,2,2,16,2016-06-14 17:38:52.446662+00:00,2016-08-03 15:17:16.124658+00:00,2016-07-12 16:17:43.181908+00:00,False,True,0,,,"113,114,134,135",csp,[],3
+21,Compare 2 (or more?) CSP providers,"As a CSP, FedRAMP employee, agency, or other user I want to compare 2 (or maybe more?) CSP providers next to each other.
+
+Acceptance Criteria:  
+ - Select two CSPs for comparison
+ - Display detailed information for selected styles
+ - Highlight key differences",Sprint 2 - Development Sprint,2016-06-30,2016-07-07,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Done,True,,15.0,5.0,,20.0,1,4,20,2016-06-14 18:44:11.676842+00:00,2016-08-03 15:15:12.992169+00:00,2016-07-05 22:02:38.950002+00:00,False,True,0,,,"115,116,117,118,119,120,121","csp,fedramp employee,agencies",[],3
+22,Review which agencies use a service,"As an agency I want to see the other agencies who use a specific Cloud Service Offering so that I can determine whether to re-use that agencies documentation to get my ATO.
+
+Acceptance
+ - the list of agencies using the service appears in the service details page
+ - users can easily find the list of agencies using an offering during user testing",Sprint 4 - Development Sprint,2016-07-14,2016-07-21,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Done,True,,8.0,,,8.0,1,1,14,2016-06-14 18:45:21.901463+00:00,2016-08-03 15:14:16.588031+00:00,2016-07-13 19:12:02.254472+00:00,True,False,0,,,"159,160,161,162,163","agencies,csp,fedramp employee",[],4
+23,Monitor CSP Authorizations,"As an OMB, agency, or FedRAMP employee I want to quickly see how many times an CSP's authorization has been re-used and by which agencies.
+
+Acceptance Criteria
+  - Make sure the calculations currently in use are accurate (work with Matt and data team)
+  - Users can easily see the authorization numbers
+  - Add the list of dependent CSP services (effectively show the ""math"" behind the number). 
+  - Verify the dashboard data matches the master spreadsheet data calculations
+  - Users understand what the term ""authorizations"" means by way of visual cue (tooltip/help context)",Sprint 6 - Development Sprint,2016-07-28,2016-08-04,Jay.Neighbours,Jay Neighbours,floresj,John Flores,Done,True,8.0,,,,8.0,2,2,2,2016-06-14 18:46:24.749895+00:00,2016-08-03 15:43:53.832544+00:00,2016-08-03 15:16:08.678109+00:00,True,False,0,,,"225,228","omb,fedramp employee,agencies","[123268, 144735]",0
+28,OMB Persona,"As a Designer I want to create an OMB Persona to help understand the FedRAMP dashboard needs of that classification of user.
+
+Acceptance Criteria:
+
+   Persona Card
+   - User Interviews of OMB users performed
+   - Determine the user's goal in viewing the dashboard
+   - Determine High level metrics user groups is interested in
+   - Determine how they utilize the dashboard data outside the dashboard",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Done,True,,5.0,,,5.0,5,5,19,2016-06-16 12:06:26.675214+00:00,2016-08-03 15:12:26.163499+00:00,2016-06-24 16:51:51.078984+00:00,True,True,0,,,"33,36,41",omb,[],0
+29,Agency Persona,"As a Designer I want to create an Agency Persona to help understand the FedRAMP dashboard needs of that classification of user.
+
+Acceptance Criteria:
+
+Persona Card
+- User Interviews of Agency users performed
+- Determine the user's goal in viewing the dashboard
+- Determine High level metrics user group is interested in
+- Determine how they utilize the dashboard data outside the dashboard",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Done,True,,5.0,,,5.0,6,6,11,2016-06-16 12:11:58.171732+00:00,2016-08-03 15:12:12.649406+00:00,2016-06-24 16:51:54.878998+00:00,True,True,0,,,"34,37,42",agencies,[],0
+30,CSP Persona,"As a Designer I want to create an CSP Persona to help understand the FedRAMP dashboard needs of that classification of user.
+
+Acceptance Criteria:
+
+Persona Card
+- User Interviews of CSP users performed
+- Determine the user's goal in viewing the dashboard
+- Determine High level metrics user groups is interested in
+- Determine how they utilize the dashboard data outside the dashboard",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,joeignition,Joe Wilson,Done,True,,5.0,,,5.0,4,4,12,2016-06-16 12:14:28.618050+00:00,2016-08-03 15:11:48.188027+00:00,2016-06-24 16:51:48.779693+00:00,True,True,0,,,"35,38,43",csp,[],0
+32,Data model updates,"As a developer I want to refine the FedRAMP JSON data model provided for the dashboard so that I have the data I need (columns in the format required) to create dashboard elements to fulfill user needs.
+
+Acceptance Criteria:
+
+  Functional data model
+   - Refine the columns based on user interview feedback
+   - Work with Laura to fix output issues
+   - Test",Sprint 0 - Planning Sprint,2016-06-16,2016-06-23,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,8.0,8.0,,,16.0,3,2,7,2016-06-16 12:34:05.551032+00:00,2016-08-03 15:06:10.425960+00:00,2016-06-20 19:08:23.786265+00:00,True,True,0,,,"39,48,49,57,58,59,63",data,[],0
+52,Total Authorizations,"As an OMB user I want to see the total number of Authorized CSPs so I can see how many CSPs have successfully completed the FedRAMP Security Assessment Framework.
+
+Acceptance Criteria
+   - The number of authorized CSPs is calculated by taking a unique count of CSP Names from the FedRAMP JSON data.
+   - The CSPs are non-private; the Leveraged-ATO value = ~~Yes~~, No, TBD, or ~~PRV~~",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,,2.0,3.0,,5.0,2,2,21,2016-06-17 20:25:47.165804+00:00,2016-08-03 15:02:34.863683+00:00,2016-06-28 16:50:07.650379+00:00,True,False,0,,,"82,83,84,85",omb,[],2
+53,Total Reuse,"As an OMB user I want to see the total number of ATOs that reused existing ATOs so that I can see how many Agencies efficiently leveraged the FedRAMP authorization process.
+
+Acceptance
+ - Determine the nested relationships with re-uses - include how the number is derived
+ - The nesting logic has been confirmed by the fedRAMP and 18f data team
+ - ~~The nesting logic has been confirmed by the OMB~~ (FedRAMP will interface with OMB)
+ - Logic to calculate the total reuses leverages the nested relationships to derive an accurate number",Sprint 1 - Development Sprint,2016-06-23,2016-06-30,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,,3.0,5.0,,8.0,1,1,22,2016-06-20 13:03:07.249859+00:00,2016-08-03 15:02:03.786869+00:00,2016-06-28 16:56:41.182741+00:00,True,False,0,,,"71,73,80,81",omb,[],3
+56,Dashboard Design Concepts,"As a FedRAMP dashboard designer I want to explore ways of visually displaying the FedRAMP dashboard data so that I can communicate efficiently with the FedRAMP customer and adhere to the US Web Design Standards.
+
+Acceptance Criteria:  
+ - Wireframes for the design concepts
+ - Style tiles for comparison of style approaches
+ - FedRAMP approval of wireframes
+ - FedRAMP approval of style tile
+ - 18f approval of style (based on adherence to US Web Design Standards)",Sprint 2 - Development Sprint,2016-06-30,2016-07-07,pjsumm,Paul Summers,Jay.Neighbours,Jay Neighbours,Done,True,,20.0,,20.0,40.0,0,0,25,2016-06-20 14:03:52.735677+00:00,2016-08-03 15:09:43.944970+00:00,2016-07-05 18:56:10.682248+00:00,False,True,0,,,"70,72,77,79,86,101,123",design,[],2
+64,View 3PAO,"As a CSP I want to see what type of services a 3PAO provides so that I can choose an accredited 3PAO with relevant experience to be my auditor.
+
+Acceptance
+ - contains a description of their services
+ - users can easily find the 3PAO's service description",Sprint 5 - Development Sprint,2016-07-21,2016-07-28,mmgoodrich,Matt Goodrich,floresj,John Flores,Done,True,3.0,5.0,,,8.0,2,1,17,2016-06-21 13:13:09.989143+00:00,2016-08-03 15:18:29.711028+00:00,2016-07-25 11:01:56.554269+00:00,True,False,0,,,"179,180","3pao,csp",[123268],3
+66,What work has a 3PAO done,"As a FedRAMP dashboard user I want to see how many CSPs a 3PAO has worked with or is currently working with so that I can gauge the 3PAOs level of experience in the FedRAMP Security Assessment Framework and their potential availability.
+
+Acceptance
+ - listing of products they've worked with - name/service of the product 
+ - users can easily find the 3PAO's services",Sprint 5 - Development Sprint,2016-07-21,2016-07-28,mmgoodrich,Matt Goodrich,floresj,John Flores,Done,True,,8.0,,,8.0,0,0,23,2016-06-21 13:14:27.509782+00:00,2016-08-03 15:13:45.545258+00:00,2016-07-25 16:09:12.753790+00:00,True,False,0,,,196,"3pao,csp,omb",[75501],2
+100,Filter by category,"As a FedRAMP Dashboard user I want to filter the dashboard data by category so I can only see items of interest belonging in the selected criteria
+
+Acceptance Criteria:
+  - CSO filters: Name, Service Model, Deployment Model, Impact Level, Status
+  - CSP filters: Name, Service Model, Deployment Model
+  - 3PAO filters: Name, Agencies, Products, Providers
+  - Agency filters Name, Assessors, Products, Providers
+  - Settle on final filter user experience based on user testing/feedback and Matt's approval",Sprint 4 - Development Sprint,2016-07-14,2016-07-21,bmallred,Bryan Allred,bmallred,Bryan Allred,Done,True,,3.0,,10.0,13.0,2,2,15,2016-06-29 13:30:15.154955+00:00,2016-08-03 15:15:49.159306+00:00,2016-07-19 15:30:11.775792+00:00,True,False,0,,,"155,156,157,158,166,168,171,172",data,[66542],4
+144,Print Dashboard,"As a FedRAMP Dashboard user I want printer friendly output, so that I can easily print my dashboard view and maintain my filter selections in my printer output. 
+
+Acceptance Criteria:
+ - a user-friendly version printed version of the dashboard
+ - non-important elements are hidden from print view",Sprint 6 - Development Sprint,2016-07-28,2016-08-04,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,,,10.0,3.0,13.0,1,1,18,2016-07-11 12:12:23.494696+00:00,2016-08-03 15:17:41.798503+00:00,2016-07-29 19:43:07.074203+00:00,True,False,0,,,"221,222,223",print,[],2
+145,In-process Timeline,"As a FedRAMP Dashboard user I want to view the in-process timeline for CSOs so that I can see where offerings are in the FedRAMP authorization process to help me determine when new offerings will become available.
+
+Acceptance Criteria:
+ - agree on user interface design/comp
+ - can users complete the user test task for processing the timeline",Sprint 4 - Development Sprint,2016-07-14,2016-07-21,pjsumm,Paul Summers,Jay.Neighbours,Jay Neighbours,Done,True,8.0,,,5.0,13.0,0,0,24,2016-07-11 12:14:39.256600+00:00,2016-08-03 15:12:56.591413+00:00,2016-07-15 18:26:10.505768+00:00,True,False,0,,,151,"csp,cso",[],5
+147,View Authorization Dates,"As an Agency I want to see CSP’s FedRAMP authorization dates so that I can determined which CSPs are currently authorized, or about to be authorized, and determine how much longer the CSP’s authorization is valid.
+
+Acceptance Criteria:
+ - Dates of interest (dates are relative to the phase the CSP is in: Ready; In-Process; Authorized)
+      - Start Date (in-process date)
+      - Estimated Date (show in gray)
+      - Achieved/Authorized Date
+ - Don't show date areas if the field is empty in the incoming data
+ - Agree on design comp to prototype
+ - User testing confirms the dates are easy to find/read",Sprint 6 - Development Sprint,2016-07-28,2016-08-04,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,,5.0,,3.0,8.0,3,3,13,2016-07-11 12:54:02.860661+00:00,2016-08-03 15:13:24.258606+00:00,2016-08-02 18:59:59.842222+00:00,True,False,0,,,"152,153,154,183","agencies,omb","[66542, 75501]",3
+192,Punch list,All items from this description moved to Related Tasks below,Sprint 7 - Release Sprint,2016-08-03,2016-08-10,Jay.Neighbours,Jay Neighbours,bmallred,Bryan Allred,Done,True,,,,,,3,3,9,2016-07-20 18:56:08.765334+00:00,2016-08-10 18:09:59.941067+00:00,2016-08-10 19:18:14.511062+00:00,False,False,0,,,"197,198,199,200,201,202,203,204,205,206,207,208,209,211,212,226,227,237,239,242,243,244,245,246,247,248,249,250,251,252,253,254,256,261,262,263,264,265,266,267,268,273,276,278,282,283,284,285,291",punch,[144326],0
+195,Transition Guide,"As a FedRAMP technical user I want to have a technical transition guide so that I can easily deploy the FedRAMP dashboard product and have instructions for adding new CSPs/CSOs, Agencies, and 3PAOs to the dashboard.
+
+Acceptance Criteria
+ - Contains instructions for deploying the code
+ - Contains instructions for adding new CSPs/CSOs, Agencies, and 3PAOs to appear in the dashboard
+ - Government has reviewed and approved the document contents
+ - Government has user-tested the procedures 
+ - Contains instructions for adding new filters
+ - Add to the repository GitHub README file",Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,pjsumm,Paul Summers,Done,True,10.0,,,,10.0,0,0,0,2016-07-23 15:39:36.337784+00:00,2016-08-09 19:01:15.693427+00:00,2016-08-09 19:01:00.633875+00:00,False,False,0,,,"215,216,219,255,260,280,281",documentation,[],3
+274,Data Dictionary,"As a FedRAMP Dashboard user I want to view a data dictionary from the dashboard so that I can understand the columns that are in the CSV downloads of the dashboard data.
+
+Acceptance Criteria:
+ - There is a data dictionary link on the dashboard that takes you to a separate page showing the dictionary
+ - the data dictionary shows the contents of the data dictionary .json provided by data.gov
+ - Users can easily navigate back to the dashboard from the dictionary
+ - Users can easily find the dashboard link",Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,floresj,John Flores,Done,True,2.0,3.0,3.0,,8.0,2,1,4,2016-08-04 13:08:05.851606+00:00,2016-08-08 18:31:22.992360+00:00,2016-08-04 18:34:08.470804+00:00,True,False,0,,,"272,275",data,[],1
+286,3PAO Consulting Details,"As a FedRAMP Dashboard user I want to view details on 3PAO companies and any additional consulting services they provide so that I can chose a 3PAO based on the services they provide and their relevant past performance in those areas.   
+
+Acceptance: 
+- In remediation status
+- Company founded year
+- Primary office locations
+- CSPs/CSOs you are providing consulting services to
+- Does your company provided consulting services (Y/N)?
+- Consulting services description
+- CSP you provide consulting services to
+- Additional cyber frameworks",Sprint 7 - Release Sprint,2016-08-03,2016-08-10,pjsumm,Paul Summers,bmallred,Bryan Allred,Done,True,5.0,,3.0,,8.0,2,2,8,2016-08-08 15:39:00.680510+00:00,2016-08-10 18:09:56.538729+00:00,2016-08-08 19:23:50.212013+00:00,True,False,0,,,"287,288,289,290",3pao,[],0
