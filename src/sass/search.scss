@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 search {
     display: inline-block;
@@ -60,7 +60,7 @@ search {
 
 #search {
     .back {
-        background-color: $color-primary;
+        background-color: $theme-color-primary;
         height: 46px;
         width: 100%;
         color: #fff;

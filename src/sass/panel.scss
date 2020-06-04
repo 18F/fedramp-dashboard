@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 panel {
     display:block;
     .row.panel {
@@ -6,11 +6,11 @@ panel {
         padding-bottom: 15px;
     }
     .panel:hover {
-        background-color: $color-gray-lighter;
+        background-color: color('gray-cool-10');
     }
     .panel {
         border-top: none;
-        background-color: $color-gray-lightest;
+        background-color: color('gray-cool-5');
         padding-left: 1em;
         padding-right: 1em;
         margin-left: 2.8rem;

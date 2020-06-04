@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 #topnav {
     #social {
@@ -56,7 +56,7 @@
             font-weight: bold;
 
             i {
-                color: $color-gray-light;
+                color: color('gray-cool-30');
                 font-size: 18px;
             }
         }

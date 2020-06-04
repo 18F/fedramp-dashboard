@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 tile:nth-child(2n) {
     .card {
@@ -15,8 +15,8 @@ tile:nth-child(2n) {
         }
 
 		> div {
-			border-bottom: 1px solid $color-gray-lightest;
-			border-right: 1px solid $color-gray-lightest;
+			border-bottom: 1px solid color('gray-cool-5');
+			border-right: 1px solid color('gray-cool-5');
 
             @media only screen and (max-width: 850px) {
                 border: none;
@@ -33,7 +33,7 @@ tile:nth-child(2n) {
     .expanded {
         .row {
             height: 9.5rem;
-            border-bottom: 1px solid $color-gray-lightest;
+            border-bottom: 1px solid color('gray-cool-5');
 
             @media only screen and (max-width: 850px) {
                 height: auto;
@@ -43,7 +43,7 @@ tile:nth-child(2n) {
     }
 
     .no-logo {
-        border: 1px solid $color-gray-lightest;
+        border: 1px solid color('gray-cool-5');
         height: 50px;
         width: 60px;
     }
@@ -52,7 +52,7 @@ tile:nth-child(2n) {
 .tile a,
 .tile a:hover,
 .tile a:visited {
-    color: $color-black;
+    color: color('black');
     text-decoration: none;
     cursor: pointer;
 }
@@ -61,7 +61,7 @@ tile:nth-child(2n) {
     a,
     a:hover,
     a:visited {
-        color: $color-primary;
+        color: $theme-color-primary;
         text-decoration: none;
         cursor: pointer;
     }
@@ -91,15 +91,15 @@ tile:nth-child(2n) {
 
     .reuses {
         text-align: center;
-        background-color: $color-primary;
-        color: $color-white;
+        background-color: $theme-color-primary;
+        color: color('white');
         font-weight: bolder;
         border-right: none;
-        border-bottom: 1px solid $color-white;
+        border-bottom: 1px solid color('white');
 
         .text {
             font-size: 1.3rem;
-            font-weight: $font-normal;
+            font-weight: $theme-font-weight-normal;
         }
 
         .number {
@@ -162,15 +162,15 @@ tile:nth-child(2n) {
 
     .reuses {
         text-align: center;
-        background-color: $color-primary;
-        color: $color-white;
+        background-color: $theme-color-primary;
+        color: color('white');
         font-weight: bolder;
         border-right: none;
-        border-bottom: 1px solid $color-white;
+        border-bottom: 1px solid color('white');
 
         .text {
             font-size: 1.3rem;
-            font-weight: $font-normal;
+            font-weight: $theme-font-weight-normal;
             //padding: 0 2rem;
             display: inline-block;
             width: 9rem;

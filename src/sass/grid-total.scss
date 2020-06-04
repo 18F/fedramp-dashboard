@@ -1,14 +1,14 @@
-@import 'variables';
+@import 'styles';
 
 grid-total {
-    color: $color-gray;
+    color: color('gray-cool-60');
     font-size: 1.3rem;
-    border-bottom: 2px solid $color-gray-lighter;
+    border-bottom: 2px solid color('gray-cool-10');
     margin-top: 1.4rem;
     margin-bottom: 1.3rem;
     display: block;
 
     .count {
-        font-weight: $font-bold;
+        font-weight: $theme-font-weight-bold;
     }
 }

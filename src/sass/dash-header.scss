@@ -1,12 +1,12 @@
-@import 'variables';
+@import 'styles';
 
 // styling for top area of dashboard interface
 .fr-dash-header {
- 	background-color: $color-primary-darkest;
+ 	background-color: $theme-color-primary-darker;
 
  	// white text above large metrics
  	.fr-dash-label {
-	 	color: $color-white;
+	 	color: color('white');
 	 	line-height: 4.4rem;
 	 	font-size: 1.8rem;
 	 	background-color: #0d2747;
@@ -16,7 +16,7 @@
  	// large metrics row
  	.fr-large-metrics {
 	 	height: 29.4rem;
-	 	color: $color-primary-alt;
+	 	color: $theme-color-accent-cool;
 	 	text-align: center;
 
         @media only screen and (max-width: 767px) {
@@ -82,12 +82,12 @@
 
  	// white colors for dashboard metrics, numbers only
  	.fr-large-number strong {
-	 	color: $color-white;
+	 	color: color('white');
  	}
 
  	// apply this class to a span or other to provide a 400 font weight
  	.fr-light-font {
-	 	font-weight: $font-normal;
+	 	font-weight: $theme-font-weight-normal;
  	}
 
  	// label text for metric font sized shared
