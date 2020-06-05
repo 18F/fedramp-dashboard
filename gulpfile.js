@@ -367,3 +367,5 @@ gulp.task("default", gulp.series(
     'templates',
     'mangle'
 ));
+
+gulp.task("package", gulp.series('default', 'clean:release'));
