@@ -1,9 +1,29 @@
-@import 'variables';
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS THEME CUSTOM STYLES
+----------------------------------------
+!! Copy this file to your project's
+   sass root. Don't edit the version
+   in node_modules.
+----------------------------------------
+Custom project SASS goes here.
+
+i.e.
+@include u-padding-right('05');
+----------------------------------------
+*/
 
 ui-view {
     // add background gray for entire UI
     .usa-content {
-        background-color: $color-gray-lightest;
+        background-color: color('gray-cool-5');
     }
 }
 
@@ -38,7 +58,7 @@ a,
 a:visited,
 a:active {
     text-decoration: none;
-    color: $color-primary;
+    color: color($theme-color-primary);
 }
 
 .no-select {
@@ -73,4 +93,8 @@ a:active {
 .usa-disclaimer {
   padding-right: 3rem;
   padding-left: 3rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: family('sans');
 }

@@ -1,13 +1,13 @@
-<div class="usa-grid limit">
-    <div class="usa-width-one-whole">
-        <form id="search_form" class="usa-search" method="get" ng-submit="controller.search($event)" accept-charset="UTF-8" action="https://search.usa.gov/search">
+<div class="grid-container limit">
+    <div class="grid-col-12">
+        <form id="search_form" class="usa-search" role="search" method="get" ng-submit="controller.search($event)" accept-charset="UTF-8" action="https://search.usa.gov/search">
             <input type="hidden" name="utf8" value="✓" />
             <input type="hidden" name="affiliate" id="affiliate" value="fedramp" />
             <input type="hidden" name="format" id="format" value="{{controller.format}}" />
             <label class="usa-sr-only" for="search-field">Search</label>
-            <input type="search" name="query" id="search-field" title="Search query" ng-model="controller.query" class="usagov-search-autocomplete ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" />
-            <button type="submit">
-                <span class="usa-search-submit-text">Search</span>
+            <input type="search" name="query" id="search-field" title="Search query" ng-model="controller.query" class="usagov-search-autocomplete ui-autocomplete-input usa-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" />
+            <button class="usa-button" type="submit">
+                <span class="usa-search__submit-text">Search</span>
             </button>
         </form>
     </div>

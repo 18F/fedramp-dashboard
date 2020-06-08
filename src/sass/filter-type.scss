@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 // add some style for the "filter results by" label / rule
 .fr-filter-label {
@@ -11,7 +11,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: $color-gray-lighter;
+        background-color: color('gray-cool-10');
     }
 
     .fr-filter-label-text {
@@ -19,8 +19,8 @@
         display: inline-block;
         font-size: 18px;
         line-height: 6.8rem;
-        color: $color-gray;
-        background-color: $color-gray-lightest;
+        color: color('gray-cool-60');
+        background-color: color('gray-cool-5');
         padding: 0 12px;
         font-weight: 700;
     }
@@ -41,7 +41,7 @@
         display: table-row;
 
         .usa-width-one-third {
-            border-right: 1px solid $color-white;
+            border-right: 1px solid color('white');
             display: table-cell;
         }
 
@@ -56,15 +56,15 @@
         }
 
         .selected {
-            background-color: $color-primary;
-            color: $color-white;
+            background-color: color($theme-color-primary);
+            color: color('white');
             outline: none !important;
             box-shadow: none !important;
         }
 
         button:focus {
-            background-color: $color-primary;
-            color: $color-white;
+            background-color: color($theme-color-primary);
+            color: color('white');
             outline: none !important;
             box-shadow: none !important;
         }
@@ -75,25 +75,28 @@
         width: 100%;
         height: 8.5rem;
         border-radius: 0;
+        border: none;
         margin: 0;
         padding: 0;
         line-height: inherit;
-        background-color: $color-gray-lighter;
-        color: $color-gray;
+        background-color: color('gray-cool-10');
+        color: color('gray-cool-60');
         transition: background-color 0.2s, color 0.2s;
 
         // added span and tighter line height to preserve nice wrapping
         span {
             display: block;
             line-height: 1.8rem;
-            font-size: 1.8rem
+            font-size: 1.8rem;
+            font-weight: $theme-font-weight-bold;
         }
     }
 
     // filter active / hover state alts
     button.active,
     button:hover {
-        background-color: $color-primary;
+        background-color: color($theme-color-primary);
         color: #fff;
+        cursor: pointer;
     }
 }

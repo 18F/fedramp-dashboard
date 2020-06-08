@@ -1,11 +1,11 @@
-@import 'variables';
+@import 'styles';
 
 #topnav {
     #social {
         display: inline-block;
         float: right;
         text-transform: uppercase;
-        font-size: 14px;
+        font-size: units(2);
         font-weight: bold;
 
         @media only screen and (max-width: 850px) {
@@ -44,20 +44,20 @@
         }
 
         li a {
-            line-height: 40px;
+            line-height: units(5);
             border-right: 1px solid #eee;
             border: 0 !important;
             color: #274784;
             position: relative;
             display: block;
             z-index: 100;
-            padding: 0 15px;
+            padding: 0 units(2);
             text-decoration: none;
             font-weight: bold;
 
             i {
-                color: $color-gray-light;
-                font-size: 18px;
+                color: color('gray-cool-30');
+                font-size: units(2.5);
             }
         }
     }
@@ -71,10 +71,10 @@
 
 #header {
     clear: both;
-    margin: 20px auto 0;
+    margin: units(3) auto 0;
 
     #sitetitle {
-        margin: 0 auto;
+        margin: units(1) auto;
         text-align: left;
 
         img {
@@ -92,19 +92,19 @@
         float: none;
         clear: both;
         display: block;
-        border-top: 1px dotted #ddd;
+        border-top: units(1px) dotted #ddd;
         background: #fafafa;
-        font-size: 12pt;
-        font-weight: normal;
+        font-size: units(2);
+        font-weight: $theme-font-weight-normal;
         font-family: Calibri,Arial,sans-serif;
         text-transform: uppercase;
 
         #navigate {
-            line-height: 40px;
+            line-height: units(7);
             border: 0 !important;
             color: #274784;
             text-decoration: none;
-            padding: 0 15px;
+            padding: 0 units(2.5);
         }
 
         ul {
@@ -138,14 +138,14 @@
         }
 
         li a {
-            line-height: 40px;
-            border-right: 1px solid #eee;
+            line-height: units(7);
+            border-right: units(1px) solid #eee;
             border: 0 !important;
             color: #274784;
             position: relative;
             display: block;
             z-index: 100;
-            padding: 0 15px;
+            padding: 0 units(2.5);
             text-decoration: none;
         }
 

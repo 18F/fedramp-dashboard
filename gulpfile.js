@@ -1,21 +1,71 @@
-var gulp          = require('gulp');
-var babel         = require('gulp-babel');
-var uglify        = require('gulp-uglify');
-var rename        = require('gulp-rename');
-var concat        = require('gulp-concat');
-var replace       = require('gulp-replace');
-var del           = require('del');
-var zip           = require('gulp-zip');
-var tar           = require('gulp-tar');
-var gzip          = require('gulp-gzip');
-var templateCache = require('gulp-angular-templatecache');
-var jshint        = require('gulp-jshint');
-var sass          = require('gulp-sass');
-var cleanCSS      = require('gulp-clean-css');
-var karma         = require('karma');
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS SASS GULPFILE
+----------------------------------------
+*/
 
-// Filename for final minified javascript file
-var concatOutputFilename = 'fedramp.js';
+const autoprefixer = require("autoprefixer");
+const csso = require("postcss-csso");
+const gulp = require("gulp");
+const pkg = require("./node_modules/uswds/package.json");
+const postcss = require("gulp-postcss");
+const replace = require("gulp-replace");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
+const uswds = require("./node_modules/uswds-gulp/config/uswds");
+
+const del = require('del')
+const jshint = require('gulp-jshint');
+const templateCache = require('gulp-angular-templatecache');
+const concat = require('gulp-concat');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+
+sass.compiler = require("sass");
+
+/*
+----------------------------------------
+PATHS
+----------------------------------------
+- All paths are relative to the
+project root
+- Don't use a trailing `/` for path
+names
+----------------------------------------
+*/
+
+// Project Sass source directory
+const PROJECT_SASS_SRC = "./src/sass";
+
+// Compiled CSS destination
+const CSS_DEST = "./dist/css";
+
+// Site CSS destination
+// Like the _site/assets/css directory in Jekyll, if necessary.
+const SITE_CSS_DEST = "./path/to/site/css/destination";
+
+
+const concatOutputFilename = 'fedramp.js';
+
+/*
+----------------------------------------
+TASKS
+----------------------------------------
+*/
+
+gulp.task("copy-uswds-setup", () => {
+  return gulp
+    .src(`${uswds}/scss/theme/**/**`)
+    .pipe(gulp.dest(`${PROJECT_SASS_SRC}`));
+});
 
 /**
  * Deletes the build/ directory to ensure a clean start
@@ -27,39 +77,9 @@ gulp.task('clean:all', function () {
 });
 
 /**
- * Removes artifacts not necessary for a release
- */
-gulp.task('clean:release', ['mangle'], function () {
-    'use strict';
-    console.log('Removing development files');
-    return del([
-        'dist/coverage/',
-        'dist/doc/',
-        'dist/test/'
-    ]);
-});
-
-/**
- * Compile SASS
- */
-gulp.task('sass', function () {
-    'use strict';
-    return gulp
-        .src([
-            'node_modules/font-awesome/**/*.scss',
-            'node_modules/uswds/src/stylesheets/**/*.scss',
-            'src/sass/**/*.scss'
-        ])
-        .pipe(sass.sync().on('error', sass.logError))
-        .pipe(cleanCSS())
-        .pipe(concat('fedramp.css'))
-        .pipe(gulp.dest('dist/css'));
-});
-
-/**
  * Copies all source files over to build/src.
  */
-gulp.task('copy:src', ['clean:all'], function () {
+gulp.task('copy:src', function () {
     'use strict';
     console.log('Copying over all of the source files');
     return gulp
@@ -70,7 +90,7 @@ gulp.task('copy:src', ['clean:all'], function () {
 /**
  * Copies the necessary production libs
  */
-gulp.task('copy:lib', ['clean:all'], function () {
+gulp.task('copy:lib', function () {
     'use strict';
     console.log('Copying over all of the lib files');
     return gulp
@@ -91,7 +111,7 @@ gulp.task('copy:lib', ['clean:all'], function () {
         .pipe(gulp.dest('build/lib'));
 });
 
-gulp.task('copy:test', ['clean:all'], function () {
+gulp.task('copy:test', function () {
     'use strict';
     console.log('Copying over all of the lib files');
     return gulp
@@ -105,7 +125,7 @@ gulp.task('copy:test', ['clean:all'], function () {
 /**
  * Copies over all font resources
  */
-gulp.task('copy:fonts', ['clean:all'], function () {
+gulp.task('copy:fonts', function () {
     'use strict';
     console.log('Copying over all of the font files');
     return gulp
@@ -119,7 +139,7 @@ gulp.task('copy:fonts', ['clean:all'], function () {
 /**
  * Copies over all image resources
  */
-gulp.task('copy:images', ['clean:all'], function () {
+gulp.task('copy:images', function () {
     'use strict';
     console.log('Copying over all of the image files');
     return gulp
@@ -133,7 +153,7 @@ gulp.task('copy:images', ['clean:all'], function () {
 /**
  * Runs the linter (jshint) on all the source files
  */
-gulp.task('copy:lint', ['copy:src'], function () {
+gulp.task('copy:lint', function () {
     'use strict';
     console.log('Linting dev JS files');
     return gulp
@@ -147,22 +167,26 @@ gulp.task('copy:lint', ['copy:src'], function () {
     //.pipe(jshint.reporter('fail'));
 });
 
+
+gulp.task('copy', gulp.series('copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:images', 'copy:lint'));
+
 /**
  * Finds all templates and creates a file containing the contents of each template in
  * an angular module.
  * Requires the `copy` build task to finish
  */
-gulp.task('templates:cache', ['copy'], function () {
+gulp.task('templates', function () {
     'use strict';
     console.log('Caching angular templates');
     return gulp
         .src([
             '!build/src/index.html',
-            'build/src/**/*.html'
+            'build/src/templates/**/*.html'
         ])
         .pipe(templateCache({
             module: 'fedramp',
-            filename: 'fedramp.templates.js'
+            filename: 'fedramp.templates.js',
+            root: 'templates',
         }))
         .pipe(gulp.dest('build/src'));
 });
@@ -171,7 +195,7 @@ gulp.task('templates:cache', ['copy'], function () {
  * Concatenates all the minified application javascript files from /build/src.min
  * into one file.
  **/
-gulp.task('mangle:concat', ['templates'], function () {
+gulp.task('mangle:concat', function () {
     'use strict';
     console.log('Concatenating JS files');
     return gulp
@@ -183,7 +207,7 @@ gulp.task('mangle:concat', ['templates'], function () {
         .pipe(gulp.dest('build/'));
 });
 
-gulp.task('mangle:babel', ['mangle:concat'], function () {
+gulp.task('mangle:babel', function () {
     'use strict';
     return gulp
         .src('build/' + concatOutputFilename)
@@ -194,7 +218,7 @@ gulp.task('mangle:babel', ['mangle:concat'], function () {
 /**
  * Concatenate the minified application source with the libraries
  */
-gulp.task('mangle:concat-test', ['mangle:babel'], function () {
+gulp.task('mangle:concat-test', function () {
     'use strict';
     console.log('Concatenating JS files');
     return gulp
@@ -221,7 +245,7 @@ gulp.task('mangle:concat-test', ['mangle:babel'], function () {
 /**
  * Minifies all individual javascript files
  */
-gulp.task('mangle:uglify', ['mangle:babel'], function () {
+gulp.task('mangle:uglify', function () {
     'use strict';
     console.log('Uglifying js files');
     return gulp
@@ -234,7 +258,7 @@ gulp.task('mangle:uglify', ['mangle:babel'], function () {
 /**
  * Concatenate the minified application source with the libraries
  */
-gulp.task('mangle:concat-libs', ['mangle:uglify'], function () {
+gulp.task('mangle:concat-libs', function () {
     'use strict';
     console.log('Concatenating JS files');
     return gulp
@@ -254,23 +278,9 @@ gulp.task('mangle:concat-libs', ['mangle:uglify'], function () {
 });
 
 /**
- * Copy compiled and minified source to dist/
- */
-gulp.task('mangle:copy', ['mangle:concat-libs'], function () {
-    'use strict';
-    return gulp
-        .src([
-            'build/fedramp.min.js',
-            'build/src/index.html',
-            'build/src/robots.txt'
-        ])
-        .pipe(gulp.dest('dist/'));
-});
-
-/**
  * Copy compiled and minified source to dist/test/
  */
-gulp.task('mangle:copy-test', ['mangle:concat-libs', 'mangle:concat-test'], function () {
+gulp.task('mangle:copy-test', function () {
     'use strict';
     return gulp
         .src([
@@ -280,34 +290,82 @@ gulp.task('mangle:copy-test', ['mangle:concat-libs', 'mangle:concat-test'], func
         .pipe(gulp.dest('dist/test/'));
 });
 
-gulp.task('test', ['default'], function (done) {
-    'use strict';
-    new karma.Server(
-        {
-            configFile: __dirname + '/karma.conf.js',
-            singleRun: true
-        }, done)
-        .start();
+/**
+ * Copy compiled and minified source to dist/
+ */
+gulp.task('mangle:copy', function() {
+    return gulp
+        .src([
+            'build/fedramp.min.js',
+            'build/src/index.html',
+            'build/src/robots.txt'
+        ])
+        .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('mangle', gulp.series('mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy', 'mangle:copy-test'));
 
 /**
- * Watch specific files to trigger builds during development
+ * Removes artifacts not necessary for a release
  */
-gulp.task('watch:dog', [], function () {
+gulp.task('clean:release', function () {
     'use strict';
-    console.log('Watch dog, ARF ARF!!!');
-    gulp.watch('src/**/*.js', ['default', 'test']);
-    gulp.watch('src/**/*.html', ['default', 'test']);
-    gulp.watch('src/**/*.scss', ['default', 'test']);
-    gulp.watch('test/**/*.js', ['default', 'test']);
+    console.log('Removing development files');
+    return del([
+        'dist/coverage/',
+        'dist/doc/',
+        'dist/test/'
+    ]);
 });
 
-// Creates sub-tasks
-gulp.task('mangle', ['mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy', 'mangle:copy-test']);
-gulp.task('templates', ['templates:cache']);
-gulp.task('copy', ['copy:src', 'copy:lib', 'copy:test', 'copy:fonts', 'copy:images', 'copy:lint']);
+gulp.task("build-sass", function(done) {
+  var plugins = [
+    // Autoprefix
+    autoprefixer({
+      cascade: false,
+      grid: true
+    }),
+    // Minify
+    csso({ forceMediaMerge: false }),
+  ];
+  return (
+    gulp
+      .src([
+            'node_modules/font-awesome/**/*.scss',
+            `${PROJECT_SASS_SRC}/*.scss`
+        ])
+      .pipe(sourcemaps.init({ largeFile: true }))
+      .pipe(
+        sass.sync({
+          includePaths: [
+            `${PROJECT_SASS_SRC}`,
+            `${uswds}/scss`,
+            `${uswds}/scss/packages`
+          ]
+        })
+      )
+      .pipe(replace(/\buswds @version\b/g, "based on uswds v" + pkg.version))
+      .pipe(postcss(plugins))
+      .pipe(sourcemaps.write("."))
+      // uncomment the next line if necessary for Jekyll to build properly
+      //.pipe(gulp.dest(`${SITE_CSS_DEST}`))
+      .pipe(concat('fedramp.css'))
+      .pipe(gulp.dest(`${CSS_DEST}`))
+  );
+});
 
-// Default is the 'main' task that gets executed when you simply run `gulp`
-gulp.task('default', ['clean:all', 'sass', 'copy', 'templates', 'mangle']);
-gulp.task('package', ['clean:all', 'sass', 'copy', 'templates', 'mangle', 'clean:release']);
-gulp.task('watch', ['watch:dog']);
+gulp.task("watch-sass", function() {
+  gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series("build-sass"));
+});
+
+gulp.task("watch", gulp.series("build-sass", "watch-sass"));
+
+gulp.task("default", gulp.series(
+    'clean:all',
+    'build-sass',
+    'copy',
+    'templates',
+    'mangle'
+));
+
+gulp.task("package", gulp.series('default', 'clean:release'));

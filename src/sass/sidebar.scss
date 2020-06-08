@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 .sidebar {
     float: left;
@@ -12,9 +12,9 @@
         padding: 0 2rem;
 
         .filters-toggle {
-            color: $color-gray;
+            color: color('gray-cool-60');
             font-size: 1.7rem;
-            font-weight: $font-bold;
+            font-weight: $theme-font-weight-bold;
             // filter results text - make this full width, have a cursor
             span {
 	            display:block;
@@ -41,7 +41,7 @@
 	        display: block;
 	        margin: 1.3rem 0;
 	        font-size: 1.5rem;
-	        font-weight: $font-normal;
+	        font-weight: $theme-font-weight-normal;
 
 			// check for active filter
 			.fa-check-circle {
@@ -52,19 +52,19 @@
 
 		// sidebar filter active state
 	    .selected {
-		    font-weight: $font-bold;
+		    font-weight: $theme-font-weight-bold;
 	    }
 
 		// indent filter child items
 	    .options {
 	        padding-left: 1.3rem;
-			color: $color-gray;
+			color: color('gray-cool-60');
 	    }
 	}
 
 	.filter-header {
 		font-size: 1.6rem;
-		font-weight: $font-bold;
+		font-weight: $theme-font-weight-bold;
 		transition: color 0.3s;
 	}
 
@@ -72,7 +72,7 @@
 	.grid-filter-selected {
 		// change header color to blue
 		.filter-header {
-		    color: $color-primary;
+		    color: color($theme-color-primary);
 		}
 	}
 
@@ -82,7 +82,9 @@
 
 		// input field addition
 		input {
-			font-size: 1.4rem;
+            font-size: 1.4rem;
+            width: 100%;
+            padding: units(1.5);
 		}
 	}
 

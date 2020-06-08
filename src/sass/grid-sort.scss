@@ -1,24 +1,24 @@
-@import 'variables';
+@import 'styles';
 
 grid-sort {
     display: inline-block;
     width: 3rem;
     height: 4.4rem;
-    background-color: $color-gray-lighter;
+    background-color: color('gray-cool-10');
     transition: background-color 0.3s;
 }
 
 grid-sort:hover {
-    color: $color-primary;
+    color: color($theme-color-primary);
 }
 
 .sort-selected {
-    color: $color-primary;
+    color: color($theme-color-primary);
 }
 
 .grid-sort-header {
     font-size: 1.4rem !important;
-    font-weight: $font-normal;
+    font-weight: $theme-font-weight-normal;
     cursor: pointer;
 }
 

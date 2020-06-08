@@ -1,22 +1,23 @@
-@import 'variables';
+@import 'styles';
 
 .usa-footer {
-    .usa-footer-primary-section {
+    .usa-footer__primary-section {
         min-height: 35rem;
     }
-    
-    .usa-footer-nav {
-        .usa-footer-primary-link {
+
+    .usa-footer__nav {
+        .usa-footer__primary-link {
             display: inline-block;
         }
-        
+
         li {
             display: table-row;
+            line-height: 2em;
 
             i {
                 display: table-cell;
                 width: 4rem;
-                color: $color-gray-light;
+                color: color('gray-cool-30');
             }
 
             p, span, a {

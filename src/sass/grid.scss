@@ -1,4 +1,4 @@
-@import 'variables';
+@import 'styles';
 
 .grid {
     .empty-results {
@@ -25,7 +25,7 @@
 
 		.grid-sort-arrows {
 		    .fa-caret-up, .fa-caret-down {
-			    color: $color-primary;
+			    color: color($theme-color-primary);
 		    }
 		}
 	}

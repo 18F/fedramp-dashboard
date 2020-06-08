@@ -1,8 +1,8 @@
-@import 'variables';
+@import 'styles';
 
 .dictionary {
     .back {
-        background-color: $color-primary;
+        background-color: color($theme-color-primary);
         height: 46px;
         width: 100%;
         padding-top:11px;
@@ -24,7 +24,7 @@
     }
 
     h4,h2,h3, dl {
-        color: $color-base;
+        color: color($theme-color-base-darkest);
     }
     h4 {
         margin:0;
@@ -35,13 +35,13 @@
         padding: 0;
     }
     .header {
-        background-color: $color-gray-lightest;
+        background-color: color('gray-cool-5');
         height: 100px;
         padding-top: 30px;
     }
 
     .search {
-        background-color: $color-gray-lightest;
+        background-color: color('gray-cool-5');
         height: 80px;
         input {
             margin: 0;
@@ -52,7 +52,7 @@
     }
 
     .term {
-        border-bottom: 2px solid $color-gray-lightest;
+        border-bottom: 2px solid color('gray-cool-5');
     }
 
     dl {

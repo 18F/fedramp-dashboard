@@ -1,16 +1,16 @@
-@import 'variables';
+@import 'styles';
 
 .grid {
     display: block;
     max-width: none;
     width: 100%;
-    background-color: $color-gray-lightest;
+    background-color: color('gray-cool-5');
 
     .fr-grid-layout {
         display: table;
         width: 100%;
         font-size: 1.4rem;
-        background-color: $color-white;
+        background-color: color('white');
         transition: background-color 0.3s;
 
         @media only screen and (max-width: 850px) {
@@ -19,7 +19,7 @@
         }
 
         &:hover {
-            background-color: $color-cool-blue-lightest;
+            background-color: color('blue-warm-10');
         }
 
         .fr-grid-layout-row {
@@ -29,7 +29,7 @@
                 display: inline-block;
                 height: auto !important;
             }
-            
+
             > div {
                 display: table-cell;
                 vertical-align: middle;
@@ -67,8 +67,8 @@
     .fr-grid-layout.fr-grid-header {
         height: 6.8rem;
         margin-top: 1.6rem;
-        background: $color-gray-lightest;
-        color: $color-gray;
+        background: color('gray-cool-5');
+        color: color('gray-cool-60');
         white-space: nowrap;
     }
 
@@ -194,6 +194,10 @@
         }
     }
 
+    .fr-grid-cell-metric .number {
+        padding-bottom: units(1px);
+    }
+
     .fr-grid-cell-contact {
         width: 33%;
 
@@ -202,7 +206,7 @@
         }
     }
 
-    .agency, 
+    .agency,
     .assessor {
         .fr-grid-cell-metric {
             width: 7%;
@@ -216,11 +220,11 @@
 
     .options {
         .option:hover {
-            color: $color-primary;
+            color: color($theme-color-primary);
         }
     }
 
     .filter-header:hover {
-        color: $color-primary;
+        color: color($theme-color-primary);
     }
 }

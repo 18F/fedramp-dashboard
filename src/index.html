@@ -29,21 +29,51 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
         <link rel="stylesheet" href="css/fedramp.css" />
     </head>
     <body ng-app="fedramp" ng-strict-di>
-      <div class="usa-disclaimer">
-    <div class="usa-disclaimer-official">
-      <img src="./img/favicons/favicon-40.png" alt="U.S. flag">
-      <p>An official website of the United States government</p>
-    </div>
-    <p class="usa-disclaimer-stage">
-      This site is currently in alpha.
-      <a href="https://18f.gsa.gov/dashboard/stages/#alpha">Learn more.</a>
-    </p>
-  </div>
+        <section class="usa-banner" aria-label="Official government website">
+            <div class="usa-accordion">
+                <header class="usa-banner__header">
+                    <div class="usa-banner__inner">
+                        <div class="grid-col-auto">
+                            <img class="usa-banner__header-flag" src="img/us_flag_small.png" alt="U.S. flag">
+                        </div>
+                        <div class="grid-col-fill tablet:grid-col-auto">
+                            <p class="usa-banner__header-text">An official website of the United States government</p>
+                            <p class="usa-banner__header-action" aria-hidden="true">Here’s how you know</p>
+                        </div>
+                        <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+                  <span class="usa-banner__button-text">Here’s how you know</span>
+                </button>
+                    </div>
+                </header>
+                <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+                    <div class="grid-row grid-gap-lg">
+                        <div class="usa-banner__guidance tablet:grid-col-6">
+                            <img class="usa-banner__icon usa-media-block__img" src="img/icon-dot-gov.svg" alt="Dot gov">
+                            <div class="usa-media-block__body">
+                                <p>
+                                    <strong>The .gov means it’s official.</strong>
+                                    <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="usa-banner__guidance tablet:grid-col-6">
+                            <img class="usa-banner__icon usa-media-block__img" src="img/icon-https.svg" alt="Https">
+                            <div class="usa-media-block__body">
+                                <p>
+                                    <strong>The site is secure.</strong>
+                                    <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div ui-view></div>
-        <noscript>  <div class="usa-alert usa-alert-warning">
-    <div class="usa-alert-body">
-      <h3 class="usa-alert-heading">Your browser does not support JavaScript.</h3>
-      <p class="usa-alert-text">In order to view the full content of this site, please use a browser with JavaScript enabled. If you cannot, you may want to view the <a href="https://github.com/18F/fedramp-data/blob/master/data/data.json">data driving this marketplace.</a></p>
+        <noscript>  <div class="usa-alert usa-alert--warning">
+    <div class="usa-alert__body">
+      <h3 class="usa-alert__heading">Your browser does not support JavaScript.</h3>
+      <p class="usa-alert__text">In order to view the full content of this site, please use a browser with JavaScript enabled. If you cannot, you may want to view the <a href="https://github.com/18F/fedramp-data/blob/master/data/data.json">data driving this marketplace.</a></p>
     </div>
   </div>
 </noscript>

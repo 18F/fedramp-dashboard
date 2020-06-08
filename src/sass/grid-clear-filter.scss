@@ -1,13 +1,13 @@
-@import 'variables';
+@import 'styles';
 
 .clear-filters {
 	display:block;
-    font-weight:$font-bold;
-    color:$color-gray;
+    font-weight: $theme-font-weight-bold;
+    color:color('gray-cool-60');
     font-size:1.5rem;
     cursor:pointer;
     margin-bottom:1.2rem;
 }
 .clear-filters:hover {
-    color:$color-primary;
+    color: color($theme-color-primary);
 }
