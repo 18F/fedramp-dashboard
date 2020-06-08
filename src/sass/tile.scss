@@ -61,7 +61,7 @@ tile:nth-child(2n) {
     a,
     a:hover,
     a:visited {
-        color: $theme-color-primary;
+        color: color($theme-color-primary);
         text-decoration: none;
         cursor: pointer;
     }
@@ -91,7 +91,7 @@ tile:nth-child(2n) {
 
     .reuses {
         text-align: center;
-        background-color: $theme-color-primary;
+        background-color: color($theme-color-primary);
         color: color('white');
         font-weight: bolder;
         border-right: none;
@@ -162,7 +162,7 @@ tile:nth-child(2n) {
 
     .reuses {
         text-align: center;
-        background-color: $theme-color-primary;
+        background-color: color($theme-color-primary);
         color: color('white');
         font-weight: bolder;
         border-right: none;

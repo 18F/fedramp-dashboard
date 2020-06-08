@@ -2,7 +2,7 @@
 
 .dictionary {
     .back {
-        background-color: $theme-color-primary;
+        background-color: color($theme-color-primary);
         height: 46px;
         width: 100%;
         padding-top:11px;
@@ -24,7 +24,7 @@
     }
 
     h4,h2,h3, dl {
-        color: $theme-color-base-darkest;
+        color: color($theme-color-base-darkest);
     }
     h4 {
         margin:0;

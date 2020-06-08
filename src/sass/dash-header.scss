@@ -2,7 +2,7 @@
 
 // styling for top area of dashboard interface
 .fr-dash-header {
- 	background-color: $theme-color-primary-darker;
+ 	background-color: color($theme-color-primary-darker);
 
  	// white text above large metrics
  	.fr-dash-label {
@@ -16,7 +16,7 @@
  	// large metrics row
  	.fr-large-metrics {
 	 	height: 29.4rem;
-	 	color: $theme-color-accent-cool;
+	 	color: color($theme-color-accent-cool);
 	 	text-align: center;
 
         @media only screen and (max-width: 767px) {
@@ -57,7 +57,7 @@
 	 		margin-top: 12rem;
 
 	 		strong {
-		 		font-size: 9.5rem;
+                font-size: 9.5rem;
 	 		}
 		}
 

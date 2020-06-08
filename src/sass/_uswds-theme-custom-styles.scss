@@ -58,7 +58,7 @@ a,
 a:visited,
 a:active {
     text-decoration: none;
-    color: $theme-color-primary;
+    color: color($theme-color-primary);
 }
 
 .no-select {
@@ -96,5 +96,5 @@ a:active {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $theme-font-type-sans;
+    font-family: family('sans');
 }

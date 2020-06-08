@@ -194,6 +194,10 @@
         }
     }
 
+    .fr-grid-cell-metric .number {
+        padding-bottom: units(1px);
+    }
+
     .fr-grid-cell-contact {
         width: 33%;
 
@@ -216,11 +220,11 @@
 
     .options {
         .option:hover {
-            color: $theme-color-primary;
+            color: color($theme-color-primary);
         }
     }
 
     .filter-header:hover {
-        color: $theme-color-primary;
+        color: color($theme-color-primary);
     }
 }

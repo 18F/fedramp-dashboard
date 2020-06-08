@@ -9,11 +9,11 @@ grid-sort {
 }
 
 grid-sort:hover {
-    color: $theme-color-primary;
+    color: color($theme-color-primary);
 }
 
 .sort-selected {
-    color: $theme-color-primary;
+    color: color($theme-color-primary);
 }
 
 .grid-sort-header {

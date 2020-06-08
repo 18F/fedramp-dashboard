@@ -60,23 +60,25 @@ search {
 
 #search {
     .back {
-        background-color: $theme-color-primary;
-        height: 46px;
+        background-color: color($theme-color-primary);
+        height: units(6);
         width: 100%;
         color: #fff;
-        padding-top: 11px;
+        padding-top: units(1.5);
         margin: 0;
+        font-size: size('sans', 'sm');
 
         h4 {
-            cursor:pointer;
+            cursor: pointer;
             color: #fff;
+            font-size: size('sans', 'sm');
 
             i {
-                padding-top: 2px;
+                padding-top: units(2px);
                 position: relative;
-                font-size: 0.7em;
-                top: -2px;
-                margin-right: 8px;
+                font-size: units(2);
+                top: units(-2px);
+                margin-right: units(1);
             }
         }
 
@@ -85,10 +87,23 @@ search {
         }
     }
 
+    #internal-only, #no-results {
+        font-size: size('sans', 'sm');
+    }
+
     .article {
-        .article-title {}
+        padding-bottom: units(4);
+
+        .article-title, .article-url, .article-description, .article-site-links {
+            font-size: size('sans', 'sm');
+        }
+        .article-title {
+            font-size: size('sans', 'sm');
+        }
         .article-ext-type {}
-        .article-url {}
+        .article-url {
+            font-size: size('sans', 'sm');
+        }
         .article-description {}
         .article-site-links {}
     }
