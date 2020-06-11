@@ -22,24 +22,27 @@
     function Tile ($log, $sce, $state, $stateParams, helperService, $location) {
         var self = this;
 
-        /**
-         * The tile template for the model type.
-         */
-        self.tileTemplate = 'templates/components/tile-' + self.model.type + '.html';
+        this.$onInit = function() {
+            /**
+             * The tile template for the model type.
+             */
+            self.tileTemplate = 'templates/components/tile-' + self.model.type + '.html';
+            self.trustedWesbiteUrl = false;
 
-        /**
-         * Redirect to the appropriate view
-         * @public
-         * @memberof Components.Tile
-         */
-        self.view = function () {
-            let baseUrl = '';
-            if ($stateParams.name) {
-                baseUrl = '/' + self.model.type + '/' + $stateParams.name + '/versus/' + helperService.slugify(self.model.name);
-            } else {
-                baseUrl = '/' + self.model.type + '/' + helperService.slugify(self.model.name);
-            }
-            $location.url(baseUrl + helperService.queryString());
+            /**
+             * Redirect to the appropriate view
+             * @public
+             * @memberof Components.Tile
+             */
+            self.view = function () {
+                let baseUrl = '';
+                if ($stateParams.name) {
+                    baseUrl = '/' + self.model.type + '/' + $stateParams.name + '/versus/' + helperService.slugify(self.model.name);
+                } else {
+                    baseUrl = '/' + self.model.type + '/' + helperService.slugify(self.model.name);
+                }
+                $location.url(baseUrl + helperService.queryString());
+            };
         };
 
         /**
@@ -57,7 +60,7 @@
             if (url.indexOf('http') === -1) {
                 url = 'http://' + url;
             }
-            return $sce.trustAsResourceUrl(url);
+            return self.trustedWebsiteUrl || (self.trustedWebsiteUrl = $sce.trustAsUrl(url))
         };
     }
 })();

@@ -99,7 +99,7 @@ tile:nth-child(2n) {
 
         .text {
             font-size: 1.3rem;
-            font-weight: $theme-font-weight-normal;
+            font-weight: weight($theme-font-weight-normal);
         }
 
         .number {
@@ -170,7 +170,7 @@ tile:nth-child(2n) {
 
         .text {
             font-size: 1.3rem;
-            font-weight: $theme-font-weight-normal;
+            font-weight: weight($theme-font-weight-normal);
             //padding: 0 2rem;
             display: inline-block;
             width: 9rem;

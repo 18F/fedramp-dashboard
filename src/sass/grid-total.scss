@@ -9,6 +9,6 @@ grid-total {
     display: block;
 
     .count {
-        font-weight: $theme-font-weight-bold;
+        font-weight: weight($theme-font-weight-bold);
     }
 }

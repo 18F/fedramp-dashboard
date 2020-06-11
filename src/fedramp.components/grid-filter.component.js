@@ -108,17 +108,6 @@
         var OBJECT_PARAM_REGEX = /\:\((.+?)\),{0,}/;
         var PARAM_DELIMITER = ';';
 
-        // Options available to filter based on property
-        self.options = [];
-
-        // Options that have been selected
-        self.selectedOptionValues = self.selectedOptionValues || [];
-
-        // List of filtered data based on this particular filter
-        self.filtered = [];
-
-        // Whether to initially render expanded mode with panels opened
-        self.opened = (angular.isDefined(self.opened) ? self.opened :  true);
 
         // Exposed public functions
         self.$onInit = $onInit;
@@ -137,6 +126,18 @@
             if (!self.property && (!self.optionsFunc || !self.filterFunc)) {
                 throw 'If property is not specified, optionsFunc and filterFunc must be passed in';
             }
+
+            // Options available to filter based on property
+            self.options = [];
+
+            // Options that have been selected
+            self.selectedOptionValues = self.selectedOptionValues || [];
+
+            // List of filtered data based on this particular filter
+            self.filtered = [];
+
+            // Whether to initially render expanded mode with panels opened
+            self.opened = (angular.isDefined(self.opened) ? self.opened :  true);
 
             // Allow custom optionsFunc and filterFuncs to be passed for custom filtering
             self.optionsFunc = self.optionsFunc || optionsFunc;

@@ -11,7 +11,7 @@
                 gridController: '^grid'
             },
             bindings: {
-                // Property expression. Tells search which property to search on. 
+                // Property expression. Tells search which property to search on.
                 property: '@',
                 // Placeholder text to display on input field
                 placeholder: '@',
@@ -23,9 +23,9 @@
     GridSearch.$inject = ['Searcher'];
 
     /**
-     * Allows a dataset to be searched using free text searches. This component utilizes a property 
-     * expression to determine which field to search on. See {@link Services.Searcher Searcher} example for 
-     * property expression samples. 
+     * Allows a dataset to be searched using free text searches. This component utilizes a property
+     * expression to determine which field to search on. See {@link Services.Searcher Searcher} example for
+     * property expression samples.
      *
      * If no property is specified, a custom filterFunc can be passed in to include custom
      * filtering logic.
@@ -45,7 +45,7 @@
         /**
          * Reference to current GridSearch
          */
-        var self = this;        
+        var self = this;
 
         /**
          * Used to traverse an object to search for values on a given property
@@ -76,7 +76,7 @@
             if (!self.property && !self.filterFunc) {
                 throw 'If property is not specified, filterFunc must be provided';
             }
-            
+
             self.filterFunc = (self.filterFunc ? wrapFilterFunc(self.filterFunc) : filterFunc);
             self.gridController.addFilter(self);
             restoreState();
@@ -110,7 +110,7 @@
         }
 
         /**
-         * Every time a user searches, we filter based on the entire dataset and then internally 
+         * Every time a user searches, we filter based on the entire dataset and then internally
          * store the results and call doFilter() on the parent dataset to appropriately merge results from
          * all relevant fitlers.
          *
