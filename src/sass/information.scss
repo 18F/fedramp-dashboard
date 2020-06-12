@@ -174,11 +174,11 @@
 		            padding-top: 2.7rem;
 		            background-color: color($theme-color-primary);
 		            color: color('white');
-		            font-weight: $theme-font-weight-bold;
+		            font-weight: weight($theme-font-weight-bold);
 
 		            .text {
 		                font-size: 1.3rem;
-		                font-weight: $theme-font-weight-normal;
+		                font-weight: weight($theme-font-weight-normal);
 		            }
 
 		            .number {
@@ -267,7 +267,7 @@
         }
 
         .title {
-            font-weight: $theme-font-weight-bold;
+            font-weight: weight($theme-font-weight-bold);
             font-size: 1.9rem;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -285,7 +285,7 @@
 
             .text {
                 font-size: 1.3rem;
-                font-weight: $theme-font-weight-normal;
+                font-weight: weight($theme-font-weight-normal);
             }
 
             .number {
@@ -403,7 +403,7 @@
 
         .text {
             font-size: 1.3rem;
-            font-weight: $theme-font-weight-normal;
+            font-weight: weight($theme-font-weight-normal);
         }
 
         .number {

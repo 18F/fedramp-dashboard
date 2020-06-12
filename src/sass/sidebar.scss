@@ -14,7 +14,7 @@
         .filters-toggle {
             color: color('gray-cool-60');
             font-size: 1.7rem;
-            font-weight: $theme-font-weight-bold;
+            font-weight: weight($theme-font-weight-bold);
             // filter results text - make this full width, have a cursor
             span {
 	            display:block;
@@ -41,7 +41,7 @@
 	        display: block;
 	        margin: 1.3rem 0;
 	        font-size: 1.5rem;
-	        font-weight: $theme-font-weight-normal;
+	        font-weight: weight($theme-font-weight-normal);
 
 			// check for active filter
 			.fa-check-circle {
@@ -52,7 +52,7 @@
 
 		// sidebar filter active state
 	    .selected {
-		    font-weight: $theme-font-weight-bold;
+		    font-weight: weight($theme-font-weight-bold);
 	    }
 
 		// indent filter child items
@@ -64,7 +64,7 @@
 
 	.filter-header {
 		font-size: 1.6rem;
-		font-weight: $theme-font-weight-bold;
+		font-weight: weight($theme-font-weight-bold);
 		transition: color 0.3s;
 	}
 

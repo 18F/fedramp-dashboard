@@ -18,10 +18,10 @@
                 default: '@'
             }
         });
-    
+
     GridSort.$inject = ['$log', '$parse', '$element'];
 
-    /** 
+    /**
      * Used to sort items within a grid. Requires to be nested within a [Grid]{@link Components.Grid} component.
      * @constructor
      * @memberof Components
@@ -57,7 +57,7 @@
          */
         function saveState () {
             // Merge any existing parameters
-            var existingParams = 
+            var existingParams =
                 angular.extend(
                     self.gridController.state, {
                         'sort': (self.asc ? '' : '-') + self.name
@@ -132,7 +132,7 @@
 
         /**
          * Toggles the sort. To maintain a consistent interaction, we always set the toggle to ascending
-         * if the sort is not activated. This case would be hit when the user has clicked on the sort for the 
+         * if the sort is not activated. This case would be hit when the user has clicked on the sort for the
          * first time or after another sort.
          *
          * @public
@@ -216,7 +216,7 @@
          *
          * @public
          * @memberof Components.GridSort
-         */ 
+         */
         function clear () {
             self.activated = false;
             $element.removeClass('sort-selected');

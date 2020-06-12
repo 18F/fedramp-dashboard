@@ -22,7 +22,9 @@
      */
     function Panel () {
         var self = this;
-        self.header = self.header || '';
-        self.expand = angular.isDefined(self.expand) ? self.expand : true;
+        this.$onInit = function() {
+            self.header = self.header || '';
+            self.expand = angular.isDefined(self.expand) ? self.expand : true
+        }
     }
 })();

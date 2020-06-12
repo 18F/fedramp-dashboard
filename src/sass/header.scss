@@ -94,8 +94,8 @@
         display: block;
         border-top: units(1px) dotted #ddd;
         background: #fafafa;
-        font-size: units(2);
-        font-weight: $theme-font-weight-normal;
+        font-size: size('sans', 'sm');
+        font-weight: weight($theme-font-weight-normal);
         font-family: Calibri,Arial,sans-serif;
         text-transform: uppercase;
 
@@ -116,6 +116,7 @@
             list-style: none;
             background: #fafafa;
             display: block;
+            white-space: nowrap;
 
             @media only screen and (max-width: 850px) {
                 margin: 0;
@@ -145,7 +146,8 @@
             position: relative;
             display: block;
             z-index: 100;
-            padding: 0 units(2.5);
+            //! padding: 0 units(2.5);
+            padding: 0 units(2);
             text-decoration: none;
         }
 

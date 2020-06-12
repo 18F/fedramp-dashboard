@@ -87,7 +87,7 @@
 
  	// apply this class to a span or other to provide a 400 font weight
  	.fr-light-font {
-	 	font-weight: $theme-font-weight-normal;
+	 	font-weight: weight($theme-font-weight-normal);
  	}
 
  	// label text for metric font sized shared

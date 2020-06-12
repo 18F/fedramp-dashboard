@@ -18,7 +18,7 @@ grid-sort:hover {
 
 .grid-sort-header {
     font-size: 1.4rem !important;
-    font-weight: $theme-font-weight-normal;
+    font-weight: weight($theme-font-weight-normal);
     cursor: pointer;
 }
 

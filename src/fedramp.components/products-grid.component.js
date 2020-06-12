@@ -22,6 +22,33 @@
     function ProductsGrid ($log, fedrampData, $attrs) {
         var self = this;
 
+        this.$onInit = function() {
+            /**
+             * The products
+             * @member {array}
+             * @memberof Components.ProductsGrid
+             */
+            self.products = self.rawItems || fedrampData.products();
+
+            /**
+             * Event reciever for when the grid is updated.
+             * @public
+             * @member {object}
+             * @memberof Components.ProductsGrid
+             *
+             * @param {array} items
+             *  Array of items with filtering and sorting applied.
+             */
+            self.onUpdate = function (func) {
+                return function (items, state) {
+                    self.filteredData = items;
+                    if (func) {
+                        func({items: items});
+                    }
+                };
+            }(self.onUpdate);
+        }
+
         /**
          * The filtered data
          * @member {array}
@@ -29,30 +56,6 @@
          */
         self.filteredData = [];
 
-        /**
-         * The products
-         * @member {array}
-         * @memberof Components.ProductsGrid
-         */
-        self.products = self.rawItems || fedrampData.products();
-
-        /**
-         * Event reciever for when the grid is updated.
-         * @public
-         * @member {object}
-         * @memberof Components.ProductsGrid
-         *
-         * @param {array} items
-         *  Array of items with filtering and sorting applied.
-         */
-        self.onUpdate = function (func) {
-            return function (items, state) {
-                self.filteredData = items;
-                if (func) {
-                    func({items: items});
-                }
-            };
-        }(self.onUpdate);
 
         /**
          * Flag to hide filters
@@ -145,7 +148,7 @@
         };
 
         /**
-         * Custom status filter that checks a products designation value as well as the 
+         * Custom status filter that checks a products designation value as well as the
          * existence of a fedramp ready date.
          *
          * @member {object}

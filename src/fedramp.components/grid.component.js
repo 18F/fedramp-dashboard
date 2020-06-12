@@ -149,7 +149,7 @@
          * <grid-filter property="agency"></grid-filter>
          * <grid-filter property="deploymentModel"></grid-filter>
          *
-         * Agency may result with a data set containing {1, 2, 3, 4} 
+         * Agency may result with a data set containing {1, 2, 3, 4}
          * while
          * DeploymentModel may contain a dataset with {a,b,c}
          *
@@ -222,7 +222,7 @@
         }
 
         /**
-         * Updates the state of all sorts so that the latest one used is the only one that's 
+         * Updates the state of all sorts so that the latest one used is the only one that's
          * activated.
          * @public
          * @memberof Components.Grid
