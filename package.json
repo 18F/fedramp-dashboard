@@ -46,7 +46,7 @@
     "gulp-replace": "1.0.0",
     "gulp-sass": "4.0.2",
     "gulp-sourcemaps": "2.6.5",
-    "gulp-tar": "1.9.0",
+    "gulp-tar": "3.1.0",
     "gulp-uglify": "1.5.3",
     "gulp-zip": "3.2.0",
     "http-server": "^0.12.3",
