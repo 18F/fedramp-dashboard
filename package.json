@@ -71,5 +71,6 @@
     "showdown": "^1.9.1",
     "uswds": "2.7.0",
     "uswds-gulp": "github:uswds/uswds-gulp"
+    "minimist": "^2.4.5"
   }
 }
