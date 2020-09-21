@@ -75,6 +75,7 @@
   },
   "resolutions": {
     "yargs-parser": ">=13.1.2"
+    "minimist": "1.2.5"
   },
   "devDependencies": {
     "npm-force-resolutions": "0.0.3"
