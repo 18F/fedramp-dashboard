@@ -9,6 +9,7 @@
     "docgen": "./node_modules/.bin/jsdoc ./src/ -r -d ./dist/doc --readme README.md",
     "build": "./node_modules/.bin/gulp",
     "package": "./node_modules/.bin/gulp package",
+    "preinstall": "npx npm-force-resolutions",
     "watch": "./node_modules/.bin/gulp watch",
     "federalist": "npm run package"
   },
@@ -71,5 +72,11 @@
     "showdown": "^1.9.1",
     "uswds": "2.7.0",
     "uswds-gulp": "github:uswds/uswds-gulp"
+  },
+  "resolutions": {
+    "yargs-parser": ">=13.1.2"
+  },
+  "devDependencies": {
+    "npm-force-resolutions": "0.0.3"
   }
 }
