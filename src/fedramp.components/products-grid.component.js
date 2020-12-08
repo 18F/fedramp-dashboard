@@ -135,12 +135,15 @@
             if (!searchTerm) {
                 return product;
             }
-
+            console.log('product', product);
             searchTerm = searchTerm.toLowerCase();
             var productName = product.name.toLowerCase();
             var providerName = product.provider.toLowerCase();
+            var providerDescription = product.csoDescription.toLowerCase();
 
-            if (productName.indexOf(searchTerm) !== -1 || providerName.indexOf(searchTerm) !== -1) {
+            if (productName.indexOf(searchTerm) !== -1 ||
+                providerName.indexOf(searchTerm) !== -1 ||
+                providerDescription.indexOf(searchTerm) !== -1) {
                 return product;
             }
 
