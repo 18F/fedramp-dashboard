@@ -100,11 +100,11 @@ describe('The product-grid component', function () {
         var product = new Product();
         product.name = 'App Engine';
         product.provider = 'Google';
-        product.csoDescription = 'Foo';
+        product.serviceDescription = 'Foo';
 
         var filtered = component.productNameSearchFilterFunc(product, 0, [product], 'Foo');
         expect(filtered).toBeDefined();
-        expect(filtered.csoDescription).toBe('Foo');
+        expect(filtered.serviceDescription).toBe('Foo');
     }));
 
     it('it can filter by status', inject(function (Product) {

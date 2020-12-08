@@ -139,7 +139,7 @@
             searchTerm = searchTerm.toLowerCase();
             var productName = product.name.toLowerCase();
             var providerName = product.provider.toLowerCase();
-            var providerDescription = product.csoDescription.toLowerCase();
+            var providerDescription = product.serviceDescription.toLowerCase();
 
             if (productName.indexOf(searchTerm) !== -1 ||
                 providerName.indexOf(searchTerm) !== -1 ||
