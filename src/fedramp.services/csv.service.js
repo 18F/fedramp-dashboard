@@ -51,6 +51,7 @@
             //     ServiceModel: '',
             //     LeveragedATO: '',
             //     AuthorizationDate: '',
+            //     AnnouncementDate: '',
             //     Agency: '',
             //     Subagency: '',
             //     IndependentAssessor: ''
@@ -90,6 +91,7 @@
                     ServiceModel: p.serviceModel.join(" "),
                     LeveragedATO: 'No',
                     AuthorizationDate: helperService.toDate(p.authorizationDate),
+                    AnnouncementDate: helperService.toDate(p.compliantDate),
                     Agency: p.sponsoringAgency,
                     Subagency: '',
                     IndependentAssessor: p.independentAssessor
@@ -104,6 +106,7 @@
                         ServiceModel: p.serviceModel.join(" "),
                         LeveragedATO: 'Yes',
                         AuthorizationDate: helperService.toDate(x.compliantDate),
+                        AnnouncementDate: helperService.toDate(x.compliantDate),
                         Agency: x.authorizingAgency,
                         Subagency: x.authorizingSubagency,
                         IndependentAssessor: x.independentAssessor
@@ -127,6 +130,7 @@
                         ServiceModel: p.serviceModel.join(" "),
                         LeveragedATO: 'No',
                         AuthorizationDate: helperService.toDate(p.authorizationDate),
+                        AnnouncementDate: helperService.toDate(p.compliantDate),
                         Agency: p.sponsoringAgency,
                         Subagency: '',
                         IndependentAssessor: p.independentAssessor
@@ -143,6 +147,7 @@
                             ServiceModel: p.serviceModel.join(" "),
                             LeveragedATO: 'Yes',
                             AuthorizationDate: helperService.toDate(x.compliantDate),
+                            AnnouncementDate: helperService.toDate(x.compliantDate),
                             Agency: x.authorizingAgency,
                             Subagency: x.authorizingSubagency,
                             IndependentAssessor: x.independentAssessor
@@ -167,6 +172,7 @@
                         ServiceModel: p.serviceModel.join(" "),
                         LeveragedATO: 'No',
                         AuthorizationDate: helperService.toDate(p.authorizationDate),
+                        AnnouncementDate: helperService.toDate(p.compliantDate),
                         Agency: p.sponsoringAgency,
                         Subagency: '',
                         IndependentAssessor: p.independentAssessor
@@ -183,6 +189,7 @@
                             ServiceModel: p.serviceModel.join(" "),
                             LeveragedATO: 'Yes',
                             AuthorizationDate: helperService.toDate(x.compliantDate),
+                            AnnouncementDate: helperService.toDate(x.compliantDate),
                             Agency: x.authorizingAgency,
                             Subagency: x.authorizingSubagency,
                             IndependentAssessor: x.independentAssessor
