@@ -17,13 +17,13 @@ describe('The product-grid component', function () {
                 $attrs: {
                     hideFilters: false
                 }
-            }, 
+            },
             {
                 rawItems: [
                     {
                         'name': 'App Engine'
                     },
-                    
+
                     {
                         'name': 'Microsoft'
                     }
@@ -44,7 +44,7 @@ describe('The product-grid component', function () {
     it('it executes callback function', function () {
         var onUpdate = function(){
         };
-        var items = [            
+        var items = [
             {
                 'name': 'App Engine'
             },
@@ -56,7 +56,7 @@ describe('The product-grid component', function () {
 
         var grid = testDataFactory.productsGridComponent({
             onUpdate: onUpdate,
-            rawItems: items 
+            rawItems: items
         },{
             $attrs: {
                 hideFilters: false
@@ -76,7 +76,7 @@ describe('The product-grid component', function () {
 
     it('it can filter be reuse range', inject(function (Product) {
         var selectedOptions = [
-            {value: {min: 0, max:5}, label: '0 - 5', selected: false}, 
+            {value: {min: 0, max:5}, label: '0 - 5', selected: false},
         ];
         var product = new Product();
         product.reuses = 1;
@@ -94,6 +94,17 @@ describe('The product-grid component', function () {
 
         filtered = component.productNameSearchFilterFunc(product, 0, [product], '');
         expect(filtered).toBe(product);
+    }));
+
+    it('it can filter by product description', inject(function (Product) {
+        var product = new Product();
+        product.name = 'App Engine';
+        product.provider = 'Google';
+        product.serviceDescription = 'Foo';
+
+        var filtered = component.productNameSearchFilterFunc(product, 0, [product], 'Foo');
+        expect(filtered).toBeDefined();
+        expect(filtered.serviceDescription).toBe('Foo');
     }));
 
     it('it can filter by status', inject(function (Product) {
