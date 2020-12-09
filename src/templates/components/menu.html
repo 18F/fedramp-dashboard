@@ -5,21 +5,21 @@
                     type="radio"
                     ng-class="{'selected':controller.includes('**.product.**') || controller.includes('**.products')}"
                     ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">
-                <span>Products</span>
+                <h1><span style="display:none" aria-hidden="false">FedRAMP </span>Products</h1>
             </button>
         </div>
         <div class="usa-width-one-third">
             <button id="filterByAgency"
                     ng-class="{'selected':controller.includes('**.agency.**') || controller.includes('**.agencies')}"
                     ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">
-                <span>Agencies</span>
+                <h2><span style="display:none" aria-hidden="false">FedRAMP </span>Agencies</h2>
             </button>
         </div>
         <div class="usa-width-one-third">
             <button id="filterBy3PAO"
                     ng-class="{'selected':controller.includes('**.assessor.**') || controller.includes('**.assessors')}"
                     ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">
-                <span>Assessors</span>
+                <h2><span style="display:none" aria-hidden="false">FedRAMP </span>Assessors</h2>
             </button>
         </div>
     </div>

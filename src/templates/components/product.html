@@ -64,7 +64,7 @@
                 <dt ng-if="controller.model.pocEmail">E-mail:</dt>
                 <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email the provider">{{controller.model.pocEmail}}</a></dd>
                 <dt ng-if="controller.model.website">Website:</dt>
-                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit the provider website">{{controller.model.website}}</a></dd>
+                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit the provider website" class="usa-link usa-link--external">{{controller.model.website}}</a></dd>
             </dl>
         </div>
         <div class="col">

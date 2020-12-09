@@ -61,7 +61,7 @@
                 <dt ng-if="controller.model.pocEmail">E-mail:</dt>
                 <dd ng-if="controller.model.pocEmail"><a ng-href="mailto:{{controller.model.pocEmail}}" title="Email independent assessor">{{controller.model.pocEmail}}</a></dd>
                 <dt ng-if="controller.model.website">Website:</dt>
-                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website">{{controller.model.website}}</a></dd>
+                <dd ng-if="controller.model.website"><a ng-href="{{controller.externalLink(controller.model.website)}}" target="_blank" title="Visit independent assessor website" class="usa-link usa-link--external">{{controller.model.website}}</a></dd>
                 <dt ng-if="controller.model.founded">Founded:</dt>
                 <dd ng-if="controller.model.founded">{{controller.model.founded}}</dd>
             </dl>

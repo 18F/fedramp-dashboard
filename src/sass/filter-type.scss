@@ -37,6 +37,13 @@
     line-height: 8.5rem;
     margin-left: 0;
 
+    button h1,
+    button h2 {
+        margin: 0;
+        line-height: 1;
+        font-size: 1.8rem;
+    }
+
     .fr-filters-row {
         display: table-row;
 
