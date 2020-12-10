@@ -17,7 +17,7 @@
             <span>{{ ::controller.model.impactLevel }}</span>
         </div>
         <div class="col status fr-grid-cell-icon">
-            <product-status status="::controller.model.designation"></product-status>
+            <product-status status="::controller.model.designation" model="::controller.model"></product-status>
         </div>
         <div class="col reuses fr-grid-cell-metric">
             <div class="number">{{::controller.model.authorizations}}</div>

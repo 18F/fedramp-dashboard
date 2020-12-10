@@ -8,6 +8,7 @@
             controller: ProductStatus,
             controllerAs: 'controller',
             bindings: {
+                model: '<',
                 status: '<'
             }
         });
