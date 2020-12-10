@@ -171,8 +171,8 @@
                 }
 
                 // Normalize everything and make it all lowercase for fair comparison
-                a = a.toLowerCase();
-                b = b.toLowerCase();
+                a = a.toLowerCase().replace(/^the\s+/gi, '');
+                b = b.toLowerCase().replace(/^the\s+/gi, '');
 
                 if (a < b) {
                     return self.asc ? -1 : 1;
