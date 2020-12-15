@@ -135,7 +135,6 @@
             if (!searchTerm) {
                 return product;
             }
-            console.log('product', product);
             searchTerm = searchTerm.toLowerCase();
             var productName = product.name.toLowerCase();
             var providerName = product.provider.toLowerCase();
