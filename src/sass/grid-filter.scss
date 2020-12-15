@@ -9,13 +9,13 @@
     .fr-grid-layout {
         display: table;
         width: 100%;
-        font-size: 1.4rem;
+        font-size: .9rem;
         background-color: color('white');
-        transition: background-color 0.3s;
+        transition: background-color 0.19s;
 
         @media only screen and (max-width: 850px) {
             display: block;
-            margin-top: 2rem;
+            margin-top: 1.3rem;
         }
 
         &:hover {
@@ -43,9 +43,9 @@
 
     // handle styling for grid view filters, need padding for positioning
     .fr-grid-header {
-        font-size: 1.4rem;
-        height: 4.4rem;
-        line-height: 4.4rem;
+        font-size: .9rem;
+        height: 2.6rem;
+        line-height: 2.6rem;
 
         @media only screen and (max-width: 850px) {
             display: none;
@@ -53,20 +53,20 @@
 
         .fr-grid-layout-row {
             > div {
-                padding-top: 2.3rem;
+                padding-top: 1.5rem;
                 vertical-align: top;
             }
 
             .fr-grid-cell-name {
-                line-height: 4.4rem;
+                line-height: 2.6rem;
             }
         }
     }
 
     // background handling for the filtering header
     .fr-grid-layout.fr-grid-header {
-        height: 6.8rem;
-        margin-top: 1.6rem;
+        height: 4.5rem;
+        margin-top: 1rem;
         background: color('gray-cool-5');
         color: color('gray-cool-60');
         white-space: nowrap;
@@ -76,21 +76,21 @@
     // exxempt icon & metric cols
     .fr-grid-layout-row {
         > div {
-            padding-left: 2rem;
+            padding-left: 1.3rem;
 
             @media only screen and (max-width: 850px) {
-                padding-left: 3rem;
-                padding-right: 3rem;
+                padding-left: 1.9rem;
+                padding-right: 1.9rem;
             }
         }
 
         // name needs some extra padding
         > div:first-child {
-            padding-left: 2.8rem;
+            padding-left: 1.8rem;
 
             @media only screen and (max-width: 850px) {
-                padding-left: 3rem;
-                padding-right: 3rem;
+                padding-left: 1.9rem;
+                padding-right: 1.9rem;
             }
         }
 
@@ -99,8 +99,8 @@
             padding-left: 0;
 
             @media only screen and (max-width: 850px) {
-                padding-left: 3rem;
-                padding-right: 3rem;
+                padding-left: 1.9rem;
+                padding-right: 1.9rem;
             }
         }
     }
@@ -111,8 +111,8 @@
 
         @media only screen and (max-width: 850px) {
             width: 100%;
-            padding-left: 3rem;
-            padding-right: 3rem;
+            padding-left: 1.9rem;
+            padding-right: 1.9rem;
 
             .title {
                 font-size: larger;
@@ -125,8 +125,8 @@
 
         @media only screen and (max-width: 850px) {
             width: 100%;
-            padding-left: 3rem;
-            padding-right: 3rem;
+            padding-left: 1.9rem;
+            padding-right: 1.9rem;
 
             .mobile-visible {
                 display: inline-block !important;
@@ -135,7 +135,7 @@
 
         > div {
             float: left;
-            margin-right: 1rem;
+            margin-right: .66rem;
         }
     }
 
@@ -144,8 +144,8 @@
 
         @media only screen and (max-width: 850px) {
             width: 100%;
-            padding-left: 3rem;
-            padding-right: 3rem;
+            padding-left: 1.9rem;
+            padding-right: 1.9rem;
 
             .mobile-visible {
                 display: inline-block;
@@ -166,19 +166,19 @@
 
         > div {
             float: left;
-            margin-right: 1rem;
+            margin-right: .66rem;
         }
     }
 
     .fr-grid-cell-icon {
         width: 10%;
-        font-size: 1.2rem;
+        font-size: .79rem;
 
         @media only screen and (max-width: 850px) {
             float: left;
             width: 49%;
-            padding-top: 3rem !important;
-            margin-top: 2rem;
+            padding-top: 1.9rem !important;
+            margin-top: 1.3rem;
         }
     }
 
@@ -189,8 +189,8 @@
         @media only screen and (max-width: 850px) {
             float: right;
             width: 49%;
-            padding: 3rem 0 !important;
-            margin-top: 2rem;
+            padding: 1.9rem 0 !important;
+            margin-top: 1.3rem;
         }
     }
 
@@ -213,7 +213,7 @@
 
             @media only screen and (max-width: 850px) {
                 width: 100%;
-                padding: 3rem 0 !important;
+                padding: 1.9rem 0 !important;
             }
         }
     }

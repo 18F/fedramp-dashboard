@@ -2,7 +2,7 @@
 
 // add some style for the "filter results by" label / rule
 .fr-filter-label {
-    height: 6.8rem;
+    height: 4.5rem;
     position: relative;
 
     .fr-filter-label-rule {
@@ -18,7 +18,7 @@
         position: relative;
         display: inline-block;
         font-size: 18px;
-        line-height: 6.8rem;
+        line-height: 4.5rem;
         color: color('gray-cool-60');
         background-color: color('gray-cool-5');
         padding: 0 12px;
@@ -33,15 +33,15 @@
     display: table;
     width: 100%;
     max-width: none;
-    height: 8.5rem;
-    line-height: 8.5rem;
+    height: 5.6rem;
+    line-height: 5.6rem;
     margin-left: 0;
 
     button h1,
     button h2 {
         margin: 0;
         line-height: 1;
-        font-size: 1.8rem;
+        font-size: 1.19rem;
     }
 
     .fr-filters-row {
@@ -80,7 +80,7 @@
     // undid much of web standards to conform to design
     button {
         width: 100%;
-        height: 8.5rem;
+        height: 5.6rem;
         border-radius: 0;
         border: none;
         margin: 0;
@@ -93,8 +93,8 @@
         // added span and tighter line height to preserve nice wrapping
         span {
             display: block;
-            line-height: 1.8rem;
-            font-size: 1.8rem;
+            line-height: 1.19rem;
+            font-size: 1.19rem;
             font-weight: $theme-font-weight-bold;
         }
     }

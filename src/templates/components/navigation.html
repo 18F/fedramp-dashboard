@@ -1,98 +1,105 @@
-<div id="catnav" class="hidden-print">
-    <div id="navigate" class="mobile-visible" ng-click="controller.toggleMobile = !controller.toggleMobile">Navigate to...</div>
-    <ul class="limit" ng-class="{'mobile-hidden': !controller.toggleMobile}">
-        <li><a href="https://www.fedramp.gov/" title="Home">Home</a></li>
-        <li class="dropdown">
-            <a href="#" title="About Us" title="About Us">About Us</a>
-            <ul class="dropdown-content down">
-                <li><a href="https://www.fedramp.gov/about/" title="Program Overview">PROGRAM OVERVIEW</a></li>
-                <li><a href="https://www.fedramp.gov/governance/" title="Governance">GOVERNANCE</a></li>
-                <li><a href="https://www.fedramp.gov/team/" title="Team Bios">MEET THE TEAM</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" title="Partners We Serve">Partners We Serve</a>
-            <ul class="dropdown-content down">
-                <li><a href="https://www.fedramp.gov/federal-agencies/" title="Federal Agencies">FEDERAL AGENCIES</a></li>
-                <li><a href="https://www.fedramp.gov/cloud-service-providers/" title="Cloud Service Providers">CLOUD SERVICE PROVIDERS</a></li>
-                <li><a href="https://www.fedramp.gov/assessors/" title="Assessors">ASSESSORS</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:;"
-               ui-sref="fedramp.app.home.products"
-               ng-class="{'active': controller.includes('fedramp.**')}"
-               title="Marketplace">
-                <span>Marketplace</span>
+<div class="search-feature">
+    <div class="search-wrapper">
+        <form class="usa-search" id="searchgovform" action="https://www.fedramp.gov/search-results/">
+            <label class="usa-sr-only" for="searchgovinput">Search</label>
+            <input name="search" type="search" id="searchgovinput" placeholder="Search" >
+            <button type="submit" id="searchgovbutton" title="Submit Search" value="Submit Search">
+            <span class="usa-search-submit-text"><img class="search-button-icon" src="img/search-magnifying-glass.svg" alt="" /></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="usa-nav-container">
+    <button class="usa-menu-btn"><!-- <i class="fas fa-bars"></i> -->
+        <img src="img/fa-bars.svg" width="26">
+    </button>
+
+    <div class="usa-logo" id="logo">
+        <em class="usa-logo-text">
+            <a href="https://www.fedramp.gov/" accesskey="1" title="Home" aria-label="Home">
+                <img class="desk" src="img/logo-main-fedramp.png" alt="FedRAMP.gov">
+                <img class="mobile" src="img/logo-mobile-fedramp.png" alt="FedRAMP.gov">
             </a>
-            <ul class="dropdown-content down">
-                <li>
-                    <a href="javascript:;"
-                       ng-click="controller.filterProducts('Compliant')"
-                       ng-class="{'active': controller.includes('**.products', 'Compliant')}"
-                       title="FedRAMP Authorized Products">
-                        <span>FEDRAMP AUTHORIZED PRODUCTS</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;"
-                       ng-click="controller.filterProducts('In Process')"
-                       ng-class="{'active': controller.includes('**.products', 'In Process')}"
-                       title="FedRAMP In Process Products">
-                        <span>FEDRAMP IN PROCESS PRODUCTS</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;"
-                       ng-click="controller.filterProducts('FedRAMP Ready')"
-                       ng-class="{'active': controller.includes('**.products', 'FedRAMP Ready')}"
-                       title="FedRAMP Ready Products">
-                        <span>FEDRAMP READY PRODUCTS</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="fedramp.app.home.agencies"
-                       ng-class="{'active': controller.includes('**.agencies')}"
-                       title="All Agencies">
-                        <span>ALL AGENCIES</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="fedramp.app.home.assessors"
-                       ng-class="{'active': controller.includes('**.assessors')}"
-                       title="Assessors">
-                        <span>ASSESSORS</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="fedramp.app.dictionary"
-                       ng-class="{'active': controller.includes('**.dictionary')}"
-                       title="Marketplace Terms">
-                        <span>MARKETPLACE TERMS</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" title="Resources">Resources</a>
-            <ul class="dropdown-content down">
-                <li><a href="https://www.fedramp.gov/documents/" title="Documents">DOCUMENTS</a></li>
-                <li><a href="https://www.fedramp.gov/templates/" title="Templates">TEMPLATES</a></li>
-                <li><a href="https://www.fedramp.gov/nist-publications/" title="NIST Publications">NIST PUBLICATIONS</a></li>
-                <li><a href="https://www.fedramp.gov/training/" title="FedRAMP Training">TRAINING</a></li>
-                <li><a href="https://www.fedramp.gov/faqs/" title="FAQs">FAQs</a></li>
-                <li><a href="https://www.fedramp.gov/tips-cues/" title="Tips & Cues">TIPS & CUES</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" title="Get Authorized">Get Authorized</a>
-            <ul class="dropdown-content down"> 
-                <li><a href="https://www.fedramp.gov/jab-authorization/" title="JAB Authorization">JAB AUTHORIZATION</a></li>
-                <li><a href="https://www.fedramp.gov/agency-authorization/" title="Agency Authorization">AGENCY AUTHORIZATION</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="https://www.fedramp.gov/blog/" title="Blog">Blog</a>
-        </li>
-    </ul>
+        </em>
+    </div>
+
+    <nav role="navigation" class="usa-nav nav focus-within" id="navigation">
+        <button class="usa-nav__close">
+            <img src="img/menu-close.svg" width="20" alt="close">
+        </button>
+
+        <ul class="usa-nav-primary usa-accordion focus-within">
+            <!-- 1st level -->
+            <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active focus-within">About Us
+                <img src="img/down-chevron.svg" width="18" alt="close">
+                <ul class="sub-menu dropdown" aria-label="submenu">
+                    <!-- 2nd level -->
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/program-basics/" class="active"> Program Basics </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/team/" class="active"> Meet the Team </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/governance/" class="active"> Governance </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Partners
+                <img src="img/down-chevron.svg" width="18" alt="close">
+                <ul class="sub-menu dropdown" aria-label="submenu">
+                    <!-- 2nd level -->
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/cloud-service-providers/" class="active"> Cloud Service Providers </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/federal-agencies/" class="active"> Federal Agencies </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/assessors/" class="active"> Assessors </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Get Authorized
+                <img src="img/down-chevron.svg" width="18" alt="close">
+                <ul class="sub-menu dropdown" aria-label="submenu">
+                    <!-- 2nd level -->
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/agency-authorization/" class="active"> Agency Authorization </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/jab-authorization/" class="active"> JAB Authorization </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Resources
+                <img src="img/down-chevron.svg" width="18" alt="close">
+                <ul class="sub-menu dropdown" aria-label="submenu">
+                    <!-- 2nd level -->
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/documents-templates/" class="active"> Documents &amp; Templates </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/training/" class="active"> Training </a>
+                    </li>
+                    <li>
+                        <a tabindex="0" href="https://www.fedramp.gov/faqs/" class="active"> FAQs </a>
+                    </li>
+                    <li> <a tabindex="0" href="https://tailored.fedramp.gov" target="_blank">Tailored Authorization</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="https://www.fedramp.gov/blog/" class="active">Blog</a>
+            </li>
+            <li>
+                <a class="external" href="/" target="_blank">Marketplace</a>
+            </li>
+        </ul>
+    </nav>
 </div>

@@ -7,15 +7,15 @@
  	// white text above large metrics
  	.fr-dash-label {
 	 	color: color('white');
-	 	line-height: 4.4rem;
-	 	font-size: 1.8rem;
+	 	line-height: 2.9rem;
+	 	font-size: 1.19rem;
 	 	background-color: #0d2747;
 	 	max-width: none;
  	}
 
  	// large metrics row
  	.fr-large-metrics {
-	 	height: 29.4rem;
+	 	height: 19.59rem;
 	 	color: color($theme-color-accent-cool);
 	 	text-align: center;
 
@@ -53,21 +53,21 @@
 	 	}
 
 	 	.fr-large-number {
-	 		font-size: 2.8rem;
-	 		margin-top: 12rem;
+	 		font-size: 1.86rem;
+	 		margin-top: 7.9rem;
 
 	 		strong {
-                font-size: 9.5rem;
+                font-size: 6.3rem;
 	 		}
 		}
 
 		// large size metric icons
 		.fr-metric-icon {
 			position: absolute;
-			top: -8rem;
+			top: -5.3rem;
 			left: 0;
 			width: 100%;
-			height: 8rem;
+			height: 5.3rem;
 			background-size: contain;
 			background-position: center center;
 		}
@@ -93,8 +93,8 @@
  	// label text for metric font sized shared
  	.fr-metric-label {
 	 	display: block;
-	 	font-size: 1.8rem;
-	 	padding-top: 0.4rem;
+	 	font-size: 1.19rem;
+	 	padding-top: 0.26rem;
  	}
 
     @media only screen and (max-width: 850px) {
