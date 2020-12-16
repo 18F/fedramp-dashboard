@@ -29,7 +29,7 @@
 
 
 .usa-banner__inner {
-	max-width: 1200px;
+	max-width: 1200px !important;
 }
 
 .search-feature {
@@ -258,15 +258,15 @@ img.desk {
 	}
 }
 @media all and (min-width: 951px) and (max-width: 5000px) {
-.usa-header .usa-search {
-	max-width: 370px !important;
-}
+	.usa-header .usa-search {
+		max-width: 370px !important;
+	}
 }
 
 @media only screen and (min-width: 951px) {
-.usa-header .usa-search {
-	min-width: 20rem !important;
-}
+	.usa-header .usa-search {
+		min-width: 20rem !important;
+	}
 }
 
 .usa-header .usa-search {

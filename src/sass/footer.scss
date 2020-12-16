@@ -136,7 +136,7 @@ ul.quick-links {
 }
 
 .footer-social {
-    a {
+    a, a:active, a:visited {
         margin: 0 !important;
         color: $footer-teal;
         text-decoration: none;
