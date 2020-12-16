@@ -1,102 +1,59 @@
 @import 'styles';
 
-// styling for top area of dashboard interface
-.fr-dash-header {
- 	background-color: color($theme-color-primary-darker);
+.fedramp-glance {
+  padding: 3rem 2rem;
+  float: left;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid lightgrey;
 
- 	// white text above large metrics
- 	.fr-dash-label {
-	 	color: color('white');
-	 	line-height: 2.9rem;
-	 	font-size: 1.19rem;
-	 	background-color: #0d2747;
-	 	max-width: none;
- 	}
+  h2 {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: .02em;
+    padding: 0 0 16px 0;
+    margin: 0 0 6px 0;
+    font-size: 2rem;
+    line-height: 42px;
+    color: $new-home-teal;
+  }
 
- 	// large metrics row
- 	.fr-large-metrics {
-	 	height: 19.59rem;
-	 	color: color($theme-color-accent-cool);
-	 	text-align: center;
-
-        @media only screen and (max-width: 767px) {
-            height: auto;
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    li {
+      list-style: none;
+      width: 200px;
+      text-align: center;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      span {
+      p {
+        color: $teal;
+        font-family: $base-font-family;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        font-size: 1.375rem;
+        text-align: center;
+        margin: 20px 0 0 0;
+        letter-spacing: .04em !important;
+        &.number {
+          color: $red;
+          font-size: 6.25rem;
+          font-weight: 800 !important;
+          text-align: center;
+          margin: 0;
+          line-height: 1;
+          letter-spacing: .04em !important;
+          font-family: $title-font !important;
         }
-
-	 	> div {
-	 		// these are grid'd, but need to modify width / margin to show proper borders
-		 	border-right: 2px solid #0d2747;
-		 	height: 100%;
-		 	width: 33.33%;
-		 	margin-right: 0;
-
-            @media only screen and (max-width: 767px) {
-                border-bottom: 2px solid #0d2747;
-                height: auto;
-                width: 100%;
-                padding: 3rem 0;
-            }
-	 	}
-
-        > div:hover {
-            background-color: #0d2747;
-            cursor: pointer;
-        }
-
-	 	// remove border on last
-	 	> div:last-child {
-		 	border-right: none;
-
-            @media only screen and (max-width: 767px) {
-                border-bottom: none;
-            }
-	 	}
-
-	 	.fr-large-number {
-	 		font-size: 1.86rem;
-	 		margin-top: 7.9rem;
-
-	 		strong {
-                font-size: 6.3rem;
-	 		}
-		}
-
-		// large size metric icons
-		.fr-metric-icon {
-			position: absolute;
-			top: -5.3rem;
-			left: 0;
-			width: 100%;
-			height: 5.3rem;
-			background-size: contain;
-			background-position: center center;
-		}
- 	}
-
- 	// clean up spacing / line height for large numbers
- 	.fr-large-number {
- 		position: relative;
-	 	margin: 0;
-	 	line-height: 1;
- 	}
-
- 	// white colors for dashboard metrics, numbers only
- 	.fr-large-number strong {
-	 	color: color('white');
- 	}
-
- 	// apply this class to a span or other to provide a 400 font weight
- 	.fr-light-font {
-	 	font-weight: weight($theme-font-weight-normal);
- 	}
-
- 	// label text for metric font sized shared
- 	.fr-metric-label {
-	 	display: block;
-	 	font-size: 1.19rem;
-	 	padding-top: 0.26rem;
- 	}
-
-    @media only screen and (max-width: 850px) {
+      }
+      }
     }
+  }
 }
