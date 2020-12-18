@@ -332,13 +332,13 @@ gulp.task("build-sass", function(done) {
     gulp
       .src([
             'node_modules/font-awesome/**/*.scss',
-            `${PROJECT_SASS_SRC}/*.scss`
+            `${PROJECT_SASS_SRC}/index.scss`
         ])
       .pipe(sourcemaps.init({ largeFile: true }))
       .pipe(
         sass.sync({
           includePaths: [
-            `${PROJECT_SASS_SRC}`,
+            `${PROJECT_SASS_SRC}/index.scss`,
             `${uswds}/scss`,
             `${uswds}/scss/packages`
           ]

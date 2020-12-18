@@ -1,34 +1,32 @@
-@import 'styles';
-
 // styling for top area of dashboard interface
 .fr-dash-header {
- 	background-color: color($theme-color-primary-darker);
+  background-color: color($theme-color-primary-darker);
 
- 	// white text above large metrics
- 	.fr-dash-label {
-	 	color: color('white');
-	 	line-height: 4.4rem;
-	 	font-size: 1.8rem;
-	 	background-color: #0d2747;
-	 	max-width: none;
- 	}
+  // white text above large metrics
+  .fr-dash-label {
+    color: color('white');
+    line-height: 4.4rem;
+    font-size: 1.8rem;
+    background-color: #0d2747;
+    max-width: none;
+  }
 
- 	// large metrics row
- 	.fr-large-metrics {
-	 	height: 29.4rem;
-	 	color: color($theme-color-accent-cool);
-	 	text-align: center;
+  // large metrics row
+  .fr-large-metrics {
+    height: 29.4rem;
+    color: color($theme-color-accent-cool);
+    text-align: center;
 
         @media only screen and (max-width: 767px) {
             height: auto;
         }
 
-	 	> div {
-	 		// these are grid'd, but need to modify width / margin to show proper borders
-		 	border-right: 2px solid #0d2747;
-		 	height: 100%;
-		 	width: 33.33%;
-		 	margin-right: 0;
+    > div {
+      // these are grid'd, but need to modify width / margin to show proper borders
+      border-right: 2px solid #0d2747;
+      height: 100%;
+      width: 33.33%;
+      margin-right: 0;
 
             @media only screen and (max-width: 767px) {
                 border-bottom: 2px solid #0d2747;
@@ -36,66 +34,66 @@
                 width: 100%;
                 padding: 3rem 0;
             }
-	 	}
+    }
 
         > div:hover {
             background-color: #0d2747;
             cursor: pointer;
         }
 
-	 	// remove border on last
-	 	> div:last-child {
-		 	border-right: none;
+    // remove border on last
+    > div:last-child {
+      border-right: none;
 
             @media only screen and (max-width: 767px) {
                 border-bottom: none;
             }
-	 	}
+    }
 
-	 	.fr-large-number {
-	 		font-size: 2.8rem;
-	 		margin-top: 12rem;
+    .fr-large-number {
+      font-size: 2.8rem;
+      margin-top: 12rem;
 
-	 		strong {
+      strong {
                 font-size: 9.5rem;
-	 		}
-		}
+      }
+    }
 
-		// large size metric icons
-		.fr-metric-icon {
-			position: absolute;
-			top: -8rem;
-			left: 0;
-			width: 100%;
-			height: 8rem;
-			background-size: contain;
-			background-position: center center;
-		}
- 	}
+    // large size metric icons
+    .fr-metric-icon {
+      position: absolute;
+      top: -8rem;
+      left: 0;
+      width: 100%;
+      height: 8rem;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
 
- 	// clean up spacing / line height for large numbers
- 	.fr-large-number {
- 		position: relative;
-	 	margin: 0;
-	 	line-height: 1;
- 	}
+  // clean up spacing / line height for large numbers
+  .fr-large-number {
+    position: relative;
+    margin: 0;
+    line-height: 1;
+  }
 
- 	// white colors for dashboard metrics, numbers only
- 	.fr-large-number strong {
-	 	color: color('white');
- 	}
+  // white colors for dashboard metrics, numbers only
+  .fr-large-number strong {
+    color: color('white');
+  }
 
- 	// apply this class to a span or other to provide a 400 font weight
- 	.fr-light-font {
-	 	font-weight: weight($theme-font-weight-normal);
- 	}
+  // apply this class to a span or other to provide a 400 font weight
+  .fr-light-font {
+    font-weight: weight($theme-font-weight-normal);
+  }
 
- 	// label text for metric font sized shared
- 	.fr-metric-label {
-	 	display: block;
-	 	font-size: 1.8rem;
-	 	padding-top: 0.4rem;
- 	}
+  // label text for metric font sized shared
+  .fr-metric-label {
+    display: block;
+    font-size: 1.8rem;
+    padding-top: 0.4rem;
+  }
 
     @media only screen and (max-width: 850px) {
     }
