@@ -55,3 +55,12 @@
     }
   }
 }
+
+/* Loading indicator for main app */
+main#main {
+  min-height: 70vh;
+  background-image: url('../img/loading.gif');
+  background-size: 350px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
