@@ -54,7 +54,8 @@
             //     AnnouncementDate: '',
             //     Agency: '',
             //     Subagency: '',
-            //     IndependentAssessor: ''
+            //     IndependentAssessor: '',
+            //     PackageId: '',
             // }
 
             data.forEach(x => {
@@ -94,7 +95,8 @@
                     AnnouncementDate: helperService.toDate(p.compliantDate),
                     Agency: p.sponsoringAgency,
                     Subagency: '',
-                    IndependentAssessor: p.independentAssessor
+                    IndependentAssessor: p.independentAssessor,
+                    PackageId: p.pkgId,
                 }));
 
                 // Populate any leveraged ATOs
@@ -109,7 +111,8 @@
                         AnnouncementDate: helperService.toDate(x.compliantDate),
                         Agency: x.authorizingAgency,
                         Subagency: x.authorizingSubagency,
-                        IndependentAssessor: x.independentAssessor
+                        IndependentAssessor: x.independentAssessor,
+                        PackageId: p.pkgId,
                     }));
                 });
             }
@@ -133,7 +136,8 @@
                         AnnouncementDate: helperService.toDate(p.compliantDate),
                         Agency: p.sponsoringAgency,
                         Subagency: '',
-                        IndependentAssessor: p.independentAssessor
+                        IndependentAssessor: p.independentAssessor,
+                        PackageId: p.pkgId,
                     }));
                 }
 
@@ -150,7 +154,8 @@
                             AnnouncementDate: helperService.toDate(x.compliantDate),
                             Agency: x.authorizingAgency,
                             Subagency: x.authorizingSubagency,
-                            IndependentAssessor: x.independentAssessor
+                            IndependentAssessor: x.independentAssessor,
+                            PackageId: p.pkgId,
                         }));
                     }
                 });
@@ -175,7 +180,8 @@
                         AnnouncementDate: helperService.toDate(p.compliantDate),
                         Agency: p.sponsoringAgency,
                         Subagency: '',
-                        IndependentAssessor: p.independentAssessor
+                        IndependentAssessor: p.independentAssessor,
+                        PackageId: p.pkgId,
                     }));
                 }
 
@@ -192,7 +198,8 @@
                             AnnouncementDate: helperService.toDate(x.compliantDate),
                             Agency: x.authorizingAgency,
                             Subagency: x.authorizingSubagency,
-                            IndependentAssessor: x.independentAssessor
+                            IndependentAssessor: x.independentAssessor,
+                            PackageId: p.pkgId,
                         }));
                     }
                 });
@@ -223,7 +230,7 @@
                         flat[unicornString(prop)] = '';
                         continue;
                     }
-                    
+
                     if (typeof obj[prop][0] === 'string') {
                         flat[unicornString(prop)] = obj[prop].join(', ');
                     } else if (typeof obj[prop][0] === 'object') {
