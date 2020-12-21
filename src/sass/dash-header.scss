@@ -16,6 +16,13 @@
     color: $new-home-teal;
   }
 
+  h3 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-size: 1.25rem;
+    color: #4C4C4E;
+    font-weight: lighter;
+  }
+
   ul {
     display: flex;
     flex-flow: row wrap;
