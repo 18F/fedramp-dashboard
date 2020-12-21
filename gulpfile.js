@@ -273,6 +273,7 @@ gulp.task('mangle:concat-libs', function () {
             'build/lib/uswds.min.js',
             'build/fedramp.min.js'
         ])
+        .pipe(replace(/\/\/# sourceMappingURL=.+.js.map/g, ''))
         .pipe(concat('fedramp.min.js'))
         .pipe(gulp.dest('build/'));
 });
@@ -334,7 +335,6 @@ gulp.task("build-sass", function(done) {
             'node_modules/font-awesome/**/*.scss',
             `${PROJECT_SASS_SRC}/index.scss`
         ])
-      .pipe(sourcemaps.init({ largeFile: true }))
       .pipe(
         sass.sync({
           includePaths: [
@@ -346,7 +346,6 @@ gulp.task("build-sass", function(done) {
       )
       .pipe(replace(/\buswds @version\b/g, "based on uswds v" + pkg.version))
       .pipe(postcss(plugins))
-      .pipe(sourcemaps.write("."))
       // uncomment the next line if necessary for Jekyll to build properly
       //.pipe(gulp.dest(`${SITE_CSS_DEST}`))
       .pipe(concat('fedramp.css'))
