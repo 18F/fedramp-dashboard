@@ -1,26 +1,18 @@
-<div class="fr-filters">
-    <div class="fr-filters-row">
-        <div class="usa-width-one-third">
-            <button id="filterByCSO"
-                    type="radio"
-                    ng-class="{'selected':controller.includes('**.product.**') || controller.includes('**.products')}"
-                    ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">
-                <h2><span style="display:none" aria-hidden="false">FedRAMP </span>Products</h2>
-            </button>
-        </div>
-        <div class="usa-width-one-third">
-            <button id="filterByAgency"
-                    ng-class="{'selected':controller.includes('**.agency.**') || controller.includes('**.agencies')}"
-                    ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">
-                <h2><span style="display:none" aria-hidden="false">FedRAMP </span>Agencies</h2>
-            </button>
-        </div>
-        <div class="usa-width-one-third">
-            <button id="filterBy3PAO"
-                    ng-class="{'selected':controller.includes('**.assessor.**') || controller.includes('**.assessors')}"
-                    ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">
-                <h2><span style="display:none" aria-hidden="false">FedRAMP </span>Assessors</h2>
-            </button>
-        </div>
-    </div>
+<div class="">
+    <button id="filterByCSO"
+            type="radio"
+            ng-class="{'selected':controller.includes('**.product.**') || controller.includes('**.products')}"
+            ui-sref="fedramp.app.home.products"  title="Show Cloud Offerings (CSOs)">
+        <span style="display:none" aria-hidden="false">FedRAMP </span>Products
+    </button>
+    <button id="filterByAgency"
+            ng-class="{'selected':controller.includes('**.agency.**') || controller.includes('**.agencies')}"
+            ui-sref="fedramp.app.home.agencies" title="Show Government Agencies">
+        <span style="display:none" aria-hidden="false">FedRAMP </span>Agencies
+    </button>
+    <button id="filterBy3PAO"
+            ng-class="{'selected':controller.includes('**.assessor.**') || controller.includes('**.assessors')}"
+            ui-sref="fedramp.app.home.assessors" title="Show Assessment Organizations (3PAOs)">
+        <span style="display:none" aria-hidden="false">FedRAMP </span>Assessors
+    </button>
 </div>
