@@ -122,12 +122,12 @@ names to something more descriptive.
 */
 
 $theme-typeface-tokens: (
-  example-serif-token: (
-    display-name: "Example Serif Display Name",
+  montserrat: (
+    display-name: "Montserrat",
     cap-height: 364px
   ),
-  example-sans-token: (
-    display-name: "Example Sans Display Name",
+  muli: (
+    display-name: "Muli",
     cap-height: 364px
   )
 );
@@ -167,10 +167,10 @@ $theme-font-type-lang: false;
 $theme-font-type-mono: "roboto-mono";
 
 // sans-serif
-$theme-font-type-sans: "source-sans-pro";
+$theme-font-type-sans: "muli";
 
 // serif
-$theme-font-type-serif: "merriweather";
+$theme-font-type-serif: "montserrat";
 
 /*
 ----------------------------------------
@@ -198,8 +198,8 @@ $theme-font-cond-custom-stack: false;
 $theme-font-icon-custom-stack: false;
 $theme-font-lang-custom-stack: false;
 $theme-font-mono-custom-stack: false;
-$theme-font-sans-custom-stack: false;
-$theme-font-serif-custom-stack: false;
+$theme-font-sans-custom-stack: sans-serif;
+$theme-font-serif-custom-stack: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
 
 /*
 ----------------------------------------
@@ -263,8 +263,56 @@ $theme-font-cond-custom-src: false;
 $theme-font-icon-custom-src: false;
 $theme-font-lang-custom-src: false;
 $theme-font-mono-custom-src: false;
-$theme-font-sans-custom-src: false;
-$theme-font-serif-custom-src: false;
+$theme-font-sans-custom-src: (
+  dir: '../fonts/muli',
+  roman: (
+    100: false,
+    200: false,
+    300: 'Mulish-Light',
+    400: 'Mulish-Regular',
+    500: 'Mulish-Medium',
+    600: 'Mulish-SemiBold',
+    700: 'Mulish-Bold',
+    800: 'Mulish-ExtraBold',
+    900: false
+  ),
+  italic: (
+    100: false,
+    200: false,
+    300: 'Mulish-LightItalic',
+    400: 'Mulish-Italic',
+    500: 'Mulish-MediumItalic',
+    600: 'Mulish-SemiBoldItalic',
+    700: 'Mulish-BoldItalic',
+    800: 'Mulish-ExtraBoldItalic',
+    900: false,
+  ),
+);
+$theme-font-serif-custom-src: (
+  dir: '../fonts/montserrat',
+  roman: (
+    100: false,
+    200: false,
+    300: 'Montserrat-Light',
+    400: 'Montserrat-Regular',
+    500: 'Montserrat-Medium',
+    600: 'Montserrat-SemiBold',
+    700: 'Montserrat-Bold',
+    800: 'Montserrat-ExtraBold',
+    900: 'Montserrat-Black',
+  ),
+  italic: (
+    100: false,
+    200: false,
+    300: 'Montserrat-LightItalic',
+    400: 'Montserrat-Italic',
+    500: 'Montserrat-MediumItalic',
+    600: 'Montserrat-SemiBoldItalic',
+    700: 'Montserrat-BoldItalic',
+    800: 'Montserrat-ExtraBoldItalic',
+    900: 'Montserrat-BlackItalic',
+  ),
+);
 
 /*
 ----------------------------------------
@@ -322,10 +370,10 @@ Or use `false` for unneeded weights.
 $theme-font-weight-thin: false;
 $theme-font-weight-light: 300;
 $theme-font-weight-normal: 400;
-$theme-font-weight-medium: false;
-$theme-font-weight-semibold: false;
+$theme-font-weight-medium: 500;
+$theme-font-weight-semibold: 600;
 $theme-font-weight-bold: 700;
-$theme-font-weight-heavy: false;
+$theme-font-weight-heavy: 800;
 
 // If USWDS is generating your @font-face rules,
 // should we generate all available weights

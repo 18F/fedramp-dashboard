@@ -131,7 +131,8 @@ gulp.task('copy:fonts', function () {
     return gulp
         .src([
             'node_modules/uswds/dist/fonts/**/*',
-            'node_modules/font-awesome/fonts/**/*'
+            'node_modules/font-awesome/fonts/**/*',
+            'build/src/fonts/**/*',
         ])
         .pipe(gulp.dest('dist/fonts'));
 });
