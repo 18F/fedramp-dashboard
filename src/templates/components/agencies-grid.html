@@ -21,21 +21,18 @@
         <div class="fr-grid-layout fr-grid-header" ng-show="!controller.hideFilters">
             <div class="fr-grid-layout-row">
                 <div class="fr-grid-cell-name">
-                    <grid-sort name="name" property="name" header="Name" class="grid-sort" default="true"></grid-sort>          
+                    <grid-sort name="name" property="name" header="Name" class="grid-sort" default="true"></grid-sort>
                 </div>
                 <div class="fr-grid-cell-contact">
                     <span>Contact Information</span>
                 </div>
                 <div class="fr-grid-cell-metric">
-                    <grid-sort name="products" property="products.length" class="grid-sort"></grid-sort>    
+                    <grid-sort name="products" property="products.length" class="grid-sort"></grid-sort>
                 </div>
             </div>
         </div>
         <tile ng-repeat="item in controller.filteredData" model="item"></tile>
         <div class="empty-results" ng-if="controller.filteredData.length === 0">No results were found matching your filtering criteria</div>
-        <div class="padding-x-0 padding-y-1 hidden-print">
-            <button class='usa-button usa-button--unstyled' onClick="window.scrollTo({ top: 500, behavior: 'smooth' });">back to top</button>
-        </div>
     </div>
     <div class="clear"></div>
 </grid>
