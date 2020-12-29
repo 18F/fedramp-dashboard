@@ -13,8 +13,8 @@ tile:nth-child(2n) {
         }
 
 		> div {
-			border-bottom: 1px solid color('gray-cool-5');
-			border-right: 1px solid color('gray-cool-5');
+			border-bottom: 1px solid #f2f2f2;
+			border-right: 1px solid #f2f2f2;
 
             @media only screen and (max-width: 850px) {
                 border: none;
@@ -31,7 +31,7 @@ tile:nth-child(2n) {
     .expanded {
         .row {
             height: 6.27rem;
-            border-bottom: 1px solid color('gray-cool-5');
+            border-bottom: 1px solid #f2f2f2;
 
             @media only screen and (max-width: 850px) {
                 height: auto;
@@ -41,7 +41,7 @@ tile:nth-child(2n) {
     }
 
     .no-logo {
-        border: 1px solid color('gray-cool-5');
+        border: 1px solid #f2f2f2;
         height: 50px;
         width: 60px;
     }

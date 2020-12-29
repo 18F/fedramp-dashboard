@@ -33,13 +33,13 @@
         padding: 0;
     }
     .header {
-        background-color: color('gray-cool-5');
+        background-color: #f2f2f2;
         height: 100px;
         padding-top: 30px;
     }
 
     .search {
-        background-color: color('gray-cool-5');
+        background-color: #f2f2f2;
         height: 80px;
         input {
             margin: 0;
@@ -50,7 +50,7 @@
     }
 
     .term {
-        border-bottom: 2px solid color('gray-cool-5');
+        border-bottom: 2px solid #f2f2f2;
     }
 
     dl {
