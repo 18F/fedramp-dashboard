@@ -39,7 +39,7 @@
       span {
       p {
         color: $teal;
-        font-family: $base-font-family;
+        @include u-font-family('sans');
         font-weight: 700;
         text-transform: uppercase;
         font-size: 1.375rem;

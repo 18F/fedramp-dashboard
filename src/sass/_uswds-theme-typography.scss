@@ -126,8 +126,8 @@ $theme-typeface-tokens: (
     display-name: "Montserrat",
     cap-height: 364px
   ),
-  muli: (
-    display-name: "Muli",
+  mulish: (
+    display-name: "Mulish",
     cap-height: 364px
   )
 );
@@ -167,7 +167,7 @@ $theme-font-type-lang: false;
 $theme-font-type-mono: "roboto-mono";
 
 // sans-serif
-$theme-font-type-sans: "muli";
+$theme-font-type-sans: "mulish";
 
 // serif
 $theme-font-type-serif: "montserrat";
@@ -264,7 +264,7 @@ $theme-font-icon-custom-src: false;
 $theme-font-lang-custom-src: false;
 $theme-font-mono-custom-src: false;
 $theme-font-sans-custom-src: (
-  dir: '../fonts/muli',
+  dir: '../fonts/mulish',
   roman: (
     100: false,
     200: false,
