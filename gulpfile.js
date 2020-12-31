@@ -131,7 +131,8 @@ gulp.task('copy:fonts', function () {
     return gulp
         .src([
             'node_modules/uswds/dist/fonts/**/*',
-            'node_modules/font-awesome/fonts/**/*'
+            'node_modules/font-awesome/fonts/**/*',
+            'build/src/fonts/**/*',
         ])
         .pipe(gulp.dest('dist/fonts'));
 });
@@ -278,6 +279,17 @@ gulp.task('mangle:concat-libs', function () {
         .pipe(gulp.dest('build/'));
 });
 
+gulp.task('mangle:uswds-init', function () {
+    'use strict';
+    console.log('Concatenating JS files');
+    return gulp
+        .src([
+            'build/lib/uswds-init.min.js',
+        ])
+        .pipe(replace(/\/\/# sourceMappingURL=.+.js.map/g, ''))
+        .pipe(gulp.dest('dist/'));
+});
+
 /**
  * Copy compiled and minified source to dist/test/
  */
@@ -304,7 +316,7 @@ gulp.task('mangle:copy', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('mangle', gulp.series('mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:copy', 'mangle:copy-test'));
+gulp.task('mangle', gulp.series('mangle:concat', 'mangle:babel', 'mangle:concat-test', 'mangle:uglify', 'mangle:concat-libs', 'mangle:uswds-init', 'mangle:copy', 'mangle:copy-test'));
 
 /**
  * Removes artifacts not necessary for a release

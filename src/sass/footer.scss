@@ -10,9 +10,9 @@ footer {
     position: sticky;
     h4 {
         text-align: left;
-        font-family: $title-font;
+        @include u-font-family('serif');
+        @include u-text('bold');
         color: $footer-teal;
-        font-weight: bold;
         font-size: 1.25rem;
         margin: 0 0 10px 0;
         text-transform: uppercase;
@@ -22,7 +22,7 @@ footer {
     p {
         color: #ffffff;
         font-size: .875rem;
-        font-family: $sans-font !important;
+        @include u-font-family('sans');
         letter-spacing: .02em;
         line-height: 18px;
     }
@@ -243,7 +243,8 @@ a.footer-submit:visited {
     cursor: pointer;
     text-decoration: none !important;
     display: flex;
-    padding: 6px 28px;
+    align-items: center;
+    justify-content: center;
 }
 
 a.footer-submit:hover {
