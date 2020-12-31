@@ -222,12 +222,12 @@ img.desk {
 }
 
 #searchgovinput {
-  font-style: italic !important;
   font-size: 0.875rem;
   color: $dark-gray;
   border: none;
   background: $lightest-gray;
-  font-family: $sans-font;
+  @include u-font-family('sans');
+  @include u-text('italic');
   width: 86%;
   height: 33px;
   padding-left: 20px;
