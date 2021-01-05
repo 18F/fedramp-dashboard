@@ -1,13 +1,18 @@
 grid-sort {
     display: inline-block;
-    width: 1.9rem;
+    width: 100%;
     height: 2.6rem;
     background-color: color('gray-cool-10');
     transition: background-color 0.3s;
+    text-align: center;
 }
 
 grid-sort:hover {
     color: color($theme-color-primary);
+}
+
+.fr-grid-cell-name grid-sort {
+    text-align: left;
 }
 
 .sort-selected {
@@ -15,15 +20,15 @@ grid-sort:hover {
 }
 
 .grid-sort-header {
-    font-size: 1rem !important;
-    font-weight: weight($theme-font-weight-normal);
+    font-size: .9rem;
+    font-weight: 700;
     cursor: pointer;
 }
 
 .grid-sort-arrows {
     position: relative;
     display: inline-block;
-    width: 1.9rem;
+    width: 1rem;
 	text-align: center;
 	cursor: pointer;
 

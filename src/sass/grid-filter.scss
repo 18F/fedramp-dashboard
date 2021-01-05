@@ -227,3 +227,8 @@
         color: color($theme-color-primary);
     }
 }
+
+
+.fr-grid-cell-metric:not(.col) {
+    width: 10%;
+}
