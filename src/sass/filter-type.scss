@@ -2,7 +2,7 @@
   background-color: #f2f2f2;
 
   p {
-    color: #454545;
+    color: #4C4C4E;
     font-family: "Muli",sans-serif !important;
     line-height: 1.5;
     font-size: .9375rem;
@@ -22,7 +22,8 @@
 
   h3 {
     font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
-    font-size: 1rem;
+    line-height: 1.5;
+    font-size: .9375rem;    
     color: #4C4C4E;
     font-weight: 600;
   }
@@ -36,7 +37,9 @@
 
   button {
     font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-size: 0.875rem;
     font-weight: 600;
+    letter-spacing: .02em;
     text-transform: uppercase;
     outline: none;
     border: 1px solid $new-home-teal;
@@ -47,7 +50,7 @@
     display: block;
     width: 100%;
     max-width: 400px;
-    height: 36px;
+    height: 48px;
     margin: auto;
     margin-top: 10px;
 
