@@ -37,8 +37,9 @@
   button {
     font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
     font-weight: 600;
+    text-transform: uppercase;
     outline: none;
-    border: 0;
+    border: 1px solid $new-home-teal;
     box-shadow: none;
     border-radius: 0;
     background-color: white;
@@ -53,7 +54,7 @@
     @include at-media('tablet') {
       display: inline-block;
       width: 191px;
-      margin: 0 15px;
+      margin: 0 5px;
     }
   }
 
