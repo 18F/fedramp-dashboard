@@ -56,7 +56,7 @@
     "jsdoc": "3.6.4",
     "jshint": "^2.11.1",
     "jshint-stylish": "2.2.0",
-    "karma": "5.0.9",
+    "karma": "6.0.0",
     "karma-chrome-launcher": "1.0.1",
     "karma-coverage": "2.0.2",
     "karma-coveralls": "2.1.0",
