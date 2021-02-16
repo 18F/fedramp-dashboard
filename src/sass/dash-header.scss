@@ -1,100 +1,79 @@
-// styling for top area of dashboard interface
-.fr-dash-header {
-  background-color: color($theme-color-primary-darker);
+.fedramp-glance {
+  padding: 3rem 2rem;
+  width: 100%;
+  background: white;
+    
+  p {
+    color: #4C4C4E;
+    font-family: "Muli",sans-serif !important;
+    line-height: 1.5;
+    font-size: .9375rem;
+    }
 
-  // white text above large metrics
-  .fr-dash-label {
-    color: color('white');
-    line-height: 4.4rem;
-    font-size: 1.8rem;
-    background-color: #0d2747;
-    max-width: none;
+  h2 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: .02em;
+    padding: 0 0 16px 0;
+    margin: 0 0 6px 0;
+    font-size: 2rem;
+    line-height: 42px;
+    color: $new-home-teal;
   }
 
-  // large metrics row
-  .fr-large-metrics {
-    height: 29.4rem;
-    color: color($theme-color-accent-cool);
-    text-align: center;
+  h3 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-size: 1.25rem;
+    color: #4C4C4E;
+    font-weight: lighter;
+  }
 
-        @media only screen and (max-width: 767px) {
-            height: auto;
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    li {
+      list-style: none;
+      width: 200px;
+      text-align: center;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      span {
+      p {
+        color: $teal;
+        @include u-font-family('sans');
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.375rem;
+        text-align: center;
+        margin: 20px 0 0 0;
+        letter-spacing: .04em !important;
+        &.number {
+          color: $red;
+          font-size: 6.25rem;
+          text-align: center;
+          margin: 0;
+          line-height: 1;
+          letter-spacing: .04em !important;
+          @include u-font-family('serif');
+          @include u-text('heavy');
         }
-
-    > div {
-      // these are grid'd, but need to modify width / margin to show proper borders
-      border-right: 2px solid #0d2747;
-      height: 100%;
-      width: 33.33%;
-      margin-right: 0;
-
-            @media only screen and (max-width: 767px) {
-                border-bottom: 2px solid #0d2747;
-                height: auto;
-                width: 100%;
-                padding: 3rem 0;
-            }
-    }
-
-        > div:hover {
-            background-color: #0d2747;
-            cursor: pointer;
-        }
-
-    // remove border on last
-    > div:last-child {
-      border-right: none;
-
-            @media only screen and (max-width: 767px) {
-                border-bottom: none;
-            }
-    }
-
-    .fr-large-number {
-      font-size: 2.8rem;
-      margin-top: 12rem;
-
-      strong {
-                font-size: 9.5rem;
+      }
       }
     }
-
-    // large size metric icons
-    .fr-metric-icon {
-      position: absolute;
-      top: -8rem;
-      left: 0;
-      width: 100%;
-      height: 8rem;
-      background-size: contain;
-      background-position: center center;
-    }
   }
+}
 
-  // clean up spacing / line height for large numbers
-  .fr-large-number {
-    position: relative;
-    margin: 0;
-    line-height: 1;
-  }
-
-  // white colors for dashboard metrics, numbers only
-  .fr-large-number strong {
-    color: color('white');
-  }
-
-  // apply this class to a span or other to provide a 400 font weight
-  .fr-light-font {
-    font-weight: weight($theme-font-weight-normal);
-  }
-
-  // label text for metric font sized shared
-  .fr-metric-label {
-    display: block;
-    font-size: 1.8rem;
-    padding-top: 0.4rem;
-  }
-
-    @media only screen and (max-width: 850px) {
-    }
+/* Loading indicator for main app */
+main#main {
+  min-height: 70vh;
+  background-image: url('../img/loading.gif');
+  background-size: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }

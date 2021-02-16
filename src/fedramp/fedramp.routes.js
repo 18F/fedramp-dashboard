@@ -94,7 +94,7 @@
             })
             .state('fedramp.app.product', {
                 url: '/product',
-                template: '<menu></menu><ui-view></ui-view>'
+                template: '<ui-view></ui-view>'
             })
             .state('fedramp.app.product.information', {
                 url: '/:name',
@@ -115,7 +115,7 @@
             })
             .state('fedramp.app.agency', {
                 url: '/agency',
-                template: '<menu></menu><ui-view></ui-view>'
+                template: '<ui-view></ui-view>'
             })
             .state('fedramp.app.agency.information', {
                 url: '/:name',
@@ -136,7 +136,7 @@
             })
             .state('fedramp.app.assessor', {
                 url: '/assessor',
-                template: '<menu></menu><ui-view></ui-view>'
+                template: '<ui-view></ui-view>'
             })
             .state('fedramp.app.assessor.information', {
                 url: '/:name',

@@ -1,0 +1,46 @@
+/* Back to Top button */
+
+#topButton {
+  display: inline-block;
+  background-color: $light-blue;
+  width: 42px;
+  height: 42px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  transition: background-color .3s, opacity .5s, visibility .5s;
+  opacity: .8;
+  visibility: hidden;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+#topButton::after {
+  content: "";
+  color: white;
+  font-size: 1rem;
+  display: block;
+  background: url('../img/arrow-up.svg') no-repeat;
+  top: 14px;
+  left: 12px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+#topButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+#topButton:active {
+  background-color: $dark-blue;
+}
+
+#topButton.show {
+  opacity: .8;
+  visibility: visible;
+}
+

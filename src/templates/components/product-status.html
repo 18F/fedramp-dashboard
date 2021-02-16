@@ -1,6 +1,6 @@
-<img ng-if="::controller.status === 'Compliant'" src="img/fedramp-process-compliant-blue.png" alt="Authorized" />
-<img ng-if="::controller.status === 'In Process'" src="img/fedramp-process-in-process-blue.png" alt="In-Process" />
-<img ng-if="::controller.status === 'FedRAMP Ready'" src="img/fedramp-process-ready-blue.png" alt="Ready" />
+<img ng-if="::controller.status === 'Compliant'" src="img/glance-authorized.svg" alt="Authorized" aria-hidden='true' />
+<img ng-if="::controller.status === 'In Process'" src="img/glance-process.svg" alt="In-Process" aria-hidden='true' />
+<img ng-if="::controller.status === 'FedRAMP Ready'" src="img/glance-ready.svg" alt="Ready" aria-hidden='true' />
 <span ng-if="::controller.status === 'Compliant'">FedRAMP Authorized</span>
 <span ng-if="::controller.status === 'In Process'"> FedRAMP In Process</span>
 <span ng-if="::controller.status === 'FedRAMP Ready'">FedRAMP Ready</span>

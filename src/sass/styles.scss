@@ -56,6 +56,7 @@
 // @import 'packages/usa-skipnav';
 // @import 'packages/usa-table';
 // @import 'packages/usa-tag';
+// @import 'packages/usa-banner';
 
 // or package sets...
 // @import 'packages/uswds-components';
@@ -70,3 +71,106 @@
 // Import theme custom styles
 
 @import "uswds-theme-custom-styles";
+
+// -------------------------------------
+// Custom variables pulled from new design of FedRAMP.gov
+@charset "utf-8";
+
+$title-font:       'Montserrat', 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
+$serif-font:       'montserrat', 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+// $base-font-size:   1.7rem;
+// $small-font-size:  $base-font-size * 0.875;
+// $base-line-height: 1.5;
+$black: #212121;
+$dark-blue: #162E51;
+$light-blue: #1A4480;
+$teal: #0A90B7;
+$light-teal: #bde2f9;
+$lighter-teal: #D9F1FD;
+$red: #C71F25;
+$dark-red: #A00A0F;
+$dark-gray: #454545;
+$intro-text: #4c4c4e;
+$mid-gray: #757575;
+$light-gray: #D0D0D0;
+$lightest-gray: #f2f2f2;
+$spacing-unit: 30px;
+$dark-red: #970B22;
+$darkest-blue: #131836;
+$footer-teal: #D9F1FD;
+$footer-lines: #384D6A;
+$new-home-teal: #1889BC;
+$theme-color-primary-vivid: #1889BC;
+
+$background-color:         #ffffff;
+$headers-color:            #205493;
+$text-color:               #4c4c4e;
+$reverse-text-color:       #ffffff;
+$header-text-color:        #205493;
+
+$link-color:               #1A4480;
+$link-visited-color:       #CC1D1D;
+$link-active-color:        #1A4480;
+$link-hover-color:         #CC1D1D;
+
+$button-color:             #112e51;
+$button-hover-color:       #002E4D;
+$button-text-color:        #fff;
+
+$project-accent-color:     #02bfe7;
+$card-heading-color:       #0071bc;
+
+$banner-background-color:  #112e51;
+$banner-text-color:        #fff;
+$banner-button-color:      #112e51;
+$banner-button-text-color: #fff;
+
+$footer-primary-background-color:    #f1f1f1;
+$footer-secondary-background-color:  #d6d7d9;
+$footer-text-color:                  #4c4c4e;
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+$tablet: 1024px;
+$tablet-low: 768px;
+$mobile-high: 667px;
+$mobile-mid: 400px;
+$desktop: 1200px;
+
+
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@mixin clearfix {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+

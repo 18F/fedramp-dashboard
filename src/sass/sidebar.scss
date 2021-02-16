@@ -1,25 +1,25 @@
 .sidebar {
     float: left;
     width: 21%;
-	padding: 5.2rem 0 3rem 2.4rem;
+	padding: 3.4rem 0 1.9rem 1.5rem;
 
     @media only screen and (max-width: 850px) {
         float: none;
         display: block;
         width: 100%;
-        padding: 0 2rem;
+        padding: 0 1.3rem;
 
         .filters-toggle {
             color: color('gray-cool-60');
-            font-size: 1.7rem;
+            font-size: 1.13rem;
             font-weight: weight($theme-font-weight-bold);
             // filter results text - make this full width, have a cursor
             span {
 	            display:block;
-	            padding-top:2rem;
+	            padding-top: 1.3rem;
 				cursor:pointer;
 				.fa {
-					margin-left:2rem;
+					margin-left: 1.3rem;
 				}
             }
         }
@@ -28,7 +28,7 @@
 	// each contain a set of content filters
 	.grid-filter {
 		background: none;
-		margin: 2.3rem 0;
+		margin: 1.5rem 0;
 		padding: 0;
 	    display: block;
 	    cursor: pointer;
@@ -37,14 +37,14 @@
 	    // filtering options
 	    .option {
 	        display: block;
-	        margin: 1.3rem 0;
-	        font-size: 1.5rem;
+	        margin: .8rem 0;
+	        font-size: .9rem;
 	        font-weight: weight($theme-font-weight-normal);
 
 			// check for active filter
 			.fa-check-circle {
 	            color: #0070ba;
-	            margin-left: 0.5rem;
+	            margin-left: 0.3rem;
 	        }
 	    }
 
@@ -55,15 +55,15 @@
 
 		// indent filter child items
 	    .options {
-	        padding-left: 1.3rem;
+	        padding-left: .8rem;
 			color: color('gray-cool-60');
 	    }
 	}
 
 	.filter-header {
-		font-size: 1.6rem;
+		font-size: 1rem;
 		font-weight: weight($theme-font-weight-bold);
-		transition: color 0.3s;
+		transition: color 0.19s;
 	}
 
 	// controls a filter with active state
@@ -76,11 +76,11 @@
 
 	// sidebar search control
 	grid-search {
-		margin: 1.7rem 0;
+		margin: 1.13rem 0;
 
 		// input field addition
 		input {
-            font-size: 1.4rem;
+            font-size: .9rem;
             width: 100%;
             padding: units(1.5);
 		}
@@ -94,6 +94,6 @@
 	// controls sidebar filter + detail icons
     .icons {
         float: right;
-        font-size: 0.8em;
+        font-size: 0.5em;
     }
 }

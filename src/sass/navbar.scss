@@ -131,8 +131,8 @@ nav.usa-nav {
 }
 
 .usa-nav > ul > li > a {
-    display: inline-block;
-  font-family: 'Muli', sans-serif;
+  display: inline-block;
+  @include u-font-family('sans');
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
@@ -169,7 +169,7 @@ li.parent .sub-menu {
   li {
     display: block;
     text-align: left;
-    font-family: 'Muli', sans-serif;
+    @include u-font-family('sans');
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -240,7 +240,7 @@ li.parent .sub-menu {
     transition: opacity linear 0.15s;
       li {
       display: block;
-      font-family: 'Muli', sans-serif;
+      @include u-font-family('sans');
       font-size: 0.875rem;
       font-style: normal;
       font-weight: 700;
@@ -310,11 +310,11 @@ li.parent .sub-menu {
 .usa-nav ul li.parent {
   border: none;
   color: #212121;
-  font-family: 'Muli', sans-serif;
   line-height: 1.3;
   padding: 10px 12px;
   text-decoration: none;
-  font-weight: 800;
+  @include u-font-family('sans');
+  @include u-text('heavy');
   font-style: normal;
   cursor: pointer;
   width: auto;

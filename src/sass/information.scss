@@ -64,7 +64,7 @@
 
 .comparison-list {
     .title {
-        font-size: 1.8rem;
+        font-size: 1.19rem;
     }
 
     .detail {
@@ -77,16 +77,16 @@
     }
 
     .fr-filter-label {
-	    height: 7.6rem;
+	    height: 5rem;
 
 	    .fr-filter-label-text {
-		    line-height: 7.6rem;
-			background-color: color('gray-cool-5');
+		    line-height: 5rem;
+			background-color: #f2f2f2;
 	    }
     }
 
     .message {
-        margin-bottom: 2em;
+        margin-bottom: 1.3em;
 
         hr {
             width: 20%;
@@ -111,7 +111,7 @@
     }
 
     .tile {
-        border-bottom: 1px solid color('gray-cool-5');
+        border-bottom: 1px solid #f2f2f2;
         background-color: #fff;
 
         .row.fr-grid-layout-row {
@@ -122,12 +122,12 @@
     tile {
 	    .fr-grid-layout {
 		    display: block;
-		    min-height: 20rem;
+		    min-height: 13.3rem;
 
 		    .fr-grid-layout-row {
 			    position: relative;
 			    display: block;
-			    padding-left: 3rem;
+			    padding-left: 1.99rem;
 			    height: 100%;
 
 			    > div {
@@ -139,49 +139,49 @@
 					max-width: 66%;
 					width: auto;
 					padding-left: 0;
-					padding-top: 1.4rem;
-					line-height: 1.7rem;
-					margin-bottom: 3.5rem;
+					padding-top: .9rem;
+					line-height: 1.13rem;
+					margin-bottom: 2.3rem;
 				}
 
 				.fr-grid-cell-service, .fr-grid-cell-deployment, .fr-grid-cell-impact {
 					display: block;
 					float: left;
 					width: 30%;
-					line-height: 1.7rem;
-					font-size: 1.4rem;
+					line-height: 1.13rem;
+					font-size: 0.9rem;
 				}
 
 			    .fr-grid-cell-icon {
 				    position: absolute;
 				    top: 0;
-				    right: 10rem;
-					width: 11.5rem;
-					height: 10.1rem;
+				    right: 6.6rem;
+					width: 7.6rem;
+					height: 7.6rem;
 		            text-align: center;
-		            padding-top: 2rem;
+		            padding-top: 1.3rem;
 				}
 
 			    .fr-grid-cell-metric {
 				    position: absolute;
 				    top: 0;
 				    right: 0;
-					width: 9.5rem;
-					height: 10.1rem;
+					width: 6.3rem;
+					height: 6.7rem;
 		            text-align: center;
-		            padding-top: 2.7rem;
+		            padding-top: 1.7rem;
 		            background-color: color($theme-color-primary);
 		            color: color('white');
 		            font-weight: weight($theme-font-weight-bold);
 
 		            .text {
-		                font-size: 1.3rem;
+		                font-size: 0.8rem;
 		                font-weight: weight($theme-font-weight-normal);
 		            }
 
 		            .number {
-		                font-size: 2.6rem;
-		                margin-bottom: -0.8rem;
+		                font-size: 1.7rem;
+		                margin-bottom: -0.53rem;
 		            }
 			    }
 
@@ -194,7 +194,7 @@
 }
 
 .information {
-    font-size: 1.6rem;
+    font-size: 1.06rem;
 
     // h4, h5 {
     //     font-family: $theme-font-type-sans !important;
@@ -206,18 +206,18 @@
 
         h4 {
             margin-top: 0;
-            font-size: 2rem;
+            font-size: 1.3rem;
         }
 
         h5 {
 	        margin-top: 0;
 	        margin-bottom: 0;
-	        font-size: 1.6rem;
+	        font-size: 1rem;
         }
 
         p {
             margin-top: 0;
-            margin-bottom: 1rem;
+            margin-bottom: 0.66rem;
         }
     }
 
@@ -234,13 +234,13 @@
         }
 
         a {
-            color: color('gray-cool-30');
+            color: white;
             font-size: smaller;
             text-align: center;
             text-decoration: none;
 
             i {
-                font-size: 2em;
+                font-size: 1.3em;
             }
         }
     }
@@ -252,21 +252,21 @@
     .header {
         border-top: none;
         padding-top: 0;
-        margin-left: 3rem;
+        margin-left: 1.9rem;
 
         .logo {
-	        margin-top: 2.1rem;
-            height: 5.3rem;
+	        margin-top: 1.3rem;
+            height: 3.5rem;
 
             img {
                 max-width: auto;
-                max-height: 5.3rem;
+                max-height: 3.5rem;
             }
         }
 
         .title {
             font-weight: weight($theme-font-weight-bold);
-            font-size: 1.9rem;
+            font-size: 1.2rem;
             padding-top: 20px;
             padding-bottom: 20px;
         }
@@ -274,34 +274,34 @@
         .reuse, .comparison-list tile .reuses {
             float: right;
             text-align: center;
-            width: 9.5rem;
-            height: 10.1rem;
-            padding-top: 2.7rem;
-            background-color: color($theme-color-primary);
+            width: 6.3rem;
+            height: 6.7rem;
+            padding-top: 1.7rem;
+            background-color: color('primary');
             color: color('white');
             font-weight: bolder;
 
             .text {
-                font-size: 1.3rem;
+                font-size: .8rem;
                 font-weight: weight($theme-font-weight-normal);
             }
 
             .number {
-                font-size: 2.6rem;
-                margin-bottom: -0.8rem;
+                font-size: 1.7rem;
+                margin-bottom: -0.5rem;
             }
         }
     }
 
     .status {
-        padding: 2.5rem 0 1rem;
+        padding: 1.6rem 0 .66rem;
         text-align: center;
-		border-top: 1px solid color('gray-cool-5');
-		border-bottom: 1px solid color('gray-cool-5');
+		border-top: 1px solid #f2f2f2;
+		border-bottom: 1px solid #f2f2f2;
 
         .col {
             .text {
-                font-size: 1.2rem;
+                font-size: 0.7rem;
             }
         }
 
@@ -310,8 +310,8 @@
             opacity: 0.6;
 
             img {
-	            max-width: 4rem;
-	            max-height: 4rem;
+	            max-width: 2.6rem;
+	            max-height: 2.6rem;
             }
         }
 
@@ -350,20 +350,20 @@
     }
 
     .system-profile, .fedramp, .agencies {
-	    padding-left: 2.8rem;
+	    padding-left: 1.86rem;
 	}
 
     .system-profile {
-	    margin-top: 4rem;
+	    margin-top: 2.6rem;
 	    padding-top: 0;
-        margin-bottom: 4rem;
-		border-bottom: 1px solid color('gray-cool-5');
+        margin-bottom: 2.6rem;
+		border-bottom: 1px solid #f2f2f2;
 
         .contact-information {
             width:  50%;
             color: color('black');
             float: right;
-            padding: 2rem;
+            padding: 1.3rem;
 
             h5 {
                 margin-top: 0;
@@ -375,7 +375,7 @@
                     font-weight: bolder;
                     clear: left;
                     display: inline-block;
-                    padding-right: 0.8rem;
+                    padding-right: 0.5rem;
                 }
 
                 dd {
@@ -391,22 +391,22 @@
     .reuse.mobile-visible {
         text-align: center;
         width: 100%;
-        height: 10.1rem;
-        padding-top: 2.7rem;
+        height: 6.7rem;
+        padding-top: 1.7rem;
         background-color: color($theme-color-primary);
         color: color('white');
         font-weight: bolder;
-        margin-top: -0.6em;
-        margin-bottom: -0.6em;
+        margin-top: -0.39em;
+        margin-bottom: -0.39em;
 
         .text {
-            font-size: 1.3rem;
+            font-size: 0.8rem;
             font-weight: weight($theme-font-weight-normal);
         }
 
         .number {
-            font-size: 2.6rem;
-            margin-bottom: -0.8rem;
+            font-size: 1.7rem;
+            margin-bottom: -0.5rem;
         }
     }
 
@@ -417,7 +417,7 @@
                 font-weight: bolder;
                 clear: left;
                 display: inline-block;
-                padding-right: 0.8rem;
+                padding-right: 0.5rem;
             }
 
             dd {
@@ -436,11 +436,11 @@
 
     .service-description {
         border-top: none;
-        background-color: color('gray-cool-5');
-        padding-left: 1em;
-        padding-right: 1em;
-        margin-left: 2.8rem;
-        margin-right: 2.8rem;
+        background-color: #f2f2f2;
+        padding-left: .66em;
+        padding-right: .66em;
+        margin-left: 1.8rem;
+        margin-right: 1.8rem;
 
         .col {
             width: 100%;
@@ -460,8 +460,8 @@
     .agencies,
     .assessors {
         border-top: none;
-	    padding-left: 2.8rem;
-		border-bottom: 1px solid color('gray-cool-5');
+	    padding-left: 1.8rem;
+		border-bottom: 1px solid #f2f2f2;
 
         ul {
             margin-left: -5px;
@@ -491,7 +491,7 @@
     }
 
     .timeline {
-        margin-bottom: 4rem;
+        margin-bottom: 2.6rem;
         width: 100%;
 
         .timeline-row {
@@ -514,12 +514,12 @@
             .timeline-col.inprocess,
             .timeline-col.authorized {
                 span {
-                    font-size: 1.3rem;
+                    font-size: 0.8rem;
                     font-weight: 600;
                     visibility: visible;
                 }
                 div {
-                    font-size: 2.2rem;
+                    font-size: 1.4rem;
                     font-weight: 600;
                     visibility: visible;
                 }
@@ -569,8 +569,8 @@
 
         .contact-information {
             color: color('black');
-            padding: 2rem;
-            margin-bottom: 4rem;
+            padding: 1.3rem;
+            margin-bottom: 2.6rem;
 
             dl {
                 dt {
@@ -578,7 +578,7 @@
                     font-weight: bolder;
                     clear: left;
                     display: inline-block;
-                    padding-right: 0.8rem;
+                    padding-right: 0.5rem;
                 }
 
                 dd {
@@ -596,8 +596,8 @@
     }
 
     .gutter {
-        padding-left: 2.8rem;
-        padding-right: 2.8rem;
+        padding-left: 1.8rem;
+        padding-right: 1.8rem;
     }
 
     .provides-services {
@@ -619,12 +619,12 @@
 
 .agency {
     .system-profile {
-        margin-top: 10rem;
+        margin-top: 6.6rem;
         border-bottom: none;
     }
 
     .service-description {
-        margin-top: 4em;
+        margin-top: 2.6em;
     }
 
     .row {
@@ -632,8 +632,8 @@
 
         .contact-information {
             color: color('black');
-            padding: 2rem;
-            margin-bottom: 4rem;
+            padding: 1.3rem;
+            margin-bottom: 2.6rem;
 
             dl {
                 dt {
@@ -641,7 +641,7 @@
                     font-weight: bolder;
                     clear: left;
                     display: inline-block;
-                    padding-right: 0.8rem;
+                    padding-right: 0.5rem;
                 }
 
                 dd {

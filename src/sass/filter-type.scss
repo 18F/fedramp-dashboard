@@ -1,107 +1,69 @@
-// add some style for the "filter results by" label / rule
-.fr-filter-label {
-    height: 6.8rem;
-    position: relative;
+.fr-selection {
+  background-color: #f2f2f2;
 
-    .fr-filter-label-rule {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: color('gray-cool-10');
+  p {
+    color: #4C4C4E;
+    font-family: "Muli",sans-serif !important;
+    line-height: 1.5;
+    font-size: .9375rem;
     }
+    
+    h2 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: .02em;
+    padding: 0 0 16px 0;
+    margin: 0 0 6px 0;
+    font-size: 2rem;
+    line-height: 42px;
+    color: $new-home-teal;
+  }
 
-    .fr-filter-label-text {
-        position: relative;
-        display: inline-block;
-        font-size: 18px;
-        line-height: 6.8rem;
-        color: color('gray-cool-60');
-        background-color: color('gray-cool-5');
-        padding: 0 12px;
-        font-weight: 700;
-    }
-}
+  h3 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    line-height: 1.5;
+    font-size: .9375rem;    
+    color: #4C4C4E;
+    font-weight: 600;
+  }
 
-// style block of entity filters
-// don't prefer table display style, but most reliable in this configuration
-.fr-filters {
-    position: relative;
-    display: table;
+  h4 {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-size: 1rem;
+    color: #4C4C4E;
+    font-weight: 600;
+  }
+
+  button {
+    font-family: "Montserrat","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    outline: none;
+    border: 1px solid $new-home-teal;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: white;
+    color: $new-home-teal;
+    display: block;
     width: 100%;
-    max-width: none;
-    height: 8.5rem;
-    line-height: 8.5rem;
-    margin-left: 0;
+    max-width: 400px;
+    height: 48px;
+    margin: auto;
+    margin-top: 10px;
 
-    button h1,
-    button h2 {
-        margin: 0;
-        line-height: 1;
-        font-size: 1.8rem;
+    @include at-media('tablet') {
+      display: inline-block;
+      width: 191px;
+      margin: 0 5px;
     }
+  }
 
-    .fr-filters-row {
-        display: table-row;
-
-        .usa-width-one-third {
-            border-right: 1px solid color('white');
-            display: table-cell;
-        }
-
-        .usa-width-one-third,
-        .usa-width-one-third:nth-child(2n) {
-            width: 33.33%;
-            margin-right: 0;
-        }
-
-        .usa-width-one-third:last-child {
-            border-right: none;
-        }
-
-        .selected {
-            background-color: color($theme-color-primary);
-            color: color('white');
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        button:focus {
-            background-color: color($theme-color-primary);
-            color: color('white');
-            outline: none !important;
-            box-shadow: none !important;
-        }
-    }
-
-    // undid much of web standards to conform to design
-    button {
-        width: 100%;
-        height: 8.5rem;
-        border-radius: 0;
-        border: none;
-        margin: 0;
-        padding: 0;
-        line-height: inherit;
-        background-color: color('gray-cool-10');
-        color: color('gray-cool-60');
-        transition: background-color 0.2s, color 0.2s;
-
-        // added span and tighter line height to preserve nice wrapping
-        span {
-            display: block;
-            line-height: 1.8rem;
-            font-size: 1.8rem;
-            font-weight: $theme-font-weight-bold;
-        }
-    }
-
-    // filter active / hover state alts
-    button.active,
-    button:hover {
-        background-color: color($theme-color-primary);
-        color: #fff;
-        cursor: pointer;
-    }
+  button.selected,
+  button:hover {
+    background-color: $new-home-teal;
+    color: white;
+  }
 }

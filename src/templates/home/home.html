@@ -1,40 +1,49 @@
-<div class="usa-content hidden-print">
-    <div class="fr-dash-header usa-color-primary-darkest">
-        <div class="grid-container padding-x-0 text-center fr-dash-label">
-            <div class="grid-row">
-                <div class="grid-col-12 text-center">FedRAMP at a glance</div>
-            </div>
+<section class="usa-section usa-section--dark text-center padding-y-3">
+    <h1>Fedramp Marketplace</h1>
+</section>
+
+<section class="fedramp-glance hidden-print">
+    <h2 class="text-center home-glance" style="padding-bottom: 2rem;">
+        FedRAMP at a Glance
+    </h2>
+      <ul class="glance-numbers">
+        <li>
+            <img src="img/glance-ready.svg" alt="">
+            <span>
+                <p>Ready</p>
+                <p class="number">{{homeController.totalReady()}}</p>
+            </span>
+        </li>
+        <li>
+            <img src="img/glance-process.svg" alt="">
+            <span>
+                <p>In Process</p>
+                <p class="number">{{homeController.totalInProcess()}}</p>
+            </span>
+        </li>
+        <li>
+            <img src="img/glance-authorized.svg" alt="">
+            <span>
+                <p>Authorized</p>
+                <p class="number">{{homeController.totalAuthorized()}}</p>
+            </span>
+        </li>
+    </ul>
+      <p class="text-center" style="padding-top: 2rem;">
+        For more information on FedRAMP designations, see <a href="https://www.fedramp.gov/assets/resources/documents/FedRAMP_Marketplace_Designations_for_Cloud_Service_Providers.pdf" target="_blank" ><u>Marketplace Designations for CSPs [PDF - 652KB]</u></a>.
+    </p>
+</section>
+
+<div class='grid-wrap-background'>
+    <section class='fr-selection padding-top-8 padding-bottom-5'>
+        <div class="grid-container text-center">
+            <h2>Search the FedRAMP Marketplace</h2>
+            <p class="padding-bottom-2">The FedRAMP Marketplace provides a searchable, sortable database of CSOs that have achieved a FedRAMP designation. Accredited auditors that can perform the FedRAMP assessment, known as 3PAOs, are listed within the Marketplace.</p>
+            <h3 class="padding-bottom-1">Sort Marketplace by:</h3>
+            <menu></menu>
         </div>
-        <div class="grid-container padding-x-0 text-center">
-            <div class="grid-row fr-large-metrics">
-                <div class="grid-col-4" ng-click="homeController.filterProducts('FedRAMP Ready')">
-                    <p class="fr-large-number">
-                        <span class="fr-metric-icon icon-ready-light"></span>
-                        <strong>{{homeController.totalReady()}}</strong>
-                        <span class="fr-metric-label">Ready</span>
-                    </p>
-                </div>
-                <div class="grid-col-4" ng-click="homeController.filterProducts('In Process')">
-                    <p class="fr-large-number">
-                        <span class="fr-metric-icon icon-in-process-light"></span>
-                        <strong>{{homeController.totalInProcess()}}</strong>
-                        <span class="fr-metric-label">In Process</span>
-                    </p>
-                </div>
-                <div class="grid-col-4" ng-click="homeController.filterProducts('Compliant')">
-                    <p class="fr-large-number">
-                        <span class="fr-metric-icon icon-compliant-light"></span>
-                        <strong>{{homeController.totalAuthorized()}}</strong>
-                        <span class="fr-metric-label">Authorized</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-center fr-filter-label">
-        <span class="fr-filter-label-rule"></span>
-        <span class="fr-filter-label-text">Show me</span>
-    </div>
-    <menu></menu>
+    </section>
+    <section class='grid-wrap'>
+        <ui-view/>
+    </section>
 </div>
-<ui-view/>

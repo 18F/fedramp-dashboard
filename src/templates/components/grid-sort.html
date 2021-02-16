@@ -1,6 +1,8 @@
-<span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header no-select">{{::controller.header}}</span>
-<div ng-click="controller.toggleSort()" class="grid-sort-arrows no-select">
-    <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>
-    <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{'grid-sort-selected': controller.highlight(true)}" aria-hidden="true"></i>
-    <i class="fa fa-caret-down"  ng-if="controller.activated && !controller.asc" ng-class="{'grid-sort-selected': controller.highlight(false)}" aria-hidden="true"></i>
+<div class='grid-sort-wrap'>
+  <div ng-click="controller.toggleSort()" class="grid-sort-arrows no-select" aria-label="sort by {{::controller.header}}">
+      <i class="fa fa-sort" ng-if="!controller.activated" aria-hidden="true"></i>
+      <i class="fa fa-caret-up"  ng-if="controller.activated && controller.asc" ng-class="{'grid-sort-selected': controller.highlight(true)}" aria-hidden="true"></i>
+      <i class="fa fa-caret-down"  ng-if="controller.activated && !controller.asc" ng-class="{'grid-sort-selected': controller.highlight(false)}" aria-hidden="true"></i>
+  </div>
+  <span ng-click="controller.toggleSort()" ng-if="controller.header" class="grid-sort-header no-select">{{::controller.header}}</span>
 </div>

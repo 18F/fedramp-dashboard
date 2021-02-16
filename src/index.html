@@ -27,60 +27,290 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
             <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="css/fedramp.css" />
+        <script src="uswds-init.min.js"></script>
     </head>
     <body ng-app="fedramp" ng-strict-di>
-        <section class="usa-banner" aria-label="Official government website">
-            <div class="usa-accordion">
-                <header class="usa-banner__header">
-                    <div class="usa-banner__inner">
-                        <div class="grid-col-auto">
-                            <img class="usa-banner__header-flag" src="img/us_flag_small.png" alt="U.S. flag">
-                        </div>
-                        <div class="grid-col-fill tablet:grid-col-auto">
-                            <p class="usa-banner__header-text">An official website of the United States government</p>
-                            <p class="usa-banner__header-action" aria-hidden="true">Here’s how you know</p>
-                        </div>
-                        <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
-                  <span class="usa-banner__button-text">Here’s how you know</span>
-                </button>
-                    </div>
-                </header>
-                <div class="usa-banner__content usa-accordion__content" id="gov-banner">
-                    <div class="grid-row grid-gap-lg">
-                        <div class="usa-banner__guidance tablet:grid-col-6">
-                            <img class="usa-banner__icon usa-media-block__img" src="img/icon-dot-gov.svg" alt="Dot gov">
-                            <div class="usa-media-block__body">
-                                <p>
-                                    <strong>The .gov means it’s official.</strong>
-                                    <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
-                                </p>
+        <noscript>
+            <div class="usa-alert usa-alert--warning">
+                <div class="usa-alert__body">
+                  <h3 class="usa-alert__heading">Your browser does not support JavaScript.</h3>
+                  <p class="usa-alert__text">In order to view the full content of this site, please use a browser with JavaScript enabled. If you cannot, you may want to view the <a href="https://github.com/18F/fedramp-data/blob/master/data/data.json">data driving this marketplace.</a></p>
+                </div>
+            </div>
+        </noscript>
+        <a href="#main" class="usa-skipnav">Skip to main content</a>
+        <header class="usa-header usa-header-basic fedramp-header" role='banner'>
+            <section class="usa-banner" aria-label="Official government website">
+                <div class="usa-accordion">
+                    <header class="usa-banner__header">
+                        <div class="usa-banner__inner">
+                            <div class="grid-col-auto">
+                                <img class="usa-banner__header-flag" src="img/us_flag_small.png" alt="U.S. flag">
                             </div>
+                            <div class="grid-col-fill tablet:grid-col-auto">
+                                <p class="usa-banner__header-text">An official website of the United States government</p>
+                                <p class="usa-banner__header-action" aria-hidden="true">Here’s how you know</p>
+                            </div>
+                            <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+                      <span class="usa-banner__button-text">Here’s how you know</span>
+                    </button>
                         </div>
-                        <div class="usa-banner__guidance tablet:grid-col-6">
-                            <img class="usa-banner__icon usa-media-block__img" src="img/icon-https.svg" alt="Https">
-                            <div class="usa-media-block__body">
-                                <p>
-                                    <strong>The site is secure.</strong>
-                                    <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
-                                </p>
+                    </header>
+                    <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+                        <div class="grid-row grid-gap-lg">
+                            <div class="usa-banner__guidance tablet:grid-col-6">
+                                <img class="usa-banner__icon usa-media-block__img" src="img/icon-dot-gov.svg" alt="Dot gov">
+                                <div class="usa-media-block__body">
+                                    <p>
+                                        <strong>The .gov means it’s official.</strong>
+                                        <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="usa-banner__guidance tablet:grid-col-6">
+                                <img class="usa-banner__icon usa-media-block__img" src="img/icon-https.svg" alt="Https">
+                                <div class="usa-media-block__body">
+                                    <p>
+                                        <strong>The site is secure.</strong>
+                                        <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+            <!-- Navigation -->
+            <div class="search-feature">
+                <div class="search-wrapper">
+                    <form class="usa-search" id="searchgovform" action="https://www.fedramp.gov/search-results/">
+                        <label class="usa-sr-only" for="searchgovinput">Search</label>
+                        <input name="search" type="search" id="searchgovinput" placeholder="Search" >
+                        <button type="submit" id="searchgovbutton" title="Submit Search" value="Submit Search">
+                        <span class="usa-search-submit-text"><img class="search-button-icon" src="img/search-magnifying-glass.svg" alt="" /></span>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </section>
-        <div ui-view></div>
-        <noscript>  <div class="usa-alert usa-alert--warning">
-    <div class="usa-alert__body">
-      <h3 class="usa-alert__heading">Your browser does not support JavaScript.</h3>
-      <p class="usa-alert__text">In order to view the full content of this site, please use a browser with JavaScript enabled. If you cannot, you may want to view the <a href="https://github.com/18F/fedramp-data/blob/master/data/data.json">data driving this marketplace.</a></p>
+
+            <div class="usa-nav-container">
+                <button class="usa-menu-btn"><!-- <i class="fas fa-bars"></i> -->
+                    <img src="img/fa-bars.svg" width="26">
+                </button>
+
+                <div class="usa-logo" id="logo">
+                    <em class="usa-logo-text">
+                        <a href="https://www.fedramp.gov/" accesskey="1" title="Home" aria-label="Home">
+                            <img class="desk" src="img/fedramp-logo-vert.svg" alt="FedRAMP.gov">
+                            <img class="mobile" src="img/logo-mobile-fedramp.svg" alt="FedRAMP.gov">
+                        </a>
+                    </em>
+                </div>
+
+                <nav role="navigation" class="usa-nav nav focus-within" id="navigation">
+                    <button class="usa-nav__close">
+                        <img src="img/menu-close.svg" width="20" alt="close">
+                    </button>
+
+                    <ul class="usa-nav-primary usa-accordion focus-within">
+                        <!-- 1st level -->
+                        <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active focus-within">About Us
+                            <img src="img/down-chevron.svg" width="18" alt="close">
+                            <ul class="sub-menu dropdown" aria-label="submenu">
+                                <!-- 2nd level -->
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/program-basics/" class="active"> Program Basics </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/team/" class="active"> Meet the Team </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/governance/" class="active"> Governance </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Partners
+                            <img src="img/down-chevron.svg" width="18" alt="close">
+                            <ul class="sub-menu dropdown" aria-label="submenu">
+                                <!-- 2nd level -->
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/cloud-service-providers/" class="active"> Cloud Service Providers </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/federal-agencies/" class="active"> Federal Agencies </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/assessors/" class="active"> Assessors </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Get Authorized
+                            <img src="img/down-chevron.svg" width="18" alt="close">
+                            <ul class="sub-menu dropdown" aria-label="submenu">
+                                <!-- 2nd level -->
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/agency-authorization/" class="active"> Agency Authorization </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/jab-authorization/" class="active"> JAB Authorization </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li tabindex="0" aria-haspopup="true" class="main-parent parent primary-active">Resources
+                            <img src="img/down-chevron.svg" width="18" alt="close">
+                            <ul class="sub-menu dropdown" aria-label="submenu">
+                                <!-- 2nd level -->
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/documents-templates/" class="active"> Documents &amp; Templates </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/training/" class="active"> Training </a>
+                                </li>
+                                <li>
+                                    <a tabindex="0" href="https://www.fedramp.gov/faqs/" class="active"> FAQs </a>
+                                </li>
+                                <li> <a tabindex="0" href="https://tailored.fedramp.gov" target="_blank">Tailored Authorization</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="https://www.fedramp.gov/blog/" class="active">Blog</a>
+                        </li>
+                        <li>
+                            <a class="external" href="#!/products" target="_blank">Marketplace</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- END navigation -->
+        </header>
+        <main id='main'>
+            <div ui-view></div>
+        </main>
+        <!-- footer -->
+        <footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+    <!-- Footer columuns -->
+    <div class="footer-container">
+        <div class="footer-col-1-phone">
+            <div class="footer-col f-col-1">
+                <div class="logo-container">
+                    <a href="https://www.gsa.gov/" target="_blank"><img class="usa-footer-logo-img" src="img/gsa-reversed-logo.svg" alt="GSA logo"></a>
+                    <p class="footer-logo-text"><strong>FedRAMP.gov</strong> is a product of GSA’s Technology Transformation Services, and managed by the FedRAMP Project Management Office</p>
+                 </div>
+            </div>
+
+            <div class="footer-col f-col-2">
+                <address>
+                    <div class="street-address">
+                        <p>Federal Risk and Authorization Management Program (FedRAMP)</p>
+                        <p>General Services Administration<br>
+                            1800 F Street, NW<br>
+                            Washington, DC 20405</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <p class="footer-contact footer-follow-us">
+                            <a class="" href="mailto:info@FedRAMP.gov" target="_blank">
+                                <img class="footer-mail-icon" src="img/footer-mail-icon.svg" alt="mail to fedramp">info@FedRAMP.gov
+                            </a>
+                        </p>
+                        <p class="footer-contact footer-follow-us">
+                            <a class="" href="https://twitter.com/fedramp?lang=en" target="_blank">
+                                <img src="img/fa-twitter.svg" role="presentation" alt="twitter">
+                                Follow Us
+                            </a>
+                        </p>
+                    </div>
+                </address>
+            </div>
+            <div class="clearfix mobile-clear"></div>
+        </div>
+
+        <div class="footer-row">
+            <div class="footer-col f-col-3">
+                <div class="newsletter-footer">
+                    <form id="contact" action="https://public.govdelivery.com/accounts/USGSA/subscriber/topics?qsp=USGSA_2224" method="POST">
+                        <h4>Keep Up To Date</h4>
+                        <p>To receive news and updates, add your email to GSA’s <span class="no-wrap;">subscriber list.</span></p>
+                            <div class="newsletter-inner">
+                                <a class="footer-submit" href="https://public.govdelivery.com/accounts/USGSA/subscriber/new" target="_blank">Subscribe</a>
+                            </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-col f-col-4">
+            <h4>Resources</h4>
+            <ul class="quick-links">
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.gsa.gov/website-information/privacy-and-security-notice" class="ql-text" target="_blank">FedRAMP Privacy Policy</a></li>
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.gsa.gov/website-information/privacy-and-security-notice" class="ql-text" target="_blank">GSA Privacy Policy</a></li>
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.usa.gov" class="ql-text" target="_blank">USA.gov</a></li>
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.gsa.gov/reference/freedom-of-information-act-foia" class="ql-text" target="_blank">GSA FOIA</a></li>
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.gsa.gov/about-us" class="ql-text" target="_blank">About GSA</a></li>
+                <li><img class="footer-img-link" src="img/footer-link.svg" alt=""><a href="https://www.gsa.gov/website-information/accessibility-aids" class="ql-text" target="_blank">Accessibility</a></li>
+            </ul>
+
+        </div>
+        <div class="clearfix"></div>
+
     </div>
-  </div>
-</noscript>
+</footer>
+<div class="footer-report">
+        <div class="">
+            <div class="grid-row">
+                <div class="desktop:grid-col-12 padding-x-2">
+                    <p class="text-center"><em><a href="https://www.gsaig.gov/" target="_blank">Report fraud, waste, or abuse to the Office of the Inspector General</a></em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a id="topButton"></a>
+<!-- end footer -->
 
         <!-- Include scripts at the bottom for performance gains in some browsers -->
         <script src="fedramp.min.js"></script>
         <!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
         <script language="javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA&subagency=18F,TTS" id="_fed_an_ua_tag"></script>
+        <!-- Mobile Nav -->
+        <script type="text/javascript">
+            var navElements = document.querySelectorAll('li.main-parent');
+
+            navElements.forEach(function(element) {
+                element.onclick = function() {
+                    var submenu = element.getElementsByClassName("sub-menu")[0];
+                    if (!submenu) return;
+                    if (submenu.style.display === 'block') {
+                        submenu.style.display = 'none';
+                    } else {
+                        submenu.style.display = 'block';
+                    }
+                }
+            });
+
+            /// scroll to top button ///
+            var btn = document.getElementById('topButton');
+
+            document.addEventListener('scroll', function(e) {
+              if (window.pageYOffset > 850) {
+                btn.classList.add('show');
+              } else {
+                btn.classList.remove('show');
+              }
+            });
+
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              // $('html, body').animate({scrollTop:0}, '300');
+              window.scrollTo({ top: 850, behavior: 'smooth' });
+            });
+        </script>
     </body>
 </html>

@@ -23,7 +23,7 @@ i.e.
 ui-view {
     // add background gray for entire UI
     .usa-content {
-        background-color: color('gray-cool-5');
+        background-color: #f2f2f2;
     }
 }
 
@@ -97,4 +97,8 @@ a:active {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: family('sans');
+}
+
+.usa-skipnav:focus {
+    top: 20px;
 }
