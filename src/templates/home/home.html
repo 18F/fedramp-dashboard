@@ -3,25 +3,25 @@
 </section>
 
 <section class="fedramp-glance hidden-print">
-    <h2 class="text-center home-glance" style="padding-bottom: 2rem;">
+    <h2 class="text-center home-glance" style="padding-bottom: 0rem;">
         FedRAMP at a Glance
     </h2>
       <ul class="glance-numbers">
-        <li>
+        <li class="fr-large-metrics" ng-click="homeController.filterProducts('FedRAMP Ready')">
             <img src="img/glance-ready.svg" alt="">
             <span>
                 <p>Ready</p>
                 <p class="number">{{homeController.totalReady()}}</p>
             </span>
         </li>
-        <li>
+        <li class="fr-large-metrics" ng-click="homeController.filterProducts('In Process')">
             <img src="img/glance-process.svg" alt="">
             <span>
                 <p>In Process</p>
                 <p class="number">{{homeController.totalInProcess()}}</p>
             </span>
         </li>
-        <li>
+        <li class="fr-large-metrics" ng-click="homeController.filterProducts('Compliant')">
             <img src="img/glance-authorized.svg" alt="">
             <span>
                 <p>Authorized</p>
@@ -29,7 +29,7 @@
             </span>
         </li>
     </ul>
-      <p class="text-center" style="padding-top: 2rem;">
+      <p class="text-center" style="padding-top: 0rem;">
         For more information on FedRAMP designations, see <a href="https://www.fedramp.gov/assets/resources/documents/FedRAMP_Marketplace_Designations_for_Cloud_Service_Providers.pdf" target="_blank" ><u>Marketplace Designations for CSPs [PDF - 652KB]</u></a>.
     </p>
 </section>
