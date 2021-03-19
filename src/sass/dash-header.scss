@@ -33,12 +33,13 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0;
     li {
       list-style: none;
-      width: 200px;
+      width: 240px;
+      padding: 20px 40px;
       text-align: center;
       display: flex;
       flex-flow: row wrap;
@@ -51,7 +52,7 @@
         text-transform: uppercase;
         font-size: 1.375rem;
         text-align: center;
-        margin: 20px 0 0 0;
+        margin: 10px 0 0 0;
         letter-spacing: .04em !important;
         &.number {
           color: $red;
@@ -67,6 +68,12 @@
       }
     }
   }
+}
+
+/* metrics row hover */
+  li.fr-large-metrics:hover {
+            background-color: #f2f2f2;
+            cursor: pointer;
 }
 
 /* Loading indicator for main app */
