@@ -63,7 +63,7 @@
     "karma-jasmine": "1.0.2",
     "karma-phantomjs-launcher": "1.0.0",
     "natives": "1.1.6",
-    "node-gyp": "6.1.0",
+    "node-gyp": "7.0.0",
     "node-sass": "^4.14.1",
     "papaparse": "5.2.0",
     "path": "0.12.7",
