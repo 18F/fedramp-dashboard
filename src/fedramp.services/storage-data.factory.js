@@ -144,7 +144,7 @@
                     item.deploymentModel = d.deploymentModel.trim();
                     item.designation = d.designation.trim();
                     item.impactLevel = d.impactLevel.trim();
-                    item.logo = d.cspUrl;
+                    item.logo = d.cspUrl.replace('https://marketplace.fedramp.gov/', '');
                     item.independentAssessor = d.independentAssessor;
                     item.authorizationType = d.path;
                     item.sponsoringAgency = d.sponsoringAgency;
