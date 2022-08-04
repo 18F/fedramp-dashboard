@@ -143,7 +143,7 @@
                     if (self.model.expectedCompliance) {
                         message = 'Estimated Authorization Date ' + self.model.expectedCompliance;
                     } else {
-                        message = 'This provider has not given an Estimated Authorization Date';
+                        message = ' ';
                     }
                 }
 
